@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"Quickly compare pages by making a group. To start, touch &amp; hold a link."</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"Tap to see another tab"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"Your tabs are grouped together here"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"Switch between tabs in your tab group near bottom of screen"</string>
+<string name="undo_bar_group_tabs_message">"%1$s tabs grouped"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d tab"</item>
+  <item quantity="other">"%1$d tabs"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"Add new tab to group"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"Hide fullscreen grid"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"Show group\'s tabs in fullscreen grid"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"Close tab strip"</string>
+<string name="tabswitcher_create_group">"Create group"</string>
+<string name="accessibility_tab_switcher">"Tab Switcher"</string>
+<string name="accessibility_close_tab_group_button">"Close tab group with %1$s tabs"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"Close %1$s group with %2$s tabs"</string>
+<string name="tab_selection_editor_group">"Group"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"Select tabs"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"Group %1$d selected tab"</item>
+  <item quantity="other">"Group %1$d selected tabs"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"Hide multi-select mode"</string>
+<string name="accessibility_tab_selection_editor">"Multi-select mode"</string>
+<string name="tab_grid_dialog_remove_from_group">"Remove from group"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"Remove tabs from group"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"Remove"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"Share group"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"Edit group name"</string>
+<string name="accessibility_expand_tab_group">"Expand tab group with %1$s tabs."</string>
+<string name="accessibility_expand_tab_group_with_group_name">"Expand %1$s tab group with %2$s tabs."</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"Remove %1$d selected tab from group."</item>
+  <item quantity="other">"Remove %1$d selected tabs from group."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"Collapse %1$d tab."</item>
+  <item quantity="other">"Collapse tab group with %1$d tabs."</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"Collapse %1$d tab."</item>
+  <item quantity="other">"Collapse %1$s tab group with %2$d tabs."</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"Tab group expanded"</string>
+<string name="iph_drag_and_drop_introduction">"Drag tabs to group them"</string>
+<string name="iph_drag_and_drop_show_me">"Show me"</string>
+<string name="iph_drag_and_drop_title">"Get organized"</string>
+<string name="iph_drag_and_drop_content">"To group tabs, touch &amp; hold a tab. Then, drag it onto another tab."</string>
+<string name="tab_switcher_carousel_title">"Continue browsing"</string>
+<string name="tab_switcher_carousel_view_all">"View all"</string>
+<string name="tab_suggestion_review_button">"Review"</string>
+<string name="tab_suggestion_close_tab_action_button">"Close"</string>
+<string name="tab_suggestion_close_stale_message">"%1$s of your tabs haven\'t been used lately. Close them?"</string>
+<string name="tab_suggestion_group_tabs_message">"%1$s tabs seem related. Group them?"</string>
+<string name="accessibility_tab_suggestion_review_button">"Review the suggestions."</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"Suggestion: %1$s of your tabs haven\'t been used lately. Close them?"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"Suggestion: %1$s tabs seem related. Group them?"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"Dismiss the suggestions."</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"Close %1$d selected tab"</item>
+  <item quantity="other">"Close %1$d selected tabs"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"Move tab left"</string>
+<string name="accessibility_tab_movement_right">"Move tab right"</string>
+<string name="accessibility_tab_movement_up">"Move tab up"</string>
+<string name="accessibility_tab_movement_down">"Move tab down"</string>
+<string name="undo_tab_strip_closure_message">"Closed tab strip"</string>
+<string name="tab_strip_info_bar_question">"Don\'t show tab strip again?"</string>
+<string name="tab_strip_info_bar_no_reshow">"Don\'t show again"</string>
+<string name="tab_strip_info_bar_reshow">"Show later"</string>
+<string name="price_drop_spotted_title">"Price drop spotted"</string>
+<string name="price_drop_spotted_content">"See which item in your open tabs has a better price"</string>
+<string name="price_drop_spotted_show_me">"Show me"</string>
+</resources>

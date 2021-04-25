@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="all_passwords_bottom_sheet_content_description">"List of credentials to be filled on touch."</string>
+<string name="all_passwords_bottom_sheet_half_height">"List of credentials to be filled on touch opened at half height."</string>
+<string name="all_passwords_bottom_sheet_full_height">"List of credentials to be filled on touch opened at full height."</string>
+<string name="all_passwords_bottom_sheet_closed">"List of credentials to be filled on touch is closed."</string>
+<string name="all_passwords_bottom_sheet_title">"Passwords"</string>
+<string name="all_passwords_bottom_sheet_search_hint">"Search"</string>
+<string name="all_passwords_bottom_sheet_no_password">"No password"</string>
+<string name="all_passwords_bottom_sheet_warning_dialog_title">"Use other password"</string>
+<string name="all_passwords_bottom_sheet_warning_dialog_message_first">"If you trust %s, you can use a saved password for another site."</string>
+<string name="all_passwords_bottom_sheet_warning_dialog_message_second">"Try to use a unique password for every site."</string>
+<string name="all_passwords_bottom_sheet_accept">"Continue"</string>
+<string name="all_passwords_bottom_sheet_cancel">"Cancel"</string>
+<string name="autofill_keyboard_accessory_content_description">"Passwords available"</string>
+<string name="autofill_keyboard_accessory_modern_content_description">"Autofill suggestions available above the keyboard"</string>
+<string name="keyboard_accessory_sheet_hide">"Show keyboard"</string>
+<string name="iph_keyboard_accessory_fill_with_chrome">"Use Chrome autofill suggestion"</string>
+<string name="iph_keyboard_accessory_swipe_for_more">"Swipe to see more suggestions"</string>
+<string name="password_generation_accessory_button">"Suggest strong password"</string>
+<string name="password_generation_accessory_button_short">"Suggest password"</string>
+<string name="password_accessory_sheet_toggle">"Show passwords"</string>
+<string name="password_accessory_sheet_opened">"Showing saved passwords and password options"</string>
+<string name="address_accessory_sheet_title">"Addresses"</string>
+<string name="address_accessory_sheet_toggle">"Show Addresses"</string>
+<string name="address_accessory_sheet_opened">"Showing saved addresses"</string>
+<string name="credit_card_accessory_sheet_toggle">"Show payment methods"</string>
+<string name="credit_card_accessory_sheet_opened">"Showing saved payment methods"</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Chrome 需要获得相应权限，才能使用您的摄像头为您的周边环境创建 3D 地图。"</string>
+<string name="infobar_missing_camera_permission_text">"Chrome 需要获得相应权限，才能允许此网站使用您的摄像头。"</string>
+<string name="infobar_missing_microphone_permission_text">"Chrome 需要获得相应权限，才能允许此网站使用您的麦克风。"</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Chrome 需要获得相应权限，才能允许此网站使用您的摄像头和麦克风。"</string>
+<string name="infobar_missing_location_permission_text">"Chrome 需要获得位置权限，才能将您的位置信息共享给此网站。"</string>
+<string name="infobar_update_permissions_button_text">"继续"</string>
+<string name="nfc_disabled_on_device_message">"要继续，请在 Android 设置中开启 NFC"</string>
+<string name="nfc_prompt_turn_on">"启用"</string>
+<string name="overlay_detected_dialog_title">"此网站无法请求您授权"</string>
+<string name="overlay_detected_dialog_message">"请关闭来自其他应用的所有气泡或叠加层，然后重试。"</string>
+</resources>

@@ -1,0 +1,14 @@
+android {
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        ignoreWarnings true
+        disable 'MissingTranslation'
+    }
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+}

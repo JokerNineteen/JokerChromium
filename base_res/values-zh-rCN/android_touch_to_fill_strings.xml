@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="touch_to_fill_sheet_title_single">"请登录帐号以继续访问"</string>
+<string name="touch_to_fill_sheet_title">"选择帐号"</string>
+<string name="touch_to_fill_sheet_subtitle_not_secure">"%1$s (not secure)"</string>
+<string name="touch_to_fill_content_description">"轻触即可填充的凭据的列表。"</string>
+<string name="touch_to_fill_sheet_half_height">"轻触即可填充的凭据的列表已半屏打开。"</string>
+<string name="touch_to_fill_sheet_full_height">"轻触即可填充的凭据的列表已全屏打开。"</string>
+<string name="touch_to_fill_sheet_closed">"轻触即可填充的凭据的列表已关闭。"</string>
+<string name="manage_passwords">"管理密码"</string>
+<string name="touch_to_fill_continue">"继续"</string>
+</resources>

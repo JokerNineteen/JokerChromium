@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="init_ok">"I agree"</string>
+<string name="autofill_assistant_init_title">"Try Google Assistant\nin Chrome"</string>
+<string name="autofill_assistant_init_message_rent_car">"Rent a car\nin just a few taps"</string>
+<string name="autofill_assistant_init_message_password_change">"Let Google Assistant help you\nchange your password"</string>
+<string name="autofill_assistant_init_message_buy_movie_tickets">"Buy movie tickets\nin just a few taps"</string>
+<string name="autofill_assistant_init_message_food_ordering">"Order food\nin just a few taps"</string>
+<string name="autofill_assistant_init_message_flights_checkin">"Check in to your flight\nin just a few taps"</string>
+<string name="autofill_assistant_init_message_voice_search">"Try voice actions\non websites"</string>
+<string name="autofill_assistant_init_message_shopping">"Fast checkout\nin just a few taps"</string>
+<string name="autofill_assistant_init_message">"Google Assistant saves you time by helping you complete actions on the web, like search and checkout."</string>
+<string name="autofill_assistant_init_message_short">"Google Assistant in Chrome can complete actions across websites for you"</string>
+<string name="autofill_assistant_google_terms_description">"To help you complete tasks, Google will receive the URLs and contents of sites on which you use Assistant, as well as information you submit through Assistant. This information may be stored in your Google account. You can turn off Assistant in Chrome settings. &lt;link&gt;Learn more&lt;/link&gt;"</string>
+<string name="autofill_assistant_google_terms_url">"http://support.google.com/assistant?p=fast_checkout"</string>
+<string name="autofill_assistant_give_up">"Sorry I\'m not able to help, please continue on your own."</string>
+<string name="autofill_assistant_payment_information_missing">"Information missing"</string>
+<string name="autofill_assistant_view_original_image_desc">"Open external link?"</string>
+<string name="autofill_assistant_view_original_image_view">"View"</string>
+<string name="autofill_assistant_view_original_image_cancel">"Cancel"</string>
+<string name="autofill_assistant_sheet_content_description">"Google Assistant in Chrome."</string>
+<string name="autofill_assistant_sheet_half_height">"Google Assistant in Chrome opened at half height."</string>
+<string name="autofill_assistant_sheet_full_height">"Google Assistant in Chrome opened at full height."</string>
+<string name="autofill_assistant_sheet_closed">"Google Assistant in Chrome closed."</string>
+<string name="autofill_assistant_send_feedback">"Send feedback"</string>
+<string name="autofill_assistant_increase_value">"Increase value"</string>
+<string name="autofill_assistant_decrease_value">"Decrease value"</string>
+</resources>

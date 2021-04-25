@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/base_res" />
+            <option value="$PROJECT_DIR$/browser" />
+            <option value="$PROJECT_DIR$/browser/autofill_assistant" />
+            <option value="$PROJECT_DIR$/browser/banners" />
+            <option value="$PROJECT_DIR$/browser/customtabs_content" />
+            <option value="$PROJECT_DIR$/browser/download" />
+            <option value="$PROJECT_DIR$/browser/feed" />
+            <option value="$PROJECT_DIR$/browser/feedback" />
+            <option value="$PROJECT_DIR$/browser/image_descriptions" />
+            <option value="$PROJECT_DIR$/browser/keyboard_accessory" />
+            <option value="$PROJECT_DIR$/browser/paint_preview" />
+            <option value="$PROJECT_DIR$/browser/password_check" />
+            <option value="$PROJECT_DIR$/browser/password_check_internal" />
+            <option value="$PROJECT_DIR$/browser/privacy_secure_dns" />
+            <option value="$PROJECT_DIR$/browser/safe_browsing_settings" />
+            <option value="$PROJECT_DIR$/browser/safety_check" />
+            <option value="$PROJECT_DIR$/browser/share" />
+            <option value="$PROJECT_DIR$/browser/touch_to_fill" />
+            <option value="$PROJECT_DIR$/browser/ui_appmenu" />
+            <option value="$PROJECT_DIR$/browser/ui_appmenu_internal" />
+            <option value="$PROJECT_DIR$/browser/ui_default_browser_promo" />
+            <option value="$PROJECT_DIR$/browser/ui_favicon" />
+            <option value="$PROJECT_DIR$/browser/ui_messages" />
+            <option value="$PROJECT_DIR$/browser/user_education" />
+            <option value="$PROJECT_DIR$/browser/video_tutorials" />
+            <option value="$PROJECT_DIR$/chrome_start_surface" />
+            <option value="$PROJECT_DIR$/chrome_tab_ui" />
+            <option value="$PROJECT_DIR$/chrome_ui_messages" />
+            <option value="$PROJECT_DIR$/chrome_vr" />
+            <option value="$PROJECT_DIR$/components" />
+            <option value="$PROJECT_DIR$/components/autofill" />
+            <option value="$PROJECT_DIR$/components/browser_ui_bottomsheet" />
+            <option value="$PROJECT_DIR$/components/browser_ui_bottomsheet_internal" />
+            <option value="$PROJECT_DIR$/components/browser_ui_client_certificate" />
+            <option value="$PROJECT_DIR$/components/browser_ui_contacts_picker" />
+            <option value="$PROJECT_DIR$/components/browser_ui_http_auth" />
+            <option value="$PROJECT_DIR$/components/browser_ui_media" />
+            <option value="$PROJECT_DIR$/components/browser_ui_modaldialog" />
+            <option value="$PROJECT_DIR$/components/browser_ui_photo_picker" />
+            <option value="$PROJECT_DIR$/components/browser_ui_settings" />
+            <option value="$PROJECT_DIR$/components/browser_ui_share" />
+            <option value="$PROJECT_DIR$/components/browser_ui_site_settings" />
+            <option value="$PROJECT_DIR$/components/browser_ui_styles" />
+            <option value="$PROJECT_DIR$/components/browser_ui_util" />
+            <option value="$PROJECT_DIR$/components/browser_ui_widget" />
+            <option value="$PROJECT_DIR$/components/embedder_support" />
+            <option value="$PROJECT_DIR$/components/embedder_support_delegate" />
+            <option value="$PROJECT_DIR$/components/external_intents" />
+            <option value="$PROJECT_DIR$/components/find_in_page" />
+            <option value="$PROJECT_DIR$/components/infobars" />
+            <option value="$PROJECT_DIR$/components/javascript_dialogs" />
+            <option value="$PROJECT_DIR$/components/media_router" />
+            <option value="$PROJECT_DIR$/components/messages" />
+            <option value="$PROJECT_DIR$/components/omnibox" />
+            <option value="$PROJECT_DIR$/components/page_info" />
+            <option value="$PROJECT_DIR$/components/payments" />
+            <option value="$PROJECT_DIR$/components/permissions" />
+            <option value="$PROJECT_DIR$/components/subresource_filter" />
+            <option value="$PROJECT_DIR$/components/translate" />
+            <option value="$PROJECT_DIR$/components/webrtc" />
+            <option value="$PROJECT_DIR$/components/webxr" />
+            <option value="$PROJECT_DIR$/content" />
+            <option value="$PROJECT_DIR$/media" />
+            <option value="$PROJECT_DIR$/splash" />
+            <option value="$PROJECT_DIR$/third_party" />
+            <option value="$PROJECT_DIR$/third_party/android_media" />
+            <option value="$PROJECT_DIR$/third_party/data_chart" />
+            <option value="$PROJECT_DIR$/ui" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="infobar_missing_ar_camera_permission_text">"Chrome needs permission to access your camera to create a 3D map of your surroundings."</string>
+<string name="infobar_missing_camera_permission_text">"Chrome needs permission to access your camera for this site."</string>
+<string name="infobar_missing_microphone_permission_text">"Chrome needs permission to access your microphone for this site."</string>
+<string name="infobar_missing_microphone_camera_permissions_text">"Chrome needs permission to access your camera and microphone for this site."</string>
+<string name="infobar_missing_location_permission_text">"Chrome needs access to your location to share your location with this site."</string>
+<string name="infobar_update_permissions_button_text">"Continue"</string>
+<string name="nfc_disabled_on_device_message">"To continue, turn on NFC in Android settings"</string>
+<string name="nfc_prompt_turn_on">"Turn on"</string>
+<string name="overlay_detected_dialog_title">"This site can’t ask for your permission"</string>
+<string name="overlay_detected_dialog_message">"Close any bubbles or overlays from other apps. Then, try again."</string>
+</resources>

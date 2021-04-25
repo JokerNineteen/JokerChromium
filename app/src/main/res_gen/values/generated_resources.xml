@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome’s Terms of Service are changing March 31"</string>
+<string name="tos_notification_body_text">"Please review the new terms"</string>
+<string name="tos_notification_ack_button_text">"Got it"</string>
+<string name="tos_notification_review_button_text">"Review"</string>
+<string name="managed">"Managed by your organization"</string>
+<string name="search_or_type_web_address">"Search or type web address"</string>
+<string name="omnibox_confirm_delete_from_clipboard">"Remove suggestion from clipboard?"</string>
+<string name="options_homepage_title">"Homepage"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"No nearby devices found."</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"Allow"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"Block"</string>
+</resources>

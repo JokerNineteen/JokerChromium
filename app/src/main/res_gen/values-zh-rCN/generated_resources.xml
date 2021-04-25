@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="tos_notification_title">"Chrome 的《服务条款》将于 3 月 31 日变更"</string>
+<string name="tos_notification_body_text">"请查阅新版条款"</string>
+<string name="tos_notification_ack_button_text">"知道了"</string>
+<string name="tos_notification_review_button_text">"查看"</string>
+<string name="managed">"由贵单位管理"</string>
+<string name="search_or_type_web_address">"搜索或输入网址"</string>
+<string name="omnibox_confirm_delete_from_clipboard">"从剪贴板中移除建议？"</string>
+<string name="options_homepage_title">"首页"</string>
+<string name="autofill_from_google_account">"Google Pay"</string>
+<string name="bluetooth_scanning_prompt_no_devices_found_prompt">"未找到附近的设备。"</string>
+<string name="bluetooth_scanning_prompt_allow_button_text">"允许"</string>
+<string name="bluetooth_scanning_prompt_block_button_text">"禁止"</string>
+</resources>

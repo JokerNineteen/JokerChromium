@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="actionbar_share">"Deli"</string>
+<string name="actionbar_web_search">"Veb-pretraga"</string>
+<string name="actionbar_textselection_title">"Izbor teksta"</string>
+<string name="add_to_dictionary">"Dodaj u rečnik"</string>
+<string name="delete_suggestion_text">"Izbriši"</string>
+<string name="profiler_started_toast">"Program za optimizaciju je pokrenut"</string>
+<string name="profiler_stopped_toast">"Program za optimizaciju je završio. Rezultati su u datoteci %1$s."</string>
+<string name="profiler_no_storage_toast">"Nije moguće pokrenuti program za optimizaciju zato što spoljna memorija nije spremna"</string>
+<string name="profiler_error_toast">"Pokretanje programa za optimizaciju nije uspelo"</string>
+<string name="accessibility_date_picker_month">"Mesec"</string>
+<string name="accessibility_date_picker_year">"Godina"</string>
+<string name="date_picker_dialog_set">"Postavi"</string>
+<string name="month_picker_dialog_title">"Podesite mesec"</string>
+<string name="accessibility_date_picker_week">"Nedelja"</string>
+<string name="week_picker_dialog_title">"Podesite nedelju"</string>
+<string name="time_picker_dialog_am">"AM"</string>
+<string name="time_picker_dialog_pm">"PM"</string>
+<string name="time_picker_dialog_title">"Podesite vreme"</string>
+<string name="accessibility_time_picker_hour">"Sat"</string>
+<string name="accessibility_time_picker_minute">"Minut"</string>
+<string name="accessibility_time_picker_second">"Sekund"</string>
+<string name="accessibility_time_picker_milli">"Milisekund"</string>
+<string name="accessibility_time_picker_ampm">"pre podne/po podne"</string>
+<string name="time_picker_dialog_hour_minute_separator">":"</string>
+<string name="time_picker_dialog_minute_second_separator">":"</string>
+<string name="time_picker_dialog_second_subsecond_separator">","</string>
+<string name="date_time_picker_dialog_title">"Podesite datum i vreme"</string>
+<string name="accessibility_datetime_picker_date">"Datum"</string>
+<string name="accessibility_datetime_picker_time">"Vreme"</string>
+<string name="date_picker_dialog_other_button_label">"Drugo"</string>
+<string name="date_picker_dialog_title">"Podesite datum"</string>
+<string name="date_picker_dialog_clear">"Obriši"</string>
+<string name="speech_recognition_service_not_found">"Google mehanizam za pretvaranje teksta u govor nije pronađen"</string>
+</resources>

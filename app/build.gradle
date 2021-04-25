@@ -1,0 +1,657 @@
+apply plugin: 'com.android.application'
+apply from: "$rootDir/gradle/android-lint.gradle"
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "org.chromium.chrome"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    aaptOptions {
+        noCompress "dat", "bin", "pak", "unwind_cfi_32" //pak资源文件不能压缩
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false//部分代码lint检查是通过不了的
+        ignoreWarnings true
+        disable 'MissingTranslation'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/LICENSE' // will not include LICENSE file
+        exclude 'META-INF/INDEX.LIST' // will not include INDEX.LIST file
+    }
+
+    sourceSets {
+        main {
+            res {
+                srcDirs += [
+                        "$rootDir/base_res",
+                        "$rootDir/app/src/main/res",
+                        "$rootDir/app/src/main/res_base",
+                        "$rootDir/app/src/main/res_chromium",
+                        "$rootDir/app/src/main/res_chromium_base",
+                        "$rootDir/app/src/main/res_gen",
+                        "$rootDir/app/src/main/res_vr",
+                        "$rootDir/app/src/main/res_template",
+                        "$rootDir/app/src/main/res_download",
+//                        "$rootDir/libraries_res/ui_res/res",
+//                        "$rootDir/libraries_res/components_res/res",
+//                        "$rootDir/libraries_res/components_res/widget_res",
+//                        "$rootDir/libraries_res/components_res/browser_ui_settings_res",
+//                        "$rootDir/libraries_res/components_res/browser_ui_styles_res",
+//                        "$rootDir/libraries_res/components_res/browser_ui_strings_res",
+//                        "$rootDir/libraries_res/components_res/autofill_res",
+//                        "$rootDir/libraries_res/components_res/infobars_res",
+//                        "$rootDir/libraries_res/components_res/strings_res",
+//                        "$rootDir/libraries_res/components_res/modaldialog_res",
+//                        "$rootDir/libraries_res/gen_res",
+//                        "$rootDir/libraries_res/third_party_res/preference_res",
+//                        "$rootDir/libraries_res/third_party_res/data_chart_res",
+////                        "$rootDir/libraries_res/chrome_res/res",
+//                        "$rootDir/libraries_res/chrome_res/custom_tabs_res",
+//                        "$rootDir/libraries_res/content_res/shell_res",
+                        //                    "$rootDir/libraries_res/chrome_res/res",
+                        //                    "$rootDir/libraries_res/android_webview_res",
+//                        "$rootDir/libraries_res/chrome_res",
+                        //                    "$rootDir/libraries_res/chrome_res/res",
+                        //                    "$rootDir/libraries_res/chrome_res/res_base",
+//                        "$rootDir/libraries_res/components_res",
+//                        "$rootDir/libraries_res/components_res/widget_res",
+                        //                    "$rootDir/libraries_res/content_res",
+//                        "$rootDir/libraries_res/media_res",
+//                        "$rootDir/libraries_res/net_res",
+                        //                    "$rootDir/libraries_res/remoting_res",
+                        //                    "$rootDir/libraries_res/tools_res",
+//                        "$rootDir/libraries_res/ui_res/res",
+                        //                    "$rootDir/libraries_res/weblayer_res",
+                        //                    "$rootDir/libraries_res/gen_res",
+                ]
+                excludes = [
+                        "**/download_*.xml",
+                        "**/res_download/download_*.xml",
+                ]
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation files('libs\\ui\\android\\ui_no_recycler_view_java.jar')
+    implementation files('libs\\components\\browser_ui\\photo_picker\\android\\java.jar')
+    implementation files('libs\\url\\gurl_java.jar')
+    implementation files('libs\\third_party\\gif_player\\gif_player_java.jar')
+
+
+//    implementation files('libs\\base\\base_java.jar')
+//    implementation files('libs\\components\\version_info\\android\\version_constants_java.jar')
+//    implementation files('libs\\ui\\base\\mojom\\mojom_java.jar')
+//    implementation files('libs\\third_party\\metrics_proto\\metrics_proto_java.jar')
+//    implementation files('libs\\ui\\gfx\\mojom\\native_handle_types_java.jar')
+//    implementation files('libs\\ui\\base\\dragdrop\\mojom\\mojom_java.jar')
+//    implementation files('libs\\chrome\\browser\\preferences\\java.jar')
+//    implementation files('libs\\chrome\\browser\\tab\\java.jar')
+//    implementation files('libs\\cc\\mojom\\mojom_java.jar')
+//    implementation files('libs\\chrome\\browser\\version\\java.jar')
+//    implementation files('libs\\components\\services\\filesystem\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\content\\public\\android\\content_java.jar')
+//    implementation files('libs\\media\\capture\\mojom\\video_capture_java.jar')
+//    implementation files('libs\\media\\mojo\\mojom\\mojom_java.jar')
+//    implementation files('libs\\mojo\\public\\java\\bindings_java.jar')
+//    implementation files('libs\\mojo\\public\\mojom\\base\\base_java.jar')
+
+
+    def gmsVersion = '17.0.0'
+    implementation "com.google.android.gms:play-services-basement:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-tasks:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-base:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-auth-base:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-auth-api-phone:17.5.0"
+    implementation "com.google.android.gms:play-services-auth:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-cast:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-cast-framework:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-iid:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-instantapps:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-gcm:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-location:${gmsVersion}"
+    implementation "com.google.android.gms:play-services-vision-common:18.0.0"
+    implementation "com.google.android.gms:play-services-vision:18.0.0"
+    implementation "com.google.android.gms:play-services-fido:18.1.0"
+    implementation 'com.google.android.gms:play-services-location:10.0.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    implementation 'com.google.protobuf:protobuf-java:3.8.0'
+    implementation 'org.robolectric:robolectric-annotations:3.3.2'
+    testImplementation "junit:junit:$JUNIT_VERSION"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.browser:browser:1.3.0'
+    implementation "androidx.concurrent:concurrent-futures:1.1.0"
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation "androidx.gridlayout:gridlayout:1.0.0"
+    implementation "androidx.lifecycle:lifecycle-common:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
+    implementation 'com.google.ar:core:1.23.0'
+    implementation 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.google.guava:listenablefuture:1.0'
+    implementation 'com.google.vr:sdk-audio:1.130.0'
+    implementation 'com.google.vr:sdk-base:1.130.0'
+    implementation 'com.google.auto.service:auto-service:1.0'
+    implementation 'com.squareup:javapoet:1.13.0'
+    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation "com.android.support:support-annotations:28.0.0"
+    annotationProcessor "com.android.support:support-annotations:28.0.0"
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation group: 'com.google.truth', name: 'truth', version: '1.1.2'
+    implementation project(':components:autofill')
+    implementation project(':components:embedder_support')
+    implementation project(':components:embedder_support_delegate')
+    implementation project(':components:messages')
+    implementation project(':components:browser_ui_bottomsheet')
+    implementation project(':components:browser_ui_bottomsheet_internal')
+    implementation project(':components:browser_ui_modaldialog')
+    implementation project(':components:browser_ui_widget')
+    implementation project(':components:browser_ui_styles')
+    implementation project(':components:browser_ui_site_settings')
+    implementation project(':components:browser_ui_settings')
+    implementation project(':components:browser_ui_contacts_picker')
+    implementation project(':components:browser_ui_util')
+    implementation project(':components:browser_ui_photo_picker')
+    implementation project(':components:browser_ui_client_certificate')
+    implementation project(':components:browser_ui_media')
+    implementation project(':components:browser_ui_http_auth')
+    implementation project(':components:browser_ui_share')
+    implementation project(':components:infobars')
+    implementation project(':components:media_router')
+    implementation project(':components:omnibox')
+    implementation project(':components:page_info')
+    implementation project(':components:permissions')
+    implementation project(':components:payments')
+    implementation project(':components:translate')
+    implementation project(':components:find_in_page')
+    implementation project(':components:external_intents')
+    implementation project(':components:subresource_filter')
+    implementation project(':components:javascript_dialogs')
+    implementation project(':components:webxr')
+    implementation project(':components:webrtc')
+    implementation project(':browser:autofill_assistant')
+    implementation project(':browser:banners')
+    implementation project(':browser:feed')
+    implementation project(':browser:feedback')
+    implementation project(':browser:keyboard_accessory')
+    implementation project(':browser:password_check')
+    implementation project(':browser:password_check_internal')
+    implementation project(':browser:ui_favicon')
+    implementation project(':browser:ui_messages')
+    implementation project(':browser:ui_appmenu_internal')
+    implementation project(':browser:download')
+    implementation project(':browser:share')
+    implementation project(':browser:video_tutorials')
+    implementation project(':browser:paint_preview')
+    implementation project(':browser:image_descriptions')
+    implementation project(':browser:user_education')
+    implementation project(':browser:touch_to_fill')
+    implementation project(':browser:safety_check')
+    implementation project(':browser:ui_default_browser_promo')
+    implementation project(':browser:privacy_secure_dns')
+    implementation project(':browser:safe_browsing_settings')
+    implementation project(':browser:customtabs_content')
+    implementation project(':browser:download')
+    implementation project(':splash')
+    implementation project(':ui')
+    implementation project(':third_party:data_chart')
+    implementation project(':third_party:android_media')
+    implementation project(':content')
+    implementation project(':chrome_ui_messages')
+    implementation project(':chrome_tab_ui')
+    implementation project(':chrome_start_surface')
+    implementation project(':chrome_vr')
+    implementation project(':media')
+    implementation project(':base')
+
+//    implementation files('libs\\chrome\\android\\chrome_java.jar')
+//    implementation files('libs\\chrome\\browser\\thumbnail\\generator\\java.jar')
+//    implementation files('libs\\components\\cronet\\android\\cronet_impl_native_base_java.jar')
+//    implementation files('libs\\chrome\\android\\features\\keyboard_accessory\\factory\\internal_java.jar')
+//    implementation files('libs\\chrome\\android\\features\\keyboard_accessory\\factory\\public_java.jar')
+//    implementation files('libs\\chrome\\android\\features\\keyboard_accessory\\internal\\internal_java.jar')
+//    implementation files('libs\\chrome\\android\\features\\keyboard_accessory\\public\\public_java.jar')
+//    implementation files('libs\\chrome\\android\\partner_location_descriptor_proto_java.jar')
+//    implementation files('libs\\chrome\\android\\webapk\\libs\\client\\client_java.jar')
+//    implementation files('libs\\chrome\\browser\\android\\crypto\\java.jar')
+//    implementation files('libs\\chrome\\browser\\android\\lifecycle\\java.jar')
+//    implementation files('libs\\chrome\\browser\\download\\android\\factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\download\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\download\\internal\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\flags\\java.jar')
+//    implementation files('libs\\chrome\\browser\\image_fetcher\\java.jar')
+//    implementation files('libs\\chrome\\browser\\metrics_settings\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\omaha\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\optimization_guide\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\safe_browsing\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\tab\\critical_persisted_tab_data_proto_java.jar')
+//    implementation files('libs\\chrome\\browser\\tab\\java.jar')
+//    implementation files('libs\\chrome\\browser\\video_tutorials\\factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\video_tutorials\\java.jar')
+//    implementation files('libs\\chrome\\browser\\video_tutorials\\internal\\java.jar')
+//    implementation files('libs\\components\\autofill\\android\\autofill_java.jar')
+//    implementation files('libs\\components\\autofill_assistant\\browser\\proto_java.jar')
+//    implementation files('libs\\components\\background_task_scheduler\\background_task_scheduler_task_ids_java.jar')
+//    implementation files('libs\\components\\background_task_scheduler\\factory_java.jar')
+//    implementation files('libs\\components\\background_task_scheduler\\internal\\internal_java.jar')
+//    implementation files('libs\\components\\background_task_scheduler\\internal\\native_task_java.jar')
+//    implementation files('libs\\components\\background_task_scheduler\\internal\\proto_java.jar')
+//    implementation files('libs\\components\\background_task_scheduler\\public_java.jar')
+//    implementation files('libs\\components\\bookmarks\\common\\android\\bookmarks_java.jar')
+//    implementation files('libs\\components\\browser_ui\\contacts_picker\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\site_settings\\android\\java.jar')
+//    implementation files('libs\\components\\content_settings\\android\\content_settings_enums_java.jar')
+//    implementation files('libs\\components\\content_settings\\android\\java.jar')
+//    implementation files('libs\\components\\content_settings\\core\\common\\mojo_bindings_java.jar')
+//    implementation files('libs\\components\\contextual_search\\content\\common\\mojom\\mojom_java.jar')
+//    implementation files('libs\\components\\crash\\android\\java.jar')
+//    implementation files('libs\\components\\dom_distiller\\content\\browser\\android\\dom_distiller_content_java.jar')
+//    implementation files('libs\\components\\dom_distiller\\core\\android\\dom_distiller_core_java.jar')
+//    implementation files('libs\\components\\dom_distiller\\core\\mojom\\mojom_java.jar')
+//    implementation files('libs\\components\\download\\internal\\background_service\\internal_java.jar')
+//    implementation files('libs\\components\\download\\internal\\common\\internal_java.jar')
+//    implementation files('libs\\components\\download\\network\\network_java.jar')
+//    implementation files('libs\\components\\download\\public\\common\\public_java.jar')
+//    implementation files('libs\\components\\download\\public\\task\\public_java.jar')
+//    implementation files('libs\\components\\embedder_support\\android\\util_java.jar')
+//    implementation files('libs\\components\\embedder_support\\android\\web_contents_delegate_java.jar')
+//    implementation files('libs\\components\\external_intents\\android\\java.jar')
+//    implementation files('libs\\components\\favicon\\android\\java.jar')
+//    implementation files('libs\\components\\feature_engagement\\internal\\internal_java.jar')
+//    implementation files('libs\\components\\feature_engagement\\public\\public_java.jar')
+//    implementation files('libs\\components\\feed\\core\\proto\\proto_java.jar')
+//    implementation files('libs\\components\\feed\\core\\proto\\proto_java_v2.jar')
+//    implementation files('libs\\components\\gcm_driver\\android\\gcm_driver_java.jar')
+//    implementation files('libs\\components\\gcm_driver\\instance_id\\android\\instance_id_driver_java.jar')
+//    implementation files('libs\\components\\infobars\\android\\infobar_android_enums_java.jar')
+//    implementation files('libs\\components\\infobars\\android\\java.jar')
+//    implementation files('libs\\components\\infobars\\core\\infobar_enums_java.jar')
+//    implementation files('libs\\components\\offline_items_collection\\core\\core_java.jar')
+//    implementation files('libs\\components\\omnibox\\browser\\browser_java.jar')
+//    implementation files('libs\\components\\optimization_guide\\proto\\optimization_guide_proto_java.jar')
+//    implementation files('libs\\components\\page_info\\android\\java.jar')
+//    implementation files('libs\\components\\page_info\\android\\page_info_action_enum_java.jar')
+//    implementation files('libs\\components\\paint_preview\\browser\\android\\java.jar')
+//    implementation files('libs\\components\\paint_preview\\player\\android\\java.jar')
+//    implementation files('libs\\components\\password_manager\\core\\browser\\password_manager_java_enums.jar')
+//    implementation files('libs\\components\\payments\\content\\android\\all_java.jar')
+//    implementation files('libs\\components\\payments\\content\\android\\service_java.jar')
+//    implementation files('libs\\components\\payments\\mojom\\mojom_java.jar')
+//    implementation files('libs\\components\\policy\\android\\policy_java.jar')
+//    implementation files('libs\\components\\safe_browsing\\android\\safe_browsing_java.jar')
+//    implementation files('libs\\components\\security_state\\content\\android\\java.jar')
+//    implementation files('libs\\components\\security_state\\core\\security_state_enums_java.jar')
+//    implementation files('libs\\components\\signin\\core\\browser\\android\\java.jar')
+//    implementation files('libs\\components\\signin\\core\\browser\\signin_enums_java.jar')
+//    implementation files('libs\\components\\signin\\public\\android\\java.jar')
+//    implementation files('libs\\components\\sync\\android\\sync_java.jar')
+//    implementation files('libs\\components\\sync\\protocol\\protocol_java.jar')
+//    implementation files('libs\\components\\translate\\content\\android\\java.jar')
+//    implementation files('libs\\components\\translate\\content\\android\\translate_android_enums_java.jar')
+//    implementation files('libs\\components\\translate\\core\\common\\translate_infobar_event_enum_java.jar')
+//    implementation files('libs\\components\\url_formatter\\android\\url_formatter_java.jar')
+//    implementation files('libs\\components\\webapk\\android\\libs\\client\\java.jar')
+//    implementation files('libs\\components\\webapk\\android\\libs\\common\\java.jar')
+//    implementation files('libs\\media\\base\\android\\display_java.jar')
+//    implementation files('libs\\media\\base\\android\\media_java.jar')
+//    implementation files('libs\\mojo\\public\\java\\base_java.jar')
+//    implementation files('libs\\mojo\\public\\mojom\\base\\base_java.jar')
+//    implementation files('libs\\net\\android\\net_java.jar')
+//    implementation files('libs\\net\\android\\net_thread_stats_uid_java.jar')
+//    implementation files('libs\\services\\device\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\services\\media_session\\public\\cpp\\android\\media_session_java.jar')
+//    implementation files('libs\\services\\media_session\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\cookies_mojom_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\mojom_ip_address_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\mojom_network_isolation_key_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\mojom_schemeful_site_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\url_loader_base_java.jar')
+//    implementation files('libs\\services\\network\\public\\mojom\\websocket_mojom_java.jar')
+//    implementation files('libs\\services\\service_manager\\public\\java\\service_manager_java.jar')
+//    implementation files('libs\\services\\service_manager\\public\\mojom\\constants_java.jar')
+//    implementation files('libs\\services\\service_manager\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\services\\viz\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\skia\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\blink_headers_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\android_mojo_bindings_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\authenticator_test_mojo_bindings_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\color_scheme_mojo_bindings_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\dom_storage\\dom_storage_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\frame\\frame_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\gpu\\gpu_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\mojom_core_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\mojom_mhtml_load_result_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\mojom_platform_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\script_type_mojo_bindings_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\service_worker\\storage_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\tokens\\tokens_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\usb\\usb_java.jar')
+//    implementation files('libs\\third_party\\blink\\public\\mojom\\web_feature_mojo_bindings_java.jar')
+//    implementation files('libs\\third_party\\metrics_proto\\metrics_proto_java.jar')
+//    implementation files('libs\\ui\\base\\cursor\\mojom\\cursor_type_java.jar')
+//    implementation files('libs\\ui\\base\\cursor\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\base\\dragdrop\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\base\\ime\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\base\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\display\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\events\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\gfx\\geometry\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\gfx\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\gfx\\mojom\\native_handle_types_java.jar')
+//    implementation files('libs\\ui\\gfx\\range\\mojom\\mojom_java.jar')
+//    implementation files('libs\\ui\\latency\\mojom\\mojom_java.jar')
+//    implementation files('libs\\url\\mojom\\url_mojom_gurl_java.jar')
+//    implementation files('libs\\url\\mojom\\url_mojom_origin_java.jar')
+//    implementation files('libs\\chrome\\browser\\privacy\\java.jar')
+//    implementation files('libs\\chrome\\browser\\safety_check\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\password_check_java_enums.jar')
+//    implementation files('libs\\chrome\\browser\\endpoint_fetcher\\java.jar')
+//    implementation files('libs\\chrome\\browser\\thumbnail\\generator\\proto_java.jar')
+//    implementation files('libs\\chrome\\android\\usage_stats_proto_java.jar')
+//    implementation files('libs\\chrome\\android\\webapk\\libs\\common\\common_java.jar')
+//    implementation files('libs\\chrome\\android\\webapk\\libs\\runtime_library\\runtime_library_for_assets_java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\cablev2_authenticator\\public\\java.jar')
+//    implementation files('libs\\chrome\\android\\features\\dev_ui\\public\\java.jar')
+//    implementation files('libs\\content\\public\\common\\trust_tokens_mojo_bindings_java.jar')
+//    implementation files('libs\\services\\device\\public\\mojom\\generic_sensor_java.jar')
+//    implementation files('libs\\chrome\\browser\\contextmenu\\java.jar')
+//    implementation files('libs\\components\\location\\android\\location_java.jar')
+//    implementation files('libs\\components\\webxr\\android\\webxr_android_enums_java.jar')
+//    implementation files('libs\\media\\capture\\video\\android\\capture_java.jar')
+//    implementation files('libs\\chrome\\browser\\profiles\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\android\\favicon\\java.jar')
+//    implementation files('libs\\components\\search_engines\\android\\java.jar')
+//    implementation files('libs\\components\\prefs\\android\\java.jar')
+//    implementation files('libs\\components\\content_capture\\android\\java.jar')
+//    implementation files('libs\\components\\find_in_page\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\banners\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\performance_hints\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\engagement\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\enterprise\\util\\java.jar')
+//    implementation files('libs\\chrome\\browser\\feedback\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\offline_pages\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\paint_preview\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\internal\\internal_java.jar')
+//    implementation files('libs\\chrome\\browser\\password_manager\\android\\java.jar')
+//    implementation files('libs\\mojo\\public\\java\\system\\system_impl_java.jar')
+//    implementation files('libs\\media\\midi\\midi_java.jar')
+//    implementation files('libs\\media\\capture\\content\\android\\screen_capture_java.jar')
+//    implementation files('libs\\printing\\printing_java.jar')
+//    implementation files('libs\\components\\cronet\\android\\cronet_impl_common_base_java.jar')
+//    implementation files('libs\\services\\data_decoder\\public\\cpp\\android\\safe_json_java.jar')
+//    implementation files('libs\\services\\device\\usb\\java.jar')
+//    implementation files('libs\\services\\device\\time_zone_monitor\\java.jar')
+//    implementation files('libs\\services\\device\\generic_sensor\\java.jar')
+//    implementation files('libs\\services\\device\\geolocation\\geolocation_java.jar')
+//    implementation files('libs\\device\\gamepad\\java.jar')
+//    implementation files('libs\\services\\device\\public\\java\\device_feature_list_java.jar')
+//    implementation files('libs\\device\\bluetooth\\java.jar')
+//    implementation files('libs\\components\\webxr\\android\\ar_java_base.jar')
+//    implementation files('libs\\components\\webxr\\android\\ar_java_interfaces.jar')
+//    implementation files('libs\\components\\variations\\android\\variations_java.jar')
+//    implementation files('libs\\components\\user_prefs\\android\\java.jar')
+//    implementation files('libs\\components\\thin_webview\\java.jar')
+//    implementation files('libs\\components\\thin_webview\\factory_java.jar')
+//    implementation files('libs\\components\\thin_webview\\internal\\internal_java.jar')
+//    implementation files('libs\\components\\subresource_filter\\android\\java.jar')
+//    implementation files('libs\\components\\spellcheck\\browser\\android\\java.jar')
+//    implementation files('libs\\components\\security_interstitials\\content\\android\\java.jar')
+//    implementation files('libs\\components\\messages\\android\\java.jar')
+//    implementation files('libs\\components\\minidump_uploader\\minidump_uploader_java.jar')
+//    implementation files('libs\\components\\module_installer\\android\\module_installer_java.jar')
+//    implementation files('libs\\services\\device\\nfc\\android\\java.jar')
+//    implementation files('libs\\services\\device\\public\\java\\nfc_java.jar')
+//    implementation files('libs\\components\\permissions\\android\\java.jar')
+//    implementation files('libs\\components\\query_tiles\\public_java.jar')
+//    implementation files('libs\\components\\language\\android\\language_bridge_java.jar')
+//    implementation files('libs\\components\\media_router\\browser\\android\\java.jar')
+//    implementation files('libs\\components\\location\\android\\settings_java.jar')
+//    implementation files('libs\\components\\javascript_dialogs\\android\\java.jar')
+//    implementation files('libs\\components\\embedder_support\\android\\content_view_java.jar')
+//    implementation files('libs\\components\\embedder_support\\android\\application_java.jar')
+//    implementation files('libs\\components\\embedder_support\\android\\browser_context_java.jar')
+//    implementation files('libs\\components\\embedder_support\\android\\context_menu_java.jar')
+//    implementation files('libs\\components\\browser_ui\\client_certificate\\android\\java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\dev_ui\\provider\\java.jar')
+//    implementation files('libs\\chrome\\browser\\webauthn\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\touch_to_fill\\android\\internal\\java.jar')
+//    implementation files('libs\\chrome\\browser\\policy\\android\\java.jar')
+//    implementation files('libs\\components\\viz\\service\\service_java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\messages\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\internal\\internal_factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\internal\\internal_ui_factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\internal\\public_factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\internal\\public_ui_factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\public_java.jar')
+//    implementation files('libs\\chrome\\browser\\password_check\\android\\public_ui_java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\android\\layouts\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\settings\\android\\java.jar')
+//
+//
+//
+//
+//    implementation files('libs\\chrome\\browser\\ui\\android\\layouts\\third_party\\float_property\\java.jar')
+//    implementation files('libs\\base\\android\\jni_generator\\jni_processor.jar')
+//    implementation files('libs\\base\\base_java.jar')
+//    implementation files('libs\\base\\jni_java.jar')
+//    implementation files('libs\\build\\android\\bytecode\\bytecode_processor.jar')
+//    implementation files('libs\\build\\android\\bytecode\\fragment_activity_replacer.jar')
+//    implementation files('libs\\cc\\mojom\\mojom_java.jar')
+//    implementation files('libs\\chrome\\android\\app_hooks_java.jar')
+//    implementation files('libs\\chrome\\android\\base_module_java.jar')
+//    implementation files('libs\\chrome\\android\\chrome_java.jar')
+//    implementation files('libs\\chrome\\android\\features\\dev_ui\\java.jar')
+//
+//    implementation files('libs\\chrome\\android\\features\\start_surface\\internal\\java.jar')
+//    implementation files('libs\\chrome\\android\\features\\tab_ui\\java.jar')
+//    implementation files('libs\\chrome\\android\\features\\tab_ui\\module_desc_java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\extra_icu\\provider\\java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\extra_icu\\public\\java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\image_editor\\provider\\java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\stack_unwinder\\provider\\java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\stack_unwinder\\public\\java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\test_dummy\\provider\\java.jar')
+//    implementation files('libs\\chrome\\android\\modules\\test_dummy\\public\\java.jar')
+//    implementation files('libs\\chrome\\android\\update_proto_java.jar')
+//    implementation files('libs\\chrome\\android\\webapk\\libs\\common\\splash_java.jar')
+//    implementation files('libs\\chrome\\android\\webapk\\libs\\runtime_library\\webapk_service_aidl_java.jar')
+//    implementation files('libs\\chrome\\browser\\browser_controls\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\device\\java.jar')
+//
+//    implementation files('libs\\chrome\\browser\\fullscreen\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\image_descriptions\\java.jar')
+//    implementation files('libs\\chrome\\browser\\image_editor\\public\\java.jar')
+//    implementation files('libs\\chrome\\browser\\notifications\\chime\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\preferences\\java.jar')
+//    implementation files('libs\\chrome\\browser\\settings\\java.jar')
+//    implementation files('libs\\chrome\\browser\\share\\java.jar')
+//    implementation files('libs\\chrome\\browser\\signin\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\tabmodel\\factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\tabmodel\\internal\\java.jar')
+//    implementation files('libs\\chrome\\browser\\tabmodel\\java.jar')
+//    implementation files('libs\\chrome\\browser\\tabpersistence\\java.jar')
+//    implementation files('libs\\chrome\\browser\\test_dummy\\internal\\base_module_java.jar')
+//    implementation files('libs\\chrome\\browser\\test_dummy\\java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\android\\appmenu\\factory_java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\android\\appmenu\\internal\\java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\android\\appmenu\\java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\android\\default_browser_promo\\java.jar')
+//    implementation files('libs\\chrome\\browser\\ui\\android\\native_page\\java.jar')
+//    implementation files('libs\\chrome\\browser\\uid\\android\\java.jar')
+//    implementation files('libs\\chrome\\browser\\user_education\\java.jar')
+//    implementation files('libs\\chrome\\browser\\util\\java.jar')
+//    implementation files('libs\\chrome\\browser\\version\\java.jar')
+//    implementation files('libs\\chrome\\browser\\xsurface\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\android\\bottomsheet\\factory_java.jar')
+//    implementation files('libs\\components\\browser_ui\\android\\bottomsheet\\internal\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\android\\bottomsheet\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\android\\bottomsheet\\manager_java.jar')
+//    implementation files('libs\\components\\browser_ui\\banners\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\display_cutout\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\http_auth\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\media\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\modaldialog\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\notifications\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\photo_picker\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\share\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\sms\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\styles\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\util\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\webshare\\android\\java.jar')
+//    implementation files('libs\\components\\browser_ui\\widget\\android\\java.jar')
+//    implementation files('libs\\components\\cronet\\android\\cronet_api_java.jar')
+//    implementation files('libs\\components\\cronet\\android\\cronet_impl_native_base_java.jar')
+//    implementation files('libs\\components\\cronet\\android\\cronet_jni_registration_java.jar')
+//    implementation files('libs\\components\\cronet\\android\\cronet_urlconnection_impl_java.jar')
+//    implementation files('libs\\components\\cronet\\android\\repackage_native_impl.jar')
+//    implementation files('libs\\components\\media_router\\browser\\android\\cast_options_provider_java.jar')
+//    implementation files('libs\\components\\messages\\android\\factory_java.jar')
+//    implementation files('libs\\components\\messages\\android\\internal\\java.jar')
+//    implementation files('libs\\components\\messages\\android\\manager_java.jar')
+//    implementation files('libs\\components\\module_installer\\android\\module_interface_java.jar')
+//    implementation files('libs\\components\\module_installer\\android\\module_interface_processor.jar')
+//    implementation files('libs\\components\\navigation_interception\\android\\navigation_interception_java.jar')
+//    implementation files('libs\\components\\navigation_interception\\android\\navigation_interception_java.jar')
+//    implementation files('libs\\components\\schema_org\\common\\mojom_java.jar')
+//    implementation files('libs\\components\\services\\filesystem\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\components\\strictmode\\android\\java.jar')
+//    implementation files('libs\\components\\version_info\\android\\version_constants_java.jar')
+//    implementation files('libs\\components\\version_info\\android\\version_constants_java.jar')
+//    implementation files('libs\\components\\viz\\common\\common_java.jar')
+//    implementation files('libs\\components\\webrtc\\android\\java.jar')
+//    implementation files('libs\\content\\public\\android\\content_java.jar')
+//    implementation files('libs\\gpu\\ipc\\common\\gpu_preferences_interface_java.jar')
+//    implementation files('libs\\gpu\\ipc\\common\\interfaces_java.jar')
+//    implementation files('libs\\gpu\\ipc\\common\\vulkan_interface_java.jar')
+//    implementation files('libs\\media\\capture\\mojom\\video_capture_java.jar')
+//    implementation files('libs\\media\\learning\\mojo\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\media\\mojo\\mojom\\mojom_java.jar')
+//    implementation files('libs\\mojo\\public\\java\\bindings_java.jar')
+//    implementation files('libs\\mojo\\public\\java\\system_java.jar')
+//    implementation files('libs\\services\\data_decoder\\public\\mojom\\mojom_resource_snapshot_for_web_bundle_java.jar')
+//    implementation files('libs\\services\\device\\battery\\android\\battery_monitor_java.jar')
+//    implementation files('libs\\services\\device\\java.jar')
+//    implementation files('libs\\services\\device\\public\\java\\geolocation_java.jar')
+//    implementation files('libs\\services\\device\\public\\mojom\\usb_java.jar')
+//    implementation files('libs\\services\\device\\screen_orientation\\java.jar')
+//    implementation files('libs\\services\\device\\vibration\\android\\vibration_manager_java.jar')
+//    implementation files('libs\\services\\device\\wake_lock\\power_save_blocker\\java.jar')
+//    implementation files('libs\\services\\proxy_resolver\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\services\\shape_detection\\public\\mojom\\mojom_java.jar')
+//    implementation files('libs\\services\\shape_detection\\shape_detection_java.jar')
+//
+//    implementation files('libs\\third_party\\android_data_chart\\android_data_chart_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\chromium_play_services_availability_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_android_support_support_annotations.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_android_material_material_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_auto_auto_common.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_auto_service_auto_service.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_auto_service_auto_service_annotations.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_code_findbugs_jsr305.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_dagger_dagger.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_dagger_dagger_compiler.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_dagger_dagger_producers.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_dagger_dagger_spi.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_errorprone_error_prone_annotations.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_errorprone_javac_shaded.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_googlejavaformat_google_java_format.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_guava_failureaccess.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_guava_guava.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_guava_listenablefuture.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_j2objc_j2objc_annotations.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_google_protobuf_protobuf_javalite.jar')
+//    implementation files('libs\\third_party\\android_deps\\com_squareup_javapoet.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_auth_api_phone_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_auth_base_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_base_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_basement_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_cast_framework_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_cast_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_clearcut_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_fido_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_flags_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_gcm_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_iid_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_location_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_phenotype_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_places_placereport_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_stats_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_tasks_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_vision_common_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\google_play_services_vision_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\javax_annotation_jsr250_api.jar')
+//    implementation files('libs\\third_party\\android_deps\\javax_inject_javax_inject.jar')
+//    implementation files('libs\\third_party\\android_deps\\local_modifications\\androidx_fragment_fragment\\androidx_fragment_fragment_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\local_modifications\\androidx_preference_preference\\androidx_preference_preference_java.jar')
+//    implementation files('libs\\third_party\\android_deps\\net_ltgt_gradle_incap_incap.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_checkerframework_checker_compat_qual.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_checkerframework_checker_qual.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_codehaus_mojo_animal_sniffer_annotations.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_jetbrains_annotations.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_jetbrains_kotlin_kotlin_stdlib.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_jetbrains_kotlin_kotlin_stdlib_common.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_jetbrains_kotlinx_kotlinx_metadata_jvm.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_ow2_asm_asm.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_ow2_asm_asm_analysis.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_ow2_asm_asm_commons.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_ow2_asm_asm_tree.jar')
+//    implementation files('libs\\third_party\\android_deps\\org_ow2_asm_asm_util.jar')
+//    implementation files('libs\\third_party\\android_media\\android_media_java.jar')
+//    implementation files('libs\\third_party\\android_provider\\android_provider_java.jar')
+//    implementation files('libs\\third_party\\android_sdk\\androidx_browser\\androidx_browser_java.jar')
+//    implementation files('libs\\third_party\\android_sdk\\gcm.jar')
+//    implementation files('libs\\third_party\\android_swipe_refresh\\android_swipe_refresh_java.jar')
+//    implementation files('libs\\third_party\\bazel\\desugar\\Desugar_runtime.jar')
+//    implementation files('libs\\third_party\\google_android_play_core\\com_google_android_play_core_java.jar')
+//    implementation files('libs\\third_party\\hamcrest\\hamcrest-core.jar')
+//    implementation files('libs\\ui\\android\\ui_no_recycler_view_java.jar')
+//    implementation files('libs\\ui\\android\\ui_recycler_view_java.jar')
+//    implementation files('libs\\ui\\android\\ui_utils_java.jar')
+//    implementation files('libs\\ui\\gl\\mojom\\mojom_java.jar')
+//    implementation files('libs\\url\\origin_java.jar')
+//    implementation files('libs\\url\\url_java.jar')
+
+}
+
+
+

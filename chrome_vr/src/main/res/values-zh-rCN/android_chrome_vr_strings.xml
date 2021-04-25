@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="vr_shell_feedback_infobar_description">"帮助我们改进 Chrome 中的虚拟现实体验"</string>
+<string name="vr_shell_feedback_infobar_feedback_button">"提供反馈"</string>
+<string name="vr_services_check_infobar_install_text">"要查看虚拟实境内容，请安装 Google VR 服务"</string>
+<string name="vr_services_check_infobar_update_text">"要查看虚拟实境内容，请更新 Google VR 服务"</string>
+<string name="vr_services_check_infobar_install_button">"安装"</string>
+<string name="vr_services_check_infobar_update_button">"更新"</string>
+</resources>

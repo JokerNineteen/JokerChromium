@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="iph_tab_groups_quickly_compare_pages_text">"通过分组快速比较网页。为此，请先轻触并按住某个链接。"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_text">"点按即可查看另一标签页"</string>
+<string name="iph_tab_groups_your_tabs_together_text">"您的标签页会按组列在此处"</string>
+<string name="iph_tab_groups_tap_to_see_another_tab_accessibility_text">"在屏幕底部附近的标签页组中切换标签页"</string>
+<string name="undo_bar_group_tabs_message">"已将 %1$s 个标签页合为一组"</string>
+<plurals name="bottom_tab_grid_title_placeholder">
+  <item quantity="one">"%1$d 个标签页"</item>
+  <item quantity="other">"%1$d 个标签页"</item>
+</plurals>
+<string name="bottom_tab_grid_new_tab">"向组中添加新标签页"</string>
+<string name="accessibility_bottom_tab_grid_close_tab_sheet">"隐藏“全屏网格状视图”按钮"</string>
+<string name="accessibility_bottom_tab_strip_expand_tab_sheet">"以全屏网格状视图显示组中的标签页"</string>
+<string name="accessibility_bottom_tab_strip_close_strip">"关闭标签栏"</string>
+<string name="tabswitcher_create_group">"创建群组"</string>
+<string name="accessibility_tab_switcher">"标签页切换器"</string>
+<string name="accessibility_close_tab_group_button">"关闭包含 %1$s 个标签页的标签页组"</string>
+<string name="accessibility_close_tab_group_button_with_group_name">"关闭包含 %2$s 个标签页的“%1$s”组"</string>
+<string name="tab_selection_editor_group">"群组"</string>
+<string name="tab_selection_editor_toolbar_select_tabs">"选择标签页"</string>
+<plurals name="accessibility_tab_selection_editor_group_button">
+  <item quantity="one">"为 %1$d 个所选标签页建组"</item>
+  <item quantity="other">"为 %1$d 个所选标签页建组"</item>
+</plurals>
+<string name="accessibility_tab_selection_editor_back_button">"隐藏多选模式"</string>
+<string name="accessibility_tab_selection_editor">"多选模式"</string>
+<string name="tab_grid_dialog_remove_from_group">"从组中移除"</string>
+<string name="tab_grid_dialog_toolbar_remove_from_group">"移除组内的标签页"</string>
+<string name="tab_grid_dialog_selection_mode_remove">"移除"</string>
+<string name="tab_grid_dialog_toolbar_share_group">"分享群组"</string>
+<string name="tab_grid_dialog_toolbar_edit_group_name">"修改组名称"</string>
+<string name="accessibility_expand_tab_group">"展开包含 %1$s 个标签页的标签页组。"</string>
+<string name="accessibility_expand_tab_group_with_group_name">"展开包含 %2$s 个标签页的“%1$s”标签页组。"</string>
+<plurals name="accessibility_tab_selection_dialog_remove_button">
+  <item quantity="one">"将所选的 %1$d 个标签页从组内移出。"</item>
+  <item quantity="other">"将所选的 %1$d 个标签页从组内移出。"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button">
+  <item quantity="one">"收起 %1$d 个标签页。"</item>
+  <item quantity="other">"收起包含 %1$d 个标签页的标签页组。"</item>
+</plurals>
+<plurals name="accessibility_dialog_back_button_with_group_name">
+  <item quantity="one">"收起 %1$d 个标签页。"</item>
+  <item quantity="other">"收起包含 %2$d 个标签页的“%1$s”标签页组。"</item>
+</plurals>
+<string name="accessibility_tab_grid_dialog">"已展开标签页组"</string>
+<string name="iph_drag_and_drop_introduction">"拖动标签可进行分组"</string>
+<string name="iph_drag_and_drop_show_me">"演示一下"</string>
+<string name="iph_drag_and_drop_title">"让各项内容井井有条"</string>
+<string name="iph_drag_and_drop_content">"要将标签页分组，请轻触并按住某个标签页，然后拖动到另一个标签页上。"</string>
+<string name="tab_switcher_carousel_title">"继续浏览"</string>
+<string name="tab_switcher_carousel_view_all">"查看全部"</string>
+<string name="tab_suggestion_review_button">"查看"</string>
+<string name="tab_suggestion_close_tab_action_button">"关闭"</string>
+<string name="tab_suggestion_close_stale_message">"您有 %1$s 个标签页最近未被使用过。关闭它们？"</string>
+<string name="tab_suggestion_group_tabs_message">"有 %1$s 个标签页似乎彼此相关。为它们建组？"</string>
+<string name="accessibility_tab_suggestion_review_button">"查看建议。"</string>
+<string name="accessibility_tab_suggestion_close_stale_message">"建议：您有 %1$s 个标签页最近未被使用过。关闭它们？"</string>
+<string name="accessibility_tab_suggestion_group_tabs_message">"建议：有 %1$s 个标签页似乎彼此相关。为它们建组？"</string>
+<string name="accessibility_tab_suggestion_dismiss_button">"忽略此建议。"</string>
+<plurals name="accessibility_tab_suggestion_close_tab_action_button">
+  <item quantity="one">"关闭 %1$d 个所选标签页"</item>
+  <item quantity="other">"关闭 %1$d 个所选标签页"</item>
+</plurals>
+<string name="accessibility_tab_movement_left">"左移标签页"</string>
+<string name="accessibility_tab_movement_right">"右移标签页"</string>
+<string name="accessibility_tab_movement_up">"上移标签页"</string>
+<string name="accessibility_tab_movement_down">"下移标签页"</string>
+<string name="undo_tab_strip_closure_message">"已关闭标签栏"</string>
+<string name="tab_strip_info_bar_question">"不再显示标签栏？"</string>
+<string name="tab_strip_info_bar_no_reshow">"不再显示"</string>
+<string name="tab_strip_info_bar_reshow">"稍后再显示"</string>
+<string name="price_drop_spotted_title">"Price drop spotted"</string>
+<string name="price_drop_spotted_content">"See which item in your open tabs has a better price"</string>
+<string name="price_drop_spotted_show_me">"演示一下"</string>
+</resources>
