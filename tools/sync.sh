@@ -15,452 +15,447 @@ sync_chrome() {
   mkdir -p ${APP_DIR}/src/main
   mkdir -p ${APP_DIR}/src/main/res_gen
 	local res_dir="${APP_DIR}/src/main"
-#	cp -r ${BASE_DIR}/chrome/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/base/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/base/base_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/version/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/settings/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/preferences/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/image_descriptions/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/tab/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/browser_controls/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/flags/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/features/tab_ui/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/native_page/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/profiles/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/tabmodel/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/favicon/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/settings/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/preferences/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/util/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/settings/android/widget/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/user_prefs/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/styles/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/tab/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/embedder_support/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/content/public/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/find_in_page/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/profile_metrics/browser_profile_type_enum_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/contextmenu/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/external_intents/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/profiles/android/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/util/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/navigation_interception/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/content/public/android/content_main_dex_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/url/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/net/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/mojo/public/java/bindings/src/* ${src_dir}
-#  #之前的版本编译不通过
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/mojom_platform_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/embedder_support/android/util_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/webapk/android/libs/client/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/mojo/public/java/system/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/mojo/public/java/bindings_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/mojo/public/java/base/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/gfx/geometry/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/url/mojom/url_mojom_gurl_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/mojo/public/mojom/base/base_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/url_loader_base_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/url/mojom/url_mojom_origin_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/cookies_mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_ip_address_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/websocket_mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/proxy_resolver/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/media/mojo/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/skia/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/cc/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/display/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/base/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/services/filesystem/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/viz/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_schemeful_site_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/android_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/version/templates/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/cronet/android/templates/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/version_info/android/java/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/media/capture/mojom/video_capture_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/device/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/metrics_proto/metrics_proto_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/base/cursor/mojom/cursor_type_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/base/cursor/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/base/dragdrop/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/base/ime/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/events/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/gfx/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/gfx/mojom/native_handle_types_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/gfx/range/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/latency/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_network_param_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/payments/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/schema_org/common/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/frame/frame_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/media_session/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/tokens/tokens_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/gpu/ipc/common/interfaces_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/net/android/net_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/cc/cc_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/mojom_core_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/blink_headers_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/services/data_decoder/public/mojom/mojom_resource_snapshot_for_web_bundle_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/service_worker/storage_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/flags/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/android/chrome_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/favicon/java/generated_java/input_srcjars/* ${src_dir}
-#
-#
-#  cp -r ${BASE_DIR}/components/browser_ui/widget/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/glue/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/url_formatter/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/third_party/float_property/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/theme/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/toolbar/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/fullscreen/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/device/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/bookmarks/common/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/features/vr/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/features/start_surface/public/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/variations/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/webapk/android/libs/common/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/gsa/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/bookmarks/common/android/bookmarks_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/url_formatter/android/url_formatter_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/content/public/android/content_full_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/prefs/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/feed/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/messages/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/notifications/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/policy/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/sync/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/printing/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/ui/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/android/lifecycle/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/language/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/content_capture/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/share/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/share/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/favicon/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/tabpersistence/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/signin/public/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/feature_engagement/public/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/translate/content/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/language/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/bottomsheet/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/contextual_search/content/common/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/public/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/page_info/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/webxr/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/webapk/libs/client/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/sync/android/sync_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/user_education/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/paint_preview/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/internal/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/messages/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/messages/android/internal/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/feature_engagement/internal/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/android/update_proto_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/tab_group/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/externalauth/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/dom_distiller/core/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/security_state/content/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/public/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/signin/public/android/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/factory/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/webapps/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/modaldialog/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/autofill/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/bottomsheet/android/internal/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/messages/android/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/search_engines/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/feature_engagement/public/public_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/infobars/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/security_state/core/security_state_enums_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/internal/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/omnibox/browser/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/image_fetcher/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/query_tiles/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/banners/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/android/browserservices/verification/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/content_settings/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/third_party/android_deps/util/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/omnibox/browser/browser_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/video_tutorials/internal/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/video_tutorials/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/permissions/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/webapps/browser/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/signin/services/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/infobars/android/infobar_android_enums_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/autofill/android/full_autofill_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/image_fetcher/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/browser_ui/site_settings/android/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/components/favicon/android/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/video_tutorials/java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/background_task_scheduler/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/crash/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/minidump_uploader/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/module_installer/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/offline_items_collection/core/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/safe_browsing/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/safe_browsing/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/webapps/browser/android/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/infobars/core/infobar_enums_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/content_settings/android/content_settings_enums_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/signin/ui/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/chrome/browser/safe_browsing/android/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/privacy/settings/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/android/crypto/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/thin_webview/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/default_browser_promo/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/banners/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/page_annotations/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/uid/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/components/browser_ui/contacts_picker/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/viz/common/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/payments/content/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/background_task_scheduler/background_task_scheduler_task_ids_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/chrome/android/chrome_public_apk/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/strictmode/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/performance_hints/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/crash/android/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/version_info/android/version_constants_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/enterprise/util/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/third_party/android_data_chart/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/location/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/display_cutout/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/dom_distiller/content/browser/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/download/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/download/internal/common/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/download/internal/background_service/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/offline_items_collection/core/core_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/offline_pages/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/xsurface/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/feedback/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/policy/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/chrome/browser/consent_auditor/android/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/site_settings/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/translate/content/android/translate_android_enums_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/service_manager/public/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/device/gamepad/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/chrome/android/features/keyboard_accessory/public/public_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/media/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/http_auth/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/webrtc/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/services/media_session/public/cpp/android/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/android/webapk/libs/common/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/tabmodel/internal/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/notifications/chime/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/android/modules/image_editor/provider/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/browser_ui/contacts_picker/android/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/dom_distiller/core/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/media_router/browser/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/endpoint_fetcher/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/password_check/android/internal/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/password_check/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/safety_check/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/gcm_driver/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/subresource_filter/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/optimization_guide/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/third_party/android_provider/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/device/nfc/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/android/webapk/libs/client/client_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/image_editor/public/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/payments/content/android/minimal_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/components/component_updater/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/omaha/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/consent_auditor/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/download/public/common/public_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/payments/content/android/service_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/browser/download/android/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/feed/core/proto/proto_java_v2/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/policy/android/policy_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/services/service_manager/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/android/partner_location_descriptor_proto_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/download/public/task/public_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/browser/optimization_guide/android/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/optimization_guide/proto/optimization_guide_proto_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/paint_preview/player/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/password_manager/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/payments/content/android/full_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/privacy/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/privacy_sandbox/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/chrome/browser/password_check/android/password_check_java_enums/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/gcm_driver/instance_id/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/paint_preview/common/proto/proto_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/third_party/android_swipe_refresh/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/password_manager/core/browser/password_manager_java_enums/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/chrome/browser/privacy/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/chrome/browser/safety_check/android/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/gcm_driver/instance_id/android/instance_id_driver_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/components/paint_preview/browser/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/webauthn/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/internal/java/src/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/components/sync/protocol/protocol_java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${RELEASE_DIR}/gen/chrome/browser/signin/services/android/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/incognito/interstitial/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/commerce/price_tracking/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/browser/continuous_search/internal/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/paint_preview/player/android/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/signin/core/browser/signin_enums_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/components/site_engagement/content/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/browser/endpoint_fetcher/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/android/usage_stats_proto_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/android/webapk/libs/common/common_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/android/webapk/libs/runtime_library/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/android/modules/cablev2_authenticator/public/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/webshare/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/background_task_scheduler/internal/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/services/device/public/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/third_party/android_media/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/signin/core/browser/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/thin_webview/internal/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/content/public/common/trust_tokens_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/gpu/ipc/common/vulkan_interface_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_network_isolation_key_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/browser/continuous_search/internal/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/browser/tab/critical_persisted_tab_data_proto_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/background_task_scheduler/internal/proto_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/browser/contextmenu/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/page_info/android/page_info_action_enum_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/location/android/location_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/webxr/android/webxr_android_enums_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/script_type_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/color_scheme_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/layouts/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/components/search_engines/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/components/infobars/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/components/prefs/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/toolbar/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/components/content_capture/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/toolbar/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/components/content_settings/core/common/mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/browser/android/browserservices/verification/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/components/find_in_page/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/android/base_module_java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/browser/offline_pages/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/components/content_settings/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/browser/paint_preview/android/java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/chrome/browser/password_check/android/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/printing/printing_java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/mojo/public/java/system/system_impl_java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/device/gamepad/java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/services/device/public/java/device_feature_list_java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/components/permissions/android/java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/chrome/browser/performance_hints/android/java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/components/dom_distiller/core/android/dom_distiller_core_java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/chrome/browser/enterprise/util/java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/components/translate/core/common/translate_infobar_event_enum_java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/chrome/android/features/keyboard_accessory/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/chrome/browser/language/android/java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/messages/android/java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/chrome/browser/video_tutorials/internal/java/generated_java/input_srcjars/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/components/component_updater/android/background_task_update_scheduler_java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/components/dom_distiller/content/browser/android/dom_distiller_content_java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${BASE_DIR}/chrome/browser/download/internal/android/java/src/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/chrome/browser/feedback/android/java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/chrome/browser/image_descriptions/java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/chrome/browser/password_entry_edit/android/internal/java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/chrome/browser/policy/android/java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/chrome/browser/privacy_sandbox/android/java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/components/external_intents/android/java/generated_java/input_srcjars/* ${src_dir}
-#         cp -r ${RELEASE_DIR}/gen/chrome/browser/webauthn/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${BASE_DIR}/chrome/browser/thumbnail/generator/android/java/src/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/chrome/browser/thumbnail/generator/proto_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/chrome/browser/password_manager/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/chrome/browser/webapps/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/embedder_support/android/web_contents_delegate_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/download/internal/common/internal_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/feature_engagement/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/gcm_driver/android/gcm_driver_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/language/android/language_bridge_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${BASE_DIR}/services/device/geolocation/android/java/src/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/webxr/android/ar_java_base/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/variations/android/variations_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/user_prefs/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/translate/content/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/thin_webview/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/subresource_filter/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/chrome/browser/thumbnail/generator/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/location/android/settings_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/media_router/browser/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/chrome/browser/download/internal/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/minidump_uploader/minidump_uploader_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/page_info/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/payments/content/android/feature_list_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/query_tiles/public_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/safe_browsing/android/safe_browsing_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/security_state/content/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/site_engagement/content/android/java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/services/device/geolocation/geolocation_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/components/module_installer/android/module_installer_java/generated_java/input_srcjars/* ${src_dir}
-#          cp -r ${RELEASE_DIR}/gen/media/learning/mojo/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/android/modules/cablev2_authenticator/public/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/provider/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/public/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/android/modules/extra_icu/public/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/components/version_info/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/shape_detection/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/services/shape_detection/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/device/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/device/battery/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/device/vibration/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/media/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/media/base/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/media/midi/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/media/capture/video/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/media/capture/content/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/media/base/android/media_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/media/capture/video/android/capture_java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/media/capture/content/android/screen_capture_java/generated_java/input_srcjars/* ${src_dir}
-#      cp -r ${RELEASE_DIR}/gen/media/midi/midi_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/device/time_zone_monitor/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/services/device/time_zone_monitor/java/generated_java/input_srcjars/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/download/network/android/java/src/* ${src_dir}
-#        cp -r ${RELEASE_DIR}/gen/components/download/network/network_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/data_decoder/public/cpp/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/services/data_decoder/public/cpp/android/safe_json_java/generated_java/input_srcjars/* ${src_dir}
-
-
-#   cp -r ${BASE_DIR}/chrome/browser/engagement/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/internal/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/chrome/android/features/dev_ui/public/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/client_certificate/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/javascript_dialogs/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/security_interstitials/content/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/spellcheck/browser/android/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/viz/service/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/services/device/public/java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/device/bluetooth/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/device/generic_sensor/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/services/device/usb/android/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/components/cronet/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/services/device/public/mojom/generic_sensor_java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${BASE_DIR}/components/cronet/android/api/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/android/modules/stack_unwinder/public/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/android/modules/dev_ui/provider/java/src/* ${src_dir}
-#    cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/chrome/android/features/dev_ui/public/java/generated_java/input_srcjars/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_native_base_java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/chrome/browser/touch_to_fill/android/internal/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/chrome/android/modules/dev_ui/provider/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/components/browser_ui/client_certificate/android/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/components/javascript_dialogs/android/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/components/security_interstitials/content/android/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/components/spellcheck/browser/android/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/components/viz/service/service_java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/device/bluetooth/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/services/device/generic_sensor/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/services/device/usb/java/generated_java/input_srcjars/* ${src_dir}
-    cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
-#         cp ${RELEASE_DIR}/gen/chrome/android/chrome_public_apk/generated_java/input_srcjars/org/chromium/base/natives/GEN_JNI.java ${src_dir}/org/chromium/base/natives/
+  cp -r ${BASE_DIR}/chrome/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/base/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/base/base_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/version/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/settings/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/preferences/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/image_descriptions/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tab/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/browser_controls/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/flags/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/tab_ui/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/native_page/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/profiles/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tabmodel/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/favicon/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/settings/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/preferences/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/util/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/settings/android/widget/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/user_prefs/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/styles/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/tab/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/embedder_support/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/content/public/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/find_in_page/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/profile_metrics/browser_profile_type_enum_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/contextmenu/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/external_intents/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/profiles/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/util/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/navigation_interception/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/content/public/android/content_main_dex_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/url/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/net/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/mojo/public/java/bindings/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/mojom_platform_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/embedder_support/android/util_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/webapk/android/libs/client/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/mojo/public/java/system/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/mojo/public/java/bindings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/mojo/public/java/base/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/gfx/geometry/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/url/mojom/url_mojom_gurl_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/mojo/public/mojom/base/base_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/url_loader_base_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/url/mojom/url_mojom_origin_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/cookies_mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_ip_address_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/websocket_mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/proxy_resolver/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/media/mojo/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/skia/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/cc/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/display/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/base/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/services/filesystem/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/viz/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_schemeful_site_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/android_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/version/templates/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/cronet/android/templates/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/version_info/android/java/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/media/capture/mojom/video_capture_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/device/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/metrics_proto/metrics_proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/base/cursor/mojom/cursor_type_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/base/cursor/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/base/dragdrop/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/base/ime/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/events/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/gfx/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/gfx/mojom/native_handle_types_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/gfx/range/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/ui/latency/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_network_param_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/payments/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/schema_org/common/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/frame/frame_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/media_session/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/tokens/tokens_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/gpu/ipc/common/interfaces_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/net/android/net_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/cc/cc_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/mojom_core_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/blink_headers_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/data_decoder/public/mojom/mojom_resource_snapshot_for_web_bundle_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/service_worker/storage_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/flags/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/chrome_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/favicon/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/widget/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/glue/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/url_formatter/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/layouts/third_party/float_property/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/theme/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/toolbar/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/fullscreen/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/device/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/bookmarks/common/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/vr/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/start_surface/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/variations/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/webapk/android/libs/common/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/gsa/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/bookmarks/common/android/bookmarks_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/url_formatter/android/url_formatter_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/content/public/android/content_full_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/prefs/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/feed/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/messages/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/notifications/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/policy/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/sync/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/printing/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/ui/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/android/lifecycle/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/language/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/content_capture/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/share/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/share/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/favicon/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tabpersistence/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/signin/public/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/feature_engagement/public/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/translate/content/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/language/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/bottomsheet/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/contextual_search/content/common/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/page_info/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/webxr/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/webapk/libs/client/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/sync/android/sync_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/user_education/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/paint_preview/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/messages/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/messages/android/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/feature_engagement/internal/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/update_proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tab_group/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/externalauth/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/dom_distiller/core/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/security_state/content/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/public/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/signin/public/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/factory/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/webapps/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/modaldialog/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/autofill/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/bottomsheet/android/internal/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/messages/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/search_engines/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/feature_engagement/public/public_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/infobars/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/security_state/core/security_state_enums_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/omnibox/browser/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/image_fetcher/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/query_tiles/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/banners/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/android/browserservices/verification/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/content_settings/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/third_party/android_deps/util/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/omnibox/browser/browser_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/video_tutorials/internal/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/video_tutorials/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/permissions/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/webapps/browser/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/signin/services/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/infobars/android/infobar_android_enums_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/autofill/android/full_autofill_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/image_fetcher/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/browser_ui/site_settings/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/favicon/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/video_tutorials/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/background_task_scheduler/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/crash/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/minidump_uploader/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/module_installer/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/offline_items_collection/core/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/safe_browsing/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/safe_browsing/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/webapps/browser/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/infobars/core/infobar_enums_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/content_settings/android/content_settings_enums_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/signin/ui/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/safe_browsing/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/privacy/settings/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/android/crypto/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/thin_webview/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/ui/android/default_browser_promo/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/banners/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/page_annotations/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/uid/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/contacts_picker/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/viz/common/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/payments/content/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/background_task_scheduler/background_task_scheduler_task_ids_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/chrome_public_apk/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/strictmode/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/performance_hints/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/crash/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/version_info/android/version_constants_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/enterprise/util/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/third_party/android_data_chart/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/location/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/display_cutout/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/dom_distiller/content/browser/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/download/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/download/internal/common/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/download/internal/background_service/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/offline_items_collection/core/core_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/offline_pages/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/xsurface/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/feedback/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/policy/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/consent_auditor/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/site_settings/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/translate/content/android/translate_android_enums_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/services/service_manager/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/device/gamepad/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/features/keyboard_accessory/public/public_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/media/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/http_auth/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/webrtc/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/media_session/public/cpp/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/webapk/libs/common/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/tabmodel/internal/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/notifications/chime/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/image_editor/provider/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/browser_ui/contacts_picker/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/dom_distiller/core/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/media_router/browser/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/endpoint_fetcher/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/password_check/android/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/password_check/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/safety_check/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/gcm_driver/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/subresource_filter/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/optimization_guide/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/third_party/android_provider/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/nfc/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/webapk/libs/client/client_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/image_editor/public/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/payments/content/android/minimal_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/component_updater/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/omaha/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/consent_auditor/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/download/public/common/public_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/payments/content/android/service_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/download/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/feed/core/proto/proto_java_v2/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/policy/android/policy_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/service_manager/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/partner_location_descriptor_proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/download/public/task/public_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/optimization_guide/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/optimization_guide/proto/optimization_guide_proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/paint_preview/player/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/password_manager/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/payments/content/android/full_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/privacy/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/privacy_sandbox/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/password_check/android/password_check_java_enums/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/gcm_driver/instance_id/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/paint_preview/common/proto/proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/third_party/android_swipe_refresh/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/password_manager/core/browser/password_manager_java_enums/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/privacy/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/safety_check/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/gcm_driver/instance_id/android/instance_id_driver_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/paint_preview/browser/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/webauthn/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/password_entry_edit/android/internal/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/sync/protocol/protocol_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/signin/services/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/incognito/interstitial/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/continuous_search/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/commerce/price_tracking/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/continuous_search/internal/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/paint_preview/player/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/signin/core/browser/signin_enums_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/site_engagement/content/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/endpoint_fetcher/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/usage_stats_proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/webapk/libs/common/common_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/webapk/libs/runtime_library/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/modules/cablev2_authenticator/public/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/webshare/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/background_task_scheduler/internal/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/third_party/android_media/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/signin/core/browser/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/thin_webview/internal/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/content/public/common/trust_tokens_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/gpu/ipc/common/vulkan_interface_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/network/public/mojom/mojom_network_isolation_key_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/continuous_search/internal/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/tab/critical_persisted_tab_data_proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/background_task_scheduler/internal/proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/contextmenu/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/page_info/android/page_info_action_enum_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/location/android/location_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/webxr/android/webxr_android_enums_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/script_type_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/color_scheme_mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/layouts/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/search_engines/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/infobars/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/prefs/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/toolbar/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/content_capture/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/android/toolbar/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/content_settings/core/common/mojo_bindings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/android/browserservices/verification/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/find_in_page/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/base_module_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/offline_pages/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/content_settings/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/paint_preview/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/password_check/android/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/printing/printing_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/mojo/public/java/system/system_impl_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/device/gamepad/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/device/public/java/device_feature_list_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/permissions/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/performance_hints/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/dom_distiller/core/android/dom_distiller_core_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/enterprise/util/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/translate/core/common/translate_infobar_event_enum_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/features/keyboard_accessory/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/language/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/ui/messages/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/video_tutorials/internal/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/component_updater/android/background_task_update_scheduler_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/dom_distiller/content/browser/android/dom_distiller_content_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/download/internal/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/feedback/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/image_descriptions/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/password_entry_edit/android/internal/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/policy/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/privacy_sandbox/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/external_intents/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/webauthn/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/thumbnail/generator/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/thumbnail/generator/proto_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/password_manager/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/webapps/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/embedder_support/android/web_contents_delegate_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/download/internal/common/internal_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/feature_engagement/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/gcm_driver/android/gcm_driver_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/language/android/language_bridge_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/geolocation/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/webxr/android/ar_java_base/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/variations/android/variations_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/user_prefs/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/translate/content/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/thin_webview/internal/internal_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/subresource_filter/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/thumbnail/generator/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/location/android/settings_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/media_router/browser/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/download/internal/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/minidump_uploader/minidump_uploader_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/page_info/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/payments/content/android/feature_list_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/query_tiles/public_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/safe_browsing/android/safe_browsing_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/security_state/content/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/site_engagement/content/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/device/geolocation/geolocation_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/module_installer/android/module_installer_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/media/learning/mojo/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/cablev2_authenticator/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/provider/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/extra_icu/public/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/modules/extra_icu/public/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/version_info/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/shape_detection/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/shape_detection/public/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/battery/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/vibration/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/media/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/media/base/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/media/midi/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/media/capture/video/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/media/capture/content/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/media/base/android/media_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/media/capture/video/android/capture_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/media/capture/content/android/screen_capture_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/media/midi/midi_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/time_zone_monitor/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/device/time_zone_monitor/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/download/network/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/download/network/network_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/services/data_decoder/public/cpp/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/data_decoder/public/cpp/android/safe_json_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/engagement/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/internal/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/dev_ui/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/browser_ui/client_certificate/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/javascript_dialogs/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/security_interstitials/content/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/spellcheck/browser/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/viz/service/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/device/bluetooth/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/generic_sensor/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/services/device/usb/android/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/components/cronet/android/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/device/public/mojom/generic_sensor_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/components/cronet/android/api/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/stack_unwinder/public/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/modules/dev_ui/provider/java/src/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/features/start_surface/internal/java/src/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/features/dev_ui/public/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_native_base_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/browser/touch_to_fill/android/internal/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/chrome/android/modules/dev_ui/provider/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/browser_ui/client_certificate/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/javascript_dialogs/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/security_interstitials/content/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/spellcheck/browser/android/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/viz/service/service_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/device/bluetooth/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/device/generic_sensor/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/services/device/usb/java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_common_base_java/generated_java/input_srcjars/* ${src_dir}
+  cp ${RELEASE_DIR}/gen/chrome/android/chrome_public_apk/generated_java/input_srcjars/org/chromium/base/natives/GEN_JNI.java ${src_dir}/org/chromium/base/natives/
 
 #tools/metrics/histograms/enums.xml
 #    cp -r ${RELEASE_DIR}/gen/chrome/browser/version/templates/* ${src_dir}
@@ -481,54 +476,15 @@ sync_chrome() {
 #    cp -r ${RELEASE_DIR}/gen/ui/latency/mojom/mojom_java/generated_java/input_srcjars/* ${src_dir}
 
 
-# 90版本不存在
-#  cp -r ${BASE_DIR}/components/browser_ui/android/bottomsheet/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/components/browser_ui/android/bottomsheet/internal/java/src/* ${src_dir}
-#  cp -r ${BASE_DIR}/chrome/browser/signin/android/java/src/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/generated_java/input_srcjars/org/chromium/chrome/browser/omaha/metrics/UpdateProtos.java \
-#           ${src_dir}/org/chromium/chrome/browser/omaha/metrics/
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/generated_java/input_srcjars/org/chromium/chrome/browser/net/SecureDnsManagementMode.java \
-#            ${src_dir}/org/chromium/chrome/browser/net/
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/content/public/android/content_java/generated_java/input_srcjars/* ${src_dir}
+  cp -r ${BASE_DIR}/chrome/android/java/res_base \
+        ${BASE_DIR}/chrome/android/java/res_chromium \
+        ${BASE_DIR}/chrome/android/java/res_chromium_base \
+        ${BASE_DIR}/chrome/android/java/res_vr \
+        ${BASE_DIR}/chrome/android/java/res_template \
+        "$res_dir"
 
-# 生成的无法编译通过部分
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/mojom_platform_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/src/* ${src_dir}
-#   cp -r ${BASE_DIR}/components/browser_ui/photo_picker/android/java/src/* ${src_dir}
-#    cp -r ${RELEASE_DIR}/gen/url/gurl_java/generated_java/input_srcjars/* ${src_dir}
-#  cp -r ${RELEASE_DIR}/gen/ui/android/ui_no_recycler_view_java/generated_java/input_srcjars/* ${src_dir}
-
-##    cp -r ${RELEASE_DIR}/gen/components/cronet/android/cronet_impl_native_base_java/generated_java/input_srcjars/* ${src_dir}
-
-#
-#        ${RELEASE_DIR}/gen/base/base_java/generated_java/input_srcjars/* \
-#        ${RELEASE_DIR}/gen/chrome/android/update_proto_java/generated_java/input_srcjars/* \
-#        ${BASE_DIR}/android_webview/java/src/* \
-#        ${BASE_DIR}/android_webview/nonembedded/java/src/* \
-#F:\chromium\src\out\89\gen\chrome\android\features\keyboard_accessory\internal\java_strings_grd_grit_output
-
-#	cp -r ${RELEASE_DIR}/gen/chrome/java/res/* \
-#        ${RELEASE_DIR}/gen/chrome/app/policy/android/* \
-#        ${RELEASE_DIR}/gen/third_party/blink/public/mojom/web_feature_mojo_bindings_java/generated_java/src/org/org/chromium/chrome/browser/feed/library/piet/res/* \
-#		${res_dir}/res_gen
-#
-##ui_strings_grd_grit_output中的文件android_chrome_strings.xml
-##${RELEASE_DIR}/gen/chrome/android/templates/chrome_version_xml/res/  values.xml
-##res_base res_vr 文件夹/values/values.xml重复文件
-##/gen/chrome/app/policy/android/
-#
-
-#  cp -r ${BASE_DIR}/chrome/android/java/res_base \
-#        ${BASE_DIR}/chrome/android/java/res_chromium \
-#        ${BASE_DIR}/chrome/android/java/res_chromium_base \
-#        ${BASE_DIR}/chrome/android/java/res_vr \
-#        ${BASE_DIR}/chrome/android/java/res_template \
-#        "$res_dir"
-#
-#  	cp "${RELEASE_DIR}/gen/chrome/android/chrome_public_apk/AndroidManifest.xml" \
-#		"${APP_DIR}/src/main"
+  	cp "${RELEASE_DIR}/gen/chrome/android/chrome_public_apk/AndroidManifest.xml" \
+		"${APP_DIR}/src/main"
 }
 
 sync_base_res() {
@@ -551,8 +507,6 @@ sync_base_res() {
           "$base_res_dir"
           #先解压压缩包
       cp -r ${RELEASE_DIR}/resource_zips/chrome/android/ui_locale_string_resources/* "$base_res_dir"
-#     cp -r ${RELEASE_DIR}/gen/components/policy/app_restrictions.xml "${MODULES_DIR}/base_res/xml/"
-#          ${RELEASE_DIR}/obj/third_party/android_deps/androidx_appcompat_appcompat_java/res/* \
 }
 
 sync_base() {
@@ -571,8 +525,6 @@ sync_assets() {
 		${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/*.pak \
 		"$asset_dir"
 
-#		${RELEASE_DIR}/natives_blob.bin \
-#		${RELEASE_DIR}/gen/chrome/android/chrome_public_apk_unwind_assets/* \
 	cp ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/locales/{en-US,zh-CN}.pak \
 		"${asset_dir}/locales"
 	cp ${RELEASE_DIR}/snapshot_blob.bin "$asset_dir"/snapshot_blob_32.bin
@@ -591,26 +543,14 @@ sync_aidl() {
     mv -f ${APP_DIR}/src/main/java/org/chromium/webapk/lib/runtime_library/*.aidl \
 		  "$runtime_library_aidl"
 
-#    local content_public_aidl="${APP_DIR}/src/main/aidl/org/chromium/"
-#    mkdir -p "$content_public_aidl"
-#    mv -f ${APP_DIR}/src/main/java/org/chromium/*.aidl \
-#           "$content_public_aidl"
 }
 
 sync_ui() {
 	mkdir -p ${MODULES_DIR}/ui/src/main/res
-
-#	cp -r ${BASE_DIR}/ui/android/java/src/* \
-#		"${APP_DIR}/src/main/java"
-#	F:\chromium\src\out\89\resource_zips\chrome\android\ui_locale_string_resources\values\strings.xml
-  #resource_zips\chrome\android\ui_locale_string_resources\values\strings.xml会覆盖gen/ui/android/ui_strings_grd_grit_output/strings.xml
-	cp -r ${BASE_DIR}/ui/android/java/res/* \
+cp -r ${BASE_DIR}/ui/android/java/res/* \
 		${RELEASE_DIR}/gen/ui/android/ui_strings_grd_grit_output/* \
 		${RELEASE_DIR}/gen/chrome/browser/ui/android/strings/ui_strings_grd_grit_output/* \
 		"${MODULES_DIR}/ui/src/main/res"
-
-#   90版本不存在
-#		${RELEASE_DIR}/resource_zips/chrome/android/ui_locale_string_resources/* \
 }
 
 sync_components(){
@@ -740,9 +680,6 @@ sync_browser(){
   cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/java/res/* \
         ${BASE_DIR}/chrome/android/features/autofill_assistant/java/res_poodle/* \
         ${MODULES_DIR}/browser/autofill_assistant/src/main/res
-#        chrome/android/features/autofill_assistant/java/res/values-night-v17/colors.xml
-        #这个目录也没有生成，原因不明
-        #out/Default/gen/chrome/android/features/autofill_assistant/java_strings_grd_grit_output/
 
   mkdir -p ${MODULES_DIR}/browser/keyboard_accessory/src/main/res
   cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/internal/java/res/* \
@@ -752,9 +689,6 @@ sync_browser(){
   cp -r ${BASE_DIR}/chrome/android/feed/core/java/res/* \
         ${MODULES_DIR}/browser/feed/src/main/res
 
-#        ${BASE_DIR}/chrome/android/feed/core/java/resv1 \
-
-#        ${BASE_DIR}/chrome/android/features/tab_ui/java/res \
   mkdir -p ${MODULES_DIR}/browser/ui_favicon/src/main/res
   cp -r ${BASE_DIR}/chrome/browser/ui/android/favicon/java/res/* \
         ${MODULES_DIR}/browser/ui_favicon/src/main/res
@@ -870,14 +804,6 @@ sync_browser(){
    mkdir -p ${MODULES_DIR}/browser/privacy_sandbox/src/main/res
   cp -r ${BASE_DIR}/chrome/browser/privacy_sandbox/android/java/res/* \
         ${MODULES_DIR}/browser/privacy_sandbox/src/main/res
-
-#   90版本不存在
-#  mkdir -p ${MODULES_DIR}/browser/feed/src/main/resv1
-#  cp -r ${BASE_DIR}/chrome/android/feed/core/java/resv1/* \
-#        ${MODULES_DIR}/browser/feed/src/main/resv1
-#   mkdir -p ${MODULES_DIR}/browser/ui_default_browser_promo/src/main/res
-#  cp -r ${BASE_DIR}/chrome/browser/ui/android/default_browser_promo/java/res/* \
-#        ${MODULES_DIR}/browser/ui_default_browser_promo/src/main/res
 }
 
 sync_surface() {
@@ -901,15 +827,7 @@ sync_third_party() {
   mkdir -p ${MODULES_DIR}/third_party/android_media/src/main/res
   cp -r ${BASE_DIR}/third_party/android_media/java/res/* \
         ${MODULES_DIR}/third_party/android_media/src/main/res
-#        out/89/obj/third_party/android_deps/androidx_preference_preference_java/res/values/values.xml
 }
-
-#sync_third_party_res(){
-#  mkdir -p ${MODULES_DIR}/third_party_res
-# 90版本不存在
-#  cp -r ${RELEASE_DIR}/obj/third_party/android_deps/androidx_appcompat_appcompat_java/res/* \
-#        ${MODULES_DIR}/third_party_res
-#}
 
 sync_content(){
   mkdir -p ${MODULES_DIR}/content/src/main/res
@@ -935,8 +853,6 @@ sync_chrome_vr(){
   mkdir -p ${MODULES_DIR}/chrome_vr/src/main/res
   cp -r ${BASE_DIR}/chrome/android/features/vr/java/res/* \
         ${MODULES_DIR}/chrome_vr/src/main/res
-#  cp -r ${RELEASE_DIR}/gen/chrome/android/features/vr/java_strings_grd_grit_output/* \
-#        ${MODULES_DIR}/chrome_vr/src/main/res
 }
 
 sync_media(){
@@ -1048,23 +964,23 @@ clean_project() {
 do_sync() {
 	rm -rf "$PRO_DIR"
   sync_chrome
-#  sync_assets
-#  sync_messages
-#  sync_aidl
-#  sync_ui
-#  sync_components
-#  sync_chrome_tab_ui
-#  sync_browser
-#  sync_third_party
-#  sync_content
-#  sync_surface
-#  sync_base_res
-#  sync_base
-#  sync_splash
+  sync_assets
+  sync_messages
+  sync_aidl
+  sync_ui
+  sync_components
+  sync_chrome_tab_ui
+  sync_browser
+  sync_third_party
+  sync_content
+  sync_surface
+  sync_base_res
+  sync_base
+  sync_splash
   sync_libs
-#  sync_chrome_vr
-#  sync_third_party_res
-#  sync_media
+  sync_chrome_vr
+  sync_third_party_res
+  sync_media
 	clean_project
 	# NativeLibraries
 }
