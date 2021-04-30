@@ -61,6 +61,7 @@ public final class CanMakePaymentResponse extends org.chromium.mojo.bindings.Str
                     
                 result.responseType = decoder0.readInt(8);
                     CanMakePaymentEventResponseType.validate(result.responseType);
+                    result.responseType = CanMakePaymentEventResponseType.toKnownValue(result.responseType);
                 }
                 {
                     

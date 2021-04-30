@@ -26,6 +26,11 @@ import java.lang.annotation.RetentionPolicy;
     LiteScriptFinishedState.LITE_SCRIPT_NAVIGATION_ERROR,
     LiteScriptFinishedState.LITE_SCRIPT_WEB_CONTENTS_DESTROYED_WHILE_VISIBLE,
     LiteScriptFinishedState.LITE_SCRIPT_WEB_CONTENTS_DESTROYED_WHILE_INVISIBLE,
+    LiteScriptFinishedState.LITE_SCRIPT_NO_TRIGGER_SCRIPT_AVAILABLE,
+    LiteScriptFinishedState.LITE_SCRIPT_FAILED_TO_SHOW,
+    LiteScriptFinishedState.LITE_SCRIPT_DISABLED_PROACTIVE_HELP_SETTING,
+    LiteScriptFinishedState.LITE_SCRIPT_BASE64_DECODING_ERROR,
+    LiteScriptFinishedState.LITE_SCRIPT_BOTTOMSHEET_ONBOARDING_REJECTED,
     LiteScriptFinishedState.LITE_SCRIPT_UNKNOWN_FAILURE,
     LiteScriptFinishedState.LITE_SCRIPT_SERVICE_DELETED,
     LiteScriptFinishedState.LITE_SCRIPT_PATH_MISMATCH,
@@ -83,6 +88,29 @@ public @interface LiteScriptFinishedState {
    */
   int LITE_SCRIPT_WEB_CONTENTS_DESTROYED_WHILE_INVISIBLE = 20;
   /**
+   * Since Chrome M-88. The RPC to fetch the trigger scripts returned with an empty response.
+   */
+  int LITE_SCRIPT_NO_TRIGGER_SCRIPT_AVAILABLE = 21;
+  /**
+   * Since Chrome M-88. The trigger script failed to show. This can happen, for example, if the
+   * activity was changed after triggering (e.g., switching from CCT to regular tab).
+   */
+  int LITE_SCRIPT_FAILED_TO_SHOW = 22;
+  /**
+   * Since Chrome M-88. The proactive help switch was enabled at start, but then manually disabled
+   * in the Chrome settings.
+   */
+  int LITE_SCRIPT_DISABLED_PROACTIVE_HELP_SETTING = 23;
+  /**
+   * Since Chrome M-88. The client failed to base64-decode the trigger script specified in the
+   * script parameters.
+   */
+  int LITE_SCRIPT_BASE64_DECODING_ERROR = 24;
+  /**
+   * The user rejected the bottom sheet onboarding
+   */
+  int LITE_SCRIPT_BOTTOMSHEET_ONBOARDING_REJECTED = 25;
+  /**
    * NOTE: All values in this block are DEPRECATED and will only be sent by Chrome M-86 and M-87.
    * The lite script failed for an unknown reason.
    */
@@ -128,5 +156,5 @@ public @interface LiteScriptFinishedState {
    * Since Chrome M-88. The bottom sheet was swipe-dismissed by the user.
    */
   int LITE_SCRIPT_PROMPT_SWIPE_DISMISSED = 16;
-  int MAX_VALUE = LITE_SCRIPT_WEB_CONTENTS_DESTROYED_WHILE_INVISIBLE;
+  int MAX_VALUE = LITE_SCRIPT_BOTTOMSHEET_ONBOARDING_REJECTED;
 }

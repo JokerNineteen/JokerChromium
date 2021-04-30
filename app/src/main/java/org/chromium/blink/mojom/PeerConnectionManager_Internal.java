@@ -422,6 +422,7 @@ int peerConnectionLocalId) {
                         
                     result.thermalState = decoder0.readInt(8);
                         DeviceThermalState.validate(result.thermalState);
+                        result.thermalState = DeviceThermalState.toKnownValue(result.thermalState);
                     }
 
             } finally {

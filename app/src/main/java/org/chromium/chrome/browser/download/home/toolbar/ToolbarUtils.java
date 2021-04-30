@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat;
 
 import org.chromium.chrome.browser.download.DirectoryOption;
 import org.chromium.chrome.browser.download.DownloadDirectoryProvider;
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.chrome.browser.util.ChromeAccessibilityUtil;
 import org.chromium.components.browser_ui.widget.highlight.ViewHighlighter;
 import org.chromium.components.browser_ui.widget.textbubble.TextBubble;

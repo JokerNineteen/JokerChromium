@@ -1,4 +1,0 @@
-include_rules = [
-  "+chrome/browser/tabmodel",
-  "+chrome/browser/video_tutorials",
-]

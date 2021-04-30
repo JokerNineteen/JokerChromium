@@ -17,6 +17,7 @@ public  final class ClientConfigParams extends
     ClientConfigParamsOrBuilder {
   private ClientConfigParams() {
     enabledTypeIds_ = emptyIntList();
+    devicesFcmRegistrationTokens_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
   }
   private int bitField0_;
   public static final int ENABLED_TYPE_IDS_FIELD_NUMBER = 1;
@@ -299,6 +300,233 @@ public  final class ClientConfigParams extends
   private void clearSingleClient() {
     bitField0_ = (bitField0_ & ~0x00000004);
     singleClient_ = false;
+  }
+
+  public static final int DEVICES_FCM_REGISTRATION_TOKENS_FIELD_NUMBER = 5;
+  private com.google.protobuf.Internal.ProtobufList<java.lang.String> devicesFcmRegistrationTokens_;
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @return A list containing the devicesFcmRegistrationTokens.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.String> getDevicesFcmRegistrationTokensList() {
+    return devicesFcmRegistrationTokens_;
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @return The count of devicesFcmRegistrationTokens.
+   */
+  @java.lang.Override
+  public int getDevicesFcmRegistrationTokensCount() {
+    return devicesFcmRegistrationTokens_.size();
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param index The index of the element to return.
+   * @return The devicesFcmRegistrationTokens at the given index.
+   */
+  @java.lang.Override
+  public java.lang.String getDevicesFcmRegistrationTokens(int index) {
+    return devicesFcmRegistrationTokens_.get(index);
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the devicesFcmRegistrationTokens at the given index.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getDevicesFcmRegistrationTokensBytes(int index) {
+    return com.google.protobuf.ByteString.copyFromUtf8(
+        devicesFcmRegistrationTokens_.get(index));
+  }
+  private void ensureDevicesFcmRegistrationTokensIsMutable() {
+    com.google.protobuf.Internal.ProtobufList<java.lang.String> tmp =
+        devicesFcmRegistrationTokens_;  if (!tmp.isModifiable()) {
+      devicesFcmRegistrationTokens_ =
+          com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+     }
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param index The index to set the value at.
+   * @param value The devicesFcmRegistrationTokens to set.
+   */
+  private void setDevicesFcmRegistrationTokens(
+      int index, java.lang.String value) {
+    value.getClass();
+  ensureDevicesFcmRegistrationTokensIsMutable();
+    devicesFcmRegistrationTokens_.set(index, value);
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param value The devicesFcmRegistrationTokens to add.
+   */
+  private void addDevicesFcmRegistrationTokens(
+      java.lang.String value) {
+    value.getClass();
+  ensureDevicesFcmRegistrationTokensIsMutable();
+    devicesFcmRegistrationTokens_.add(value);
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param values The devicesFcmRegistrationTokens to add.
+   */
+  private void addAllDevicesFcmRegistrationTokens(
+      java.lang.Iterable<java.lang.String> values) {
+    ensureDevicesFcmRegistrationTokensIsMutable();
+    com.google.protobuf.AbstractMessageLite.addAll(
+        values, devicesFcmRegistrationTokens_);
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   */
+  private void clearDevicesFcmRegistrationTokens() {
+    devicesFcmRegistrationTokens_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+  }
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param value The bytes of the devicesFcmRegistrationTokens to add.
+   */
+  private void addDevicesFcmRegistrationTokensBytes(
+      com.google.protobuf.ByteString value) {
+    ensureDevicesFcmRegistrationTokensIsMutable();
+    devicesFcmRegistrationTokens_.add(value.toStringUtf8());
   }
 
   public static org.chromium.components.sync.protocol.ClientConfigParams parseFrom(
@@ -687,6 +915,233 @@ public  final class ClientConfigParams extends
       return this;
     }
 
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @return A list containing the devicesFcmRegistrationTokens.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.String>
+        getDevicesFcmRegistrationTokensList() {
+      return java.util.Collections.unmodifiableList(
+          instance.getDevicesFcmRegistrationTokensList());
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @return The count of devicesFcmRegistrationTokens.
+     */
+    @java.lang.Override
+    public int getDevicesFcmRegistrationTokensCount() {
+      return instance.getDevicesFcmRegistrationTokensCount();
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @param index The index of the element to return.
+     * @return The devicesFcmRegistrationTokens at the given index.
+     */
+    @java.lang.Override
+    public java.lang.String getDevicesFcmRegistrationTokens(int index) {
+      return instance.getDevicesFcmRegistrationTokens(index);
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the devicesFcmRegistrationTokens at the given index.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDevicesFcmRegistrationTokensBytes(int index) {
+      return instance.getDevicesFcmRegistrationTokensBytes(index);
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @param index The index to set the value at.
+     * @param value The devicesFcmRegistrationTokens to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDevicesFcmRegistrationTokens(
+        int index, java.lang.String value) {
+      copyOnWrite();
+      instance.setDevicesFcmRegistrationTokens(index, value);
+      return this;
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @param value The devicesFcmRegistrationTokens to add.
+     * @return This builder for chaining.
+     */
+    public Builder addDevicesFcmRegistrationTokens(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.addDevicesFcmRegistrationTokens(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @param values The devicesFcmRegistrationTokens to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllDevicesFcmRegistrationTokens(
+        java.lang.Iterable<java.lang.String> values) {
+      copyOnWrite();
+      instance.addAllDevicesFcmRegistrationTokens(values);
+      return this;
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDevicesFcmRegistrationTokens() {
+      copyOnWrite();
+      instance.clearDevicesFcmRegistrationTokens();
+      return this;
+    }
+    /**
+     * <pre>
+     * A list of FCM registration tokens which are obtained from other clients.
+     * This list is used by the server to send invalidations to all other clients.
+     * If the list is empty, the server should treat this as "there is no
+     * information about other clients". In practice, this happens by the next
+     * causes:
+     * 1. This is the old client which doesn't set this field.
+     * 2. There are too many active devices and the list would have too many
+     * items.
+     * 3. An empty list could also mean that the current client is the only
+     * client. This case should be covered by the |single_client| field instead
+     * (otherwise it could be mixed up with older clients). The server doesn't
+     * have to use this field and can ignore it.
+     * </pre>
+     *
+     * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+     * @param value The bytes of the devicesFcmRegistrationTokens to add.
+     * @return This builder for chaining.
+     */
+    public Builder addDevicesFcmRegistrationTokensBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.addDevicesFcmRegistrationTokensBytes(value);
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.ClientConfigParams)
   }
   @java.lang.Override
@@ -708,10 +1163,11 @@ public  final class ClientConfigParams extends
             "tabsDatatypeEnabled_",
             "cookieJarMismatch_",
             "singleClient_",
+            "devicesFcmRegistrationTokens_",
           };
           java.lang.String info =
-              "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0001\u0000\u0001\u0016\u0002\u1007" +
-              "\u0000\u0003\u1007\u0001\u0004\u1007\u0002";
+              "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0002\u0000\u0001\u0016\u0002\u1007" +
+              "\u0000\u0003\u1007\u0001\u0004\u1007\u0002\u0005\u001a";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

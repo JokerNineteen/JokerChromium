@@ -47,6 +47,12 @@ final class TranslateCompactInfoBarJni implements TranslateCompactInfoBar.Native
     return (boolean)GEN_JNI.org_chromium_chrome_browser_infobar_TranslateCompactInfoBar_isIncognito(nativeTranslateCompactInfoBar, caller);
   }
 
+  @Override
+  public String[] getContentLanguagesCodes(long nativeTranslateCompactInfoBar,
+      TranslateCompactInfoBar caller) {
+    return (String[])GEN_JNI.org_chromium_chrome_browser_infobar_TranslateCompactInfoBar_getContentLanguagesCodes(nativeTranslateCompactInfoBar, caller);
+  }
+
   public static TranslateCompactInfoBar.Natives get() {
     if (GEN_JNI.TESTING_ENABLED) {
       if (testInstance != null) {

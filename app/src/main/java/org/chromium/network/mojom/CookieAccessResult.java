@@ -16,12 +16,13 @@ package org.chromium.network.mojom;
 
 public final class CookieAccessResult extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int effectiveSameSite;
     public int accessSemantics;
     public CookieInclusionStatus status;
+    public boolean isAllowedToAccessSecureCookies;
 
     private CookieAccessResult(int version) {
         super(STRUCT_SIZE, version);
@@ -60,16 +61,22 @@ public final class CookieAccessResult extends org.chromium.mojo.bindings.Struct 
                     
                 result.effectiveSameSite = decoder0.readInt(8);
                     CookieEffectiveSameSite.validate(result.effectiveSameSite);
+                    result.effectiveSameSite = CookieEffectiveSameSite.toKnownValue(result.effectiveSameSite);
                 }
                 {
                     
                 result.accessSemantics = decoder0.readInt(12);
                     CookieAccessSemantics.validate(result.accessSemantics);
+                    result.accessSemantics = CookieAccessSemantics.toKnownValue(result.accessSemantics);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                 result.status = CookieInclusionStatus.decode(decoder1);
+                }
+                {
+                    
+                result.isAllowedToAccessSecureCookies = decoder0.readBoolean(24, 0);
                 }
 
         } finally {
@@ -88,5 +95,7 @@ public final class CookieAccessResult extends org.chromium.mojo.bindings.Struct 
         encoder0.encode(this.accessSemantics, 12);
         
         encoder0.encode(this.status, 16, false);
+        
+        encoder0.encode(this.isAllowedToAccessSecureCookies, 24, 0);
     }
 }

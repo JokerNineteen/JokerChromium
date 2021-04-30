@@ -21,8 +21,7 @@ public final class SharedWorkerInfo extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.url.mojom.Url url;
     public WorkerOptions options;
-    public String contentSecurityPolicy;
-    public int contentSecurityPolicyType;
+    public org.chromium.network.mojom.ContentSecurityPolicy[] contentSecurityPolicies;
     public int creationAddressSpace;
     public FetchClientSettingsObject outsideFetchClientSettingsObject;
 
@@ -71,17 +70,22 @@ public final class SharedWorkerInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.contentSecurityPolicy = decoder0.readString(24, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.contentSecurityPolicies = new org.chromium.network.mojom.ContentSecurityPolicy[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.contentSecurityPolicies[i1] = org.chromium.network.mojom.ContentSecurityPolicy.decode(decoder2);
+                    }
+                }
                 }
                 {
                     
-                result.contentSecurityPolicyType = decoder0.readInt(32);
-                    org.chromium.network.mojom.ContentSecurityPolicyType.validate(result.contentSecurityPolicyType);
-                }
-                {
-                    
-                result.creationAddressSpace = decoder0.readInt(36);
+                result.creationAddressSpace = decoder0.readInt(32);
                     org.chromium.network.mojom.IpAddressSpace.validate(result.creationAddressSpace);
+                    result.creationAddressSpace = org.chromium.network.mojom.IpAddressSpace.toKnownValue(result.creationAddressSpace);
                 }
                 {
                     
@@ -104,11 +108,17 @@ public final class SharedWorkerInfo extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.options, 16, false);
         
-        encoder0.encode(this.contentSecurityPolicy, 24, false);
+        if (this.contentSecurityPolicies == null) {
+            encoder0.encodeNullPointer(24, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.contentSecurityPolicies.length, 24, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.contentSecurityPolicies.length; ++i0) {
+                
+                encoder1.encode(this.contentSecurityPolicies[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
         
-        encoder0.encode(this.contentSecurityPolicyType, 32);
-        
-        encoder0.encode(this.creationAddressSpace, 36);
+        encoder0.encode(this.creationAddressSpace, 32);
         
         encoder0.encode(this.outsideFetchClientSettingsObject, 40, false);
     }

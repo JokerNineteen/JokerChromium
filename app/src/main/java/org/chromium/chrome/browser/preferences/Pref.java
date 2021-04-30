@@ -17,6 +17,7 @@ public final class Pref {
     //     ../../components/embedder_support/pref_names.cc,
     //     ../../components/feed/core/common/pref_names.cc,
     //     ../../components/feed/core/shared_prefs/pref_names.cc,
+    //     ../../components/language/core/browser/pref_names.cc,
     //     ../../components/offline_pages/core/prefetch/prefetch_prefs.cc,
     //     ../../components/password_manager/core/common/password_manager_pref_names.cc,
     //     ../../components/payments/core/payment_prefs.cc,
@@ -105,12 +106,6 @@ public final class Pref {
     // shutdown. Used to determine the exit type the last time the profile was open.
     public static final String SESSION_EXIT_TYPE = "profile.exit_type";
 
-    // The last time that the site engagement service recorded an engagement event
-    // for this profile for any URL. Recorded only during shutdown. Used to prevent
-    // the service from decaying engagement when a user does not use Chrome at all
-    // for an extended period of time.
-    public static final String SITE_ENGAGEMENT_LAST_UPDATE_TIME = "profile.last_engagement_time";
-
     // An integer pref. Holds one of several values:
     // 0: unused, previously indicated to open the homepage on startup
     // 1: restore the last session.
@@ -194,11 +189,6 @@ public final class Pref {
     // manager. See SupervisedUserSharedSettingsService for a description of
     // the format.
     public static final String SUPERVISED_USER_SHARED_SETTINGS = "profile.managed.shared_settings";
-
-    // A dictionary storing allowlists for a supervised user. The key is the CRX ID
-    // of the allowlist, the value a dictionary containing allowlist properties
-    // (currently the name).
-    public static final String SUPERVISED_USER_ALLOWLISTS = "profile.managed.whitelists";
 
     // Integer. RLZ ping delay in seconds.
     public static final String RLZ_PING_DELAY_SECONDS = "rlz_ping_delay";
@@ -416,9 +406,13 @@ public final class Pref {
     // proceed anyway. Otherwise, proceeding is not possible.
     public static final String SSL_ERROR_OVERRIDE_ALLOWED = "ssl.error_override_allowed";
 
+    // List of origins for which the SSL interstitial should allow users to proceed
+    // anyway. Ignored if kSSLErrorOverrideAllowed is false.
+    public static final String SSL_ERROR_OVERRIDE_ALLOWED_FOR_ORIGINS = "ssl.error_override_allowed_for_origins";
+
     // Enum that specifies whether Incognito mode is:
     // 0 - Enabled. Default behaviour. Default mode is available on demand.
-    // 1 - Disabled. Used cannot browse pages in Incognito mode.
+    // 1 - Disabled. User cannot browse pages in Incognito mode.
     // 2 - Forced. All pages/sessions are forced into Incognito.
     public static final String INCOGNITO_MODE_AVAILABILITY = "incognito.mode_availability";
 
@@ -498,6 +492,13 @@ public final class Pref {
     // A boolean pref set to true if primary mouse button is the left button.
     public static final String PRIMARY_MOUSE_BUTTON_RIGHT = "settings.mouse.primary_right";
 
+    // A boolean pref set to true if primary pointing stick button is the left
+    // button.
+    public static final String PRIMARY_POINTING_STICK_BUTTON_RIGHT = "settings.pointing_stick.primary_right";
+
+    // Copy of the primary pointing stick buttons option to use on login screen.
+    public static final String OWNER_PRIMARY_POINTING_STICK_BUTTON_RIGHT = "owner.pointing_stick.primary_right";
+
     // A boolean pref set to true if mouse acceleration is enabled. When disabled
     // only simple linear scaling is applied based on sensitivity.
     public static final String MOUSE_ACCELERATION = "settings.mouse.acceleration";
@@ -505,6 +506,10 @@ public final class Pref {
     // A boolean pref set to true if mouse scroll acceleration is enabled. When
     // disabled, only simple linear scaling is applied based on sensitivity.
     public static final String MOUSE_SCROLL_ACCELERATION = "settings.mouse.scroll_acceleration";
+
+    // A boolean pref set to true if pointing stick acceleration is enabled. When
+    // disabled only simple linear scaling is applied based on sensitivity.
+    public static final String POINTING_STICK_ACCELERATION = "settings.pointing_stick.acceleration";
 
     // A boolean pref set to true if touchpad acceleration is enabled. When
     // disabled only simple linear scaling is applied based on sensitivity.
@@ -527,6 +532,9 @@ public final class Pref {
     // A integer pref for the touchpad scroll sensitivity, in the range
     // [PointerSensitivity::kLowest, PointerSensitivity::kHighest].
     public static final String TOUCHPAD_SCROLL_SENSITIVITY = "settings.touchpad.scroll_sensitivity";
+
+    // A integer pref for pointing stick sensitivity.
+    public static final String POINTING_STICK_SENSITIVITY = "settings.pointing_stick.sensitivity";
 
     // A boolean pref set to true if time should be displayed in 24-hour clock.
     public static final String USE24_HOUR_CLOCK = "settings.clock.use_24hour_clock";
@@ -873,10 +881,6 @@ public final class Pref {
     // It's true by default, unless it's ensured that all extensions are "safe".
     public static final String MANAGED_SESSION_USE_FULL_LOGIN_WARNING = "managed_session.use_full_warning";
 
-    // Boolean pref indicating whether the privacy notification displayed when the
-    // managed-guest session on Chrome OS is auto-launched should be pinned or not.
-    public static final String MANAGED_GUEST_SESSION_AUTO_LAUNCH_NOTIFICATION_REDUCED = "managed_session.reduce_auto_launch_notification";
-
     // Boolean pref indicating whether the user has previously dismissed the
     // one-time notification indicating the need for a cleanup powerwash after TPM
     // firmware update that didn't flush the TPM SRK.
@@ -1011,14 +1015,6 @@ public final class Pref {
     // A string pref stored in local state containing the name of the device.
     public static final String DEVICE_NAME = "device_name";
 
-    // Boolean user profile pref that determines whether to show a banner in browser
-    // settings that links to OS settings.
-    public static final String SETTINGS_SHOW_OS_BANNER = "settings.cros.show_os_banner";
-
-    // A JSON pref for controlling which USB devices are whitelisted for certain
-    // urls to be used via the WebUSB API on the login screen.
-    public static final String DEVICE_LOGIN_SCREEN_WEB_USB_ALLOW_DEVICES_FOR_URLS = "device_login_screen_webusb_allow_devices_for_urls";
-
     // Int64 pref indicating the time in microseconds since Windows epoch when the
     // timer for update required which will block user session was started. If the
     // timer is not started the pref holds the default value base::Time().
@@ -1037,6 +1033,15 @@ public final class Pref {
     // Boolean pref indicating whether the supervised user has migrated EDU
     // secondary account to ARC++.
     public static final String EDU_COEXISTENCE_ARC_MIGRATION_COMPLETED = "account_manager.edu_coexistence_arc_migration_completed";
+
+    // Boolean pref indicating whether reusing the Chrome OS login credentials for
+    // network authentication is allowed. Note: currently only used for managed
+    // proxies secured with NTLM authentication.
+    public static final String INTEGRATED_WEB_AUTHENTICATION_ALLOWED = "auth.integrated_web_authentication_allowed";
+
+    // Boolean user profile pref that determines whether to show a banner in browser
+    // settings that links to OS settings.
+    public static final String SETTINGS_SHOW_OS_BANNER = "settings.cros.show_os_banner";
 
     // A boolean pref set to true if a Home button to open the Home pages should be
     // visible on the toolbar.
@@ -1174,12 +1179,6 @@ public final class Pref {
     // The file path of the Speech On-Device API (SODA) binary.
     public static final String SODA_BINARY_PATH = "accessibility.captions.soda_binary_path";
 
-    // The file path of the en-US Speech On-Device API (SODA) configuration file.
-    public static final String SODA_EN_US_CONFIG_PATH = "accessibility.captions.soda_en_us_config_path";
-
-    // The file path of the ja-JP Speech On-Device API (SODA) configuration file.
-    public static final String SODA_JA_JP_CONFIG_PATH = "accessibility.captions.soda_ja_jp_config_path";
-
     // The scheduled time to clean up the Speech On-Device API (SODA) files from the
     // device.
     public static final String SODA_SCHEDULED_DELETION_TIME = "accessibility.captions.soda_scheduled_deletion_time";
@@ -1293,6 +1292,10 @@ public final class Pref {
     // Indicates if we've already shown a notification that high contrast
     // mode is on, recommending high-contrast extensions and themes.
     public static final String INVERT_NOTIFICATION_SHOWN = "invert_notification_version_2_shown";
+
+    // A boolean indicating whether deprecated privet printing should be forced
+    // to be enabled.
+    public static final String FORCE_ENABLE_PRIVET_PRINTING = "printing.force_enable_privet_printing";
 
     // A pref holding the list of printer types to be disabled.
     public static final String PRINTER_TYPE_DENY_LIST = "printing.printer_type_deny_list";
@@ -1495,13 +1498,25 @@ public final class Pref {
     // request denies in a row.
     public static final String HAD_THREE_CONSECUTIVE_NOTIFICATION_PERMISSION_DENIES = "profile.content_settings.had_three_consecutive_denies.notifications";
 
-    // List containing a history of past permission actions.
-    public static final String NOTIFICATION_PERMISSION_ACTIONS = "profile.content_settings.permission_actions.notifications";
+    // List containing a history of past permission actions, for all permission
+    // types.
+    public static final String PERMISSION_ACTIONS = "profile.content_settings.permission_actions";
+
+    // Boolean indicating if JS dialogs triggered from a different origin iframe
+    // should be blocked. Has no effect if
+    // "SuppressDifferentOriginSubframeJSDialogs" feature is disabled.
+    public static final String SUPPRESS_DIFFERENT_ORIGIN_SUBFRAME_JS_DIALOGS = "suppress_different_origin_subframe_js_dialogs";
 
     // Directory of the last profile used.
     public static final String PROFILE_LAST_USED = "profile.last_used";
 
-    // List of directories of the profiles last active.
+    // List of directories of the profiles last active in browser windows. It does
+    // not include profiles active in app windows. When a browser window is opened,
+    // if it's the only browser window open in the profile, its profile is added to
+    // this list. When a browser window is closed, and there are no other browser
+    // windows open in the profile, its profile is removed from this list. When
+    // Chrome is launched with --session-restore, each of the profiles in this list
+    // have their sessions restored.
     public static final String PROFILES_LAST_ACTIVE = "profile.last_active_profiles";
 
     // Total number of profiles created for this Chrome build. Used to tag profile
@@ -1715,6 +1730,9 @@ public final class Pref {
 
     public static final String NTP_MODULES_VISIBLE = "NewTabPage.ModulesVisible";
 
+
+    public static final String NTP_DISABLED_MODULES = "NewTabPage.DisabledModules";
+
     // List of promos that the user has dismissed while on the NTP.
     public static final String NTP_PROMO_BLOCKLIST = "ntp.promo_blocklist";
 
@@ -1794,6 +1812,18 @@ public final class Pref {
     // will be launched.
     public static final String WEB_APP_INSTALL_FORCE_LIST = "profile.web_app.install.forcelist";
 
+    // A list of dictionaries for managing Web Apps.
+    public static final String WEB_APP_SETTINGS = "profile.web_app.policy_settings";
+
+    // A list of dictionaries for managed configurations. Each dictionary contains
+    // 3 strings -- origin to be configured, link to the configuration, and the
+    // hashed value to that configuration.
+    public static final String MANAGED_CONFIGURATION_PER_ORIGIN = "profile.managed_configuration.list";
+
+    // Dictionary that maps the hash of the last downloded managed configuration for
+    // a particular origin.
+    public static final String LAST_MANAGED_CONFIGURATION_HASH_FOR_ORIGIN = "profile.managed_configuration.last_hash";
+
     // Dictionary that maps web app ids to installation metrics used by UMA.
     public static final String WEB_APP_INSTALL_METRICS = "web_app_install_metrics";
 
@@ -1807,14 +1837,29 @@ public final class Pref {
     // Dictionary that maps web app URLs to Chrome extension IDs.
     public static final String WEB_APPS_EXTENSION_I_DS = "web_apps.extension_ids";
 
+    // Dictionary that stores IPH state not scoped to a particular app.
+    public static final String WEB_APPS_APP_AGNOSTIC_IPH_STATE = "web_apps.app_agnostic_iph_state";
+
     // A string representing the last version of Chrome preinstalled web apps were
     // synchronised for.
     public static final String WEB_APPS_LAST_PREINSTALL_SYNCHRONIZE_VERSION = "web_apps.last_preinstall_synchronize_version";
+
+    // A list of all apps that have been migrated to web apps.
+    public static final String WEB_APPS_MIGRATED_DEFAULT_APPS = "web_apps.migrated_default_apps";
+
+    // A list of migrated features for migrating default chrome apps.
+    public static final String WEB_APPS_DID_MIGRATE_DEFAULT_CHROME_APPS = "web_apps.did_migrate_default_chrome_apps";
+
+    // A list of default chrome apps that were uninstalled by the user.
+    public static final String WEB_APPS_UNINSTALLED_DEFAULT_CHROME_APPS = "web_apps.uninstalled_default_chrome_apps";
 
     // Dictionary that maps web app ID to a dictionary of various preferences.
     // Used only in the new web applications system to store app preferences which
     // outlive the app installation and uninstallation.
     public static final String WEB_APPS_PREFERENCES = "web_apps.web_app_ids";
+
+    // Dictionary that maps origins to web apps that can act as URL handlers.
+    public static final String WEB_APPS_URL_HANDLER_INFO = "web_apps.url_handler_info";
 
 
     public static final String WEB_APPS_USER_DISPLAY_MODE_CLEANED_UP = "web_apps.user_display_mode_cleaned_up";
@@ -1870,9 +1915,8 @@ public final class Pref {
     public static final String ENABLE_AUTH_NEGOTIATE_PORT = "auth.enable_negotiate_port";
 
     // Allowlist containing servers for which Integrated Authentication is enabled.
-    // Note that this used to be `kAuthServerWhitelist`, hence the difference
-    // between the variable name and the string value.
-    public static final String AUTH_SERVER_ALLOWLIST = "auth.server_whitelist";
+    // This pref should match |android_webview::prefs::kAuthServerAllowlist|.
+    public static final String AUTH_SERVER_ALLOWLIST = "auth.server_allowlist";
 
     // Allowlist containing servers Chrome is allowed to do Kerberos delegation
     // with. Note that this used to be `kAuthNegotiateDelegateWhitelist`, hence the
@@ -2098,16 +2142,6 @@ public final class Pref {
 
     // A string pref with initial locale set in VPD or manifest.
     public static final String INITIAL_LOCALE = "intl.initial_locale";
-
-    // A boolean pref of the OOBE complete flag (first OOBE part before login).
-    public static final String OOBE_COMPLETE = "OobeComplete";
-
-    // The name of the screen that has to be shown if OOBE has been interrupted.
-    public static final String OOBE_SCREEN_PENDING = "OobeScreenPending";
-
-    // A boolean pref to indicate if the marketing opt-in screen in OOBE is finished
-    // for the user.
-    public static final String OOBE_MARKETING_OPT_IN_SCREEN_FINISHED = "OobeMarketingOptInScreenFinished";
 
     // A boolean pref of the device registered flag (second part after first login).
     public static final String DEVICE_REGISTERED = "DeviceRegistered";
@@ -2459,9 +2493,6 @@ public final class Pref {
     // re-created.
     public static final String APP_SHORTCUTS_ARCH = "apps.shortcuts_arch";
 
-    // A string pref for storing the salt used to compute the pepper device ID.
-    public static final String DRM_SALT = "settings.privacy.drm_salt";
-
     // A boolean pref that enables the (private) pepper GetDeviceID() call and
     // enables the use of remote attestation for content protection.
     public static final String ENABLE_DRM = "settings.privacy.drm_enabled";
@@ -2496,12 +2527,21 @@ public final class Pref {
     // Whether profile can be used before sign in.
     public static final String FORCE_BROWSER_SIGNIN = "profile.force_browser_signin";
 
+    // Whether profile picker is enabled, disabled or forced on startup.
+    public static final String BROWSER_PROFILE_PICKER_AVAILABILITY_ON_STARTUP = "profile.picker_availability_on_startup";
+
+    // Whether the profile picker has been shown at least once.
+    public static final String BROWSER_PROFILE_PICKER_SHOWN = "profile.picker_shown";
+
     // Whether to show the profile picker on startup or not.
     public static final String BROWSER_SHOW_PROFILE_PICKER_ON_STARTUP = "profile.show_picker_on_startup";
 
     // Boolean which indicates if the user is allowed to sign into Chrome on the
     // next startup.
     public static final String SIGNIN_ALLOWED_ON_NEXT_STARTUP = "signin.allowed_on_next_startup";
+
+    // Boolean which indicate if signin interception is enabled.
+    public static final String SIGNIN_INTERCEPTION_ENABLED = "signin.interception_enabled";
 
     // Device identifier used by CryptAuth stored in local state. This ID is
     // combined with a user ID before being registered with the CryptAuth server,
@@ -2534,10 +2574,6 @@ public final class Pref {
 
     // Boolean that indicates whether elevation is needed to recover Chrome upgrade.
     public static final String RECOVERY_COMPONENT_NEEDS_ELEVATION = "recovery_component.needs_elevation";
-
-    // A dictionary that maps from supervised user whitelist IDs to their properties
-    // (name and a list of clients that registered the whitelist).
-    public static final String REGISTERED_SUPERVISED_USER_WHITELISTS = "supervised_users.whitelists";
 
     // Boolean that indicates whether Chrome enterprise extension request is enabled
     // or not.
@@ -2624,7 +2660,7 @@ public final class Pref {
 
     // Contains the MD5 digest of the current module blacklist cache. Used to detect
     // external tampering.
-    public static final String MODULE_BLACKLIST_CACHE_MD5_DIGEST = "module_blacklist_cache_md5_digest";
+    public static final String MODULE_BLOCKLIST_CACHE_MD5_DIGEST = "module_blocklist_cache_md5_digest";
 
     // A boolean value, controlling whether third party software is allowed to
     // inject into Chrome's processes.
@@ -2755,8 +2791,12 @@ public final class Pref {
     public static final String BLOCK_AUTOPLAY_ENABLED = "media.block_autoplay";
 
     // Boolean that indicates if native notifications are allowed to be used in
-    // place of Chrome notifications.
+    // place of Chrome notifications. Will be replaced by kAllowSystemNotifications.
     public static final String ALLOW_NATIVE_NOTIFICATIONS = "native_notifications.allowed";
+
+    // Boolean that indicates if system notifications are allowed to be used in
+    // place of Chrome notifications.
+    public static final String ALLOW_SYSTEM_NOTIFICATIONS = "system_notifications.allowed";
 
     // Integer that holds the value of the next persistent notification ID to be
     // used.
@@ -2849,6 +2889,9 @@ public final class Pref {
     // This pref enables checking of Media Feed items against the Safe Search API.
     public static final String MEDIA_FEEDS_SAFE_SEARCH_ENABLED = "media_feeds_safe_search_enabled";
 
+    // This pref enables automated selection of Media Feeds to fetch.
+    public static final String MEDIA_FEEDS_AUTO_SELECT_ENABLED = "media_feeds_auto_select_enabled";
+
     // This pref reenables AppCache temporarily during its deprecation process.
     // In particular, this sets the AppcacheRequireOriginTrial feature to false.
     // TODO(enne): Remove this once AppCache has been removed.
@@ -2892,6 +2935,31 @@ public final class Pref {
     // removed. The action will only happen after the notification timed out. If
     // this pref is set to 0, the action happens immediately.
     public static final String SECURITY_TOKEN_SESSION_NOTIFICATION_SECONDS = "security_token_session_notification_seconds";
+
+    // In addition to the notification described directly above, another
+    // notification will be displayed after the action happened. This only happens
+    // once for a user. This boolean pref saves whether this notification was
+    // already displayed for a user.
+    public static final String SECURITY_TOKEN_SESSION_NOTIFICATION_DISPLAYED = "security_token_session_notification_displayed";
+
+    // This string pref is set when the notification after the action mentioned
+    // above is about to be displayed. It contains the domain that manages the user
+    // who was logged out, to be used as part of the notification message.
+    public static final String SECURITY_TOKEN_SESSION_NOTIFICATION_SCHEDULED_DOMAIN = "security_token_session_notification_scheduled";
+
+    // Boolean pref indicating whether user has hidden the cart module on NTP.
+    public static final String CART_MODULE_HIDDEN = "cart_module_hidden";
+
+    // An integer that keeps track of how many times welcome surface has shown in
+    // cart module.
+    public static final String CART_MODULE_WELCOME_SURFACE_SHOWN_TIMES = "cart_module_welcome_surface_shown_times";
+
+    // Boolean pref controlling whether immersive AR sessions are enabled
+    // in WebXR Device API.
+    public static final String WEB_XR_IMMERSIVE_AR_ENABLED = "webxr.immersive_ar_enabled";
+
+    // The duration for keepalive requests on browser shutdown.
+    public static final String FETCH_KEEPALIVE_DURATION_ON_SHUTDOWN = "fetch_keepalive_duration_on_shutdown";
 
     // Integer that is set to the last choice user made when prompted for saving a
     // credit card. The prompt is for user's consent in saving the card in the
@@ -3000,28 +3068,7 @@ public final class Pref {
     public static final String ALTERNATE_ERROR_PAGES_ENABLED = "alternate_error_pages.enabled";
 
 
-    public static final String BACKGROUND_REFRESH_PERIOD = "feed.background_refresh_period";
-
-
     public static final String LAST_FETCH_ATTEMPT_TIME = "feed.last_fetch_attempt";
-
-
-    public static final String THROTTLER_REQUEST_COUNT = "feed.refresh_throttler.count";
-
-
-    public static final String THROTTLER_REQUESTS_DAY = "feed.refresh_throttler.day";
-
-
-    public static final String USER_CLASSIFIER_AVERAGE_SUGGESTIONS_VIWED_PER_HOUR = "feed.user_classifier.average_suggestions_veiwed_per_hour";
-
-
-    public static final String USER_CLASSIFIER_AVERAGE_SUGGESTIONS_USED_PER_HOUR = "feed.user_classifier.average_suggestions_used_per_hour";
-
-
-    public static final String USER_CLASSIFIER_LAST_TIME_TO_VIEW_SUGGESTIONS = "feed.user_classifier.last_time_to_view_suggestions";
-
-
-    public static final String USER_CLASSIFIER_LAST_TIME_TO_USE_SUGGESTIONS = "feed.user_classifier.last_time_to_use_suggestions";
 
 
     public static final String HOST_OVERRIDE_HOST = "feed.host_override.host";
@@ -3036,7 +3083,7 @@ public final class Pref {
     public static final String LAST_FETCH_HAD_NOTICE_CARD = "feed.last_fetch_had_notice_card";
 
 
-    public static final String LAST_REFRESH_WAS_SIGNED_IN = "feed.last_refresh_was_signed_in";
+    public static final String LAST_FETCH_HAD_LOGGING_ENABLED = "feed.last_fetch_had_logging_enabled";
 
 
     public static final String NOTICE_CARD_VIEWS_COUNT = "feed.notice_card_views_count";
@@ -3062,8 +3109,35 @@ public final class Pref {
 
     public static final String CLIENT_INSTANCE_ID = "feedv2.client_instance_id";
 
+    // This pref applies to all discover APIs despite the string.
+    public static final String DISCOVER_API_ENDPOINT_OVERRIDE = "feedv2.actions_endpoint_override";
 
-    public static final String ACTIONS_ENDPOINT_OVERRIDE = "feedv2.actions_endpoint_override";
+
+    public static final String EXPERIMENTS = "feedv2.experiments";
+
+
+    public static final String LAST_REFRESH_WAS_SIGNED_IN = "feed.last_refresh_was_signed_in";
+
+
+    public static final String BACKGROUND_REFRESH_PERIOD = "feed.background_refresh_period";
+
+
+    public static final String THROTTLER_REQUEST_COUNT = "feed.refresh_throttler.count";
+
+
+    public static final String THROTTLER_REQUESTS_DAY = "feed.refresh_throttler.day";
+
+
+    public static final String USER_CLASSIFIER_AVERAGE_SUGGESTIONS_VIWED_PER_HOUR = "feed.user_classifier.average_suggestions_veiwed_per_hour";
+
+
+    public static final String USER_CLASSIFIER_AVERAGE_SUGGESTIONS_USED_PER_HOUR = "feed.user_classifier.average_suggestions_used_per_hour";
+
+
+    public static final String USER_CLASSIFIER_LAST_TIME_TO_VIEW_SUGGESTIONS = "feed.user_classifier.last_time_to_view_suggestions";
+
+
+    public static final String USER_CLASSIFIER_LAST_TIME_TO_USE_SUGGESTIONS = "feed.user_classifier.last_time_to_use_suggestions";
 
 
     public static final String ENABLE_SNIPPETS = "ntp_snippets.enable";
@@ -3072,6 +3146,28 @@ public final class Pref {
     // FEED_ARTICLES_LIST_VISIBLE in ChromePreferenceKeys.java is a pre-native cache
     // and should be consistent with this pref.
     public static final String ARTICLES_LIST_VISIBLE = "ntp_snippets.list_visible";
+
+    // The value to use for Accept-Languages HTTP header when making an HTTP
+    // request.
+    public static final String ACCEPT_LANGUAGES = "intl.accept_languages";
+
+    // A string pref (comma-separated list) set to the preferred language IDs
+    // (ex. "en-US,fr,ko").
+    public static final String PREFERRED_LANGUAGES = "settings.language.preferred_languages";
+
+
+    public static final String PREFERRED_LANGUAGES_SYNCABLE = "settings.language.preferred_languages_syncable";
+
+    // The JSON representation of the user's language profile. Used as an input to
+    // the user language model (i.e. for determining which languages a user
+    // understands).
+    public static final String USER_LANGUAGE_PROFILE = "language_profile";
+
+    // Important: Refer to header file for how to use this.
+    public static final String APPLICATION_LOCALE = "intl.app_locale";
+
+    // Originally translate blocked languages from TranslatePrefs.
+    public static final String FLUENT_LANGUAGES = "translate_blocked_languages";
 
     // Prefs only accessed in this file
     public static final String LIMITLESS_PREFETCHING_ENABLED_TIME_PREF = "offline_prefetch.limitless_prefetching_enabled_time";
@@ -3114,6 +3210,9 @@ public final class Pref {
 
 
     public static final String WAS_AUTO_SIGN_IN_FIRST_RUN_EXPERIENCE_SHOWN = "profile.was_auto_sign_in_first_run_experience_shown";
+
+
+    public static final String WAS_PHISHED_CREDENTIALS_UPLOADED_TO_SYNC = "profile.was_phished_credentials_uploaded_to_sync";
 
 
     public static final String WAS_SIGN_IN_PASSWORD_PROMO_CLICKED = "profile.was_sign_in_password_promo_clicked";
@@ -3161,6 +3260,9 @@ public final class Pref {
     public static final String CAN_MAKE_PAYMENT_ENABLED = "payments.can_make_payment_enabled";
 
 
+    public static final String SAFE_BROWSING_CSD_PING_TIMESTAMPS = "safebrowsing.csd_ping_timestamps";
+
+
     public static final String SAFE_BROWSING_ENABLED = "safebrowsing.enabled";
 
 
@@ -3168,6 +3270,9 @@ public final class Pref {
 
 
     public static final String SAFE_BROWSING_ENTERPRISE_REAL_TIME_URL_CHECK_MODE = "safebrowsing.enterprise_real_time_url_check_mode";
+
+
+    public static final String SAFE_BROWSING_ENTERPRISE_REAL_TIME_URL_CHECK_SCOPE = "safebrowsing.enterprise_real_time_url_check_scope";
 
 
     public static final String SAFE_BROWSING_EXTENDED_REPORTING_OPT_IN_ALLOWED = "safebrowsing.extended_reporting_opt_in_allowed";
@@ -3194,7 +3299,7 @@ public final class Pref {
     public static final String SAFE_BROWSING_NEXT_PASSWORD_CAPTURE_EVENT_LOG_TIME = "safebrowsing.next_password_capture_event_log_time";
 
 
-    public static final String SAFE_BROWSING_WHITELIST_DOMAINS = "safebrowsing.safe_browsing_whitelist_domains";
+    public static final String SAFE_BROWSING_ALLOWLIST_DOMAINS = "safebrowsing.safe_browsing_whitelist_domains";
 
 
     public static final String PASSWORD_PROTECTION_CHANGE_PASSWORD_URL = "safebrowsing.password_protection_change_password_url";
@@ -3213,6 +3318,9 @@ public final class Pref {
 
 
     public static final String SAFE_BROWSING_METRICS_LAST_LOG_TIME = "safebrowsing.metrics_last_log_time";
+
+
+    public static final String SAFE_BROWSING_EVENT_TIMESTAMPS = "safebrowsing.event_timestamps";
 
     // A boolean pref - should unauthenticated user should be logged out
     // automatically. Default value is false.
@@ -3251,10 +3359,6 @@ public final class Pref {
     // Boolean indicating if the user gave consent for Sync.
     public static final String GOOGLE_SERVICES_CONSENTED_TO_SYNC = "google.services.consented_to_sync";
 
-    // The profile's hosted domain; empty if unset; kNoHostedDomainFound if there
-    // is none.
-    public static final String GOOGLE_SERVICES_HOSTED_DOMAIN = "google.services.hosted_domain";
-
     // Similar to kGoogleServicesLastUsername, this is the corresponding version of
     // kGoogleServicesAccountId that is not cleared on signout.
     public static final String GOOGLE_SERVICES_LAST_ACCOUNT_ID = "google.services.last_account_id";
@@ -3289,14 +3393,6 @@ public final class Pref {
 
     // True if the token service has been prepared for Dice migration.
     public static final String TOKEN_SERVICE_DICE_COMPATIBLE = "token_service.dice_compatible";
-
-    // Boolean which stores if the ProfileOAuth2TokenService should ignore secondary
-    // accounts.
-    public static final String TOKEN_SERVICE_EXCLUDE_ALL_SECONDARY_ACCOUNTS = "token_service.exclude_all_secondary_accounts";
-
-    // List that identifies the account id that should be ignored by the token
-    // service.
-    public static final String TOKEN_SERVICE_EXCLUDED_SECONDARY_ACCOUNTS = "token_service.excluded_secondary_accounts";
 
     // Contains last |ListAccounts| data which corresponds to Gaia cookies.
     public static final String GAIA_COOKIE_LAST_LIST_ACCOUNTS_DATA = "gaia_cookie.last_list_accounts_data";

@@ -78,6 +78,7 @@ public final class DragData extends org.chromium.mojo.bindings.Struct {
                     
                 result.referrerPolicy = decoder0.readInt(24);
                     org.chromium.network.mojom.ReferrerPolicy.validate(result.referrerPolicy);
+                    result.referrerPolicy = org.chromium.network.mojom.ReferrerPolicy.toKnownValue(result.referrerPolicy);
                 }
 
         } finally {

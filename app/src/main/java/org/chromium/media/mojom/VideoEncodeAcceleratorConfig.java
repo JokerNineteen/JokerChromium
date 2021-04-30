@@ -37,6 +37,10 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private ContentType() {}
     }
 
@@ -44,7 +48,7 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
         private static final boolean IS_EXTENSIBLE = false;
 
         public static final int SHMEM = 0;
-        public static final int DMABUF = 1;
+        public static final int GPU_MEMORY_BUFFER = 1;
         public static final int MIN_VALUE = 0;
         public static final int MAX_VALUE = 1;
 
@@ -55,6 +59,10 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
         public static void validate(int value) {
             if (IS_EXTENSIBLE || isKnownValue(value)) return;
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
         }
 
         private StorageType() {}
@@ -112,11 +120,13 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
                     
                 result.inputFormat = decoder0.readInt(8);
                     VideoPixelFormat.validate(result.inputFormat);
+                    result.inputFormat = VideoPixelFormat.toKnownValue(result.inputFormat);
                 }
                 {
                     
                 result.outputProfile = decoder0.readInt(12);
                     VideoCodecProfile.validate(result.outputProfile);
+                    result.outputProfile = VideoCodecProfile.toKnownValue(result.outputProfile);
                 }
                 {
                     
@@ -163,11 +173,13 @@ public final class VideoEncodeAcceleratorConfig extends org.chromium.mojo.bindin
                     
                 result.storageType = decoder0.readInt(40);
                     VideoEncodeAcceleratorConfig.StorageType.validate(result.storageType);
+                    result.storageType = VideoEncodeAcceleratorConfig.StorageType.toKnownValue(result.storageType);
                 }
                 {
                     
                 result.contentType = decoder0.readInt(44);
                     VideoEncodeAcceleratorConfig.ContentType.validate(result.contentType);
+                    result.contentType = VideoEncodeAcceleratorConfig.ContentType.toKnownValue(result.contentType);
                 }
                 {
                     

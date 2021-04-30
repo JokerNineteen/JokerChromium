@@ -44,22 +44,27 @@ public final class RequestContextType {
     public static final int SERVICE_WORKER = 25;
     public static final int SHARED_WORKER = 26;
     public static final int SUBRESOURCE = 27;
-    public static final int STYLE = 28;
-    public static final int TRACK = 29;
-    public static final int VIDEO = 30;
-    public static final int WORKER = 31;
-    public static final int XML_HTTP_REQUEST = 32;
-    public static final int XSLT = 33;
+    public static final int SUBRESOURCE_WEBBUNDLE = 28;
+    public static final int STYLE = 29;
+    public static final int TRACK = 30;
+    public static final int VIDEO = 31;
+    public static final int WORKER = 32;
+    public static final int XML_HTTP_REQUEST = 33;
+    public static final int XSLT = 34;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 33;
+    public static final int MAX_VALUE = 34;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 33;
+        return value >= 0 && value <= 34;
     }
 
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private RequestContextType() {}

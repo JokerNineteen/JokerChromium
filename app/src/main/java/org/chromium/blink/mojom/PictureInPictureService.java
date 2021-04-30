@@ -25,7 +25,7 @@ public interface PictureInPictureService extends org.chromium.mojo.bindings.Inte
 
 
     void startSession(
-int playerId, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, 
+int playerId, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, 
 StartSessionResponse callback);
 
     interface StartSessionResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<PictureInPictureSession, org.chromium.gfx.mojom.Size> { }

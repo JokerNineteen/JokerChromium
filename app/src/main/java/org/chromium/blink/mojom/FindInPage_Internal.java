@@ -502,6 +502,7 @@ FindMatchRectsResponse callback) {
                         
                     result.action = decoder0.readInt(8);
                         StopFindAction.validate(result.action);
+                        result.action = StopFindAction.toKnownValue(result.action);
                     }
 
             } finally {

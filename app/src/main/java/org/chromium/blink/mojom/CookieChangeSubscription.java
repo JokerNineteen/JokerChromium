@@ -65,6 +65,7 @@ public final class CookieChangeSubscription extends org.chromium.mojo.bindings.S
                     
                 result.matchType = decoder0.readInt(16);
                     org.chromium.network.mojom.CookieMatchType.validate(result.matchType);
+                    result.matchType = org.chromium.network.mojom.CookieMatchType.toKnownValue(result.matchType);
                 }
                 {
                     

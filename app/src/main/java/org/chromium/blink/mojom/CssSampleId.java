@@ -39,6 +39,11 @@ public final class CssSampleId {
     public static final int INTERNAL_VISITED_TEXT_FILL_COLOR = 0;
     public static final int INTERNAL_VISITED_TEXT_STROKE_COLOR = 0;
     public static final int INTERNAL_FONT_SIZE_DELTA = 0;
+    public static final int INTERNAL_FORCED_BACKGROUND_COLOR = 0;
+    public static final int INTERNAL_FORCED_BORDER_COLOR = 0;
+    public static final int INTERNAL_FORCED_COLOR = 0;
+    public static final int INTERNAL_FORCED_OUTLINE_COLOR = 0;
+    public static final int INTERNAL_FORCED_VISITED_COLOR = 0;
     public static final int TOTAL_PAGES_MEASURED = 1;
     public static final int COLOR = 2;
     public static final int DIRECTION = 3;
@@ -631,7 +636,6 @@ public final class CssSampleId {
     public static final int LINE_GAP_OVERRIDE = 675;
     public static final int MATH_SHIFT = 676;
     public static final int MATH_DEPTH = 677;
-    public static final int ADVANCE_PROPORTIONAL_OVERRIDE = 678;
     public static final int OVERFLOW_CLIP_MARGIN = 679;
     public static final int SCROLLBAR_WIDTH = 680;
     public static final int SYSTEM = 681;
@@ -644,8 +648,12 @@ public final class CssSampleId {
     public static final int SYMBOLS = 688;
     public static final int ADDITIVE_SYMBOLS = 689;
     public static final int SPEAK_AS = 690;
+    public static final int BORDER_START_START_RADIUS = 691;
+    public static final int BORDER_START_END_RADIUS = 692;
+    public static final int BORDER_END_START_RADIUS = 693;
+    public static final int BORDER_END_END_RADIUS = 694;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 690;
+    public static final int MAX_VALUE = 694;
 
     public static boolean isKnownValue(int value) {
         switch (value) {
@@ -1242,7 +1250,6 @@ public final class CssSampleId {
             case 675:
             case 676:
             case 677:
-            case 678:
             case 679:
             case 680:
             case 681:
@@ -1255,6 +1262,10 @@ public final class CssSampleId {
             case 688:
             case 689:
             case 690:
+            case 691:
+            case 692:
+            case 693:
+            case 694:
                 return true;
         }
         return false;
@@ -1263,6 +1274,10 @@ public final class CssSampleId {
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private CssSampleId() {}

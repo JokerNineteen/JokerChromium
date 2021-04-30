@@ -273,6 +273,7 @@ RequestMouseLockChangeResponse callback) {
                         
                     result.result = decoder0.readInt(8);
                         PointerLockResult.validate(result.result);
+                        result.result = PointerLockResult.toKnownValue(result.result);
                     }
 
             } finally {

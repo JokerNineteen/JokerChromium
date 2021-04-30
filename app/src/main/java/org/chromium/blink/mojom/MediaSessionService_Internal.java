@@ -436,6 +436,7 @@ int action) {
                         
                     result.state = decoder0.readInt(8);
                         MediaSessionPlaybackState.validate(result.state);
+                        result.state = MediaSessionPlaybackState.toKnownValue(result.state);
                     }
 
             } finally {
@@ -628,6 +629,7 @@ int action) {
                         
                     result.action = decoder0.readInt(8);
                         org.chromium.media_session.mojom.MediaSessionAction.validate(result.action);
+                        result.action = org.chromium.media_session.mojom.MediaSessionAction.toKnownValue(result.action);
                     }
 
             } finally {
@@ -692,6 +694,7 @@ int action) {
                         
                     result.action = decoder0.readInt(8);
                         org.chromium.media_session.mojom.MediaSessionAction.validate(result.action);
+                        result.action = org.chromium.media_session.mojom.MediaSessionAction.toKnownValue(result.action);
                     }
 
             } finally {

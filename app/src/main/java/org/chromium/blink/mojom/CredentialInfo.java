@@ -63,6 +63,7 @@ public final class CredentialInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     CredentialType.validate(result.type);
+                    result.type = CredentialType.toKnownValue(result.type);
                 }
                 {
                     

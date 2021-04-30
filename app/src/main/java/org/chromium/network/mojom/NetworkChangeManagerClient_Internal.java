@@ -237,6 +237,7 @@ int type) {
                         
                     result.type = decoder0.readInt(8);
                         ConnectionType.validate(result.type);
+                        result.type = ConnectionType.toKnownValue(result.type);
                     }
 
             } finally {
@@ -301,6 +302,7 @@ int type) {
                         
                     result.type = decoder0.readInt(8);
                         ConnectionType.validate(result.type);
+                        result.type = ConnectionType.toKnownValue(result.type);
                     }
 
             } finally {

@@ -31,12 +31,4 @@ CloseResponse callback);
     interface CloseResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
-
-    void setLength(
-long length, org.chromium.mojo_base.mojom.File backingFile, 
-SetLengthResponse callback);
-
-    interface SetLengthResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Boolean, org.chromium.mojo_base.mojom.File> { }
-
-
 }

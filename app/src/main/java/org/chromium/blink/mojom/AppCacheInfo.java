@@ -103,6 +103,7 @@ public final class AppCacheInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.status = decoder0.readInt(64);
                     AppCacheStatus.validate(result.status);
+                    result.status = AppCacheStatus.toKnownValue(result.status);
                 }
                 {
                     

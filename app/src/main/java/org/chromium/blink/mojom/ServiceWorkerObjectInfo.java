@@ -68,6 +68,7 @@ public final class ServiceWorkerObjectInfo extends org.chromium.mojo.bindings.St
                     
                 result.state = decoder0.readInt(16);
                     ServiceWorkerState.validate(result.state);
+                    result.state = ServiceWorkerState.toKnownValue(result.state);
                 }
                 {
                     

@@ -22,16 +22,21 @@ public final class EffectiveConnectionType {
     public static final int EFFECTIVE_CONNECTION2_G_TYPE = 3;
     public static final int EFFECTIVE_CONNECTION3_G_TYPE = 4;
     public static final int EFFECTIVE_CONNECTION4_G_TYPE = 5;
+    public static final int EFFECTIVE_CONNECTION_TYPE_LAST = 6;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 5;
+    public static final int MAX_VALUE = 6;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 5;
+        return value >= 0 && value <= 6;
     }
 
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private EffectiveConnectionType() {}

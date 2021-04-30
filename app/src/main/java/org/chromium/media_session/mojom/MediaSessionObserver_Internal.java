@@ -467,8 +467,8 @@ MediaPosition position) {
                         
                     result.action = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     {
-                        for (int i0 = 0; i0 < result.action.length; ++i0) {
-                            MediaSessionAction.validate(result.action[i0]);
+                        for (int i1 = 0; i1 < result.action.length; ++i1) {
+                            MediaSessionAction.validate(result.action[i1]);
                         }
                     }
                     }
@@ -542,8 +542,8 @@ MediaPosition position) {
                             
                             keys0 = decoder1.readInts(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                             {
-                                for (int i1 = 0; i1 < keys0.length; ++i1) {
-                                    MediaSessionImageType.validate(keys0[i1]);
+                                for (int i2 = 0; i2 < keys0.length; ++i2) {
+                                    MediaSessionImageType.validate(keys0[i2]);
                                 }
                             }
                         }

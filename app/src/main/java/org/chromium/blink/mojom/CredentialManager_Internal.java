@@ -641,6 +641,7 @@ GetResponse callback) {
                         
                     result.mediation = decoder0.readInt(8);
                         CredentialMediationRequirement.validate(result.mediation);
+                        result.mediation = CredentialMediationRequirement.toKnownValue(result.mediation);
                     }
                     {
                         
@@ -735,6 +736,7 @@ GetResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         CredentialManagerError.validate(result.error);
+                        result.error = CredentialManagerError.toKnownValue(result.error);
                     }
                     {
                         

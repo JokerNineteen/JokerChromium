@@ -25,8 +25,8 @@ final class SmsProviderGmsJni implements SmsProviderGms.Natives {
   };
 
   @Override
-  public void onReceive(long nativeSmsProviderGms, String sms) {
-    GEN_JNI.org_chromium_content_browser_sms_SmsProviderGms_onReceive(nativeSmsProviderGms, sms);
+  public void onReceive(long nativeSmsProviderGms, String sms, int backend) {
+    GEN_JNI.org_chromium_content_browser_sms_SmsProviderGms_onReceive(nativeSmsProviderGms, sms, backend);
   }
 
   @Override
@@ -37,6 +37,11 @@ final class SmsProviderGmsJni implements SmsProviderGms.Natives {
   @Override
   public void onCancel(long nativeSmsProviderGms) {
     GEN_JNI.org_chromium_content_browser_sms_SmsProviderGms_onCancel(nativeSmsProviderGms);
+  }
+
+  @Override
+  public void onNotAvailable(long nativeSmsProviderGms) {
+    GEN_JNI.org_chromium_content_browser_sms_SmsProviderGms_onNotAvailable(nativeSmsProviderGms);
   }
 
   public static SmsProviderGms.Natives get() {

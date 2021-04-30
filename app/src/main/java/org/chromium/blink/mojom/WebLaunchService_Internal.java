@@ -60,7 +60,7 @@ class WebLaunchService_Internal {
 
         @Override
         public void setLaunchFiles(
-NativeFileSystemEntry[] files) {
+FileSystemAccessEntry[] files) {
 
             WebLaunchServiceSetLaunchFilesParams _message = new WebLaunchServiceSetLaunchFilesParams();
 
@@ -164,7 +164,7 @@ NativeFileSystemEntry[] files) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public NativeFileSystemEntry[] files;
+        public FileSystemAccessEntry[] files;
 
         private WebLaunchServiceSetLaunchFilesParams(int version) {
             super(STRUCT_SIZE, version);
@@ -204,11 +204,11 @@ NativeFileSystemEntry[] files) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     {
                         org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.files = new NativeFileSystemEntry[si1.elementsOrVersion];
+                        result.files = new FileSystemAccessEntry[si1.elementsOrVersion];
                         for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                             
                             org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.files[i1] = NativeFileSystemEntry.decode(decoder2);
+                            result.files[i1] = FileSystemAccessEntry.decode(decoder2);
                         }
                     }
                     }

@@ -37,8 +37,8 @@ final class ContextualSearchContextJni implements ContextualSearchContext.Native
   @Override
   public void setResolveProperties(long nativeContextualSearchContext,
       ContextualSearchContext caller, String homeCountry, boolean doSendBasePageUrl,
-      long previousEventId, int previousEventResults, boolean doRelatedSearches) {
-    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_setResolveProperties(nativeContextualSearchContext, caller, homeCountry, doSendBasePageUrl, previousEventId, previousEventResults, doRelatedSearches);
+      long previousEventId, int previousEventResults) {
+    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_setResolveProperties(nativeContextualSearchContext, caller, homeCountry, doSendBasePageUrl, previousEventId, previousEventResults);
   }
 
   @Override
@@ -66,8 +66,9 @@ final class ContextualSearchContextJni implements ContextualSearchContext.Native
   }
 
   @Override
-  public void setExactResolve(long nativeContextualSearchContext, ContextualSearchContext caller) {
-    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_setExactResolve(nativeContextualSearchContext, caller);
+  public void prepareToResolve(long nativeContextualSearchContext, ContextualSearchContext caller,
+      boolean isExactSearch, String relatedSearchesStamp) {
+    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchContext_prepareToResolve(nativeContextualSearchContext, caller, isExactSearch, relatedSearchesStamp);
   }
 
   public static ContextualSearchContext.Natives get() {

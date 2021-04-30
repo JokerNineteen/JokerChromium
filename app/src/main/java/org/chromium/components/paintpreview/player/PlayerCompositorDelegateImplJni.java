@@ -31,8 +31,9 @@ final class PlayerCompositorDelegateImplJni implements PlayerCompositorDelegateI
 
   @Override
   public long initialize(PlayerCompositorDelegateImpl caller, long nativePaintPreviewBaseService,
-      String urlSpec, String directoryKey, Callback<Integer> compositorErrorCallback) {
-    return (long)GEN_JNI.org_chromium_components_paintpreview_player_PlayerCompositorDelegateImpl_initialize(caller, nativePaintPreviewBaseService, urlSpec, directoryKey, compositorErrorCallback);
+      byte[] proto, String urlSpec, String directoryKey, boolean mainFrameMode,
+      Callback<Integer> compositorErrorCallback, boolean isLowMemory) {
+    return (long)GEN_JNI.org_chromium_components_paintpreview_player_PlayerCompositorDelegateImpl_initialize(caller, nativePaintPreviewBaseService, proto, urlSpec, directoryKey, mainFrameMode, compositorErrorCallback, isLowMemory);
   }
 
   @Override

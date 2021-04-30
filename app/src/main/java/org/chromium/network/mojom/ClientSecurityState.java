@@ -73,11 +73,13 @@ public final class ClientSecurityState extends org.chromium.mojo.bindings.Struct
                     
                 result.ipAddressSpace = decoder0.readInt(20);
                     IpAddressSpace.validate(result.ipAddressSpace);
+                    result.ipAddressSpace = IpAddressSpace.toKnownValue(result.ipAddressSpace);
                 }
                 {
                     
                 result.privateNetworkRequestPolicy = decoder0.readInt(24);
                     PrivateNetworkRequestPolicy.validate(result.privateNetworkRequestPolicy);
+                    result.privateNetworkRequestPolicy = PrivateNetworkRequestPolicy.toKnownValue(result.privateNetworkRequestPolicy);
                 }
 
         } finally {

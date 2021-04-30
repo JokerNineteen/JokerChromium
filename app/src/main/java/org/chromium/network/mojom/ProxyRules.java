@@ -74,6 +74,7 @@ public final class ProxyRules extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(20);
                     ProxyRulesType.validate(result.type);
+                    result.type = ProxyRulesType.toKnownValue(result.type);
                 }
                 {
                     

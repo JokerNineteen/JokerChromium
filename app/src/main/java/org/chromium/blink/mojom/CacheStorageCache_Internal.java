@@ -51,9 +51,13 @@ class CacheStorageCache_Internal {
 
     private static final int MATCH_ALL_ORDINAL = 1;
 
-    private static final int KEYS_ORDINAL = 2;
+    private static final int GET_ALL_MATCHED_ENTRIES_ORDINAL = 2;
 
-    private static final int BATCH_ORDINAL = 3;
+    private static final int KEYS_ORDINAL = 3;
+
+    private static final int BATCH_ORDINAL = 4;
+
+    private static final int WRITE_SIDE_DATA_ORDINAL = 5;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements CacheStorageCache.Proxy {
@@ -119,6 +123,32 @@ MatchAllResponse callback) {
 
 
         @Override
+        public void getAllMatchedEntries(
+FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
+GetAllMatchedEntriesResponse callback) {
+
+            CacheStorageCacheGetAllMatchedEntriesParams _message = new CacheStorageCacheGetAllMatchedEntriesParams();
+
+            _message.request = request;
+
+            _message.queryOptions = queryOptions;
+
+            _message.traceId = traceId;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_ALL_MATCHED_ENTRIES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new CacheStorageCacheGetAllMatchedEntriesResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
         public void keys(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
 KeysResponse callback) {
@@ -168,6 +198,34 @@ BatchResponse callback) {
         }
 
 
+        @Override
+        public void writeSideData(
+org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedResponseTime, org.chromium.mojo_base.mojom.BigBuffer data, long traceId, 
+WriteSideDataResponse callback) {
+
+            CacheStorageCacheWriteSideDataParams _message = new CacheStorageCacheWriteSideDataParams();
+
+            _message.url = url;
+
+            _message.expectedResponseTime = expectedResponseTime;
+
+            _message.data = data;
+
+            _message.traceId = traceId;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    WRITE_SIDE_DATA_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new CacheStorageCacheWriteSideDataResponseParamsForwardToCallback(callback));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<CacheStorageCache> {
@@ -194,6 +252,10 @@ BatchResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 CacheStorageCache_Internal.MANAGER, messageWithHeader);
+
+
+
+
 
 
 
@@ -268,6 +330,21 @@ BatchResponse callback) {
 
 
 
+                    case GET_ALL_MATCHED_ENTRIES_ORDINAL: {
+
+                        CacheStorageCacheGetAllMatchedEntriesParams data =
+                                CacheStorageCacheGetAllMatchedEntriesParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().getAllMatchedEntries(data.request, data.queryOptions, data.traceId, new CacheStorageCacheGetAllMatchedEntriesResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
                     case KEYS_ORDINAL: {
 
                         CacheStorageCacheKeysParams data =
@@ -289,6 +366,21 @@ BatchResponse callback) {
                                 CacheStorageCacheBatchParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().batch(data.batchOperations, data.traceId, new CacheStorageCacheBatchResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case WRITE_SIDE_DATA_ORDINAL: {
+
+                        CacheStorageCacheWriteSideDataParams data =
+                                CacheStorageCacheWriteSideDataParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().writeSideData(data.url, data.expectedResponseTime, data.data, data.traceId, new CacheStorageCacheWriteSideDataResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -718,6 +810,209 @@ BatchResponse callback) {
 
 
     
+    static final class CacheStorageCacheGetAllMatchedEntriesParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FetchApiRequest request;
+        public CacheQueryOptions queryOptions;
+        public long traceId;
+
+        private CacheStorageCacheGetAllMatchedEntriesParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CacheStorageCacheGetAllMatchedEntriesParams() {
+            this(0);
+        }
+
+        public static CacheStorageCacheGetAllMatchedEntriesParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CacheStorageCacheGetAllMatchedEntriesParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CacheStorageCacheGetAllMatchedEntriesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CacheStorageCacheGetAllMatchedEntriesParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CacheStorageCacheGetAllMatchedEntriesParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
+                    result.request = FetchApiRequest.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.queryOptions = CacheQueryOptions.decode(decoder1);
+                    }
+                    {
+                        
+                    result.traceId = decoder0.readLong(24);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.request, 8, true);
+            
+            encoder0.encode(this.queryOptions, 16, false);
+            
+            encoder0.encode(this.traceId, 24);
+        }
+    }
+
+
+
+    
+    static final class CacheStorageCacheGetAllMatchedEntriesResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public GetAllMatchedEntriesResult result;
+
+        private CacheStorageCacheGetAllMatchedEntriesResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CacheStorageCacheGetAllMatchedEntriesResponseParams() {
+            this(0);
+        }
+
+        public static CacheStorageCacheGetAllMatchedEntriesResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CacheStorageCacheGetAllMatchedEntriesResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CacheStorageCacheGetAllMatchedEntriesResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CacheStorageCacheGetAllMatchedEntriesResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CacheStorageCacheGetAllMatchedEntriesResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = GetAllMatchedEntriesResult.decode(decoder0, 8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8, false);
+        }
+    }
+
+    static class CacheStorageCacheGetAllMatchedEntriesResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final CacheStorageCache.GetAllMatchedEntriesResponse mCallback;
+
+        CacheStorageCacheGetAllMatchedEntriesResponseParamsForwardToCallback(CacheStorageCache.GetAllMatchedEntriesResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(GET_ALL_MATCHED_ENTRIES_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                CacheStorageCacheGetAllMatchedEntriesResponseParams response = CacheStorageCacheGetAllMatchedEntriesResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class CacheStorageCacheGetAllMatchedEntriesResponseParamsProxyToResponder implements CacheStorageCache.GetAllMatchedEntriesResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        CacheStorageCacheGetAllMatchedEntriesResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(GetAllMatchedEntriesResult result) {
+            CacheStorageCacheGetAllMatchedEntriesResponseParams _response = new CacheStorageCacheGetAllMatchedEntriesResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_ALL_MATCHED_ENTRIES_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
     static final class CacheStorageCacheKeysParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 32;
@@ -1124,6 +1419,218 @@ BatchResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     BATCH_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class CacheStorageCacheWriteSideDataParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 48;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.url.mojom.Url url;
+        public org.chromium.mojo_base.mojom.Time expectedResponseTime;
+        public org.chromium.mojo_base.mojom.BigBuffer data;
+        public long traceId;
+
+        private CacheStorageCacheWriteSideDataParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CacheStorageCacheWriteSideDataParams() {
+            this(0);
+        }
+
+        public static CacheStorageCacheWriteSideDataParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CacheStorageCacheWriteSideDataParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CacheStorageCacheWriteSideDataParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CacheStorageCacheWriteSideDataParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CacheStorageCacheWriteSideDataParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.url = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.expectedResponseTime = org.chromium.mojo_base.mojom.Time.decode(decoder1);
+                    }
+                    {
+                        
+                    result.data = org.chromium.mojo_base.mojom.BigBuffer.decode(decoder0, 24);
+                    }
+                    {
+                        
+                    result.traceId = decoder0.readLong(40);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.url, 8, false);
+            
+            encoder0.encode(this.expectedResponseTime, 16, false);
+            
+            encoder0.encode(this.data, 24, false);
+            
+            encoder0.encode(this.traceId, 40);
+        }
+    }
+
+
+
+    
+    static final class CacheStorageCacheWriteSideDataResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int result;
+
+        private CacheStorageCacheWriteSideDataResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public CacheStorageCacheWriteSideDataResponseParams() {
+            this(0);
+        }
+
+        public static CacheStorageCacheWriteSideDataResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static CacheStorageCacheWriteSideDataResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static CacheStorageCacheWriteSideDataResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            CacheStorageCacheWriteSideDataResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new CacheStorageCacheWriteSideDataResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.result = decoder0.readInt(8);
+                        CacheStorageError.validate(result.result);
+                        result.result = CacheStorageError.toKnownValue(result.result);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.result, 8);
+        }
+    }
+
+    static class CacheStorageCacheWriteSideDataResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final CacheStorageCache.WriteSideDataResponse mCallback;
+
+        CacheStorageCacheWriteSideDataResponseParamsForwardToCallback(CacheStorageCache.WriteSideDataResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(WRITE_SIDE_DATA_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                CacheStorageCacheWriteSideDataResponseParams response = CacheStorageCacheWriteSideDataResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.result);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class CacheStorageCacheWriteSideDataResponseParamsProxyToResponder implements CacheStorageCache.WriteSideDataResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        CacheStorageCacheWriteSideDataResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer result) {
+            CacheStorageCacheWriteSideDataResponseParams _response = new CacheStorageCacheWriteSideDataResponseParams();
+
+            _response.result = result;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    WRITE_SIDE_DATA_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

@@ -439,6 +439,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
                         
                     result.status = decoder0.readInt(8);
                         PermissionStatus.validate(result.status);
+                        result.status = PermissionStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -635,6 +636,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
                         
                     result.status = decoder0.readInt(8);
                         PermissionStatus.validate(result.status);
+                        result.status = PermissionStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -847,8 +849,8 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
                         
                     result.statuses = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     {
-                        for (int i0 = 0; i0 < result.statuses.length; ++i0) {
-                            PermissionStatus.validate(result.statuses[i0]);
+                        for (int i1 = 0; i1 < result.statuses.length; ++i1) {
+                            PermissionStatus.validate(result.statuses[i1]);
                         }
                     }
                     }
@@ -1040,6 +1042,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
                         
                     result.status = decoder0.readInt(8);
                         PermissionStatus.validate(result.status);
+                        result.status = PermissionStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1172,6 +1175,7 @@ PermissionDescriptor permission, int lastKnownStatus, PermissionObserver observe
                         
                     result.lastKnownStatus = decoder0.readInt(16);
                         PermissionStatus.validate(result.lastKnownStatus);
+                        result.lastKnownStatus = PermissionStatus.toKnownValue(result.lastKnownStatus);
                     }
                     {
                         

@@ -82,31 +82,6 @@ public interface DatatypeAssociationStatsOrBuilder extends
 
   /**
    * <pre>
-   * Waiting time for higher priority types to finish association. This
-   * measures the time between finishing downloading data to requesting
-   * association manager to associate this batch of types. High priority types
-   * have near zero waiting time.
-   * </pre>
-   *
-   * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-   * @return Whether the associationWaitTimeForHighPriorityUs field is set.
-   */
-  boolean hasAssociationWaitTimeForHighPriorityUs();
-  /**
-   * <pre>
-   * Waiting time for higher priority types to finish association. This
-   * measures the time between finishing downloading data to requesting
-   * association manager to associate this batch of types. High priority types
-   * have near zero waiting time.
-   * </pre>
-   *
-   * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-   * @return The associationWaitTimeForHighPriorityUs.
-   */
-  long getAssociationWaitTimeForHighPriorityUs();
-
-  /**
-   * <pre>
    * Higher priority type that's configured before this type.
    * </pre>
    *

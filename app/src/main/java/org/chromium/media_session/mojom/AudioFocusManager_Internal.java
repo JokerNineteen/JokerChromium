@@ -497,6 +497,7 @@ GetSourceFocusRequestsResponse callback) {
                         
                     result.type = decoder0.readInt(20);
                         AudioFocusType.validate(result.type);
+                        result.type = AudioFocusType.toKnownValue(result.type);
                     }
                     {
                         
@@ -715,6 +716,7 @@ GetSourceFocusRequestsResponse callback) {
                         
                     result.type = decoder0.readInt(28);
                         AudioFocusType.validate(result.type);
+                        result.type = AudioFocusType.toKnownValue(result.type);
                     }
                     {
                         
@@ -1254,6 +1256,7 @@ GetSourceFocusRequestsResponse callback) {
                         
                     result.mode = decoder0.readInt(8);
                         EnforcementMode.validate(result.mode);
+                        result.mode = EnforcementMode.toKnownValue(result.mode);
                     }
 
             } finally {

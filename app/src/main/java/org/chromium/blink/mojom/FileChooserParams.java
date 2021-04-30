@@ -39,6 +39,10 @@ public final class FileChooserParams extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Mode() {}
     }
     public int mode;
@@ -90,6 +94,7 @@ public final class FileChooserParams extends org.chromium.mojo.bindings.Struct {
                     
                 result.mode = decoder0.readInt(8);
                     FileChooserParams.Mode.validate(result.mode);
+                    result.mode = FileChooserParams.Mode.toKnownValue(result.mode);
                 }
                 {
                     

@@ -46,6 +46,7 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
     public org.chromium.mojo.bindings.InterfaceRequest<ProxyConfigClient> proxyConfigClientReceiver;
     public CustomProxyConfig initialCustomProxyConfig;
     public org.chromium.mojo.bindings.InterfaceRequest<CustomProxyConfigClient> customProxyConfigClientReceiver;
+    public CustomProxyConnectionObserver customProxyConnectionObserverRemote;
     public ProxyConfigPollerClient proxyConfigPollerClient;
     public ProxyErrorClient proxyErrorClient;
     public boolean pacQuickCheckEnabled;
@@ -56,7 +57,7 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
     public CtLogInfo[] ctLogs;
     public CtPolicy ctPolicy;
     public org.chromium.mojo_base.mojom.Time ctLogUpdateTime;
-    public CertVerifierParams certVerifierParams;
+    public CertVerifierServiceRemoteParams certVerifierParams;
     public CookieManagerParams cookieManagerParams;
     public org.chromium.mojo.bindings.InterfaceRequest<CookieManager> cookieManager;
     public boolean enableDomainReliability;
@@ -296,19 +297,23 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                result.proxyConfigPollerClient = decoder0.readServiceInterface(132, true, ProxyConfigPollerClient.MANAGER);
+                result.customProxyConnectionObserverRemote = decoder0.readServiceInterface(132, true, CustomProxyConnectionObserver.MANAGER);
                 }
                 {
                     
-                result.proxyErrorClient = decoder0.readServiceInterface(140, true, ProxyErrorClient.MANAGER);
+                result.proxyConfigPollerClient = decoder0.readServiceInterface(140, true, ProxyConfigPollerClient.MANAGER);
                 }
                 {
                     
-                result.cookieManager = decoder0.readInterfaceRequest(148, true);
+                result.proxyErrorClient = decoder0.readServiceInterface(148, true, ProxyErrorClient.MANAGER);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(152, false);
+                result.cookieManager = decoder0.readInterfaceRequest(156, true);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(160, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.ctLogs = new CtLogInfo[si1.elementsOrVersion];
@@ -321,17 +326,18 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(160, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, true);
                 result.ctPolicy = CtPolicy.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(176, false);
                 result.ctLogUpdateTime = org.chromium.mojo_base.mojom.Time.decode(decoder1);
                 }
                 {
                     
-                result.certVerifierParams = CertVerifierParams.decode(decoder0, 176);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(184, false);
+                result.certVerifierParams = CertVerifierServiceRemoteParams.decode(decoder1);
                 }
                 {
                     
@@ -484,27 +490,29 @@ public final class NetworkContextParams extends org.chromium.mojo.bindings.Struc
         
         encoder0.encode(this.customProxyConfigClientReceiver, 128, true);
         
-        encoder0.encode(this.proxyConfigPollerClient, 132, true, ProxyConfigPollerClient.MANAGER);
+        encoder0.encode(this.customProxyConnectionObserverRemote, 132, true, CustomProxyConnectionObserver.MANAGER);
         
-        encoder0.encode(this.proxyErrorClient, 140, true, ProxyErrorClient.MANAGER);
+        encoder0.encode(this.proxyConfigPollerClient, 140, true, ProxyConfigPollerClient.MANAGER);
         
-        encoder0.encode(this.cookieManager, 148, true);
+        encoder0.encode(this.proxyErrorClient, 148, true, ProxyErrorClient.MANAGER);
+        
+        encoder0.encode(this.cookieManager, 156, true);
         
         if (this.ctLogs == null) {
-            encoder0.encodeNullPointer(152, false);
+            encoder0.encodeNullPointer(160, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.ctLogs.length, 152, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.ctLogs.length, 160, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.ctLogs.length; ++i0) {
                 
                 encoder1.encode(this.ctLogs[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.ctPolicy, 160, true);
+        encoder0.encode(this.ctPolicy, 168, true);
         
-        encoder0.encode(this.ctLogUpdateTime, 168, false);
+        encoder0.encode(this.ctLogUpdateTime, 176, false);
         
-        encoder0.encode(this.certVerifierParams, 176, true);
+        encoder0.encode(this.certVerifierParams, 184, false);
         
         encoder0.encode(this.cookieManagerParams, 192, true);
         

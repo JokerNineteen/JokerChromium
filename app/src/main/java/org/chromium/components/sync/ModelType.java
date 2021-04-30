@@ -23,9 +23,8 @@ import java.lang.annotation.RetentionPolicy;
     ModelType.AUTOFILL_WALLET_OFFER, ModelType.THEMES, ModelType.TYPED_URLS, ModelType.EXTENSIONS,
     ModelType.SEARCH_ENGINES, ModelType.SESSIONS, ModelType.APPS, ModelType.APP_SETTINGS,
     ModelType.EXTENSION_SETTINGS, ModelType.HISTORY_DELETE_DIRECTIVES, ModelType.DICTIONARY,
-    ModelType.DEPRECATED_FAVICON_IMAGES, ModelType.DEPRECATED_FAVICON_TRACKING,
     ModelType.DEVICE_INFO, ModelType.PRIORITY_PREFERENCES, ModelType.SUPERVISED_USER_SETTINGS,
-    ModelType.APP_LIST, ModelType.SUPERVISED_USER_ALLOWLISTS, ModelType.ARC_PACKAGE,
+    ModelType.APP_LIST, ModelType.DEPRECATED_SUPERVISED_USER_ALLOWLISTS, ModelType.ARC_PACKAGE,
     ModelType.PRINTERS, ModelType.READING_LIST, ModelType.USER_EVENTS, ModelType.USER_CONSENTS,
     ModelType.SEND_TAB_TO_SELF, ModelType.SECURITY_EVENTS, ModelType.WIFI_CONFIGURATIONS,
     ModelType.WEB_APPS, ModelType.OS_PREFERENCES, ModelType.OS_PRIORITY_PREFERENCES,
@@ -126,95 +125,88 @@ public @interface ModelType {
    */
   int DICTIONARY = 19;
   /**
-   * Favicon images, including both the image URL and the actual pixels.
-   */
-  int DEPRECATED_FAVICON_IMAGES = 20;
-  /**
-   * Favicon tracking information, i.e. metadata such as last visit date.
-   */
-  int DEPRECATED_FAVICON_TRACKING = 21;
-  /**
    * Client-specific metadata, synced before other user types.
    */
-  int DEVICE_INFO = 22;
+  int DEVICE_INFO = 20;
   /**
    * These preferences are synced before other user types and are never encrypted.
    */
-  int PRIORITY_PREFERENCES = 23;
+  int PRIORITY_PREFERENCES = 21;
   /**
    * Supervised user settings. Cannot be encrypted.
    */
-  int SUPERVISED_USER_SETTINGS = 24;
+  int SUPERVISED_USER_SETTINGS = 22;
   /**
    * App List items, used by the ChromeOS app launcher.
    */
-  int APP_LIST = 25;
+  int APP_LIST = 23;
   /**
-   * Supervised user allowlists. Each item contains a CRX ID (like an extension ID) and a name.
+   * TODO(crbug.com/1155257): Remove the deprecated type, because it isn't used. Supervised user
+   * allowlists. Each item contains a CRX ID (like an extension ID) and a name.
    */
-  int SUPERVISED_USER_ALLOWLISTS = 26;
+  int DEPRECATED_SUPERVISED_USER_ALLOWLISTS = 24;
   /**
    * ARC package items, i.e. Android apps on ChromeOS.
    */
-  int ARC_PACKAGE = 27;
+  int ARC_PACKAGE = 25;
   /**
    * Printer device information. ChromeOS only.
    */
-  int PRINTERS = 28;
+  int PRINTERS = 26;
   /**
    * Reading list items. iOS only.
    */
-  int READING_LIST = 29;
+  int READING_LIST = 27;
   /**
    * Commit only user events.
    */
-  int USER_EVENTS = 30;
+  int USER_EVENTS = 28;
   /**
    * Commit only user consents.
    */
-  int USER_CONSENTS = 31;
+  int USER_CONSENTS = 29;
   /**
    * Tabs sent between devices.
    */
-  int SEND_TAB_TO_SELF = 32;
+  int SEND_TAB_TO_SELF = 30;
   /**
    * Commit only security events.
    */
-  int SECURITY_EVENTS = 33;
+  int SECURITY_EVENTS = 31;
   /**
    * Wi-Fi network configurations + credentials
    */
-  int WIFI_CONFIGURATIONS = 34;
+  int WIFI_CONFIGURATIONS = 32;
   /**
    * A web app object.
    */
-  int WEB_APPS = 35;
+  int WEB_APPS = 33;
   /**
    * OS-specific preferences (a.k.a. "OS settings"). Chrome OS only.
    */
-  int OS_PREFERENCES = 36;
+  int OS_PREFERENCES = 34;
   /**
    * Synced before other user types. Never encrypted. Chrome OS only.
    */
-  int OS_PRIORITY_PREFERENCES = 37;
+  int OS_PRIORITY_PREFERENCES = 35;
   /**
    * Commit only sharing message object.
    */
-  int SHARING_MESSAGE = 38;
+  int SHARING_MESSAGE = 36;
   /**
    * ---- Proxy types ---- Proxy types are excluded from the sync protocol, but are still considered
    * real user types. By convention, we prefix them with 'PROXY_' to distinguish them from normal
    * protocol types. Tab sync. This is a placeholder type, so that Sessions can be implicitly
    * enabled for history sync and tabs sync.
    */
-  int PROXY_TABS = 39;
-  int FIRST_PROXY_TYPE = 39;
-  int LAST_PROXY_TYPE = 39;
-  int LAST_USER_MODEL_TYPE = 39;
+  int PROXY_TABS = 37;
+  int FIRST_PROXY_TYPE = 37;
+  int LAST_PROXY_TYPE = 37;
+  int LAST_USER_MODEL_TYPE = 37;
   /**
    * ---- Control Types ---- An object representing a set of Nigori keys.
    */
-  int NIGORI = 40;
-  int LAST_REAL_MODEL_TYPE = 40;
-  int NUM_ENTRIES = 41;
+  int NIGORI = 38;
+  int LAST_REAL_MODEL_TYPE = 38;
+  int NUM_ENTRIES = 39;
 }

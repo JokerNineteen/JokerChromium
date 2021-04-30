@@ -107,11 +107,13 @@ public final class ResourceTimingInfo extends org.chromium.mojo.bindings.Struct 
                     
                 result.contextType = decoder0.readInt(64);
                     RequestContextType.validate(result.contextType);
+                    result.contextType = RequestContextType.toKnownValue(result.contextType);
                 }
                 {
                     
                 result.requestDestination = decoder0.readInt(68);
                     org.chromium.network.mojom.RequestDestination.validate(result.requestDestination);
+                    result.requestDestination = org.chromium.network.mojom.RequestDestination.toKnownValue(result.requestDestination);
                 }
                 {
                     

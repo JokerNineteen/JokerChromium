@@ -95,11 +95,13 @@ public final class ResourceLoadInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.requestDestination = decoder0.readInt(48);
                     org.chromium.network.mojom.RequestDestination.validate(result.requestDestination);
+                    result.requestDestination = org.chromium.network.mojom.RequestDestination.toKnownValue(result.requestDestination);
                 }
                 {
                     
                 result.requestPriority = decoder0.readInt(52);
                     org.chromium.network.mojom.RequestPriority.validate(result.requestPriority);
+                    result.requestPriority = org.chromium.network.mojom.RequestPriority.toKnownValue(result.requestPriority);
                 }
                 {
                     

@@ -27,16 +27,23 @@ public final class DocumentPolicyFeature {
     public static final int LAYOUT_ANIMATIONS = 8;
     public static final int DOCUMENT_WRITE = 9;
     public static final int SYNC_SCRIPT = 10;
+    public static final int JS_PROFILING = 11;
+    public static final int SYNC_XHR = 12;
+    public static final int DOCUMENT_DOMAIN = 13;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 10;
+    public static final int MAX_VALUE = 13;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 10;
+        return value >= 0 && value <= 13;
     }
 
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private DocumentPolicyFeature() {}

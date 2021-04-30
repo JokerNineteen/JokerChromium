@@ -305,6 +305,7 @@ int feature) {
                         
                     result.creationContextType = decoder0.readInt(8);
                         SharedWorkerCreationContextType.validate(result.creationContextType);
+                        result.creationContextType = SharedWorkerCreationContextType.toKnownValue(result.creationContextType);
                     }
 
             } finally {
@@ -369,8 +370,8 @@ int feature) {
                         
                     result.featuresUsed = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     {
-                        for (int i0 = 0; i0 < result.featuresUsed.length; ++i0) {
-                            WebFeature.validate(result.featuresUsed[i0]);
+                        for (int i1 = 0; i1 < result.featuresUsed.length; ++i1) {
+                            WebFeature.validate(result.featuresUsed[i1]);
                         }
                     }
                     }
@@ -500,6 +501,7 @@ int feature) {
                         
                     result.feature = decoder0.readInt(8);
                         WebFeature.validate(result.feature);
+                        result.feature = WebFeature.toKnownValue(result.feature);
                     }
 
             } finally {

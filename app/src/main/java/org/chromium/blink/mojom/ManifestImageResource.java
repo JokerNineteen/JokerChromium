@@ -38,6 +38,10 @@ public final class ManifestImageResource extends org.chromium.mojo.bindings.Stru
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Purpose() {}
     }
     public org.chromium.url.mojom.Url src;
@@ -105,8 +109,8 @@ public final class ManifestImageResource extends org.chromium.mojo.bindings.Stru
                     
                 result.purpose = decoder0.readInts(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.purpose.length; ++i0) {
-                        ManifestImageResource.Purpose.validate(result.purpose[i0]);
+                    for (int i1 = 0; i1 < result.purpose.length; ++i1) {
+                        ManifestImageResource.Purpose.validate(result.purpose[i1]);
                     }
                 }
                 }

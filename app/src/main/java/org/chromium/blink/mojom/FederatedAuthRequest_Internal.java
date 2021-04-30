@@ -60,12 +60,14 @@ class FederatedAuthRequest_Internal {
 
         @Override
         public void requestIdToken(
-org.chromium.url.mojom.Url provider, 
+org.chromium.url.mojom.Url provider, String idRequest, 
 RequestIdTokenResponse callback) {
 
             FederatedAuthRequestRequestIdTokenParams _message = new FederatedAuthRequestRequestIdTokenParams();
 
             _message.provider = provider;
+
+            _message.idRequest = idRequest;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -149,7 +151,7 @@ RequestIdTokenResponse callback) {
                         FederatedAuthRequestRequestIdTokenParams data =
                                 FederatedAuthRequestRequestIdTokenParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().requestIdToken(data.provider, new FederatedAuthRequestRequestIdTokenResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().requestIdToken(data.provider, data.idRequest, new FederatedAuthRequestRequestIdTokenResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -168,10 +170,11 @@ RequestIdTokenResponse callback) {
     
     static final class FederatedAuthRequestRequestIdTokenParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.url.mojom.Url provider;
+        public String idRequest;
 
         private FederatedAuthRequestRequestIdTokenParams(int version) {
             super(STRUCT_SIZE, version);
@@ -211,6 +214,10 @@ RequestIdTokenResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.provider = org.chromium.url.mojom.Url.decode(decoder1);
                     }
+                    {
+                        
+                    result.idRequest = decoder0.readString(16, false);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -224,6 +231,8 @@ RequestIdTokenResponse callback) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.provider, 8, false);
+            
+            encoder0.encode(this.idRequest, 16, false);
         }
     }
 
@@ -232,9 +241,10 @@ RequestIdTokenResponse callback) {
     
     static final class FederatedAuthRequestRequestIdTokenResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int status;
         public String idToken;
 
         private FederatedAuthRequestRequestIdTokenResponseParams(int version) {
@@ -272,7 +282,13 @@ RequestIdTokenResponse callback) {
                 result = new FederatedAuthRequestRequestIdTokenResponseParams(elementsOrVersion);
                     {
                         
-                    result.idToken = decoder0.readString(8, true);
+                    result.status = decoder0.readInt(8);
+                        RequestIdTokenStatus.validate(result.status);
+                        result.status = RequestIdTokenStatus.toKnownValue(result.status);
+                    }
+                    {
+                        
+                    result.idToken = decoder0.readString(16, true);
                     }
 
             } finally {
@@ -286,7 +302,9 @@ RequestIdTokenResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.idToken, 8, true);
+            encoder0.encode(this.status, 8);
+            
+            encoder0.encode(this.idToken, 16, true);
         }
     }
 
@@ -311,7 +329,7 @@ RequestIdTokenResponse callback) {
 
                 FederatedAuthRequestRequestIdTokenResponseParams response = FederatedAuthRequestRequestIdTokenResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.idToken);
+                mCallback.call(response.status, response.idToken);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -335,8 +353,10 @@ RequestIdTokenResponse callback) {
         }
 
         @Override
-        public void call(String idToken) {
+        public void call(Integer status, String idToken) {
             FederatedAuthRequestRequestIdTokenResponseParams _response = new FederatedAuthRequestRequestIdTokenResponseParams();
+
+            _response.status = status;
 
             _response.idToken = idToken;
 

@@ -68,6 +68,7 @@ public final class PointerDetails extends org.chromium.mojo.bindings.Struct {
                     
                 result.pointerType = decoder0.readInt(8);
                     EventPointerType.validate(result.pointerType);
+                    result.pointerType = EventPointerType.toKnownValue(result.pointerType);
                 }
                 {
                     

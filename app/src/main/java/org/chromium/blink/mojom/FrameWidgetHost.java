@@ -65,7 +65,7 @@ org.chromium.gfx.mojom.Vector2dF velocity);
 
 
     void startDragging(
-DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mojom.Bitmap image, org.chromium.gfx.mojom.Vector2d bitmapOffsetInDip, DragEventSourceInfo eventInfo);
+DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mojom.BitmapN32 image, org.chromium.gfx.mojom.Vector2d bitmapOffsetInDip, DragEventSourceInfo eventInfo);
 
 
 }

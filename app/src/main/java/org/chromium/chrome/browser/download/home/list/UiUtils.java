@@ -13,11 +13,11 @@ import androidx.annotation.DrawableRes;
 
 import org.chromium.base.ContextUtils;
 import org.chromium.base.MathUtils;
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.download.StringUtils;
 import org.chromium.chrome.browser.download.home.filter.Filters;
 import org.chromium.chrome.browser.download.home.list.view.CircularProgressView;
 import org.chromium.chrome.browser.download.home.list.view.CircularProgressView.UiState;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.components.browser_ui.util.date.CalendarFactory;
 import org.chromium.components.browser_ui.util.date.CalendarUtils;
 import org.chromium.components.offline_items_collection.LegacyHelpers;
@@ -105,7 +105,7 @@ public final class UiUtils {
         Context context = ContextUtils.getApplicationContext();
         String displaySize = Formatter.formatFileSize(context, item.totalSizeBytes);
         String displayUrl = UrlFormatter.formatUrlForSecurityDisplay(
-                item.pageUrl, SchemeDisplay.OMIT_HTTP_AND_HTTPS);
+                item.originalUrl, SchemeDisplay.OMIT_HTTP_AND_HTTPS);
         return context.getString(
                 R.string.download_manager_prefetch_caption, displayUrl, displaySize);
     }

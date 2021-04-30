@@ -16,12 +16,12 @@ import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
 import org.chromium.chrome.browser.profiles.Profile;
-import org.chromium.chrome.browser.settings.SettingsLauncher;
 import org.chromium.chrome.browser.settings.SettingsLauncherImpl;
-import org.chromium.chrome.browser.signin.UnifiedConsentServiceBridge;
+import org.chromium.chrome.browser.signin.services.UnifiedConsentServiceBridge;
 import org.chromium.chrome.browser.sync.settings.GoogleServicesSettings;
 import org.chromium.chrome.browser.sync.settings.SyncAndServicesSettings;
 import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
+import org.chromium.components.browser_ui.settings.SettingsLauncher;
 import org.chromium.components.browser_ui.settings.SettingsUtils;
 import org.chromium.ui.text.NoUnderlineClickableSpan;
 import org.chromium.ui.text.SpanApplier;
@@ -157,15 +157,21 @@ public class AutofillAssistantPreferenceFragment extends PreferenceFragmentCompa
                 UnifiedConsentServiceBridge.isUrlKeyedAnonymizedDataCollectionEnabled(
                         Profile.getLastUsedRegularProfile());
 
-        boolean proactive_toggle_enabled =
-                url_keyed_anonymized_data_collection_enabled && assistant_switch_on_or_missing;
         boolean proactive_help_on = SharedPreferencesManager.getInstance().readBoolean(
                 ChromePreferenceKeys.AUTOFILL_ASSISTANT_PROACTIVE_HELP, true);
+        boolean proactive_toggle_enabled;
+        boolean show_disclaimer;
+        if (ChromeFeatureList.isEnabled(
+                    ChromeFeatureList.AUTOFILL_ASSISTANT_DISABLE_PROACTIVE_HELP_TIED_TO_MSBB)) {
+            proactive_toggle_enabled = assistant_switch_on_or_missing;
+            show_disclaimer = false;
+        } else {
+            proactive_toggle_enabled =
+                    url_keyed_anonymized_data_collection_enabled && assistant_switch_on_or_missing;
+            show_disclaimer = !proactive_toggle_enabled && assistant_switch_on_or_missing;
+        }
         mProactiveHelpPreference.setEnabled(proactive_toggle_enabled);
         mProactiveHelpPreference.setChecked(proactive_toggle_enabled && proactive_help_on);
-
-        boolean show_disclaimer =
-                !url_keyed_anonymized_data_collection_enabled && assistant_switch_on_or_missing;
         mGoogleServicesSettingsLink.setVisible(show_disclaimer);
 
         mAssistantVoiceSearchEnabledPref.setChecked(mSharedPreferencesManager.readBoolean(

@@ -89,16 +89,19 @@ public final class SslConfig extends org.chromium.mojo.bindings.Struct {
                     
                 result.versionMin = decoder0.readInt(12);
                     SslVersion.validate(result.versionMin);
+                    result.versionMin = SslVersion.toKnownValue(result.versionMin);
                 }
                 {
                     
                 result.versionMinWarn = decoder0.readInt(16);
                     SslVersion.validate(result.versionMinWarn);
+                    result.versionMinWarn = SslVersion.toKnownValue(result.versionMinWarn);
                 }
                 {
                     
                 result.versionMax = decoder0.readInt(20);
                     SslVersion.validate(result.versionMax);
+                    result.versionMax = SslVersion.toKnownValue(result.versionMax);
                 }
                 {
                     

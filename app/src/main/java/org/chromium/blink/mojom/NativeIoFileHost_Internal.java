@@ -49,8 +49,6 @@ class NativeIoFileHost_Internal {
 
     private static final int CLOSE_ORDINAL = 0;
 
-    private static final int SET_LENGTH_ORDINAL = 1;
-
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NativeIoFileHost.Proxy {
 
@@ -76,30 +74,6 @@ CloseResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new NativeIoFileHostCloseResponseParamsForwardToCallback(callback));
-
-        }
-
-
-        @Override
-        public void setLength(
-long length, org.chromium.mojo_base.mojom.File backingFile, 
-SetLengthResponse callback) {
-
-            NativeIoFileHostSetLengthParams _message = new NativeIoFileHostSetLengthParams();
-
-            _message.length = length;
-
-            _message.backingFile = backingFile;
-
-
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    SET_LENGTH_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new NativeIoFileHostSetLengthResponseParamsForwardToCallback(callback));
 
         }
 
@@ -130,8 +104,6 @@ SetLengthResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 NativeIoFileHost_Internal.MANAGER, messageWithHeader);
-
-
 
 
 
@@ -175,21 +147,6 @@ SetLengthResponse callback) {
                         NativeIoFileHostCloseParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().close(new NativeIoFileHostCloseResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
-                        return true;
-                    }
-
-
-
-
-
-
-
-                    case SET_LENGTH_ORDINAL: {
-
-                        NativeIoFileHostSetLengthParams data =
-                                NativeIoFileHostSetLengthParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().setLength(data.length, data.backingFile, new NativeIoFileHostSetLengthResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -366,211 +323,6 @@ SetLengthResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     CLOSE_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
-        }
-    }
-
-
-
-    
-    static final class NativeIoFileHostSetLengthParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public long length;
-        public org.chromium.mojo_base.mojom.File backingFile;
-
-        private NativeIoFileHostSetLengthParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NativeIoFileHostSetLengthParams() {
-            this(0);
-        }
-
-        public static NativeIoFileHostSetLengthParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NativeIoFileHostSetLengthParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NativeIoFileHostSetLengthParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NativeIoFileHostSetLengthParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NativeIoFileHostSetLengthParams(elementsOrVersion);
-                    {
-                        
-                    result.length = decoder0.readLong(8);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.backingFile = org.chromium.mojo_base.mojom.File.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.length, 8);
-            
-            encoder0.encode(this.backingFile, 16, false);
-        }
-    }
-
-
-
-    
-    static final class NativeIoFileHostSetLengthResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean success;
-        public org.chromium.mojo_base.mojom.File backingFile;
-
-        private NativeIoFileHostSetLengthResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NativeIoFileHostSetLengthResponseParams() {
-            this(0);
-        }
-
-        public static NativeIoFileHostSetLengthResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NativeIoFileHostSetLengthResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NativeIoFileHostSetLengthResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NativeIoFileHostSetLengthResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NativeIoFileHostSetLengthResponseParams(elementsOrVersion);
-                    {
-                        
-                    result.success = decoder0.readBoolean(8, 0);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.backingFile = org.chromium.mojo_base.mojom.File.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.success, 8, 0);
-            
-            encoder0.encode(this.backingFile, 16, false);
-        }
-    }
-
-    static class NativeIoFileHostSetLengthResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NativeIoFileHost.SetLengthResponse mCallback;
-
-        NativeIoFileHostSetLengthResponseParamsForwardToCallback(NativeIoFileHost.SetLengthResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(SET_LENGTH_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
-                    return false;
-                }
-
-                NativeIoFileHostSetLengthResponseParams response = NativeIoFileHostSetLengthResponseParams.deserialize(messageWithHeader.getPayload());
-
-                mCallback.call(response.success, response.backingFile);
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
-            }
-        }
-    }
-
-    static class NativeIoFileHostSetLengthResponseParamsProxyToResponder implements NativeIoFileHost.SetLengthResponse {
-
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
-
-        NativeIoFileHostSetLengthResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
-        }
-
-        @Override
-        public void call(Boolean success, org.chromium.mojo_base.mojom.File backingFile) {
-            NativeIoFileHostSetLengthResponseParams _response = new NativeIoFileHostSetLengthResponseParams();
-
-            _response.success = success;
-
-            _response.backingFile = backingFile;
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    SET_LENGTH_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

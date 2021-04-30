@@ -40,6 +40,14 @@ MatchAllResponse callback);
 
 
 
+    void getAllMatchedEntries(
+FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
+GetAllMatchedEntriesResponse callback);
+
+    interface GetAllMatchedEntriesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<GetAllMatchedEntriesResult> { }
+
+
+
     void keys(
 FetchApiRequest request, CacheQueryOptions queryOptions, long traceId, 
 KeysResponse callback);
@@ -53,6 +61,14 @@ BatchOperation[] batchOperations, long traceId,
 BatchResponse callback);
 
     interface BatchResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<CacheStorageVerboseError> { }
+
+
+
+    void writeSideData(
+org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedResponseTime, org.chromium.mojo_base.mojom.BigBuffer data, long traceId, 
+WriteSideDataResponse callback);
+
+    interface WriteSideDataResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
 
 
 }

@@ -321,6 +321,7 @@ String sessionId, double newExpiryTimeSec) {
                         
                     result.messageType = decoder0.readInt(16);
                         CdmMessageType.validate(result.messageType);
+                        result.messageType = CdmMessageType.toKnownValue(result.messageType);
                     }
                     {
                         

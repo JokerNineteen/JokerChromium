@@ -4,6 +4,7 @@
 
 package org.chromium.chrome.browser.query_tiles;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ import java.util.List;
  * section.
  */
 public class QueryTileSection {
+    private static final String UMA_PREFIX = "QueryTiles.NTP";
     private static final String MOST_VISITED_MAX_ROWS_SMALL_SCREEN =
             "most_visited_max_rows_small_screen";
     private static final String MOST_VISITED_MAX_ROWS_NORMAL_SCREEN =
@@ -49,7 +51,6 @@ public class QueryTileSection {
     private static final String VARIATION_SMALL_SCREEN_HEIGHT_THRESHOLD_DP =
             "small_screen_height_threshold_dp";
     private static final int DEFAULT_SMALL_SCREEN_HEIGHT_THRESHOLD_DP = 700;
-    private static final String UMA_PREFIX = "QueryTiles.NTP";
 
     private final ViewGroup mQueryTileSectionView;
     private final SearchBoxCoordinator mSearchBoxCoordinator;
@@ -60,6 +61,7 @@ public class QueryTileSection {
     private ImageFetcher mImageFetcher;
     private Integer mTileWidth;
     private float mAnimationPercent;
+    private boolean mNeedReload = true;
 
     /**
      * Represents the information needed to launch a search query when clicking on a tile.
@@ -93,6 +95,7 @@ public class QueryTileSection {
                 ImageFetcherFactory.createImageFetcher(ImageFetcherConfig.IN_MEMORY_WITH_DISK_CACHE,
                         profile, GlobalDiscardableReferencePool.getReferencePool());
         mSearchBoxCoordinator.addVoiceSearchButtonClickListener(v -> reloadTiles());
+        mSearchBoxCoordinator.addLensButtonClickListener(v -> reloadTiles());
         reloadTiles();
     }
 
@@ -110,8 +113,15 @@ public class QueryTileSection {
      * Called to clear the state and reload the top level tiles. Any chip selected will be cleared.
      */
     public void reloadTiles() {
-        mTileProvider.getQueryTiles(this::setTiles);
+        if (!mNeedReload) {
+            // No tile changes, just refresh the display.
+            mTileCoordinator.refreshTiles();
+            return;
+        }
+        // TODO(qinmin): don't return all tiles, just return the top-level tiles.
+        mTileProvider.getQueryTiles(null, this::setTiles);
         mSearchBoxCoordinator.setChipText(null);
+        mNeedReload = false;
     }
 
     private void onTileClicked(ImageTile tile) {
@@ -120,7 +130,9 @@ public class QueryTileSection {
         if (ChromeFeatureList.isEnabled(ChromeFeatureList.QUERY_TILES_LOCAL_ORDERING)) {
             mTileProvider.onTileClicked(queryTile.id);
         }
+        QueryTileUtils.onQueryTileClicked();
 
+        // TODO(qinmin): make isLastLevelTile a member variable of ImageTile.
         boolean isLastLevelTile = queryTile.children.isEmpty();
         if (isLastLevelTile) {
             if (QueryTileUtils.isQueryEditingEnabled()) {
@@ -132,7 +144,8 @@ public class QueryTileSection {
             return;
         }
 
-        setTiles(queryTile.children);
+        mNeedReload = true;
+        mTileProvider.getQueryTiles(tile.id, this::setTiles);
         showQueryChip(queryTile);
     }
 
@@ -194,12 +207,12 @@ public class QueryTileSection {
     }
 
     /**
+     * @param context Context for display calculation.
      * @return Max number of rows for most visited tiles. For smaller screens, the most visited
      *         tiles section on NTP is shortened so that feed is still visible above the fold.
      */
-    public Integer getMaxRowsForMostVisitedTiles() {
-        DisplayAndroid display =
-                DisplayAndroid.getNonMultiDisplay(mQueryTileSectionView.getContext());
+    public static int getMaxRowsForMostVisitedTiles(Context context) {
+        DisplayAndroid display = DisplayAndroid.getNonMultiDisplay(context);
         int screenHeightDp = DisplayUtil.pxToDp(display, display.getDisplayHeight());
         int smallScreenHeightThresholdDp = ChromeFeatureList.getFieldTrialParamByFeatureAsInt(
                 ChromeFeatureList.QUERY_TILES, VARIATION_SMALL_SCREEN_HEIGHT_THRESHOLD_DP,

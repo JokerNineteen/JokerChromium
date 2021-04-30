@@ -333,6 +333,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedRespon
                         
                     result.cacheType = decoder0.readInt(8);
                         CodeCacheType.validate(result.cacheType);
+                        result.cacheType = CodeCacheType.toKnownValue(result.cacheType);
                     }
                     {
                         
@@ -418,6 +419,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedRespon
                         
                     result.cacheType = decoder0.readInt(8);
                         CodeCacheType.validate(result.cacheType);
+                        result.cacheType = CodeCacheType.toKnownValue(result.cacheType);
                     }
                     {
                         
@@ -624,6 +626,7 @@ org.chromium.url.mojom.Url url, org.chromium.mojo_base.mojom.Time expectedRespon
                         
                     result.cacheType = decoder0.readInt(8);
                         CodeCacheType.validate(result.cacheType);
+                        result.cacheType = CodeCacheType.toKnownValue(result.cacheType);
                     }
                     {
                         

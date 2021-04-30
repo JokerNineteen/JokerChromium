@@ -203,6 +203,7 @@ int state) {
                         
                     result.state = decoder0.readInt(8);
                         MediaStatusState.validate(result.state);
+                        result.state = MediaStatusState.toKnownValue(result.state);
                     }
 
             } finally {

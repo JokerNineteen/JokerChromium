@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.browser.download.internal.R;
 
 /**
  * Helper FrameLayout that knows how to make children fit certain aspect ratios.

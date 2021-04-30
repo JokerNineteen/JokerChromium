@@ -227,6 +227,7 @@ SharedWorkerInfo info, SharedWorkerClient client, int creationContextType, Messa
                         
                     result.creationContextType = decoder0.readInt(24);
                         SharedWorkerCreationContextType.validate(result.creationContextType);
+                        result.creationContextType = SharedWorkerCreationContextType.toKnownValue(result.creationContextType);
                     }
                     {
                         

@@ -71,6 +71,7 @@ public final class FrameOwnerProperties extends org.chromium.mojo.bindings.Struc
                     
                 result.scrollbarMode = decoder0.readInt(16);
                     ScrollbarMode.validate(result.scrollbarMode);
+                    result.scrollbarMode = ScrollbarMode.toKnownValue(result.scrollbarMode);
                 }
                 {
                     
@@ -96,6 +97,7 @@ public final class FrameOwnerProperties extends org.chromium.mojo.bindings.Struc
                     
                 result.colorScheme = decoder0.readInt(32);
                     ColorScheme.validate(result.colorScheme);
+                    result.colorScheme = ColorScheme.toKnownValue(result.colorScheme);
                 }
                 {
                     

@@ -65,6 +65,7 @@ public final class GestureData extends org.chromium.mojo.bindings.Struct {
                     
                 result.deviceType = decoder0.readInt(16);
                     GestureDeviceType.validate(result.deviceType);
+                    result.deviceType = GestureDeviceType.toKnownValue(result.deviceType);
                 }
                 {
                     

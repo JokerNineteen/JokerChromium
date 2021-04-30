@@ -64,6 +64,7 @@ public final class LockInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.mode = decoder0.readInt(16);
                     LockMode.validate(result.mode);
+                    result.mode = LockMode.toKnownValue(result.mode);
                 }
                 {
                     

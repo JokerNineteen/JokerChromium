@@ -20,8 +20,6 @@ import org.chromium.base.Callback;
 import org.chromium.base.TraceEvent;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.supplier.Supplier;
-import org.chromium.chrome.R;
-import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.ui.widget.ChromeImageButton;
 
 /**
@@ -31,9 +29,7 @@ import org.chromium.ui.widget.ChromeImageButton;
 public class HomeButton extends ChromeImageButton
         implements OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
     @VisibleForTesting
-    public static final int ID_REMOVE = 0;
-    @VisibleForTesting
-    public static final int ID_SETTINGS = 1;
+    public static final int ID_SETTINGS = 0;
 
     private Callback<Context> mOnMenuClickCallback;
     private Supplier<Boolean> mIsManagedByPolicySupplier;
@@ -52,7 +48,7 @@ public class HomeButton extends ChromeImageButton
     /**
      * Initialize home button.
      * @param homepageVisibility Observable used to react on homepage visibility change.
-     * @param onHomepageMenuClickCallback Callback for menu click event on homepage.
+     * @param onMenuClickCallback Callback for menu click event on homepage.
      * @param isHomepageManagedByPolicy Supplier that tells if homepage is managed by policy.
      */
     public void init(ObservableSupplier<Boolean> homepageVisibility,
@@ -68,16 +64,8 @@ public class HomeButton extends ChromeImageButton
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-        // Disable long click before native initialized.
-        if (!ChromeFeatureList.isInitialized()) return;
-
-        if (isHomepageSettingsUIConversionEnabled()) {
-            menu.add(Menu.NONE, ID_SETTINGS, Menu.NONE, R.string.options_homepage_edit_title)
-                    .setOnMenuItemClickListener(this);
-        } else {
-            menu.add(Menu.NONE, ID_REMOVE, Menu.NONE, R.string.remove)
-                    .setOnMenuItemClickListener(this);
-        }
+        menu.add(Menu.NONE, ID_SETTINGS, Menu.NONE, R.string.options_homepage_edit_title)
+                .setOnMenuItemClickListener(this);
 
         if (sSaveContextMenuForTests) mMenuForTests = menu;
     }
@@ -85,13 +73,10 @@ public class HomeButton extends ChromeImageButton
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         assert !mIsManagedByPolicySupplier.get();
-        if (isHomepageSettingsUIConversionEnabled()) {
-            assert item.getItemId() == ID_SETTINGS;
-        } else {
-            assert item.getItemId() == ID_REMOVE;
-        }
-        mOnMenuClickCallback.onResult(getContext());
+        assert item.getItemId() == ID_SETTINGS;
+        assert mOnMenuClickCallback != null;
 
+        mOnMenuClickCallback.onResult(getContext());
         return true;
     }
 
@@ -110,17 +95,12 @@ public class HomeButton extends ChromeImageButton
     }
 
     private void updateContextMenuListener() {
-        if (!mIsManagedByPolicySupplier.get()) {
+        if (!mIsManagedByPolicySupplier.get() && mOnMenuClickCallback != null) {
             setOnCreateContextMenuListener(this);
         } else {
             setOnCreateContextMenuListener(null);
             setLongClickable(false);
         }
-    }
-
-    private boolean isHomepageSettingsUIConversionEnabled() {
-        assert ChromeFeatureList.isInitialized();
-        return ChromeFeatureList.isEnabled(ChromeFeatureList.HOMEPAGE_SETTINGS_UI_CONVERSION);
     }
 
     /**

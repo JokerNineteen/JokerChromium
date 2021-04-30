@@ -40,6 +40,10 @@ public final class MenuItem extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Type() {}
     }
     public String label;
@@ -102,6 +106,7 @@ public final class MenuItem extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(24);
                     MenuItem.Type.validate(result.type);
+                    result.type = MenuItem.Type.toKnownValue(result.type);
                 }
                 {
                     
@@ -111,6 +116,7 @@ public final class MenuItem extends org.chromium.mojo.bindings.Struct {
                     
                 result.textDirection = decoder0.readInt(32);
                     org.chromium.mojo_base.mojom.TextDirection.validate(result.textDirection);
+                    result.textDirection = org.chromium.mojo_base.mojom.TextDirection.toKnownValue(result.textDirection);
                 }
                 {
                     

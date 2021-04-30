@@ -38,16 +38,21 @@ public final class PermissionName {
     public static final int STORAGE_ACCESS = 19;
     public static final int WINDOW_PLACEMENT = 20;
     public static final int FONT_ACCESS = 21;
+    public static final int DISPLAY_CAPTURE = 22;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 21;
+    public static final int MAX_VALUE = 22;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 21;
+        return value >= 0 && value <= 22;
     }
 
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private PermissionName() {}

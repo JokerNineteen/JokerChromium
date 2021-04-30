@@ -16,8 +16,8 @@ package org.chromium.viz.mojom;
 
 public final class DelegatedInkMetadata extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 64;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.gfx.mojom.PointF point;
     public double diameter;
@@ -25,6 +25,7 @@ public final class DelegatedInkMetadata extends org.chromium.mojo.bindings.Struc
     public org.chromium.mojo_base.mojom.TimeTicks timestamp;
     public org.chromium.gfx.mojom.RectF presentationArea;
     public org.chromium.mojo_base.mojom.TimeTicks frameTime;
+    public boolean isHovering;
 
     private DelegatedInkMetadata(int version) {
         super(STRUCT_SIZE, version);
@@ -88,6 +89,10 @@ public final class DelegatedInkMetadata extends org.chromium.mojo.bindings.Struc
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
                 result.frameTime = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
                 }
+                {
+                    
+                result.isHovering = decoder0.readBoolean(56, 0);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -111,5 +116,7 @@ public final class DelegatedInkMetadata extends org.chromium.mojo.bindings.Struc
         encoder0.encode(this.presentationArea, 40, false);
         
         encoder0.encode(this.frameTime, 48, false);
+        
+        encoder0.encode(this.isHovering, 56, 0);
     }
 }

@@ -27,6 +27,1050 @@ public  final class PasswordSpecificsData extends
     avatarUrl_ = "";
     federationUrl_ = "";
   }
+  public interface PasswordIssuesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sync_pb.PasswordSpecificsData.PasswordIssues)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+     * @return Whether the leakedPasswordIssue field is set.
+     */
+    boolean hasLeakedPasswordIssue();
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+     * @return The leakedPasswordIssue.
+     */
+    org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getLeakedPasswordIssue();
+
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+     * @return Whether the reusedPasswordIssue field is set.
+     */
+    boolean hasReusedPasswordIssue();
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+     * @return The reusedPasswordIssue.
+     */
+    org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getReusedPasswordIssue();
+
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+     * @return Whether the weakPasswordIssue field is set.
+     */
+    boolean hasWeakPasswordIssue();
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+     * @return The weakPasswordIssue.
+     */
+    org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getWeakPasswordIssue();
+
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+     * @return Whether the phishedPasswordIssue field is set.
+     */
+    boolean hasPhishedPasswordIssue();
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+     * @return The phishedPasswordIssue.
+     */
+    org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getPhishedPasswordIssue();
+  }
+  /**
+   * Protobuf type {@code sync_pb.PasswordSpecificsData.PasswordIssues}
+   */
+  public  static final class PasswordIssues extends
+      com.google.protobuf.GeneratedMessageLite<
+          PasswordIssues, PasswordIssues.Builder> implements
+      // @@protoc_insertion_point(message_implements:sync_pb.PasswordSpecificsData.PasswordIssues)
+      PasswordIssuesOrBuilder {
+    private PasswordIssues() {
+    }
+    public interface PasswordIssueOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue)
+        com.google.protobuf.MessageLiteOrBuilder {
+
+      /**
+       * <pre>
+       * Timestamp set by a client detecting the issue for the first time.
+       * Number of microseconds since Windows epoch (1601).
+       * </pre>
+       *
+       * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+       * @return Whether the dateFirstDetectionMicroseconds field is set.
+       */
+      boolean hasDateFirstDetectionMicroseconds();
+      /**
+       * <pre>
+       * Timestamp set by a client detecting the issue for the first time.
+       * Number of microseconds since Windows epoch (1601).
+       * </pre>
+       *
+       * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+       * @return The dateFirstDetectionMicroseconds.
+       */
+      long getDateFirstDetectionMicroseconds();
+
+      /**
+       * <pre>
+       * Whether the issue was muted by user.
+       * </pre>
+       *
+       * <code>optional bool is_muted = 2;</code>
+       * @return Whether the isMuted field is set.
+       */
+      boolean hasIsMuted();
+      /**
+       * <pre>
+       * Whether the issue was muted by user.
+       * </pre>
+       *
+       * <code>optional bool is_muted = 2;</code>
+       * @return The isMuted.
+       */
+      boolean getIsMuted();
+    }
+    /**
+     * Protobuf type {@code sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue}
+     */
+    public  static final class PasswordIssue extends
+        com.google.protobuf.GeneratedMessageLite<
+            PasswordIssue, PasswordIssue.Builder> implements
+        // @@protoc_insertion_point(message_implements:sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue)
+        PasswordIssueOrBuilder {
+      private PasswordIssue() {
+      }
+      private int bitField0_;
+      public static final int DATE_FIRST_DETECTION_MICROSECONDS_FIELD_NUMBER = 1;
+      private long dateFirstDetectionMicroseconds_;
+      /**
+       * <pre>
+       * Timestamp set by a client detecting the issue for the first time.
+       * Number of microseconds since Windows epoch (1601).
+       * </pre>
+       *
+       * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+       * @return Whether the dateFirstDetectionMicroseconds field is set.
+       */
+      @java.lang.Override
+      public boolean hasDateFirstDetectionMicroseconds() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * Timestamp set by a client detecting the issue for the first time.
+       * Number of microseconds since Windows epoch (1601).
+       * </pre>
+       *
+       * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+       * @return The dateFirstDetectionMicroseconds.
+       */
+      @java.lang.Override
+      public long getDateFirstDetectionMicroseconds() {
+        return dateFirstDetectionMicroseconds_;
+      }
+      /**
+       * <pre>
+       * Timestamp set by a client detecting the issue for the first time.
+       * Number of microseconds since Windows epoch (1601).
+       * </pre>
+       *
+       * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+       * @param value The dateFirstDetectionMicroseconds to set.
+       */
+      private void setDateFirstDetectionMicroseconds(long value) {
+        bitField0_ |= 0x00000001;
+        dateFirstDetectionMicroseconds_ = value;
+      }
+      /**
+       * <pre>
+       * Timestamp set by a client detecting the issue for the first time.
+       * Number of microseconds since Windows epoch (1601).
+       * </pre>
+       *
+       * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+       */
+      private void clearDateFirstDetectionMicroseconds() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        dateFirstDetectionMicroseconds_ = 0L;
+      }
+
+      public static final int IS_MUTED_FIELD_NUMBER = 2;
+      private boolean isMuted_;
+      /**
+       * <pre>
+       * Whether the issue was muted by user.
+       * </pre>
+       *
+       * <code>optional bool is_muted = 2;</code>
+       * @return Whether the isMuted field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsMuted() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Whether the issue was muted by user.
+       * </pre>
+       *
+       * <code>optional bool is_muted = 2;</code>
+       * @return The isMuted.
+       */
+      @java.lang.Override
+      public boolean getIsMuted() {
+        return isMuted_;
+      }
+      /**
+       * <pre>
+       * Whether the issue was muted by user.
+       * </pre>
+       *
+       * <code>optional bool is_muted = 2;</code>
+       * @param value The isMuted to set.
+       */
+      private void setIsMuted(boolean value) {
+        bitField0_ |= 0x00000002;
+        isMuted_ = value;
+      }
+      /**
+       * <pre>
+       * Whether the issue was muted by user.
+       * </pre>
+       *
+       * <code>optional bool is_muted = 2;</code>
+       */
+      private void clearIsMuted() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        isMuted_ = false;
+      }
+
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, data, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input);
+      }
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageLite.parseFrom(
+            DEFAULT_INSTANCE, input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() {
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
+      }
+      public static Builder newBuilder(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue prototype) {
+        return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      }
+
+      /**
+       * Protobuf type {@code sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageLite.Builder<
+            org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue, Builder> implements
+          // @@protoc_insertion_point(builder_implements:sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue)
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssueOrBuilder {
+        // Construct using org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.newBuilder()
+        private Builder() {
+          super(DEFAULT_INSTANCE);
+        }
+
+
+        /**
+         * <pre>
+         * Timestamp set by a client detecting the issue for the first time.
+         * Number of microseconds since Windows epoch (1601).
+         * </pre>
+         *
+         * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+         * @return Whether the dateFirstDetectionMicroseconds field is set.
+         */
+        @java.lang.Override
+        public boolean hasDateFirstDetectionMicroseconds() {
+          return instance.hasDateFirstDetectionMicroseconds();
+        }
+        /**
+         * <pre>
+         * Timestamp set by a client detecting the issue for the first time.
+         * Number of microseconds since Windows epoch (1601).
+         * </pre>
+         *
+         * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+         * @return The dateFirstDetectionMicroseconds.
+         */
+        @java.lang.Override
+        public long getDateFirstDetectionMicroseconds() {
+          return instance.getDateFirstDetectionMicroseconds();
+        }
+        /**
+         * <pre>
+         * Timestamp set by a client detecting the issue for the first time.
+         * Number of microseconds since Windows epoch (1601).
+         * </pre>
+         *
+         * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+         * @param value The dateFirstDetectionMicroseconds to set.
+         * @return This builder for chaining.
+         */
+        public Builder setDateFirstDetectionMicroseconds(long value) {
+          copyOnWrite();
+          instance.setDateFirstDetectionMicroseconds(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Timestamp set by a client detecting the issue for the first time.
+         * Number of microseconds since Windows epoch (1601).
+         * </pre>
+         *
+         * <code>optional uint64 date_first_detection_microseconds = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearDateFirstDetectionMicroseconds() {
+          copyOnWrite();
+          instance.clearDateFirstDetectionMicroseconds();
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Whether the issue was muted by user.
+         * </pre>
+         *
+         * <code>optional bool is_muted = 2;</code>
+         * @return Whether the isMuted field is set.
+         */
+        @java.lang.Override
+        public boolean hasIsMuted() {
+          return instance.hasIsMuted();
+        }
+        /**
+         * <pre>
+         * Whether the issue was muted by user.
+         * </pre>
+         *
+         * <code>optional bool is_muted = 2;</code>
+         * @return The isMuted.
+         */
+        @java.lang.Override
+        public boolean getIsMuted() {
+          return instance.getIsMuted();
+        }
+        /**
+         * <pre>
+         * Whether the issue was muted by user.
+         * </pre>
+         *
+         * <code>optional bool is_muted = 2;</code>
+         * @param value The isMuted to set.
+         * @return This builder for chaining.
+         */
+        public Builder setIsMuted(boolean value) {
+          copyOnWrite();
+          instance.setIsMuted(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Whether the issue was muted by user.
+         * </pre>
+         *
+         * <code>optional bool is_muted = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearIsMuted() {
+          copyOnWrite();
+          instance.clearIsMuted();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue)
+      }
+      @java.lang.Override
+      @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+      protected final java.lang.Object dynamicMethod(
+          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+          java.lang.Object arg0, java.lang.Object arg1) {
+        switch (method) {
+          case NEW_MUTABLE_INSTANCE: {
+            return new org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue();
+          }
+          case NEW_BUILDER: {
+            return new Builder();
+          }
+          case BUILD_MESSAGE_INFO: {
+              java.lang.Object[] objects = new java.lang.Object[] {
+                "bitField0_",
+                "dateFirstDetectionMicroseconds_",
+                "isMuted_",
+              };
+              java.lang.String info =
+                  "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u1003\u0000\u0002" +
+                  "\u1007\u0001";
+              return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+          }
+          // fall through
+          case GET_DEFAULT_INSTANCE: {
+            return DEFAULT_INSTANCE;
+          }
+          case GET_PARSER: {
+            com.google.protobuf.Parser<org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue> parser = PARSER;
+            if (parser == null) {
+              synchronized (org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.class) {
+                parser = PARSER;
+                if (parser == null) {
+                  parser =
+                      new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue>(
+                          DEFAULT_INSTANCE);
+                  PARSER = parser;
+                }
+              }
+            }
+            return parser;
+        }
+        case GET_MEMOIZED_IS_INITIALIZED: {
+          return (byte) 1;
+        }
+        case SET_MEMOIZED_IS_INITIALIZED: {
+          return null;
+        }
+        }
+        throw new UnsupportedOperationException();
+      }
+
+
+      // @@protoc_insertion_point(class_scope:sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue)
+      private static final org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue DEFAULT_INSTANCE;
+      static {
+        PasswordIssue defaultInstance = new PasswordIssue();
+        // New instances are implicitly immutable so no need to make
+        // immutable.
+        DEFAULT_INSTANCE = defaultInstance;
+        com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+          PasswordIssue.class, defaultInstance);
+      }
+
+      public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static volatile com.google.protobuf.Parser<PasswordIssue> PARSER;
+
+      public static com.google.protobuf.Parser<PasswordIssue> parser() {
+        return DEFAULT_INSTANCE.getParserForType();
+      }
+    }
+
+    private int bitField0_;
+    public static final int LEAKED_PASSWORD_ISSUE_FIELD_NUMBER = 1;
+    private org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue leakedPasswordIssue_;
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+     */
+    @java.lang.Override
+    public boolean hasLeakedPasswordIssue() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getLeakedPasswordIssue() {
+      return leakedPasswordIssue_ == null ? org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance() : leakedPasswordIssue_;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+     */
+    private void setLeakedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  leakedPasswordIssue_ = value;
+      bitField0_ |= 0x00000001;
+      }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeLeakedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  if (leakedPasswordIssue_ != null &&
+          leakedPasswordIssue_ != org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance()) {
+        leakedPasswordIssue_ =
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.newBuilder(leakedPasswordIssue_).mergeFrom(value).buildPartial();
+      } else {
+        leakedPasswordIssue_ = value;
+      }
+      bitField0_ |= 0x00000001;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+     */
+    private void clearLeakedPasswordIssue() {  leakedPasswordIssue_ = null;
+      bitField0_ = (bitField0_ & ~0x00000001);
+    }
+
+    public static final int REUSED_PASSWORD_ISSUE_FIELD_NUMBER = 2;
+    private org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue reusedPasswordIssue_;
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+     */
+    @java.lang.Override
+    public boolean hasReusedPasswordIssue() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getReusedPasswordIssue() {
+      return reusedPasswordIssue_ == null ? org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance() : reusedPasswordIssue_;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+     */
+    private void setReusedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  reusedPasswordIssue_ = value;
+      bitField0_ |= 0x00000002;
+      }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeReusedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  if (reusedPasswordIssue_ != null &&
+          reusedPasswordIssue_ != org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance()) {
+        reusedPasswordIssue_ =
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.newBuilder(reusedPasswordIssue_).mergeFrom(value).buildPartial();
+      } else {
+        reusedPasswordIssue_ = value;
+      }
+      bitField0_ |= 0x00000002;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+     */
+    private void clearReusedPasswordIssue() {  reusedPasswordIssue_ = null;
+      bitField0_ = (bitField0_ & ~0x00000002);
+    }
+
+    public static final int WEAK_PASSWORD_ISSUE_FIELD_NUMBER = 3;
+    private org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue weakPasswordIssue_;
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+     */
+    @java.lang.Override
+    public boolean hasWeakPasswordIssue() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getWeakPasswordIssue() {
+      return weakPasswordIssue_ == null ? org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance() : weakPasswordIssue_;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+     */
+    private void setWeakPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  weakPasswordIssue_ = value;
+      bitField0_ |= 0x00000004;
+      }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeWeakPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  if (weakPasswordIssue_ != null &&
+          weakPasswordIssue_ != org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance()) {
+        weakPasswordIssue_ =
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.newBuilder(weakPasswordIssue_).mergeFrom(value).buildPartial();
+      } else {
+        weakPasswordIssue_ = value;
+      }
+      bitField0_ |= 0x00000004;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+     */
+    private void clearWeakPasswordIssue() {  weakPasswordIssue_ = null;
+      bitField0_ = (bitField0_ & ~0x00000004);
+    }
+
+    public static final int PHISHED_PASSWORD_ISSUE_FIELD_NUMBER = 4;
+    private org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue phishedPasswordIssue_;
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+     */
+    @java.lang.Override
+    public boolean hasPhishedPasswordIssue() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getPhishedPasswordIssue() {
+      return phishedPasswordIssue_ == null ? org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance() : phishedPasswordIssue_;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+     */
+    private void setPhishedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  phishedPasswordIssue_ = value;
+      bitField0_ |= 0x00000008;
+      }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergePhishedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+      value.getClass();
+  if (phishedPasswordIssue_ != null &&
+          phishedPasswordIssue_ != org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.getDefaultInstance()) {
+        phishedPasswordIssue_ =
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.newBuilder(phishedPasswordIssue_).mergeFrom(value).buildPartial();
+      } else {
+        phishedPasswordIssue_ = value;
+      }
+      bitField0_ |= 0x00000008;
+    }
+    /**
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+     */
+    private void clearPhishedPasswordIssue() {  phishedPasswordIssue_ = null;
+      bitField0_ = (bitField0_ & ~0x00000008);
+    }
+
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code sync_pb.PasswordSpecificsData.PasswordIssues}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues, Builder> implements
+        // @@protoc_insertion_point(builder_implements:sync_pb.PasswordSpecificsData.PasswordIssues)
+        org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssuesOrBuilder {
+      // Construct using org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+       */
+      @java.lang.Override
+      public boolean hasLeakedPasswordIssue() {
+        return instance.hasLeakedPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getLeakedPasswordIssue() {
+        return instance.getLeakedPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+       */
+      public Builder setLeakedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.setLeakedPasswordIssue(value);
+        return this;
+        }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+       */
+      public Builder setLeakedPasswordIssue(
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.Builder builderForValue) {
+        copyOnWrite();
+        instance.setLeakedPasswordIssue(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+       */
+      public Builder mergeLeakedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.mergeLeakedPasswordIssue(value);
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue leaked_password_issue = 1;</code>
+       */
+      public Builder clearLeakedPasswordIssue() {  copyOnWrite();
+        instance.clearLeakedPasswordIssue();
+        return this;
+      }
+
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+       */
+      @java.lang.Override
+      public boolean hasReusedPasswordIssue() {
+        return instance.hasReusedPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getReusedPasswordIssue() {
+        return instance.getReusedPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+       */
+      public Builder setReusedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.setReusedPasswordIssue(value);
+        return this;
+        }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+       */
+      public Builder setReusedPasswordIssue(
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.Builder builderForValue) {
+        copyOnWrite();
+        instance.setReusedPasswordIssue(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+       */
+      public Builder mergeReusedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.mergeReusedPasswordIssue(value);
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue reused_password_issue = 2;</code>
+       */
+      public Builder clearReusedPasswordIssue() {  copyOnWrite();
+        instance.clearReusedPasswordIssue();
+        return this;
+      }
+
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+       */
+      @java.lang.Override
+      public boolean hasWeakPasswordIssue() {
+        return instance.hasWeakPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getWeakPasswordIssue() {
+        return instance.getWeakPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+       */
+      public Builder setWeakPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.setWeakPasswordIssue(value);
+        return this;
+        }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+       */
+      public Builder setWeakPasswordIssue(
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.Builder builderForValue) {
+        copyOnWrite();
+        instance.setWeakPasswordIssue(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+       */
+      public Builder mergeWeakPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.mergeWeakPasswordIssue(value);
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue weak_password_issue = 3;</code>
+       */
+      public Builder clearWeakPasswordIssue() {  copyOnWrite();
+        instance.clearWeakPasswordIssue();
+        return this;
+      }
+
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+       */
+      @java.lang.Override
+      public boolean hasPhishedPasswordIssue() {
+        return instance.hasPhishedPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue getPhishedPasswordIssue() {
+        return instance.getPhishedPasswordIssue();
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+       */
+      public Builder setPhishedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.setPhishedPasswordIssue(value);
+        return this;
+        }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+       */
+      public Builder setPhishedPasswordIssue(
+          org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue.Builder builderForValue) {
+        copyOnWrite();
+        instance.setPhishedPasswordIssue(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+       */
+      public Builder mergePhishedPasswordIssue(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.PasswordIssue value) {
+        copyOnWrite();
+        instance.mergePhishedPasswordIssue(value);
+        return this;
+      }
+      /**
+       * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues.PasswordIssue phished_password_issue = 4;</code>
+       */
+      public Builder clearPhishedPasswordIssue() {  copyOnWrite();
+        instance.clearPhishedPasswordIssue();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sync_pb.PasswordSpecificsData.PasswordIssues)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
+              "leakedPasswordIssue_",
+              "reusedPasswordIssue_",
+              "weakPasswordIssue_",
+              "phishedPasswordIssue_",
+            };
+            java.lang.String info =
+                "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
+                "\u1009\u0001\u0003\u1009\u0002\u0004\u1009\u0003";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:sync_pb.PasswordSpecificsData.PasswordIssues)
+    private static final org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues DEFAULT_INSTANCE;
+    static {
+      PasswordIssues defaultInstance = new PasswordIssues();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        PasswordIssues.class, defaultInstance);
+    }
+
+    public static org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<PasswordIssues> PARSER;
+
+    public static com.google.protobuf.Parser<PasswordIssues> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
   private int bitField0_;
   public static final int SCHEME_FIELD_NUMBER = 1;
   private int scheme_;
@@ -1348,6 +2392,87 @@ public  final class PasswordSpecificsData extends
   private void clearDateLastUsed() {
     bitField0_ = (bitField0_ & ~0x00020000);
     dateLastUsed_ = 0L;
+  }
+
+  public static final int PASSWORD_ISSUES_FIELD_NUMBER = 19;
+  private org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues passwordIssues_;
+  /**
+   * <pre>
+   * Set if an issue was detected that puts this password at risk. All the
+   * clients are expected to clear the field when the password value is updated.
+   * 'reused' part can be additionally reset when the analysis on the entire
+   * password store is completed.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+   */
+  @java.lang.Override
+  public boolean hasPasswordIssues() {
+    return ((bitField0_ & 0x00040000) != 0);
+  }
+  /**
+   * <pre>
+   * Set if an issue was detected that puts this password at risk. All the
+   * clients are expected to clear the field when the password value is updated.
+   * 'reused' part can be additionally reset when the analysis on the entire
+   * password store is completed.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues getPasswordIssues() {
+    return passwordIssues_ == null ? org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.getDefaultInstance() : passwordIssues_;
+  }
+  /**
+   * <pre>
+   * Set if an issue was detected that puts this password at risk. All the
+   * clients are expected to clear the field when the password value is updated.
+   * 'reused' part can be additionally reset when the analysis on the entire
+   * password store is completed.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+   */
+  private void setPasswordIssues(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues value) {
+    value.getClass();
+  passwordIssues_ = value;
+    bitField0_ |= 0x00040000;
+    }
+  /**
+   * <pre>
+   * Set if an issue was detected that puts this password at risk. All the
+   * clients are expected to clear the field when the password value is updated.
+   * 'reused' part can be additionally reset when the analysis on the entire
+   * password store is completed.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality"})
+  private void mergePasswordIssues(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues value) {
+    value.getClass();
+  if (passwordIssues_ != null &&
+        passwordIssues_ != org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.getDefaultInstance()) {
+      passwordIssues_ =
+        org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.newBuilder(passwordIssues_).mergeFrom(value).buildPartial();
+    } else {
+      passwordIssues_ = value;
+    }
+    bitField0_ |= 0x00040000;
+  }
+  /**
+   * <pre>
+   * Set if an issue was detected that puts this password at risk. All the
+   * clients are expected to clear the field when the password value is updated.
+   * 'reused' part can be additionally reset when the analysis on the entire
+   * password store is completed.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+   */
+  private void clearPasswordIssues() {  passwordIssues_ = null;
+    bitField0_ = (bitField0_ & ~0x00040000);
   }
 
   public static org.chromium.components.sync.protocol.PasswordSpecificsData parseFrom(
@@ -2817,6 +3942,95 @@ public  final class PasswordSpecificsData extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Set if an issue was detected that puts this password at risk. All the
+     * clients are expected to clear the field when the password value is updated.
+     * 'reused' part can be additionally reset when the analysis on the entire
+     * password store is completed.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+     */
+    @java.lang.Override
+    public boolean hasPasswordIssues() {
+      return instance.hasPasswordIssues();
+    }
+    /**
+     * <pre>
+     * Set if an issue was detected that puts this password at risk. All the
+     * clients are expected to clear the field when the password value is updated.
+     * 'reused' part can be additionally reset when the analysis on the entire
+     * password store is completed.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues getPasswordIssues() {
+      return instance.getPasswordIssues();
+    }
+    /**
+     * <pre>
+     * Set if an issue was detected that puts this password at risk. All the
+     * clients are expected to clear the field when the password value is updated.
+     * 'reused' part can be additionally reset when the analysis on the entire
+     * password store is completed.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+     */
+    public Builder setPasswordIssues(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues value) {
+      copyOnWrite();
+      instance.setPasswordIssues(value);
+      return this;
+      }
+    /**
+     * <pre>
+     * Set if an issue was detected that puts this password at risk. All the
+     * clients are expected to clear the field when the password value is updated.
+     * 'reused' part can be additionally reset when the analysis on the entire
+     * password store is completed.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+     */
+    public Builder setPasswordIssues(
+        org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues.Builder builderForValue) {
+      copyOnWrite();
+      instance.setPasswordIssues(builderForValue.build());
+      return this;
+    }
+    /**
+     * <pre>
+     * Set if an issue was detected that puts this password at risk. All the
+     * clients are expected to clear the field when the password value is updated.
+     * 'reused' part can be additionally reset when the analysis on the entire
+     * password store is completed.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+     */
+    public Builder mergePasswordIssues(org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues value) {
+      copyOnWrite();
+      instance.mergePasswordIssues(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Set if an issue was detected that puts this password at risk. All the
+     * clients are expected to clear the field when the password value is updated.
+     * 'reused' part can be additionally reset when the analysis on the entire
+     * password store is completed.
+     * </pre>
+     *
+     * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+     */
+    public Builder clearPasswordIssues() {  copyOnWrite();
+      instance.clearPasswordIssues();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.PasswordSpecificsData)
   }
   @java.lang.Override
@@ -2852,13 +4066,14 @@ public  final class PasswordSpecificsData extends
             "avatarUrl_",
             "federationUrl_",
             "dateLastUsed_",
+            "passwordIssues_",
           };
           java.lang.String info =
-              "\u0001\u0012\u0000\u0001\u0001\u0012\u0012\u0000\u0000\u0000\u0001\u1004\u0000\u0002" +
+              "\u0001\u0013\u0000\u0001\u0001\u0013\u0013\u0000\u0000\u0000\u0001\u1004\u0000\u0002" +
               "\u1008\u0001\u0003\u1008\u0002\u0004\u1008\u0003\u0005\u1008\u0004\u0006\u1008\u0005" +
               "\u0007\u1008\u0006\b\u1008\u0007\t\u1007\b\n\u1007\t\u000b\u1002\n\f\u1007\u000b" +
               "\r\u1004\f\u000e\u1004\r\u000f\u1008\u000e\u0010\u1008\u000f\u0011\u1008\u0010\u0012" +
-              "\u1002\u0011";
+              "\u1002\u0011\u0013\u1009\u0012";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

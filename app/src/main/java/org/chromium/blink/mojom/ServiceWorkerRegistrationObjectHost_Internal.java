@@ -433,6 +433,7 @@ SetNavigationPreloadHeaderResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         
@@ -623,6 +624,7 @@ SetNavigationPreloadHeaderResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         
@@ -820,6 +822,7 @@ SetNavigationPreloadHeaderResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         
@@ -1011,6 +1014,7 @@ SetNavigationPreloadHeaderResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         
@@ -1217,6 +1221,7 @@ SetNavigationPreloadHeaderResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         

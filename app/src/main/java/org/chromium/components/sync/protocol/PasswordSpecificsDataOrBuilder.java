@@ -519,4 +519,29 @@ public interface PasswordSpecificsDataOrBuilder extends
    * @return The dateLastUsed.
    */
   long getDateLastUsed();
+
+  /**
+   * <pre>
+   * Set if an issue was detected that puts this password at risk. All the
+   * clients are expected to clear the field when the password value is updated.
+   * 'reused' part can be additionally reset when the analysis on the entire
+   * password store is completed.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+   * @return Whether the passwordIssues field is set.
+   */
+  boolean hasPasswordIssues();
+  /**
+   * <pre>
+   * Set if an issue was detected that puts this password at risk. All the
+   * clients are expected to clear the field when the password value is updated.
+   * 'reused' part can be additionally reset when the analysis on the entire
+   * password store is completed.
+   * </pre>
+   *
+   * <code>optional .sync_pb.PasswordSpecificsData.PasswordIssues password_issues = 19;</code>
+   * @return The passwordIssues.
+   */
+  org.chromium.components.sync.protocol.PasswordSpecificsData.PasswordIssues getPasswordIssues();
 }

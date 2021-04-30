@@ -4666,17 +4666,6 @@ public  final class UserEventSpecifics extends
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-     * @return Whether the eventTrigger field is set.
-     */
-    boolean hasEventTrigger();
-    /**
-     * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-     * @return The eventTrigger.
-     */
-    org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger getEventTrigger();
-
-    /**
      * <pre>
      * If not set, it means that the floc is disabled.
      * </pre>
@@ -4834,41 +4823,6 @@ public  final class UserEventSpecifics extends
     }
 
     private int bitField0_;
-    public static final int EVENT_TRIGGER_FIELD_NUMBER = 1;
-    private int eventTrigger_;
-    /**
-     * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-     * @return Whether the eventTrigger field is set.
-     */
-    @java.lang.Override
-    public boolean hasEventTrigger() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-     * @return The eventTrigger.
-     */
-    @java.lang.Override
-    public org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger getEventTrigger() {
-      org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger result = org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger.forNumber(eventTrigger_);
-      return result == null ? org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger.UNSPECIFIED : result;
-    }
-    /**
-     * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-     * @param value The eventTrigger to set.
-     */
-    private void setEventTrigger(org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger value) {
-      eventTrigger_ = value.getNumber();
-      bitField0_ |= 0x00000001;
-    }
-    /**
-     * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-     */
-    private void clearEventTrigger() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      eventTrigger_ = 0;
-    }
-
     public static final int FLOC_ID_FIELD_NUMBER = 2;
     private long flocId_;
     /**
@@ -4881,7 +4835,7 @@ public  final class UserEventSpecifics extends
      */
     @java.lang.Override
     public boolean hasFlocId() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <pre>
@@ -4904,7 +4858,7 @@ public  final class UserEventSpecifics extends
      * @param value The flocId to set.
      */
     private void setFlocId(long value) {
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       flocId_ = value;
     }
     /**
@@ -4915,7 +4869,7 @@ public  final class UserEventSpecifics extends
      * <code>optional uint64 floc_id = 2;</code>
      */
     private void clearFlocId() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       flocId_ = 0L;
     }
 
@@ -5015,42 +4969,6 @@ public  final class UserEventSpecifics extends
 
 
       /**
-       * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-       * @return Whether the eventTrigger field is set.
-       */
-      @java.lang.Override
-      public boolean hasEventTrigger() {
-        return instance.hasEventTrigger();
-      }
-      /**
-       * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-       * @return The eventTrigger.
-       */
-      @java.lang.Override
-      public org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger getEventTrigger() {
-        return instance.getEventTrigger();
-      }
-      /**
-       * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-       * @param value The enum numeric value on the wire for eventTrigger to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEventTrigger(org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger value) {
-        copyOnWrite();
-        instance.setEventTrigger(value);
-        return this;
-      }
-      /**
-       * <code>optional .sync_pb.UserEventSpecifics.FlocIdComputed.EventTrigger event_trigger = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEventTrigger() {
-        copyOnWrite();
-        instance.clearEventTrigger();
-        return this;
-      }
-
-      /**
        * <pre>
        * If not set, it means that the floc is disabled.
        * </pre>
@@ -5119,13 +5037,10 @@ public  final class UserEventSpecifics extends
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
               "bitField0_",
-              "eventTrigger_",
-              org.chromium.components.sync.protocol.UserEventSpecifics.FlocIdComputed.EventTrigger.internalGetVerifier(),
               "flocId_",
             };
             java.lang.String info =
-                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u100c\u0000\u0002" +
-                "\u1003\u0001";
+                "\u0001\u0001\u0000\u0001\u0002\u0002\u0001\u0000\u0000\u0000\u0002\u1003\u0000";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

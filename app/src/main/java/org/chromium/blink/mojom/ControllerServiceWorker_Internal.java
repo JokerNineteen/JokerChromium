@@ -321,6 +321,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ControllerServiceWorker> receiver, o
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {

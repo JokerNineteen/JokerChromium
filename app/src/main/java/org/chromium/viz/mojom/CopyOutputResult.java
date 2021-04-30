@@ -64,6 +64,7 @@ public final class CopyOutputResult extends org.chromium.mojo.bindings.Struct {
                     
                 result.format = decoder0.readInt(8);
                     CopyOutputResultFormat.validate(result.format);
+                    result.format = CopyOutputResultFormat.toKnownValue(result.format);
                 }
                 {
                     

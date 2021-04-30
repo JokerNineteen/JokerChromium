@@ -62,6 +62,11 @@ InspectorIssueInfo info);
 
 
 
+    void swapInImmediately(
+);
+
+
+
     void checkCompleted(
 );
 
@@ -131,7 +136,7 @@ org.chromium.gfx.mojom.Point location, MediaPlayerAction action);
 
 
     void advanceFocusInFrame(
-int focusType, org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken);
+int focusType, RemoteFrameToken sourceFrameToken);
 
 
 
@@ -156,7 +161,7 @@ FramePolicy framePolicy);
 
 
     void postMessageEvent(
-org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message);
+RemoteFrameToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message);
 
 
 
@@ -166,7 +171,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ReportingObserver> receiver);
 
 
     void updateOpener(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrameToken);
+FrameToken openerFrameToken);
 
 
 

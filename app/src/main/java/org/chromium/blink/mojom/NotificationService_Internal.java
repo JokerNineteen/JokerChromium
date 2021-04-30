@@ -461,6 +461,7 @@ GetNotificationsResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PermissionStatus.validate(result.status);
+                        result.status = PermissionStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -814,6 +815,7 @@ GetNotificationsResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         PersistentNotificationError.validate(result.error);
+                        result.error = PersistentNotificationError.toKnownValue(result.error);
                     }
 
             } finally {

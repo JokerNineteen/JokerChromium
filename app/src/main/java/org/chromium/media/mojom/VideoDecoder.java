@@ -41,7 +41,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, org.chromium.
 VideoDecoderConfig config, boolean lowDelay, org.chromium.mojo_base.mojom.UnguessableToken cdmId, 
 InitializeResponse callback);
 
-    interface InitializeResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Status, Boolean, Integer> { }
+    interface InitializeResponse extends org.chromium.mojo.bindings.Callbacks.Callback4<Status, Boolean, Integer, Integer> { }
 
 
 

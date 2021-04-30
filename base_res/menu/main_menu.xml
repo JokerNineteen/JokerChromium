@@ -79,6 +79,9 @@
                 android:title="@null" />
           </menu>
         </item>
+        <item android:id="@+id/feed_follow_id"
+            android:title="@string/menu_follow"
+            android:icon="@drawable/ic_add"/>
         <item android:id="@+id/get_image_descriptions_id"
             android:title="@string/menu_get_image_descriptions"
             android:icon="@drawable/ic_image_descriptions"/>
@@ -139,6 +142,9 @@
         <item android:id="@+id/menu_group_tabs"
             android:title="@string/menu_group_tabs"
             android:icon="@drawable/ic_widgets" />
+        <item android:id="@+id/track_prices_row_menu_id"
+            android:title="@string/menu_track_prices"
+            android:icon="@drawable/ic_trending_down_black" />
         <item android:id="@id/preferences_id"
             android:title="@string/menu_settings"
             android:icon="@drawable/settings_cog" />
@@ -174,6 +180,9 @@
         <item android:id="@id/menu_group_tabs"
             android:title="@string/menu_group_tabs"
             android:icon="@drawable/ic_widgets" />
+        <item android:id="@id/track_prices_row_menu_id"
+            android:title="@string/menu_track_prices"
+            android:icon="@drawable/ic_trending_down_black" />
         <item android:id="@id/preferences_id"
             android:title="@string/menu_settings"
             android:icon="@drawable/settings_cog" />

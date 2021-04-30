@@ -301,11 +301,13 @@ FetchApiRequest request, FetchApiResponse response) {
                         
                     result.result = decoder0.readInt(40);
                         BackgroundFetchResult.validate(result.result);
+                        result.result = BackgroundFetchResult.toKnownValue(result.result);
                     }
                     {
                         
                     result.failureReason = decoder0.readInt(44);
                         BackgroundFetchFailureReason.validate(result.failureReason);
+                        result.failureReason = BackgroundFetchFailureReason.toKnownValue(result.failureReason);
                     }
 
             } finally {

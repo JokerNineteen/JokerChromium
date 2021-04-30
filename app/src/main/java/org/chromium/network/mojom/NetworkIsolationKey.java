@@ -19,8 +19,8 @@ public final class NetworkIsolationKey extends org.chromium.mojo.bindings.Struct
     private static final int STRUCT_SIZE = 32;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public org.chromium.url.internal.mojom.Origin topFrameSite;
-    public org.chromium.url.internal.mojom.Origin frameSite;
+    public SchemefulSite topFrameSite;
+    public SchemefulSite frameSite;
     public boolean opaqueAndNonTransient;
 
     private NetworkIsolationKey(int version) {
@@ -59,12 +59,12 @@ public final class NetworkIsolationKey extends org.chromium.mojo.bindings.Struct
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                result.topFrameSite = org.chromium.url.internal.mojom.Origin.decode(decoder1);
+                result.topFrameSite = SchemefulSite.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                result.frameSite = org.chromium.url.internal.mojom.Origin.decode(decoder1);
+                result.frameSite = SchemefulSite.decode(decoder1);
                 }
                 {
                     

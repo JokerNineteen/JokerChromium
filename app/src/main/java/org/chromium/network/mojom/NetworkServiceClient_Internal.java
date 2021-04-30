@@ -55,11 +55,15 @@ class NetworkServiceClient_Internal {
 
     private static final int ON_RAW_RESPONSE_ORDINAL = 3;
 
-    private static final int ON_CORS_PREFLIGHT_REQUEST_ORDINAL = 4;
+    private static final int ON_PRIVATE_NETWORK_REQUEST_ORDINAL = 4;
 
-    private static final int ON_CORS_PREFLIGHT_RESPONSE_ORDINAL = 5;
+    private static final int ON_CORS_PREFLIGHT_REQUEST_ORDINAL = 5;
 
-    private static final int ON_CORS_PREFLIGHT_REQUEST_COMPLETED_ORDINAL = 6;
+    private static final int ON_CORS_PREFLIGHT_RESPONSE_ORDINAL = 6;
+
+    private static final int ON_CORS_PREFLIGHT_REQUEST_COMPLETED_ORDINAL = 7;
+
+    private static final int ON_TRUST_TOKEN_OPERATION_DONE_ORDINAL = 8;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NetworkServiceClient.Proxy {
@@ -115,7 +119,7 @@ int networkTrafficAnnotationIdHash, long recvBytes, long sentBytes) {
 
         @Override
         public void onRawRequest(
-int processId, int routingId, String devtoolRequestId, CookieWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers) {
+int processId, int routingId, String devtoolRequestId, CookieWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers, ClientSecurityState clientSecurityState) {
 
             NetworkServiceClientOnRawRequestParams _message = new NetworkServiceClientOnRawRequestParams();
 
@@ -129,6 +133,8 @@ int processId, int routingId, String devtoolRequestId, CookieWithAccessResult[] 
 
             _message.headers = headers;
 
+            _message.clientSecurityState = clientSecurityState;
+
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
@@ -140,7 +146,7 @@ int processId, int routingId, String devtoolRequestId, CookieWithAccessResult[] 
 
         @Override
         public void onRawResponse(
-int processId, int routingId, String devtoolRequestId, CookieAndLineWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers, String rawResponseHeaders) {
+int processId, int routingId, String devtoolRequestId, CookieAndLineWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers, String rawResponseHeaders, int resourceAddressSpace) {
 
             NetworkServiceClientOnRawResponseParams _message = new NetworkServiceClientOnRawResponseParams();
 
@@ -156,6 +162,8 @@ int processId, int routingId, String devtoolRequestId, CookieAndLineWithAccessRe
 
             _message.rawResponseHeaders = rawResponseHeaders;
 
+            _message.resourceAddressSpace = resourceAddressSpace;
+
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
@@ -166,8 +174,37 @@ int processId, int routingId, String devtoolRequestId, CookieAndLineWithAccessRe
 
 
         @Override
+        public void onPrivateNetworkRequest(
+int processId, int routingId, String devtoolRequestId, org.chromium.url.mojom.Url url, boolean isWarning, int resourceAddressSpace, ClientSecurityState clientSecurityState) {
+
+            NetworkServiceClientOnPrivateNetworkRequestParams _message = new NetworkServiceClientOnPrivateNetworkRequestParams();
+
+            _message.processId = processId;
+
+            _message.routingId = routingId;
+
+            _message.devtoolRequestId = devtoolRequestId;
+
+            _message.url = url;
+
+            _message.isWarning = isWarning;
+
+            _message.resourceAddressSpace = resourceAddressSpace;
+
+            _message.clientSecurityState = clientSecurityState;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_PRIVATE_NETWORK_REQUEST_ORDINAL)));
+
+        }
+
+
+        @Override
         public void onCorsPreflightRequest(
-int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken devtoolRequestId, UrlRequest request, org.chromium.url.mojom.Url initiatorUrl) {
+int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken devtoolRequestId, UrlRequest request, org.chromium.url.mojom.Url initiatorUrl, String initiatorDevtoolRequestId) {
 
             NetworkServiceClientOnCorsPreflightRequestParams _message = new NetworkServiceClientOnCorsPreflightRequestParams();
 
@@ -180,6 +217,8 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
             _message.request = request;
 
             _message.initiatorUrl = initiatorUrl;
+
+            _message.initiatorDevtoolRequestId = initiatorDevtoolRequestId;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -238,6 +277,29 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
         }
 
 
+        @Override
+        public void onTrustTokenOperationDone(
+int processId, int routingId, String devtoolRequestId, TrustTokenOperationResult result) {
+
+            NetworkServiceClientOnTrustTokenOperationDoneParams _message = new NetworkServiceClientOnTrustTokenOperationDoneParams();
+
+            _message.processId = processId;
+
+            _message.routingId = routingId;
+
+            _message.devtoolRequestId = devtoolRequestId;
+
+            _message.result = result;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ON_TRUST_TOKEN_OPERATION_DONE_ORDINAL)));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<NetworkServiceClient> {
@@ -289,7 +351,7 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                         NetworkServiceClientOnRawRequestParams data =
                                 NetworkServiceClientOnRawRequestParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onRawRequest(data.processId, data.routingId, data.devtoolRequestId, data.cookiesWithAccessResult, data.headers);
+                        getImpl().onRawRequest(data.processId, data.routingId, data.devtoolRequestId, data.cookiesWithAccessResult, data.headers, data.clientSecurityState);
                         return true;
                     }
 
@@ -302,7 +364,20 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                         NetworkServiceClientOnRawResponseParams data =
                                 NetworkServiceClientOnRawResponseParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onRawResponse(data.processId, data.routingId, data.devtoolRequestId, data.cookiesWithAccessResult, data.headers, data.rawResponseHeaders);
+                        getImpl().onRawResponse(data.processId, data.routingId, data.devtoolRequestId, data.cookiesWithAccessResult, data.headers, data.rawResponseHeaders, data.resourceAddressSpace);
+                        return true;
+                    }
+
+
+
+
+
+                    case ON_PRIVATE_NETWORK_REQUEST_ORDINAL: {
+
+                        NetworkServiceClientOnPrivateNetworkRequestParams data =
+                                NetworkServiceClientOnPrivateNetworkRequestParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onPrivateNetworkRequest(data.processId, data.routingId, data.devtoolRequestId, data.url, data.isWarning, data.resourceAddressSpace, data.clientSecurityState);
                         return true;
                     }
 
@@ -315,7 +390,7 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                         NetworkServiceClientOnCorsPreflightRequestParams data =
                                 NetworkServiceClientOnCorsPreflightRequestParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onCorsPreflightRequest(data.processId, data.renderFrameId, data.devtoolRequestId, data.request, data.initiatorUrl);
+                        getImpl().onCorsPreflightRequest(data.processId, data.renderFrameId, data.devtoolRequestId, data.request, data.initiatorUrl, data.initiatorDevtoolRequestId);
                         return true;
                     }
 
@@ -342,6 +417,19 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                                 NetworkServiceClientOnCorsPreflightRequestCompletedParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().onCorsPreflightRequestCompleted(data.processId, data.renderFrameId, data.devtoolRequestId, data.status);
+                        return true;
+                    }
+
+
+
+
+
+                    case ON_TRUST_TOKEN_OPERATION_DONE_ORDINAL: {
+
+                        NetworkServiceClientOnTrustTokenOperationDoneParams data =
+                                NetworkServiceClientOnTrustTokenOperationDoneParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().onTrustTokenOperationDone(data.processId, data.routingId, data.devtoolRequestId, data.result);
                         return true;
                     }
 
@@ -388,6 +476,10 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                         getImpl().onLoadingStateUpdate(data.infos, new NetworkServiceClientOnLoadingStateUpdateResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
+
+
 
 
 
@@ -686,14 +778,15 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
     
     static final class NetworkServiceClientOnRawRequestParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 48;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int processId;
         public int routingId;
         public String devtoolRequestId;
         public CookieWithAccessResult[] cookiesWithAccessResult;
         public HttpRawHeaderPair[] headers;
+        public ClientSecurityState clientSecurityState;
 
         private NetworkServiceClientOnRawRequestParams(int version) {
             super(STRUCT_SIZE, version);
@@ -766,6 +859,11 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                         }
                     }
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
+                    result.clientSecurityState = ClientSecurityState.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -803,6 +901,8 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                     encoder1.encode(this.headers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
                 }
             }
+            
+            encoder0.encode(this.clientSecurityState, 40, true);
         }
     }
 
@@ -811,8 +911,8 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
     
     static final class NetworkServiceClientOnRawResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 56;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int processId;
         public int routingId;
@@ -820,6 +920,7 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
         public CookieAndLineWithAccessResult[] cookiesWithAccessResult;
         public HttpRawHeaderPair[] headers;
         public String rawResponseHeaders;
+        public int resourceAddressSpace;
 
         private NetworkServiceClientOnRawResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -896,6 +997,12 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                         
                     result.rawResponseHeaders = decoder0.readString(40, true);
                     }
+                    {
+                        
+                    result.resourceAddressSpace = decoder0.readInt(48);
+                        IpAddressSpace.validate(result.resourceAddressSpace);
+                        result.resourceAddressSpace = IpAddressSpace.toKnownValue(result.resourceAddressSpace);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -935,6 +1042,117 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
             }
             
             encoder0.encode(this.rawResponseHeaders, 40, true);
+            
+            encoder0.encode(this.resourceAddressSpace, 48);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceClientOnPrivateNetworkRequestParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 48;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int processId;
+        public int routingId;
+        public String devtoolRequestId;
+        public org.chromium.url.mojom.Url url;
+        public boolean isWarning;
+        public int resourceAddressSpace;
+        public ClientSecurityState clientSecurityState;
+
+        private NetworkServiceClientOnPrivateNetworkRequestParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceClientOnPrivateNetworkRequestParams() {
+            this(0);
+        }
+
+        public static NetworkServiceClientOnPrivateNetworkRequestParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceClientOnPrivateNetworkRequestParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceClientOnPrivateNetworkRequestParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceClientOnPrivateNetworkRequestParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceClientOnPrivateNetworkRequestParams(elementsOrVersion);
+                    {
+                        
+                    result.processId = decoder0.readInt(8);
+                    }
+                    {
+                        
+                    result.routingId = decoder0.readInt(12);
+                    }
+                    {
+                        
+                    result.devtoolRequestId = decoder0.readString(16, true);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.url = org.chromium.url.mojom.Url.decode(decoder1);
+                    }
+                    {
+                        
+                    result.isWarning = decoder0.readBoolean(32, 0);
+                    }
+                    {
+                        
+                    result.resourceAddressSpace = decoder0.readInt(36);
+                        IpAddressSpace.validate(result.resourceAddressSpace);
+                        result.resourceAddressSpace = IpAddressSpace.toKnownValue(result.resourceAddressSpace);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                    result.clientSecurityState = ClientSecurityState.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.processId, 8);
+            
+            encoder0.encode(this.routingId, 12);
+            
+            encoder0.encode(this.devtoolRequestId, 16, true);
+            
+            encoder0.encode(this.url, 24, false);
+            
+            encoder0.encode(this.isWarning, 32, 0);
+            
+            encoder0.encode(this.resourceAddressSpace, 36);
+            
+            encoder0.encode(this.clientSecurityState, 40, false);
         }
     }
 
@@ -943,14 +1161,15 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
     
     static final class NetworkServiceClientOnCorsPreflightRequestParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 48;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int processId;
         public int renderFrameId;
         public org.chromium.mojo_base.mojom.UnguessableToken devtoolRequestId;
         public UrlRequest request;
         public org.chromium.url.mojom.Url initiatorUrl;
+        public String initiatorDevtoolRequestId;
 
         private NetworkServiceClientOnCorsPreflightRequestParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1008,6 +1227,10 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                     result.initiatorUrl = org.chromium.url.mojom.Url.decode(decoder1);
                     }
+                    {
+                        
+                    result.initiatorDevtoolRequestId = decoder0.readString(40, false);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -1029,6 +1252,8 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
             encoder0.encode(this.request, 24, false);
             
             encoder0.encode(this.initiatorUrl, 32, false);
+            
+            encoder0.encode(this.initiatorDevtoolRequestId, 40, false);
         }
     }
 
@@ -1209,6 +1434,91 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
             encoder0.encode(this.devtoolRequestId, 16, false);
             
             encoder0.encode(this.status, 24, false);
+        }
+    }
+
+
+
+    
+    static final class NetworkServiceClientOnTrustTokenOperationDoneParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int processId;
+        public int routingId;
+        public String devtoolRequestId;
+        public TrustTokenOperationResult result;
+
+        private NetworkServiceClientOnTrustTokenOperationDoneParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkServiceClientOnTrustTokenOperationDoneParams() {
+            this(0);
+        }
+
+        public static NetworkServiceClientOnTrustTokenOperationDoneParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkServiceClientOnTrustTokenOperationDoneParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkServiceClientOnTrustTokenOperationDoneParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkServiceClientOnTrustTokenOperationDoneParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkServiceClientOnTrustTokenOperationDoneParams(elementsOrVersion);
+                    {
+                        
+                    result.processId = decoder0.readInt(8);
+                    }
+                    {
+                        
+                    result.routingId = decoder0.readInt(12);
+                    }
+                    {
+                        
+                    result.devtoolRequestId = decoder0.readString(16, false);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.result = TrustTokenOperationResult.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.processId, 8);
+            
+            encoder0.encode(this.routingId, 12);
+            
+            encoder0.encode(this.devtoolRequestId, 16, false);
+            
+            encoder0.encode(this.result, 24, false);
         }
     }
 

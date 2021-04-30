@@ -65,11 +65,13 @@ public final class AudioBuffer extends org.chromium.mojo.bindings.Struct {
                     
                 result.sampleFormat = decoder0.readInt(8);
                     SampleFormat.validate(result.sampleFormat);
+                    result.sampleFormat = SampleFormat.toKnownValue(result.sampleFormat);
                 }
                 {
                     
                 result.channelLayout = decoder0.readInt(12);
                     ChannelLayout.validate(result.channelLayout);
+                    result.channelLayout = ChannelLayout.toKnownValue(result.channelLayout);
                 }
                 {
                     

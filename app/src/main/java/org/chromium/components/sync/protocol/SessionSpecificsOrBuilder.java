@@ -9,7 +9,8 @@ public interface SessionSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -18,7 +19,8 @@ public interface SessionSpecificsOrBuilder extends
   boolean hasSessionTag();
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -27,7 +29,8 @@ public interface SessionSpecificsOrBuilder extends
   java.lang.String getSessionTag();
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>

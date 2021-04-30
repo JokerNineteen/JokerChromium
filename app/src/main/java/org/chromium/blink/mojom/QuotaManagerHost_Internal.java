@@ -470,6 +470,7 @@ RequestStorageQuotaResponse callback) {
                         
                     result.storageType = decoder0.readInt(8);
                         StorageType.validate(result.storageType);
+                        result.storageType = StorageType.toKnownValue(result.storageType);
                     }
 
             } finally {
@@ -537,6 +538,7 @@ RequestStorageQuotaResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         QuotaStatusCode.validate(result.error);
+                        result.error = QuotaStatusCode.toKnownValue(result.error);
                     }
                     {
                         
@@ -688,6 +690,7 @@ RequestStorageQuotaResponse callback) {
                         
                     result.storageType = decoder0.readInt(8);
                         StorageType.validate(result.storageType);
+                        result.storageType = StorageType.toKnownValue(result.storageType);
                     }
                     {
                         
@@ -760,6 +763,7 @@ RequestStorageQuotaResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         QuotaStatusCode.validate(result.error);
+                        result.error = QuotaStatusCode.toKnownValue(result.error);
                     }
                     {
                         

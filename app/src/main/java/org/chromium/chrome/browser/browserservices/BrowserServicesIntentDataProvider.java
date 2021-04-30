@@ -35,19 +35,18 @@ import java.util.List;
  */
 public abstract class BrowserServicesIntentDataProvider {
     // The type of UI for Custom Tab to use.
-    @IntDef({CustomTabsUiType.DEFAULT, CustomTabsUiType.MEDIA_VIEWER,
-            CustomTabsUiType.PAYMENT_REQUEST, CustomTabsUiType.INFO_PAGE,
+    @IntDef({CustomTabsUiType.DEFAULT, CustomTabsUiType.MEDIA_VIEWER, CustomTabsUiType.INFO_PAGE,
             CustomTabsUiType.READER_MODE, CustomTabsUiType.MINIMAL_UI_WEBAPP,
             CustomTabsUiType.OFFLINE_PAGE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface CustomTabsUiType {
         int DEFAULT = 0;
         int MEDIA_VIEWER = 1;
-        int PAYMENT_REQUEST = 2;
-        int INFO_PAGE = 3;
-        int READER_MODE = 4;
-        int MINIMAL_UI_WEBAPP = 5;
-        int OFFLINE_PAGE = 6;
+        int INFO_PAGE = 2;
+        int READER_MODE = 3;
+        int MINIMAL_UI_WEBAPP = 4;
+        int OFFLINE_PAGE = 5;
+        int READ_LATER = 6;
     }
 
     // The type of Disclosure for TWAs to use.
@@ -484,13 +483,6 @@ public abstract class BrowserServicesIntentDataProvider {
         return getUiType() == CustomTabsUiType.INFO_PAGE;
     }
 
-    /**
-     * @return Whether the Activity is for payment request.
-     */
-    public final boolean isForPaymentRequest() {
-        return getUiType() == CustomTabsUiType.PAYMENT_REQUEST;
-    }
-
     @Nullable
     public PendingIntent getFocusIntent() {
         return null;
@@ -517,6 +509,34 @@ public abstract class BrowserServicesIntentDataProvider {
      * Returns true if visits from cct should be hidden.
      */
     public boolean shouldHideCctVisits() {
+        return false;
+    }
+
+    /**
+     * Returns true if new notification requests from cct should be blocked.
+     */
+    public boolean shouldBlockNewNotificationRequests() {
+        return false;
+    }
+
+    /**
+     * Returns true if 'open in chrome' should be shown in the tab context menu.
+     */
+    public boolean shouldShowOpenInChromeMenuItemInContextMenu() {
+        return true;
+    }
+
+    /**
+     * Returns true if 'open in chrome' should be shown in the app menu.
+     */
+    public boolean shouldShowOpenInChromeMenuItem() {
+        return true;
+    }
+
+    /**
+     * @return Whether the incognito icon in the toolbar should be hidden in cct-incognito mode.
+     */
+    public boolean shouldHideIncognitoIconOnToolbarInCct() {
         return false;
     }
 }

@@ -24,11 +24,16 @@ public interface TextFragmentSelectorProducer extends org.chromium.mojo.bindings
     Manager<TextFragmentSelectorProducer, TextFragmentSelectorProducer.Proxy> MANAGER = TextFragmentSelectorProducer_Internal.MANAGER;
 
 
-    void generateSelector(
+    void cancel(
+);
 
-GenerateSelectorResponse callback);
 
-    interface GenerateSelectorResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
+
+    void requestSelector(
+
+RequestSelectorResponse callback);
+
+    interface RequestSelectorResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
 
 
 }

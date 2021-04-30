@@ -19,7 +19,7 @@ public final class PolicyContainer extends org.chromium.mojo.bindings.Struct {
     private static final int STRUCT_SIZE = 24;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public PolicyContainerDocumentPolicies policies;
+    public PolicyContainerPolicies policies;
     public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported remote;
 
     private PolicyContainer(int version) {
@@ -58,7 +58,7 @@ public final class PolicyContainer extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                result.policies = PolicyContainerDocumentPolicies.decode(decoder1);
+                result.policies = PolicyContainerPolicies.decode(decoder1);
                 }
                 {
                     

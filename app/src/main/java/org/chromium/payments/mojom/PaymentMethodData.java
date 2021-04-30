@@ -78,6 +78,7 @@ public final class PaymentMethodData extends org.chromium.mojo.bindings.Struct {
                     
                 result.environment = decoder0.readInt(32);
                     AndroidPayEnvironment.validate(result.environment);
+                    result.environment = AndroidPayEnvironment.toKnownValue(result.environment);
                 }
                 {
                     
@@ -91,8 +92,8 @@ public final class PaymentMethodData extends org.chromium.mojo.bindings.Struct {
                     
                 result.supportedNetworks = decoder0.readInts(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.supportedNetworks.length; ++i0) {
-                        BasicCardNetwork.validate(result.supportedNetworks[i0]);
+                    for (int i1 = 0; i1 < result.supportedNetworks.length; ++i1) {
+                        BasicCardNetwork.validate(result.supportedNetworks[i1]);
                     }
                 }
                 }

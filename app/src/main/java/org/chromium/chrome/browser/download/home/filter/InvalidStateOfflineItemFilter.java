@@ -13,7 +13,8 @@ import org.chromium.components.offline_items_collection.OfflineItemState;
 
 import java.io.File;
 
-/** A {@link OfflineItemFilter} responsible for pruning out items that do not have the right state
+/**
+ * A {@link OfflineItemFilter} responsible for pruning out items that do not have the right state
  *  to show in the UI or have been externally deleted.
  */
 public class InvalidStateOfflineItemFilter extends OfflineItemFilter {

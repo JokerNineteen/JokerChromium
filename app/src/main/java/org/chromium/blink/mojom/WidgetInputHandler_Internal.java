@@ -1522,11 +1522,13 @@ org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported interfaceReque
                         
                     result.source = decoder0.readInt(8);
                         InputEventResultSource.validate(result.source);
+                        result.source = InputEventResultSource.toKnownValue(result.source);
                     }
                     {
                         
                     result.state = decoder0.readInt(12);
                         InputEventResultState.validate(result.state);
+                        result.state = InputEventResultState.toKnownValue(result.state);
                     }
                     {
                         

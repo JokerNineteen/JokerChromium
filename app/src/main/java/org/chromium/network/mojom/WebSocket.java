@@ -17,16 +17,6 @@ package org.chromium.network.mojom;
 public interface WebSocket extends org.chromium.mojo.bindings.Interface {
 
 
-    
-    public static final int INSUFFICIENT_RESOURCES = (int) 1;
-
-
-
-    
-    public static final int INTERNAL_FAILURE = (int) 2;
-
-
-
 
     public interface Proxy extends WebSocket, org.chromium.mojo.bindings.Interface.Proxy {
     }

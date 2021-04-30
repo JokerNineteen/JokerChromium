@@ -25,10 +25,10 @@ public interface FederatedAuthRequest extends org.chromium.mojo.bindings.Interfa
 
 
     void requestIdToken(
-org.chromium.url.mojom.Url provider, 
+org.chromium.url.mojom.Url provider, String idRequest, 
 RequestIdTokenResponse callback);
 
-    interface RequestIdTokenResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
+    interface RequestIdTokenResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, String> { }
 
 
 }

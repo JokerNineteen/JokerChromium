@@ -24,11 +24,27 @@ public interface PaymentCredential extends org.chromium.mojo.bindings.Interface 
     Manager<PaymentCredential, PaymentCredential.Proxy> MANAGER = PaymentCredential_Internal.MANAGER;
 
 
-    void storePaymentCredential(
-PaymentCredentialInstrument instrument, byte[] credentialId, String rpId, 
-StorePaymentCredentialResponse callback);
+    void downloadIconAndShowUserPrompt(
+PaymentCredentialInstrument instrument, 
+DownloadIconAndShowUserPromptResponse callback);
 
-    interface StorePaymentCredentialResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+    interface DownloadIconAndShowUserPromptResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+
+
+
+    void storePaymentCredentialAndHideUserPrompt(
+PaymentCredentialInstrument instrument, byte[] credentialId, String rpId, 
+StorePaymentCredentialAndHideUserPromptResponse callback);
+
+    interface StorePaymentCredentialAndHideUserPromptResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
+
+
+
+    void hideUserPrompt(
+
+HideUserPromptResponse callback);
+
+    interface HideUserPromptResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
 
 
 }

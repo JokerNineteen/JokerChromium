@@ -21,6 +21,7 @@ public  final class SessionTab extends
     faviconType_ = 1;
     faviconSource_ = "";
     variationId_ = emptyLongList();
+    browserType_ = 1;
   }
   /**
    * <pre>
@@ -840,6 +841,41 @@ public  final class SessionTab extends
    */
   private void clearVariationId() {
     variationId_ = emptyLongList();
+  }
+
+  public static final int BROWSER_TYPE_FIELD_NUMBER = 13;
+  private int browserType_;
+  /**
+   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * @return Whether the browserType field is set.
+   */
+  @java.lang.Override
+  public boolean hasBrowserType() {
+    return ((bitField0_ & 0x00000200) != 0);
+  }
+  /**
+   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * @return The browserType.
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType() {
+    org.chromium.components.sync.protocol.SessionWindow.BrowserType result = org.chromium.components.sync.protocol.SessionWindow.BrowserType.forNumber(browserType_);
+    return result == null ? org.chromium.components.sync.protocol.SessionWindow.BrowserType.TYPE_TABBED : result;
+  }
+  /**
+   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * @param value The browserType to set.
+   */
+  private void setBrowserType(org.chromium.components.sync.protocol.SessionWindow.BrowserType value) {
+    browserType_ = value.getNumber();
+    bitField0_ |= 0x00000200;
+  }
+  /**
+   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   */
+  private void clearBrowserType() {
+    bitField0_ = (bitField0_ & ~0x00000200);
+    browserType_ = 1;
   }
 
   public static org.chromium.components.sync.protocol.SessionTab parseFrom(
@@ -1706,6 +1742,42 @@ public  final class SessionTab extends
       return this;
     }
 
+    /**
+     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * @return Whether the browserType field is set.
+     */
+    @java.lang.Override
+    public boolean hasBrowserType() {
+      return instance.hasBrowserType();
+    }
+    /**
+     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * @return The browserType.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType() {
+      return instance.getBrowserType();
+    }
+    /**
+     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * @param value The enum numeric value on the wire for browserType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBrowserType(org.chromium.components.sync.protocol.SessionWindow.BrowserType value) {
+      copyOnWrite();
+      instance.setBrowserType(value);
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBrowserType() {
+      copyOnWrite();
+      instance.clearBrowserType();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.SessionTab)
   }
   @java.lang.Override
@@ -1736,11 +1808,13 @@ public  final class SessionTab extends
             org.chromium.components.sync.protocol.SessionTab.FaviconType.internalGetVerifier(),
             "faviconSource_",
             "variationId_",
+            "browserType_",
+            org.chromium.components.sync.protocol.SessionWindow.BrowserType.internalGetVerifier(),
           };
           java.lang.String info =
-              "\u0001\u000b\u0000\u0001\u0001\f\u000b\u0000\u0002\u0000\u0001\u1004\u0000\u0002" +
-              "\u1004\u0001\u0003\u1004\u0002\u0004\u1004\u0003\u0005\u1007\u0004\u0006\u1008\u0005" +
-              "\u0007\u001b\b\u100a\u0006\t\u100c\u0007\u000b\u1008\b\f\u0015";
+              "\u0001\f\u0000\u0001\u0001\r\f\u0000\u0002\u0000\u0001\u1004\u0000\u0002\u1004\u0001" +
+              "\u0003\u1004\u0002\u0004\u1004\u0003\u0005\u1007\u0004\u0006\u1008\u0005\u0007\u001b" +
+              "\b\u100a\u0006\t\u100c\u0007\u000b\u1008\b\f\u0015\r\u100c\t";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

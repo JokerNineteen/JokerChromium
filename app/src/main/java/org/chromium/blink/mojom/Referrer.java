@@ -64,6 +64,7 @@ public final class Referrer extends org.chromium.mojo.bindings.Struct {
                     
                 result.policy = decoder0.readInt(16);
                     org.chromium.network.mojom.ReferrerPolicy.validate(result.policy);
+                    result.policy = org.chromium.network.mojom.ReferrerPolicy.toKnownValue(result.policy);
                 }
 
         } finally {

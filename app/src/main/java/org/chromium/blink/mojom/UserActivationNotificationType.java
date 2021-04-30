@@ -23,7 +23,7 @@ public final class UserActivationNotificationType {
     public static final int EXTENSION_GUEST_VIEW = 4;
     public static final int EXTENSION_MESSAGING = 5;
     public static final int MEDIA = 6;
-    public static final int NATIVE_FILE_SYSTEM = 7;
+    public static final int FILE_SYSTEM_ACCESS = 7;
     public static final int PLUGIN = 8;
     public static final int TEST = 9;
     public static final int WEB_SCRIPT_EXEC = 10;
@@ -42,6 +42,10 @@ public final class UserActivationNotificationType {
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private UserActivationNotificationType() {}

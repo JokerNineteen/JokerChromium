@@ -424,10 +424,56 @@ public final class SampledProfileProtos {
      * @return The cpuMaxFrequencyMhz at the given index.
      */
     int getCpuMaxFrequencyMhz(int index);
+
+    /**
+     * <pre>
+     * The pressure-stall information that describes the state of CPU utilization
+     * of the system.
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 10 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+     * @return Whether the psiCpuLast10sPct field is set.
+     */
+    boolean hasPsiCpuLast10SPct();
+    /**
+     * <pre>
+     * The pressure-stall information that describes the state of CPU utilization
+     * of the system.
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 10 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+     * @return The psiCpuLast10sPct.
+     */
+    float getPsiCpuLast10SPct();
+
+    /**
+     * <pre>
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 60 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+     * @return Whether the psiCpuLast60sPct field is set.
+     */
+    boolean hasPsiCpuLast60SPct();
+    /**
+     * <pre>
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 60 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+     * @return The psiCpuLast60sPct.
+     */
+    float getPsiCpuLast60SPct();
   }
   /**
    * <pre>
-   * Next tag: 16
+   * Next tag: 18
    * </pre>
    *
    * Protobuf type {@code metrics.SampledProfile}
@@ -1724,6 +1770,122 @@ public final class SampledProfileProtos {
       cpuMaxFrequencyMhz_ = emptyIntList();
     }
 
+    public static final int PSI_CPU_LAST_10S_PCT_FIELD_NUMBER = 16;
+    private float psiCpuLast10SPct_;
+    /**
+     * <pre>
+     * The pressure-stall information that describes the state of CPU utilization
+     * of the system.
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 10 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+     * @return Whether the psiCpuLast10sPct field is set.
+     */
+    @java.lang.Override
+    public boolean hasPsiCpuLast10SPct() {
+      return ((bitField0_ & 0x00001000) != 0);
+    }
+    /**
+     * <pre>
+     * The pressure-stall information that describes the state of CPU utilization
+     * of the system.
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 10 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+     * @return The psiCpuLast10sPct.
+     */
+    @java.lang.Override
+    public float getPsiCpuLast10SPct() {
+      return psiCpuLast10SPct_;
+    }
+    /**
+     * <pre>
+     * The pressure-stall information that describes the state of CPU utilization
+     * of the system.
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 10 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+     * @param value The psiCpuLast10sPct to set.
+     */
+    private void setPsiCpuLast10SPct(float value) {
+      bitField0_ |= 0x00001000;
+      psiCpuLast10SPct_ = value;
+    }
+    /**
+     * <pre>
+     * The pressure-stall information that describes the state of CPU utilization
+     * of the system.
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 10 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+     */
+    private void clearPsiCpuLast10SPct() {
+      bitField0_ = (bitField0_ & ~0x00001000);
+      psiCpuLast10SPct_ = 0F;
+    }
+
+    public static final int PSI_CPU_LAST_60S_PCT_FIELD_NUMBER = 17;
+    private float psiCpuLast60SPct_;
+    /**
+     * <pre>
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 60 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+     * @return Whether the psiCpuLast60sPct field is set.
+     */
+    @java.lang.Override
+    public boolean hasPsiCpuLast60SPct() {
+      return ((bitField0_ & 0x00002000) != 0);
+    }
+    /**
+     * <pre>
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 60 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+     * @return The psiCpuLast60sPct.
+     */
+    @java.lang.Override
+    public float getPsiCpuLast60SPct() {
+      return psiCpuLast60SPct_;
+    }
+    /**
+     * <pre>
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 60 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+     * @param value The psiCpuLast60sPct to set.
+     */
+    private void setPsiCpuLast60SPct(float value) {
+      bitField0_ |= 0x00002000;
+      psiCpuLast60SPct_ = value;
+    }
+    /**
+     * <pre>
+     * The percent of the time that runnable processes are delayed because the CPU
+     * is unavailable, accumulated over 60 seconds.
+     * </pre>
+     *
+     * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+     */
+    private void clearPsiCpuLast60SPct() {
+      bitField0_ = (bitField0_ & ~0x00002000);
+      psiCpuLast60SPct_ = 0F;
+    }
+
     public static org.chromium.components.metrics.SampledProfileProtos.SampledProfile parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1807,7 +1969,7 @@ public final class SampledProfileProtos {
 
     /**
      * <pre>
-     * Next tag: 16
+     * Next tag: 18
      * </pre>
      *
      * Protobuf type {@code metrics.SampledProfile}
@@ -2945,6 +3107,126 @@ public final class SampledProfileProtos {
         return this;
       }
 
+      /**
+       * <pre>
+       * The pressure-stall information that describes the state of CPU utilization
+       * of the system.
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 10 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+       * @return Whether the psiCpuLast10sPct field is set.
+       */
+      @java.lang.Override
+      public boolean hasPsiCpuLast10SPct() {
+        return instance.hasPsiCpuLast10SPct();
+      }
+      /**
+       * <pre>
+       * The pressure-stall information that describes the state of CPU utilization
+       * of the system.
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 10 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+       * @return The psiCpuLast10sPct.
+       */
+      @java.lang.Override
+      public float getPsiCpuLast10SPct() {
+        return instance.getPsiCpuLast10SPct();
+      }
+      /**
+       * <pre>
+       * The pressure-stall information that describes the state of CPU utilization
+       * of the system.
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 10 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+       * @param value The psiCpuLast10sPct to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPsiCpuLast10SPct(float value) {
+        copyOnWrite();
+        instance.setPsiCpuLast10SPct(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The pressure-stall information that describes the state of CPU utilization
+       * of the system.
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 10 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_10s_pct = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPsiCpuLast10SPct() {
+        copyOnWrite();
+        instance.clearPsiCpuLast10SPct();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 60 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+       * @return Whether the psiCpuLast60sPct field is set.
+       */
+      @java.lang.Override
+      public boolean hasPsiCpuLast60SPct() {
+        return instance.hasPsiCpuLast60SPct();
+      }
+      /**
+       * <pre>
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 60 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+       * @return The psiCpuLast60sPct.
+       */
+      @java.lang.Override
+      public float getPsiCpuLast60SPct() {
+        return instance.getPsiCpuLast60SPct();
+      }
+      /**
+       * <pre>
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 60 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+       * @param value The psiCpuLast60sPct to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPsiCpuLast60SPct(float value) {
+        copyOnWrite();
+        instance.setPsiCpuLast60SPct(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The percent of the time that runnable processes are delayed because the CPU
+       * is unavailable, accumulated over 60 seconds.
+       * </pre>
+       *
+       * <code>optional float psi_cpu_last_60s_pct = 17;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPsiCpuLast60SPct() {
+        copyOnWrite();
+        instance.clearPsiCpuLast60SPct();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:metrics.SampledProfile)
     }
     @java.lang.Override
@@ -2984,12 +3266,14 @@ public final class SampledProfileProtos {
               ThreadTypesDefaultEntryHolder.defaultEntry,
               org.chromium.components.metrics.ExecutionContextProtos.Thread.internalGetVerifier(),
               "cpuMaxFrequencyMhz_",
+              "psiCpuLast10SPct_",
+              "psiCpuLast60SPct_",
             };
             java.lang.String info =
-                "\u0001\u000f\u0000\u0001\u0001\u000f\u000f\u0002\u0001\u0000\u0001\u100c\u0000\u0002" +
+                "\u0001\u0011\u0000\u0001\u0001\u0011\u0011\u0002\u0001\u0000\u0001\u100c\u0000\u0002" +
                 "\u1002\u0003\u0003\u1002\u0004\u0004\u1009\t\u0005\u1002\u0005\u0006\u1002\u0006" +
                 "\u0007\u1004\u0007\b\u1002\b\t\u1009\n\n\u1009\u000b\u000b\u100c\u0001\f\u100c\u0002" +
-                "\r\u0832\u000e\u0832\u000f\u001d";
+                "\r\u0832\u000e\u0832\u000f\u001d\u0010\u1001\f\u0011\u1001\r";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

@@ -61,6 +61,7 @@ public final class ImageDecodeAcceleratorSupportedProfile extends org.chromium.m
                     
                 result.imageType = decoder0.readInt(8);
                     ImageDecodeAcceleratorType.validate(result.imageType);
+                    result.imageType = ImageDecodeAcceleratorType.toKnownValue(result.imageType);
                 }
                 {
                     
@@ -76,8 +77,8 @@ public final class ImageDecodeAcceleratorSupportedProfile extends org.chromium.m
                     
                 result.subsamplings = decoder0.readInts(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.subsamplings.length; ++i0) {
-                        ImageDecodeAcceleratorSubsampling.validate(result.subsamplings[i0]);
+                    for (int i1 = 0; i1 < result.subsamplings.length; ++i1) {
+                        ImageDecodeAcceleratorSubsampling.validate(result.subsamplings[i1]);
                     }
                 }
                 }

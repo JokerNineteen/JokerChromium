@@ -474,8 +474,8 @@ OverlayInfo overlayInfo) {
                             
                             keys0 = decoder1.readInts(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                             {
-                                for (int i1 = 0; i1 < keys0.length; ++i1) {
-                                    VideoDecoderImplementation.validate(keys0[i1]);
+                                for (int i2 = 0; i2 < keys0.length; ++i2) {
+                                    VideoDecoderImplementation.validate(keys0[i2]);
                                 }
                             }
                         }
@@ -689,6 +689,7 @@ OverlayInfo overlayInfo) {
                         
                     result.implementation = decoder0.readInt(40);
                         VideoDecoderImplementation.validate(result.implementation);
+                        result.implementation = VideoDecoderImplementation.toKnownValue(result.implementation);
                     }
                     {
                         
@@ -807,12 +808,13 @@ OverlayInfo overlayInfo) {
     
     static final class VideoDecoderInitializeResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public Status status;
         public boolean needsBitstreamConversion;
         public int maxDecodeRequests;
+        public int decoderType;
 
         private VideoDecoderInitializeResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -860,6 +862,12 @@ OverlayInfo overlayInfo) {
                         
                     result.maxDecodeRequests = decoder0.readInt(20);
                     }
+                    {
+                        
+                    result.decoderType = decoder0.readInt(24);
+                        VideoDecoderType.validate(result.decoderType);
+                        result.decoderType = VideoDecoderType.toKnownValue(result.decoderType);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -877,6 +885,8 @@ OverlayInfo overlayInfo) {
             encoder0.encode(this.needsBitstreamConversion, 16, 0);
             
             encoder0.encode(this.maxDecodeRequests, 20);
+            
+            encoder0.encode(this.decoderType, 24);
         }
     }
 
@@ -901,7 +911,7 @@ OverlayInfo overlayInfo) {
 
                 VideoDecoderInitializeResponseParams response = VideoDecoderInitializeResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.status, response.needsBitstreamConversion, response.maxDecodeRequests);
+                mCallback.call(response.status, response.needsBitstreamConversion, response.maxDecodeRequests, response.decoderType);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -925,7 +935,7 @@ OverlayInfo overlayInfo) {
         }
 
         @Override
-        public void call(Status status, Boolean needsBitstreamConversion, Integer maxDecodeRequests) {
+        public void call(Status status, Boolean needsBitstreamConversion, Integer maxDecodeRequests, Integer decoderType) {
             VideoDecoderInitializeResponseParams _response = new VideoDecoderInitializeResponseParams();
 
             _response.status = status;
@@ -933,6 +943,8 @@ OverlayInfo overlayInfo) {
             _response.needsBitstreamConversion = needsBitstreamConversion;
 
             _response.maxDecodeRequests = maxDecodeRequests;
+
+            _response.decoderType = decoderType;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(

@@ -25,7 +25,7 @@ public interface MediaMetricsProvider extends org.chromium.mojo.bindings.Interfa
 
 
     void initialize(
-boolean isMse, int urlScheme);
+boolean isMse, int urlScheme, int streamType);
 
 
 
@@ -100,12 +100,12 @@ int codec);
 
 
     void setVideoPipelineInfo(
-PipelineDecoderInfo info);
+VideoDecoderInfo info);
 
 
 
     void setAudioPipelineInfo(
-PipelineDecoderInfo info);
+AudioDecoderInfo info);
 
 
 }

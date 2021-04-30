@@ -5,6 +5,7 @@ package org.chromium.components.sync.protocol;
 
 /**
  * <pre>
+ * TODO(crbug.com/1149788): Deprecate.
  * Properties of supervised user whitelist sync objects.
  * The fields here are a subset of the fields in an ExtensionSpecifics.
  * </pre>
@@ -260,6 +261,7 @@ public  final class ManagedUserWhitelistSpecifics extends
 
   /**
    * <pre>
+   * TODO(crbug.com/1149788): Deprecate.
    * Properties of supervised user whitelist sync objects.
    * The fields here are a subset of the fields in an ExtensionSpecifics.
    * </pre>

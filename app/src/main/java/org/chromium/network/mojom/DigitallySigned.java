@@ -60,11 +60,13 @@ public final class DigitallySigned extends org.chromium.mojo.bindings.Struct {
                     
                 result.hashAlgorithm = decoder0.readInt(8);
                     HashAlgorithm.validate(result.hashAlgorithm);
+                    result.hashAlgorithm = HashAlgorithm.toKnownValue(result.hashAlgorithm);
                 }
                 {
                     
                 result.signatureAlgorithm = decoder0.readInt(12);
                     SignatureAlgorithm.validate(result.signatureAlgorithm);
+                    result.signatureAlgorithm = SignatureAlgorithm.toKnownValue(result.signatureAlgorithm);
                 }
                 {
                     

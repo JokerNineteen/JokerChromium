@@ -16,8 +16,8 @@ package org.chromium.network.mojom;
 
 public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 96;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
+    private static final int STRUCT_SIZE = 104;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int processId;
     public org.chromium.url.internal.mojom.Origin requestInitiatorOriginLock;
@@ -26,7 +26,6 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
     public boolean unsafeNonWebbyInitiator;
     public boolean disableWebSecurity;
     public TrustedUrlLoaderHeaderClient headerClient;
-    public CorsOriginAccessPatterns factoryBoundAccessPatterns;
     public IsolationInfo isolationInfo;
     public boolean disableSecureDns;
     public boolean isTrusted;
@@ -36,7 +35,9 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
     public ClientSecurityState clientSecurityState;
     public CrossOriginEmbedderPolicyReporter coepReporter;
     public CookieAccessObserver cookieObserver;
+    public AuthenticationAndCertificateObserver authCertObserver;
     public int trustTokenRedemptionPolicy;
+    public String debugTag;
 
     private UrlLoaderFactoryParams(int version) {
         super(STRUCT_SIZE, version);
@@ -49,6 +50,7 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
         this.isTrusted = (boolean) false;
         this.automaticallyAssignIsolationInfo = (boolean) false;
         this.trustTokenRedemptionPolicy = (int) TrustTokenRedemptionPolicy.POTENTIALLY_PERMIT;
+        this.debugTag = (String) "";
     }
 
     public UrlLoaderFactoryParams() {
@@ -123,41 +125,45 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
-                result.factoryBoundAccessPatterns = CorsOriginAccessPatterns.decode(decoder1);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                 result.isolationInfo = IsolationInfo.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
                 result.topFrameId = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
                 result.factoryOverride = UrlLoaderFactoryOverride.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
                 result.clientSecurityState = ClientSecurityState.decode(decoder1);
                 }
                 {
                     
-                result.coepReporter = decoder0.readServiceInterface(72, true, CrossOriginEmbedderPolicyReporter.MANAGER);
+                result.coepReporter = decoder0.readServiceInterface(64, true, CrossOriginEmbedderPolicyReporter.MANAGER);
                 }
                 {
                     
-                result.cookieObserver = decoder0.readServiceInterface(80, true, CookieAccessObserver.MANAGER);
+                result.cookieObserver = decoder0.readServiceInterface(72, true, CookieAccessObserver.MANAGER);
+                }
+                {
+                    
+                result.authCertObserver = decoder0.readServiceInterface(80, true, AuthenticationAndCertificateObserver.MANAGER);
                 }
                 {
                     
                 result.trustTokenRedemptionPolicy = decoder0.readInt(88);
                     TrustTokenRedemptionPolicy.validate(result.trustTokenRedemptionPolicy);
+                    result.trustTokenRedemptionPolicy = TrustTokenRedemptionPolicy.toKnownValue(result.trustTokenRedemptionPolicy);
+                }
+                {
+                    
+                result.debugTag = decoder0.readString(96, false);
                 }
 
         } finally {
@@ -191,20 +197,22 @@ public final class UrlLoaderFactoryParams extends org.chromium.mojo.bindings.Str
         
         encoder0.encode(this.headerClient, 24, true, TrustedUrlLoaderHeaderClient.MANAGER);
         
-        encoder0.encode(this.factoryBoundAccessPatterns, 32, true);
+        encoder0.encode(this.isolationInfo, 32, false);
         
-        encoder0.encode(this.isolationInfo, 40, false);
+        encoder0.encode(this.topFrameId, 40, true);
         
-        encoder0.encode(this.topFrameId, 48, true);
+        encoder0.encode(this.factoryOverride, 48, true);
         
-        encoder0.encode(this.factoryOverride, 56, true);
+        encoder0.encode(this.clientSecurityState, 56, true);
         
-        encoder0.encode(this.clientSecurityState, 64, true);
+        encoder0.encode(this.coepReporter, 64, true, CrossOriginEmbedderPolicyReporter.MANAGER);
         
-        encoder0.encode(this.coepReporter, 72, true, CrossOriginEmbedderPolicyReporter.MANAGER);
+        encoder0.encode(this.cookieObserver, 72, true, CookieAccessObserver.MANAGER);
         
-        encoder0.encode(this.cookieObserver, 80, true, CookieAccessObserver.MANAGER);
+        encoder0.encode(this.authCertObserver, 80, true, AuthenticationAndCertificateObserver.MANAGER);
         
         encoder0.encode(this.trustTokenRedemptionPolicy, 88);
+        
+        encoder0.encode(this.debugTag, 96, false);
     }
 }

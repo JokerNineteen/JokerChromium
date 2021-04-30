@@ -95,11 +95,13 @@ public final class PointerData extends org.chromium.mojo.bindings.Struct {
                     
                 result.button = decoder0.readInt(32);
                     Button.validate(result.button);
+                    result.button = Button.toKnownValue(result.button);
                 }
                 {
                     
                 result.pointerType = decoder0.readInt(36);
                     org.chromium.ui.mojom.EventPointerType.validate(result.pointerType);
+                    result.pointerType = org.chromium.ui.mojom.EventPointerType.toKnownValue(result.pointerType);
                 }
                 {
                     

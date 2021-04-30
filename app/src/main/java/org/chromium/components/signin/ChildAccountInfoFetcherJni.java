@@ -1,12 +1,12 @@
 package org.chromium.components.signin;
 
 import java.lang.Override;
-import java.lang.String;
 import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.components.signin.base.CoreAccountId;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -25,7 +25,7 @@ final class ChildAccountInfoFetcherJni implements ChildAccountInfoFetcher.Native
   };
 
   @Override
-  public void setIsChildAccount(long accountFetcherServicePtr, String accountId,
+  public void setIsChildAccount(long accountFetcherServicePtr, CoreAccountId accountId,
       boolean isChildAccount) {
     GEN_JNI.org_chromium_components_signin_ChildAccountInfoFetcher_setIsChildAccount(accountFetcherServicePtr, accountId, isChildAccount);
   }

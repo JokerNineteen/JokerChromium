@@ -29,6 +29,11 @@ public final class OTRProfileIDJni implements OTRProfileID.Natives {
     return (OTRProfileID)GEN_JNI.org_chromium_chrome_browser_profiles_OTRProfileID_createUniqueOTRProfileID(profileIDPrefix);
   }
 
+  @Override
+  public OTRProfileID getPrimaryID() {
+    return (OTRProfileID)GEN_JNI.org_chromium_chrome_browser_profiles_OTRProfileID_getPrimaryID();
+  }
+
   public static OTRProfileID.Natives get() {
     if (GEN_JNI.TESTING_ENABLED) {
       if (testInstance != null) {

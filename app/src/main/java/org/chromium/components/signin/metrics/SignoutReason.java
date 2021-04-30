@@ -24,7 +24,8 @@ import java.lang.annotation.RetentionPolicy;
     SignoutReason.USER_TUNED_OFF_SYNC_FROM_DICE_UI, SignoutReason.ACCOUNT_REMOVED_FROM_DEVICE,
     SignoutReason.SIGNIN_NOT_ALLOWED_ON_PROFILE_INIT,
     SignoutReason.FORCE_SIGNOUT_ALWAYS_ALLOWED_FOR_TEST, SignoutReason.USER_DELETED_ACCOUNT_COOKIES,
-    SignoutReason.MOBILE_IDENTITY_CONSISTENCY_ROLLBACK, SignoutReason.NUM_PROFILE_SIGNOUT_METRICS
+    SignoutReason.MOBILE_IDENTITY_CONSISTENCY_ROLLBACK, SignoutReason.ACCOUNT_ID_MIGRATION,
+    SignoutReason.NUM_PROFILE_SIGNOUT_METRICS
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SignoutReason {
@@ -90,7 +91,11 @@ public @interface SignoutReason {
    */
   int MOBILE_IDENTITY_CONSISTENCY_ROLLBACK = 13;
   /**
+   * Sign-out when the account id migration to Gaia ID did not finish,
+   */
+  int ACCOUNT_ID_MIGRATION = 14;
+  /**
    * Keep this as the last enum.
    */
-  int NUM_PROFILE_SIGNOUT_METRICS = 14;
+  int NUM_PROFILE_SIGNOUT_METRICS = 15;
 }

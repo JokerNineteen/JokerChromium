@@ -353,36 +353,6 @@ public interface NigoriSpecificsOrBuilder extends
 
   /**
    * <pre>
-   * Boolean corresponding to Whether to encrypt favicons data or not.
-   * </pre>
-   *
-   * <code>optional bool encrypt_favicon_images = 35;</code>
-   * @return Whether the encryptFaviconImages field is set.
-   */
-  boolean hasEncryptFaviconImages();
-  /**
-   * <pre>
-   * Boolean corresponding to Whether to encrypt favicons data or not.
-   * </pre>
-   *
-   * <code>optional bool encrypt_favicon_images = 35;</code>
-   * @return The encryptFaviconImages.
-   */
-  boolean getEncryptFaviconImages();
-
-  /**
-   * <code>optional bool encrypt_favicon_tracking = 36;</code>
-   * @return Whether the encryptFaviconTracking field is set.
-   */
-  boolean hasEncryptFaviconTracking();
-  /**
-   * <code>optional bool encrypt_favicon_tracking = 36;</code>
-   * @return The encryptFaviconTracking.
-   */
-  boolean getEncryptFaviconTracking();
-
-  /**
-   * <pre>
    * Boolean corresponding to whether app list items should be encrypted.
    * </pre>
    *

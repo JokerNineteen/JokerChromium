@@ -10,7 +10,7 @@ import org.chromium.base.natives.GEN_JNI;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ErrorMessageUtilJni implements ErrorMessageUtil.Natives {
+public final class ErrorMessageUtilJni implements ErrorMessageUtil.Natives {
   private static ErrorMessageUtil.Natives testInstance;
 
   public static final JniStaticTestMocker<ErrorMessageUtil.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.components.payments.ErrorMessageUtil.Natives>() {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<string name="app_banner_view_native_app_install_accessibility">"从 Google Play 商店下载应用：%s"</string>
+<string name="app_banner_install">"安装"</string>
+<string name="menu_add_to_homescreen">"添加到主屏幕"</string>
+<string name="menu_add_to_homescreen_install">"安装应用"</string>
+<string name="added_to_homescreen">"%1$s已添加到您的主屏幕"</string>
+</resources>

@@ -4,6 +4,15 @@
 
 package org.chromium.chrome.browser.language.settings;
 
+import android.text.TextUtils;
+
+import org.chromium.base.ContextUtils;
+import org.chromium.chrome.browser.language.AppLocaleUtils;
+import org.chromium.chrome.browser.language.GlobalAppLocaleController;
+import org.chromium.chrome.browser.language.R;
+
+import java.util.Locale;
+
 /**
  * Simple object representing the language item.
  */
@@ -31,7 +40,11 @@ public class LanguageItem {
         mDisplayName = displayName;
         mNativeDisplayName = nativeDisplayName;
         mSupportTranslate = supportTranslate;
-        mSupportAppUI = AvailableUiLanguages.isAvailable(mCode);
+        if (TextUtils.equals(code, AppLocaleUtils.SYSTEM_LANGUAGE_VALUE)) {
+            mSupportAppUI = true; // system language is a supported UI language
+        } else {
+            mSupportAppUI = AvailableUiLanguages.isAvailable(mCode);
+        }
     }
 
     /**
@@ -63,9 +76,44 @@ public class LanguageItem {
     }
 
     /**
+     * Return true if this LanguageItem is a base language that supports translate.
+     * This filters out country variants that are not supported by Translate even if their base
+     * language is (e.g. en-US, en-IN, or es-MX).
+     * Todo(crbug.com/1180262): Make mSupportTranslate equivalent to this flag.
+     * @return Whether or not this Language item is a base translatable language.
+     */
+    public boolean isSupportedBaseLanguage() {
+        if (!mSupportTranslate) {
+            return false;
+        }
+
+        // Currently the only two country variants that are translateable are zh-CN and zh-TW.
+        if (TextUtils.equals(mCode, "zh-CN") || TextUtils.equals(mCode, "zh-TW")) {
+            return true;
+        }
+
+        // If not a language with supported variants check that the code is a base language.
+        return !mCode.contains("-");
+    }
+
+    /**
      * @return Whether this language supports the Chrome UI.
      */
     public boolean isUISupported() {
         return mSupportAppUI;
+    }
+
+    /**
+     * Create a LanguageItem representing the system default language.
+     * @return LanguageItem
+     */
+    public static LanguageItem makeSystemDefaultLanguageItem() {
+        String displayName = ContextUtils.getApplicationContext().getResources().getString(
+                R.string.default_lang_subtitle);
+        String nativeName =
+                GlobalAppLocaleController.getInstance().getOriginalSystemLocale().getDisplayName(
+                        Locale.getDefault());
+        return new LanguageItem(
+                AppLocaleUtils.SYSTEM_LANGUAGE_VALUE, displayName, nativeName, true);
     }
 }

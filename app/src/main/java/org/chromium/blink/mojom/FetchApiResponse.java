@@ -16,13 +16,14 @@ package org.chromium.blink.mojom;
 
 public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 136;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(136, 0)};
+    private static final int STRUCT_SIZE = 152;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(152, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.url.mojom.Url[] urlList;
     public short statusCode;
     public String statusText;
     public int responseType;
+    public long padding;
     public int responseSource;
     public java.util.Map<String, String> headers;
     public String mimeType;
@@ -37,18 +38,18 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
     public org.chromium.network.mojom.ParsedHeaders parsedHeaders;
     public int connectionInfo;
     public String alpnNegotiatedProtocol;
-    public boolean loadedWithCredentials;
     public boolean wasFetchedViaSpdy;
     public boolean hasRangeRequested;
+    public org.chromium.network.mojom.AuthChallengeInfo authChallengeInfo;
 
     private FetchApiResponse(int version) {
         super(STRUCT_SIZE, version);
         this.statusCode = (short) 0;
         this.responseType = (int) org.chromium.network.mojom.FetchResponseType.DEFAULT;
+        this.padding = (long) 0;
         this.responseSource = (int) org.chromium.network.mojom.FetchResponseSource.UNSPECIFIED;
         this.error = (int) ServiceWorkerResponseError.UNKNOWN;
         this.alpnNegotiatedProtocol = (String) "unknown";
-        this.loadedWithCredentials = (boolean) false;
         this.wasFetchedViaSpdy = (boolean) false;
         this.hasRangeRequested = (boolean) false;
     }
@@ -101,20 +102,17 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.loadedWithCredentials = decoder0.readBoolean(18, 0);
+                result.wasFetchedViaSpdy = decoder0.readBoolean(18, 0);
                 }
                 {
                     
-                result.wasFetchedViaSpdy = decoder0.readBoolean(18, 1);
-                }
-                {
-                    
-                result.hasRangeRequested = decoder0.readBoolean(18, 2);
+                result.hasRangeRequested = decoder0.readBoolean(18, 1);
                 }
                 {
                     
                 result.responseType = decoder0.readInt(20);
                     org.chromium.network.mojom.FetchResponseType.validate(result.responseType);
+                    result.responseType = org.chromium.network.mojom.FetchResponseType.toKnownValue(result.responseType);
                 }
                 {
                     
@@ -122,17 +120,23 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.responseSource = decoder0.readInt(32);
+                result.padding = decoder0.readLong(32);
+                }
+                {
+                    
+                result.responseSource = decoder0.readInt(40);
                     org.chromium.network.mojom.FetchResponseSource.validate(result.responseSource);
+                    result.responseSource = org.chromium.network.mojom.FetchResponseSource.toKnownValue(result.responseSource);
                 }
                 {
                     
-                result.error = decoder0.readInt(36);
+                result.error = decoder0.readInt(44);
                     ServiceWorkerResponseError.validate(result.error);
+                    result.error = ServiceWorkerResponseError.toKnownValue(result.error);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
                 {
                     decoder1.readDataHeaderForMap();
                     String[] keys0;
@@ -169,29 +173,29 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.mimeType = decoder0.readString(48, true);
+                result.mimeType = decoder0.readString(56, true);
                 }
                 {
                     
-                result.requestMethod = decoder0.readString(56, true);
+                result.requestMethod = decoder0.readString(64, true);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
                 result.blob = SerializedBlob.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, false);
                 result.responseTime = org.chromium.mojo_base.mojom.Time.decode(decoder1);
                 }
                 {
                     
-                result.cacheStorageCacheName = decoder0.readString(80, true);
+                result.cacheStorageCacheName = decoder0.readString(88, true);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.corsExposedHeaderNames = new String[si1.elementsOrVersion];
@@ -203,27 +207,33 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
                 result.sideDataBlob = SerializedBlob.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
                 result.sideDataBlobForCachePut = SerializedBlob.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, true);
                 result.parsedHeaders = org.chromium.network.mojom.ParsedHeaders.decode(decoder1);
                 }
                 {
                     
-                result.connectionInfo = decoder0.readInt(120);
+                result.connectionInfo = decoder0.readInt(128);
                     org.chromium.network.mojom.ConnectionInfo.validate(result.connectionInfo);
+                    result.connectionInfo = org.chromium.network.mojom.ConnectionInfo.toKnownValue(result.connectionInfo);
                 }
                 {
                     
-                result.alpnNegotiatedProtocol = decoder0.readString(128, false);
+                result.alpnNegotiatedProtocol = decoder0.readString(136, false);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(144, true);
+                result.authChallengeInfo = org.chromium.network.mojom.AuthChallengeInfo.decode(decoder1);
                 }
 
         } finally {
@@ -249,24 +259,24 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.statusCode, 16);
         
-        encoder0.encode(this.loadedWithCredentials, 18, 0);
+        encoder0.encode(this.wasFetchedViaSpdy, 18, 0);
         
-        encoder0.encode(this.wasFetchedViaSpdy, 18, 1);
-        
-        encoder0.encode(this.hasRangeRequested, 18, 2);
+        encoder0.encode(this.hasRangeRequested, 18, 1);
         
         encoder0.encode(this.responseType, 20);
         
         encoder0.encode(this.statusText, 24, false);
         
-        encoder0.encode(this.responseSource, 32);
+        encoder0.encode(this.padding, 32);
         
-        encoder0.encode(this.error, 36);
+        encoder0.encode(this.responseSource, 40);
+        
+        encoder0.encode(this.error, 44);
         
         if (this.headers == null) {
-            encoder0.encodeNullPointer(40, false);
+            encoder0.encodeNullPointer(48, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(40);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encoderForMap(48);
             int size0 = this.headers.size();
             String[] keys0 = new String[size0];
             String[] values0 = new String[size0];
@@ -294,34 +304,36 @@ public final class FetchApiResponse extends org.chromium.mojo.bindings.Struct {
             }
         }
         
-        encoder0.encode(this.mimeType, 48, true);
+        encoder0.encode(this.mimeType, 56, true);
         
-        encoder0.encode(this.requestMethod, 56, true);
+        encoder0.encode(this.requestMethod, 64, true);
         
-        encoder0.encode(this.blob, 64, true);
+        encoder0.encode(this.blob, 72, true);
         
-        encoder0.encode(this.responseTime, 72, false);
+        encoder0.encode(this.responseTime, 80, false);
         
-        encoder0.encode(this.cacheStorageCacheName, 80, true);
+        encoder0.encode(this.cacheStorageCacheName, 88, true);
         
         if (this.corsExposedHeaderNames == null) {
-            encoder0.encodeNullPointer(88, false);
+            encoder0.encodeNullPointer(96, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsExposedHeaderNames.length, 88, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsExposedHeaderNames.length, 96, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.corsExposedHeaderNames.length; ++i0) {
                 
                 encoder1.encode(this.corsExposedHeaderNames[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.sideDataBlob, 96, true);
+        encoder0.encode(this.sideDataBlob, 104, true);
         
-        encoder0.encode(this.sideDataBlobForCachePut, 104, true);
+        encoder0.encode(this.sideDataBlobForCachePut, 112, true);
         
-        encoder0.encode(this.parsedHeaders, 112, true);
+        encoder0.encode(this.parsedHeaders, 120, true);
         
-        encoder0.encode(this.connectionInfo, 120);
+        encoder0.encode(this.connectionInfo, 128);
         
-        encoder0.encode(this.alpnNegotiatedProtocol, 128, false);
+        encoder0.encode(this.alpnNegotiatedProtocol, 136, false);
+        
+        encoder0.encode(this.authChallengeInfo, 144, true);
     }
 }

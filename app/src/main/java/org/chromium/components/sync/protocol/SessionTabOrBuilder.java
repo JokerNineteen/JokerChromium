@@ -250,4 +250,15 @@ public interface SessionTabOrBuilder extends
    * @return The variationId at the given index.
    */
   @java.lang.Deprecated long getVariationId(int index);
+
+  /**
+   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * @return Whether the browserType field is set.
+   */
+  boolean hasBrowserType();
+  /**
+   * <code>optional .sync_pb.SessionWindow.BrowserType browser_type = 13;</code>
+   * @return The browserType.
+   */
+  org.chromium.components.sync.protocol.SessionWindow.BrowserType getBrowserType();
 }

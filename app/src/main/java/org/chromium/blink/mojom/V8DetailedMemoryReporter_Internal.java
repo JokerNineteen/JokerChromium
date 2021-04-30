@@ -210,6 +210,7 @@ GetV8MemoryUsageResponse callback) {
                         
                     result.mode = decoder0.readInt(8);
                         V8DetailedMemoryReporter.Mode.validate(result.mode);
+                        result.mode = V8DetailedMemoryReporter.Mode.toKnownValue(result.mode);
                     }
 
             } finally {

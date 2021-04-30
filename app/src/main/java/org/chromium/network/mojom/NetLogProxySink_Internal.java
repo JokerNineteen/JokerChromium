@@ -233,6 +233,7 @@ int type, int sourceType, int sourceId, org.chromium.mojo_base.mojom.TimeTicks s
                         
                     result.phase = decoder0.readInt(20);
                         NetLogEventPhase.validate(result.phase);
+                        result.phase = NetLogEventPhase.toKnownValue(result.phase);
                     }
                     {
                         

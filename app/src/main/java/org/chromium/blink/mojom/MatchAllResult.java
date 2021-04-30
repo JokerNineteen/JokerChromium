@@ -88,6 +88,7 @@ public final class MatchAllResult extends org.chromium.mojo.bindings.Union {
                 
                 result.mStatus = decoder0.readInt(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE);
                     CacheStorageError.validate(result.mStatus);
+                    result.mStatus = CacheStorageError.toKnownValue(result.mStatus);
                 result.mTag = Tag.Status;
                 break;
             }

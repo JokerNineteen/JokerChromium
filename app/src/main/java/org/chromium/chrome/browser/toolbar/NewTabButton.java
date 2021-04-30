@@ -14,12 +14,9 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.device.DeviceClassManager;
 import org.chromium.chrome.browser.tabmodel.IncognitoStateProvider;
 import org.chromium.chrome.browser.tabmodel.IncognitoStateProvider.IncognitoStateObserver;
-import org.chromium.chrome.browser.tasks.tab_management.TabUiFeatureUtilities;
-import org.chromium.chrome.features.start_surface.StartSurfaceConfiguration;
 import org.chromium.ui.base.DeviceFormFactor;
 import org.chromium.ui.widget.ChromeImageButton;
 import org.chromium.ui.widget.Toast;
@@ -31,8 +28,11 @@ public class NewTabButton
         extends ChromeImageButton implements IncognitoStateObserver, View.OnLongClickListener {
     private final ColorStateList mLightModeTint;
     private final ColorStateList mDarkModeTint;
-    private boolean mIsIncognito;
+    private final boolean mIsTablet;
     private IncognitoStateProvider mIncognitoStateProvider;
+    private boolean mIsIncognito;
+    private boolean mIsGridTabSwitcherEnabled;
+    private boolean mIsStartSurfaceEnabled;
 
     /**
      * Constructor for inflating from XML.
@@ -47,15 +47,39 @@ public class NewTabButton
                 getContext(), R.color.default_icon_color_tint_list);
         setImageDrawable(VectorDrawableCompat.create(
                 getContext().getResources(), R.drawable.new_tab_icon, getContext().getTheme()));
+        mIsTablet = DeviceFormFactor.isNonMultiDisplayContextOnTablet(context);
         updateDrawableTint();
         setOnLongClickListener(this);
     }
 
+    /**
+     * Set grid-type tab switcher feature flag.
+     * @param isGridTabSwitcherEnabled Whether grid tab switcher is enabled.
+     */
+    public void setGridTabSwitcherEnabled(boolean isGridTabSwitcherEnabled) {
+        if (mIsGridTabSwitcherEnabled == isGridTabSwitcherEnabled) return;
+        mIsGridTabSwitcherEnabled = isGridTabSwitcherEnabled;
+
+        updateDrawableTint();
+        invalidate();
+    }
+
+    /**
+     * Set start surface feature flag.
+     * @param isStartSurfaceEnabled Whether start surface is enabled.
+     */
+    public void setStartSurfaceEnabled(boolean isStartSurfaceEnabled) {
+        if (mIsStartSurfaceEnabled == isStartSurfaceEnabled) return;
+        mIsStartSurfaceEnabled = isStartSurfaceEnabled;
+
+        updateDrawableTint();
+        invalidate();
+    }
+
     @Override
     public boolean onLongClick(View v) {
-        CharSequence description = getResources().getString(mIsIncognito
-                        ? org.chromium.chrome.R.string.button_new_incognito_tab
-                        : org.chromium.chrome.R.string.button_new_tab);
+        CharSequence description = getResources().getString(
+                mIsIncognito ? R.string.button_new_incognito_tab : R.string.button_new_tab);
         return Toast.showAnchoredToast(getContext(), v, description);
     }
 
@@ -85,11 +109,9 @@ public class NewTabButton
 
     /** Update the tint for the icon drawable for Chrome Modern. */
     private void updateDrawableTint() {
-        final boolean shouldUseLightMode =
-                DeviceFormFactor.isNonMultiDisplayContextOnTablet(getContext())
-                || ((DeviceClassManager.enableAccessibilityLayout()
-                            || TabUiFeatureUtilities.isGridTabSwitcherEnabled()
-                            || StartSurfaceConfiguration.isStartSurfaceEnabled())
+        final boolean shouldUseLightMode = mIsTablet
+                || ((DeviceClassManager.enableAccessibilityLayout() || mIsGridTabSwitcherEnabled
+                            || mIsStartSurfaceEnabled)
                         && mIsIncognito);
         ApiCompatibilityUtils.setImageTintList(
                 this, shouldUseLightMode ? mLightModeTint : mDarkModeTint);

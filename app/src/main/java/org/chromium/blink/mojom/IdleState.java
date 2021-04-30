@@ -59,11 +59,13 @@ public final class IdleState extends org.chromium.mojo.bindings.Struct {
                     
                 result.user = decoder0.readInt(8);
                     UserIdleState.validate(result.user);
+                    result.user = UserIdleState.toKnownValue(result.user);
                 }
                 {
                     
                 result.screen = decoder0.readInt(12);
                     ScreenIdleState.validate(result.screen);
+                    result.screen = ScreenIdleState.toKnownValue(result.screen);
                 }
 
         } finally {

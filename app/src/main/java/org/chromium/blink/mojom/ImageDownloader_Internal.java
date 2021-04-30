@@ -272,7 +272,7 @@ DownloadImageResponse callback) {
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int httpStatusCode;
-        public org.chromium.skia.mojom.Bitmap[] images;
+        public org.chromium.skia.mojom.BitmapN32[] images;
         public org.chromium.gfx.mojom.Size[] originalImageSizes;
 
         private ImageDownloaderDownloadImageResponseParams(int version) {
@@ -317,11 +317,11 @@ DownloadImageResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                     {
                         org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.images = new org.chromium.skia.mojom.Bitmap[si1.elementsOrVersion];
+                        result.images = new org.chromium.skia.mojom.BitmapN32[si1.elementsOrVersion];
                         for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                             
                             org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.images[i1] = org.chromium.skia.mojom.Bitmap.decode(decoder2);
+                            result.images[i1] = org.chromium.skia.mojom.BitmapN32.decode(decoder2);
                         }
                     }
                     }
@@ -419,7 +419,7 @@ DownloadImageResponse callback) {
         }
 
         @Override
-        public void call(Integer httpStatusCode, org.chromium.skia.mojom.Bitmap[] images, org.chromium.gfx.mojom.Size[] originalImageSizes) {
+        public void call(Integer httpStatusCode, org.chromium.skia.mojom.BitmapN32[] images, org.chromium.gfx.mojom.Size[] originalImageSizes) {
             ImageDownloaderDownloadImageResponseParams _response = new ImageDownloaderDownloadImageResponseParams();
 
             _response.httpStatusCode = httpStatusCode;

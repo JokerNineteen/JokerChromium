@@ -65,8 +65,8 @@ public final class UrlRequestBody extends org.chromium.mojo.bindings.Struct {
                     result.elements = new DataElement[si1.elementsOrVersion];
                     for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                         
-                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.elements[i1] = DataElement.decode(decoder2);
+                        result.elements[i1] = DataElement.decode(decoder1, org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + 
+                        org.chromium.mojo.bindings.BindingsHelper.UNION_SIZE * i1);
                     }
                 }
                 }
@@ -97,10 +97,11 @@ public final class UrlRequestBody extends org.chromium.mojo.bindings.Struct {
         if (this.elements == null) {
             encoder0.encodeNullPointer(8, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.elements.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodeUnionArray(this.elements.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.elements.length; ++i0) {
                 
-                encoder1.encode(this.elements[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                encoder1.encode(this.elements[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + 
+                org.chromium.mojo.bindings.BindingsHelper.UNION_SIZE * i0, false);
             }
         }
         

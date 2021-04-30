@@ -1159,6 +1159,7 @@ org.chromium.gfx.mojom.Point point) {
                         
                     result.type = decoder0.readInt(16);
                         org.chromium.ui.mojom.ImeTextSpanType.validate(result.type);
+                        result.type = org.chromium.ui.mojom.ImeTextSpanType.toKnownValue(result.type);
                     }
 
             } finally {
@@ -2442,6 +2443,7 @@ org.chromium.gfx.mojom.Point point) {
                         
                     result.behavior = decoder0.readInt(16);
                         SelectionMenuBehavior.validate(result.behavior);
+                        result.behavior = SelectionMenuBehavior.toKnownValue(result.behavior);
                     }
 
             } finally {

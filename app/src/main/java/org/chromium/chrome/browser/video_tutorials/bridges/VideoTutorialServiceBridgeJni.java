@@ -46,6 +46,12 @@ final class VideoTutorialServiceBridgeJni implements VideoTutorialServiceBridge.
   }
 
   @Override
+  public String[] getAvailableLanguagesForTutorial(long nativeVideoTutorialServiceBridge,
+      VideoTutorialServiceBridge caller, int feature) {
+    return (String[])GEN_JNI.org_chromium_chrome_browser_video_1tutorials_bridges_VideoTutorialServiceBridge_getAvailableLanguagesForTutorial(nativeVideoTutorialServiceBridge, caller, feature);
+  }
+
+  @Override
   public String getPreferredLocale(long nativeVideoTutorialServiceBridge,
       VideoTutorialServiceBridge caller) {
     return (String)GEN_JNI.org_chromium_chrome_browser_video_1tutorials_bridges_VideoTutorialServiceBridge_getPreferredLocale(nativeVideoTutorialServiceBridge, caller);

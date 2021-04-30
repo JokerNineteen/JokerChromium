@@ -40,7 +40,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":browser:autofill_assistant")
+    implementation project(":browser:download_home")
     implementation project(":components:browser_ui_widget")
     implementation project(":ui")
 }

@@ -60,16 +60,19 @@ public final class AuthenticatorSelectionCriteria extends org.chromium.mojo.bind
                     
                 result.authenticatorAttachment = decoder0.readInt(8);
                     AuthenticatorAttachment.validate(result.authenticatorAttachment);
+                    result.authenticatorAttachment = AuthenticatorAttachment.toKnownValue(result.authenticatorAttachment);
                 }
                 {
                     
                 result.residentKey = decoder0.readInt(12);
                     ResidentKeyRequirement.validate(result.residentKey);
+                    result.residentKey = ResidentKeyRequirement.toKnownValue(result.residentKey);
                 }
                 {
                     
                 result.userVerification = decoder0.readInt(16);
                     UserVerificationRequirement.validate(result.userVerification);
+                    result.userVerification = UserVerificationRequirement.toKnownValue(result.userVerification);
                 }
 
         } finally {

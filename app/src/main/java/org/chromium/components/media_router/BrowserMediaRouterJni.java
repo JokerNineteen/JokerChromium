@@ -37,9 +37,15 @@ final class BrowserMediaRouterJni implements BrowserMediaRouter.Natives {
   }
 
   @Override
-  public void onRouteRequestError(long nativeMediaRouterAndroidBridge, BrowserMediaRouter caller,
-      String errorText, int createRouteRequestId) {
-    GEN_JNI.org_chromium_components_media_1router_BrowserMediaRouter_onRouteRequestError(nativeMediaRouterAndroidBridge, caller, errorText, createRouteRequestId);
+  public void onCreateRouteRequestError(long nativeMediaRouterAndroidBridge,
+      BrowserMediaRouter caller, String errorText, int requestId) {
+    GEN_JNI.org_chromium_components_media_1router_BrowserMediaRouter_onCreateRouteRequestError(nativeMediaRouterAndroidBridge, caller, errorText, requestId);
+  }
+
+  @Override
+  public void onJoinRouteRequestError(long nativeMediaRouterAndroidBridge,
+      BrowserMediaRouter caller, String errorText, int requestId) {
+    GEN_JNI.org_chromium_components_media_1router_BrowserMediaRouter_onJoinRouteRequestError(nativeMediaRouterAndroidBridge, caller, errorText, requestId);
   }
 
   @Override

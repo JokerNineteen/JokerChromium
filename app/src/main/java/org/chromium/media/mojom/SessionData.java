@@ -33,6 +33,10 @@ public final class SessionData extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private KeyType() {}
     }
     public byte[] keySetId;
@@ -84,6 +88,7 @@ public final class SessionData extends org.chromium.mojo.bindings.Struct {
                     
                 result.keyType = decoder0.readInt(24);
                     SessionData.KeyType.validate(result.keyType);
+                    result.keyType = SessionData.KeyType.toKnownValue(result.keyType);
                 }
 
         } finally {

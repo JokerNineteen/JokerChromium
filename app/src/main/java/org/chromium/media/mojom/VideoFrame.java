@@ -66,6 +66,7 @@ public final class VideoFrame extends org.chromium.mojo.bindings.Struct {
                     
                 result.format = decoder0.readInt(8);
                     VideoPixelFormat.validate(result.format);
+                    result.format = VideoPixelFormat.toKnownValue(result.format);
                 }
                 {
                     

@@ -60,6 +60,18 @@ final class JourneyLoggerJni implements JourneyLogger.Natives {
   }
 
   @Override
+  public void setSelectedMethod(long nativeJourneyLoggerAndroid, JourneyLogger caller,
+      int paymentMethodCategory) {
+    GEN_JNI.org_chromium_components_payments_JourneyLogger_setSelectedMethod(nativeJourneyLoggerAndroid, caller, paymentMethodCategory);
+  }
+
+  @Override
+  public void setAvailableMethod(long nativeJourneyLoggerAndroid, JourneyLogger caller,
+      int paymentMethodCategory) {
+    GEN_JNI.org_chromium_components_payments_JourneyLogger_setAvailableMethod(nativeJourneyLoggerAndroid, caller, paymentMethodCategory);
+  }
+
+  @Override
   public void setRequestedInformation(long nativeJourneyLoggerAndroid, JourneyLogger caller,
       boolean requestShipping, boolean requestEmail, boolean requestPhone, boolean requestName) {
     GEN_JNI.org_chromium_components_payments_JourneyLogger_setRequestedInformation(nativeJourneyLoggerAndroid, caller, requestShipping, requestEmail, requestPhone, requestName);

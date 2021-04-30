@@ -38,6 +38,10 @@ public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct 
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Tristate() {}
     }
     public IpEndPoint[] nameservers;
@@ -128,6 +132,7 @@ public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct 
                     
                 result.appendToMultiLabelName = decoder0.readInt(24);
                     DnsConfigOverrides.Tristate.validate(result.appendToMultiLabelName);
+                    result.appendToMultiLabelName = DnsConfigOverrides.Tristate.toKnownValue(result.appendToMultiLabelName);
                 }
                 {
                     
@@ -150,16 +155,19 @@ public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct 
                     
                 result.rotate = decoder0.readInt(44);
                     DnsConfigOverrides.Tristate.validate(result.rotate);
+                    result.rotate = DnsConfigOverrides.Tristate.toKnownValue(result.rotate);
                 }
                 {
                     
                 result.useLocalIpv6 = decoder0.readInt(48);
                     DnsConfigOverrides.Tristate.validate(result.useLocalIpv6);
+                    result.useLocalIpv6 = DnsConfigOverrides.Tristate.toKnownValue(result.useLocalIpv6);
                 }
                 {
                     
                 result.secureDnsMode = decoder0.readInt(52);
                     OptionalSecureDnsMode.validate(result.secureDnsMode);
+                    result.secureDnsMode = OptionalSecureDnsMode.toKnownValue(result.secureDnsMode);
                 }
                 {
                     
@@ -180,6 +188,7 @@ public final class DnsConfigOverrides extends org.chromium.mojo.bindings.Struct 
                     
                 result.allowDnsOverHttpsUpgrade = decoder0.readInt(64);
                     DnsConfigOverrides.Tristate.validate(result.allowDnsOverHttpsUpgrade);
+                    result.allowDnsOverHttpsUpgrade = DnsConfigOverrides.Tristate.toKnownValue(result.allowDnsOverHttpsUpgrade);
                 }
                 {
                     

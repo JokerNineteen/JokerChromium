@@ -1,6 +1,5 @@
 package org.chromium.chrome.browser.profiles;
 
-import java.lang.Object;
 import java.lang.Override;
 import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
@@ -25,18 +24,18 @@ final class ProfileKeyJni implements ProfileKey.Natives {
   };
 
   @Override
-  public Object getLastUsedRegularProfileKey() {
-    return (Object)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_getLastUsedRegularProfileKey();
+  public ProfileKey getLastUsedRegularProfileKey() {
+    return (ProfileKey)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_getLastUsedRegularProfileKey();
   }
 
   @Override
-  public Object getOriginalKey(long nativeProfileKeyAndroid, ProfileKey caller) {
-    return (Object)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_getOriginalKey(nativeProfileKeyAndroid, caller);
+  public ProfileKey getOriginalKey(long nativeProfileKeyAndroid) {
+    return (ProfileKey)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_getOriginalKey(nativeProfileKeyAndroid);
   }
 
   @Override
-  public boolean isOffTheRecord(long nativeProfileKeyAndroid, ProfileKey caller) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_isOffTheRecord(nativeProfileKeyAndroid, caller);
+  public boolean isOffTheRecord(long nativeProfileKeyAndroid) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_profiles_ProfileKey_isOffTheRecord(nativeProfileKeyAndroid);
   }
 
   public static ProfileKey.Natives get() {

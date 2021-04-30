@@ -16,11 +16,12 @@ package org.chromium.blink.mojom;
 
 public final class PerContextV8MemoryUsage extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ExecutionContextToken token;
     public long bytesUsed;
+    public String url;
 
     private PerContextV8MemoryUsage(int version) {
         super(STRUCT_SIZE, version);
@@ -64,6 +65,10 @@ public final class PerContextV8MemoryUsage extends org.chromium.mojo.bindings.St
                     
                 result.bytesUsed = decoder0.readLong(24);
                 }
+                {
+                    
+                result.url = decoder0.readString(32, true);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -79,5 +84,7 @@ public final class PerContextV8MemoryUsage extends org.chromium.mojo.bindings.St
         encoder0.encode(this.token, 8, false);
         
         encoder0.encode(this.bytesUsed, 24);
+        
+        encoder0.encode(this.url, 32, true);
     }
 }

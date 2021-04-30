@@ -141,8 +141,9 @@ final class WebContentsAccessibilityImplJni implements WebContentsAccessibilityI
 
   @Override
   public int findElementType(long nativeWebContentsAccessibilityAndroid,
-      WebContentsAccessibilityImpl caller, int startId, String elementType, boolean forwards) {
-    return (int)GEN_JNI.org_chromium_content_browser_accessibility_WebContentsAccessibilityImpl_findElementType(nativeWebContentsAccessibilityAndroid, caller, startId, elementType, forwards);
+      WebContentsAccessibilityImpl caller, int startId, String elementType, boolean forwards,
+      boolean canWrapToLastElement) {
+    return (int)GEN_JNI.org_chromium_content_browser_accessibility_WebContentsAccessibilityImpl_findElementType(nativeWebContentsAccessibilityAndroid, caller, startId, elementType, forwards, canWrapToLastElement);
   }
 
   @Override
@@ -253,6 +254,18 @@ final class WebContentsAccessibilityImplJni implements WebContentsAccessibilityI
   public void addSpellingErrorForTesting(long nativeWebContentsAccessibilityAndroid,
       WebContentsAccessibilityImpl caller, int id, int startOffset, int endOffset) {
     GEN_JNI.org_chromium_content_browser_accessibility_WebContentsAccessibilityImpl_addSpellingErrorForTesting(nativeWebContentsAccessibilityAndroid, caller, id, startOffset, endOffset);
+  }
+
+  @Override
+  public void setMaxContentChangedEventsToFireForTesting(long nativeWebContentsAccessibilityAndroid,
+      WebContentsAccessibilityImpl caller, int maxEvents) {
+    GEN_JNI.org_chromium_content_browser_accessibility_WebContentsAccessibilityImpl_setMaxContentChangedEventsToFireForTesting(nativeWebContentsAccessibilityAndroid, caller, maxEvents);
+  }
+
+  @Override
+  public int getMaxContentChangedEventsToFireForTesting(
+      long nativeWebContentsAccessibilityAndroid) {
+    return (int)GEN_JNI.org_chromium_content_browser_accessibility_WebContentsAccessibilityImpl_getMaxContentChangedEventsToFireForTesting(nativeWebContentsAccessibilityAndroid);
   }
 
   public static WebContentsAccessibilityImpl.Natives get() {

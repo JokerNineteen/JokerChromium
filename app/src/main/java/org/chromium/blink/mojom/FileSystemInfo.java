@@ -70,6 +70,7 @@ public final class FileSystemInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.mountType = decoder0.readInt(24);
                     FileSystemType.validate(result.mountType);
+                    result.mountType = FileSystemType.toKnownValue(result.mountType);
                 }
 
         } finally {

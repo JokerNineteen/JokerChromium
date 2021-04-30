@@ -7,11 +7,8 @@
 <string name="all_passwords_bottom_sheet_title">"Passwords"</string>
 <string name="all_passwords_bottom_sheet_search_hint">"Search"</string>
 <string name="all_passwords_bottom_sheet_no_password">"No password"</string>
-<string name="all_passwords_bottom_sheet_warning_dialog_title">"Use other password"</string>
 <string name="all_passwords_bottom_sheet_warning_dialog_message_first">"If you trust %s, you can use a saved password for another site."</string>
 <string name="all_passwords_bottom_sheet_warning_dialog_message_second">"Try to use a unique password for every site."</string>
-<string name="all_passwords_bottom_sheet_accept">"Continue"</string>
-<string name="all_passwords_bottom_sheet_cancel">"Cancel"</string>
 <string name="autofill_keyboard_accessory_content_description">"Passwords available"</string>
 <string name="autofill_keyboard_accessory_modern_content_description">"Autofill suggestions available above the keyboard"</string>
 <string name="keyboard_accessory_sheet_hide">"Show keyboard"</string>

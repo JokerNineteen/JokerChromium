@@ -32,16 +32,21 @@ public final class ServiceWorkerResponseError {
     public static final int RESPONSE_TYPE_CORS_FOR_REQUEST_MODE_SAME_ORIGIN = 13;
     public static final int RESPONSE_BODY_BROKEN = 14;
     public static final int DISALLOWED_BY_CORP = 15;
+    public static final int REQUEST_BODY_UNUSABLE = 16;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 15;
+    public static final int MAX_VALUE = 16;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 15;
+        return value >= 0 && value <= 16;
     }
 
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private ServiceWorkerResponseError() {}

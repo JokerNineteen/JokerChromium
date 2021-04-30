@@ -27,8 +27,8 @@ final class QualityEnforcerJni implements QualityEnforcer.Natives {
 
   @Override
   public void reportDevtoolsIssue(RenderFrameHost renderFrameHost, int type, String url,
-      int httpStatusCode) {
-    GEN_JNI.org_chromium_chrome_browser_browserservices_QualityEnforcer_reportDevtoolsIssue(renderFrameHost, type, url, httpStatusCode);
+      int httpStatusCode, String packageName, String signature) {
+    GEN_JNI.org_chromium_chrome_browser_browserservices_QualityEnforcer_reportDevtoolsIssue(renderFrameHost, type, url, httpStatusCode, packageName, signature);
   }
 
   public static QualityEnforcer.Natives get() {

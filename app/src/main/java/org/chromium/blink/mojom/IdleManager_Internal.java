@@ -284,6 +284,7 @@ AddMonitorResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         IdleManagerError.validate(result.error);
+                        result.error = IdleManagerError.toKnownValue(result.error);
                     }
                     {
                         

@@ -711,6 +711,25 @@ public final class SystemProfileProtos {
         getAppPackageNameBytes();
 
     /**
+     * <pre>
+     * The package which installed Chrome, as reported by Android.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+     * @return Whether the installerPackage field is set.
+     */
+    boolean hasInstallerPackage();
+    /**
+     * <pre>
+     * The package which installed Chrome, as reported by Android.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+     * @return The installerPackage.
+     */
+    org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage getInstallerPackage();
+
+    /**
      * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
      * @return Whether the linkedAndroidPhoneData field is set.
      */
@@ -727,7 +746,7 @@ public final class SystemProfileProtos {
    * Almost all the fields should be populated on every upload. (The only
    * exception is some fields in the stability section that are only uploaded
    * once per browsing session, usually shortly after startup.)
-   * Next tag: 35
+   * Next tag: 36
    * </pre>
    *
    * Protobuf type {@code metrics.SystemProfileProto}
@@ -1597,6 +1616,145 @@ public final class SystemProfileProtos {
       }
 
       // @@protoc_insertion_point(enum_scope:metrics.SystemProfileProto.ComponentId)
+    }
+
+    /**
+     * <pre>
+     * The package which installed Chrome, as reported by
+     * PackageManager.getInstallerPackageName().
+     * </pre>
+     *
+     * Protobuf enum {@code metrics.SystemProfileProto.InstallerPackage}
+     */
+    public enum InstallerPackage
+        implements com.google.protobuf.Internal.EnumLite {
+      /**
+       * <pre>
+       * This field was not set.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_UNKNOWN = 0;</code>
+       */
+      INSTALLER_PACKAGE_UNKNOWN(0),
+      /**
+       * <pre>
+       * The installer package name returned by Android was empty.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_NONE = 1;</code>
+       */
+      INSTALLER_PACKAGE_NONE(1),
+      /**
+       * <pre>
+       * 'com.android.vending'.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_GOOGLE_PLAY_STORE = 2;</code>
+       */
+      INSTALLER_PACKAGE_GOOGLE_PLAY_STORE(2),
+      /**
+       * <pre>
+       * Any other non-empty value.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_OTHER = 3;</code>
+       */
+      INSTALLER_PACKAGE_OTHER(3),
+      ;
+
+      /**
+       * <pre>
+       * This field was not set.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_UNKNOWN = 0;</code>
+       */
+      public static final int INSTALLER_PACKAGE_UNKNOWN_VALUE = 0;
+      /**
+       * <pre>
+       * The installer package name returned by Android was empty.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_NONE = 1;</code>
+       */
+      public static final int INSTALLER_PACKAGE_NONE_VALUE = 1;
+      /**
+       * <pre>
+       * 'com.android.vending'.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_GOOGLE_PLAY_STORE = 2;</code>
+       */
+      public static final int INSTALLER_PACKAGE_GOOGLE_PLAY_STORE_VALUE = 2;
+      /**
+       * <pre>
+       * Any other non-empty value.
+       * </pre>
+       *
+       * <code>INSTALLER_PACKAGE_OTHER = 3;</code>
+       */
+      public static final int INSTALLER_PACKAGE_OTHER_VALUE = 3;
+
+
+      @java.lang.Override
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static InstallerPackage valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static InstallerPackage forNumber(int value) {
+        switch (value) {
+          case 0: return INSTALLER_PACKAGE_UNKNOWN;
+          case 1: return INSTALLER_PACKAGE_NONE;
+          case 2: return INSTALLER_PACKAGE_GOOGLE_PLAY_STORE;
+          case 3: return INSTALLER_PACKAGE_OTHER;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<InstallerPackage>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          InstallerPackage> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<InstallerPackage>() {
+              @java.lang.Override
+              public InstallerPackage findValueByNumber(int number) {
+                return InstallerPackage.forNumber(number);
+              }
+            };
+
+      public static com.google.protobuf.Internal.EnumVerifier 
+          internalGetVerifier() {
+        return InstallerPackageVerifier.INSTANCE;
+      }
+
+      private static final class InstallerPackageVerifier implements 
+           com.google.protobuf.Internal.EnumVerifier { 
+              static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new InstallerPackageVerifier();
+              @java.lang.Override
+              public boolean isInRange(int number) {
+                return InstallerPackage.forNumber(number) != null;
+              }
+            };
+
+      private final int value;
+
+      private InstallerPackage(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:metrics.SystemProfileProto.InstallerPackage)
     }
 
     public interface OSOrBuilder extends
@@ -3697,7 +3855,7 @@ public final class SystemProfileProtos {
 
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -3708,7 +3866,7 @@ public final class SystemProfileProtos {
       boolean hasCpuArchitecture();
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -3719,7 +3877,7 @@ public final class SystemProfileProtos {
       java.lang.String getCpuArchitecture();
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -3729,6 +3887,44 @@ public final class SystemProfileProtos {
        */
       com.google.protobuf.ByteString
           getCpuArchitectureBytes();
+
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @return Whether the appCpuArchitecture field is set.
+       */
+      boolean hasAppCpuArchitecture();
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @return The appCpuArchitecture.
+       */
+      java.lang.String getAppCpuArchitecture();
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @return The bytes for appCpuArchitecture.
+       */
+      com.google.protobuf.ByteString
+          getAppCpuArchitectureBytes();
 
       /**
        * <pre>
@@ -4067,7 +4263,7 @@ public final class SystemProfileProtos {
     /**
      * <pre>
      * Information on the user's hardware.
-     * Next tag: 21
+     * Next tag: 22
      * </pre>
      *
      * Protobuf type {@code metrics.SystemProfileProto.Hardware}
@@ -4079,6 +4275,7 @@ public final class SystemProfileProtos {
         HardwareOrBuilder {
       private Hardware() {
         cpuArchitecture_ = "";
+        appCpuArchitecture_ = "";
         hardwareClass_ = "";
         fullHardwareClass_ = "";
         internalStorageDevices_ = emptyProtobufList();
@@ -7774,7 +7971,7 @@ public final class SystemProfileProtos {
       private java.lang.String cpuArchitecture_;
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -7788,7 +7985,7 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -7802,7 +7999,7 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -7817,7 +8014,7 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -7833,7 +8030,7 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -7846,7 +8043,7 @@ public final class SystemProfileProtos {
       }
       /**
        * <pre>
-       * CPU architecture. Taken from uname -m and modified in Chromium logic.
+       * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
        * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
        * Not recorded on iOS.
        * </pre>
@@ -7858,6 +8055,102 @@ public final class SystemProfileProtos {
           com.google.protobuf.ByteString value) {
         cpuArchitecture_ = value.toStringUtf8();
         bitField0_ |= 0x00000001;
+      }
+
+      public static final int APP_CPU_ARCHITECTURE_FIELD_NUMBER = 21;
+      private java.lang.String appCpuArchitecture_;
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @return Whether the appCpuArchitecture field is set.
+       */
+      @java.lang.Override
+      public boolean hasAppCpuArchitecture() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @return The appCpuArchitecture.
+       */
+      @java.lang.Override
+      public java.lang.String getAppCpuArchitecture() {
+        return appCpuArchitecture_;
+      }
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @return The bytes for appCpuArchitecture.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAppCpuArchitectureBytes() {
+        return com.google.protobuf.ByteString.copyFromUtf8(appCpuArchitecture_);
+      }
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @param value The appCpuArchitecture to set.
+       */
+      private void setAppCpuArchitecture(
+          java.lang.String value) {
+        value.getClass();
+  bitField0_ |= 0x00000002;
+        appCpuArchitecture_ = value;
+      }
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       */
+      private void clearAppCpuArchitecture() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        appCpuArchitecture_ = getDefaultInstance().getAppCpuArchitecture();
+      }
+      /**
+       * <pre>
+       * Browser process CPU architecture. Will be different from
+       * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+       * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+       * ARM_64. Added in M90.
+       * </pre>
+       *
+       * <code>optional string app_cpu_architecture = 21;</code>
+       * @param value The bytes for appCpuArchitecture to set.
+       */
+      private void setAppCpuArchitectureBytes(
+          com.google.protobuf.ByteString value) {
+        appCpuArchitecture_ = value.toStringUtf8();
+        bitField0_ |= 0x00000002;
       }
 
       public static final int SYSTEM_RAM_MB_FIELD_NUMBER = 2;
@@ -7872,7 +8165,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasSystemRamMb() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <pre>
@@ -7895,7 +8188,7 @@ public final class SystemProfileProtos {
        * @param value The systemRamMb to set.
        */
       private void setSystemRamMb(long value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         systemRamMb_ = value;
       }
       /**
@@ -7906,7 +8199,7 @@ public final class SystemProfileProtos {
        * <code>optional int64 system_ram_mb = 2;</code>
        */
       private void clearSystemRamMb() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         systemRamMb_ = 0L;
       }
 
@@ -7923,7 +8216,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasDllBase() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
        * <pre>
@@ -7948,7 +8241,7 @@ public final class SystemProfileProtos {
        * @param value The dllBase to set.
        */
       private void setDllBase(long value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         dllBase_ = value;
       }
       /**
@@ -7960,7 +8253,7 @@ public final class SystemProfileProtos {
        * <code>optional int64 dll_base = 3;</code>
        */
       private void clearDllBase() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         dllBase_ = 0L;
       }
 
@@ -7972,7 +8265,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasHardwareClass() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
        * <code>optional string hardware_class = 4;</code>
@@ -7998,14 +8291,14 @@ public final class SystemProfileProtos {
       private void setHardwareClass(
           java.lang.String value) {
         value.getClass();
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         hardwareClass_ = value;
       }
       /**
        * <code>optional string hardware_class = 4;</code>
        */
       private void clearHardwareClass() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         hardwareClass_ = getDefaultInstance().getHardwareClass();
       }
       /**
@@ -8015,7 +8308,7 @@ public final class SystemProfileProtos {
       private void setHardwareClassBytes(
           com.google.protobuf.ByteString value) {
         hardwareClass_ = value.toStringUtf8();
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
       }
 
       public static final int FULL_HARDWARE_CLASS_FIELD_NUMBER = 18;
@@ -8038,7 +8331,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasFullHardwareClass() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <pre>
@@ -8100,7 +8393,7 @@ public final class SystemProfileProtos {
       private void setFullHardwareClass(
           java.lang.String value) {
         value.getClass();
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
         fullHardwareClass_ = value;
       }
       /**
@@ -8119,7 +8412,7 @@ public final class SystemProfileProtos {
        * <code>optional string full_hardware_class = 18;</code>
        */
       private void clearFullHardwareClass() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         fullHardwareClass_ = getDefaultInstance().getFullHardwareClass();
       }
       /**
@@ -8141,7 +8434,7 @@ public final class SystemProfileProtos {
       private void setFullHardwareClassBytes(
           com.google.protobuf.ByteString value) {
         fullHardwareClass_ = value.toStringUtf8();
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
       }
 
       public static final int SCREEN_COUNT_FIELD_NUMBER = 5;
@@ -8156,7 +8449,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasScreenCount() {
-        return ((bitField0_ & 0x00000020) != 0);
+        return ((bitField0_ & 0x00000040) != 0);
       }
       /**
        * <pre>
@@ -8179,7 +8472,7 @@ public final class SystemProfileProtos {
        * @param value The screenCount to set.
        */
       private void setScreenCount(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         screenCount_ = value;
       }
       /**
@@ -8190,7 +8483,7 @@ public final class SystemProfileProtos {
        * <code>optional int32 screen_count = 5;</code>
        */
       private void clearScreenCount() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         screenCount_ = 0;
       }
 
@@ -8206,7 +8499,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasPrimaryScreenWidth() {
-        return ((bitField0_ & 0x00000040) != 0);
+        return ((bitField0_ & 0x00000080) != 0);
       }
       /**
        * <pre>
@@ -8229,7 +8522,7 @@ public final class SystemProfileProtos {
        * @param value The primaryScreenWidth to set.
        */
       private void setPrimaryScreenWidth(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         primaryScreenWidth_ = value;
       }
       /**
@@ -8240,7 +8533,7 @@ public final class SystemProfileProtos {
        * <code>optional int32 primary_screen_width = 6;</code>
        */
       private void clearPrimaryScreenWidth() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         primaryScreenWidth_ = 0;
       }
 
@@ -8252,7 +8545,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasPrimaryScreenHeight() {
-        return ((bitField0_ & 0x00000080) != 0);
+        return ((bitField0_ & 0x00000100) != 0);
       }
       /**
        * <code>optional int32 primary_screen_height = 7;</code>
@@ -8267,14 +8560,14 @@ public final class SystemProfileProtos {
        * @param value The primaryScreenHeight to set.
        */
       private void setPrimaryScreenHeight(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         primaryScreenHeight_ = value;
       }
       /**
        * <code>optional int32 primary_screen_height = 7;</code>
        */
       private void clearPrimaryScreenHeight() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         primaryScreenHeight_ = 0;
       }
 
@@ -8290,7 +8583,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasPrimaryScreenScaleFactor() {
-        return ((bitField0_ & 0x00000100) != 0);
+        return ((bitField0_ & 0x00000200) != 0);
       }
       /**
        * <pre>
@@ -8313,7 +8606,7 @@ public final class SystemProfileProtos {
        * @param value The primaryScreenScaleFactor to set.
        */
       private void setPrimaryScreenScaleFactor(float value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         primaryScreenScaleFactor_ = value;
       }
       /**
@@ -8324,7 +8617,7 @@ public final class SystemProfileProtos {
        * <code>optional float primary_screen_scale_factor = 12;</code>
        */
       private void clearPrimaryScreenScaleFactor() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         primaryScreenScaleFactor_ = 0F;
       }
 
@@ -8340,7 +8633,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasMaxDpiX() {
-        return ((bitField0_ & 0x00000200) != 0);
+        return ((bitField0_ & 0x00000400) != 0);
       }
       /**
        * <pre>
@@ -8363,7 +8656,7 @@ public final class SystemProfileProtos {
        * @param value The maxDpiX to set.
        */
       private void setMaxDpiX(float value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         maxDpiX_ = value;
       }
       /**
@@ -8374,7 +8667,7 @@ public final class SystemProfileProtos {
        * <code>optional float max_dpi_x = 9;</code>
        */
       private void clearMaxDpiX() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         maxDpiX_ = 0F;
       }
 
@@ -8386,7 +8679,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasMaxDpiY() {
-        return ((bitField0_ & 0x00000400) != 0);
+        return ((bitField0_ & 0x00000800) != 0);
       }
       /**
        * <code>optional float max_dpi_y = 10;</code>
@@ -8401,14 +8694,14 @@ public final class SystemProfileProtos {
        * @param value The maxDpiY to set.
        */
       private void setMaxDpiY(float value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         maxDpiY_ = value;
       }
       /**
        * <code>optional float max_dpi_y = 10;</code>
        */
       private void clearMaxDpiY() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         maxDpiY_ = 0F;
       }
 
@@ -8424,7 +8717,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasFormFactor() {
-        return ((bitField0_ & 0x00000800) != 0);
+        return ((bitField0_ & 0x00001000) != 0);
       }
       /**
        * <pre>
@@ -8449,7 +8742,7 @@ public final class SystemProfileProtos {
        */
       private void setFormFactor(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.FormFactor value) {
         formFactor_ = value.getNumber();
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
       }
       /**
        * <pre>
@@ -8459,7 +8752,7 @@ public final class SystemProfileProtos {
        * <code>optional .metrics.SystemProfileProto.Hardware.FormFactor form_factor = 19;</code>
        */
       private void clearFormFactor() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         formFactor_ = 0;
       }
 
@@ -8470,7 +8763,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasCpu() {
-        return ((bitField0_ & 0x00001000) != 0);
+        return ((bitField0_ & 0x00002000) != 0);
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.CPU cpu = 13;</code>
@@ -8485,7 +8778,7 @@ public final class SystemProfileProtos {
       private void setCpu(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.CPU value) {
         value.getClass();
   cpu_ = value;
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00002000;
         }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.CPU cpu = 13;</code>
@@ -8500,13 +8793,13 @@ public final class SystemProfileProtos {
         } else {
           cpu_ = value;
         }
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00002000;
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.CPU cpu = 13;</code>
        */
       private void clearCpu() {  cpu_ = null;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
       }
 
       public static final int GPU_FIELD_NUMBER = 8;
@@ -8516,7 +8809,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasGpu() {
-        return ((bitField0_ & 0x00002000) != 0);
+        return ((bitField0_ & 0x00004000) != 0);
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.Graphics gpu = 8;</code>
@@ -8531,7 +8824,7 @@ public final class SystemProfileProtos {
       private void setGpu(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Graphics value) {
         value.getClass();
   gpu_ = value;
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.Graphics gpu = 8;</code>
@@ -8546,13 +8839,13 @@ public final class SystemProfileProtos {
         } else {
           gpu_ = value;
         }
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
       }
       /**
        * <code>optional .metrics.SystemProfileProto.Hardware.Graphics gpu = 8;</code>
        */
       private void clearGpu() {  gpu_ = null;
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
       }
 
       public static final int INTERNAL_DISPLAY_SUPPORTS_TOUCH_FIELD_NUMBER = 14;
@@ -8568,7 +8861,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasInternalDisplaySupportsTouch() {
-        return ((bitField0_ & 0x00004000) != 0);
+        return ((bitField0_ & 0x00008000) != 0);
       }
       /**
        * <pre>
@@ -8593,7 +8886,7 @@ public final class SystemProfileProtos {
        * @param value The internalDisplaySupportsTouch to set.
        */
       private void setInternalDisplaySupportsTouch(boolean value) {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00008000;
         internalDisplaySupportsTouch_ = value;
       }
       /**
@@ -8605,7 +8898,7 @@ public final class SystemProfileProtos {
        * <code>optional bool internal_display_supports_touch = 14;</code>
        */
       private void clearInternalDisplaySupportsTouch() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         internalDisplaySupportsTouch_ = false;
       }
 
@@ -8758,7 +9051,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasAppDrive() {
-        return ((bitField0_ & 0x00008000) != 0);
+        return ((bitField0_ & 0x00010000) != 0);
       }
       /**
        * <pre>
@@ -8781,7 +9074,7 @@ public final class SystemProfileProtos {
       private void setAppDrive(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Drive value) {
         value.getClass();
   appDrive_ = value;
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00010000;
         }
       /**
        * <pre>
@@ -8800,7 +9093,7 @@ public final class SystemProfileProtos {
         } else {
           appDrive_ = value;
         }
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00010000;
       }
       /**
        * <pre>
@@ -8810,7 +9103,7 @@ public final class SystemProfileProtos {
        * <code>optional .metrics.SystemProfileProto.Hardware.Drive app_drive = 16;</code>
        */
       private void clearAppDrive() {  appDrive_ = null;
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00010000);
       }
 
       public static final int USER_DATA_DRIVE_FIELD_NUMBER = 17;
@@ -8824,7 +9117,7 @@ public final class SystemProfileProtos {
        */
       @java.lang.Override
       public boolean hasUserDataDrive() {
-        return ((bitField0_ & 0x00010000) != 0);
+        return ((bitField0_ & 0x00020000) != 0);
       }
       /**
        * <pre>
@@ -8847,7 +9140,7 @@ public final class SystemProfileProtos {
       private void setUserDataDrive(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.Drive value) {
         value.getClass();
   userDataDrive_ = value;
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00020000;
         }
       /**
        * <pre>
@@ -8866,7 +9159,7 @@ public final class SystemProfileProtos {
         } else {
           userDataDrive_ = value;
         }
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00020000;
       }
       /**
        * <pre>
@@ -8876,7 +9169,7 @@ public final class SystemProfileProtos {
        * <code>optional .metrics.SystemProfileProto.Hardware.Drive user_data_drive = 17;</code>
        */
       private void clearUserDataDrive() {  userDataDrive_ = null;
-        bitField0_ = (bitField0_ & ~0x00010000);
+        bitField0_ = (bitField0_ & ~0x00020000);
       }
 
       public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware parseFrom(
@@ -8963,7 +9256,7 @@ public final class SystemProfileProtos {
       /**
        * <pre>
        * Information on the user's hardware.
-       * Next tag: 21
+       * Next tag: 22
        * </pre>
        *
        * Protobuf type {@code metrics.SystemProfileProto.Hardware}
@@ -8981,7 +9274,7 @@ public final class SystemProfileProtos {
 
         /**
          * <pre>
-         * CPU architecture. Taken from uname -m and modified in Chromium logic.
+         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
          * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
          * Not recorded on iOS.
          * </pre>
@@ -8995,7 +9288,7 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * CPU architecture. Taken from uname -m and modified in Chromium logic.
+         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
          * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
          * Not recorded on iOS.
          * </pre>
@@ -9009,7 +9302,7 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * CPU architecture. Taken from uname -m and modified in Chromium logic.
+         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
          * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
          * Not recorded on iOS.
          * </pre>
@@ -9024,7 +9317,7 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * CPU architecture. Taken from uname -m and modified in Chromium logic.
+         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
          * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
          * Not recorded on iOS.
          * </pre>
@@ -9041,7 +9334,7 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * CPU architecture. Taken from uname -m and modified in Chromium logic.
+         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
          * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
          * Not recorded on iOS.
          * </pre>
@@ -9056,7 +9349,7 @@ public final class SystemProfileProtos {
         }
         /**
          * <pre>
-         * CPU architecture. Taken from uname -m and modified in Chromium logic.
+         * OS CPU architecture. Taken from uname -m and modified in Chromium logic.
          * Common options are: x86, x86_64, armv7l, armv8l, aarch64.
          * Not recorded on iOS.
          * </pre>
@@ -9069,6 +9362,105 @@ public final class SystemProfileProtos {
             com.google.protobuf.ByteString value) {
           copyOnWrite();
           instance.setCpuArchitectureBytes(value);
+          return this;
+        }
+
+        /**
+         * <pre>
+         * Browser process CPU architecture. Will be different from
+         * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+         * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+         * ARM_64. Added in M90.
+         * </pre>
+         *
+         * <code>optional string app_cpu_architecture = 21;</code>
+         * @return Whether the appCpuArchitecture field is set.
+         */
+        @java.lang.Override
+        public boolean hasAppCpuArchitecture() {
+          return instance.hasAppCpuArchitecture();
+        }
+        /**
+         * <pre>
+         * Browser process CPU architecture. Will be different from
+         * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+         * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+         * ARM_64. Added in M90.
+         * </pre>
+         *
+         * <code>optional string app_cpu_architecture = 21;</code>
+         * @return The appCpuArchitecture.
+         */
+        @java.lang.Override
+        public java.lang.String getAppCpuArchitecture() {
+          return instance.getAppCpuArchitecture();
+        }
+        /**
+         * <pre>
+         * Browser process CPU architecture. Will be different from
+         * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+         * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+         * ARM_64. Added in M90.
+         * </pre>
+         *
+         * <code>optional string app_cpu_architecture = 21;</code>
+         * @return The bytes for appCpuArchitecture.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getAppCpuArchitectureBytes() {
+          return instance.getAppCpuArchitectureBytes();
+        }
+        /**
+         * <pre>
+         * Browser process CPU architecture. Will be different from
+         * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+         * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+         * ARM_64. Added in M90.
+         * </pre>
+         *
+         * <code>optional string app_cpu_architecture = 21;</code>
+         * @param value The appCpuArchitecture to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAppCpuArchitecture(
+            java.lang.String value) {
+          copyOnWrite();
+          instance.setAppCpuArchitecture(value);
+          return this;
+        }
+        /**
+         * <pre>
+         * Browser process CPU architecture. Will be different from
+         * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+         * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+         * ARM_64. Added in M90.
+         * </pre>
+         *
+         * <code>optional string app_cpu_architecture = 21;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAppCpuArchitecture() {
+          copyOnWrite();
+          instance.clearAppCpuArchitecture();
+          return this;
+        }
+        /**
+         * <pre>
+         * Browser process CPU architecture. Will be different from
+         * `cpu_architecture` in the case where Chromium runs non-natively (e.g.
+         * macOS Rosetta or Arm Windows). One of four values: x86, x86_64, ARM,
+         * ARM_64. Added in M90.
+         * </pre>
+         *
+         * <code>optional string app_cpu_architecture = 21;</code>
+         * @param value The bytes for appCpuArchitecture to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAppCpuArchitectureBytes(
+            com.google.protobuf.ByteString value) {
+          copyOnWrite();
+          instance.setAppCpuArchitectureBytes(value);
           return this;
         }
 
@@ -10177,13 +10569,14 @@ public final class SystemProfileProtos {
                 org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.FormFactor.internalGetVerifier(),
                 "internalStorageDevices_",
                 org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.Hardware.InternalStorageDevice.class,
+                "appCpuArchitecture_",
               };
               java.lang.String info =
-                  "\u0001\u0012\u0000\u0001\u0001\u0014\u0012\u0000\u0001\u0000\u0001\u1008\u0000\u0002" +
-                  "\u1002\u0001\u0003\u1002\u0002\u0004\u1008\u0003\u0005\u1004\u0005\u0006\u1004\u0006" +
-                  "\u0007\u1004\u0007\b\u1009\r\t\u1001\t\n\u1001\n\f\u1001\b\r\u1009\f\u000e\u1007" +
-                  "\u000e\u0010\u1009\u000f\u0011\u1009\u0010\u0012\u1008\u0004\u0013\u100c\u000b\u0014" +
-                  "\u001b";
+                  "\u0001\u0013\u0000\u0001\u0001\u0015\u0013\u0000\u0001\u0000\u0001\u1008\u0000\u0002" +
+                  "\u1002\u0002\u0003\u1002\u0003\u0004\u1008\u0004\u0005\u1004\u0006\u0006\u1004\u0007" +
+                  "\u0007\u1004\b\b\u1009\u000e\t\u1001\n\n\u1001\u000b\f\u1001\t\r\u1009\r\u000e\u1007" +
+                  "\u000f\u0010\u1009\u0010\u0011\u1009\u0011\u0012\u1008\u0005\u0013\u100c\f\u0014" +
+                  "\u001b\u0015\u1008\u0001";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -31190,6 +31583,57 @@ public final class SystemProfileProtos {
       bitField0_ |= 0x00400000;
     }
 
+    public static final int INSTALLER_PACKAGE_FIELD_NUMBER = 35;
+    private int installerPackage_;
+    /**
+     * <pre>
+     * The package which installed Chrome, as reported by Android.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+     * @return Whether the installerPackage field is set.
+     */
+    @java.lang.Override
+    public boolean hasInstallerPackage() {
+      return ((bitField0_ & 0x00800000) != 0);
+    }
+    /**
+     * <pre>
+     * The package which installed Chrome, as reported by Android.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+     * @return The installerPackage.
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage getInstallerPackage() {
+      org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage result = org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage.forNumber(installerPackage_);
+      return result == null ? org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage.INSTALLER_PACKAGE_UNKNOWN : result;
+    }
+    /**
+     * <pre>
+     * The package which installed Chrome, as reported by Android.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+     * @param value The installerPackage to set.
+     */
+    private void setInstallerPackage(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage value) {
+      installerPackage_ = value.getNumber();
+      bitField0_ |= 0x00800000;
+    }
+    /**
+     * <pre>
+     * The package which installed Chrome, as reported by Android.
+     * </pre>
+     *
+     * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+     */
+    private void clearInstallerPackage() {
+      bitField0_ = (bitField0_ & ~0x00800000);
+      installerPackage_ = 0;
+    }
+
     public static final int LINKED_ANDROID_PHONE_DATA_FIELD_NUMBER = 29;
     private org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.LinkedAndroidPhoneData linkedAndroidPhoneData_;
     /**
@@ -31197,7 +31641,7 @@ public final class SystemProfileProtos {
      */
     @java.lang.Override
     public boolean hasLinkedAndroidPhoneData() {
-      return ((bitField0_ & 0x00800000) != 0);
+      return ((bitField0_ & 0x01000000) != 0);
     }
     /**
      * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
@@ -31212,7 +31656,7 @@ public final class SystemProfileProtos {
     private void setLinkedAndroidPhoneData(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.LinkedAndroidPhoneData value) {
       value.getClass();
   linkedAndroidPhoneData_ = value;
-      bitField0_ |= 0x00800000;
+      bitField0_ |= 0x01000000;
       }
     /**
      * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
@@ -31227,13 +31671,13 @@ public final class SystemProfileProtos {
       } else {
         linkedAndroidPhoneData_ = value;
       }
-      bitField0_ |= 0x00800000;
+      bitField0_ |= 0x01000000;
     }
     /**
      * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
      */
     private void clearLinkedAndroidPhoneData() {  linkedAndroidPhoneData_ = null;
-      bitField0_ = (bitField0_ & ~0x00800000);
+      bitField0_ = (bitField0_ & ~0x01000000);
     }
 
     public static org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto parseFrom(
@@ -31323,7 +31767,7 @@ public final class SystemProfileProtos {
      * Almost all the fields should be populated on every upload. (The only
      * exception is some fields in the stability section that are only uploaded
      * once per browsing session, usually shortly after startup.)
-     * Next tag: 35
+     * Next tag: 36
      * </pre>
      *
      * Protobuf type {@code metrics.SystemProfileProto}
@@ -33710,6 +34154,58 @@ public final class SystemProfileProtos {
       }
 
       /**
+       * <pre>
+       * The package which installed Chrome, as reported by Android.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+       * @return Whether the installerPackage field is set.
+       */
+      @java.lang.Override
+      public boolean hasInstallerPackage() {
+        return instance.hasInstallerPackage();
+      }
+      /**
+       * <pre>
+       * The package which installed Chrome, as reported by Android.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+       * @return The installerPackage.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage getInstallerPackage() {
+        return instance.getInstallerPackage();
+      }
+      /**
+       * <pre>
+       * The package which installed Chrome, as reported by Android.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+       * @param value The enum numeric value on the wire for installerPackage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInstallerPackage(org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage value) {
+        copyOnWrite();
+        instance.setInstallerPackage(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The package which installed Chrome, as reported by Android.
+       * </pre>
+       *
+       * <code>optional .metrics.SystemProfileProto.InstallerPackage installer_package = 35;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInstallerPackage() {
+        copyOnWrite();
+        instance.clearInstallerPackage();
+        return this;
+      }
+
+      /**
        * <code>optional .metrics.SystemProfileProto.LinkedAndroidPhoneData linked_android_phone_data = 29;</code>
        */
       @java.lang.Override
@@ -33813,15 +34309,17 @@ public final class SystemProfileProtos {
               "oldLowEntropySource_",
               "clientIdWasUsedForTrialAssignment_",
               "clientUuid_",
+              "installerPackage_",
+              org.chromium.components.metrics.SystemProfileProtos.SystemProfileProto.InstallerPackage.internalGetVerifier(),
             };
             java.lang.String info =
-                "\u0001\u001f\u0000\u0001\u0001\"\u001f\u0000\u0007\u0000\u0001\u1002\u0000\u0002" +
-                "\u1008\u0001\u0003\u1002\u0005\u0004\u1008\t\u0005\u1009\n\u0006\u1009\u000b\u0007" +
-                "\u001b\b\u1009\u000e\t\u001b\n\u100c\u0003\u000b\u1009\r\f\u1008\u0002\r\u1009\f" +
-                "\u000e\u001b\u000f\u1009\u0012\u0010\u1002\u0006\u0011\u100b\u0013\u0012\u0016\u0013" +
-                "\u100c\u0014\u0014\u1007\u0004\u0016\u100c\u0015\u0017\u001b\u0018\u001b\u0019\u001b" +
-                "\u001a\u1008\u0016\u001c\u1008\u000f\u001d\u1009\u0017\u001f\u1004\u0007 \u1004\b" +
-                "!\u1007\u0010\"\u1008\u0011";
+                "\u0001 \u0000\u0001\u0001# \u0000\u0007\u0000\u0001\u1002\u0000\u0002\u1008\u0001" +
+                "\u0003\u1002\u0005\u0004\u1008\t\u0005\u1009\n\u0006\u1009\u000b\u0007\u001b\b\u1009" +
+                "\u000e\t\u001b\n\u100c\u0003\u000b\u1009\r\f\u1008\u0002\r\u1009\f\u000e\u001b\u000f" +
+                "\u1009\u0012\u0010\u1002\u0006\u0011\u100b\u0013\u0012\u0016\u0013\u100c\u0014\u0014" +
+                "\u1007\u0004\u0016\u100c\u0015\u0017\u001b\u0018\u001b\u0019\u001b\u001a\u1008\u0016" +
+                "\u001c\u1008\u000f\u001d\u1009\u0018\u001f\u1004\u0007 \u1004\b!\u1007\u0010\"\u1008" +
+                "\u0011#\u100c\u0017";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

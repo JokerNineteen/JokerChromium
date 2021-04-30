@@ -24,24 +24,6 @@ public interface NetworkContextClient extends org.chromium.mojo.bindings.Interfa
     Manager<NetworkContextClient, NetworkContextClient.Proxy> MANAGER = NetworkContextClient_Internal.MANAGER;
 
 
-    void onAuthRequired(
-org.chromium.mojo_base.mojom.UnguessableToken windowId, int processId, int routingId, int requestId, org.chromium.url.mojom.Url url, boolean firstAuthAttempt, AuthChallengeInfo authInfo, UrlResponseHead head, AuthChallengeResponder authChallengeResponder);
-
-
-
-    void onCertificateRequested(
-org.chromium.mojo_base.mojom.UnguessableToken windowId, int processId, int routingId, int requestId, SslCertRequestInfo certInfo, ClientCertificateResponder certResponder);
-
-
-
-    void onSslCertificateError(
-int processId, int routingId, org.chromium.url.mojom.Url url, int netError, SslInfo sslInfo, boolean fatal, 
-OnSslCertificateErrorResponse callback);
-
-    interface OnSslCertificateErrorResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }
-
-
-
     void onFileUploadRequested(
 int processId, boolean async, org.chromium.mojo_base.mojom.FilePath[] filePaths, 
 OnFileUploadRequestedResponse callback);

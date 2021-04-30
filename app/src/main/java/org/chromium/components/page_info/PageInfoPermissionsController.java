@@ -9,11 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.VisibleForTesting;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import org.chromium.components.browser_ui.site_settings.SingleWebsiteSettings;
+import org.chromium.components.content_settings.ContentSettingsType;
+import org.chromium.components.page_info.PageInfoDiscoverabilityMetrics.DiscoverabilityAction;
 
 import java.util.List;
 
@@ -22,22 +25,37 @@ import java.util.List;
  */
 public class PageInfoPermissionsController
         implements PageInfoSubpageController, SingleWebsiteSettings.Observer {
-    private PageInfoMainController mMainController;
-    private PageInfoRowView mRowView;
-    private PageInfoControllerDelegate mDelegate;
-    private String mTitle;
-    private String mPageUrl;
-    private SingleWebsiteSettings mSubpageFragment;
+    private final PageInfoMainController mMainController;
+    private final PageInfoRowView mRowView;
+    private final PageInfoControllerDelegate mDelegate;
+    private final String mTitle;
+    private final String mPageUrl;
+    private SingleWebsiteSettings mSubPage;
+    @ContentSettingsType
+    private int mHighlightedPermission = ContentSettingsType.DEFAULT;
+    @ColorRes
+    private int mHighlightColor;
+    private final PageInfoDiscoverabilityMetrics mDiscoverabilityMetrics =
+            new PageInfoDiscoverabilityMetrics();
 
     public PageInfoPermissionsController(PageInfoMainController mainController,
-            PageInfoRowView view, PageInfoControllerDelegate delegate, String pageUrl) {
+            PageInfoRowView view, PageInfoControllerDelegate delegate, String pageUrl,
+            @ContentSettingsType int highlightedPermission) {
         mMainController = mainController;
         mRowView = view;
         mDelegate = delegate;
         mPageUrl = pageUrl;
+        mHighlightedPermission = highlightedPermission;
+        Resources resources = mRowView.getContext().getResources();
+        mHighlightColor = resources.getColor(R.color.iph_highlight_blue);
+        mTitle = resources.getString(R.string.page_info_permissions_title);
     }
 
     private void launchSubpage() {
+        if (mHighlightedPermission != ContentSettingsType.DEFAULT) {
+            mDiscoverabilityMetrics.recordDiscoverabilityAction(
+                    DiscoverabilityAction.PERMISSIONS_OPENED);
+        }
         mMainController.recordAction(PageInfoAction.PAGE_INFO_PERMISSION_DIALOG_OPENED);
         mMainController.launchSubpage(this);
     }
@@ -49,36 +67,47 @@ public class PageInfoPermissionsController
 
     @Override
     public View createViewForSubpage(ViewGroup parent) {
-        assert mSubpageFragment == null;
+        assert mSubPage == null;
+        FragmentManager fragmentManager = mDelegate.getFragmentManager();
+        // If the activity is getting destroyed or saved, it is not allowed to modify fragments.
+        if (fragmentManager.isStateSaved()) return null;
+
         Bundle fragmentArgs = SingleWebsiteSettings.createFragmentArgsForSite(mPageUrl);
-        mSubpageFragment = (SingleWebsiteSettings) Fragment.instantiate(
+        mSubPage = (SingleWebsiteSettings) Fragment.instantiate(
                 mRowView.getContext(), SingleWebsiteSettings.class.getName(), fragmentArgs);
-        mSubpageFragment.setSiteSettingsClient(mDelegate.getSiteSettingsClient());
-        mSubpageFragment.setHideNonPermissionPreferences(true);
-        mSubpageFragment.setWebsiteSettingsObserver(this);
-        AppCompatActivity host = (AppCompatActivity) mRowView.getContext();
-        host.getSupportFragmentManager().beginTransaction().add(mSubpageFragment, null).commitNow();
-        return mSubpageFragment.requireView();
+        mSubPage.setSiteSettingsDelegate(mDelegate.getSiteSettingsDelegate());
+        mSubPage.setHideNonPermissionPreferences(true);
+        mSubPage.setWebsiteSettingsObserver(this);
+        if (mHighlightedPermission != ContentSettingsType.DEFAULT) {
+            mSubPage.setHighlightedPermission(mHighlightedPermission, mHighlightColor);
+        }
+        fragmentManager.beginTransaction().add(mSubPage, null).commitNow();
+        return mSubPage.requireView();
     }
 
     @Override
     public void onSubpageRemoved() {
-        assert mSubpageFragment != null;
-        AppCompatActivity host = (AppCompatActivity) mRowView.getContext();
-        host.getSupportFragmentManager().beginTransaction().remove(mSubpageFragment).commitNow();
-        mSubpageFragment = null;
+        assert mSubPage != null;
+        FragmentManager fragmentManager = mDelegate.getFragmentManager();
+        SingleWebsiteSettings subPage = mSubPage;
+        mSubPage = null;
+        // If the activity is getting destroyed or saved, it is not allowed to modify fragments.
+        if (fragmentManager == null || fragmentManager.isStateSaved()) return;
+        fragmentManager.beginTransaction().remove(subPage).commitNow();
     }
 
     public void setPermissions(PageInfoView.PermissionParams params) {
         Resources resources = mRowView.getContext().getResources();
-        mTitle = resources.getString(R.string.page_info_permissions_title);
         PageInfoRowView.ViewParams rowParams = new PageInfoRowView.ViewParams();
         rowParams.title = mTitle;
         rowParams.iconResId = R.drawable.ic_tune_24dp;
         rowParams.decreaseIconSize = true;
         rowParams.clickCallback = this::launchSubpage;
         rowParams.subtitle = getPermissionSummaryString(params.permissions, resources);
-        rowParams.visible = rowParams.subtitle != null;
+        rowParams.visible = mDelegate.isSiteSettingsAvailable() && rowParams.subtitle != null;
+        if (mHighlightedPermission != ContentSettingsType.DEFAULT) {
+            rowParams.rowTint = mHighlightColor;
+        }
         mRowView.setParams(rowParams);
     }
 
@@ -148,7 +177,11 @@ public class PageInfoPermissionsController
 
     @Override
     public void onPermissionChanged() {
-        mMainController.recordAction(PageInfoAction.PAGE_INFO_PERMISSIONS_CHANGED);
+        if (mHighlightedPermission != ContentSettingsType.DEFAULT) {
+            mDiscoverabilityMetrics.recordDiscoverabilityAction(
+                    DiscoverabilityAction.PERMISSION_CHANGED);
+        }
+        mMainController.recordAction(PageInfoAction.PAGE_INFO_CHANGED_PERMISSION);
         mMainController.refreshPermissions();
     }
 }

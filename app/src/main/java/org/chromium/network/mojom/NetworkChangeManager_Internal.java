@@ -331,11 +331,13 @@ boolean dnsChanged, boolean ipAddressChanged, boolean connectionTypeChanged, int
                         
                     result.newConnectionType = decoder0.readInt(12);
                         ConnectionType.validate(result.newConnectionType);
+                        result.newConnectionType = ConnectionType.toKnownValue(result.newConnectionType);
                     }
                     {
                         
                     result.newConnectionSubtype = decoder0.readInt(16);
                         ConnectionSubtype.validate(result.newConnectionSubtype);
+                        result.newConnectionSubtype = ConnectionSubtype.toKnownValue(result.newConnectionSubtype);
                     }
 
             } finally {

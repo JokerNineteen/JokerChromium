@@ -28,9 +28,9 @@ final class TileProviderBridgeJni implements TileProviderBridge.Natives {
   };
 
   @Override
-  public void getQueryTiles(long nativeTileProviderBridge, TileProviderBridge caller,
+  public void getQueryTiles(long nativeTileProviderBridge, TileProviderBridge caller, String tileId,
       Callback<List<QueryTile>> callback) {
-    GEN_JNI.org_chromium_components_query_1tiles_bridges_TileProviderBridge_getQueryTiles(nativeTileProviderBridge, caller, callback);
+    GEN_JNI.org_chromium_components_query_1tiles_bridges_TileProviderBridge_getQueryTiles(nativeTileProviderBridge, caller, tileId, callback);
   }
 
   @Override

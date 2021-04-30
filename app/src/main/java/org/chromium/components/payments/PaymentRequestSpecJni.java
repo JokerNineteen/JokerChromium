@@ -66,6 +66,11 @@ final class PaymentRequestSpecJni implements PaymentRequestSpec.Natives {
     return (byte[][])GEN_JNI.org_chromium_components_payments_PaymentRequestSpec_getMethodData(nativePaymentRequestSpec);
   }
 
+  @Override
+  public byte[] getPaymentOptions(long nativePaymentRequestSpec) {
+    return (byte[])GEN_JNI.org_chromium_components_payments_PaymentRequestSpec_getPaymentOptions(nativePaymentRequestSpec);
+  }
+
   public static PaymentRequestSpec.Natives get() {
     if (GEN_JNI.TESTING_ENABLED) {
       if (testInstance != null) {

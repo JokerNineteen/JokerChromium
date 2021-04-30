@@ -371,6 +371,7 @@ ListPurchasesResponse callback) {
                         
                     result.code = decoder0.readInt(8);
                         BillingResponseCode.validate(result.code);
+                        result.code = BillingResponseCode.toKnownValue(result.code);
                     }
                     {
                         
@@ -591,6 +592,7 @@ ListPurchasesResponse callback) {
                         
                     result.code = decoder0.readInt(8);
                         BillingResponseCode.validate(result.code);
+                        result.code = BillingResponseCode.toKnownValue(result.code);
                     }
 
             } finally {
@@ -773,6 +775,7 @@ ListPurchasesResponse callback) {
                         
                     result.code = decoder0.readInt(8);
                         BillingResponseCode.validate(result.code);
+                        result.code = BillingResponseCode.toKnownValue(result.code);
                     }
                     {
                         

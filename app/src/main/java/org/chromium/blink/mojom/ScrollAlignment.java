@@ -42,6 +42,10 @@ public final class ScrollAlignment extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Behavior() {}
     }
     public int rectVisible;
@@ -88,16 +92,19 @@ public final class ScrollAlignment extends org.chromium.mojo.bindings.Struct {
                     
                 result.rectVisible = decoder0.readInt(8);
                     ScrollAlignment.Behavior.validate(result.rectVisible);
+                    result.rectVisible = ScrollAlignment.Behavior.toKnownValue(result.rectVisible);
                 }
                 {
                     
                 result.rectHidden = decoder0.readInt(12);
                     ScrollAlignment.Behavior.validate(result.rectHidden);
+                    result.rectHidden = ScrollAlignment.Behavior.toKnownValue(result.rectHidden);
                 }
                 {
                     
                 result.rectPartial = decoder0.readInt(16);
                     ScrollAlignment.Behavior.validate(result.rectPartial);
+                    result.rectPartial = ScrollAlignment.Behavior.toKnownValue(result.rectPartial);
                 }
 
         } finally {

@@ -8,7 +8,6 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 
-import org.chromium.chrome.R;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 import org.chromium.ui.text.SpanApplier;
@@ -47,8 +46,6 @@ class IncognitoInterstitialViewBinder {
 
     // Necessary helper methods to return the subviews present inside the incognito
     // interstitial |view|.
-    // TODO(crbug.com/1103262): Add these methods to the IncognitoInterstitialView once we implement
-    // it in future.
     private static View getContinueButtonView(View view) {
         return view.findViewById(R.id.incognito_interstitial_continue_button);
     }

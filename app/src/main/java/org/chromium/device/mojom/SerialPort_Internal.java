@@ -640,6 +640,7 @@ CloseResponse callback) {
                         
                     result.mode = decoder0.readInt(8);
                         SerialPortFlushMode.validate(result.mode);
+                        result.mode = SerialPortFlushMode.toKnownValue(result.mode);
                     }
 
             } finally {
@@ -1040,7 +1041,7 @@ CloseResponse callback) {
                 result = new SerialPortGetControlSignalsResponseParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
                     result.signals = SerialPortControlSignals.decode(decoder1);
                     }
 
@@ -1055,7 +1056,7 @@ CloseResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.signals, 8, false);
+            encoder0.encode(this.signals, 8, true);
         }
     }
 

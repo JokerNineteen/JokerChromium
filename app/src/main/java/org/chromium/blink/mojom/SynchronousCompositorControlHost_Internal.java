@@ -62,13 +62,15 @@ class SynchronousCompositorControlHost_Internal {
 
         @Override
         public void returnFrame(
-int layerTreeFrameSinkId, int metadataVersion, org.chromium.viz.mojom.CompositorFrame frame, org.chromium.viz.mojom.HitTestRegionList hitTestRegionList) {
+int layerTreeFrameSinkId, int metadataVersion, org.chromium.viz.mojom.LocalSurfaceId localSurfaceId, org.chromium.viz.mojom.CompositorFrame frame, org.chromium.viz.mojom.HitTestRegionList hitTestRegionList) {
 
             SynchronousCompositorControlHostReturnFrameParams _message = new SynchronousCompositorControlHostReturnFrameParams();
 
             _message.layerTreeFrameSinkId = layerTreeFrameSinkId;
 
             _message.metadataVersion = metadataVersion;
+
+            _message.localSurfaceId = localSurfaceId;
 
             _message.frame = frame;
 
@@ -136,7 +138,7 @@ SyncCompositorCommonRendererParams params) {
                         SynchronousCompositorControlHostReturnFrameParams data =
                                 SynchronousCompositorControlHostReturnFrameParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().returnFrame(data.layerTreeFrameSinkId, data.metadataVersion, data.frame, data.hitTestRegionList);
+                        getImpl().returnFrame(data.layerTreeFrameSinkId, data.metadataVersion, data.localSurfaceId, data.frame, data.hitTestRegionList);
                         return true;
                     }
 
@@ -201,11 +203,12 @@ SyncCompositorCommonRendererParams params) {
     
     static final class SynchronousCompositorControlHostReturnFrameParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 32;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int layerTreeFrameSinkId;
         public int metadataVersion;
+        public org.chromium.viz.mojom.LocalSurfaceId localSurfaceId;
         public org.chromium.viz.mojom.CompositorFrame frame;
         public org.chromium.viz.mojom.HitTestRegionList hitTestRegionList;
 
@@ -253,11 +256,16 @@ SyncCompositorCommonRendererParams params) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                    result.frame = org.chromium.viz.mojom.CompositorFrame.decode(decoder1);
+                    result.localSurfaceId = org.chromium.viz.mojom.LocalSurfaceId.decode(decoder1);
                     }
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
+                    result.frame = org.chromium.viz.mojom.CompositorFrame.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
                     result.hitTestRegionList = org.chromium.viz.mojom.HitTestRegionList.decode(decoder1);
                     }
 
@@ -276,9 +284,11 @@ SyncCompositorCommonRendererParams params) {
             
             encoder0.encode(this.metadataVersion, 12);
             
-            encoder0.encode(this.frame, 16, true);
+            encoder0.encode(this.localSurfaceId, 16, true);
             
-            encoder0.encode(this.hitTestRegionList, 24, true);
+            encoder0.encode(this.frame, 24, true);
+            
+            encoder0.encode(this.hitTestRegionList, 32, true);
         }
     }
 

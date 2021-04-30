@@ -60,6 +60,7 @@ public final class DisplayMediaInformation extends org.chromium.mojo.bindings.St
                     
                 result.displaySurface = decoder0.readInt(8);
                     DisplayCaptureSurfaceType.validate(result.displaySurface);
+                    result.displaySurface = DisplayCaptureSurfaceType.toKnownValue(result.displaySurface);
                 }
                 {
                     
@@ -69,6 +70,7 @@ public final class DisplayMediaInformation extends org.chromium.mojo.bindings.St
                     
                 result.cursor = decoder0.readInt(16);
                     CursorCaptureType.validate(result.cursor);
+                    result.cursor = CursorCaptureType.toKnownValue(result.cursor);
                 }
 
         } finally {

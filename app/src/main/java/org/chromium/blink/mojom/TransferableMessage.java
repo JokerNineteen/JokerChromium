@@ -16,15 +16,16 @@ package org.chromium.blink.mojom;
 
 public final class TransferableMessage extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 64;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public CloneableMessage message;
     public MessagePortDescriptor[] ports;
     public MessagePortDescriptor[] streamChannels;
     public SerializedArrayBufferContents[] arrayBufferContentsArray;
-    public org.chromium.skia.mojom.Bitmap[] imageBitmapContentsArray;
+    public org.chromium.skia.mojom.BitmapN32[] imageBitmapContentsArray;
     public UserActivationSnapshot userActivation;
+    public boolean delegatePaymentRequest;
 
     private TransferableMessage(int version) {
         super(STRUCT_SIZE, version);
@@ -108,11 +109,11 @@ public final class TransferableMessage extends org.chromium.mojo.bindings.Struct
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.imageBitmapContentsArray = new org.chromium.skia.mojom.Bitmap[si1.elementsOrVersion];
+                    result.imageBitmapContentsArray = new org.chromium.skia.mojom.BitmapN32[si1.elementsOrVersion];
                     for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                         
                         org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.imageBitmapContentsArray[i1] = org.chromium.skia.mojom.Bitmap.decode(decoder2);
+                        result.imageBitmapContentsArray[i1] = org.chromium.skia.mojom.BitmapN32.decode(decoder2);
                     }
                 }
                 }
@@ -120,6 +121,10 @@ public final class TransferableMessage extends org.chromium.mojo.bindings.Struct
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
                 result.userActivation = UserActivationSnapshot.decode(decoder1);
+                }
+                {
+                    
+                result.delegatePaymentRequest = decoder0.readBoolean(56, 0);
                 }
 
         } finally {
@@ -176,5 +181,7 @@ public final class TransferableMessage extends org.chromium.mojo.bindings.Struct
         }
         
         encoder0.encode(this.userActivation, 48, true);
+        
+        encoder0.encode(this.delegatePaymentRequest, 56, 0);
     }
 }

@@ -516,6 +516,7 @@ org.chromium.mojo_base.mojom.TimeDelta lastTimestamp) {
                         
                     result.key = decoder0.readInt(8);
                         WatchTimeKey.validate(result.key);
+                        result.key = WatchTimeKey.toKnownValue(result.key);
                     }
                     {
                         
@@ -587,8 +588,8 @@ org.chromium.mojo_base.mojom.TimeDelta lastTimestamp) {
                         
                     result.watchTimeKeys = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     {
-                        for (int i0 = 0; i0 < result.watchTimeKeys.length; ++i0) {
-                            WatchTimeKey.validate(result.watchTimeKeys[i0]);
+                        for (int i1 = 0; i1 < result.watchTimeKeys.length; ++i1) {
+                            WatchTimeKey.validate(result.watchTimeKeys[i1]);
                         }
                     }
                     }
@@ -655,6 +656,7 @@ org.chromium.mojo_base.mojom.TimeDelta lastTimestamp) {
                         
                     result.status = decoder0.readInt(8);
                         PipelineStatus.validate(result.status);
+                        result.status = PipelineStatus.toKnownValue(result.status);
                     }
 
             } finally {

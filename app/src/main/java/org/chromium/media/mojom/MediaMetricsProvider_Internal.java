@@ -92,13 +92,15 @@ class MediaMetricsProvider_Internal {
 
         @Override
         public void initialize(
-boolean isMse, int urlScheme) {
+boolean isMse, int urlScheme, int streamType) {
 
             MediaMetricsProviderInitializeParams _message = new MediaMetricsProviderInitializeParams();
 
             _message.isMse = isMse;
 
             _message.urlScheme = urlScheme;
+
+            _message.streamType = streamType;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -347,7 +349,7 @@ int codec) {
 
         @Override
         public void setVideoPipelineInfo(
-PipelineDecoderInfo info) {
+VideoDecoderInfo info) {
 
             MediaMetricsProviderSetVideoPipelineInfoParams _message = new MediaMetricsProviderSetVideoPipelineInfoParams();
 
@@ -364,7 +366,7 @@ PipelineDecoderInfo info) {
 
         @Override
         public void setAudioPipelineInfo(
-PipelineDecoderInfo info) {
+AudioDecoderInfo info) {
 
             MediaMetricsProviderSetAudioPipelineInfoParams _message = new MediaMetricsProviderSetAudioPipelineInfoParams();
 
@@ -415,7 +417,7 @@ PipelineDecoderInfo info) {
                         MediaMetricsProviderInitializeParams data =
                                 MediaMetricsProviderInitializeParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().initialize(data.isMse, data.urlScheme);
+                        getImpl().initialize(data.isMse, data.urlScheme, data.streamType);
                         return true;
                     }
 
@@ -702,11 +704,12 @@ PipelineDecoderInfo info) {
     
     static final class MediaMetricsProviderInitializeParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public boolean isMse;
         public int urlScheme;
+        public int streamType;
 
         private MediaMetricsProviderInitializeParams(int version) {
             super(STRUCT_SIZE, version);
@@ -749,6 +752,13 @@ PipelineDecoderInfo info) {
                         
                     result.urlScheme = decoder0.readInt(12);
                         MediaUrlScheme.validate(result.urlScheme);
+                        result.urlScheme = MediaUrlScheme.toKnownValue(result.urlScheme);
+                    }
+                    {
+                        
+                    result.streamType = decoder0.readInt(16);
+                        MediaStreamType.validate(result.streamType);
+                        result.streamType = MediaStreamType.toKnownValue(result.streamType);
                     }
 
             } finally {
@@ -765,6 +775,8 @@ PipelineDecoderInfo info) {
             encoder0.encode(this.isMse, 8, 0);
             
             encoder0.encode(this.urlScheme, 12);
+            
+            encoder0.encode(this.streamType, 16);
         }
     }
 
@@ -815,6 +827,7 @@ PipelineDecoderInfo info) {
                         
                     result.status = decoder0.readInt(8);
                         PipelineStatus.validate(result.status);
+                        result.status = PipelineStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1239,6 +1252,7 @@ PipelineDecoderInfo info) {
                         
                     result.containerName = decoder0.readInt(8);
                         MediaContainerName.validate(result.containerName);
+                        result.containerName = MediaContainerName.toKnownValue(result.containerName);
                     }
 
             } finally {
@@ -1570,6 +1584,7 @@ PipelineDecoderInfo info) {
                         
                     result.codec = decoder0.readInt(8);
                         AudioCodec.validate(result.codec);
+                        result.codec = AudioCodec.toKnownValue(result.codec);
                     }
 
             } finally {
@@ -1634,6 +1649,7 @@ PipelineDecoderInfo info) {
                         
                     result.codec = decoder0.readInt(8);
                         VideoCodec.validate(result.codec);
+                        result.codec = VideoCodec.toKnownValue(result.codec);
                     }
 
             } finally {
@@ -1659,7 +1675,7 @@ PipelineDecoderInfo info) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public PipelineDecoderInfo info;
+        public VideoDecoderInfo info;
 
         private MediaMetricsProviderSetVideoPipelineInfoParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1697,7 +1713,7 @@ PipelineDecoderInfo info) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.info = PipelineDecoderInfo.decode(decoder1);
+                    result.info = VideoDecoderInfo.decode(decoder1);
                     }
 
             } finally {
@@ -1723,7 +1739,7 @@ PipelineDecoderInfo info) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public PipelineDecoderInfo info;
+        public AudioDecoderInfo info;
 
         private MediaMetricsProviderSetAudioPipelineInfoParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1761,7 +1777,7 @@ PipelineDecoderInfo info) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.info = PipelineDecoderInfo.decode(decoder1);
+                    result.info = AudioDecoderInfo.decode(decoder1);
                     }
 
             } finally {

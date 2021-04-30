@@ -7,7 +7,7 @@ package org.chromium.components.page_info;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import org.chromium.components.browser_ui.site_settings.SingleWebsiteSettings;
 import org.chromium.components.browser_ui.site_settings.SiteDataCleaner;
@@ -28,12 +28,12 @@ import java.util.Collection;
  */
 public class PageInfoCookiesController
         implements PageInfoSubpageController, CookieControlsObserver {
-    private PageInfoMainController mMainController;
-    private PageInfoRowView mRowView;
+    private final PageInfoMainController mMainController;
+    private final PageInfoRowView mRowView;
+    private final PageInfoControllerDelegate mDelegate;
+    private final String mFullUrl;
+    private final String mTitle;
     private CookieControlsBridge mBridge;
-    private PageInfoControllerDelegate mDelegate;
-    private String mFullUrl;
-    private String mTitle;
     private PageInfoCookiesPreference mSubPage;
 
     private int mAllowedCookies;
@@ -72,9 +72,14 @@ public class PageInfoCookiesController
     @Override
     public View createViewForSubpage(ViewGroup parent) {
         assert mSubPage == null;
+
+        FragmentManager fragmentManager = mDelegate.getFragmentManager();
+        // If the activity is getting destroyed or saved, it is not allowed to modify fragments.
+        if (fragmentManager.isStateSaved()) return null;
+
         mSubPage = new PageInfoCookiesPreference();
-        AppCompatActivity host = (AppCompatActivity) mRowView.getContext();
-        host.getSupportFragmentManager().beginTransaction().add(mSubPage, null).commitNow();
+        mSubPage.setSiteSettingsDelegate(mDelegate.getSiteSettingsDelegate());
+        fragmentManager.beginTransaction().add(mSubPage, null).commitNow();
 
         PageInfoCookiesPreference.PageInfoCookiesViewParams params =
                 new PageInfoCookiesPreference.PageInfoCookiesViewParams();
@@ -102,7 +107,9 @@ public class PageInfoCookiesController
 
         mWebsite = SingleWebsiteSettings.mergePermissionAndStorageInfoForTopLevelOrigin(
                 address, result);
-        mSubPage.setStorageUsage(mWebsite.getTotalUsage());
+        if (mSubPage != null) {
+            mSubPage.setStorageUsage(mWebsite.getTotalUsage());
+        }
     }
 
     private void onCheckedChangedCallback(boolean state) {
@@ -121,9 +128,12 @@ public class PageInfoCookiesController
     @Override
     public void onSubpageRemoved() {
         assert mSubPage != null;
-        AppCompatActivity host = (AppCompatActivity) mRowView.getContext();
-        host.getSupportFragmentManager().beginTransaction().remove(mSubPage).commitNow();
+        FragmentManager fragmentManager = mDelegate.getFragmentManager();
+        PageInfoCookiesPreference subPage = mSubPage;
         mSubPage = null;
+        // If the activity is getting destroyed or saved, it is not allowed to modify fragments.
+        if (fragmentManager == null || fragmentManager.isStateSaved()) return;
+        fragmentManager.beginTransaction().remove(subPage).commitNow();
     }
 
     @Override

@@ -19,10 +19,10 @@ public final class NotificationResources extends org.chromium.mojo.bindings.Stru
     private static final int STRUCT_SIZE = 40;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public org.chromium.skia.mojom.Bitmap image;
-    public org.chromium.skia.mojom.Bitmap icon;
-    public org.chromium.skia.mojom.Bitmap badge;
-    public org.chromium.skia.mojom.Bitmap[] actionIcons;
+    public org.chromium.skia.mojom.BitmapN32 image;
+    public org.chromium.skia.mojom.BitmapN32 icon;
+    public org.chromium.skia.mojom.BitmapN32 badge;
+    public org.chromium.skia.mojom.BitmapN32[] actionIcons;
 
     private NotificationResources(int version) {
         super(STRUCT_SIZE, version);
@@ -60,17 +60,17 @@ public final class NotificationResources extends org.chromium.mojo.bindings.Stru
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                result.image = org.chromium.skia.mojom.Bitmap.decode(decoder1);
+                result.image = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                result.icon = org.chromium.skia.mojom.Bitmap.decode(decoder1);
+                result.icon = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                result.badge = org.chromium.skia.mojom.Bitmap.decode(decoder1);
+                result.badge = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
                 }
                 {
                     
@@ -79,11 +79,11 @@ public final class NotificationResources extends org.chromium.mojo.bindings.Stru
                     result.actionIcons = null;
                 } else {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.actionIcons = new org.chromium.skia.mojom.Bitmap[si1.elementsOrVersion];
+                    result.actionIcons = new org.chromium.skia.mojom.BitmapN32[si1.elementsOrVersion];
                     for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                         
                         org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, true);
-                        result.actionIcons[i1] = org.chromium.skia.mojom.Bitmap.decode(decoder2);
+                        result.actionIcons[i1] = org.chromium.skia.mojom.BitmapN32.decode(decoder2);
                     }
                 }
                 }

@@ -40,4 +40,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":components:webapk_lib_common")
 }

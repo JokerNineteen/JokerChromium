@@ -16,13 +16,12 @@ package org.chromium.network.mojom;
 
 public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 200;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(200, 0)};
+    private static final int STRUCT_SIZE = 208;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(208, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String method;
     public org.chromium.url.mojom.Url url;
     public SiteForCookies siteForCookies;
-    public boolean forceIgnoreSiteForCookies;
     public boolean updateFirstPartyUrlOnRedirect;
     public org.chromium.url.internal.mojom.Origin requestInitiator;
     public org.chromium.url.internal.mojom.Origin isolatedWorldOrigin;
@@ -39,7 +38,6 @@ public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
     public boolean originatedFromServiceWorker;
     public boolean skipServiceWorker;
     public boolean corbDetachable;
-    public boolean corbExcluded;
     public int mode;
     public int credentialsMode;
     public int redirectMode;
@@ -64,15 +62,16 @@ public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
     public String devtoolsStackId;
     public boolean isSignedExchangePrefetchCacheEnabled;
     public boolean isFetchLikeApi;
+    public boolean isFavicon;
     public boolean obeyOriginPolicy;
     public TrustedUrlRequestParams trustedParams;
     public org.chromium.mojo_base.mojom.UnguessableToken recursivePrefetchToken;
     public TrustTokenParams trustTokenParams;
+    public WebBundleTokenParams webBundleTokenParams;
 
     private UrlRequest(int version) {
         super(STRUCT_SIZE, version);
         this.corbDetachable = (boolean) false;
-        this.corbExcluded = (boolean) false;
     }
 
     public UrlRequest() {
@@ -120,88 +119,85 @@ public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.forceIgnoreSiteForCookies = decoder0.readBoolean(32, 0);
+                result.updateFirstPartyUrlOnRedirect = decoder0.readBoolean(32, 0);
                 }
                 {
                     
-                result.updateFirstPartyUrlOnRedirect = decoder0.readBoolean(32, 1);
+                result.shouldResetAppcache = decoder0.readBoolean(32, 1);
                 }
                 {
                     
-                result.shouldResetAppcache = decoder0.readBoolean(32, 2);
+                result.isExternalRequest = decoder0.readBoolean(32, 2);
                 }
                 {
                     
-                result.isExternalRequest = decoder0.readBoolean(32, 3);
+                result.originatedFromServiceWorker = decoder0.readBoolean(32, 3);
                 }
                 {
                     
-                result.originatedFromServiceWorker = decoder0.readBoolean(32, 4);
+                result.skipServiceWorker = decoder0.readBoolean(32, 4);
                 }
                 {
                     
-                result.skipServiceWorker = decoder0.readBoolean(32, 5);
+                result.corbDetachable = decoder0.readBoolean(32, 5);
                 }
                 {
                     
-                result.corbDetachable = decoder0.readBoolean(32, 6);
+                result.keepalive = decoder0.readBoolean(32, 6);
                 }
                 {
                     
-                result.corbExcluded = decoder0.readBoolean(32, 7);
+                result.hasUserGesture = decoder0.readBoolean(32, 7);
                 }
                 {
                     
-                result.keepalive = decoder0.readBoolean(33, 0);
+                result.enableLoadTiming = decoder0.readBoolean(33, 0);
                 }
                 {
                     
-                result.hasUserGesture = decoder0.readBoolean(33, 1);
+                result.enableUploadProgress = decoder0.readBoolean(33, 1);
                 }
                 {
                     
-                result.enableLoadTiming = decoder0.readBoolean(33, 2);
+                result.doNotPromptForLogin = decoder0.readBoolean(33, 2);
                 }
                 {
                     
-                result.enableUploadProgress = decoder0.readBoolean(33, 3);
+                result.isMainFrame = decoder0.readBoolean(33, 3);
                 }
                 {
                     
-                result.doNotPromptForLogin = decoder0.readBoolean(33, 4);
+                result.reportRawHeaders = decoder0.readBoolean(33, 4);
                 }
                 {
                     
-                result.isMainFrame = decoder0.readBoolean(33, 5);
+                result.upgradeIfInsecure = decoder0.readBoolean(33, 5);
                 }
                 {
                     
-                result.reportRawHeaders = decoder0.readBoolean(33, 6);
+                result.isRevalidating = decoder0.readBoolean(33, 6);
                 }
                 {
                     
-                result.upgradeIfInsecure = decoder0.readBoolean(33, 7);
+                result.isSignedExchangePrefetchCacheEnabled = decoder0.readBoolean(33, 7);
                 }
                 {
                     
-                result.isRevalidating = decoder0.readBoolean(34, 0);
+                result.isFetchLikeApi = decoder0.readBoolean(34, 0);
                 }
                 {
                     
-                result.isSignedExchangePrefetchCacheEnabled = decoder0.readBoolean(34, 1);
+                result.isFavicon = decoder0.readBoolean(34, 1);
                 }
                 {
                     
-                result.isFetchLikeApi = decoder0.readBoolean(34, 2);
-                }
-                {
-                    
-                result.obeyOriginPolicy = decoder0.readBoolean(34, 3);
+                result.obeyOriginPolicy = decoder0.readBoolean(34, 2);
                 }
                 {
                     
                 result.referrerPolicy = decoder0.readInt(36);
                     UrlRequestReferrerPolicy.validate(result.referrerPolicy);
+                    result.referrerPolicy = UrlRequestReferrerPolicy.toKnownValue(result.referrerPolicy);
                 }
                 {
                     
@@ -240,31 +236,37 @@ public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
                     
                 result.priority = decoder0.readInt(88);
                     RequestPriority.validate(result.priority);
+                    result.priority = RequestPriority.toKnownValue(result.priority);
                 }
                 {
                     
                 result.corsPreflightPolicy = decoder0.readInt(92);
                     CorsPreflightPolicy.validate(result.corsPreflightPolicy);
+                    result.corsPreflightPolicy = CorsPreflightPolicy.toKnownValue(result.corsPreflightPolicy);
                 }
                 {
                     
                 result.mode = decoder0.readInt(96);
                     RequestMode.validate(result.mode);
+                    result.mode = RequestMode.toKnownValue(result.mode);
                 }
                 {
                     
                 result.credentialsMode = decoder0.readInt(100);
                     CredentialsMode.validate(result.credentialsMode);
+                    result.credentialsMode = CredentialsMode.toKnownValue(result.credentialsMode);
                 }
                 {
                     
                 result.redirectMode = decoder0.readInt(104);
                     RedirectMode.validate(result.redirectMode);
+                    result.redirectMode = RedirectMode.toKnownValue(result.redirectMode);
                 }
                 {
                     
                 result.destination = decoder0.readInt(108);
                     RequestDestination.validate(result.destination);
+                    result.destination = RequestDestination.toKnownValue(result.destination);
                 }
                 {
                     
@@ -320,6 +322,11 @@ public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(192, true);
                 result.trustTokenParams = TrustTokenParams.decode(decoder1);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(200, true);
+                result.webBundleTokenParams = WebBundleTokenParams.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -338,45 +345,43 @@ public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.siteForCookies, 24, false);
         
-        encoder0.encode(this.forceIgnoreSiteForCookies, 32, 0);
+        encoder0.encode(this.updateFirstPartyUrlOnRedirect, 32, 0);
         
-        encoder0.encode(this.updateFirstPartyUrlOnRedirect, 32, 1);
+        encoder0.encode(this.shouldResetAppcache, 32, 1);
         
-        encoder0.encode(this.shouldResetAppcache, 32, 2);
+        encoder0.encode(this.isExternalRequest, 32, 2);
         
-        encoder0.encode(this.isExternalRequest, 32, 3);
+        encoder0.encode(this.originatedFromServiceWorker, 32, 3);
         
-        encoder0.encode(this.originatedFromServiceWorker, 32, 4);
+        encoder0.encode(this.skipServiceWorker, 32, 4);
         
-        encoder0.encode(this.skipServiceWorker, 32, 5);
+        encoder0.encode(this.corbDetachable, 32, 5);
         
-        encoder0.encode(this.corbDetachable, 32, 6);
+        encoder0.encode(this.keepalive, 32, 6);
         
-        encoder0.encode(this.corbExcluded, 32, 7);
+        encoder0.encode(this.hasUserGesture, 32, 7);
         
-        encoder0.encode(this.keepalive, 33, 0);
+        encoder0.encode(this.enableLoadTiming, 33, 0);
         
-        encoder0.encode(this.hasUserGesture, 33, 1);
+        encoder0.encode(this.enableUploadProgress, 33, 1);
         
-        encoder0.encode(this.enableLoadTiming, 33, 2);
+        encoder0.encode(this.doNotPromptForLogin, 33, 2);
         
-        encoder0.encode(this.enableUploadProgress, 33, 3);
+        encoder0.encode(this.isMainFrame, 33, 3);
         
-        encoder0.encode(this.doNotPromptForLogin, 33, 4);
+        encoder0.encode(this.reportRawHeaders, 33, 4);
         
-        encoder0.encode(this.isMainFrame, 33, 5);
+        encoder0.encode(this.upgradeIfInsecure, 33, 5);
         
-        encoder0.encode(this.reportRawHeaders, 33, 6);
+        encoder0.encode(this.isRevalidating, 33, 6);
         
-        encoder0.encode(this.upgradeIfInsecure, 33, 7);
+        encoder0.encode(this.isSignedExchangePrefetchCacheEnabled, 33, 7);
         
-        encoder0.encode(this.isRevalidating, 34, 0);
+        encoder0.encode(this.isFetchLikeApi, 34, 0);
         
-        encoder0.encode(this.isSignedExchangePrefetchCacheEnabled, 34, 1);
+        encoder0.encode(this.isFavicon, 34, 1);
         
-        encoder0.encode(this.isFetchLikeApi, 34, 2);
-        
-        encoder0.encode(this.obeyOriginPolicy, 34, 3);
+        encoder0.encode(this.obeyOriginPolicy, 34, 2);
         
         encoder0.encode(this.referrerPolicy, 36);
         
@@ -429,5 +434,7 @@ public final class UrlRequest extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.recursivePrefetchToken, 184, true);
         
         encoder0.encode(this.trustTokenParams, 192, true);
+        
+        encoder0.encode(this.webBundleTokenParams, 200, true);
     }
 }

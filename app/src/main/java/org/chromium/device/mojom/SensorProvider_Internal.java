@@ -210,6 +210,7 @@ GetSensorResponse callback) {
                         
                     result.type = decoder0.readInt(8);
                         SensorType.validate(result.type);
+                        result.type = SensorType.toKnownValue(result.type);
                     }
 
             } finally {
@@ -275,6 +276,7 @@ GetSensorResponse callback) {
                         
                     result.result = decoder0.readInt(8);
                         SensorCreationResult.validate(result.result);
+                        result.result = SensorCreationResult.toKnownValue(result.result);
                     }
                     {
                         

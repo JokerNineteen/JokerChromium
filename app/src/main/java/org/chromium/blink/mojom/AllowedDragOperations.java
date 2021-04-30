@@ -21,10 +21,7 @@ public final class AllowedDragOperations extends org.chromium.mojo.bindings.Stru
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public boolean allowCopy;
     public boolean allowLink;
-    public boolean allowGeneric;
-    public boolean allowPrivate;
     public boolean allowMove;
-    public boolean allowDelete;
 
     private AllowedDragOperations(int version) {
         super(STRUCT_SIZE, version);
@@ -69,19 +66,7 @@ public final class AllowedDragOperations extends org.chromium.mojo.bindings.Stru
                 }
                 {
                     
-                result.allowGeneric = decoder0.readBoolean(8, 2);
-                }
-                {
-                    
-                result.allowPrivate = decoder0.readBoolean(8, 3);
-                }
-                {
-                    
-                result.allowMove = decoder0.readBoolean(8, 4);
-                }
-                {
-                    
-                result.allowDelete = decoder0.readBoolean(8, 5);
+                result.allowMove = decoder0.readBoolean(8, 2);
                 }
 
         } finally {
@@ -99,12 +84,6 @@ public final class AllowedDragOperations extends org.chromium.mojo.bindings.Stru
         
         encoder0.encode(this.allowLink, 8, 1);
         
-        encoder0.encode(this.allowGeneric, 8, 2);
-        
-        encoder0.encode(this.allowPrivate, 8, 3);
-        
-        encoder0.encode(this.allowMove, 8, 4);
-        
-        encoder0.encode(this.allowDelete, 8, 5);
+        encoder0.encode(this.allowMove, 8, 2);
     }
 }

@@ -36,4 +36,12 @@ CreateGpuMemoryBufferResponse callback);
 org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gpu.mojom.SyncToken syncToken);
 
 
+
+    void copyGpuMemoryBuffer(
+org.chromium.gfx.mojom.GpuMemoryBufferHandle bufferHandle, org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion sharedMemory, 
+CopyGpuMemoryBufferResponse callback);
+
+    interface CopyGpuMemoryBufferResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+
+
 }

@@ -273,6 +273,7 @@ short code, String reason) {
                         
                     result.type = decoder0.readInt(8);
                         WebSocketMessageType.validate(result.type);
+                        result.type = WebSocketMessageType.toKnownValue(result.type);
                     }
                     {
                         

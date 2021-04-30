@@ -107,4 +107,33 @@ public interface BookmarkModelMetadataOrBuilder extends
    * @return The lastSyncTime.
    */
   long getLastSyncTime();
+
+  /**
+   * <pre>
+   * Represents whether bookmark commits sent to the server (most importantly
+   * creations) populate client tags. This is a layer on top of the usual
+   * FeatureList to avoid risky transitions during startup, to guard against
+   * in-flight commits.
+   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+   * default and enforced to true upon startup.
+   * </pre>
+   *
+   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+   * @return Whether the bookmarkClientTagsInProtocolEnabled field is set.
+   */
+  boolean hasBookmarkClientTagsInProtocolEnabled();
+  /**
+   * <pre>
+   * Represents whether bookmark commits sent to the server (most importantly
+   * creations) populate client tags. This is a layer on top of the usual
+   * FeatureList to avoid risky transitions during startup, to guard against
+   * in-flight commits.
+   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+   * default and enforced to true upon startup.
+   * </pre>
+   *
+   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+   * @return The bookmarkClientTagsInProtocolEnabled.
+   */
+  boolean getBookmarkClientTagsInProtocolEnabled();
 }

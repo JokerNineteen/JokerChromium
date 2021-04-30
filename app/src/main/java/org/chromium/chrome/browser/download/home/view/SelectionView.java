@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.download.internal.R;
 
 /**
  * A helper UI widget that provides visual feedback when the selection state of the underlying view

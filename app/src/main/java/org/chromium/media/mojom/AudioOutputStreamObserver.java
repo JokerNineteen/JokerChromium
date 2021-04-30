@@ -38,6 +38,10 @@ public interface AudioOutputStreamObserver extends org.chromium.mojo.bindings.In
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private DisconnectReason() {}
     }
 

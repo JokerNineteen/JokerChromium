@@ -83,6 +83,7 @@ public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struc
                     
                 result.type = decoder0.readInt(24);
                     ScrollType.validate(result.type);
+                    result.type = ScrollType.toKnownValue(result.type);
                 }
                 {
                     
@@ -104,6 +105,7 @@ public final class ScrollIntoViewParams extends org.chromium.mojo.bindings.Struc
                     
                 result.behavior = decoder0.readInt(32);
                     ScrollBehavior.validate(result.behavior);
+                    result.behavior = ScrollBehavior.toKnownValue(result.behavior);
                 }
                 {
                     

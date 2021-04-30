@@ -442,6 +442,7 @@ String label, MediaStreamDevice device, int newState) {
                         
                     result.newState = decoder0.readInt(24);
                         MediaStreamStateChange.validate(result.newState);
+                        result.newState = MediaStreamStateChange.toKnownValue(result.newState);
                     }
 
             } finally {

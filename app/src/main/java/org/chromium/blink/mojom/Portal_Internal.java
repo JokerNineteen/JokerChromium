@@ -555,6 +555,7 @@ TransferableMessage message) {
                         
                     result.result = decoder0.readInt(8);
                         PortalActivateResult.validate(result.result);
+                        result.result = PortalActivateResult.toKnownValue(result.result);
                     }
 
             } finally {

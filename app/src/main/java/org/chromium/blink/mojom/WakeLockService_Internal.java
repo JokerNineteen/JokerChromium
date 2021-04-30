@@ -212,11 +212,13 @@ int type, int reason, String description, org.chromium.mojo.bindings.InterfaceRe
                         
                     result.type = decoder0.readInt(8);
                         org.chromium.device.mojom.WakeLockType.validate(result.type);
+                        result.type = org.chromium.device.mojom.WakeLockType.toKnownValue(result.type);
                     }
                     {
                         
                     result.reason = decoder0.readInt(12);
                         org.chromium.device.mojom.WakeLockReason.validate(result.reason);
+                        result.reason = org.chromium.device.mojom.WakeLockReason.toKnownValue(result.reason);
                     }
                     {
                         

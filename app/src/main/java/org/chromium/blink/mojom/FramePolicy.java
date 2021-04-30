@@ -22,12 +22,10 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
     public int sandboxFlags;
     public ParsedFeaturePolicyDeclaration[] containerPolicy;
     public java.util.Map<Integer, PolicyValue> requiredDocumentPolicy;
-    public boolean allowedToDownload;
     public boolean disallowDocumentAccess;
 
     private FramePolicy(int version) {
         super(STRUCT_SIZE, version);
-        this.allowedToDownload = (boolean) true;
         this.disallowDocumentAccess = (boolean) false;
     }
 
@@ -64,14 +62,11 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
                     
                 result.sandboxFlags = decoder0.readInt(8);
                     org.chromium.network.mojom.WebSandboxFlags.validate(result.sandboxFlags);
+                    result.sandboxFlags = org.chromium.network.mojom.WebSandboxFlags.toKnownValue(result.sandboxFlags);
                 }
                 {
                     
-                result.allowedToDownload = decoder0.readBoolean(12, 0);
-                }
-                {
-                    
-                result.disallowDocumentAccess = decoder0.readBoolean(12, 1);
+                result.disallowDocumentAccess = decoder0.readBoolean(12, 0);
                 }
                 {
                     
@@ -97,8 +92,8 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
                         
                         keys0 = decoder1.readInts(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                         {
-                            for (int i1 = 0; i1 < keys0.length; ++i1) {
-                                DocumentPolicyFeature.validate(keys0[i1]);
+                            for (int i2 = 0; i2 < keys0.length; ++i2) {
+                                DocumentPolicyFeature.validate(keys0[i2]);
                             }
                         }
                     }
@@ -135,9 +130,7 @@ public final class FramePolicy extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.sandboxFlags, 8);
         
-        encoder0.encode(this.allowedToDownload, 12, 0);
-        
-        encoder0.encode(this.disallowDocumentAccess, 12, 1);
+        encoder0.encode(this.disallowDocumentAccess, 12, 0);
         
         if (this.containerPolicy == null) {
             encoder0.encodeNullPointer(16, false);

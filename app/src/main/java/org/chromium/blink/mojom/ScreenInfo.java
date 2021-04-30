@@ -29,6 +29,7 @@ public final class ScreenInfo extends org.chromium.mojo.bindings.Struct {
     public org.chromium.gfx.mojom.Rect availableRect;
     public int orientationType;
     public short orientationAngle;
+    public boolean isExtended;
 
     private ScreenInfo(int version) {
         super(STRUCT_SIZE, version);
@@ -89,6 +90,10 @@ public final class ScreenInfo extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
+                result.isExtended = decoder0.readBoolean(28, 1);
+                }
+                {
+                    
                 result.orientationAngle = decoder0.readShort(30);
                 }
                 {
@@ -99,6 +104,7 @@ public final class ScreenInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.orientationType = decoder0.readInt(36);
                     ScreenOrientation.validate(result.orientationType);
+                    result.orientationType = ScreenOrientation.toKnownValue(result.orientationType);
                 }
                 {
                     
@@ -131,6 +137,8 @@ public final class ScreenInfo extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.depthPerComponent, 24);
         
         encoder0.encode(this.isMonochrome, 28, 0);
+        
+        encoder0.encode(this.isExtended, 28, 1);
         
         encoder0.encode(this.orientationAngle, 30);
         

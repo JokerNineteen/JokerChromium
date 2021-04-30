@@ -69,8 +69,8 @@ public final class SameSiteCookieIssueDetails extends org.chromium.mojo.bindings
                     
                 result.exclusionReason = decoder0.readInts(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.exclusionReason.length; ++i0) {
-                        SameSiteCookieExclusionReason.validate(result.exclusionReason[i0]);
+                    for (int i1 = 0; i1 < result.exclusionReason.length; ++i1) {
+                        SameSiteCookieExclusionReason.validate(result.exclusionReason[i1]);
                     }
                 }
                 }
@@ -78,8 +78,8 @@ public final class SameSiteCookieIssueDetails extends org.chromium.mojo.bindings
                     
                 result.warningReason = decoder0.readInts(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.warningReason.length; ++i0) {
-                        SameSiteCookieWarningReason.validate(result.warningReason[i0]);
+                    for (int i1 = 0; i1 < result.warningReason.length; ++i1) {
+                        SameSiteCookieWarningReason.validate(result.warningReason[i1]);
                     }
                 }
                 }
@@ -87,6 +87,7 @@ public final class SameSiteCookieIssueDetails extends org.chromium.mojo.bindings
                     
                 result.operation = decoder0.readInt(32);
                     SameSiteCookieOperation.validate(result.operation);
+                    result.operation = SameSiteCookieOperation.toKnownValue(result.operation);
                 }
                 {
                     

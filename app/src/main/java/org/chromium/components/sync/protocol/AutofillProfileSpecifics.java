@@ -26,6 +26,7 @@ public  final class AutofillProfileSpecifics extends
     nameLastConjunction_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     nameLastSecond_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     nameFull_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+    nameFullWithHonorific_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     nameHonorificStatus_ = emptyIntList();
     nameFirstStatus_ = emptyIntList();
     nameMiddleStatus_ = emptyIntList();
@@ -34,6 +35,7 @@ public  final class AutofillProfileSpecifics extends
     nameLastConjunctionStatus_ = emptyIntList();
     nameLastSecondStatus_ = emptyIntList();
     nameFullStatus_ = emptyIntList();
+    nameFullWithHonorificStatus_ = emptyIntList();
     emailAddress_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     companyName_ = "";
     addressHomeLine1_ = "";
@@ -51,6 +53,8 @@ public  final class AutofillProfileSpecifics extends
     addressHomeDependentThoroughfareName_ = "";
     addressHomePremiseName_ = "";
     addressHomeSubpremiseName_ = "";
+    addressHomeAptNum_ = "";
+    addressHomeFloor_ = "";
     phoneHomeWholeNumber_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     label_ = "";
     phoneFaxWholeNumber_ = "";
@@ -112,6 +116,14 @@ public  final class AutofillProfileSpecifics extends
      * <code>USER_VERIFIED = 4;</code>
      */
     USER_VERIFIED(4),
+    /**
+     * <pre>
+     * The token was parsed remotely.
+     * </pre>
+     *
+     * <code>SERVER_PARSED = 5;</code>
+     */
+    SERVER_PARSED(5),
     ;
 
     /**
@@ -162,6 +174,14 @@ public  final class AutofillProfileSpecifics extends
      * <code>USER_VERIFIED = 4;</code>
      */
     public static final int USER_VERIFIED_VALUE = 4;
+    /**
+     * <pre>
+     * The token was parsed remotely.
+     * </pre>
+     *
+     * <code>SERVER_PARSED = 5;</code>
+     */
+    public static final int SERVER_PARSED_VALUE = 5;
 
 
     @java.lang.Override
@@ -186,6 +206,7 @@ public  final class AutofillProfileSpecifics extends
         case 2: return FORMATTED;
         case 3: return OBSERVED;
         case 4: return USER_VERIFIED;
+        case 5: return SERVER_PARSED;
         default: return null;
       }
     }
@@ -1281,6 +1302,143 @@ public  final class AutofillProfileSpecifics extends
     nameFull_.add(value.toStringUtf8());
   }
 
+  public static final int NAME_FULL_WITH_HONORIFIC_FIELD_NUMBER = 60;
+  private com.google.protobuf.Internal.ProtobufList<java.lang.String> nameFullWithHonorific_;
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @return A list containing the nameFullWithHonorific.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.String> getNameFullWithHonorificList() {
+    return nameFullWithHonorific_;
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @return The count of nameFullWithHonorific.
+   */
+  @java.lang.Override
+  public int getNameFullWithHonorificCount() {
+    return nameFullWithHonorific_.size();
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param index The index of the element to return.
+   * @return The nameFullWithHonorific at the given index.
+   */
+  @java.lang.Override
+  public java.lang.String getNameFullWithHonorific(int index) {
+    return nameFullWithHonorific_.get(index);
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the nameFullWithHonorific at the given index.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getNameFullWithHonorificBytes(int index) {
+    return com.google.protobuf.ByteString.copyFromUtf8(
+        nameFullWithHonorific_.get(index));
+  }
+  private void ensureNameFullWithHonorificIsMutable() {
+    com.google.protobuf.Internal.ProtobufList<java.lang.String> tmp =
+        nameFullWithHonorific_;  if (!tmp.isModifiable()) {
+      nameFullWithHonorific_ =
+          com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+     }
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param index The index to set the value at.
+   * @param value The nameFullWithHonorific to set.
+   */
+  private void setNameFullWithHonorific(
+      int index, java.lang.String value) {
+    value.getClass();
+  ensureNameFullWithHonorificIsMutable();
+    nameFullWithHonorific_.set(index, value);
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param value The nameFullWithHonorific to add.
+   */
+  private void addNameFullWithHonorific(
+      java.lang.String value) {
+    value.getClass();
+  ensureNameFullWithHonorificIsMutable();
+    nameFullWithHonorific_.add(value);
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param values The nameFullWithHonorific to add.
+   */
+  private void addAllNameFullWithHonorific(
+      java.lang.Iterable<java.lang.String> values) {
+    ensureNameFullWithHonorificIsMutable();
+    com.google.protobuf.AbstractMessageLite.addAll(
+        values, nameFullWithHonorific_);
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   */
+  private void clearNameFullWithHonorific() {
+    nameFullWithHonorific_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+  }
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param value The bytes of the nameFullWithHonorific to add.
+   */
+  private void addNameFullWithHonorificBytes(
+      com.google.protobuf.ByteString value) {
+    ensureNameFullWithHonorificIsMutable();
+    nameFullWithHonorific_.add(value.toStringUtf8());
+  }
+
   public static final int NAME_HONORIFIC_STATUS_FIELD_NUMBER = 30;
   private com.google.protobuf.Internal.IntList nameHonorificStatus_;
   private static final com.google.protobuf.Internal.ListAdapter.Converter<
@@ -1971,6 +2129,89 @@ public  final class AutofillProfileSpecifics extends
    */
   private void clearNameFullStatus() {
     nameFullStatus_ = emptyIntList();
+  }
+
+  public static final int NAME_FULL_WITH_HONORIFIC_STATUS_FIELD_NUMBER = 61;
+  private com.google.protobuf.Internal.IntList nameFullWithHonorificStatus_;
+  private static final com.google.protobuf.Internal.ListAdapter.Converter<
+      java.lang.Integer, org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus> nameFullWithHonorificStatus_converter_ =
+          new com.google.protobuf.Internal.ListAdapter.Converter<
+              java.lang.Integer, org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus>() {
+            @java.lang.Override
+            public org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus convert(java.lang.Integer from) {
+              org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus result = org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.forNumber(from);
+              return result == null ? org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.VERIFICATION_STATUS_UNSPECIFIED : result;
+            }
+          };
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @return A list containing the nameFullWithHonorificStatus.
+   */
+  @java.lang.Override
+  public java.util.List<org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus> getNameFullWithHonorificStatusList() {
+    return new com.google.protobuf.Internal.ListAdapter<
+        java.lang.Integer, org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus>(nameFullWithHonorificStatus_, nameFullWithHonorificStatus_converter_);
+  }
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @return The count of nameFullWithHonorificStatus.
+   */
+  @java.lang.Override
+  public int getNameFullWithHonorificStatusCount() {
+    return nameFullWithHonorificStatus_.size();
+  }
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @param index The index of the element to return.
+   * @return The nameFullWithHonorificStatus at the given index.
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getNameFullWithHonorificStatus(int index) {
+    return nameFullWithHonorificStatus_converter_.convert(nameFullWithHonorificStatus_.getInt(index));
+  }
+  private void ensureNameFullWithHonorificStatusIsMutable() {
+    com.google.protobuf.Internal.IntList tmp = nameFullWithHonorificStatus_;
+    if (!tmp.isModifiable()) {
+      nameFullWithHonorificStatus_ =
+          com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+    }
+  }
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @param index The index to set the value at.
+   * @param value The nameFullWithHonorificStatus to set.
+   */
+  private void setNameFullWithHonorificStatus(
+      int index, org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+    value.getClass();
+  ensureNameFullWithHonorificStatusIsMutable();
+    nameFullWithHonorificStatus_.setInt(index, value.getNumber());
+  }
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @param value The nameFullWithHonorificStatus to add.
+   */
+  private void addNameFullWithHonorificStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+    value.getClass();
+  ensureNameFullWithHonorificStatusIsMutable();
+    nameFullWithHonorificStatus_.addInt(value.getNumber());
+  }
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @param values The nameFullWithHonorificStatus to add.
+   */
+  private void addAllNameFullWithHonorificStatus(
+      java.lang.Iterable<? extends org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus> values) {
+    ensureNameFullWithHonorificStatusIsMutable();
+    for (org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value : values) {
+      nameFullWithHonorificStatus_.addInt(value.getNumber());
+    }
+  }
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   */
+  private void clearNameFullWithHonorificStatus() {
+    nameFullWithHonorificStatus_ = emptyIntList();
   }
 
   public static final int EMAIL_ADDRESS_FIELD_NUMBER = 5;
@@ -3055,6 +3296,114 @@ public  final class AutofillProfileSpecifics extends
     bitField0_ |= 0x00080000;
   }
 
+  public static final int ADDRESS_HOME_APT_NUM_FIELD_NUMBER = 56;
+  private java.lang.String addressHomeAptNum_;
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @return Whether the addressHomeAptNum field is set.
+   */
+  @java.lang.Override
+  public boolean hasAddressHomeAptNum() {
+    return ((bitField0_ & 0x00100000) != 0);
+  }
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @return The addressHomeAptNum.
+   */
+  @java.lang.Override
+  public java.lang.String getAddressHomeAptNum() {
+    return addressHomeAptNum_;
+  }
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @return The bytes for addressHomeAptNum.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getAddressHomeAptNumBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(addressHomeAptNum_);
+  }
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @param value The addressHomeAptNum to set.
+   */
+  private void setAddressHomeAptNum(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00100000;
+    addressHomeAptNum_ = value;
+  }
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   */
+  private void clearAddressHomeAptNum() {
+    bitField0_ = (bitField0_ & ~0x00100000);
+    addressHomeAptNum_ = getDefaultInstance().getAddressHomeAptNum();
+  }
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @param value The bytes for addressHomeAptNum to set.
+   */
+  private void setAddressHomeAptNumBytes(
+      com.google.protobuf.ByteString value) {
+    addressHomeAptNum_ = value.toStringUtf8();
+    bitField0_ |= 0x00100000;
+  }
+
+  public static final int ADDRESS_HOME_FLOOR_FIELD_NUMBER = 57;
+  private java.lang.String addressHomeFloor_;
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @return Whether the addressHomeFloor field is set.
+   */
+  @java.lang.Override
+  public boolean hasAddressHomeFloor() {
+    return ((bitField0_ & 0x00200000) != 0);
+  }
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @return The addressHomeFloor.
+   */
+  @java.lang.Override
+  public java.lang.String getAddressHomeFloor() {
+    return addressHomeFloor_;
+  }
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @return The bytes for addressHomeFloor.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getAddressHomeFloorBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(addressHomeFloor_);
+  }
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @param value The addressHomeFloor to set.
+   */
+  private void setAddressHomeFloor(
+      java.lang.String value) {
+    value.getClass();
+  bitField0_ |= 0x00200000;
+    addressHomeFloor_ = value;
+  }
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   */
+  private void clearAddressHomeFloor() {
+    bitField0_ = (bitField0_ & ~0x00200000);
+    addressHomeFloor_ = getDefaultInstance().getAddressHomeFloor();
+  }
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @param value The bytes for addressHomeFloor to set.
+   */
+  private void setAddressHomeFloorBytes(
+      com.google.protobuf.ByteString value) {
+    addressHomeFloor_ = value.toStringUtf8();
+    bitField0_ |= 0x00200000;
+  }
+
   public static final int ADDRESS_HOME_CITY_STATUS_FIELD_NUMBER = 43;
   private int addressHomeCityStatus_;
   /**
@@ -3067,7 +3416,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeCityStatus() {
-    return ((bitField0_ & 0x00100000) != 0);
+    return ((bitField0_ & 0x00400000) != 0);
   }
   /**
    * <pre>
@@ -3092,7 +3441,7 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeCityStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeCityStatus_ = value.getNumber();
-    bitField0_ |= 0x00100000;
+    bitField0_ |= 0x00400000;
   }
   /**
    * <pre>
@@ -3102,7 +3451,7 @@ public  final class AutofillProfileSpecifics extends
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_city_status = 43;</code>
    */
   private void clearAddressHomeCityStatus() {
-    bitField0_ = (bitField0_ & ~0x00100000);
+    bitField0_ = (bitField0_ & ~0x00400000);
     addressHomeCityStatus_ = 0;
   }
 
@@ -3114,7 +3463,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeStateStatus() {
-    return ((bitField0_ & 0x00200000) != 0);
+    return ((bitField0_ & 0x00800000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_state_status = 44;</code>
@@ -3131,13 +3480,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeStateStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeStateStatus_ = value.getNumber();
-    bitField0_ |= 0x00200000;
+    bitField0_ |= 0x00800000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_state_status = 44;</code>
    */
   private void clearAddressHomeStateStatus() {
-    bitField0_ = (bitField0_ & ~0x00200000);
+    bitField0_ = (bitField0_ & ~0x00800000);
     addressHomeStateStatus_ = 0;
   }
 
@@ -3149,7 +3498,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeZipStatus() {
-    return ((bitField0_ & 0x00400000) != 0);
+    return ((bitField0_ & 0x01000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_zip_status = 45;</code>
@@ -3166,13 +3515,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeZipStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeZipStatus_ = value.getNumber();
-    bitField0_ |= 0x00400000;
+    bitField0_ |= 0x01000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_zip_status = 45;</code>
    */
   private void clearAddressHomeZipStatus() {
-    bitField0_ = (bitField0_ & ~0x00400000);
+    bitField0_ = (bitField0_ & ~0x01000000);
     addressHomeZipStatus_ = 0;
   }
 
@@ -3184,7 +3533,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeCountryStatus() {
-    return ((bitField0_ & 0x00800000) != 0);
+    return ((bitField0_ & 0x02000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_country_status = 46;</code>
@@ -3201,13 +3550,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeCountryStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeCountryStatus_ = value.getNumber();
-    bitField0_ |= 0x00800000;
+    bitField0_ |= 0x02000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_country_status = 46;</code>
    */
   private void clearAddressHomeCountryStatus() {
-    bitField0_ = (bitField0_ & ~0x00800000);
+    bitField0_ = (bitField0_ & ~0x02000000);
     addressHomeCountryStatus_ = 0;
   }
 
@@ -3219,7 +3568,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeStreetAddressStatus() {
-    return ((bitField0_ & 0x01000000) != 0);
+    return ((bitField0_ & 0x04000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_street_address_status = 47;</code>
@@ -3236,13 +3585,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeStreetAddressStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeStreetAddressStatus_ = value.getNumber();
-    bitField0_ |= 0x01000000;
+    bitField0_ |= 0x04000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_street_address_status = 47;</code>
    */
   private void clearAddressHomeStreetAddressStatus() {
-    bitField0_ = (bitField0_ & ~0x01000000);
+    bitField0_ = (bitField0_ & ~0x04000000);
     addressHomeStreetAddressStatus_ = 0;
   }
 
@@ -3254,7 +3603,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeSortingCodeStatus() {
-    return ((bitField0_ & 0x02000000) != 0);
+    return ((bitField0_ & 0x08000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_sorting_code_status = 48;</code>
@@ -3271,13 +3620,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeSortingCodeStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeSortingCodeStatus_ = value.getNumber();
-    bitField0_ |= 0x02000000;
+    bitField0_ |= 0x08000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_sorting_code_status = 48;</code>
    */
   private void clearAddressHomeSortingCodeStatus() {
-    bitField0_ = (bitField0_ & ~0x02000000);
+    bitField0_ = (bitField0_ & ~0x08000000);
     addressHomeSortingCodeStatus_ = 0;
   }
 
@@ -3289,7 +3638,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeDependentLocalityStatus() {
-    return ((bitField0_ & 0x04000000) != 0);
+    return ((bitField0_ & 0x10000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_locality_status = 49;</code>
@@ -3306,13 +3655,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeDependentLocalityStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeDependentLocalityStatus_ = value.getNumber();
-    bitField0_ |= 0x04000000;
+    bitField0_ |= 0x10000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_locality_status = 49;</code>
    */
   private void clearAddressHomeDependentLocalityStatus() {
-    bitField0_ = (bitField0_ & ~0x04000000);
+    bitField0_ = (bitField0_ & ~0x10000000);
     addressHomeDependentLocalityStatus_ = 0;
   }
 
@@ -3324,7 +3673,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeLanguageCodeStatus() {
-    return ((bitField0_ & 0x08000000) != 0);
+    return ((bitField0_ & 0x20000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_language_code_status = 50;</code>
@@ -3341,13 +3690,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeLanguageCodeStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeLanguageCodeStatus_ = value.getNumber();
-    bitField0_ |= 0x08000000;
+    bitField0_ |= 0x20000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_language_code_status = 50;</code>
    */
   private void clearAddressHomeLanguageCodeStatus() {
-    bitField0_ = (bitField0_ & ~0x08000000);
+    bitField0_ = (bitField0_ & ~0x20000000);
     addressHomeLanguageCodeStatus_ = 0;
   }
 
@@ -3359,7 +3708,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeThoroughfareNameStatus() {
-    return ((bitField0_ & 0x10000000) != 0);
+    return ((bitField0_ & 0x40000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_name_status = 51;</code>
@@ -3376,13 +3725,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeThoroughfareNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeThoroughfareNameStatus_ = value.getNumber();
-    bitField0_ |= 0x10000000;
+    bitField0_ |= 0x40000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_name_status = 51;</code>
    */
   private void clearAddressHomeThoroughfareNameStatus() {
-    bitField0_ = (bitField0_ & ~0x10000000);
+    bitField0_ = (bitField0_ & ~0x40000000);
     addressHomeThoroughfareNameStatus_ = 0;
   }
 
@@ -3394,7 +3743,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeThoroughfareNumberStatus() {
-    return ((bitField0_ & 0x20000000) != 0);
+    return ((bitField0_ & 0x80000000) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_number_status = 52;</code>
@@ -3411,13 +3760,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeThoroughfareNumberStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeThoroughfareNumberStatus_ = value.getNumber();
-    bitField0_ |= 0x20000000;
+    bitField0_ |= 0x80000000;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_thoroughfare_number_status = 52;</code>
    */
   private void clearAddressHomeThoroughfareNumberStatus() {
-    bitField0_ = (bitField0_ & ~0x20000000);
+    bitField0_ = (bitField0_ & ~0x80000000);
     addressHomeThoroughfareNumberStatus_ = 0;
   }
 
@@ -3429,7 +3778,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeDependentThoroughfareNameStatus() {
-    return ((bitField0_ & 0x40000000) != 0);
+    return ((bitField1_ & 0x00000001) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_thoroughfare_name_status = 53;</code>
@@ -3446,13 +3795,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeDependentThoroughfareNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeDependentThoroughfareNameStatus_ = value.getNumber();
-    bitField0_ |= 0x40000000;
+    bitField1_ |= 0x00000001;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_dependent_thoroughfare_name_status = 53;</code>
    */
   private void clearAddressHomeDependentThoroughfareNameStatus() {
-    bitField0_ = (bitField0_ & ~0x40000000);
+    bitField1_ = (bitField1_ & ~0x00000001);
     addressHomeDependentThoroughfareNameStatus_ = 0;
   }
 
@@ -3464,7 +3813,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomePremiseNameStatus() {
-    return ((bitField0_ & 0x80000000) != 0);
+    return ((bitField1_ & 0x00000002) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_premise_name_status = 54;</code>
@@ -3481,13 +3830,13 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomePremiseNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomePremiseNameStatus_ = value.getNumber();
-    bitField0_ |= 0x80000000;
+    bitField1_ |= 0x00000002;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_premise_name_status = 54;</code>
    */
   private void clearAddressHomePremiseNameStatus() {
-    bitField0_ = (bitField0_ & ~0x80000000);
+    bitField1_ = (bitField1_ & ~0x00000002);
     addressHomePremiseNameStatus_ = 0;
   }
 
@@ -3499,7 +3848,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasAddressHomeSubpremiseNameStatus() {
-    return ((bitField1_ & 0x00000001) != 0);
+    return ((bitField1_ & 0x00000004) != 0);
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_subpremise_name_status = 55;</code>
@@ -3516,14 +3865,84 @@ public  final class AutofillProfileSpecifics extends
    */
   private void setAddressHomeSubpremiseNameStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
     addressHomeSubpremiseNameStatus_ = value.getNumber();
-    bitField1_ |= 0x00000001;
+    bitField1_ |= 0x00000004;
   }
   /**
    * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_subpremise_name_status = 55;</code>
    */
   private void clearAddressHomeSubpremiseNameStatus() {
-    bitField1_ = (bitField1_ & ~0x00000001);
+    bitField1_ = (bitField1_ & ~0x00000004);
     addressHomeSubpremiseNameStatus_ = 0;
+  }
+
+  public static final int ADDRESS_HOME_APT_NUM_STATUS_FIELD_NUMBER = 58;
+  private int addressHomeAptNumStatus_;
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+   * @return Whether the addressHomeAptNumStatus field is set.
+   */
+  @java.lang.Override
+  public boolean hasAddressHomeAptNumStatus() {
+    return ((bitField1_ & 0x00000008) != 0);
+  }
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+   * @return The addressHomeAptNumStatus.
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getAddressHomeAptNumStatus() {
+    org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus result = org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.forNumber(addressHomeAptNumStatus_);
+    return result == null ? org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.VERIFICATION_STATUS_UNSPECIFIED : result;
+  }
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+   * @param value The addressHomeAptNumStatus to set.
+   */
+  private void setAddressHomeAptNumStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+    addressHomeAptNumStatus_ = value.getNumber();
+    bitField1_ |= 0x00000008;
+  }
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+   */
+  private void clearAddressHomeAptNumStatus() {
+    bitField1_ = (bitField1_ & ~0x00000008);
+    addressHomeAptNumStatus_ = 0;
+  }
+
+  public static final int ADDRESS_HOME_FLOOR_STATUS_FIELD_NUMBER = 59;
+  private int addressHomeFloorStatus_;
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+   * @return Whether the addressHomeFloorStatus field is set.
+   */
+  @java.lang.Override
+  public boolean hasAddressHomeFloorStatus() {
+    return ((bitField1_ & 0x00000010) != 0);
+  }
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+   * @return The addressHomeFloorStatus.
+   */
+  @java.lang.Override
+  public org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getAddressHomeFloorStatus() {
+    org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus result = org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.forNumber(addressHomeFloorStatus_);
+    return result == null ? org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.VERIFICATION_STATUS_UNSPECIFIED : result;
+  }
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+   * @param value The addressHomeFloorStatus to set.
+   */
+  private void setAddressHomeFloorStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+    addressHomeFloorStatus_ = value.getNumber();
+    bitField1_ |= 0x00000010;
+  }
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+   */
+  private void clearAddressHomeFloorStatus() {
+    bitField1_ = (bitField1_ & ~0x00000010);
+    addressHomeFloorStatus_ = 0;
   }
 
   public static final int PHONE_HOME_WHOLE_NUMBER_FIELD_NUMBER = 13;
@@ -3668,7 +4087,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasValidityStateBitfield() {
-    return ((bitField1_ & 0x00000002) != 0);
+    return ((bitField1_ & 0x00000020) != 0);
   }
   /**
    * <pre>
@@ -3695,7 +4114,7 @@ public  final class AutofillProfileSpecifics extends
    * @param value The validityStateBitfield to set.
    */
   private void setValidityStateBitfield(long value) {
-    bitField1_ |= 0x00000002;
+    bitField1_ |= 0x00000020;
     validityStateBitfield_ = value;
   }
   /**
@@ -3708,7 +4127,7 @@ public  final class AutofillProfileSpecifics extends
    * <code>optional int64 validity_state_bitfield = 24;</code>
    */
   private void clearValidityStateBitfield() {
-    bitField1_ = (bitField1_ & ~0x00000002);
+    bitField1_ = (bitField1_ & ~0x00000020);
     validityStateBitfield_ = 0L;
   }
 
@@ -3725,7 +4144,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   public boolean hasIsClientValidityStatesUpdated() {
-    return ((bitField1_ & 0x00000004) != 0);
+    return ((bitField1_ & 0x00000040) != 0);
   }
   /**
    * <pre>
@@ -3750,7 +4169,7 @@ public  final class AutofillProfileSpecifics extends
    * @param value The isClientValidityStatesUpdated to set.
    */
   private void setIsClientValidityStatesUpdated(boolean value) {
-    bitField1_ |= 0x00000004;
+    bitField1_ |= 0x00000040;
     isClientValidityStatesUpdated_ = value;
   }
   /**
@@ -3762,7 +4181,7 @@ public  final class AutofillProfileSpecifics extends
    * <code>optional bool is_client_validity_states_updated = 25;</code>
    */
   private void clearIsClientValidityStatesUpdated() {
-    bitField1_ = (bitField1_ & ~0x00000004);
+    bitField1_ = (bitField1_ & ~0x00000040);
     isClientValidityStatesUpdated_ = false;
   }
 
@@ -3778,7 +4197,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   @java.lang.Deprecated public boolean hasLabel() {
-    return ((bitField1_ & 0x00000008) != 0);
+    return ((bitField1_ & 0x00000080) != 0);
   }
   /**
    * <pre>
@@ -3816,7 +4235,7 @@ public  final class AutofillProfileSpecifics extends
   private void setLabel(
       java.lang.String value) {
     value.getClass();
-  bitField1_ |= 0x00000008;
+  bitField1_ |= 0x00000080;
     label_ = value;
   }
   /**
@@ -3827,7 +4246,7 @@ public  final class AutofillProfileSpecifics extends
    * <code>optional string label = 1 [deprecated = true];</code>
    */
   private void clearLabel() {
-    bitField1_ = (bitField1_ & ~0x00000008);
+    bitField1_ = (bitField1_ & ~0x00000080);
     label_ = getDefaultInstance().getLabel();
   }
   /**
@@ -3841,7 +4260,7 @@ public  final class AutofillProfileSpecifics extends
   private void setLabelBytes(
       com.google.protobuf.ByteString value) {
     label_ = value.toStringUtf8();
-    bitField1_ |= 0x00000008;
+    bitField1_ |= 0x00000080;
   }
 
   public static final int PHONE_FAX_WHOLE_NUMBER_FIELD_NUMBER = 14;
@@ -3852,7 +4271,7 @@ public  final class AutofillProfileSpecifics extends
    */
   @java.lang.Override
   @java.lang.Deprecated public boolean hasPhoneFaxWholeNumber() {
-    return ((bitField1_ & 0x00000010) != 0);
+    return ((bitField1_ & 0x00000100) != 0);
   }
   /**
    * <code>optional string phone_fax_whole_number = 14 [deprecated = true];</code>
@@ -3878,14 +4297,14 @@ public  final class AutofillProfileSpecifics extends
   private void setPhoneFaxWholeNumber(
       java.lang.String value) {
     value.getClass();
-  bitField1_ |= 0x00000010;
+  bitField1_ |= 0x00000100;
     phoneFaxWholeNumber_ = value;
   }
   /**
    * <code>optional string phone_fax_whole_number = 14 [deprecated = true];</code>
    */
   private void clearPhoneFaxWholeNumber() {
-    bitField1_ = (bitField1_ & ~0x00000010);
+    bitField1_ = (bitField1_ & ~0x00000100);
     phoneFaxWholeNumber_ = getDefaultInstance().getPhoneFaxWholeNumber();
   }
   /**
@@ -3895,7 +4314,7 @@ public  final class AutofillProfileSpecifics extends
   private void setPhoneFaxWholeNumberBytes(
       com.google.protobuf.ByteString value) {
     phoneFaxWholeNumber_ = value.toStringUtf8();
-    bitField1_ |= 0x00000010;
+    bitField1_ |= 0x00000100;
   }
 
   public static org.chromium.components.sync.protocol.AutofillProfileSpecifics parseFrom(
@@ -5062,6 +5481,143 @@ public  final class AutofillProfileSpecifics extends
 
     /**
      * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @return A list containing the nameFullWithHonorific.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.String>
+        getNameFullWithHonorificList() {
+      return java.util.Collections.unmodifiableList(
+          instance.getNameFullWithHonorificList());
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @return The count of nameFullWithHonorific.
+     */
+    @java.lang.Override
+    public int getNameFullWithHonorificCount() {
+      return instance.getNameFullWithHonorificCount();
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @param index The index of the element to return.
+     * @return The nameFullWithHonorific at the given index.
+     */
+    @java.lang.Override
+    public java.lang.String getNameFullWithHonorific(int index) {
+      return instance.getNameFullWithHonorific(index);
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the nameFullWithHonorific at the given index.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameFullWithHonorificBytes(int index) {
+      return instance.getNameFullWithHonorificBytes(index);
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @param index The index to set the value at.
+     * @param value The nameFullWithHonorific to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNameFullWithHonorific(
+        int index, java.lang.String value) {
+      copyOnWrite();
+      instance.setNameFullWithHonorific(index, value);
+      return this;
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @param value The nameFullWithHonorific to add.
+     * @return This builder for chaining.
+     */
+    public Builder addNameFullWithHonorific(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.addNameFullWithHonorific(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @param values The nameFullWithHonorific to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllNameFullWithHonorific(
+        java.lang.Iterable<java.lang.String> values) {
+      copyOnWrite();
+      instance.addAllNameFullWithHonorific(values);
+      return this;
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNameFullWithHonorific() {
+      copyOnWrite();
+      instance.clearNameFullWithHonorific();
+      return this;
+    }
+    /**
+     * <pre>
+     * This value contains the combination of the full name and the honorific
+     * prefix.
+     * </pre>
+     *
+     * <code>repeated string name_full_with_honorific = 60;</code>
+     * @param value The bytes of the nameFullWithHonorific to add.
+     * @return This builder for chaining.
+     */
+    public Builder addNameFullWithHonorificBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.addNameFullWithHonorificBytes(value);
+      return this;
+    }
+
+    /**
+     * <pre>
      * Validation status records for name fields.
      * </pre>
      *
@@ -5621,6 +6177,73 @@ public  final class AutofillProfileSpecifics extends
     public Builder clearNameFullStatus() {
       copyOnWrite();
       instance.clearNameFullStatus();
+      return this;
+    }
+
+    /**
+     * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+     * @return A list containing the nameFullWithHonorificStatus.
+     */
+    @java.lang.Override
+    public java.util.List<org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus> getNameFullWithHonorificStatusList() {
+      return instance.getNameFullWithHonorificStatusList();
+    }
+    /**
+     * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+     * @return The count of nameFullWithHonorificStatus.
+     */
+    @java.lang.Override
+    public int getNameFullWithHonorificStatusCount() {
+      return instance.getNameFullWithHonorificStatusCount();
+    }
+    /**
+     * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+     * @param index The index of the element to return.
+     * @return The nameFullWithHonorificStatus at the given index.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getNameFullWithHonorificStatus(int index) {
+      return instance.getNameFullWithHonorificStatus(index);
+    }
+    /**
+     * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+     * @param index The index to set the value at.
+     * @param value The nameFullWithHonorificStatus to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNameFullWithHonorificStatus(
+        int index, org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+      copyOnWrite();
+      instance.setNameFullWithHonorificStatus(index, value);
+      return this;
+    }
+    /**
+     * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+     * @param value The nameFullWithHonorificStatus to add.
+     * @return This builder for chaining.
+     */
+    public Builder addNameFullWithHonorificStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+      copyOnWrite();
+      instance.addNameFullWithHonorificStatus(value);
+      return this;
+    }
+    /**
+     * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+     * @param values The nameFullWithHonorificStatus to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllNameFullWithHonorificStatus(
+        java.lang.Iterable<? extends org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus> values) {
+      copyOnWrite();
+      instance.addAllNameFullWithHonorificStatus(values);  return this;
+    }
+    /**
+     * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNameFullWithHonorificStatus() {
+      copyOnWrite();
+      instance.clearNameFullWithHonorificStatus();
       return this;
     }
 
@@ -6755,6 +7378,120 @@ public  final class AutofillProfileSpecifics extends
     }
 
     /**
+     * <code>optional string address_home_apt_num = 56;</code>
+     * @return Whether the addressHomeAptNum field is set.
+     */
+    @java.lang.Override
+    public boolean hasAddressHomeAptNum() {
+      return instance.hasAddressHomeAptNum();
+    }
+    /**
+     * <code>optional string address_home_apt_num = 56;</code>
+     * @return The addressHomeAptNum.
+     */
+    @java.lang.Override
+    public java.lang.String getAddressHomeAptNum() {
+      return instance.getAddressHomeAptNum();
+    }
+    /**
+     * <code>optional string address_home_apt_num = 56;</code>
+     * @return The bytes for addressHomeAptNum.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAddressHomeAptNumBytes() {
+      return instance.getAddressHomeAptNumBytes();
+    }
+    /**
+     * <code>optional string address_home_apt_num = 56;</code>
+     * @param value The addressHomeAptNum to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressHomeAptNum(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setAddressHomeAptNum(value);
+      return this;
+    }
+    /**
+     * <code>optional string address_home_apt_num = 56;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAddressHomeAptNum() {
+      copyOnWrite();
+      instance.clearAddressHomeAptNum();
+      return this;
+    }
+    /**
+     * <code>optional string address_home_apt_num = 56;</code>
+     * @param value The bytes for addressHomeAptNum to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressHomeAptNumBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setAddressHomeAptNumBytes(value);
+      return this;
+    }
+
+    /**
+     * <code>optional string address_home_floor = 57;</code>
+     * @return Whether the addressHomeFloor field is set.
+     */
+    @java.lang.Override
+    public boolean hasAddressHomeFloor() {
+      return instance.hasAddressHomeFloor();
+    }
+    /**
+     * <code>optional string address_home_floor = 57;</code>
+     * @return The addressHomeFloor.
+     */
+    @java.lang.Override
+    public java.lang.String getAddressHomeFloor() {
+      return instance.getAddressHomeFloor();
+    }
+    /**
+     * <code>optional string address_home_floor = 57;</code>
+     * @return The bytes for addressHomeFloor.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAddressHomeFloorBytes() {
+      return instance.getAddressHomeFloorBytes();
+    }
+    /**
+     * <code>optional string address_home_floor = 57;</code>
+     * @param value The addressHomeFloor to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressHomeFloor(
+        java.lang.String value) {
+      copyOnWrite();
+      instance.setAddressHomeFloor(value);
+      return this;
+    }
+    /**
+     * <code>optional string address_home_floor = 57;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAddressHomeFloor() {
+      copyOnWrite();
+      instance.clearAddressHomeFloor();
+      return this;
+    }
+    /**
+     * <code>optional string address_home_floor = 57;</code>
+     * @param value The bytes for addressHomeFloor to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressHomeFloorBytes(
+        com.google.protobuf.ByteString value) {
+      copyOnWrite();
+      instance.setAddressHomeFloorBytes(value);
+      return this;
+    }
+
+    /**
      * <pre>
      * Validation status records for address fields.
      * </pre>
@@ -7239,6 +7976,78 @@ public  final class AutofillProfileSpecifics extends
     }
 
     /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+     * @return Whether the addressHomeAptNumStatus field is set.
+     */
+    @java.lang.Override
+    public boolean hasAddressHomeAptNumStatus() {
+      return instance.hasAddressHomeAptNumStatus();
+    }
+    /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+     * @return The addressHomeAptNumStatus.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getAddressHomeAptNumStatus() {
+      return instance.getAddressHomeAptNumStatus();
+    }
+    /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+     * @param value The enum numeric value on the wire for addressHomeAptNumStatus to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressHomeAptNumStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+      copyOnWrite();
+      instance.setAddressHomeAptNumStatus(value);
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAddressHomeAptNumStatus() {
+      copyOnWrite();
+      instance.clearAddressHomeAptNumStatus();
+      return this;
+    }
+
+    /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+     * @return Whether the addressHomeFloorStatus field is set.
+     */
+    @java.lang.Override
+    public boolean hasAddressHomeFloorStatus() {
+      return instance.hasAddressHomeFloorStatus();
+    }
+    /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+     * @return The addressHomeFloorStatus.
+     */
+    @java.lang.Override
+    public org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getAddressHomeFloorStatus() {
+      return instance.getAddressHomeFloorStatus();
+    }
+    /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+     * @param value The enum numeric value on the wire for addressHomeFloorStatus to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddressHomeFloorStatus(org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus value) {
+      copyOnWrite();
+      instance.setAddressHomeFloorStatus(value);
+      return this;
+    }
+    /**
+     * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAddressHomeFloorStatus() {
+      copyOnWrite();
+      instance.clearAddressHomeFloorStatus();
+      return this;
+    }
+
+    /**
      * <pre>
      * Phone.
      * </pre>
@@ -7714,18 +8523,27 @@ public  final class AutofillProfileSpecifics extends
             org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.internalGetVerifier(),
             "addressHomeSubpremiseNameStatus_",
             org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.internalGetVerifier(),
+            "addressHomeAptNum_",
+            "addressHomeFloor_",
+            "addressHomeAptNumStatus_",
+            org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.internalGetVerifier(),
+            "addressHomeFloorStatus_",
+            org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.internalGetVerifier(),
+            "nameFullWithHonorific_",
+            "nameFullWithHonorificStatus_",
+            org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus.internalGetVerifier(),
           };
           java.lang.String info =
-              "\u00017\u0000\u0002\u000177\u0000\u0012\u0000\u0001\u1008#\u0002\u001a\u0003\u001a" +
+              "\u0001=\u0000\u0002\u0001==\u0000\u0014\u0000\u0001\u1008\'\u0002\u001a\u0003\u001a" +
               "\u0004\u001a\u0005\u001a\u0006\u1008\u0004\u0007\u1008\u0005\b\u1008\u0006\t\u1008" +
-              "\u0007\n\u1008\b\u000b\u1008\t\f\u1008\n\r\u001a\u000e\u1008$\u000f\u1008\u0000\u0010" +
+              "\u0007\n\u1008\b\u000b\u1008\t\f\u1008\n\r\u001a\u000e\u1008(\u000f\u1008\u0000\u0010" +
               "\u1008\u0001\u0011\u1008\u000b\u0012\u1008\f\u0013\u1008\r\u0014\u1008\u000e\u0015" +
-              "\u001a\u0016\u1002\u0002\u0017\u1002\u0003\u0018\u1002!\u0019\u1007\"\u001a\u001a" +
+              "\u001a\u0016\u1002\u0002\u0017\u1002\u0003\u0018\u1002%\u0019\u1007&\u001a\u001a" +
               "\u001b\u001a\u001c\u001a\u001d\u001a\u001e\u001e\u001f\u001e \u001e!\u001e\"\u001e" +
               "#\u001e$\u001e%\u001e&\u1008\u000f\'\u1008\u0010(\u1008\u0011)\u1008\u0012*\u1008" +
-              "\u0013+\u100c\u0014,\u100c\u0015-\u100c\u0016.\u100c\u0017/\u100c\u00180\u100c\u0019" +
-              "1\u100c\u001a2\u100c\u001b3\u100c\u001c4\u100c\u001d5\u100c\u001e6\u100c\u001f7\u100c" +
-              " ";
+              "\u0013+\u100c\u0016,\u100c\u0017-\u100c\u0018.\u100c\u0019/\u100c\u001a0\u100c\u001b" +
+              "1\u100c\u001c2\u100c\u001d3\u100c\u001e4\u100c\u001f5\u100c 6\u100c!7\u100c\"8\u1008" +
+              "\u00149\u1008\u0015:\u100c#;\u100c$<\u001a=\u001e";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

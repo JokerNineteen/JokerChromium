@@ -26,9 +26,11 @@ public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
     public int crossOriginRedirects;
     public BlobUrlToken blobUrlToken;
     public Blob dataUrlBlob;
+    public boolean isContextMenuSave;
 
     private DownloadUrlParams(int version) {
         super(STRUCT_SIZE, version);
+        this.isContextMenuSave = (boolean) false;
     }
 
     public DownloadUrlParams() {
@@ -84,6 +86,7 @@ public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
                     
                 result.crossOriginRedirects = decoder0.readInt(40);
                     org.chromium.network.mojom.RedirectMode.validate(result.crossOriginRedirects);
+                    result.crossOriginRedirects = org.chromium.network.mojom.RedirectMode.toKnownValue(result.crossOriginRedirects);
                 }
                 {
                     
@@ -92,6 +95,10 @@ public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 result.dataUrlBlob = decoder0.readServiceInterface(52, true, Blob.MANAGER);
+                }
+                {
+                    
+                result.isContextMenuSave = decoder0.readBoolean(60, 0);
                 }
 
         } finally {
@@ -118,5 +125,7 @@ public final class DownloadUrlParams extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.blobUrlToken, 44, true, BlobUrlToken.MANAGER);
         
         encoder0.encode(this.dataUrlBlob, 52, true, Blob.MANAGER);
+        
+        encoder0.encode(this.isContextMenuSave, 60, 0);
     }
 }

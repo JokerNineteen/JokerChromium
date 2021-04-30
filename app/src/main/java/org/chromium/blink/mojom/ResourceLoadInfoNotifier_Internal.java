@@ -564,6 +564,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ResourceLoadInfoNotifier> pendingRes
                         
                     result.requestDestination = decoder0.readInt(32);
                         org.chromium.network.mojom.RequestDestination.validate(result.requestDestination);
+                        result.requestDestination = org.chromium.network.mojom.RequestDestination.toKnownValue(result.requestDestination);
                     }
                     {
                         

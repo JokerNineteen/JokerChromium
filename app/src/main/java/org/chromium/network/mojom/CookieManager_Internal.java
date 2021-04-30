@@ -1041,8 +1041,8 @@ SetStorageAccessGrantSettingsResponse callback) {
                         
                     result.accessSemanticsList = decoder0.readInts(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     {
-                        for (int i0 = 0; i0 < result.accessSemanticsList.length; ++i0) {
-                            CookieAccessSemantics.validate(result.accessSemanticsList[i0]);
+                        for (int i1 = 0; i1 < result.accessSemanticsList.length; ++i1) {
+                            CookieAccessSemantics.validate(result.accessSemanticsList[i1]);
                         }
                     }
                     }

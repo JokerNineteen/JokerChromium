@@ -210,7 +210,7 @@ org.chromium.gfx.mojom.Vector2dF velocity) {
 
         @Override
         public void startDragging(
-DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mojom.Bitmap image, org.chromium.gfx.mojom.Vector2d bitmapOffsetInDip, DragEventSourceInfo eventInfo) {
+DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mojom.BitmapN32 image, org.chromium.gfx.mojom.Vector2d bitmapOffsetInDip, DragEventSourceInfo eventInfo) {
 
             FrameWidgetHostStartDraggingParams _message = new FrameWidgetHostStartDraggingParams();
 
@@ -946,7 +946,7 @@ DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mo
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public DragData dragData;
         public AllowedDragOperations operationsAllowed;
-        public org.chromium.skia.mojom.Bitmap image;
+        public org.chromium.skia.mojom.BitmapN32 image;
         public org.chromium.gfx.mojom.Vector2d bitmapOffsetInDip;
         public DragEventSourceInfo eventInfo;
 
@@ -996,7 +996,7 @@ DragData dragData, AllowedDragOperations operationsAllowed, org.chromium.skia.mo
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                    result.image = org.chromium.skia.mojom.Bitmap.decode(decoder1);
+                    result.image = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
                     }
                     {
                         

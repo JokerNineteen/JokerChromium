@@ -1093,6 +1093,7 @@ String id) {
                         
                     result.type = decoder0.readInt(8);
                         MediaSessionImageType.validate(result.type);
+                        result.type = MediaSessionImageType.toKnownValue(result.type);
                     }
                     {
                         

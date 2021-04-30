@@ -43,5 +43,7 @@ dependencies {
     implementation project(":components:browser_ui_bottomsheet")
     implementation project(":browser:ui_favicon")
     implementation project(":browser:feedback")
+    implementation project(":browser:theme")
     implementation project(":content")
+    implementation project(":browser:toolbar")
 }

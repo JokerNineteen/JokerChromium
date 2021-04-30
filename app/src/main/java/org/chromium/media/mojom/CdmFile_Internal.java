@@ -305,6 +305,7 @@ WriteResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         CdmFile.Status.validate(result.status);
+                        result.status = CdmFile.Status.toKnownValue(result.status);
                     }
                     {
                         
@@ -501,6 +502,7 @@ WriteResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         CdmFile.Status.validate(result.status);
+                        result.status = CdmFile.Status.toKnownValue(result.status);
                     }
 
             } finally {

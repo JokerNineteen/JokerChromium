@@ -67,11 +67,13 @@ public final class ServiceWorkerRegistrationOptions extends org.chromium.mojo.bi
                     
                 result.type = decoder0.readInt(16);
                     ScriptType.validate(result.type);
+                    result.type = ScriptType.toKnownValue(result.type);
                 }
                 {
                     
                 result.updateViaCache = decoder0.readInt(20);
                     ServiceWorkerUpdateViaCache.validate(result.updateViaCache);
+                    result.updateViaCache = ServiceWorkerUpdateViaCache.toKnownValue(result.updateViaCache);
                 }
 
         } finally {

@@ -117,6 +117,7 @@ public final class CookieDeletionFilter extends org.chromium.mojo.bindings.Struc
                     
                 result.sessionControl = decoder0.readInt(64);
                     CookieDeletionSessionControl.validate(result.sessionControl);
+                    result.sessionControl = CookieDeletionSessionControl.toKnownValue(result.sessionControl);
                 }
 
         } finally {

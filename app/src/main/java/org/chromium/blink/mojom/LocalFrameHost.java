@@ -38,7 +38,7 @@ EnterFullscreenResponse callback);
 
 
     void fullscreenStateChanged(
-boolean isFullscreen);
+boolean isFullscreen, FullscreenOptions options);
 
 
 
@@ -274,33 +274,33 @@ PopupMenuClient popupClient, org.chromium.gfx.mojom.Rect bounds, int itemHeight,
 
 
 
+    void showContextMenu(
+org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client, UntrustworthyContextMenuParams params);
+
+
+
     void didLoadResourceFromMemoryCache(
 org.chromium.url.mojom.Url url, String httpMethod, String mimeType, int requestDestination);
 
 
 
     void didChangeFrameOwnerProperties(
-org.chromium.mojo_base.mojom.UnguessableToken childFrameToken, FrameOwnerProperties frameOwnerProperties);
+FrameToken childFrameToken, FrameOwnerProperties frameOwnerProperties);
 
 
 
     void didChangeOpener(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrame);
+LocalFrameToken openerFrame);
 
 
 
     void didChangeFramePolicy(
-org.chromium.mojo_base.mojom.UnguessableToken childFrameToken, FramePolicy framePolicy);
+FrameToken childFrameToken, FramePolicy framePolicy);
 
 
 
     void didChangeCspAttribute(
-org.chromium.mojo_base.mojom.UnguessableToken childFrameToken, org.chromium.network.mojom.ContentSecurityPolicy parsedCspAttribute);
-
-
-
-    void bindPolicyContainer(
-org.chromium.mojo.bindings.AssociatedInterfaceRequestNotSupported receiver);
+FrameToken childFrameToken, org.chromium.network.mojom.ContentSecurityPolicy parsedCspAttribute);
 
 
 
@@ -309,8 +309,28 @@ org.chromium.gfx.mojom.Rect clipRect, org.chromium.mojo_base.mojom.UnguessableTo
 
 
 
+    void setModalCloseListener(
+ModalCloseListener listener);
+
+
+
     void detach(
 );
+
+
+
+    void getKeepAliveHandleFactory(
+org.chromium.mojo.bindings.InterfaceRequest<KeepAliveHandleFactory> factory);
+
+
+
+    void didAddMessageToConsole(
+int logLevel, org.chromium.mojo_base.mojom.BigString16 msg, int lineNumber, org.chromium.mojo_base.mojom.String16 sourceId, org.chromium.mojo_base.mojom.BigString16 untrustedStackTrace);
+
+
+
+    void frameSizeChanged(
+org.chromium.gfx.mojom.Size size);
 
 
 }

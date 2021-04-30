@@ -23,7 +23,6 @@ import java.util.Collections;
  * - Sorting, and adding headers is done by the downstream {@link ListConsumer}s.
  */
 public class DateOrderedListMutator implements OfflineItemFilterObserver {
-
     /**
      * Handles pagination for the list and adds a pagination header at the end, if the list is
      * longer than the desired length. Tracks the number of pages currently being displayed to the

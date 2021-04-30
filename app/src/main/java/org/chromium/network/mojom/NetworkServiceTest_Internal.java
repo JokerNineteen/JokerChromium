@@ -81,7 +81,7 @@ class NetworkServiceTest_Internal {
 
     private static final int SET_EV_POLICY_ORDINAL = 16;
 
-    private static final int GET_PRELOADED_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL = 17;
+    private static final int GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL = 17;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NetworkServiceTest.Proxy {
@@ -445,21 +445,21 @@ SetEvPolicyResponse callback) {
 
 
         @Override
-        public void getPreloadedFirstPartySetEntriesCount(
+        public void getFirstPartySetEntriesCount(
 
-GetPreloadedFirstPartySetEntriesCountResponse callback) {
+GetFirstPartySetEntriesCountResponse callback) {
 
-            NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams _message = new NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams();
+            NetworkServiceTestGetFirstPartySetEntriesCountParams _message = new NetworkServiceTestGetFirstPartySetEntriesCountParams();
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_PRELOADED_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
+                                    GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParamsForwardToCallback(callback));
+                    new NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsForwardToCallback(callback));
 
         }
 
@@ -804,11 +804,11 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
 
 
 
-                    case GET_PRELOADED_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL: {
+                    case GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL: {
 
-                        NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams.deserialize(messageWithHeader.getPayload());
+                        NetworkServiceTestGetFirstPartySetEntriesCountParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getPreloadedFirstPartySetEntriesCount(new NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().getFirstPartySetEntriesCount(new NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -1062,6 +1062,7 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
                         
                     result.type = decoder0.readInt(8);
                         ConnectionType.validate(result.type);
+                        result.type = ConnectionType.toKnownValue(result.type);
                     }
 
             } finally {
@@ -1239,6 +1240,7 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
                         
                     result.type = decoder0.readInt(8);
                         EffectiveConnectionType.validate(result.type);
+                        result.type = EffectiveConnectionType.toKnownValue(result.type);
                     }
 
             } finally {
@@ -1847,6 +1849,7 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
                         
                     result.required = decoder0.readInt(8);
                         NetworkServiceTest.RequireCt.validate(result.required);
+                        result.required = NetworkServiceTest.RequireCt.toKnownValue(result.required);
                     }
 
             } finally {
@@ -2544,6 +2547,7 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
                         
                     result.memoryPressureLevel = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.MemoryPressureLevel.validate(result.memoryPressureLevel);
+                        result.memoryPressureLevel = org.chromium.mojo_base.mojom.MemoryPressureLevel.toKnownValue(result.memoryPressureLevel);
                     }
 
             } finally {
@@ -3414,21 +3418,21 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
 
 
     
-    static final class NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkServiceTestGetFirstPartySetEntriesCountParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
-        private NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams(int version) {
+        private NetworkServiceTestGetFirstPartySetEntriesCountParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams() {
+        public NetworkServiceTestGetFirstPartySetEntriesCountParams() {
             this(0);
         }
 
-        public static NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkServiceTestGetFirstPartySetEntriesCountParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -3437,22 +3441,22 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkServiceTestGetFirstPartySetEntriesCountParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkServiceTestGetFirstPartySetEntriesCountParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams result;
+            NetworkServiceTestGetFirstPartySetEntriesCountParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceTestGetPreloadedFirstPartySetEntriesCountParams(elementsOrVersion);
+                result = new NetworkServiceTestGetFirstPartySetEntriesCountParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -3470,22 +3474,22 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
 
 
     
-    static final class NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class NetworkServiceTestGetFirstPartySetEntriesCountResponseParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public long entries;
 
-        private NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams(int version) {
+        private NetworkServiceTestGetFirstPartySetEntriesCountResponseParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams() {
+        public NetworkServiceTestGetFirstPartySetEntriesCountResponseParams() {
             this(0);
         }
 
-        public static NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static NetworkServiceTestGetFirstPartySetEntriesCountResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -3494,22 +3498,22 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static NetworkServiceTestGetFirstPartySetEntriesCountResponseParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static NetworkServiceTestGetFirstPartySetEntriesCountResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams result;
+            NetworkServiceTestGetFirstPartySetEntriesCountResponseParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams(elementsOrVersion);
+                result = new NetworkServiceTestGetFirstPartySetEntriesCountResponseParams(elementsOrVersion);
                     {
                         
                     result.entries = decoder0.readLong(8);
@@ -3530,11 +3534,11 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkServiceTest.GetPreloadedFirstPartySetEntriesCountResponse mCallback;
+        private final NetworkServiceTest.GetFirstPartySetEntriesCountResponse mCallback;
 
-        NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParamsForwardToCallback(NetworkServiceTest.GetPreloadedFirstPartySetEntriesCountResponse callback) {
+        NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsForwardToCallback(NetworkServiceTest.GetFirstPartySetEntriesCountResponse callback) {
             this.mCallback = callback;
         }
 
@@ -3544,12 +3548,12 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(GET_PRELOADED_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
+                if (!header.validateHeader(GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
                     return false;
                 }
 
-                NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams response = NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams.deserialize(messageWithHeader.getPayload());
+                NetworkServiceTestGetFirstPartySetEntriesCountResponseParams response = NetworkServiceTestGetFirstPartySetEntriesCountResponseParams.deserialize(messageWithHeader.getPayload());
 
                 mCallback.call(response.entries);
                 return true;
@@ -3559,13 +3563,13 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
         }
     }
 
-    static class NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParamsProxyToResponder implements NetworkServiceTest.GetPreloadedFirstPartySetEntriesCountResponse {
+    static class NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsProxyToResponder implements NetworkServiceTest.GetFirstPartySetEntriesCountResponse {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParamsProxyToResponder(
+        NetworkServiceTestGetFirstPartySetEntriesCountResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -3576,7 +3580,7 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
 
         @Override
         public void call(Long entries) {
-            NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams _response = new NetworkServiceTestGetPreloadedFirstPartySetEntriesCountResponseParams();
+            NetworkServiceTestGetFirstPartySetEntriesCountResponseParams _response = new NetworkServiceTestGetFirstPartySetEntriesCountResponseParams();
 
             _response.entries = entries;
 
@@ -3584,7 +3588,7 @@ GetPreloadedFirstPartySetEntriesCountResponse callback) {
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GET_PRELOADED_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
+                                    GET_FIRST_PARTY_SET_ENTRIES_COUNT_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

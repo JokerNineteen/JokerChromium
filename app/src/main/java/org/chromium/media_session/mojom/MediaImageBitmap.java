@@ -74,6 +74,7 @@ public final class MediaImageBitmap extends org.chromium.mojo.bindings.Struct {
                     
                 result.colorType = decoder0.readInt(24);
                     MediaImageBitmapColorType.validate(result.colorType);
+                    result.colorType = MediaImageBitmapColorType.toKnownValue(result.colorType);
                 }
             }
 

@@ -282,6 +282,7 @@ boolean wasClean, short code, String reason) {
                         
                     result.type = decoder0.readInt(12);
                         WebSocketMessageType.validate(result.type);
+                        result.type = WebSocketMessageType.toKnownValue(result.type);
                     }
                     {
                         

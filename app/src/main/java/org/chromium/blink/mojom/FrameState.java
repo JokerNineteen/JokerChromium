@@ -103,11 +103,13 @@ public final class FrameState extends org.chromium.mojo.bindings.Struct {
                     
                 result.scrollRestorationType = decoder0.readInt(48);
                     ScrollRestorationType.validate(result.scrollRestorationType);
+                    result.scrollRestorationType = ScrollRestorationType.toKnownValue(result.scrollRestorationType);
                 }
                 {
                     
                 result.referrerPolicy = decoder0.readInt(52);
                     org.chromium.network.mojom.ReferrerPolicy.validate(result.referrerPolicy);
+                    result.referrerPolicy = org.chromium.network.mojom.ReferrerPolicy.toKnownValue(result.referrerPolicy);
                 }
                 {
                     

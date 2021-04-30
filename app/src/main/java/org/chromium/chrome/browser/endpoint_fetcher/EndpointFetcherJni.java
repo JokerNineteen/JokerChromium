@@ -35,8 +35,9 @@ public final class EndpointFetcherJni implements EndpointFetcher.Natives {
 
   @Override
   public void nativeFetchChromeAPIKey(Profile profile, String url, String httpsMethod,
-      String contentType, String postData, long timeout, Callback<EndpointResponse> callback) {
-    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchChromeAPIKey(profile, url, httpsMethod, contentType, postData, timeout, callback);
+      String contentType, String postData, long timeout, String[] headers,
+      Callback<EndpointResponse> callback) {
+    GEN_JNI.org_chromium_chrome_browser_endpoint_1fetcher_EndpointFetcher_nativeFetchChromeAPIKey(profile, url, httpsMethod, contentType, postData, timeout, headers, callback);
   }
 
   @Override

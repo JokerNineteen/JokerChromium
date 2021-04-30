@@ -37,6 +37,10 @@ public final class ClearDataFilter extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Type() {}
     }
     public int type;
@@ -80,6 +84,7 @@ public final class ClearDataFilter extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     ClearDataFilter.Type.validate(result.type);
+                    result.type = ClearDataFilter.Type.toKnownValue(result.type);
                 }
                 {
                     

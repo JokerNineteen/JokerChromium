@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.os.UserManager;
+import android.text.TextUtils;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.Nullable;
@@ -39,7 +40,6 @@ import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * AccountManagerFacade wraps our access of AccountManager in Android.
- *
  */
 public class AccountManagerFacadeImpl implements AccountManagerFacade {
     private static final String TAG = "Sync_Signin";
@@ -201,43 +201,43 @@ public class AccountManagerFacadeImpl implements AccountManagerFacade {
     public AccessTokenData getAccessToken(Account account, String scope) throws AuthException {
         assert account != null;
         assert scope != null;
-        // TODO(bsazonov): Rename delegate's getAuthToken to getAccessToken.
         return mDelegate.getAuthToken(account, scope);
     }
 
     /**
-     * Synchronously clears an OAuth2 access token from the cache. Use {@link #getAccessToken}
-     * to issue a new token after invalidating the old one.
+     * Removes an OAuth2 access token from the cache with retries asynchronously.
+     * Uses {@link #getAccessToken} to issue a new token after invalidating the old one.
      * @param accessToken The access token to invalidate.
      */
     @Override
-    public void invalidateAccessToken(String accessToken) throws AuthException {
-        assert accessToken != null;
-        // TODO(bsazonov): Rename delegate's invalidateAuthToken to invalidateAccessToken.
-        mDelegate.invalidateAuthToken(accessToken);
+    public void invalidateAccessToken(String accessToken) {
+        if (!TextUtils.isEmpty(accessToken)) {
+            ConnectionRetry.runAuthTask(() -> {
+                mDelegate.invalidateAuthToken(accessToken);
+                return true;
+            });
+        }
     }
 
-    // Incorrectly infers that this is called on a worker thread because of AsyncTask doInBackground
-    // overriding.
-    @SuppressWarnings("WrongThread")
     @Override
-    public void checkChildAccountStatus(Account account, Callback<Integer> callback) {
+    public void checkChildAccountStatus(Account account, ChildAccountStatusListener listener) {
         ThreadUtils.assertOnUiThread();
         new AsyncTask<Integer>() {
             @Override
             public @ChildAccountStatus.Status Integer doInBackground() {
-                if (hasFeature(account, FEATURE_IS_CHILD_ACCOUNT_KEY)) {
+                if (mDelegate.hasFeatures(account, new String[] {FEATURE_IS_CHILD_ACCOUNT_KEY})) {
                     return ChildAccountStatus.REGULAR_CHILD;
-                }
-                if (hasFeature(account, FEATURE_IS_USM_ACCOUNT_KEY)) {
+                } else if (mDelegate.hasFeatures(
+                                   account, new String[] {FEATURE_IS_USM_ACCOUNT_KEY})) {
                     return ChildAccountStatus.USM_CHILD;
+                } else {
+                    return ChildAccountStatus.NOT_CHILD;
                 }
-                return ChildAccountStatus.NOT_CHILD;
             }
 
             @Override
-            public void onPostExecute(@ChildAccountStatus.Status Integer value) {
-                callback.onResult(value);
+            public void onPostExecute(@ChildAccountStatus.Status Integer status) {
+                listener.onStatusReady(status);
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
@@ -318,10 +318,6 @@ public class AccountManagerFacadeImpl implements AccountManagerFacade {
     @Override
     public boolean isGooglePlayServicesAvailable() {
         return mDelegate.isGooglePlayServicesAvailable();
-    }
-
-    private boolean hasFeature(Account account, String feature) {
-        return mDelegate.hasFeatures(account, new String[] {feature});
     }
 
     private void updateAccounts() {
@@ -448,6 +444,10 @@ public class AccountManagerFacadeImpl implements AccountManagerFacade {
 
         @Override
         protected void onPostExecute(Void v) {
+            // Records number of Android accounts present on device.
+            RecordHistogram.recordExactLinearHistogram(
+                    "Signin.AndroidNumberOfDeviceAccounts", tryGetGoogleAccounts().size(), 50);
+
             for (Runnable callback : mCallbacksWaitingForCachePopulation) {
                 callback.run();
             }

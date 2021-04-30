@@ -55,14 +55,15 @@ final class ContextualSearchSceneLayerJni implements ContextualSearchSceneLayer.
       ContextualSearchSceneLayer caller, int searchBarBackgroundResourceId,
       int searchBarBackgroundColor, int searchContextResourceId, int searchTermResourceId,
       int searchCaptionResourceId, int searchBarShadowResourceId, int searchProviderIconResourceId,
-      int quickActionIconResourceId, int arrowUpResourceId, int dragHandlebarResourceId,
-      int openTabIconResourceId, int closeIconResourceId, int progressBarBackgroundResourceId,
-      int progressBarResourceId, int searchPromoResourceId, int barBannerRippleResourceId,
-      int barBannerTextResourceId, float dpToPx, float layoutWidth, float layoutHeight,
-      float basePageBrightness, float basePageYOffset, WebContents webContents,
-      boolean searchPromoVisible, float searchPromoHeight, float searchPromoOpacity,
-      int searchPromoBackgroundColor, boolean searchBarBannerVisible, float searchBarBannerHeight,
-      float searchBarBannerPaddingPx, float searchBarBannerRippleWidth,
+      int quickActionIconResourceId, int dragHandlebarResourceId, int openTabIconResourceId,
+      int closeIconResourceId, int progressBarBackgroundResourceId, int progressBarResourceId,
+      int searchPromoResourceId, int barBannerRippleResourceId, int barBannerTextResourceId,
+      float dpToPx, float layoutWidth, float layoutHeight, float basePageBrightness,
+      float basePageYOffset, WebContents webContents, boolean searchPromoVisible,
+      float searchPromoHeight, float searchPromoOpacity, int searchPromoBackgroundColor,
+      int panelHelpResourceId, boolean panelHelpVisible, float panelHelpHeight,
+      float panelHelpOpacity, int panelHelpBackgroundColor, boolean searchBarBannerVisible,
+      float searchBarBannerHeight, float searchBarBannerPaddingPx, float searchBarBannerRippleWidth,
       float searchBarBannerRippleOpacity, float searchBarBannerTextOpacity, float searchPanelX,
       float searchPanelY, float searchPanelWidth, float searchPanelHeight,
       float searchBarMarginSide, float searchBarMarginTop, float searchBarHeight,
@@ -71,14 +72,11 @@ final class ContextualSearchSceneLayerJni implements ContextualSearchSceneLayer.
       boolean searchCaptionVisible, boolean searchBarBorderVisible, float searchBarBorderHeight,
       boolean quickActionIconVisible, boolean thumbnailVisible, String thumbnailUrl,
       float customImageVisibilityPercentage, int barImageSize, int iconColor,
-      int dragHandlebarColor, float arrowIconOpacity, float arrowIconRotation,
-      float closeIconOpacity, boolean isProgressBarVisible, float progressBarHeight,
-      float progressBarOpacity, float progressBarCompletion, float dividerLineVisibilityPercentage,
-      float dividerLineWidth, float dividerLineHeight, int dividerLineColor,
-      float dividerLineXOffset, boolean touchHighlightVisible, float touchHighlightXOffset,
-      float toucHighlightWidth, Profile profile, int barBackgroundResourceId,
-      int separatorLineColor) {
-    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_ContextualSearchSceneLayer_updateContextualSearchLayer(nativeContextualSearchSceneLayer, caller, searchBarBackgroundResourceId, searchBarBackgroundColor, searchContextResourceId, searchTermResourceId, searchCaptionResourceId, searchBarShadowResourceId, searchProviderIconResourceId, quickActionIconResourceId, arrowUpResourceId, dragHandlebarResourceId, openTabIconResourceId, closeIconResourceId, progressBarBackgroundResourceId, progressBarResourceId, searchPromoResourceId, barBannerRippleResourceId, barBannerTextResourceId, dpToPx, layoutWidth, layoutHeight, basePageBrightness, basePageYOffset, webContents, searchPromoVisible, searchPromoHeight, searchPromoOpacity, searchPromoBackgroundColor, searchBarBannerVisible, searchBarBannerHeight, searchBarBannerPaddingPx, searchBarBannerRippleWidth, searchBarBannerRippleOpacity, searchBarBannerTextOpacity, searchPanelX, searchPanelY, searchPanelWidth, searchPanelHeight, searchBarMarginSide, searchBarMarginTop, searchBarHeight, searchContextOpacity, searchTextLayerMinHeight, searchTermOpacity, searchTermCaptionSpacing, searchCaptionAnimationPercentage, searchCaptionVisible, searchBarBorderVisible, searchBarBorderHeight, quickActionIconVisible, thumbnailVisible, thumbnailUrl, customImageVisibilityPercentage, barImageSize, iconColor, dragHandlebarColor, arrowIconOpacity, arrowIconRotation, closeIconOpacity, isProgressBarVisible, progressBarHeight, progressBarOpacity, progressBarCompletion, dividerLineVisibilityPercentage, dividerLineWidth, dividerLineHeight, dividerLineColor, dividerLineXOffset, touchHighlightVisible, touchHighlightXOffset, toucHighlightWidth, profile, barBackgroundResourceId, separatorLineColor);
+      int dragHandlebarColor, float closeIconOpacity, boolean isProgressBarVisible,
+      float progressBarHeight, float progressBarOpacity, float progressBarCompletion,
+      boolean touchHighlightVisible, float touchHighlightXOffset, float toucHighlightWidth,
+      Profile profile, int barBackgroundResourceId, int separatorLineColor) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_scene_1layer_ContextualSearchSceneLayer_updateContextualSearchLayer(nativeContextualSearchSceneLayer, caller, searchBarBackgroundResourceId, searchBarBackgroundColor, searchContextResourceId, searchTermResourceId, searchCaptionResourceId, searchBarShadowResourceId, searchProviderIconResourceId, quickActionIconResourceId, dragHandlebarResourceId, openTabIconResourceId, closeIconResourceId, progressBarBackgroundResourceId, progressBarResourceId, searchPromoResourceId, barBannerRippleResourceId, barBannerTextResourceId, dpToPx, layoutWidth, layoutHeight, basePageBrightness, basePageYOffset, webContents, searchPromoVisible, searchPromoHeight, searchPromoOpacity, searchPromoBackgroundColor, panelHelpResourceId, panelHelpVisible, panelHelpHeight, panelHelpOpacity, panelHelpBackgroundColor, searchBarBannerVisible, searchBarBannerHeight, searchBarBannerPaddingPx, searchBarBannerRippleWidth, searchBarBannerRippleOpacity, searchBarBannerTextOpacity, searchPanelX, searchPanelY, searchPanelWidth, searchPanelHeight, searchBarMarginSide, searchBarMarginTop, searchBarHeight, searchContextOpacity, searchTextLayerMinHeight, searchTermOpacity, searchTermCaptionSpacing, searchCaptionAnimationPercentage, searchCaptionVisible, searchBarBorderVisible, searchBarBorderHeight, quickActionIconVisible, thumbnailVisible, thumbnailUrl, customImageVisibilityPercentage, barImageSize, iconColor, dragHandlebarColor, closeIconOpacity, isProgressBarVisible, progressBarHeight, progressBarOpacity, progressBarCompletion, touchHighlightVisible, touchHighlightXOffset, toucHighlightWidth, profile, barBackgroundResourceId, separatorLineColor);
   }
 
   public static ContextualSearchSceneLayer.Natives get() {

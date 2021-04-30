@@ -59,6 +59,8 @@ class QuicTransport_Internal {
 
     private static final int ABORT_STREAM_ORDINAL = 5;
 
+    private static final int SET_OUTGOING_DATAGRAM_EXPIRATION_DURATION_ORDINAL = 6;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements QuicTransport.Proxy {
 
@@ -190,6 +192,23 @@ int streamId, long code) {
         }
 
 
+        @Override
+        public void setOutgoingDatagramExpirationDuration(
+org.chromium.mojo_base.mojom.TimeDelta duration) {
+
+            QuicTransportSetOutgoingDatagramExpirationDurationParams _message = new QuicTransportSetOutgoingDatagramExpirationDurationParams();
+
+            _message.duration = duration;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SET_OUTGOING_DATAGRAM_EXPIRATION_DURATION_ORDINAL)));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<QuicTransport> {
@@ -248,6 +267,19 @@ int streamId, long code) {
                                 QuicTransportAbortStreamParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().abortStream(data.streamId, data.code);
+                        return true;
+                    }
+
+
+
+
+
+                    case SET_OUTGOING_DATAGRAM_EXPIRATION_DURATION_ORDINAL: {
+
+                        QuicTransportSetOutgoingDatagramExpirationDurationParams data =
+                                QuicTransportSetOutgoingDatagramExpirationDurationParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().setOutgoingDatagramExpirationDuration(data.duration);
                         return true;
                     }
 
@@ -337,6 +369,8 @@ int streamId, long code) {
                         getImpl().acceptUnidirectionalStream(new QuicTransportAcceptUnidirectionalStreamResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
 
@@ -1265,6 +1299,70 @@ int streamId, long code) {
             encoder0.encode(this.streamId, 8);
             
             encoder0.encode(this.code, 16);
+        }
+    }
+
+
+
+    
+    static final class QuicTransportSetOutgoingDatagramExpirationDurationParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo_base.mojom.TimeDelta duration;
+
+        private QuicTransportSetOutgoingDatagramExpirationDurationParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public QuicTransportSetOutgoingDatagramExpirationDurationParams() {
+            this(0);
+        }
+
+        public static QuicTransportSetOutgoingDatagramExpirationDurationParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static QuicTransportSetOutgoingDatagramExpirationDurationParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static QuicTransportSetOutgoingDatagramExpirationDurationParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            QuicTransportSetOutgoingDatagramExpirationDurationParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new QuicTransportSetOutgoingDatagramExpirationDurationParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.duration = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.duration, 8, false);
         }
     }
 

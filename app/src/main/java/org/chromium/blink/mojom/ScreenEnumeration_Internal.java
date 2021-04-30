@@ -482,6 +482,7 @@ HasMultipleDisplaysResponse callback) {
                         
                     result.result = decoder0.readInt(8);
                         MultipleDisplays.validate(result.result);
+                        result.result = MultipleDisplays.toKnownValue(result.result);
                     }
 
             } finally {

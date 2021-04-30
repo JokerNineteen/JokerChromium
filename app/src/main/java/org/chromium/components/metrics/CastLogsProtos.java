@@ -6027,11 +6027,22 @@ public final class CastLogsProtos {
        */
       com.google.protobuf.ByteString
           getHotwordModelIdBytes();
+
+      /**
+       * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+       * @return Whether the launchFrom field is set.
+       */
+      boolean hasLaunchFrom();
+      /**
+       * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+       * @return The launchFrom.
+       */
+      org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom getLaunchFrom();
     }
     /**
      * <pre>
      * Stores Cast-enabled device specific events with a various context data.
-     * Next tag: 26
+     * Next tag: 27
      * </pre>
      *
      * Protobuf type {@code metrics.CastLogsProto.CastEventProto}
@@ -6054,6 +6065,151 @@ public final class CastLogsProtos {
         eventIdList_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
         hotwordModelId_ = "";
       }
+      /**
+       * Protobuf enum {@code metrics.CastLogsProto.CastEventProto.LaunchFrom}
+       */
+      public enum LaunchFrom
+          implements com.google.protobuf.Internal.EnumLite {
+        /**
+         * <code>FROM_UNKNOWN = 0;</code>
+         */
+        FROM_UNKNOWN(0),
+        /**
+         * <pre>
+         * Launched by itself, or by the user interacting directly with the
+         * receiver device (e.g. use a TV remote to launch an app on Android TV).
+         * </pre>
+         *
+         * <code>FROM_LOCAL = 1;</code>
+         */
+        FROM_LOCAL(1),
+        /**
+         * <pre>
+         * Launched by a Cast V1 sender using DIAL.
+         * </pre>
+         *
+         * <code>FROM_DIAL = 2;</code>
+         */
+        FROM_DIAL(2),
+        /**
+         * <pre>
+         * Launched by a Cast V2 sender device.
+         * </pre>
+         *
+         * <code>FROM_CAST_V2 = 3;</code>
+         */
+        FROM_CAST_V2(3),
+        /**
+         * <pre>
+         * Launched from the cloud.
+         * </pre>
+         *
+         * <code>FROM_CCS = 4;</code>
+         */
+        FROM_CCS(4),
+        ;
+
+        /**
+         * <code>FROM_UNKNOWN = 0;</code>
+         */
+        public static final int FROM_UNKNOWN_VALUE = 0;
+        /**
+         * <pre>
+         * Launched by itself, or by the user interacting directly with the
+         * receiver device (e.g. use a TV remote to launch an app on Android TV).
+         * </pre>
+         *
+         * <code>FROM_LOCAL = 1;</code>
+         */
+        public static final int FROM_LOCAL_VALUE = 1;
+        /**
+         * <pre>
+         * Launched by a Cast V1 sender using DIAL.
+         * </pre>
+         *
+         * <code>FROM_DIAL = 2;</code>
+         */
+        public static final int FROM_DIAL_VALUE = 2;
+        /**
+         * <pre>
+         * Launched by a Cast V2 sender device.
+         * </pre>
+         *
+         * <code>FROM_CAST_V2 = 3;</code>
+         */
+        public static final int FROM_CAST_V2_VALUE = 3;
+        /**
+         * <pre>
+         * Launched from the cloud.
+         * </pre>
+         *
+         * <code>FROM_CCS = 4;</code>
+         */
+        public static final int FROM_CCS_VALUE = 4;
+
+
+        @java.lang.Override
+        public final int getNumber() {
+          return value;
+        }
+
+        /**
+         * @param value The number of the enum to look for.
+         * @return The enum associated with the given number.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static LaunchFrom valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static LaunchFrom forNumber(int value) {
+          switch (value) {
+            case 0: return FROM_UNKNOWN;
+            case 1: return FROM_LOCAL;
+            case 2: return FROM_DIAL;
+            case 3: return FROM_CAST_V2;
+            case 4: return FROM_CCS;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<LaunchFrom>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            LaunchFrom> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<LaunchFrom>() {
+                @java.lang.Override
+                public LaunchFrom findValueByNumber(int number) {
+                  return LaunchFrom.forNumber(number);
+                }
+              };
+
+        public static com.google.protobuf.Internal.EnumVerifier 
+            internalGetVerifier() {
+          return LaunchFromVerifier.INSTANCE;
+        }
+
+        private static final class LaunchFromVerifier implements 
+             com.google.protobuf.Internal.EnumVerifier { 
+                static final com.google.protobuf.Internal.EnumVerifier           INSTANCE = new LaunchFromVerifier();
+                @java.lang.Override
+                public boolean isInRange(int number) {
+                  return LaunchFrom.forNumber(number) != null;
+                }
+              };
+
+        private final int value;
+
+        private LaunchFrom(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:metrics.CastLogsProto.CastEventProto.LaunchFrom)
+      }
+
       public interface MetadataOrBuilder extends
           // @@protoc_insertion_point(interface_extends:metrics.CastLogsProto.CastEventProto.Metadata)
           com.google.protobuf.MessageLiteOrBuilder {
@@ -7963,6 +8119,41 @@ public final class CastLogsProtos {
         bitField0_ |= 0x00200000;
       }
 
+      public static final int LAUNCH_FROM_FIELD_NUMBER = 26;
+      private int launchFrom_;
+      /**
+       * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+       * @return Whether the launchFrom field is set.
+       */
+      @java.lang.Override
+      public boolean hasLaunchFrom() {
+        return ((bitField0_ & 0x00400000) != 0);
+      }
+      /**
+       * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+       * @return The launchFrom.
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom getLaunchFrom() {
+        org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom result = org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom.forNumber(launchFrom_);
+        return result == null ? org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom.FROM_UNKNOWN : result;
+      }
+      /**
+       * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+       * @param value The launchFrom to set.
+       */
+      private void setLaunchFrom(org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom value) {
+        launchFrom_ = value.getNumber();
+        bitField0_ |= 0x00400000;
+      }
+      /**
+       * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+       */
+      private void clearLaunchFrom() {
+        bitField0_ = (bitField0_ & ~0x00400000);
+        launchFrom_ = 0;
+      }
+
       public static org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8047,7 +8238,7 @@ public final class CastLogsProtos {
       /**
        * <pre>
        * Stores Cast-enabled device specific events with a various context data.
-       * Next tag: 26
+       * Next tag: 27
        * </pre>
        *
        * Protobuf type {@code metrics.CastLogsProto.CastEventProto}
@@ -9671,6 +9862,42 @@ public final class CastLogsProtos {
           return this;
         }
 
+        /**
+         * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+         * @return Whether the launchFrom field is set.
+         */
+        @java.lang.Override
+        public boolean hasLaunchFrom() {
+          return instance.hasLaunchFrom();
+        }
+        /**
+         * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+         * @return The launchFrom.
+         */
+        @java.lang.Override
+        public org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom getLaunchFrom() {
+          return instance.getLaunchFrom();
+        }
+        /**
+         * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+         * @param value The enum numeric value on the wire for launchFrom to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLaunchFrom(org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom value) {
+          copyOnWrite();
+          instance.setLaunchFrom(value);
+          return this;
+        }
+        /**
+         * <code>optional .metrics.CastLogsProto.CastEventProto.LaunchFrom launch_from = 26;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearLaunchFrom() {
+          copyOnWrite();
+          instance.clearLaunchFrom();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:metrics.CastLogsProto.CastEventProto)
       }
       @java.lang.Override
@@ -9714,14 +9941,16 @@ public final class CastLogsProtos {
                 "eventIdList_",
                 "duoCoreVersion_",
                 "hotwordModelId_",
+                "launchFrom_",
+                org.chromium.components.metrics.CastLogsProtos.CastLogsProto.CastEventProto.LaunchFrom.internalGetVerifier(),
               };
               java.lang.String info =
-                  "\u0001\u0019\u0000\u0001\u0001\u0019\u0019\u0000\u0003\u0000\u0001\u1005\u0000\u0002" +
+                  "\u0001\u001a\u0000\u0001\u0001\u001a\u001a\u0000\u0003\u0000\u0001\u1005\u0000\u0002" +
                   "\u1002\u0001\u0003\u1006\u0002\u0004\u1005\u0004\u0005\u1005\u0005\u0006\u1006\u0007" +
                   "\u0007\u1006\b\b\u1002\t\t\u1005\u0006\n\u1005\n\u000b\u1008\u000b\f\u1006\f\r\u1008" +
                   "\r\u000e\u001b\u000f\u0013\u0010\u1008\u000e\u0011\u1008\u0011\u0012\u1002\u000f" +
                   "\u0013\u1006\u0003\u0014\u1008\u0012\u0015\u1008\u0010\u0016\u1008\u0013\u0017\u001a" +
-                  "\u0018\u1005\u0014\u0019\u1008\u0015";
+                  "\u0018\u1005\u0014\u0019\u1008\u0015\u001a\u100c\u0016";
               return newMessageInfo(DEFAULT_INSTANCE, info, objects);
           }
           // fall through
@@ -10083,7 +10312,7 @@ public final class CastLogsProtos {
       /**
        * <pre>
        * This is the last type of reboot the device encountered
-       * Next tag: 17
+       * Next tag: 19
        * </pre>
        *
        * Protobuf enum {@code metrics.CastLogsProto.CastDeviceMutableInfo.RebootType}
@@ -10199,6 +10428,14 @@ public final class CastLogsProtos {
          * <code>REBOOT_TYPE_UNGRACEFUL_RESTART = 16;</code>
          */
         REBOOT_TYPE_UNGRACEFUL_RESTART(16),
+        /**
+         * <code>MULTI_SERVICE_BUG = 17;</code>
+         */
+        MULTI_SERVICE_BUG(17),
+        /**
+         * <code>POWER_MANAGER = 18;</code>
+         */
+        POWER_MANAGER(18),
         ;
 
         /**
@@ -10310,6 +10547,14 @@ public final class CastLogsProtos {
          * <code>REBOOT_TYPE_UNGRACEFUL_RESTART = 16;</code>
          */
         public static final int REBOOT_TYPE_UNGRACEFUL_RESTART_VALUE = 16;
+        /**
+         * <code>MULTI_SERVICE_BUG = 17;</code>
+         */
+        public static final int MULTI_SERVICE_BUG_VALUE = 17;
+        /**
+         * <code>POWER_MANAGER = 18;</code>
+         */
+        public static final int POWER_MANAGER_VALUE = 18;
 
 
         @java.lang.Override
@@ -10346,6 +10591,8 @@ public final class CastLogsProtos {
             case 14: return REBOOT_TYPE_UTILITY_PROCESS_CRASH;
             case 15: return REBOOT_TYPE_GRACEFUL_RESTART;
             case 16: return REBOOT_TYPE_UNGRACEFUL_RESTART;
+            case 17: return MULTI_SERVICE_BUG;
+            case 18: return POWER_MANAGER;
             default: return null;
           }
         }

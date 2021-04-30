@@ -16,13 +16,12 @@ package org.chromium.blink.mojom;
 
 public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 160;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(160, 0)};
+    private static final int STRUCT_SIZE = 152;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(152, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.mojo_base.mojom.String16 name;
     public org.chromium.mojo_base.mojom.String16 shortName;
     public org.chromium.mojo_base.mojom.String16 description;
-    public org.chromium.mojo_base.mojom.String16[] categories;
     public org.chromium.url.mojom.Url startUrl;
     public int display;
     public int[] displayOverride;
@@ -42,6 +41,7 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
     public int backgroundColor;
     public org.chromium.mojo_base.mojom.String16 gcmSenderId;
     public org.chromium.url.mojom.Url scope;
+    public int captureLinks;
 
     private Manifest_(int version) {
         super(STRUCT_SIZE, version);
@@ -94,43 +94,32 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
-                {
-                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.categories = new org.chromium.mojo_base.mojom.String16[si1.elementsOrVersion];
-                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                        
-                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.categories[i1] = org.chromium.mojo_base.mojom.String16.decode(decoder2);
-                    }
-                }
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                 result.startUrl = org.chromium.url.mojom.Url.decode(decoder1);
                 }
                 {
                     
-                result.display = decoder0.readInt(48);
+                result.display = decoder0.readInt(40);
                     DisplayMode.validate(result.display);
+                    result.display = DisplayMode.toKnownValue(result.display);
                 }
                 {
                     
-                result.orientation = decoder0.readInt(52);
+                result.orientation = decoder0.readInt(44);
                     org.chromium.device.mojom.ScreenOrientationLockType.validate(result.orientation);
+                    result.orientation = org.chromium.device.mojom.ScreenOrientationLockType.toKnownValue(result.orientation);
                 }
                 {
                     
-                result.displayOverride = decoder0.readInts(56, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.displayOverride = decoder0.readInts(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.displayOverride.length; ++i0) {
-                        DisplayMode.validate(result.displayOverride[i0]);
+                    for (int i1 = 0; i1 < result.displayOverride.length; ++i1) {
+                        DisplayMode.validate(result.displayOverride[i1]);
                     }
                 }
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.icons = new ManifestImageResource[si1.elementsOrVersion];
@@ -143,7 +132,7 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.screenshots = new ManifestImageResource[si1.elementsOrVersion];
@@ -156,7 +145,7 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.shortcuts = new ManifestShortcutItem[si1.elementsOrVersion];
@@ -169,12 +158,12 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, true);
                 result.shareTarget = ManifestShareTarget.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.fileHandlers = new ManifestFileHandler[si1.elementsOrVersion];
@@ -187,7 +176,7 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.protocolHandlers = new ManifestProtocolHandler[si1.elementsOrVersion];
@@ -200,7 +189,7 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.urlHandlers = new ManifestUrlHandler[si1.elementsOrVersion];
@@ -213,7 +202,7 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.relatedApplications = new ManifestRelatedApplication[si1.elementsOrVersion];
@@ -226,32 +215,38 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.preferRelatedApplications = decoder0.readBoolean(128, 0);
+                result.preferRelatedApplications = decoder0.readBoolean(120, 0);
                 }
                 {
                     
-                result.hasThemeColor = decoder0.readBoolean(128, 1);
+                result.hasThemeColor = decoder0.readBoolean(120, 1);
                 }
                 {
                     
-                result.hasBackgroundColor = decoder0.readBoolean(128, 2);
+                result.hasBackgroundColor = decoder0.readBoolean(120, 2);
                 }
                 {
                     
-                result.themeColor = decoder0.readInt(132);
+                result.themeColor = decoder0.readInt(124);
                 }
                 {
                     
-                result.backgroundColor = decoder0.readInt(136);
+                result.backgroundColor = decoder0.readInt(128);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(144, true);
+                result.captureLinks = decoder0.readInt(132);
+                    CaptureLinks.validate(result.captureLinks);
+                    result.captureLinks = CaptureLinks.toKnownValue(result.captureLinks);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(136, true);
                 result.gcmSenderId = org.chromium.mojo_base.mojom.String16.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(152, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(144, false);
                 result.scope = org.chromium.url.mojom.Url.decode(decoder1);
                 }
 
@@ -272,28 +267,18 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.description, 24, true);
         
-        if (this.categories == null) {
-            encoder0.encodeNullPointer(32, false);
-        } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.categories.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-            for (int i0 = 0; i0 < this.categories.length; ++i0) {
-                
-                encoder1.encode(this.categories[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-            }
-        }
+        encoder0.encode(this.startUrl, 32, false);
         
-        encoder0.encode(this.startUrl, 40, false);
+        encoder0.encode(this.display, 40);
         
-        encoder0.encode(this.display, 48);
+        encoder0.encode(this.orientation, 44);
         
-        encoder0.encode(this.orientation, 52);
-        
-        encoder0.encode(this.displayOverride, 56, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.displayOverride, 48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
         if (this.icons == null) {
-            encoder0.encodeNullPointer(64, false);
+            encoder0.encodeNullPointer(56, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.icons.length, 64, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.icons.length, 56, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.icons.length; ++i0) {
                 
                 encoder1.encode(this.icons[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -301,9 +286,9 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.screenshots == null) {
-            encoder0.encodeNullPointer(72, false);
+            encoder0.encodeNullPointer(64, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.screenshots.length, 72, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.screenshots.length, 64, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.screenshots.length; ++i0) {
                 
                 encoder1.encode(this.screenshots[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -311,21 +296,21 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.shortcuts == null) {
-            encoder0.encodeNullPointer(80, false);
+            encoder0.encodeNullPointer(72, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.shortcuts.length, 80, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.shortcuts.length, 72, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.shortcuts.length; ++i0) {
                 
                 encoder1.encode(this.shortcuts[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.shareTarget, 88, true);
+        encoder0.encode(this.shareTarget, 80, true);
         
         if (this.fileHandlers == null) {
-            encoder0.encodeNullPointer(96, false);
+            encoder0.encodeNullPointer(88, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.fileHandlers.length, 96, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.fileHandlers.length, 88, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.fileHandlers.length; ++i0) {
                 
                 encoder1.encode(this.fileHandlers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -333,9 +318,9 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.protocolHandlers == null) {
-            encoder0.encodeNullPointer(104, false);
+            encoder0.encodeNullPointer(96, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.protocolHandlers.length, 104, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.protocolHandlers.length, 96, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.protocolHandlers.length; ++i0) {
                 
                 encoder1.encode(this.protocolHandlers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -343,9 +328,9 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.urlHandlers == null) {
-            encoder0.encodeNullPointer(112, false);
+            encoder0.encodeNullPointer(104, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.urlHandlers.length, 112, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.urlHandlers.length, 104, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.urlHandlers.length; ++i0) {
                 
                 encoder1.encode(this.urlHandlers[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -353,27 +338,29 @@ public final class Manifest_ extends org.chromium.mojo.bindings.Struct {
         }
         
         if (this.relatedApplications == null) {
-            encoder0.encodeNullPointer(120, false);
+            encoder0.encodeNullPointer(112, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.relatedApplications.length, 120, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.relatedApplications.length, 112, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.relatedApplications.length; ++i0) {
                 
                 encoder1.encode(this.relatedApplications[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.preferRelatedApplications, 128, 0);
+        encoder0.encode(this.preferRelatedApplications, 120, 0);
         
-        encoder0.encode(this.hasThemeColor, 128, 1);
+        encoder0.encode(this.hasThemeColor, 120, 1);
         
-        encoder0.encode(this.hasBackgroundColor, 128, 2);
+        encoder0.encode(this.hasBackgroundColor, 120, 2);
         
-        encoder0.encode(this.themeColor, 132);
+        encoder0.encode(this.themeColor, 124);
         
-        encoder0.encode(this.backgroundColor, 136);
+        encoder0.encode(this.backgroundColor, 128);
         
-        encoder0.encode(this.gcmSenderId, 144, true);
+        encoder0.encode(this.captureLinks, 132);
         
-        encoder0.encode(this.scope, 152, false);
+        encoder0.encode(this.gcmSenderId, 136, true);
+        
+        encoder0.encode(this.scope, 144, false);
     }
 }

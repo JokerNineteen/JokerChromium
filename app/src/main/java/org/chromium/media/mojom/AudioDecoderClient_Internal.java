@@ -301,6 +301,7 @@ int reason) {
                         
                     result.reason = decoder0.readInt(8);
                         WaitingReason.validate(result.reason);
+                        result.reason = WaitingReason.toKnownValue(result.reason);
                     }
 
             } finally {

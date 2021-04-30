@@ -224,7 +224,7 @@ GetInterestCohortResponse callback) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public String interestCohort;
+        public InterestCohort interestCohort;
 
         private FlocServiceGetInterestCohortResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -261,7 +261,8 @@ GetInterestCohortResponse callback) {
                 result = new FlocServiceGetInterestCohortResponseParams(elementsOrVersion);
                     {
                         
-                    result.interestCohort = decoder0.readString(8, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.interestCohort = InterestCohort.decode(decoder1);
                     }
 
             } finally {
@@ -324,7 +325,7 @@ GetInterestCohortResponse callback) {
         }
 
         @Override
-        public void call(String interestCohort) {
+        public void call(InterestCohort interestCohort) {
             FlocServiceGetInterestCohortResponseParams _response = new FlocServiceGetInterestCohortResponseParams();
 
             _response.interestCohort = interestCohort;

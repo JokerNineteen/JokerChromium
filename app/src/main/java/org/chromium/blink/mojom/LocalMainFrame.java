@@ -63,7 +63,7 @@ org.chromium.gfx.mojom.Rect rectInRootFrame);
 
 
     void installCoopAccessMonitor(
-int reportType, org.chromium.mojo_base.mojom.UnguessableToken accessedWindow, org.chromium.network.mojom.CrossOriginOpenerPolicyReporter reporter, boolean endpointDefined, String reportedWindowUrl);
+int reportType, FrameToken accessedWindow, org.chromium.network.mojom.CrossOriginOpenerPolicyReporter reporter, boolean endpointDefined, String reportedWindowUrl);
 
 
 
@@ -77,6 +77,16 @@ OnPortalActivatedResponse callback);
 
     void forwardMessageFromHost(
 TransferableMessage message, org.chromium.url.internal.mojom.Origin sourceOrigin);
+
+
+
+    void updateBrowserControlsState(
+int constraints, int current, boolean animate);
+
+
+
+    void updateWindowControlsOverlay(
+org.chromium.gfx.mojom.Rect windowControlsOverlayRect, org.chromium.gfx.mojom.Insets insets);
 
 
 }

@@ -64,6 +64,7 @@ public final class DirectoryEntry extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(16);
                     FsFileType.validate(result.type);
+                    result.type = FsFileType.toKnownValue(result.type);
                 }
 
         } finally {

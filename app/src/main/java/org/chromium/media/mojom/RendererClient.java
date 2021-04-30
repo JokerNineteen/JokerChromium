@@ -40,7 +40,7 @@ int state, int reason);
 
 
     void onError(
-);
+Status status);
 
 
 

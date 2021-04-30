@@ -88,6 +88,7 @@ public final class VideoInputDeviceCapabilities extends org.chromium.mojo.bindin
                     
                 result.facingMode = decoder0.readInt(40);
                     FacingMode.validate(result.facingMode);
+                    result.facingMode = FacingMode.toKnownValue(result.facingMode);
                 }
 
         } finally {

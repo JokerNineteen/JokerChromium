@@ -16,13 +16,13 @@ package org.chromium.viz.mojom;
 
 public final class TileQuadState extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.gfx.mojom.RectF texCoordRect;
     public org.chromium.gfx.mojom.Size textureSize;
     public boolean isPremultiplied;
-    public int resourceId;
+    public ResourceId resourceId;
     public boolean nearestNeighbor;
     public boolean forceAntiAliasingOff;
 
@@ -83,7 +83,8 @@ public final class TileQuadState extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.resourceId = decoder0.readInt(28);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                result.resourceId = ResourceId.decode(decoder1);
                 }
 
         } finally {
@@ -107,6 +108,6 @@ public final class TileQuadState extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.forceAntiAliasingOff, 24, 2);
         
-        encoder0.encode(this.resourceId, 28);
+        encoder0.encode(this.resourceId, 32, false);
     }
 }

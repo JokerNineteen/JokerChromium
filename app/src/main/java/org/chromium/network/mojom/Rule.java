@@ -23,7 +23,7 @@ public final class Rule extends org.chromium.mojo.bindings.Struct {
     public String hostPattern;
     public String replacement;
     public int hostResolverFlags;
-    public String canonicalName;
+    public String[] dnsAliases;
 
     private Rule(int version) {
         super(STRUCT_SIZE, version);
@@ -62,6 +62,7 @@ public final class Rule extends org.chromium.mojo.bindings.Struct {
                     
                 result.resolverType = decoder0.readInt(8);
                     ResolverType.validate(result.resolverType);
+                    result.resolverType = ResolverType.toKnownValue(result.resolverType);
                 }
                 {
                     
@@ -77,7 +78,15 @@ public final class Rule extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.canonicalName = decoder0.readString(32, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.dnsAliases = new String[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        result.dnsAliases[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
                 }
 
         } finally {
@@ -99,6 +108,14 @@ public final class Rule extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.replacement, 24, false);
         
-        encoder0.encode(this.canonicalName, 32, false);
+        if (this.dnsAliases == null) {
+            encoder0.encodeNullPointer(32, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.dnsAliases.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.dnsAliases.length; ++i0) {
+                
+                encoder1.encode(this.dnsAliases[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
     }
 }

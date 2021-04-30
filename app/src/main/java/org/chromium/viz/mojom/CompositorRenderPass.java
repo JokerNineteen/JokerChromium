@@ -16,8 +16,8 @@ package org.chromium.viz.mojom;
 
 public final class CompositorRenderPass extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 88;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
+    private static final int STRUCT_SIZE = 96;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(96, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public CompositorRenderPassId id;
     public org.chromium.gfx.mojom.Rect outputRect;
@@ -26,6 +26,7 @@ public final class CompositorRenderPass extends org.chromium.mojo.bindings.Struc
     public FilterOperations filters;
     public FilterOperations backdropFilters;
     public org.chromium.gfx.mojom.RRectF backdropFilterBounds;
+    public SubtreeCaptureId subtreeCaptureId;
     public boolean hasTransparentBackground;
     public boolean cacheRenderPass;
     public boolean hasDamageFromContributingContent;
@@ -106,23 +107,28 @@ public final class CompositorRenderPass extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                result.hasTransparentBackground = decoder0.readBoolean(64, 0);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
+                result.subtreeCaptureId = SubtreeCaptureId.decode(decoder1);
                 }
                 {
                     
-                result.cacheRenderPass = decoder0.readBoolean(64, 1);
+                result.hasTransparentBackground = decoder0.readBoolean(72, 0);
                 }
                 {
                     
-                result.hasDamageFromContributingContent = decoder0.readBoolean(64, 2);
+                result.cacheRenderPass = decoder0.readBoolean(72, 1);
                 }
                 {
                     
-                result.generateMipmap = decoder0.readBoolean(64, 3);
+                result.hasDamageFromContributingContent = decoder0.readBoolean(72, 2);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                result.generateMipmap = decoder0.readBoolean(72, 3);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.copyRequests = new CopyOutputRequest[si1.elementsOrVersion];
@@ -135,7 +141,7 @@ public final class CompositorRenderPass extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.quadList = new DrawQuad[si1.elementsOrVersion];
@@ -172,18 +178,20 @@ public final class CompositorRenderPass extends org.chromium.mojo.bindings.Struc
         
         encoder0.encode(this.backdropFilterBounds, 56, true);
         
-        encoder0.encode(this.hasTransparentBackground, 64, 0);
+        encoder0.encode(this.subtreeCaptureId, 64, false);
         
-        encoder0.encode(this.cacheRenderPass, 64, 1);
+        encoder0.encode(this.hasTransparentBackground, 72, 0);
         
-        encoder0.encode(this.hasDamageFromContributingContent, 64, 2);
+        encoder0.encode(this.cacheRenderPass, 72, 1);
         
-        encoder0.encode(this.generateMipmap, 64, 3);
+        encoder0.encode(this.hasDamageFromContributingContent, 72, 2);
+        
+        encoder0.encode(this.generateMipmap, 72, 3);
         
         if (this.copyRequests == null) {
-            encoder0.encodeNullPointer(72, false);
+            encoder0.encodeNullPointer(80, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.copyRequests.length, 72, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.copyRequests.length, 80, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.copyRequests.length; ++i0) {
                 
                 encoder1.encode(this.copyRequests[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
@@ -191,9 +199,9 @@ public final class CompositorRenderPass extends org.chromium.mojo.bindings.Struc
         }
         
         if (this.quadList == null) {
-            encoder0.encodeNullPointer(80, false);
+            encoder0.encodeNullPointer(88, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.quadList.length, 80, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.quadList.length, 88, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.quadList.length; ++i0) {
                 
                 encoder1.encode(this.quadList[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);

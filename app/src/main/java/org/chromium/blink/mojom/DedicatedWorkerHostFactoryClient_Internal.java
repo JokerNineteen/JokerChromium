@@ -64,11 +64,13 @@ class DedicatedWorkerHostFactoryClient_Internal {
 
         @Override
         public void onWorkerHostCreated(
-BrowserInterfaceBroker browserInterfaceBroker) {
+BrowserInterfaceBroker browserInterfaceBroker, DedicatedWorkerHost host) {
 
             DedicatedWorkerHostFactoryClientOnWorkerHostCreatedParams _message = new DedicatedWorkerHostFactoryClientOnWorkerHostCreatedParams();
 
             _message.browserInterfaceBroker = browserInterfaceBroker;
+
+            _message.host = host;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -155,7 +157,7 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
                         DedicatedWorkerHostFactoryClientOnWorkerHostCreatedParams data =
                                 DedicatedWorkerHostFactoryClientOnWorkerHostCreatedParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onWorkerHostCreated(data.browserInterfaceBroker);
+                        getImpl().onWorkerHostCreated(data.browserInterfaceBroker, data.host);
                         return true;
                     }
 
@@ -234,10 +236,11 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
     
     static final class DedicatedWorkerHostFactoryClientOnWorkerHostCreatedParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public BrowserInterfaceBroker browserInterfaceBroker;
+        public DedicatedWorkerHost host;
 
         private DedicatedWorkerHostFactoryClientOnWorkerHostCreatedParams(int version) {
             super(STRUCT_SIZE, version);
@@ -276,6 +279,10 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
                         
                     result.browserInterfaceBroker = decoder0.readServiceInterface(8, false, BrowserInterfaceBroker.MANAGER);
                     }
+                    {
+                        
+                    result.host = decoder0.readServiceInterface(16, false, DedicatedWorkerHost.MANAGER);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -289,6 +296,8 @@ ServiceWorkerContainerInfoForClient serviceWorkerContainerInfo, WorkerMainScript
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.browserInterfaceBroker, 8, false, BrowserInterfaceBroker.MANAGER);
+            
+            encoder0.encode(this.host, 16, false, DedicatedWorkerHost.MANAGER);
         }
     }
 

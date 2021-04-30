@@ -33,7 +33,7 @@ SyncCompositorDemandDrawHwParams drawParams);
 SyncCompositorDemandDrawHwParams drawParams, 
 DemandDrawHwResponse callback);
 
-    interface DemandDrawHwResponse extends org.chromium.mojo.bindings.Callbacks.Callback5<SyncCompositorCommonRendererParams, Integer, Integer, org.chromium.viz.mojom.CompositorFrame, org.chromium.viz.mojom.HitTestRegionList> { }
+    interface DemandDrawHwResponse extends org.chromium.mojo.bindings.Callbacks.Callback6<SyncCompositorCommonRendererParams, Integer, Integer, org.chromium.viz.mojom.LocalSurfaceId, org.chromium.viz.mojom.CompositorFrame, org.chromium.viz.mojom.HitTestRegionList> { }
 
 
 

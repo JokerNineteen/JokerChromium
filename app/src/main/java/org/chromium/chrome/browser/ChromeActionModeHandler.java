@@ -16,12 +16,14 @@ import org.chromium.base.Callback;
 import org.chromium.base.CollectionUtil;
 import org.chromium.base.Consumer;
 import org.chromium.base.PackageManagerUtils;
+import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.base.supplier.Supplier;
 import org.chromium.chrome.browser.firstrun.FirstRunStatus;
 import org.chromium.chrome.browser.locale.LocaleManager;
 import org.chromium.chrome.browser.share.ChromeShareExtras;
 import org.chromium.chrome.browser.share.ShareDelegate;
+import org.chromium.chrome.browser.share.ShareDelegateImpl.ShareOrigin;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tab.TabUtils;
 import org.chromium.chrome.browser.tab.TabWebContentsObserver;
@@ -98,6 +100,9 @@ public class ChromeActionModeHandler {
         private final Callback<String> mSearchCallback;
         private final Supplier<ShareDelegate> mShareDelegateSupplier;
 
+        // Used for recording UMA histograms.
+        private long mContextMenuStartTime;
+
         ActionModeCallback(Tab tab, WebContents webContents, Consumer<Boolean> observer,
                 Callback<String> searchCallback, Supplier<ShareDelegate> shareDelegateSupplier) {
             mTab = tab;
@@ -115,6 +120,7 @@ public class ChromeActionModeHandler {
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mContextMenuStartTime = System.currentTimeMillis();
             notifyContextualActionBarVisibilityChanged(true);
 
             int allowedActionModes = ActionModeCallbackHelper.MENU_ITEM_PROCESS_TEXT
@@ -166,6 +172,9 @@ public class ChromeActionModeHandler {
                 mHelper.finishActionMode();
             } else if (mShareDelegateSupplier.get().isSharingHubV15Enabled()
                     && item.getItemId() == R.id.select_action_menu_share) {
+                RecordUserAction.record(SelectionPopupController.UMA_MOBILE_ACTION_MODE_SHARE);
+                RecordHistogram.recordMediumTimesHistogram("ContextMenu.TimeToSelectShare",
+                        System.currentTimeMillis() - mContextMenuStartTime);
                 mShareDelegateSupplier.get().share(
                         new ShareParams.Builder(mTab.getWindowAndroid(), /*url=*/"", /*title=*/"")
                                 .setText(sanitizeTextForShare(mHelper.getSelectedText()))
@@ -173,7 +182,8 @@ public class ChromeActionModeHandler {
                         new ChromeShareExtras.Builder()
                                 .setSaveLastUsed(true)
                                 .setIsUserHighlightedText(true)
-                                .build());
+                                .build(),
+                        ShareOrigin.MOBILE_ACTION_MODE);
             } else {
                 return mHelper.onActionItemClicked(mode, item);
             }

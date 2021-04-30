@@ -16,8 +16,8 @@ package org.chromium.network.mojom;
 
 public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 232;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(232, 0)};
+    private static final int STRUCT_SIZE = 256;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(256, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.mojo_base.mojom.Time requestTime;
     public org.chromium.mojo_base.mojom.Time responseTime;
@@ -46,6 +46,7 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
     public boolean wasFallbackRequiredByServiceWorker;
     public org.chromium.url.mojom.Url[] urlListViaServiceWorker;
     public int responseType;
+    public long padding;
     public String cacheStorageCacheName;
     public int certStatus;
     public SslInfo sslInfo;
@@ -67,6 +68,8 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
     public ParsedHeaders parsedHeaders;
     public OriginPolicy originPolicy;
     public org.chromium.mojo_base.mojom.UnguessableToken recursivePrefetchToken;
+    public String[] dnsAliases;
+    public org.chromium.url.mojom.Url webBundleUrl;
 
     private UrlResponseHead(int version) {
         super(STRUCT_SIZE, version);
@@ -83,6 +86,7 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
         this.serviceWorkerResponseSource = (int) FetchResponseSource.UNSPECIFIED;
         this.wasFallbackRequiredByServiceWorker = (boolean) false;
         this.responseType = (int) FetchResponseType.DEFAULT;
+        this.padding = (long) 0;
         this.certStatus = (int) 0;
         this.didServiceWorkerNavigationPreload = (boolean) false;
         this.shouldReportCorbBlocking = (boolean) false;
@@ -153,6 +157,7 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
                     
                 result.ctPolicyCompliance = decoder0.readInt(48);
                     CtPolicyCompliance.validate(result.ctPolicyCompliance);
+                    result.ctPolicyCompliance = CtPolicyCompliance.toKnownValue(result.ctPolicyCompliance);
                 }
                 {
                     
@@ -261,11 +266,13 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
                     
                 result.connectionInfo = decoder0.readInt(112);
                     ConnectionInfo.validate(result.connectionInfo);
+                    result.connectionInfo = ConnectionInfo.toKnownValue(result.connectionInfo);
                 }
                 {
                     
                 result.serviceWorkerResponseSource = decoder0.readInt(116);
                     FetchResponseSource.validate(result.serviceWorkerResponseSource);
+                    result.serviceWorkerResponseSource = FetchResponseSource.toKnownValue(result.serviceWorkerResponseSource);
                 }
                 {
                     
@@ -298,6 +305,7 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
                     
                 result.responseType = decoder0.readInt(152);
                     FetchResponseType.validate(result.responseType);
+                    result.responseType = FetchResponseType.toKnownValue(result.responseType);
                 }
                 {
                     
@@ -305,16 +313,20 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.cacheStorageCacheName = decoder0.readString(160, false);
+                result.padding = decoder0.readLong(160);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, true);
+                result.cacheStorageCacheName = decoder0.readString(168, false);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(176, true);
                 result.sslInfo = SslInfo.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(176, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(184, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.corsExposedHeaderNames = new String[si1.elementsOrVersion];
@@ -326,33 +338,50 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(184, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(192, true);
                 result.authChallengeInfo = AuthChallengeInfo.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(192, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(200, false);
                 result.requestStart = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(200, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(208, false);
                 result.responseStart = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(208, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(216, true);
                 result.parsedHeaders = ParsedHeaders.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(216, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(224, true);
                 result.originPolicy = OriginPolicy.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(224, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(232, true);
                 result.recursivePrefetchToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(240, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.dnsAliases = new String[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        result.dnsAliases[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                    }
+                }
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(248, false);
+                result.webBundleUrl = org.chromium.url.mojom.Url.decode(decoder1);
                 }
 
         } finally {
@@ -452,30 +481,44 @@ public final class UrlResponseHead extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.certStatus, 156);
         
-        encoder0.encode(this.cacheStorageCacheName, 160, false);
+        encoder0.encode(this.padding, 160);
         
-        encoder0.encode(this.sslInfo, 168, true);
+        encoder0.encode(this.cacheStorageCacheName, 168, false);
+        
+        encoder0.encode(this.sslInfo, 176, true);
         
         if (this.corsExposedHeaderNames == null) {
-            encoder0.encodeNullPointer(176, false);
+            encoder0.encodeNullPointer(184, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsExposedHeaderNames.length, 176, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.corsExposedHeaderNames.length, 184, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.corsExposedHeaderNames.length; ++i0) {
                 
                 encoder1.encode(this.corsExposedHeaderNames[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.authChallengeInfo, 184, true);
+        encoder0.encode(this.authChallengeInfo, 192, true);
         
-        encoder0.encode(this.requestStart, 192, false);
+        encoder0.encode(this.requestStart, 200, false);
         
-        encoder0.encode(this.responseStart, 200, false);
+        encoder0.encode(this.responseStart, 208, false);
         
-        encoder0.encode(this.parsedHeaders, 208, true);
+        encoder0.encode(this.parsedHeaders, 216, true);
         
-        encoder0.encode(this.originPolicy, 216, true);
+        encoder0.encode(this.originPolicy, 224, true);
         
-        encoder0.encode(this.recursivePrefetchToken, 224, true);
+        encoder0.encode(this.recursivePrefetchToken, 232, true);
+        
+        if (this.dnsAliases == null) {
+            encoder0.encodeNullPointer(240, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.dnsAliases.length, 240, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.dnsAliases.length; ++i0) {
+                
+                encoder1.encode(this.dnsAliases[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
+        
+        encoder0.encode(this.webBundleUrl, 248, false);
     }
 }

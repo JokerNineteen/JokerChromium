@@ -1,12 +1,12 @@
 package org.chromium.components.payments;
 
 import java.lang.Override;
-import java.lang.String;
 import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -25,12 +25,12 @@ final class OriginSecurityCheckerJni implements OriginSecurityChecker.Natives {
   };
 
   @Override
-  public boolean isOriginSecure(String url) {
+  public boolean isOriginSecure(GURL url) {
     return (boolean)GEN_JNI.org_chromium_components_payments_OriginSecurityChecker_isOriginSecure(url);
   }
 
   @Override
-  public boolean isSchemeCryptographic(String url) {
+  public boolean isSchemeCryptographic(GURL url) {
     return (boolean)GEN_JNI.org_chromium_components_payments_OriginSecurityChecker_isSchemeCryptographic(url);
   }
 

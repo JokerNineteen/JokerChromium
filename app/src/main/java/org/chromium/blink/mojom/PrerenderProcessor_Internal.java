@@ -62,13 +62,11 @@ class PrerenderProcessor_Internal {
 
         @Override
         public void start(
-PrerenderAttributes prerenderAttribute, PrerenderProcessorClient prerenderProcessorClient) {
+PrerenderAttributes prerenderAttribute) {
 
             PrerenderProcessorStartParams _message = new PrerenderProcessorStartParams();
 
             _message.prerenderAttribute = prerenderAttribute;
-
-            _message.prerenderProcessorClient = prerenderProcessorClient;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -130,7 +128,7 @@ PrerenderAttributes prerenderAttribute, PrerenderProcessorClient prerenderProces
                         PrerenderProcessorStartParams data =
                                 PrerenderProcessorStartParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().start(data.prerenderAttribute, data.prerenderProcessorClient);
+                        getImpl().start(data.prerenderAttribute);
                         return true;
                     }
 
@@ -194,11 +192,10 @@ PrerenderAttributes prerenderAttribute, PrerenderProcessorClient prerenderProces
     
     static final class PrerenderProcessorStartParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 24;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public PrerenderAttributes prerenderAttribute;
-        public PrerenderProcessorClient prerenderProcessorClient;
 
         private PrerenderProcessorStartParams(int version) {
             super(STRUCT_SIZE, version);
@@ -238,10 +235,6 @@ PrerenderAttributes prerenderAttribute, PrerenderProcessorClient prerenderProces
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.prerenderAttribute = PrerenderAttributes.decode(decoder1);
                     }
-                    {
-                        
-                    result.prerenderProcessorClient = decoder0.readServiceInterface(16, false, PrerenderProcessorClient.MANAGER);
-                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -255,8 +248,6 @@ PrerenderAttributes prerenderAttribute, PrerenderProcessorClient prerenderProces
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.prerenderAttribute, 8, false);
-            
-            encoder0.encode(this.prerenderProcessorClient, 16, false, PrerenderProcessorClient.MANAGER);
         }
     }
 

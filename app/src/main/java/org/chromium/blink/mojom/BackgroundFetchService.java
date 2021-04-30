@@ -25,7 +25,7 @@ public interface BackgroundFetchService extends org.chromium.mojo.bindings.Inter
 
 
     void fetch(
-long serviceWorkerRegistrationId, String developerId, FetchApiRequest[] requests, BackgroundFetchOptions options, org.chromium.skia.mojom.Bitmap icon, BackgroundFetchUkmData ukmData, 
+long serviceWorkerRegistrationId, String developerId, FetchApiRequest[] requests, BackgroundFetchOptions options, org.chromium.skia.mojom.BitmapN32 icon, BackgroundFetchUkmData ukmData, 
 FetchResponse callback);
 
     interface FetchResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, BackgroundFetchRegistration> { }

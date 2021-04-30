@@ -28,6 +28,7 @@ android {
             res {
                 srcDirs += [
                         "$rootDir/base_res",
+                        "$rootDir/compontents/payments/src/main/google_pay_res",
                 ]
             }
         }
@@ -40,4 +41,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":components:browser_ui_styles")
 }

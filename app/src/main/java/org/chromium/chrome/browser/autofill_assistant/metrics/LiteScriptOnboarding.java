@@ -18,7 +18,10 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
     LiteScriptOnboarding.LITE_SCRIPT_ONBOARDING_SEEN_AND_ACCEPTED,
     LiteScriptOnboarding.LITE_SCRIPT_ONBOARDING_SEEN_AND_REJECTED,
-    LiteScriptOnboarding.LITE_SCRIPT_ONBOARDING_ALREADY_ACCEPTED, LiteScriptOnboarding.MAX_VALUE
+    LiteScriptOnboarding.LITE_SCRIPT_ONBOARDING_ALREADY_ACCEPTED,
+    LiteScriptOnboarding.LITE_SCRIPT_ONBOARDING_SEEN_AND_DISMISSED,
+    LiteScriptOnboarding.LITE_SCRIPT_ONBOARDING_SEEN_AND_INTERRUPTED_BY_NAVIGATION,
+    LiteScriptOnboarding.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface LiteScriptOnboarding {
@@ -34,5 +37,13 @@ public @interface LiteScriptOnboarding {
    * The user has already accepted the onboarding in the past.
    */
   int LITE_SCRIPT_ONBOARDING_ALREADY_ACCEPTED = 2;
-  int MAX_VALUE = LITE_SCRIPT_ONBOARDING_ALREADY_ACCEPTED;
+  /**
+   * The user has seen and dismissed the onboarding.
+   */
+  int LITE_SCRIPT_ONBOARDING_SEEN_AND_DISMISSED = 3;
+  /**
+   * The onboarding was interrupted by a website navigation.
+   */
+  int LITE_SCRIPT_ONBOARDING_SEEN_AND_INTERRUPTED_BY_NAVIGATION = 4;
+  int MAX_VALUE = LITE_SCRIPT_ONBOARDING_SEEN_AND_INTERRUPTED_BY_NAVIGATION;
 }

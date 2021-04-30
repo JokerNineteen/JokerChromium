@@ -867,6 +867,7 @@ int result) {
                         
                     result.error = decoder0.readInt(8);
                         PaymentErrorReason.validate(result.error);
+                        result.error = PaymentErrorReason.toKnownValue(result.error);
                     }
                     {
                         
@@ -1056,6 +1057,7 @@ int result) {
                         
                     result.result = decoder0.readInt(8);
                         CanMakePaymentQueryResult.validate(result.result);
+                        result.result = CanMakePaymentQueryResult.toKnownValue(result.result);
                     }
 
             } finally {
@@ -1120,6 +1122,7 @@ int result) {
                         
                     result.result = decoder0.readInt(8);
                         HasEnrolledInstrumentQueryResult.validate(result.result);
+                        result.result = HasEnrolledInstrumentQueryResult.toKnownValue(result.result);
                     }
 
             } finally {

@@ -29,6 +29,22 @@ public final class ModelsProto {
      * <code>OPTIMIZATION_TARGET_PAINFUL_PAGE_LOAD = 1;</code>
      */
     OPTIMIZATION_TARGET_PAINFUL_PAGE_LOAD(1),
+    /**
+     * <pre>
+     * Target for supplying the language detection model via the model downloader.
+     * </pre>
+     *
+     * <code>OPTIMIZATION_TARGET_LANGUAGE_DETECTION = 2;</code>
+     */
+    OPTIMIZATION_TARGET_LANGUAGE_DETECTION(2),
+    /**
+     * <pre>
+     * Target for determining topics present on a page.
+     * </pre>
+     *
+     * <code>OPTIMIZATION_TARGET_PAGE_TOPICS = 3;</code>
+     */
+    OPTIMIZATION_TARGET_PAGE_TOPICS(3),
     ;
 
     /**
@@ -43,6 +59,22 @@ public final class ModelsProto {
      * <code>OPTIMIZATION_TARGET_PAINFUL_PAGE_LOAD = 1;</code>
      */
     public static final int OPTIMIZATION_TARGET_PAINFUL_PAGE_LOAD_VALUE = 1;
+    /**
+     * <pre>
+     * Target for supplying the language detection model via the model downloader.
+     * </pre>
+     *
+     * <code>OPTIMIZATION_TARGET_LANGUAGE_DETECTION = 2;</code>
+     */
+    public static final int OPTIMIZATION_TARGET_LANGUAGE_DETECTION_VALUE = 2;
+    /**
+     * <pre>
+     * Target for determining topics present on a page.
+     * </pre>
+     *
+     * <code>OPTIMIZATION_TARGET_PAGE_TOPICS = 3;</code>
+     */
+    public static final int OPTIMIZATION_TARGET_PAGE_TOPICS_VALUE = 3;
 
 
     @java.lang.Override
@@ -64,6 +96,8 @@ public final class ModelsProto {
       switch (value) {
         case 0: return OPTIMIZATION_TARGET_UNKNOWN;
         case 1: return OPTIMIZATION_TARGET_PAINFUL_PAGE_LOAD;
+        case 2: return OPTIMIZATION_TARGET_LANGUAGE_DETECTION;
+        case 3: return OPTIMIZATION_TARGET_PAGE_TOPICS;
         default: return null;
       }
     }
@@ -332,6 +366,14 @@ public final class ModelsProto {
      * <code>MODEL_TYPE_DECISION_TREE = 1;</code>
      */
     MODEL_TYPE_DECISION_TREE(1),
+    /**
+     * <pre>
+     * A model using only operations that are supported by TensorflowLite 2.3.0.
+     * </pre>
+     *
+     * <code>MODEL_TYPE_TFLITE_2_3_0 = 2;</code>
+     */
+    MODEL_TYPE_TFLITE_2_3_0(2),
     ;
 
     /**
@@ -346,6 +388,14 @@ public final class ModelsProto {
      * <code>MODEL_TYPE_DECISION_TREE = 1;</code>
      */
     public static final int MODEL_TYPE_DECISION_TREE_VALUE = 1;
+    /**
+     * <pre>
+     * A model using only operations that are supported by TensorflowLite 2.3.0.
+     * </pre>
+     *
+     * <code>MODEL_TYPE_TFLITE_2_3_0 = 2;</code>
+     */
+    public static final int MODEL_TYPE_TFLITE_2_3_0_VALUE = 2;
 
 
     @java.lang.Override
@@ -367,6 +417,7 @@ public final class ModelsProto {
       switch (value) {
         case 0: return MODEL_TYPE_UNKNOWN;
         case 1: return MODEL_TYPE_DECISION_TREE;
+        case 2: return MODEL_TYPE_TFLITE_2_3_0;
         default: return null;
       }
     }
@@ -10139,37 +10190,40 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @return A list containing the supportedModelFeatures.
      */
-    java.util.List<org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature> getSupportedModelFeaturesList();
+    @java.lang.Deprecated java.util.List<org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature> getSupportedModelFeaturesList();
     /**
      * <pre>
      * The set of model features that are supported by the model.
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @return The count of supportedModelFeatures.
      */
-    int getSupportedModelFeaturesCount();
+    @java.lang.Deprecated int getSupportedModelFeaturesCount();
     /**
      * <pre>
      * The set of model features that are supported by the model.
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @param index The index of the element to return.
      * @return The supportedModelFeatures at the given index.
      */
-    org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature getSupportedModelFeatures(int index);
+    @java.lang.Deprecated org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature getSupportedModelFeatures(int index);
 
     /**
      * <pre>
@@ -10244,6 +10298,35 @@ public final class ModelsProto {
      */
     com.google.protobuf.ByteString
         getSupportedHostModelFeaturesBytes(int index);
+
+    /**
+     * <pre>
+     * Mechanism used for model owners to attach metadata to the request or
+     * response.
+     * In practice, we expect this to be used as a way to negotiate capabilities.
+     * The client can provide the model features they can evaluate if this field
+     * is part of the request, and the server can provide the model features that
+     * are actually present in the model.
+     * </pre>
+     *
+     * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+     * @return Whether the modelMetadata field is set.
+     */
+    boolean hasModelMetadata();
+    /**
+     * <pre>
+     * Mechanism used for model owners to attach metadata to the request or
+     * response.
+     * In practice, we expect this to be used as a way to negotiate capabilities.
+     * The client can provide the model features they can evaluate if this field
+     * is part of the request, and the server can provide the model features that
+     * are actually present in the model.
+     * </pre>
+     *
+     * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+     * @return The modelMetadata.
+     */
+    org.chromium.components.optimization_guide.proto.CommonTypesProto.Any getModelMetadata();
   }
   /**
    * <pre>
@@ -10382,13 +10465,14 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @return A list containing the supportedModelFeatures.
      */
     @java.lang.Override
-    public java.util.List<org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature> getSupportedModelFeaturesList() {
+    @java.lang.Deprecated public java.util.List<org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature> getSupportedModelFeaturesList() {
       return new com.google.protobuf.Internal.ListAdapter<
           java.lang.Integer, org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature>(supportedModelFeatures_, supportedModelFeatures_converter_);
     }
@@ -10398,13 +10482,14 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @return The count of supportedModelFeatures.
      */
     @java.lang.Override
-    public int getSupportedModelFeaturesCount() {
+    @java.lang.Deprecated public int getSupportedModelFeaturesCount() {
       return supportedModelFeatures_.size();
     }
     /**
@@ -10413,14 +10498,15 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @param index The index of the element to return.
      * @return The supportedModelFeatures at the given index.
      */
     @java.lang.Override
-    public org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature getSupportedModelFeatures(int index) {
+    @java.lang.Deprecated public org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature getSupportedModelFeatures(int index) {
       return supportedModelFeatures_converter_.convert(supportedModelFeatures_.getInt(index));
     }
     private void ensureSupportedModelFeaturesIsMutable() {
@@ -10436,9 +10522,10 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @param index The index to set the value at.
      * @param value The supportedModelFeatures to set.
      */
@@ -10454,9 +10541,10 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @param value The supportedModelFeatures to add.
      */
     private void addSupportedModelFeatures(org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature value) {
@@ -10470,9 +10558,10 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      * @param values The supportedModelFeatures to add.
      */
     private void addAllSupportedModelFeatures(
@@ -10488,9 +10577,10 @@ public final class ModelsProto {
      * If in the request, this represents the set of features that the client
      * understands how to evaluate. If in the response, this represents the set
      * of features referenced by the model.
+     * New use cases should use the model_metadata field instead.
      * </pre>
      *
-     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+     * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
      */
     private void clearSupportedModelFeatures() {
       supportedModelFeatures_ = emptyIntList();
@@ -10744,6 +10834,97 @@ public final class ModelsProto {
       supportedHostModelFeatures_.add(value.toStringUtf8());
     }
 
+    public static final int MODEL_METADATA_FIELD_NUMBER = 6;
+    private org.chromium.components.optimization_guide.proto.CommonTypesProto.Any modelMetadata_;
+    /**
+     * <pre>
+     * Mechanism used for model owners to attach metadata to the request or
+     * response.
+     * In practice, we expect this to be used as a way to negotiate capabilities.
+     * The client can provide the model features they can evaluate if this field
+     * is part of the request, and the server can provide the model features that
+     * are actually present in the model.
+     * </pre>
+     *
+     * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+     */
+    @java.lang.Override
+    public boolean hasModelMetadata() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * Mechanism used for model owners to attach metadata to the request or
+     * response.
+     * In practice, we expect this to be used as a way to negotiate capabilities.
+     * The client can provide the model features they can evaluate if this field
+     * is part of the request, and the server can provide the model features that
+     * are actually present in the model.
+     * </pre>
+     *
+     * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.optimization_guide.proto.CommonTypesProto.Any getModelMetadata() {
+      return modelMetadata_ == null ? org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.getDefaultInstance() : modelMetadata_;
+    }
+    /**
+     * <pre>
+     * Mechanism used for model owners to attach metadata to the request or
+     * response.
+     * In practice, we expect this to be used as a way to negotiate capabilities.
+     * The client can provide the model features they can evaluate if this field
+     * is part of the request, and the server can provide the model features that
+     * are actually present in the model.
+     * </pre>
+     *
+     * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+     */
+    private void setModelMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
+      value.getClass();
+  modelMetadata_ = value;
+      bitField0_ |= 0x00000004;
+      }
+    /**
+     * <pre>
+     * Mechanism used for model owners to attach metadata to the request or
+     * response.
+     * In practice, we expect this to be used as a way to negotiate capabilities.
+     * The client can provide the model features they can evaluate if this field
+     * is part of the request, and the server can provide the model features that
+     * are actually present in the model.
+     * </pre>
+     *
+     * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeModelMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
+      value.getClass();
+  if (modelMetadata_ != null &&
+          modelMetadata_ != org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.getDefaultInstance()) {
+        modelMetadata_ =
+          org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.newBuilder(modelMetadata_).mergeFrom(value).buildPartial();
+      } else {
+        modelMetadata_ = value;
+      }
+      bitField0_ |= 0x00000004;
+    }
+    /**
+     * <pre>
+     * Mechanism used for model owners to attach metadata to the request or
+     * response.
+     * In practice, we expect this to be used as a way to negotiate capabilities.
+     * The client can provide the model features they can evaluate if this field
+     * is part of the request, and the server can provide the model features that
+     * are actually present in the model.
+     * </pre>
+     *
+     * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+     */
+    private void clearModelMetadata() {  modelMetadata_ = null;
+      bitField0_ = (bitField0_ & ~0x00000004);
+    }
+
     public static org.chromium.components.optimization_guide.proto.ModelsProto.ModelInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10953,13 +11134,14 @@ public final class ModelsProto {
        * If in the request, this represents the set of features that the client
        * understands how to evaluate. If in the response, this represents the set
        * of features referenced by the model.
+       * New use cases should use the model_metadata field instead.
        * </pre>
        *
-       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
        * @return A list containing the supportedModelFeatures.
        */
       @java.lang.Override
-      public java.util.List<org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature> getSupportedModelFeaturesList() {
+      @java.lang.Deprecated public java.util.List<org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature> getSupportedModelFeaturesList() {
         return instance.getSupportedModelFeaturesList();
       }
       /**
@@ -10968,13 +11150,14 @@ public final class ModelsProto {
        * If in the request, this represents the set of features that the client
        * understands how to evaluate. If in the response, this represents the set
        * of features referenced by the model.
+       * New use cases should use the model_metadata field instead.
        * </pre>
        *
-       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
        * @return The count of supportedModelFeatures.
        */
       @java.lang.Override
-      public int getSupportedModelFeaturesCount() {
+      @java.lang.Deprecated public int getSupportedModelFeaturesCount() {
         return instance.getSupportedModelFeaturesCount();
       }
       /**
@@ -10983,14 +11166,15 @@ public final class ModelsProto {
        * If in the request, this represents the set of features that the client
        * understands how to evaluate. If in the response, this represents the set
        * of features referenced by the model.
+       * New use cases should use the model_metadata field instead.
        * </pre>
        *
-       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
        * @param index The index of the element to return.
        * @return The supportedModelFeatures at the given index.
        */
       @java.lang.Override
-      public org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature getSupportedModelFeatures(int index) {
+      @java.lang.Deprecated public org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature getSupportedModelFeatures(int index) {
         return instance.getSupportedModelFeatures(index);
       }
       /**
@@ -10999,14 +11183,15 @@ public final class ModelsProto {
        * If in the request, this represents the set of features that the client
        * understands how to evaluate. If in the response, this represents the set
        * of features referenced by the model.
+       * New use cases should use the model_metadata field instead.
        * </pre>
        *
-       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
        * @param index The index to set the value at.
        * @param value The supportedModelFeatures to set.
        * @return This builder for chaining.
        */
-      public Builder setSupportedModelFeatures(
+      @java.lang.Deprecated public Builder setSupportedModelFeatures(
           int index, org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature value) {
         copyOnWrite();
         instance.setSupportedModelFeatures(index, value);
@@ -11018,13 +11203,14 @@ public final class ModelsProto {
        * If in the request, this represents the set of features that the client
        * understands how to evaluate. If in the response, this represents the set
        * of features referenced by the model.
+       * New use cases should use the model_metadata field instead.
        * </pre>
        *
-       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
        * @param value The supportedModelFeatures to add.
        * @return This builder for chaining.
        */
-      public Builder addSupportedModelFeatures(org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature value) {
+      @java.lang.Deprecated public Builder addSupportedModelFeatures(org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature value) {
         copyOnWrite();
         instance.addSupportedModelFeatures(value);
         return this;
@@ -11035,13 +11221,14 @@ public final class ModelsProto {
        * If in the request, this represents the set of features that the client
        * understands how to evaluate. If in the response, this represents the set
        * of features referenced by the model.
+       * New use cases should use the model_metadata field instead.
        * </pre>
        *
-       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
        * @param values The supportedModelFeatures to add.
        * @return This builder for chaining.
        */
-      public Builder addAllSupportedModelFeatures(
+      @java.lang.Deprecated public Builder addAllSupportedModelFeatures(
           java.lang.Iterable<? extends org.chromium.components.optimization_guide.proto.ModelsProto.ClientModelFeature> values) {
         copyOnWrite();
         instance.addAllSupportedModelFeatures(values);  return this;
@@ -11052,12 +11239,13 @@ public final class ModelsProto {
        * If in the request, this represents the set of features that the client
        * understands how to evaluate. If in the response, this represents the set
        * of features referenced by the model.
+       * New use cases should use the model_metadata field instead.
        * </pre>
        *
-       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3;</code>
+       * <code>repeated .optimization_guide.proto.ClientModelFeature supported_model_features = 3 [deprecated = true];</code>
        * @return This builder for chaining.
        */
-      public Builder clearSupportedModelFeatures() {
+      @java.lang.Deprecated public Builder clearSupportedModelFeatures() {
         copyOnWrite();
         instance.clearSupportedModelFeatures();
         return this;
@@ -11295,6 +11483,107 @@ public final class ModelsProto {
         return this;
       }
 
+      /**
+       * <pre>
+       * Mechanism used for model owners to attach metadata to the request or
+       * response.
+       * In practice, we expect this to be used as a way to negotiate capabilities.
+       * The client can provide the model features they can evaluate if this field
+       * is part of the request, and the server can provide the model features that
+       * are actually present in the model.
+       * </pre>
+       *
+       * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+       */
+      @java.lang.Override
+      public boolean hasModelMetadata() {
+        return instance.hasModelMetadata();
+      }
+      /**
+       * <pre>
+       * Mechanism used for model owners to attach metadata to the request or
+       * response.
+       * In practice, we expect this to be used as a way to negotiate capabilities.
+       * The client can provide the model features they can evaluate if this field
+       * is part of the request, and the server can provide the model features that
+       * are actually present in the model.
+       * </pre>
+       *
+       * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.optimization_guide.proto.CommonTypesProto.Any getModelMetadata() {
+        return instance.getModelMetadata();
+      }
+      /**
+       * <pre>
+       * Mechanism used for model owners to attach metadata to the request or
+       * response.
+       * In practice, we expect this to be used as a way to negotiate capabilities.
+       * The client can provide the model features they can evaluate if this field
+       * is part of the request, and the server can provide the model features that
+       * are actually present in the model.
+       * </pre>
+       *
+       * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+       */
+      public Builder setModelMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
+        copyOnWrite();
+        instance.setModelMetadata(value);
+        return this;
+        }
+      /**
+       * <pre>
+       * Mechanism used for model owners to attach metadata to the request or
+       * response.
+       * In practice, we expect this to be used as a way to negotiate capabilities.
+       * The client can provide the model features they can evaluate if this field
+       * is part of the request, and the server can provide the model features that
+       * are actually present in the model.
+       * </pre>
+       *
+       * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+       */
+      public Builder setModelMetadata(
+          org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.Builder builderForValue) {
+        copyOnWrite();
+        instance.setModelMetadata(builderForValue.build());
+        return this;
+      }
+      /**
+       * <pre>
+       * Mechanism used for model owners to attach metadata to the request or
+       * response.
+       * In practice, we expect this to be used as a way to negotiate capabilities.
+       * The client can provide the model features they can evaluate if this field
+       * is part of the request, and the server can provide the model features that
+       * are actually present in the model.
+       * </pre>
+       *
+       * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+       */
+      public Builder mergeModelMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
+        copyOnWrite();
+        instance.mergeModelMetadata(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Mechanism used for model owners to attach metadata to the request or
+       * response.
+       * In practice, we expect this to be used as a way to negotiate capabilities.
+       * The client can provide the model features they can evaluate if this field
+       * is part of the request, and the server can provide the model features that
+       * are actually present in the model.
+       * </pre>
+       *
+       * <code>optional .optimization_guide.proto.Any model_metadata = 6;</code>
+       */
+      public Builder clearModelMetadata() {  copyOnWrite();
+        instance.clearModelMetadata();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:optimization_guide.proto.ModelInfo)
     }
     @java.lang.Override
@@ -11320,10 +11609,11 @@ public final class ModelsProto {
               "supportedModelTypes_",
               org.chromium.components.optimization_guide.proto.ModelsProto.ModelType.internalGetVerifier(),
               "supportedHostModelFeatures_",
+              "modelMetadata_",
             };
             java.lang.String info =
-                "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0003\u0000\u0001\u100c\u0000\u0002" +
-                "\u1002\u0001\u0003\u001e\u0004\u001e\u0005\u001a";
+                "\u0001\u0006\u0000\u0001\u0001\u0006\u0006\u0000\u0003\u0000\u0001\u100c\u0000\u0002" +
+                "\u1002\u0001\u0003\u001e\u0004\u001e\u0005\u001a\u0006\u1009\u0002";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

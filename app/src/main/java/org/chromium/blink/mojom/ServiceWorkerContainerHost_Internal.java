@@ -586,6 +586,7 @@ EnsureFileAccessResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         
@@ -794,6 +795,7 @@ EnsureFileAccessResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         
@@ -994,6 +996,7 @@ EnsureFileAccessResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ServiceWorkerErrorType.validate(result.error);
+                        result.error = ServiceWorkerErrorType.toKnownValue(result.error);
                     }
                     {
                         
@@ -1340,6 +1343,7 @@ EnsureFileAccessResponse callback) {
                         
                     result.purpose = decoder0.readInt(12);
                         ControllerServiceWorkerPurpose.validate(result.purpose);
+                        result.purpose = ControllerServiceWorkerPurpose.toKnownValue(result.purpose);
                     }
 
             } finally {

@@ -32,8 +32,8 @@ final class CookiesFetcherJni implements CookiesFetcher.Natives {
   @Override
   public void restoreCookies(String name, String value, String domain, String path, long creation,
       long expiration, long lastAccess, boolean secure, boolean httpOnly, int sameSite,
-      int priority, boolean sameParty, int sourceScheme) {
-    GEN_JNI.org_chromium_chrome_browser_cookies_CookiesFetcher_restoreCookies(name, value, domain, path, creation, expiration, lastAccess, secure, httpOnly, sameSite, priority, sameParty, sourceScheme);
+      int priority, boolean sameParty, int sourceScheme, int sourcePort) {
+    GEN_JNI.org_chromium_chrome_browser_cookies_CookiesFetcher_restoreCookies(name, value, domain, path, creation, expiration, lastAccess, secure, httpOnly, sameSite, priority, sameParty, sourceScheme, sourcePort);
   }
 
   public static CookiesFetcher.Natives get() {

@@ -69,11 +69,13 @@ public final class VideoDecoderConfig extends org.chromium.mojo.bindings.Struct 
                     
                 result.codec = decoder0.readInt(8);
                     VideoCodec.validate(result.codec);
+                    result.codec = VideoCodec.toKnownValue(result.codec);
                 }
                 {
                     
                 result.profile = decoder0.readInt(12);
                     VideoCodecProfile.validate(result.profile);
+                    result.profile = VideoCodecProfile.toKnownValue(result.profile);
                 }
                 {
                     
@@ -111,6 +113,7 @@ public final class VideoDecoderConfig extends org.chromium.mojo.bindings.Struct 
                     
                 result.encryptionScheme = decoder0.readInt(64);
                     EncryptionScheme.validate(result.encryptionScheme);
+                    result.encryptionScheme = EncryptionScheme.toKnownValue(result.encryptionScheme);
                 }
                 {
                     

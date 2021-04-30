@@ -88,6 +88,7 @@ public final class FetchApiRequest extends org.chromium.mojo.bindings.Struct {
                     
                 result.mode = decoder0.readInt(8);
                     org.chromium.network.mojom.RequestMode.validate(result.mode);
+                    result.mode = org.chromium.network.mojom.RequestMode.toKnownValue(result.mode);
                 }
                 {
                     
@@ -109,11 +110,13 @@ public final class FetchApiRequest extends org.chromium.mojo.bindings.Struct {
                     
                 result.destination = decoder0.readInt(16);
                     org.chromium.network.mojom.RequestDestination.validate(result.destination);
+                    result.destination = org.chromium.network.mojom.RequestDestination.toKnownValue(result.destination);
                 }
                 {
                     
                 result.frameType = decoder0.readInt(20);
                     RequestContextFrameType.validate(result.frameType);
+                    result.frameType = RequestContextFrameType.toKnownValue(result.frameType);
                 }
                 {
                     
@@ -148,21 +151,25 @@ public final class FetchApiRequest extends org.chromium.mojo.bindings.Struct {
                     
                 result.credentialsMode = decoder0.readInt(72);
                     org.chromium.network.mojom.CredentialsMode.validate(result.credentialsMode);
+                    result.credentialsMode = org.chromium.network.mojom.CredentialsMode.toKnownValue(result.credentialsMode);
                 }
                 {
                     
                 result.cacheMode = decoder0.readInt(76);
                     FetchCacheMode.validate(result.cacheMode);
+                    result.cacheMode = FetchCacheMode.toKnownValue(result.cacheMode);
                 }
                 {
                     
                 result.redirectMode = decoder0.readInt(80);
                     org.chromium.network.mojom.RedirectMode.validate(result.redirectMode);
+                    result.redirectMode = org.chromium.network.mojom.RedirectMode.toKnownValue(result.redirectMode);
                 }
                 {
                     
                 result.priority = decoder0.readInt(84);
                     org.chromium.network.mojom.RequestPriority.validate(result.priority);
+                    result.priority = org.chromium.network.mojom.RequestPriority.toKnownValue(result.priority);
                 }
                 {
                     

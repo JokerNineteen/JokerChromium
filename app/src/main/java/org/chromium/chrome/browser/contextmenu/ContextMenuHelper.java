@@ -7,6 +7,8 @@ package org.chromium.chrome.browser.contextmenu;
 import android.util.Pair;
 import android.view.View;
 
+import androidx.annotation.VisibleForTesting;
+
 import org.chromium.base.Callback;
 import org.chromium.base.TimeUtilsJni;
 import org.chromium.base.annotations.CalledByNative;
@@ -29,7 +31,7 @@ import java.util.concurrent.TimeUnit;
  * A helper class that handles generating context menus for {@link WebContents}s.
  */
 public class ContextMenuHelper {
-    public static Callback<RevampedContextMenuCoordinator> sRevampedContextMenuShownCallback;
+    private static Callback<RevampedContextMenuCoordinator> sMenuShownCallbackForTests;
 
     private final WebContents mWebContents;
     private long mNativeContextMenuHelper;
@@ -97,7 +99,7 @@ public class ContextMenuHelper {
 
         if (view == null || view.getVisibility() != View.VISIBLE || view.getParent() == null
                 || windowAndroid == null || windowAndroid.getActivity().get() == null
-                || mPopulatorFactory == null) {
+                || mPopulatorFactory == null || mCurrentContextMenu != null) {
             return;
         }
 
@@ -110,6 +112,8 @@ public class ContextMenuHelper {
         mCurrentContextMenuParams = params;
         mWindow = windowAndroid;
         mCallback = (result) -> {
+            if (mCurrentPopulator == null) return;
+
             mSelectedItemBeforeDismiss = true;
             mCurrentPopulator.onItemSelected(result);
         };
@@ -134,7 +138,7 @@ public class ContextMenuHelper {
                 mCurrentPopulator.onMenuClosed();
                 mCurrentPopulator = null;
             }
-            if (LensUtils.enableImageChip(mIsIncognito)) {
+            if (mChipDelegate != null) {
                 // If the image was being classified terminate the classification
                 // Has no effect if the classification already succeeded.
                 mChipDelegate.onMenuClosed();
@@ -151,16 +155,20 @@ public class ContextMenuHelper {
         List<Pair<Integer, ModelList>> items = mCurrentPopulator.buildContextMenu();
         if (items.isEmpty()) {
             PostTask.postTask(UiThreadTaskTraits.DEFAULT, mOnMenuClosed);
+            if (sMenuShownCallbackForTests != null) {
+                sMenuShownCallbackForTests.onResult(null);
+            }
             return;
         }
 
         final RevampedContextMenuCoordinator menuCoordinator =
                 new RevampedContextMenuCoordinator(topContentOffsetPx, mCurrentNativeDelegate);
         mCurrentContextMenu = menuCoordinator;
-        if (LensUtils.enableImageChip(mIsIncognito)) {
-            mChipDelegate = new LensChipDelegate(mCurrentContextMenuParams.getPageUrl(),
-                    mCurrentContextMenuParams.getTitleText(), mCurrentContextMenuParams.getSrcUrl(),
-                    mPageTitle, mIsIncognito, mWebContents, mCurrentNativeDelegate);
+        mChipDelegate = mCurrentPopulator.getChipDelegate();
+
+        // TODO(crbug/1158604): Remove leftover Lens dependencies.
+        LensUtils.startLensConnectionIfNecessary(mIsIncognito);
+        if (mChipDelegate != null) {
             menuCoordinator.displayMenuWithChip(mWindow, mWebContents, mCurrentContextMenuParams,
                     items, mCallback, mOnMenuShown, mOnMenuClosed, mChipDelegate);
         } else {
@@ -168,8 +176,8 @@ public class ContextMenuHelper {
                     mCallback, mOnMenuShown, mOnMenuClosed);
         }
 
-        if (sRevampedContextMenuShownCallback != null) {
-            sRevampedContextMenuShownCallback.onResult(menuCoordinator);
+        if (sMenuShownCallbackForTests != null) {
+            sMenuShownCallbackForTests.onResult(menuCoordinator);
         }
     }
 
@@ -187,6 +195,12 @@ public class ContextMenuHelper {
             RecordHistogram.recordTimesHistogram(
                     histogramName + ".PerformanceClassFast", timeToTakeActionMs);
         }
+    }
+
+    @VisibleForTesting
+    public static void setMenuShownCallbackForTests(
+            Callback<RevampedContextMenuCoordinator> callback) {
+        sMenuShownCallbackForTests = callback;
     }
 
     @NativeMethods

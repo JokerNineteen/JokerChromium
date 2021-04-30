@@ -20,7 +20,8 @@ public  final class SessionSpecifics extends
   private java.lang.String sessionTag_;
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -32,7 +33,8 @@ public  final class SessionSpecifics extends
   }
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -44,7 +46,8 @@ public  final class SessionSpecifics extends
   }
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -57,7 +60,8 @@ public  final class SessionSpecifics extends
   }
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -71,7 +75,8 @@ public  final class SessionSpecifics extends
   }
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -82,7 +87,8 @@ public  final class SessionSpecifics extends
   }
   /**
    * <pre>
-   * Unique id for the client.
+   * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+   * to populate this tag for *new* sessions.
    * </pre>
    *
    * <code>optional string session_tag = 1;</code>
@@ -333,7 +339,8 @@ public  final class SessionSpecifics extends
 
     /**
      * <pre>
-     * Unique id for the client.
+     * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+     * to populate this tag for *new* sessions.
      * </pre>
      *
      * <code>optional string session_tag = 1;</code>
@@ -345,7 +352,8 @@ public  final class SessionSpecifics extends
     }
     /**
      * <pre>
-     * Unique id for the client.
+     * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+     * to populate this tag for *new* sessions.
      * </pre>
      *
      * <code>optional string session_tag = 1;</code>
@@ -357,7 +365,8 @@ public  final class SessionSpecifics extends
     }
     /**
      * <pre>
-     * Unique id for the client.
+     * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+     * to populate this tag for *new* sessions.
      * </pre>
      *
      * <code>optional string session_tag = 1;</code>
@@ -370,7 +379,8 @@ public  final class SessionSpecifics extends
     }
     /**
      * <pre>
-     * Unique id for the client.
+     * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+     * to populate this tag for *new* sessions.
      * </pre>
      *
      * <code>optional string session_tag = 1;</code>
@@ -385,7 +395,8 @@ public  final class SessionSpecifics extends
     }
     /**
      * <pre>
-     * Unique id for the client.
+     * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+     * to populate this tag for *new* sessions.
      * </pre>
      *
      * <code>optional string session_tag = 1;</code>
@@ -398,7 +409,8 @@ public  final class SessionSpecifics extends
     }
     /**
      * <pre>
-     * Unique id for the client.
+     * Unique id for the client. M89 and higher use sync's cache GUID (client ID)
+     * to populate this tag for *new* sessions.
      * </pre>
      *
      * <code>optional string session_tag = 1;</code>

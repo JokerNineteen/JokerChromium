@@ -35,6 +35,10 @@ public interface NetworkContext extends org.chromium.mojo.bindings.Interface {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private DomainReliabilityClearMode() {}
     }
 
@@ -66,7 +70,7 @@ org.chromium.mojo.bindings.InterfaceRequest<CookieManager> cookieManager);
 
 
     void getRestrictedCookieManager(
-org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedCookieManager, int role, org.chromium.url.internal.mojom.Origin origin, SiteForCookies siteForCookies, org.chromium.url.internal.mojom.Origin topFrameOrigin, CookieAccessObserver cookieObserver);
+org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedCookieManager, int role, org.chromium.url.internal.mojom.Origin origin, IsolationInfo isolationInfo, CookieAccessObserver cookieObserver);
 
 
 
@@ -80,6 +84,14 @@ ClearDataFilter filter,
 ClearTrustTokenDataResponse callback);
 
     interface ClearTrustTokenDataResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
+
+
+
+    void getStoredTrustTokenCounts(
+
+GetStoredTrustTokenCountsResponse callback);
+
+    interface GetStoredTrustTokenCountsResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<StoredTrustTokensForIssuer[]> { }
 
 
 
@@ -294,7 +306,7 @@ ClearBadProxiesCacheResponse callback);
 
 
     void createWebSocket(
-org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, int renderFrameId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, AuthenticationHandler authHandler, TrustedHeaderClient headerClient);
+org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, AuthenticationAndCertificateObserver authCertObserver, WebSocketAuthenticationHandler authHandler, TrustedHeaderClient headerClient);
 
 
 

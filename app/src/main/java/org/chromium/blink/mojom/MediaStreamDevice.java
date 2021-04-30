@@ -66,11 +66,13 @@ public final class MediaStreamDevice extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     MediaStreamType.validate(result.type);
+                    result.type = MediaStreamType.toKnownValue(result.type);
                 }
                 {
                     
                 result.videoFacing = decoder0.readInt(12);
                     org.chromium.media.mojom.VideoFacingMode.validate(result.videoFacing);
+                    result.videoFacing = org.chromium.media.mojom.VideoFacingMode.toKnownValue(result.videoFacing);
                 }
                 {
                     

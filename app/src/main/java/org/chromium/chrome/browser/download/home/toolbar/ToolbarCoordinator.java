@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.chrome.browser.download.R;
 import org.chromium.chrome.browser.download.home.list.ListItem;
 import org.chromium.chrome.browser.download.home.metrics.UmaUtils;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.components.browser_ui.widget.FadingShadow;
 import org.chromium.components.browser_ui.widget.FadingShadowView;
 import org.chromium.components.browser_ui.widget.selectable_list.SelectableListToolbar;
@@ -103,7 +103,7 @@ public class ToolbarCoordinator implements SelectionObserver<ListItem> {
 
         mToolbar.initialize(selectionDelegate, R.string.menu_downloads, R.id.normal_menu_group,
                 R.id.selection_mode_menu_group, hasCloseButton);
-        mToolbar.setOnMenuItemClickListener(this ::onMenuItemClick);
+        mToolbar.setOnMenuItemClickListener(this::onMenuItemClick);
 
         // TODO(crbug.com/881037): Pass the visible group to the toolbar during initialization.
         mToolbar.initializeSearchView(

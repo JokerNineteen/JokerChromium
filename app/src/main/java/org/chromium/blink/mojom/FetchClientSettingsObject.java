@@ -60,11 +60,13 @@ public final class FetchClientSettingsObject extends org.chromium.mojo.bindings.
                     
                 result.referrerPolicy = decoder0.readInt(8);
                     org.chromium.network.mojom.ReferrerPolicy.validate(result.referrerPolicy);
+                    result.referrerPolicy = org.chromium.network.mojom.ReferrerPolicy.toKnownValue(result.referrerPolicy);
                 }
                 {
                     
                 result.insecureRequestsPolicy = decoder0.readInt(12);
                     InsecureRequestsPolicy.validate(result.insecureRequestsPolicy);
+                    result.insecureRequestsPolicy = InsecureRequestsPolicy.toKnownValue(result.insecureRequestsPolicy);
                 }
                 {
                     

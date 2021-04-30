@@ -656,6 +656,7 @@ EnableDelegationsResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PaymentHandlerStatus.validate(result.status);
+                        result.status = PaymentHandlerStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -850,6 +851,7 @@ EnableDelegationsResponse callback) {
                         
                     result.status = decoder0.readInt(16);
                         PaymentHandlerStatus.validate(result.status);
+                        result.status = PaymentHandlerStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1048,6 +1050,7 @@ EnableDelegationsResponse callback) {
                         
                     result.status = decoder0.readInt(16);
                         PaymentHandlerStatus.validate(result.status);
+                        result.status = PaymentHandlerStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1248,6 +1251,7 @@ EnableDelegationsResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PaymentHandlerStatus.validate(result.status);
+                        result.status = PaymentHandlerStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1444,6 +1448,7 @@ EnableDelegationsResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PaymentHandlerStatus.validate(result.status);
+                        result.status = PaymentHandlerStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1625,6 +1630,7 @@ EnableDelegationsResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PaymentHandlerStatus.validate(result.status);
+                        result.status = PaymentHandlerStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1813,8 +1819,8 @@ EnableDelegationsResponse callback) {
                         
                     result.delegations = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     {
-                        for (int i0 = 0; i0 < result.delegations.length; ++i0) {
-                            PaymentDelegation.validate(result.delegations[i0]);
+                        for (int i1 = 0; i1 < result.delegations.length; ++i1) {
+                            PaymentDelegation.validate(result.delegations[i1]);
                         }
                     }
                     }
@@ -1881,6 +1887,7 @@ EnableDelegationsResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PaymentHandlerStatus.validate(result.status);
+                        result.status = PaymentHandlerStatus.toKnownValue(result.status);
                     }
 
             } finally {

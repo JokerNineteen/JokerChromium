@@ -270,6 +270,7 @@ StopResponse callback) {
                         
                     result.captureMode = decoder0.readInt(24);
                         NetLogCaptureMode.validate(result.captureMode);
+                        result.captureMode = NetLogCaptureMode.toKnownValue(result.captureMode);
                     }
                     {
                         

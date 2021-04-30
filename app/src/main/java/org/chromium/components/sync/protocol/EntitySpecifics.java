@@ -1410,24 +1410,24 @@ public  final class EntitySpecifics extends
 
   public static final int FAVICON_TRACKING_FIELD_NUMBER = 181534;
   /**
-   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
    */
   @java.lang.Override
-  public boolean hasFaviconTracking() {
+  @java.lang.Deprecated public boolean hasFaviconTracking() {
     return specificsVariantCase_ == 181534;
   }
   /**
-   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
    */
   @java.lang.Override
-  public org.chromium.components.sync.protocol.FaviconTrackingSpecifics getFaviconTracking() {
+  @java.lang.Deprecated public org.chromium.components.sync.protocol.FaviconTrackingSpecifics getFaviconTracking() {
     if (specificsVariantCase_ == 181534) {
        return (org.chromium.components.sync.protocol.FaviconTrackingSpecifics) specificsVariant_;
     }
     return org.chromium.components.sync.protocol.FaviconTrackingSpecifics.getDefaultInstance();
   }
   /**
-   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
    */
   private void setFaviconTracking(org.chromium.components.sync.protocol.FaviconTrackingSpecifics value) {
     value.getClass();
@@ -1435,7 +1435,7 @@ public  final class EntitySpecifics extends
     specificsVariantCase_ = 181534;
   }
   /**
-   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
    */
   private void mergeFaviconTracking(org.chromium.components.sync.protocol.FaviconTrackingSpecifics value) {
     value.getClass();
@@ -1449,7 +1449,7 @@ public  final class EntitySpecifics extends
     specificsVariantCase_ = 181534;
   }
   /**
-   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
    */
   private void clearFaviconTracking() {
     if (specificsVariantCase_ == 181534) {
@@ -1460,24 +1460,24 @@ public  final class EntitySpecifics extends
 
   public static final int FAVICON_IMAGE_FIELD_NUMBER = 182019;
   /**
-   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
    */
   @java.lang.Override
-  public boolean hasFaviconImage() {
+  @java.lang.Deprecated public boolean hasFaviconImage() {
     return specificsVariantCase_ == 182019;
   }
   /**
-   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
    */
   @java.lang.Override
-  public org.chromium.components.sync.protocol.FaviconImageSpecifics getFaviconImage() {
+  @java.lang.Deprecated public org.chromium.components.sync.protocol.FaviconImageSpecifics getFaviconImage() {
     if (specificsVariantCase_ == 182019) {
        return (org.chromium.components.sync.protocol.FaviconImageSpecifics) specificsVariant_;
     }
     return org.chromium.components.sync.protocol.FaviconImageSpecifics.getDefaultInstance();
   }
   /**
-   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
    */
   private void setFaviconImage(org.chromium.components.sync.protocol.FaviconImageSpecifics value) {
     value.getClass();
@@ -1485,7 +1485,7 @@ public  final class EntitySpecifics extends
     specificsVariantCase_ = 182019;
   }
   /**
-   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
    */
   private void mergeFaviconImage(org.chromium.components.sync.protocol.FaviconImageSpecifics value) {
     value.getClass();
@@ -1499,7 +1499,7 @@ public  final class EntitySpecifics extends
     specificsVariantCase_ = 182019;
   }
   /**
-   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
    */
   private void clearFaviconImage() {
     if (specificsVariantCase_ == 182019) {
@@ -3903,96 +3903,96 @@ public  final class EntitySpecifics extends
     }
 
     /**
-     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
      */
     @java.lang.Override
-    public boolean hasFaviconTracking() {
+    @java.lang.Deprecated public boolean hasFaviconTracking() {
       return instance.hasFaviconTracking();
     }
     /**
-     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
      */
     @java.lang.Override
-    public org.chromium.components.sync.protocol.FaviconTrackingSpecifics getFaviconTracking() {
+    @java.lang.Deprecated public org.chromium.components.sync.protocol.FaviconTrackingSpecifics getFaviconTracking() {
       return instance.getFaviconTracking();
     }
     /**
-     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
      */
-    public Builder setFaviconTracking(org.chromium.components.sync.protocol.FaviconTrackingSpecifics value) {
+    @java.lang.Deprecated public Builder setFaviconTracking(org.chromium.components.sync.protocol.FaviconTrackingSpecifics value) {
       copyOnWrite();
       instance.setFaviconTracking(value);
       return this;
     }
     /**
-     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
      */
-    public Builder setFaviconTracking(
+    @java.lang.Deprecated public Builder setFaviconTracking(
         org.chromium.components.sync.protocol.FaviconTrackingSpecifics.Builder builderForValue) {
       copyOnWrite();
       instance.setFaviconTracking(builderForValue.build());
       return this;
     }
     /**
-     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
      */
-    public Builder mergeFaviconTracking(org.chromium.components.sync.protocol.FaviconTrackingSpecifics value) {
+    @java.lang.Deprecated public Builder mergeFaviconTracking(org.chromium.components.sync.protocol.FaviconTrackingSpecifics value) {
       copyOnWrite();
       instance.mergeFaviconTracking(value);
       return this;
     }
     /**
-     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+     * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
      */
-    public Builder clearFaviconTracking() {
+    @java.lang.Deprecated public Builder clearFaviconTracking() {
       copyOnWrite();
       instance.clearFaviconTracking();
       return this;
     }
 
     /**
-     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
      */
     @java.lang.Override
-    public boolean hasFaviconImage() {
+    @java.lang.Deprecated public boolean hasFaviconImage() {
       return instance.hasFaviconImage();
     }
     /**
-     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
      */
     @java.lang.Override
-    public org.chromium.components.sync.protocol.FaviconImageSpecifics getFaviconImage() {
+    @java.lang.Deprecated public org.chromium.components.sync.protocol.FaviconImageSpecifics getFaviconImage() {
       return instance.getFaviconImage();
     }
     /**
-     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
      */
-    public Builder setFaviconImage(org.chromium.components.sync.protocol.FaviconImageSpecifics value) {
+    @java.lang.Deprecated public Builder setFaviconImage(org.chromium.components.sync.protocol.FaviconImageSpecifics value) {
       copyOnWrite();
       instance.setFaviconImage(value);
       return this;
     }
     /**
-     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
      */
-    public Builder setFaviconImage(
+    @java.lang.Deprecated public Builder setFaviconImage(
         org.chromium.components.sync.protocol.FaviconImageSpecifics.Builder builderForValue) {
       copyOnWrite();
       instance.setFaviconImage(builderForValue.build());
       return this;
     }
     /**
-     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
      */
-    public Builder mergeFaviconImage(org.chromium.components.sync.protocol.FaviconImageSpecifics value) {
+    @java.lang.Deprecated public Builder mergeFaviconImage(org.chromium.components.sync.protocol.FaviconImageSpecifics value) {
       copyOnWrite();
       instance.mergeFaviconImage(value);
       return this;
     }
     /**
-     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+     * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
      */
-    public Builder clearFaviconImage() {
+    @java.lang.Deprecated public Builder clearFaviconImage() {
       copyOnWrite();
       instance.clearFaviconImage();
       return this;

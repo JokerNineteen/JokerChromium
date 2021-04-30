@@ -24,11 +24,6 @@ final class ChromeSessionStateJni implements ChromeSessionState.Natives {
   };
 
   @Override
-  public void setCustomTabVisible(boolean visible) {
-    GEN_JNI.org_chromium_chrome_browser_flags_ChromeSessionState_setCustomTabVisible(visible);
-  }
-
-  @Override
   public void setActivityType(int type) {
     GEN_JNI.org_chromium_chrome_browser_flags_ChromeSessionState_setActivityType(type);
   }

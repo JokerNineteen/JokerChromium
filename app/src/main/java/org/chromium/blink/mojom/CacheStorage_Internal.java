@@ -457,6 +457,7 @@ OpenResponse callback) {
                         
                     result.result = decoder0.readInt(8);
                         CacheStorageError.validate(result.result);
+                        result.result = CacheStorageError.toKnownValue(result.result);
                     }
 
             } finally {
@@ -653,6 +654,7 @@ OpenResponse callback) {
                         
                     result.result = decoder0.readInt(8);
                         CacheStorageError.validate(result.result);
+                        result.result = CacheStorageError.toKnownValue(result.result);
                     }
 
             } finally {

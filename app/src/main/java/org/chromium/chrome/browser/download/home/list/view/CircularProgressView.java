@@ -16,7 +16,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.StringRes;
 
 import org.chromium.base.MathUtils;
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.components.browser_ui.widget.async_image.AutoAnimatorDrawable;
 import org.chromium.components.browser_ui.widget.async_image.ForegroundDrawableCompat;
 import org.chromium.ui.UiUtils;

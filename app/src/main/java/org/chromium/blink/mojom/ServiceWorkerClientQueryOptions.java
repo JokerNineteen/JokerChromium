@@ -65,6 +65,7 @@ public final class ServiceWorkerClientQueryOptions extends org.chromium.mojo.bin
                     
                 result.clientType = decoder0.readInt(12);
                     ServiceWorkerClientType.validate(result.clientType);
+                    result.clientType = ServiceWorkerClientType.toKnownValue(result.clientType);
                 }
 
         } finally {

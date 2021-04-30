@@ -25,7 +25,7 @@ public interface SynchronousCompositorControlHost extends org.chromium.mojo.bind
 
 
     void returnFrame(
-int layerTreeFrameSinkId, int metadataVersion, org.chromium.viz.mojom.CompositorFrame frame, org.chromium.viz.mojom.HitTestRegionList hitTestRegionList);
+int layerTreeFrameSinkId, int metadataVersion, org.chromium.viz.mojom.LocalSurfaceId localSurfaceId, org.chromium.viz.mojom.CompositorFrame frame, org.chromium.viz.mojom.HitTestRegionList hitTestRegionList);
 
 
 

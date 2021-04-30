@@ -29,11 +29,6 @@ public final class SecurityStateModelJni implements SecurityStateModel.Natives {
     return (int)GEN_JNI.org_chromium_components_security_1state_SecurityStateModel_getSecurityLevelForWebContents(webContents);
   }
 
-  @Override
-  public boolean shouldShowDangerTriangleForWarningLevel() {
-    return (boolean)GEN_JNI.org_chromium_components_security_1state_SecurityStateModel_shouldShowDangerTriangleForWarningLevel();
-  }
-
   public static SecurityStateModel.Natives get() {
     if (GEN_JNI.TESTING_ENABLED) {
       if (testInstance != null) {

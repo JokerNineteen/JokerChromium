@@ -66,7 +66,7 @@ class BackgroundFetchService_Internal {
 
         @Override
         public void fetch(
-long serviceWorkerRegistrationId, String developerId, FetchApiRequest[] requests, BackgroundFetchOptions options, org.chromium.skia.mojom.Bitmap icon, BackgroundFetchUkmData ukmData, 
+long serviceWorkerRegistrationId, String developerId, FetchApiRequest[] requests, BackgroundFetchOptions options, org.chromium.skia.mojom.BitmapN32 icon, BackgroundFetchUkmData ukmData, 
 FetchResponse callback) {
 
             BackgroundFetchServiceFetchParams _message = new BackgroundFetchServiceFetchParams();
@@ -307,7 +307,7 @@ GetIconDisplaySizeResponse callback) {
         public String developerId;
         public FetchApiRequest[] requests;
         public BackgroundFetchOptions options;
-        public org.chromium.skia.mojom.Bitmap icon;
+        public org.chromium.skia.mojom.BitmapN32 icon;
         public BackgroundFetchUkmData ukmData;
 
         private BackgroundFetchServiceFetchParams(int version) {
@@ -372,7 +372,7 @@ GetIconDisplaySizeResponse callback) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
-                    result.icon = org.chromium.skia.mojom.Bitmap.decode(decoder1);
+                    result.icon = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
                     }
                     {
                         
@@ -461,6 +461,7 @@ GetIconDisplaySizeResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         BackgroundFetchError.validate(result.error);
+                        result.error = BackgroundFetchError.toKnownValue(result.error);
                     }
                     {
                         
@@ -666,6 +667,7 @@ GetIconDisplaySizeResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         BackgroundFetchError.validate(result.error);
+                        result.error = BackgroundFetchError.toKnownValue(result.error);
                     }
                     {
                         
@@ -864,6 +866,7 @@ GetIconDisplaySizeResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         BackgroundFetchError.validate(result.error);
+                        result.error = BackgroundFetchError.toKnownValue(result.error);
                     }
                     {
                         

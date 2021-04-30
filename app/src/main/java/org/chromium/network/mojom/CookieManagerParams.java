@@ -77,6 +77,7 @@ public final class CookieManagerParams extends org.chromium.mojo.bindings.Struct
                     
                 result.cookieAccessDelegateType = decoder0.readInt(12);
                     CookieAccessDelegateType.validate(result.cookieAccessDelegateType);
+                    result.cookieAccessDelegateType = CookieAccessDelegateType.toKnownValue(result.cookieAccessDelegateType);
                 }
                 {
                     

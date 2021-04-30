@@ -33,7 +33,7 @@ org.chromium.mojo.bindings.AssociatedInterfaceNotSupported client);
 AudioDecoderConfig config, org.chromium.mojo_base.mojom.UnguessableToken cdmId, 
 InitializeResponse callback);
 
-    interface InitializeResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Status, Boolean> { }
+    interface InitializeResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Status, Boolean, Integer> { }
 
 
 

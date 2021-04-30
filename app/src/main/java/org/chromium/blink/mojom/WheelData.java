@@ -108,6 +108,7 @@ public final class WheelData extends org.chromium.mojo.bindings.Struct {
                     
                 result.cancelable = decoder0.readInt(36);
                     DispatchType.validate(result.cancelable);
+                    result.cancelable = DispatchType.toKnownValue(result.cancelable);
                 }
 
         } finally {

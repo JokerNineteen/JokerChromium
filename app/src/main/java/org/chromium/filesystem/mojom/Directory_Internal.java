@@ -846,6 +846,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -1075,6 +1076,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -1271,6 +1273,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -1703,6 +1706,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -1898,6 +1902,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2093,6 +2098,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2288,6 +2294,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2477,6 +2484,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -2674,6 +2682,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -2863,6 +2872,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -3052,6 +3062,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -3313,6 +3324,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -3516,6 +3528,7 @@ WriteFileResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {

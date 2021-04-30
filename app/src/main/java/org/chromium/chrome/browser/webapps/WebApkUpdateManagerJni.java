@@ -37,8 +37,8 @@ final class WebApkUpdateManagerJni implements WebApkUpdateManager.Natives {
       boolean shareTargetParamIsMethodPost, boolean shareTargetParamIsEncTypeMultipart,
       String[] shareTargetParamFileNames, Object[] shareTargetParamAccepts, String[][] shortcuts,
       String manifestUrl, String webApkPackage, int webApkVersion, boolean isManifestStale,
-      int updateReason, Callback<Boolean> callback) {
-    GEN_JNI.org_chromium_chrome_browser_webapps_WebApkUpdateManager_storeWebApkUpdateRequestToFile(updateRequestPath, startUrl, scope, name, shortName, primaryIconUrl, primaryIcon, isPrimaryIconMaskable, splashIconUrl, splashIcon, iconUrls, iconHashes, displayMode, orientation, themeColor, backgroundColor, shareTargetAction, shareTargetParamTitle, shareTargetParamText, shareTargetParamIsMethodPost, shareTargetParamIsEncTypeMultipart, shareTargetParamFileNames, shareTargetParamAccepts, shortcuts, manifestUrl, webApkPackage, webApkVersion, isManifestStale, updateReason, callback);
+      int[] updateReasons, Callback<Boolean> callback) {
+    GEN_JNI.org_chromium_chrome_browser_webapps_WebApkUpdateManager_storeWebApkUpdateRequestToFile(updateRequestPath, startUrl, scope, name, shortName, primaryIconUrl, primaryIcon, isPrimaryIconMaskable, splashIconUrl, splashIcon, iconUrls, iconHashes, displayMode, orientation, themeColor, backgroundColor, shareTargetAction, shareTargetParamTitle, shareTargetParamText, shareTargetParamIsMethodPost, shareTargetParamIsEncTypeMultipart, shareTargetParamFileNames, shareTargetParamAccepts, shortcuts, manifestUrl, webApkPackage, webApkVersion, isManifestStale, updateReasons, callback);
   }
 
   @Override

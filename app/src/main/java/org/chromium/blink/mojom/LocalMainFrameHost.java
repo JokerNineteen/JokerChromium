@@ -63,7 +63,7 @@ UpdateTargetUrlResponse callback);
 
 
     void showCreatedWindow(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrameToken, int disposition, org.chromium.gfx.mojom.Rect rect, boolean openedByUserGesture, 
+LocalFrameToken openerFrameToken, int disposition, org.chromium.gfx.mojom.Rect rect, boolean openedByUserGesture, 
 ShowCreatedWindowResponse callback);
 
     interface ShowCreatedWindowResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }

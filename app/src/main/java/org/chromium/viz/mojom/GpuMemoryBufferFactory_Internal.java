@@ -51,6 +51,8 @@ class GpuMemoryBufferFactory_Internal {
 
     private static final int DESTROY_GPU_MEMORY_BUFFER_ORDINAL = 1;
 
+    private static final int COPY_GPU_MEMORY_BUFFER_ORDINAL = 2;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements GpuMemoryBufferFactory.Proxy {
 
@@ -107,6 +109,30 @@ org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gpu.mojom.SyncToken sy
         }
 
 
+        @Override
+        public void copyGpuMemoryBuffer(
+org.chromium.gfx.mojom.GpuMemoryBufferHandle bufferHandle, org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion sharedMemory, 
+CopyGpuMemoryBufferResponse callback) {
+
+            GpuMemoryBufferFactoryCopyGpuMemoryBufferParams _message = new GpuMemoryBufferFactoryCopyGpuMemoryBufferParams();
+
+            _message.bufferHandle = bufferHandle;
+
+            _message.sharedMemory = sharedMemory;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    COPY_GPU_MEMORY_BUFFER_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsForwardToCallback(callback));
+
+        }
+
+
     }
 
     static final class Stub extends org.chromium.mojo.bindings.Interface.Stub<GpuMemoryBufferFactory> {
@@ -148,6 +174,8 @@ org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gpu.mojom.SyncToken sy
                         getImpl().destroyGpuMemoryBuffer(data.id, data.syncToken);
                         return true;
                     }
+
+
 
 
                     default:
@@ -194,6 +222,21 @@ org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gpu.mojom.SyncToken sy
                     }
 
 
+
+
+
+
+
+
+
+                    case COPY_GPU_MEMORY_BUFFER_ORDINAL: {
+
+                        GpuMemoryBufferFactoryCopyGpuMemoryBufferParams data =
+                                GpuMemoryBufferFactoryCopyGpuMemoryBufferParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().copyGpuMemoryBuffer(data.bufferHandle, data.sharedMemory, new GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
 
 
                     default:
@@ -265,11 +308,13 @@ org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gpu.mojom.SyncToken sy
                         
                     result.format = decoder0.readInt(24);
                         org.chromium.gfx.mojom.BufferFormat.validate(result.format);
+                        result.format = org.chromium.gfx.mojom.BufferFormat.toKnownValue(result.format);
                     }
                     {
                         
                     result.usage = decoder0.readInt(28);
                         org.chromium.gfx.mojom.BufferUsage.validate(result.usage);
+                        result.usage = org.chromium.gfx.mojom.BufferUsage.toKnownValue(result.usage);
                     }
 
             } finally {
@@ -487,6 +532,202 @@ org.chromium.gfx.mojom.GpuMemoryBufferId id, org.chromium.gpu.mojom.SyncToken sy
             encoder0.encode(this.id, 8, false);
             
             encoder0.encode(this.syncToken, 16, false);
+        }
+    }
+
+
+
+    
+    static final class GpuMemoryBufferFactoryCopyGpuMemoryBufferParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.gfx.mojom.GpuMemoryBufferHandle bufferHandle;
+        public org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion sharedMemory;
+
+        private GpuMemoryBufferFactoryCopyGpuMemoryBufferParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public GpuMemoryBufferFactoryCopyGpuMemoryBufferParams() {
+            this(0);
+        }
+
+        public static GpuMemoryBufferFactoryCopyGpuMemoryBufferParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static GpuMemoryBufferFactoryCopyGpuMemoryBufferParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static GpuMemoryBufferFactoryCopyGpuMemoryBufferParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            GpuMemoryBufferFactoryCopyGpuMemoryBufferParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new GpuMemoryBufferFactoryCopyGpuMemoryBufferParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.bufferHandle = org.chromium.gfx.mojom.GpuMemoryBufferHandle.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    result.sharedMemory = org.chromium.mojo_base.mojom.UnsafeSharedMemoryRegion.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.bufferHandle, 8, false);
+            
+            encoder0.encode(this.sharedMemory, 16, false);
+        }
+    }
+
+
+
+    
+    static final class GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public boolean success;
+
+        private GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams() {
+            this(0);
+        }
+
+        public static GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.success = decoder0.readBoolean(8, 0);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.success, 8, 0);
+        }
+    }
+
+    static class GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final GpuMemoryBufferFactory.CopyGpuMemoryBufferResponse mCallback;
+
+        GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsForwardToCallback(GpuMemoryBufferFactory.CopyGpuMemoryBufferResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(COPY_GPU_MEMORY_BUFFER_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams response = GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.success);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsProxyToResponder implements GpuMemoryBufferFactory.CopyGpuMemoryBufferResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Boolean success) {
+            GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams _response = new GpuMemoryBufferFactoryCopyGpuMemoryBufferResponseParams();
+
+            _response.success = success;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    COPY_GPU_MEMORY_BUFFER_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
         }
     }
 

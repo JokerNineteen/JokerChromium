@@ -47,7 +47,9 @@ class TextFragmentSelectorProducer_Internal {
     };
 
 
-    private static final int GENERATE_SELECTOR_ORDINAL = 0;
+    private static final int CANCEL_ORDINAL = 0;
+
+    private static final int REQUEST_SELECTOR_ORDINAL = 1;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements TextFragmentSelectorProducer.Proxy {
@@ -59,21 +61,36 @@ class TextFragmentSelectorProducer_Internal {
 
 
         @Override
-        public void generateSelector(
+        public void cancel(
+) {
 
-GenerateSelectorResponse callback) {
+            TextFragmentSelectorProducerCancelParams _message = new TextFragmentSelectorProducerCancelParams();
 
-            TextFragmentSelectorProducerGenerateSelectorParams _message = new TextFragmentSelectorProducerGenerateSelectorParams();
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(CANCEL_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void requestSelector(
+
+RequestSelectorResponse callback) {
+
+            TextFragmentSelectorProducerRequestSelectorParams _message = new TextFragmentSelectorProducerRequestSelectorParams();
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GENERATE_SELECTOR_ORDINAL,
+                                    REQUEST_SELECTOR_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new TextFragmentSelectorProducerGenerateSelectorResponseParamsForwardToCallback(callback));
+                    new TextFragmentSelectorProducerRequestSelectorResponseParamsForwardToCallback(callback));
 
         }
 
@@ -104,6 +121,18 @@ GenerateSelectorResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 TextFragmentSelectorProducer_Internal.MANAGER, messageWithHeader);
+
+
+
+
+
+                    case CANCEL_ORDINAL: {
+
+                        TextFragmentSelectorProducerCancelParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().cancel();
+                        return true;
+                    }
 
 
 
@@ -142,11 +171,13 @@ GenerateSelectorResponse callback) {
 
 
 
-                    case GENERATE_SELECTOR_ORDINAL: {
 
-                        TextFragmentSelectorProducerGenerateSelectorParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().generateSelector(new TextFragmentSelectorProducerGenerateSelectorResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                    case REQUEST_SELECTOR_ORDINAL: {
+
+                        TextFragmentSelectorProducerRequestSelectorParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().requestSelector(new TextFragmentSelectorProducerRequestSelectorResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -163,21 +194,21 @@ GenerateSelectorResponse callback) {
 
 
     
-    static final class TextFragmentSelectorProducerGenerateSelectorParams extends org.chromium.mojo.bindings.Struct {
+    static final class TextFragmentSelectorProducerCancelParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
 
-        private TextFragmentSelectorProducerGenerateSelectorParams(int version) {
+        private TextFragmentSelectorProducerCancelParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public TextFragmentSelectorProducerGenerateSelectorParams() {
+        public TextFragmentSelectorProducerCancelParams() {
             this(0);
         }
 
-        public static TextFragmentSelectorProducerGenerateSelectorParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static TextFragmentSelectorProducerCancelParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -186,22 +217,22 @@ GenerateSelectorResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static TextFragmentSelectorProducerGenerateSelectorParams deserialize(java.nio.ByteBuffer data) {
+        public static TextFragmentSelectorProducerCancelParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static TextFragmentSelectorProducerGenerateSelectorParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static TextFragmentSelectorProducerCancelParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            TextFragmentSelectorProducerGenerateSelectorParams result;
+            TextFragmentSelectorProducerCancelParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new TextFragmentSelectorProducerGenerateSelectorParams(elementsOrVersion);
+                result = new TextFragmentSelectorProducerCancelParams(elementsOrVersion);
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -219,22 +250,21 @@ GenerateSelectorResponse callback) {
 
 
     
-    static final class TextFragmentSelectorProducerGenerateSelectorResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class TextFragmentSelectorProducerRequestSelectorParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public String selector;
 
-        private TextFragmentSelectorProducerGenerateSelectorResponseParams(int version) {
+        private TextFragmentSelectorProducerRequestSelectorParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public TextFragmentSelectorProducerGenerateSelectorResponseParams() {
+        public TextFragmentSelectorProducerRequestSelectorParams() {
             this(0);
         }
 
-        public static TextFragmentSelectorProducerGenerateSelectorResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static TextFragmentSelectorProducerRequestSelectorParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -243,22 +273,79 @@ GenerateSelectorResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static TextFragmentSelectorProducerGenerateSelectorResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static TextFragmentSelectorProducerRequestSelectorParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static TextFragmentSelectorProducerGenerateSelectorResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static TextFragmentSelectorProducerRequestSelectorParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            TextFragmentSelectorProducerGenerateSelectorResponseParams result;
+            TextFragmentSelectorProducerRequestSelectorParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new TextFragmentSelectorProducerGenerateSelectorResponseParams(elementsOrVersion);
+                result = new TextFragmentSelectorProducerRequestSelectorParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class TextFragmentSelectorProducerRequestSelectorResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public String selector;
+
+        private TextFragmentSelectorProducerRequestSelectorResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public TextFragmentSelectorProducerRequestSelectorResponseParams() {
+            this(0);
+        }
+
+        public static TextFragmentSelectorProducerRequestSelectorResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static TextFragmentSelectorProducerRequestSelectorResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static TextFragmentSelectorProducerRequestSelectorResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            TextFragmentSelectorProducerRequestSelectorResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new TextFragmentSelectorProducerRequestSelectorResponseParams(elementsOrVersion);
                     {
                         
                     result.selector = decoder0.readString(8, false);
@@ -279,11 +366,11 @@ GenerateSelectorResponse callback) {
         }
     }
 
-    static class TextFragmentSelectorProducerGenerateSelectorResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class TextFragmentSelectorProducerRequestSelectorResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final TextFragmentSelectorProducer.GenerateSelectorResponse mCallback;
+        private final TextFragmentSelectorProducer.RequestSelectorResponse mCallback;
 
-        TextFragmentSelectorProducerGenerateSelectorResponseParamsForwardToCallback(TextFragmentSelectorProducer.GenerateSelectorResponse callback) {
+        TextFragmentSelectorProducerRequestSelectorResponseParamsForwardToCallback(TextFragmentSelectorProducer.RequestSelectorResponse callback) {
             this.mCallback = callback;
         }
 
@@ -293,12 +380,12 @@ GenerateSelectorResponse callback) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(GENERATE_SELECTOR_ORDINAL,
+                if (!header.validateHeader(REQUEST_SELECTOR_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
 
-                TextFragmentSelectorProducerGenerateSelectorResponseParams response = TextFragmentSelectorProducerGenerateSelectorResponseParams.deserialize(messageWithHeader.getPayload());
+                TextFragmentSelectorProducerRequestSelectorResponseParams response = TextFragmentSelectorProducerRequestSelectorResponseParams.deserialize(messageWithHeader.getPayload());
 
                 mCallback.call(response.selector);
                 return true;
@@ -308,13 +395,13 @@ GenerateSelectorResponse callback) {
         }
     }
 
-    static class TextFragmentSelectorProducerGenerateSelectorResponseParamsProxyToResponder implements TextFragmentSelectorProducer.GenerateSelectorResponse {
+    static class TextFragmentSelectorProducerRequestSelectorResponseParamsProxyToResponder implements TextFragmentSelectorProducer.RequestSelectorResponse {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        TextFragmentSelectorProducerGenerateSelectorResponseParamsProxyToResponder(
+        TextFragmentSelectorProducerRequestSelectorResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -325,7 +412,7 @@ GenerateSelectorResponse callback) {
 
         @Override
         public void call(String selector) {
-            TextFragmentSelectorProducerGenerateSelectorResponseParams _response = new TextFragmentSelectorProducerGenerateSelectorResponseParams();
+            TextFragmentSelectorProducerRequestSelectorResponseParams _response = new TextFragmentSelectorProducerRequestSelectorResponseParams();
 
             _response.selector = selector;
 
@@ -333,7 +420,7 @@ GenerateSelectorResponse callback) {
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    GENERATE_SELECTOR_ORDINAL,
+                                    REQUEST_SELECTOR_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

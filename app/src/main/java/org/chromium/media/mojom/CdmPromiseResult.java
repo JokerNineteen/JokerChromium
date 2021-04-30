@@ -33,6 +33,10 @@ public final class CdmPromiseResult extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Exception() {}
     }
     public boolean success;
@@ -81,6 +85,7 @@ public final class CdmPromiseResult extends org.chromium.mojo.bindings.Struct {
                     
                 result.exception = decoder0.readInt(12);
                     CdmPromiseResult.Exception.validate(result.exception);
+                    result.exception = CdmPromiseResult.Exception.toKnownValue(result.exception);
                 }
                 {
                     

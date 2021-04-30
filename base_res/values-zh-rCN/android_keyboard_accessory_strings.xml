@@ -7,11 +7,8 @@
 <string name="all_passwords_bottom_sheet_title">"密码"</string>
 <string name="all_passwords_bottom_sheet_search_hint">"搜索"</string>
 <string name="all_passwords_bottom_sheet_no_password">"无密码"</string>
-<string name="all_passwords_bottom_sheet_warning_dialog_title">"使用其他密码"</string>
 <string name="all_passwords_bottom_sheet_warning_dialog_message_first">"如果您信任 %s，则可使用其他网站已保存的密码。"</string>
 <string name="all_passwords_bottom_sheet_warning_dialog_message_second">"尽量为每个网站使用独一无二的密码。"</string>
-<string name="all_passwords_bottom_sheet_accept">"继续"</string>
-<string name="all_passwords_bottom_sheet_cancel">"取消"</string>
 <string name="autofill_keyboard_accessory_content_description">"有可用密码"</string>
 <string name="autofill_keyboard_accessory_modern_content_description">"键盘上方显示了自动填充建议"</string>
 <string name="keyboard_accessory_sheet_hide">"显示键盘"</string>

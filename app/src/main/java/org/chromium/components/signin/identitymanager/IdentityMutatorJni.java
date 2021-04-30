@@ -31,9 +31,9 @@ final class IdentityMutatorJni implements IdentityMutator.Natives {
   }
 
   @Override
-  public boolean clearPrimaryAccount(long nativeJniIdentityMutator, int action, int sourceMetric,
+  public boolean clearPrimaryAccount(long nativeJniIdentityMutator, int sourceMetric,
       int deleteMetric) {
-    return (boolean)GEN_JNI.org_chromium_components_signin_identitymanager_IdentityMutator_clearPrimaryAccount(nativeJniIdentityMutator, action, sourceMetric, deleteMetric);
+    return (boolean)GEN_JNI.org_chromium_components_signin_identitymanager_IdentityMutator_clearPrimaryAccount(nativeJniIdentityMutator, sourceMetric, deleteMetric);
   }
 
   @Override

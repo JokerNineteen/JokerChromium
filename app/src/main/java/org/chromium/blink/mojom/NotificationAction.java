@@ -62,6 +62,7 @@ public final class NotificationAction extends org.chromium.mojo.bindings.Struct 
                     
                 result.type = decoder0.readInt(8);
                     NotificationActionType.validate(result.type);
+                    result.type = NotificationActionType.toKnownValue(result.type);
                 }
                 {
                     

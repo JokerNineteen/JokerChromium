@@ -31,4 +31,12 @@ EnumerateLocalFontsResponse callback);
     interface EnumerateLocalFontsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, org.chromium.mojo_base.mojom.ReadOnlySharedMemoryRegion> { }
 
 
+
+    void chooseLocalFonts(
+String[] selection, 
+ChooseLocalFontsResponse callback);
+
+    interface ChooseLocalFontsResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<Integer, FontMetadata[]> { }
+
+
 }

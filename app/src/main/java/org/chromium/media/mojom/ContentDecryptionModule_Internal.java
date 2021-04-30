@@ -749,6 +749,7 @@ RemoveSessionResponse callback) {
                         
                     result.minHdcpVersion = decoder0.readInt(8);
                         HdcpVersion.validate(result.minHdcpVersion);
+                        result.minHdcpVersion = HdcpVersion.toKnownValue(result.minHdcpVersion);
                     }
 
             } finally {
@@ -819,6 +820,7 @@ RemoveSessionResponse callback) {
                         
                     result.keyStatus = decoder0.readInt(16);
                         CdmKeyStatus.validate(result.keyStatus);
+                        result.keyStatus = CdmKeyStatus.toKnownValue(result.keyStatus);
                     }
 
             } finally {
@@ -950,11 +952,13 @@ RemoveSessionResponse callback) {
                         
                     result.sessionType = decoder0.readInt(8);
                         CdmSessionType.validate(result.sessionType);
+                        result.sessionType = CdmSessionType.toKnownValue(result.sessionType);
                     }
                     {
                         
                     result.initDataType = decoder0.readInt(12);
                         EmeInitDataType.validate(result.initDataType);
+                        result.initDataType = EmeInitDataType.toKnownValue(result.initDataType);
                     }
                     {
                         
@@ -1162,6 +1166,7 @@ RemoveSessionResponse callback) {
                         
                     result.sessionType = decoder0.readInt(8);
                         CdmSessionType.validate(result.sessionType);
+                        result.sessionType = CdmSessionType.toKnownValue(result.sessionType);
                     }
                     {
                         

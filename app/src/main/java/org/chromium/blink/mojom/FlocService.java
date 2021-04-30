@@ -28,7 +28,7 @@ public interface FlocService extends org.chromium.mojo.bindings.Interface {
 
 GetInterestCohortResponse callback);
 
-    interface GetInterestCohortResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<String> { }
+    interface GetInterestCohortResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<InterestCohort> { }
 
 
 }

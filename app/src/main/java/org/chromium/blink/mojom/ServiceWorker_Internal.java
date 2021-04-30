@@ -1135,6 +1135,7 @@ int level, String message) {
                         
                     result.fetchHandlerExistence = decoder0.readInt(32);
                         FetchHandlerExistence.validate(result.fetchHandlerExistence);
+                        result.fetchHandlerExistence = FetchHandlerExistence.toKnownValue(result.fetchHandlerExistence);
                     }
                     {
                         
@@ -1275,6 +1276,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
                     {
                         
@@ -1464,6 +1466,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1653,6 +1656,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -1842,6 +1846,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -2031,6 +2036,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -2220,6 +2226,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -2409,6 +2416,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -2605,6 +2613,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -2816,6 +2825,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -3012,6 +3022,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -3200,6 +3211,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -3397,6 +3409,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -3600,6 +3613,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -3796,6 +3810,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -3984,6 +3999,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -4180,6 +4196,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -4376,6 +4393,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -4565,6 +4583,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -4753,6 +4772,7 @@ int level, String message) {
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerEventStatus.validate(result.status);
+                        result.status = ServiceWorkerEventStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -5112,6 +5132,7 @@ int level, String message) {
                         
                     result.level = decoder0.readInt(8);
                         ConsoleMessageLevel.validate(result.level);
+                        result.level = ConsoleMessageLevel.toKnownValue(result.level);
                     }
                     {
                         

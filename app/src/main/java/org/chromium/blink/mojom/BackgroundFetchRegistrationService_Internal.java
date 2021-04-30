@@ -66,7 +66,7 @@ class BackgroundFetchRegistrationService_Internal {
 
         @Override
         public void updateUi(
-String title, org.chromium.skia.mojom.Bitmap icon, 
+String title, org.chromium.skia.mojom.BitmapN32 icon, 
 UpdateUiResponse callback) {
 
             BackgroundFetchRegistrationServiceUpdateUiParams _message = new BackgroundFetchRegistrationServiceUpdateUiParams();
@@ -291,7 +291,7 @@ BackgroundFetchRegistrationObserver observer) {
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public String title;
-        public org.chromium.skia.mojom.Bitmap icon;
+        public org.chromium.skia.mojom.BitmapN32 icon;
 
         private BackgroundFetchRegistrationServiceUpdateUiParams(int version) {
             super(STRUCT_SIZE, version);
@@ -333,7 +333,7 @@ BackgroundFetchRegistrationObserver observer) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                    result.icon = org.chromium.skia.mojom.Bitmap.decode(decoder1);
+                    result.icon = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
                     }
 
             } finally {
@@ -400,6 +400,7 @@ BackgroundFetchRegistrationObserver observer) {
                         
                     result.error = decoder0.readInt(8);
                         BackgroundFetchError.validate(result.error);
+                        result.error = BackgroundFetchError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -581,6 +582,7 @@ BackgroundFetchRegistrationObserver observer) {
                         
                     result.error = decoder0.readInt(8);
                         BackgroundFetchError.validate(result.error);
+                        result.error = BackgroundFetchError.toKnownValue(result.error);
                     }
 
             } finally {

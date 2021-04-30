@@ -218,19 +218,32 @@ class TabGridViewBinder {
                 pageInfoButton.getPrimaryTextView().setText(query);
             }
         } else if (TabProperties.SHOPPING_PERSISTED_TAB_DATA_FETCHER == propertyKey) {
-            model.get(TabProperties.SHOPPING_PERSISTED_TAB_DATA_FETCHER)
-                    .fetch((shoppingPersistedTabData) -> {
-                        PriceCardView priceCardView =
-                                (PriceCardView) view.fastFindViewById(R.id.price_info_box_outer);
-                        if (shoppingPersistedTabData.getPriceDrop() == null) {
-                            priceCardView.setVisibility(View.GONE);
-                        } else {
-                            priceCardView.setPriceStrings(
-                                    shoppingPersistedTabData.getPriceDrop().integerPrice,
-                                    shoppingPersistedTabData.getPriceDrop().previousIntegerPrice);
-                            priceCardView.setVisibility(View.VISIBLE);
-                        }
-                    });
+            PriceCardView priceCardView =
+                    (PriceCardView) view.fastFindViewById(R.id.price_info_box_outer);
+            if (model.get(TabProperties.SHOPPING_PERSISTED_TAB_DATA_FETCHER) != null) {
+                model.get(TabProperties.SHOPPING_PERSISTED_TAB_DATA_FETCHER)
+                        .fetch((shoppingPersistedTabData) -> {
+                            if (shoppingPersistedTabData == null
+                                    || shoppingPersistedTabData.getPriceDrop() == null) {
+                                priceCardView.setVisibility(View.GONE);
+                            } else {
+                                priceCardView.setPriceStrings(
+                                        shoppingPersistedTabData.getPriceDrop().price,
+                                        shoppingPersistedTabData.getPriceDrop().previousPrice);
+                                priceCardView.setVisibility(View.VISIBLE);
+                            }
+                        });
+            } else {
+                priceCardView.setVisibility(View.GONE);
+            }
+        } else if (TabProperties.SHOULD_SHOW_PRICE_DROP_TOOLTIP == propertyKey) {
+            if (model.get(TabProperties.SHOULD_SHOW_PRICE_DROP_TOOLTIP)) {
+                PriceCardView priceCardView =
+                        (PriceCardView) view.fastFindViewById(R.id.price_info_box_outer);
+                assert priceCardView.getVisibility() == View.VISIBLE;
+                LargeMessageCardView.showPriceDropTooltip(
+                        priceCardView.findViewById(R.id.current_price));
+            }
         } else if (TabProperties.PAGE_INFO_LISTENER == propertyKey) {
             TabListMediator.TabActionListener listener =
                     model.get(TabProperties.PAGE_INFO_LISTENER);

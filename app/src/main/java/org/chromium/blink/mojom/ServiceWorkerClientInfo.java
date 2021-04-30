@@ -75,11 +75,13 @@ public final class ServiceWorkerClientInfo extends org.chromium.mojo.bindings.St
                     
                 result.frameType = decoder0.readInt(16);
                     RequestContextFrameType.validate(result.frameType);
+                    result.frameType = RequestContextFrameType.toKnownValue(result.frameType);
                 }
                 {
                     
                 result.clientType = decoder0.readInt(20);
                     ServiceWorkerClientType.validate(result.clientType);
+                    result.clientType = ServiceWorkerClientType.toKnownValue(result.clientType);
                 }
                 {
                     
@@ -97,6 +99,7 @@ public final class ServiceWorkerClientInfo extends org.chromium.mojo.bindings.St
                     
                 result.lifecycleState = decoder0.readInt(36);
                     ServiceWorkerClientLifecycleState.validate(result.lifecycleState);
+                    result.lifecycleState = ServiceWorkerClientLifecycleState.toKnownValue(result.lifecycleState);
                 }
                 {
                     

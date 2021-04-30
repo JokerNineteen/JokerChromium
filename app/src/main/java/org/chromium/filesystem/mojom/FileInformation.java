@@ -62,6 +62,7 @@ public final class FileInformation extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     FsFileType.validate(result.type);
+                    result.type = FsFileType.toKnownValue(result.type);
                 }
                 {
                     

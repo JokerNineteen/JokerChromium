@@ -358,6 +358,7 @@ GetKeyboardLayoutMapResponse callback) {
                         
                     result.result = decoder0.readInt(8);
                         KeyboardLockRequestResult.validate(result.result);
+                        result.result = KeyboardLockRequestResult.toKnownValue(result.result);
                     }
 
             } finally {

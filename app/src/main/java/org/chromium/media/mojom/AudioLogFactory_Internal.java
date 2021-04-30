@@ -209,6 +209,7 @@ int component, int componentId, org.chromium.mojo.bindings.InterfaceRequest<Audi
                         
                     result.component = decoder0.readInt(8);
                         AudioLogComponent.validate(result.component);
+                        result.component = AudioLogComponent.toKnownValue(result.component);
                     }
                     {
                         

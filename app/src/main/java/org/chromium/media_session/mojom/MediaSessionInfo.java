@@ -16,9 +16,9 @@ package org.chromium.media_session.mojom;
 
 public final class MediaSessionInfo extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0),new org.chromium.mojo.bindings.DataHeader(24, 1),new org.chromium.mojo.bindings.DataHeader(24, 2),new org.chromium.mojo.bindings.DataHeader(24, 4),new org.chromium.mojo.bindings.DataHeader(24, 6),new org.chromium.mojo.bindings.DataHeader(24, 7),new org.chromium.mojo.bindings.DataHeader(32, 8),new org.chromium.mojo.bindings.DataHeader(40, 9)};
-    private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[7];
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0),new org.chromium.mojo.bindings.DataHeader(24, 1),new org.chromium.mojo.bindings.DataHeader(24, 2),new org.chromium.mojo.bindings.DataHeader(24, 4),new org.chromium.mojo.bindings.DataHeader(24, 6),new org.chromium.mojo.bindings.DataHeader(24, 7),new org.chromium.mojo.bindings.DataHeader(32, 8),new org.chromium.mojo.bindings.DataHeader(40, 9),new org.chromium.mojo.bindings.DataHeader(48, 10)};
+    private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[8];
 
     public static final class SessionState {
         private static final boolean IS_EXTENSIBLE = true;
@@ -39,6 +39,10 @@ public final class MediaSessionInfo extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private SessionState() {}
     }
     public int state;
@@ -48,15 +52,16 @@ public final class MediaSessionInfo extends org.chromium.mojo.bindings.Struct {
     public boolean preferStopForGainFocusLoss;
     public boolean isSensitive;
     public int pictureInPictureState;
-    public int audioVideoState;
+    public int deprecatedAudioVideoState;
     public String audioSinkId;
+    public int[] audioVideoStates;
 
     private MediaSessionInfo(int version) {
         super(STRUCT_SIZE, version);
     }
 
     public MediaSessionInfo() {
-        this(9);
+        this(10);
     }
 
     public static MediaSessionInfo deserialize(org.chromium.mojo.bindings.Message message) {
@@ -88,6 +93,7 @@ public final class MediaSessionInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.state = decoder0.readInt(8);
                     MediaSessionInfo.SessionState.validate(result.state);
+                    result.state = MediaSessionInfo.SessionState.toKnownValue(result.state);
                 }
                 {
                     
@@ -116,6 +122,7 @@ public final class MediaSessionInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.playbackState = decoder0.readInt(16);
                     MediaPlaybackState.validate(result.playbackState);
+                    result.playbackState = MediaPlaybackState.toKnownValue(result.playbackState);
                 }
             }
             if (elementsOrVersion >= 7) {
@@ -123,19 +130,32 @@ public final class MediaSessionInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.pictureInPictureState = decoder0.readInt(20);
                     MediaPictureInPictureState.validate(result.pictureInPictureState);
+                    result.pictureInPictureState = MediaPictureInPictureState.toKnownValue(result.pictureInPictureState);
                 }
             }
             if (elementsOrVersion >= 8) {
                 {
                     
-                result.audioVideoState = decoder0.readInt(24);
-                    MediaAudioVideoState.validate(result.audioVideoState);
+                result.deprecatedAudioVideoState = decoder0.readInt(24);
+                    MediaAudioVideoState.validate(result.deprecatedAudioVideoState);
+                    result.deprecatedAudioVideoState = MediaAudioVideoState.toKnownValue(result.deprecatedAudioVideoState);
                 }
             }
             if (elementsOrVersion >= 9) {
                 {
                     
                 result.audioSinkId = decoder0.readString(32, true);
+                }
+            }
+            if (elementsOrVersion >= 10) {
+                {
+                    
+                result.audioVideoStates = decoder0.readInts(40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                if (result.audioVideoStates != null) {
+                    for (int i1 = 0; i1 < result.audioVideoStates.length; ++i1) {
+                        MediaAudioVideoState.validate(result.audioVideoStates[i1]);
+                    }
+                }
                 }
             }
 
@@ -164,8 +184,10 @@ public final class MediaSessionInfo extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.pictureInPictureState, 20);
         
-        encoder0.encode(this.audioVideoState, 24);
+        encoder0.encode(this.deprecatedAudioVideoState, 24);
         
         encoder0.encode(this.audioSinkId, 32, true);
+        
+        encoder0.encode(this.audioVideoStates, 40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

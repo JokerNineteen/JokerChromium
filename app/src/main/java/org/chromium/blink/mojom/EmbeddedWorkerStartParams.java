@@ -16,8 +16,8 @@ package org.chromium.blink.mojom;
 
 public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 168;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(168, 0)};
+    private static final int STRUCT_SIZE = 176;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(176, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public long serviceWorkerVersionId;
     public org.chromium.url.mojom.Url scope;
@@ -43,6 +43,7 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
     public org.chromium.mojo.bindings.InterfaceRequest<SubresourceLoaderUpdater> subresourceLoaderUpdater;
     public ServiceWorkerToken serviceWorkerToken;
     public long ukmSourceId;
+    public WorkerMainScriptLoadParams mainScriptLoadParams;
 
     private EmbeddedWorkerStartParams(int version) {
         super(STRUCT_SIZE, version);
@@ -95,6 +96,7 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
                     
                 result.scriptType = decoder0.readInt(32);
                     ScriptType.validate(result.scriptType);
+                    result.scriptType = ScriptType.toKnownValue(result.scriptType);
                 }
                 {
                     
@@ -185,6 +187,11 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
                     
                 result.ukmSourceId = decoder0.readLong(160);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(168, true);
+                result.mainScriptLoadParams = WorkerMainScriptLoadParams.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -244,5 +251,7 @@ public final class EmbeddedWorkerStartParams extends org.chromium.mojo.bindings.
         encoder0.encode(this.serviceWorkerToken, 152, false);
         
         encoder0.encode(this.ukmSourceId, 160);
+        
+        encoder0.encode(this.mainScriptLoadParams, 168, true);
     }
 }

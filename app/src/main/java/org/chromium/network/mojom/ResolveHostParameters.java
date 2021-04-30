@@ -40,6 +40,10 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Source() {}
     }
 
@@ -59,6 +63,10 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
         public static void validate(int value) {
             if (IS_EXTENSIBLE || isKnownValue(value)) return;
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
         }
 
         private CacheUsage() {}
@@ -118,21 +126,25 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
                     
                 result.dnsQueryType = decoder0.readInt(8);
                     DnsQueryType.validate(result.dnsQueryType);
+                    result.dnsQueryType = DnsQueryType.toKnownValue(result.dnsQueryType);
                 }
                 {
                     
                 result.initialPriority = decoder0.readInt(12);
                     RequestPriority.validate(result.initialPriority);
+                    result.initialPriority = RequestPriority.toKnownValue(result.initialPriority);
                 }
                 {
                     
                 result.source = decoder0.readInt(16);
                     ResolveHostParameters.Source.validate(result.source);
+                    result.source = ResolveHostParameters.Source.toKnownValue(result.source);
                 }
                 {
                     
                 result.cacheUsage = decoder0.readInt(20);
                     ResolveHostParameters.CacheUsage.validate(result.cacheUsage);
+                    result.cacheUsage = ResolveHostParameters.CacheUsage.toKnownValue(result.cacheUsage);
                 }
                 {
                     
@@ -154,6 +166,7 @@ public final class ResolveHostParameters extends org.chromium.mojo.bindings.Stru
                     
                 result.secureDnsModeOverride = decoder0.readInt(32);
                     OptionalSecureDnsMode.validate(result.secureDnsModeOverride);
+                    result.secureDnsModeOverride = OptionalSecureDnsMode.toKnownValue(result.secureDnsModeOverride);
                 }
 
         } finally {

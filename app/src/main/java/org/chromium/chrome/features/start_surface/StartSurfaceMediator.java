@@ -8,12 +8,14 @@ import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_FAKE_S
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_INCOGNITO;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_INCOGNITO_DESCRIPTION_INITIALIZED;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_INCOGNITO_DESCRIPTION_VISIBLE;
+import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_LENS_BUTTON_VISIBLE;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_SURFACE_BODY_VISIBLE;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_TAB_CAROUSEL_VISIBLE;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.IS_VOICE_RECOGNITION_BUTTON_VISIBLE;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.MORE_TABS_CLICK_LISTENER;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.MV_TILES_CONTAINER_TOP_MARGIN;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.MV_TILES_VISIBLE;
+import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.RESET_TASK_SURFACE_HEADER_SCROLL_POSITION;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.TAB_SWITCHER_TITLE_TOP_MARGIN;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.TASKS_SURFACE_BODY_TOP_MARGIN;
 import static org.chromium.chrome.browser.tasks.TasksSurfaceProperties.TRENDY_TERMS_VISIBLE;
@@ -25,9 +27,10 @@ import static org.chromium.chrome.features.start_surface.StartSurfaceProperties.
 import static org.chromium.chrome.features.start_surface.StartSurfaceProperties.IS_EXPLORE_SURFACE_VISIBLE;
 import static org.chromium.chrome.features.start_surface.StartSurfaceProperties.IS_SECONDARY_SURFACE_VISIBLE;
 import static org.chromium.chrome.features.start_surface.StartSurfaceProperties.IS_SHOWING_OVERVIEW;
-import static org.chromium.chrome.features.start_surface.StartSurfaceProperties.IS_SHOWING_STACK_TAB_SWITCHER;
+import static org.chromium.chrome.features.start_surface.StartSurfaceProperties.RESET_FEED_SURFACE_SCROLL_POSITION;
 import static org.chromium.chrome.features.start_surface.StartSurfaceProperties.TOP_MARGIN;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 
@@ -35,7 +38,6 @@ import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.base.ContextUtils;
 import org.chromium.base.ObserverList;
 import org.chromium.base.StrictModeContext;
 import org.chromium.base.ThreadUtils;
@@ -47,14 +49,13 @@ import org.chromium.chrome.browser.feed.FeedSurfaceCoordinator;
 import org.chromium.chrome.browser.feed.shared.stream.Stream;
 import org.chromium.chrome.browser.flags.CachedFeatureFlags;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
-import org.chromium.chrome.browser.night_mode.NightModeStateProvider;
+import org.chromium.chrome.browser.lens.LensEntryPoint;
 import org.chromium.chrome.browser.ntp.FakeboxDelegate;
 import org.chromium.chrome.browser.omnibox.UrlFocusChangeListener;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 import org.chromium.chrome.browser.preferences.Pref;
 import org.chromium.chrome.browser.tab.Tab;
 import org.chromium.chrome.browser.tab.TabLaunchType;
-import org.chromium.chrome.browser.tabmodel.EmptyTabModelSelectorObserver;
 import org.chromium.chrome.browser.tabmodel.TabModel;
 import org.chromium.chrome.browser.tabmodel.TabModelObserver;
 import org.chromium.chrome.browser.tabmodel.TabModelSelector;
@@ -64,6 +65,7 @@ import org.chromium.chrome.browser.tasks.tab_management.TabSwitcher;
 import org.chromium.chrome.start_surface.R;
 import org.chromium.components.prefs.PrefService;
 import org.chromium.ui.modelutil.PropertyModel;
+import org.chromium.ui.util.ColorUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -130,7 +132,7 @@ class StartSurfaceMediator
     private boolean mIsIncognito;
     @Nullable
     private FakeboxDelegate mFakeboxDelegate;
-    private NightModeStateProvider mNightModeStateProvider;
+    private Context mContext;
     @Nullable
     UrlFocusChangeListener mUrlFocusChangeListener;
     @StartSurfaceState
@@ -147,7 +149,6 @@ class StartSurfaceMediator
     private BrowserControlsStateProvider.Observer mBrowserControlsObserver;
     private ActivityStateChecker mActivityStateChecker;
     private boolean mExcludeMVTiles;
-    private boolean mShowStackTabSwitcher;
     private OneshotSupplier<StartSurface> mStartSurfaceSupplier;
     /**
      * Whether a pending observer needed be added to the normal TabModel after the TabModel is
@@ -166,25 +167,28 @@ class StartSurfaceMediator
      */
     @Nullable
     private Boolean mFeedVisibilityInSharedPreferenceOnStartUp;
+    private boolean mHadWarmStart;
+    private boolean mHideMVForNewSurface;
+    private boolean mHideTabCarouselForNewSurface;
 
     StartSurfaceMediator(TabSwitcher.Controller controller, TabModelSelector tabModelSelector,
             @Nullable PropertyModel propertyModel,
             @Nullable SecondaryTasksSurfaceInitializer secondaryTasksSurfaceInitializer,
-            @SurfaceMode int surfaceMode, NightModeStateProvider nightModeStateProvider,
+            @SurfaceMode int surfaceMode, Context context,
             BrowserControlsStateProvider browserControlsStateProvider,
             ActivityStateChecker activityStateChecker, boolean excludeMVTiles,
-            boolean showStackTabSwitcher, OneshotSupplier<StartSurface> startSurfaceSupplier) {
+            OneshotSupplier<StartSurface> startSurfaceSupplier, boolean hadWarmStart) {
         mController = controller;
         mTabModelSelector = tabModelSelector;
         mPropertyModel = propertyModel;
         mSecondaryTasksSurfaceInitializer = secondaryTasksSurfaceInitializer;
         mSurfaceMode = surfaceMode;
-        mNightModeStateProvider = nightModeStateProvider;
+        mContext = context;
         mBrowserControlsStateProvider = browserControlsStateProvider;
         mActivityStateChecker = activityStateChecker;
         mExcludeMVTiles = excludeMVTiles;
-        mShowStackTabSwitcher = showStackTabSwitcher;
         mStartSurfaceSupplier = startSurfaceSupplier;
+        mHadWarmStart = hadWarmStart;
 
         if (mPropertyModel != null) {
             assert mSurfaceMode == SurfaceMode.SINGLE_PANE || mSurfaceMode == SurfaceMode.TWO_PANES
@@ -194,7 +198,7 @@ class StartSurfaceMediator
 
             mIsIncognito = mTabModelSelector.isIncognitoSelected();
 
-            mTabModelSelectorObserver = new EmptyTabModelSelectorObserver() {
+            mTabModelSelectorObserver = new TabModelSelectorObserver() {
                 @Override
                 public void onTabModelSelected(TabModel newModel, TabModel oldModel) {
                     // TODO(crbug.com/982018): Optimize to not listen for selected Tab model change
@@ -260,7 +264,7 @@ class StartSurfaceMediator
                 };
                 if (mTabModelSelector.getModels().isEmpty()) {
                     TabModelSelectorObserver selectorObserver =
-                            new EmptyTabModelSelectorObserver() {
+                            new TabModelSelectorObserver() {
                                 @Override
                                 public void onChange() {
                                     assert !mTabModelSelector.getModels().isEmpty();
@@ -322,7 +326,7 @@ class StartSurfaceMediator
             // variations.
             if (surfaceMode != SurfaceMode.OMNIBOX_ONLY
                     && surfaceMode != SurfaceMode.TRENDY_TERMS) {
-                Resources resources = ContextUtils.getApplicationContext().getResources();
+                Resources resources = mContext.getResources();
                 mPropertyModel.set(TASKS_SURFACE_BODY_TOP_MARGIN,
                         resources.getDimensionPixelSize(R.dimen.tasks_surface_body_top_margin));
                 mPropertyModel.set(MV_TILES_CONTAINER_TOP_MARGIN,
@@ -348,6 +352,8 @@ class StartSurfaceMediator
             // Note that isVoiceSearchEnabled will return false in incognito mode.
             mPropertyModel.set(IS_VOICE_RECOGNITION_BUTTON_VISIBLE,
                     mFakeboxDelegate.getVoiceRecognitionHandler().isVoiceSearchEnabled());
+            mPropertyModel.set(IS_LENS_BUTTON_VISIBLE,
+                    mFakeboxDelegate.isLensEnabled(LensEntryPoint.TASKS_SURFACE));
 
             if (mController.overviewVisible()) {
                 mFakeboxDelegate.addUrlFocusChangeListener(mUrlFocusChangeListener);
@@ -393,6 +399,7 @@ class StartSurfaceMediator
         // tiles and voice recognition button should be invisible.
         mSecondaryTasksSurfacePropertyModel.set(MV_TILES_VISIBLE, false);
         mSecondaryTasksSurfacePropertyModel.set(IS_VOICE_RECOGNITION_BUTTON_VISIBLE, false);
+        mSecondaryTasksSurfacePropertyModel.set(IS_LENS_BUTTON_VISIBLE, false);
     }
 
     void addStateChangeObserver(StartSurface.StateObserver observer) {
@@ -419,6 +426,36 @@ class StartSurfaceMediator
 
         if (mPropertyModel == null || state == mStartSurfaceState) return;
 
+        // When entering the Start surface by tapping home button or new tab page, we need to reset
+        // the scrolling position.
+        if (state == StartSurfaceState.SHOWING_HOMEPAGE) {
+            mPropertyModel.set(RESET_TASK_SURFACE_HEADER_SCROLL_POSITION, true);
+            mPropertyModel.set(RESET_FEED_SURFACE_SCROLL_POSITION, true);
+
+            String newHomeSurface =
+                    StartSurfaceConfiguration.NEW_SURFACE_FROM_HOME_BUTTON.getValue();
+            switch (newHomeSurface) {
+                case "hide_tab_switcher_only":
+                    mHideMVForNewSurface = false;
+                    mHideTabCarouselForNewSurface = true;
+                    break;
+                case "hide_mv_tiles_and_tab_switcher":
+                    mHideMVForNewSurface = true;
+                    mHideTabCarouselForNewSurface = true;
+                    break;
+                default:
+                    mHideMVForNewSurface = false;
+                    mHideTabCarouselForNewSurface = false;
+            }
+        }
+
+        // Every time Chrome is started, no matter warm start or cold start, show MV tiles & tab
+        // carousel.
+        if (state == StartSurfaceState.SHOWING_START && !mTabModelSelector.isIncognitoSelected()) {
+            mHideMVForNewSurface = false;
+            mHideTabCarouselForNewSurface = false;
+        }
+
         // Cache previous state.
         if (mStartSurfaceState != StartSurfaceState.NOT_SHOWN) {
             mPreviousStartSurfaceState = mStartSurfaceState;
@@ -436,9 +473,6 @@ class StartSurfaceMediator
             // still needed to compute the shown state.
             @StartSurfaceState
             int shownState = computeOverviewStateShown();
-
-            // Cache previous state
-            mPreviousStartSurfaceState = mStartSurfaceState;
 
             mStartSurfaceState = shownState;
             setOverviewStateInternal();
@@ -470,8 +504,6 @@ class StartSurfaceMediator
     // setStartSurfaceStateInternal.
     private void setOverviewStateInternal() {
         if (mStartSurfaceState == StartSurfaceState.SHOWN_HOMEPAGE) {
-            mPropertyModel.set(IS_SHOWING_STACK_TAB_SWITCHER, false);
-
             setExploreSurfaceVisibility(!mIsIncognito && mFeedSurfaceCreator != null);
             boolean hasNormalTab;
             if (CachedFeatureFlags.isEnabled(ChromeFeatureList.INSTANT_START)
@@ -484,8 +516,12 @@ class StartSurfaceMediator
             } else {
                 hasNormalTab = mTabModelSelector.getModel(false).getCount() > 0;
             }
-            setTabCarouselVisibility(hasNormalTab && !mIsIncognito);
-            setMVTilesVisibility(!mIsIncognito);
+
+            // If new home surface for home button is enabled, MV tiles and carousel tab switcher
+            // will not show.
+            setTabCarouselVisibility(
+                    hasNormalTab && !mIsIncognito && !mHideTabCarouselForNewSurface);
+            setMVTilesVisibility(!mIsIncognito && !mHideMVForNewSurface);
             setFakeBoxVisibility(!mIsIncognito);
             setSecondaryTasksSurfaceVisibility(mIsIncognito);
 
@@ -499,8 +535,6 @@ class StartSurfaceMediator
                 mPendingObserver = true;
             }
         } else if (mStartSurfaceState == StartSurfaceState.SHOWN_TABSWITCHER) {
-            mPropertyModel.set(IS_SHOWING_STACK_TAB_SWITCHER, mShowStackTabSwitcher);
-
             setTabCarouselVisibility(false);
             setMVTilesVisibility(false);
             setFakeBoxVisibility(false);
@@ -513,9 +547,8 @@ class StartSurfaceMediator
             setMVTilesVisibility(!mIsIncognito);
             mPropertyModel.set(BOTTOM_BAR_HEIGHT,
                     mIsIncognito ? 0
-                                 : ContextUtils.getApplicationContext()
-                                           .getResources()
-                                           .getDimensionPixelSize(R.dimen.ss_bottom_bar_height));
+                                 : mContext.getResources().getDimensionPixelSize(
+                                         R.dimen.ss_bottom_bar_height));
             mPropertyModel.set(IS_BOTTOM_BAR_VISIBLE, !mIsIncognito);
 
         } else if (mStartSurfaceState == StartSurfaceState.SHOWN_TABSWITCHER_TASKS_ONLY) {
@@ -538,17 +571,15 @@ class StartSurfaceMediator
         }
 
         if (isShownState(mStartSurfaceState)) {
-            setIncognitoModeDescriptionVisibility(mIsIncognito
-                    && (mTabModelSelector.getModel(true).getCount() <= 0 || mShowStackTabSwitcher));
+            setIncognitoModeDescriptionVisibility(
+                    mIsIncognito && (mTabModelSelector.getModel(true).getCount() <= 0));
         }
     }
 
-    // TODO(crbug.com/1115757): After crrev.com/c/2315823, Overview state and Startsurface state are
-    // two different things, audit the wording usage and see if we can rename this method to
-    // getStartSurfaceState.
     @VisibleForTesting
+    @Override
     @StartSurfaceState
-    public int getOverviewState() {
+    public int getStartSurfaceState() {
         return mStartSurfaceState;
     }
 
@@ -597,8 +628,7 @@ class StartSurfaceMediator
                     && mFeedSurfaceCreator != null) {
                 mPropertyModel.set(FEED_SURFACE_COORDINATOR,
                         mFeedSurfaceCreator.createFeedSurfaceCoordinator(
-                                mNightModeStateProvider.isInNightMode(),
-                                shouldShowFeedPlaceholder()));
+                                ColorUtils.inNightMode(mContext), shouldShowFeedPlaceholder()));
             }
             mTabModelSelector.addObserver(mTabModelSelectorObserver);
 
@@ -619,13 +649,30 @@ class StartSurfaceMediator
 
     @Override
     public boolean onBackPressed() {
-        if (mStartSurfaceState == StartSurfaceState.SHOWN_TABSWITCHER
+        boolean isOnHomepage = mStartSurfaceState == StartSurfaceState.SHOWN_HOMEPAGE;
+
+        // When the SecondaryTasksSurface is shown, the TabGridDialog is controlled by
+        // mSecondaryTasksSurfaceController, while the TabSelectionEditor dialog is controlled
+        // by mController. Therefore, we need to check both controllers whether any dialog is
+        // visible. If so, the corresponding controller will handle the back button.
+        // When the Start surface is shown, tapping "Group Tabs" from menu will also show the
+        // the TabSelectionEditor dialog. Therefore, we need to check both controllers as well.
+        if (mSecondaryTasksSurfaceController != null
+                && mSecondaryTasksSurfaceController.isDialogVisible()) {
+            return mSecondaryTasksSurfaceController.onBackPressed(isOnHomepage);
+        } else if (mController.isDialogVisible()) {
+            return mController.onBackPressed(isOnHomepage);
+        }
+
+        if (mStartSurfaceState == StartSurfaceState.SHOWN_TABSWITCHER) {
+            if (mPreviousStartSurfaceState == StartSurfaceState.SHOWN_HOMEPAGE && !mIsIncognito) {
                 // Secondary tasks surface is used as the main surface in incognito mode.
-                && !mIsIncognito) {
-            // If we reached tabswitcher from HomePage.
-            if (mPreviousStartSurfaceState == StartSurfaceState.SHOWN_HOMEPAGE) {
+                // If we reached Tab switcher from HomePage, and there isn't any dialog shown,
+                // updates the state, and ChromeTabbedActivity will handle the back button.
                 setOverviewState(StartSurfaceState.SHOWN_HOMEPAGE);
                 return true;
+            } else {
+                return mSecondaryTasksSurfaceController.onBackPressed(isOnHomepage);
             }
         }
 
@@ -636,7 +683,7 @@ class StartSurfaceMediator
             return true;
         }
 
-        return mController.onBackPressed();
+        return mController.onBackPressed(isOnHomepage);
     }
 
     @Override
@@ -663,8 +710,9 @@ class StartSurfaceMediator
     }
 
     @Override
-    public boolean isHomePageShowing() {
-        return mStartSurfaceState == StartSurfaceState.SHOWN_HOMEPAGE;
+    public boolean inShowState() {
+        return mStartSurfaceState != StartSurfaceState.NOT_SHOWN
+                && mStartSurfaceState != StartSurfaceState.DISABLED;
     }
 
     // Implements TabSwitcher.OverviewModeObserver.
@@ -738,7 +786,7 @@ class StartSurfaceMediator
     public void onClick(View v) {
         assert mStartSurfaceState == StartSurfaceState.SHOWN_HOMEPAGE;
 
-        if (mSecondaryTasksSurfacePropertyModel == null && !mShowStackTabSwitcher) {
+        if (mSecondaryTasksSurfacePropertyModel == null) {
             mSecondaryTasksSurfaceController = mSecondaryTasksSurfaceInitializer.initialize();
             assert mSecondaryTasksSurfacePropertyModel != null;
         }
@@ -755,7 +803,7 @@ class StartSurfaceMediator
 
         return mSurfaceMode == SurfaceMode.SINGLE_PANE
                 && CachedFeatureFlags.isEnabled(ChromeFeatureList.INSTANT_START)
-                && StartSurfaceConfiguration.getFeedArticlesVisibility();
+                && StartSurfaceConfiguration.getFeedArticlesVisibility() && !mHadWarmStart;
     }
 
     /** This interface builds the feed surface coordinator when showing if needed. */
@@ -767,7 +815,7 @@ class StartSurfaceMediator
                 && !mActivityStateChecker.isFinishingOrDestroyed()) {
             mPropertyModel.set(FEED_SURFACE_COORDINATOR,
                     mFeedSurfaceCreator.createFeedSurfaceCoordinator(
-                            mNightModeStateProvider.isInNightMode(), shouldShowFeedPlaceholder()));
+                            ColorUtils.inNightMode(mContext), shouldShowFeedPlaceholder()));
         }
 
         mPropertyModel.set(IS_EXPLORE_SURFACE_VISIBLE, isVisible);
@@ -888,9 +936,13 @@ class StartSurfaceMediator
         // earlier than the VoiceRecognitionHandler, so isVoiceSearchEnabled returns
         // incorrect state if check synchronously.
         ThreadUtils.postOnUiThread(() -> {
-            if (mFakeboxDelegate != null && mFakeboxDelegate.getVoiceRecognitionHandler() != null) {
-                mPropertyModel.set(IS_VOICE_RECOGNITION_BUTTON_VISIBLE,
-                        mFakeboxDelegate.getVoiceRecognitionHandler().isVoiceSearchEnabled());
+            if (mFakeboxDelegate != null) {
+                if (mFakeboxDelegate.getVoiceRecognitionHandler() != null) {
+                    mPropertyModel.set(IS_VOICE_RECOGNITION_BUTTON_VISIBLE,
+                            mFakeboxDelegate.getVoiceRecognitionHandler().isVoiceSearchEnabled());
+                }
+                mPropertyModel.set(IS_LENS_BUTTON_VISIBLE,
+                        mFakeboxDelegate.isLensEnabled(LensEntryPoint.TASKS_SURFACE));
             }
         });
     }
@@ -930,6 +982,9 @@ class StartSurfaceMediator
                         ? StartSurfaceState.SHOWN_HOMEPAGE
                         : mPreviousStartSurfaceState;
             } else if (mStartSurfaceState == StartSurfaceState.SHOWING_START) {
+                if (mTabModelSelector.isIncognitoSelected()) {
+                    return StartSurfaceState.SHOWN_TABSWITCHER;
+                }
                 return StartSurfaceState.SHOWN_HOMEPAGE;
             } else if (mStartSurfaceState == StartSurfaceState.SHOWING_TABSWITCHER) {
                 return StartSurfaceState.SHOWN_TABSWITCHER;
@@ -963,5 +1018,9 @@ class StartSurfaceMediator
                 || state == StartSurfaceState.SHOWN_TABSWITCHER_TASKS_ONLY
                 || state == StartSurfaceState.SHOWN_TABSWITCHER_OMNIBOX_ONLY
                 || state == StartSurfaceState.SHOWN_TABSWITCHER_TRENDY_TERMS;
+    }
+
+    TabSwitcher.Controller getSecondaryTasksSurfaceController() {
+        return mSecondaryTasksSurfaceController;
     }
 }

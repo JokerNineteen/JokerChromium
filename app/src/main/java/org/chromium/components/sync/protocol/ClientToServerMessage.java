@@ -13,7 +13,7 @@ public  final class ClientToServerMessage extends
     ClientToServerMessageOrBuilder {
   private ClientToServerMessage() {
     share_ = "";
-    protocolVersion_ = 52;
+    protocolVersion_ = 90;
     messageContents_ = 1;
     storeBirthday_ = "";
     apiKey_ = "";
@@ -224,7 +224,7 @@ public  final class ClientToServerMessage extends
   public static final int PROTOCOL_VERSION_FIELD_NUMBER = 2;
   private int protocolVersion_;
   /**
-   * <code>optional int32 protocol_version = 2 [default = 52];</code>
+   * <code>optional int32 protocol_version = 2 [default = 90];</code>
    * @return Whether the protocolVersion field is set.
    */
   @java.lang.Override
@@ -232,7 +232,7 @@ public  final class ClientToServerMessage extends
     return ((bitField0_ & 0x00000002) != 0);
   }
   /**
-   * <code>optional int32 protocol_version = 2 [default = 52];</code>
+   * <code>optional int32 protocol_version = 2 [default = 90];</code>
    * @return The protocolVersion.
    */
   @java.lang.Override
@@ -240,7 +240,7 @@ public  final class ClientToServerMessage extends
     return protocolVersion_;
   }
   /**
-   * <code>optional int32 protocol_version = 2 [default = 52];</code>
+   * <code>optional int32 protocol_version = 2 [default = 90];</code>
    * @param value The protocolVersion to set.
    */
   private void setProtocolVersion(int value) {
@@ -248,11 +248,11 @@ public  final class ClientToServerMessage extends
     protocolVersion_ = value;
   }
   /**
-   * <code>optional int32 protocol_version = 2 [default = 52];</code>
+   * <code>optional int32 protocol_version = 2 [default = 90];</code>
    */
   private void clearProtocolVersion() {
     bitField0_ = (bitField0_ & ~0x00000002);
-    protocolVersion_ = 52;
+    protocolVersion_ = 90;
   }
 
   public static final int MESSAGE_CONTENTS_FIELD_NUMBER = 3;
@@ -1193,7 +1193,7 @@ public  final class ClientToServerMessage extends
     }
 
     /**
-     * <code>optional int32 protocol_version = 2 [default = 52];</code>
+     * <code>optional int32 protocol_version = 2 [default = 90];</code>
      * @return Whether the protocolVersion field is set.
      */
     @java.lang.Override
@@ -1201,7 +1201,7 @@ public  final class ClientToServerMessage extends
       return instance.hasProtocolVersion();
     }
     /**
-     * <code>optional int32 protocol_version = 2 [default = 52];</code>
+     * <code>optional int32 protocol_version = 2 [default = 90];</code>
      * @return The protocolVersion.
      */
     @java.lang.Override
@@ -1209,7 +1209,7 @@ public  final class ClientToServerMessage extends
       return instance.getProtocolVersion();
     }
     /**
-     * <code>optional int32 protocol_version = 2 [default = 52];</code>
+     * <code>optional int32 protocol_version = 2 [default = 90];</code>
      * @param value The protocolVersion to set.
      * @return This builder for chaining.
      */
@@ -1219,7 +1219,7 @@ public  final class ClientToServerMessage extends
       return this;
     }
     /**
-     * <code>optional int32 protocol_version = 2 [default = 52];</code>
+     * <code>optional int32 protocol_version = 2 [default = 90];</code>
      * @return This builder for chaining.
      */
     public Builder clearProtocolVersion() {

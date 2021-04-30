@@ -63,6 +63,7 @@ public final class CookieManagerGetOptions extends org.chromium.mojo.bindings.St
                     
                 result.matchType = decoder0.readInt(16);
                     CookieMatchType.validate(result.matchType);
+                    result.matchType = CookieMatchType.toKnownValue(result.matchType);
                 }
 
         } finally {

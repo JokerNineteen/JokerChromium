@@ -64,6 +64,7 @@ public final class PredictionFeatures extends org.chromium.mojo.bindings.Struct 
                     
                 result.profile = decoder0.readInt(8);
                     VideoCodecProfile.validate(result.profile);
+                    result.profile = VideoCodecProfile.toKnownValue(result.profile);
                 }
                 {
                     

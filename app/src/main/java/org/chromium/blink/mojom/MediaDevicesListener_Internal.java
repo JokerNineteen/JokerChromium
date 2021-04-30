@@ -206,6 +206,7 @@ int type, MediaDeviceInfo[] deviceInfos) {
                         
                     result.type = decoder0.readInt(8);
                         MediaDeviceType.validate(result.type);
+                        result.type = MediaDeviceType.toKnownValue(result.type);
                     }
                     {
                         

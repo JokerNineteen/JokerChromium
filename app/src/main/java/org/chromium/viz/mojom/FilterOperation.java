@@ -67,6 +67,7 @@ public final class FilterOperation extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     FilterType.validate(result.type);
+                    result.type = FilterType.toKnownValue(result.type);
                 }
                 {
                     
@@ -101,7 +102,8 @@ public final class FilterOperation extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 result.blurTileMode = decoder0.readInt(52);
-                    org.chromium.skia.mojom.BlurTileMode.validate(result.blurTileMode);
+                    org.chromium.skia.mojom.TileMode.validate(result.blurTileMode);
+                    result.blurTileMode = org.chromium.skia.mojom.TileMode.toKnownValue(result.blurTileMode);
                 }
                 {
                     

@@ -87,6 +87,7 @@ public final class NotificationData extends org.chromium.mojo.bindings.Struct {
                     
                 result.direction = decoder0.readInt(16);
                     NotificationDirection.validate(result.direction);
+                    result.direction = NotificationDirection.toKnownValue(result.direction);
                 }
                 {
                     

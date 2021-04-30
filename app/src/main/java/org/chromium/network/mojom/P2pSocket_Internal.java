@@ -323,6 +323,7 @@ int option, int value) {
                         
                     result.option = decoder0.readInt(8);
                         P2pSocketOption.validate(result.option);
+                        result.option = P2pSocketOption.toKnownValue(result.option);
                     }
                     {
                         

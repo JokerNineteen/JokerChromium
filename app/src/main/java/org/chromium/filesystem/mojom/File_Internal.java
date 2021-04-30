@@ -749,6 +749,7 @@ AsHandleResponse callback) {
                         
                     result.err = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.err);
+                        result.err = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.err);
                     }
 
             } finally {
@@ -880,6 +881,7 @@ AsHandleResponse callback) {
                         
                     result.whence = decoder0.readInt(12);
                         Whence.validate(result.whence);
+                        result.whence = Whence.toKnownValue(result.whence);
                     }
                     {
                         
@@ -953,6 +955,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -1096,6 +1099,7 @@ AsHandleResponse callback) {
                         
                     result.whence = decoder0.readInt(24);
                         Whence.validate(result.whence);
+                        result.whence = Whence.toKnownValue(result.whence);
                     }
 
             } finally {
@@ -1165,6 +1169,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -1355,6 +1360,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -1493,6 +1499,7 @@ AsHandleResponse callback) {
                         
                     result.whence = decoder0.readInt(16);
                         Whence.validate(result.whence);
+                        result.whence = Whence.toKnownValue(result.whence);
                     }
 
             } finally {
@@ -1560,6 +1567,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -1750,6 +1758,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         
@@ -1947,6 +1956,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2144,6 +2154,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2332,6 +2343,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2513,6 +2525,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2694,6 +2707,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -2875,6 +2889,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -3057,6 +3072,7 @@ AsHandleResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.error);
+                        result.error = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.error);
                     }
                     {
                         

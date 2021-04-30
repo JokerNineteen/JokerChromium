@@ -54,6 +54,11 @@ final class ChromeFeatureListJni implements ChromeFeatureList.Natives {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_flags_ChromeFeatureList_getFieldTrialParamByFeatureAsBoolean(featureName, paramName, defaultValue);
   }
 
+  @Override
+  public String[] getFlattedFieldTrialParamsForFeature(String featureName) {
+    return (String[])GEN_JNI.org_chromium_chrome_browser_flags_ChromeFeatureList_getFlattedFieldTrialParamsForFeature(featureName);
+  }
+
   public static ChromeFeatureList.Natives get() {
     if (GEN_JNI.TESTING_ENABLED) {
       if (testInstance != null) {

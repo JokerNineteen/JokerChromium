@@ -70,6 +70,7 @@ public final class DisplayPlacement extends org.chromium.mojo.bindings.Struct {
                     
                 result.position = decoder0.readInt(24);
                     Position.validate(result.position);
+                    result.position = Position.toKnownValue(result.position);
                 }
                 {
                     
@@ -79,6 +80,7 @@ public final class DisplayPlacement extends org.chromium.mojo.bindings.Struct {
                     
                 result.offsetReference = decoder0.readInt(32);
                     OffsetReference.validate(result.offsetReference);
+                    result.offsetReference = OffsetReference.toKnownValue(result.offsetReference);
                 }
 
         } finally {

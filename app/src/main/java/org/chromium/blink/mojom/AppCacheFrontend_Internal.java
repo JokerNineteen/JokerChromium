@@ -443,6 +443,7 @@ org.chromium.network.mojom.UrlLoaderFactory urlLoaderFactory) {
                         
                     result.eventId = decoder0.readInt(8);
                         AppCacheEventId.validate(result.eventId);
+                        result.eventId = AppCacheEventId.toKnownValue(result.eventId);
                     }
 
             } finally {
@@ -650,6 +651,7 @@ org.chromium.network.mojom.UrlLoaderFactory urlLoaderFactory) {
                         
                     result.logLevel = decoder0.readInt(8);
                         ConsoleMessageLevel.validate(result.logLevel);
+                        result.logLevel = ConsoleMessageLevel.toKnownValue(result.logLevel);
                     }
                     {
                         

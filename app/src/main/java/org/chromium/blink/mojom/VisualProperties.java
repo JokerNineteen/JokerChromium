@@ -16,8 +16,8 @@ package org.chromium.blink.mojom;
 
 public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 104;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(104, 0)};
+    private static final int STRUCT_SIZE = 112;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public ScreenInfo screenInfo;
     public boolean autoResizeEnabled;
@@ -34,6 +34,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
     public int captureSequenceNumber;
     public double zoomLevel;
     public float pageScaleFactor;
+    public float compositingScaleFactor;
     public org.chromium.gfx.mojom.Rect[] rootWidgetWindowSegments;
     public boolean isPinchGestureActive;
 
@@ -42,6 +43,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
         this.autoResizeEnabled = (boolean) false;
         this.displayMode = (int) DisplayMode.UNDEFINED;
         this.pageScaleFactor = (float) 1;
+        this.compositingScaleFactor = (float) 1;
     }
 
     public VisualProperties() {
@@ -98,6 +100,7 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
                     
                 result.displayMode = decoder0.readInt(20);
                     DisplayMode.validate(result.displayMode);
+                    result.displayMode = DisplayMode.toKnownValue(result.displayMode);
                 }
                 {
                     
@@ -148,7 +151,11 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
+                result.compositingScaleFactor = decoder0.readFloat(96);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.rootWidgetWindowSegments = new org.chromium.gfx.mojom.Rect[si1.elementsOrVersion];
@@ -203,10 +210,12 @@ public final class VisualProperties extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.zoomLevel, 88);
         
+        encoder0.encode(this.compositingScaleFactor, 96);
+        
         if (this.rootWidgetWindowSegments == null) {
-            encoder0.encodeNullPointer(96, false);
+            encoder0.encodeNullPointer(104, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.rootWidgetWindowSegments.length, 96, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.rootWidgetWindowSegments.length, 104, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.rootWidgetWindowSegments.length; ++i0) {
                 
                 encoder1.encode(this.rootWidgetWindowSegments[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);

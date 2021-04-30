@@ -118,21 +118,8 @@ UpdateCrlSetResponse callback);
 
 
 
-    void updateLegacyTlsConfig(
-org.chromium.mojo_base.mojom.ReadOnlyBuffer config, 
-UpdateLegacyTlsConfigResponse callback);
-
-    interface UpdateLegacyTlsConfigResponse extends org.chromium.mojo.bindings.Callbacks.Callback0 { }
-
-
-
     void onCertDbChanged(
 );
-
-
-
-    void addCorbExceptionForPlugin(
-int processId);
 
 
 

@@ -210,6 +210,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ObservedFeature> feature, int type) 
                         
                     result.type = decoder0.readInt(12);
                         ObservedFeatureType.validate(result.type);
+                        result.type = ObservedFeatureType.toKnownValue(result.type);
                     }
 
             } finally {

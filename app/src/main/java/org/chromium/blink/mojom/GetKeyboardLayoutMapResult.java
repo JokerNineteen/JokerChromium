@@ -59,6 +59,7 @@ public final class GetKeyboardLayoutMapResult extends org.chromium.mojo.bindings
                     
                 result.status = decoder0.readInt(8);
                     GetKeyboardLayoutMapStatus.validate(result.status);
+                    result.status = GetKeyboardLayoutMapStatus.toKnownValue(result.status);
                 }
                 {
                     

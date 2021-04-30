@@ -16,13 +16,14 @@ package org.chromium.network.mojom;
 
 public final class TrustedUrlRequestParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public IsolationInfo isolationInfo;
     public boolean disableSecureDns;
     public boolean hasUserActivation;
     public CookieAccessObserver cookieObserver;
+    public AuthenticationAndCertificateObserver authCertObserver;
     public ClientSecurityState clientSecurityState;
 
     private TrustedUrlRequestParams(int version) {
@@ -77,7 +78,11 @@ public final class TrustedUrlRequestParams extends org.chromium.mojo.bindings.St
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
+                result.authCertObserver = decoder0.readServiceInterface(28, true, AuthenticationAndCertificateObserver.MANAGER);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
                 result.clientSecurityState = ClientSecurityState.decode(decoder1);
                 }
 
@@ -100,6 +105,8 @@ public final class TrustedUrlRequestParams extends org.chromium.mojo.bindings.St
         
         encoder0.encode(this.cookieObserver, 20, true, CookieAccessObserver.MANAGER);
         
-        encoder0.encode(this.clientSecurityState, 32, true);
+        encoder0.encode(this.authCertObserver, 28, true, AuthenticationAndCertificateObserver.MANAGER);
+        
+        encoder0.encode(this.clientSecurityState, 40, true);
     }
 }

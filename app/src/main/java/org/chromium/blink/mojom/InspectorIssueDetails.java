@@ -16,13 +16,17 @@ package org.chromium.blink.mojom;
 
 public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 72;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public SameSiteCookieIssueDetails samesiteCookieIssueDetails;
     public MixedContentIssueDetails mixedContentIssueDetails;
     public BlockedByResponseIssueDetails blockedByResponseIssueDetails;
     public ContentSecurityPolicyIssueDetails cspIssueDetails;
+    public SharedArrayBufferIssueDetails sabIssueDetails;
+    public TrustedWebActivityIssueDetails twaIssueDetails;
+    public HeavyAdIssueDetails heavyAdIssueDetails;
+    public LowTextContrastIssue lowTextContrastDetails;
 
     private InspectorIssueDetails(int version) {
         super(STRUCT_SIZE, version);
@@ -77,6 +81,26 @@ public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Stru
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
                 result.cspIssueDetails = ContentSecurityPolicyIssueDetails.decode(decoder1);
                 }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
+                result.sabIssueDetails = SharedArrayBufferIssueDetails.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
+                result.twaIssueDetails = TrustedWebActivityIssueDetails.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
+                result.heavyAdIssueDetails = HeavyAdIssueDetails.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, true);
+                result.lowTextContrastDetails = LowTextContrastIssue.decode(decoder1);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -96,5 +120,13 @@ public final class InspectorIssueDetails extends org.chromium.mojo.bindings.Stru
         encoder0.encode(this.blockedByResponseIssueDetails, 24, true);
         
         encoder0.encode(this.cspIssueDetails, 32, true);
+        
+        encoder0.encode(this.sabIssueDetails, 40, true);
+        
+        encoder0.encode(this.twaIssueDetails, 48, true);
+        
+        encoder0.encode(this.heavyAdIssueDetails, 56, true);
+        
+        encoder0.encode(this.lowTextContrastDetails, 64, true);
     }
 }

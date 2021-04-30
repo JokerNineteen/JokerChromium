@@ -61,117 +61,119 @@ class NetworkContext_Internal {
 
     private static final int CLEAR_TRUST_TOKEN_DATA_ORDINAL = 6;
 
-    private static final int CLEAR_NETWORKING_HISTORY_BETWEEN_ORDINAL = 7;
+    private static final int GET_STORED_TRUST_TOKEN_COUNTS_ORDINAL = 7;
 
-    private static final int CLEAR_HTTP_CACHE_ORDINAL = 8;
+    private static final int CLEAR_NETWORKING_HISTORY_BETWEEN_ORDINAL = 8;
 
-    private static final int COMPUTE_HTTP_CACHE_SIZE_ORDINAL = 9;
+    private static final int CLEAR_HTTP_CACHE_ORDINAL = 9;
 
-    private static final int NOTIFY_EXTERNAL_CACHE_HIT_ORDINAL = 10;
+    private static final int COMPUTE_HTTP_CACHE_SIZE_ORDINAL = 10;
 
-    private static final int CLEAR_HOST_CACHE_ORDINAL = 11;
+    private static final int NOTIFY_EXTERNAL_CACHE_HIT_ORDINAL = 11;
 
-    private static final int CLEAR_HTTP_AUTH_CACHE_ORDINAL = 12;
+    private static final int CLEAR_HOST_CACHE_ORDINAL = 12;
 
-    private static final int CLEAR_REPORTING_CACHE_REPORTS_ORDINAL = 13;
+    private static final int CLEAR_HTTP_AUTH_CACHE_ORDINAL = 13;
 
-    private static final int CLEAR_REPORTING_CACHE_CLIENTS_ORDINAL = 14;
+    private static final int CLEAR_REPORTING_CACHE_REPORTS_ORDINAL = 14;
 
-    private static final int CLEAR_NETWORK_ERROR_LOGGING_ORDINAL = 15;
+    private static final int CLEAR_REPORTING_CACHE_CLIENTS_ORDINAL = 15;
 
-    private static final int CLEAR_DOMAIN_RELIABILITY_ORDINAL = 16;
+    private static final int CLEAR_NETWORK_ERROR_LOGGING_ORDINAL = 16;
 
-    private static final int GET_DOMAIN_RELIABILITY_JSON_ORDINAL = 17;
+    private static final int CLEAR_DOMAIN_RELIABILITY_ORDINAL = 17;
 
-    private static final int QUEUE_REPORT_ORDINAL = 18;
+    private static final int GET_DOMAIN_RELIABILITY_JSON_ORDINAL = 18;
 
-    private static final int QUEUE_SIGNED_EXCHANGE_REPORT_ORDINAL = 19;
+    private static final int QUEUE_REPORT_ORDINAL = 19;
 
-    private static final int CLOSE_ALL_CONNECTIONS_ORDINAL = 20;
+    private static final int QUEUE_SIGNED_EXCHANGE_REPORT_ORDINAL = 20;
 
-    private static final int CLOSE_IDLE_CONNECTIONS_ORDINAL = 21;
+    private static final int CLOSE_ALL_CONNECTIONS_ORDINAL = 21;
 
-    private static final int SET_NETWORK_CONDITIONS_ORDINAL = 22;
+    private static final int CLOSE_IDLE_CONNECTIONS_ORDINAL = 22;
 
-    private static final int SET_ACCEPT_LANGUAGE_ORDINAL = 23;
+    private static final int SET_NETWORK_CONDITIONS_ORDINAL = 23;
 
-    private static final int SET_ENABLE_REFERRERS_ORDINAL = 24;
+    private static final int SET_ACCEPT_LANGUAGE_ORDINAL = 24;
 
-    private static final int SET_CT_POLICY_ORDINAL = 25;
+    private static final int SET_ENABLE_REFERRERS_ORDINAL = 25;
 
-    private static final int ADD_EXPECT_CT_ORDINAL = 26;
+    private static final int SET_CT_POLICY_ORDINAL = 26;
 
-    private static final int SET_EXPECT_CT_TEST_REPORT_ORDINAL = 27;
+    private static final int ADD_EXPECT_CT_ORDINAL = 27;
 
-    private static final int GET_EXPECT_CT_STATE_ORDINAL = 28;
+    private static final int SET_EXPECT_CT_TEST_REPORT_ORDINAL = 28;
 
-    private static final int CREATE_UDP_SOCKET_ORDINAL = 29;
+    private static final int GET_EXPECT_CT_STATE_ORDINAL = 29;
 
-    private static final int CREATE_TCP_SERVER_SOCKET_ORDINAL = 30;
+    private static final int CREATE_UDP_SOCKET_ORDINAL = 30;
 
-    private static final int CREATE_TCP_CONNECTED_SOCKET_ORDINAL = 31;
+    private static final int CREATE_TCP_SERVER_SOCKET_ORDINAL = 31;
 
-    private static final int CREATE_TCP_BOUND_SOCKET_ORDINAL = 32;
+    private static final int CREATE_TCP_CONNECTED_SOCKET_ORDINAL = 32;
 
-    private static final int CREATE_PROXY_RESOLVING_SOCKET_FACTORY_ORDINAL = 33;
+    private static final int CREATE_TCP_BOUND_SOCKET_ORDINAL = 33;
 
-    private static final int LOOK_UP_PROXY_FOR_URL_ORDINAL = 34;
+    private static final int CREATE_PROXY_RESOLVING_SOCKET_FACTORY_ORDINAL = 34;
 
-    private static final int FORCE_RELOAD_PROXY_CONFIG_ORDINAL = 35;
+    private static final int LOOK_UP_PROXY_FOR_URL_ORDINAL = 35;
 
-    private static final int CLEAR_BAD_PROXIES_CACHE_ORDINAL = 36;
+    private static final int FORCE_RELOAD_PROXY_CONFIG_ORDINAL = 36;
 
-    private static final int CREATE_WEB_SOCKET_ORDINAL = 37;
+    private static final int CLEAR_BAD_PROXIES_CACHE_ORDINAL = 37;
 
-    private static final int CREATE_QUIC_TRANSPORT_ORDINAL = 38;
+    private static final int CREATE_WEB_SOCKET_ORDINAL = 38;
 
-    private static final int CREATE_NET_LOG_EXPORTER_ORDINAL = 39;
+    private static final int CREATE_QUIC_TRANSPORT_ORDINAL = 39;
 
-    private static final int PRECONNECT_SOCKETS_ORDINAL = 40;
+    private static final int CREATE_NET_LOG_EXPORTER_ORDINAL = 40;
 
-    private static final int CREATE_P2P_SOCKET_MANAGER_ORDINAL = 41;
+    private static final int PRECONNECT_SOCKETS_ORDINAL = 41;
 
-    private static final int CREATE_MDNS_RESPONDER_ORDINAL = 42;
+    private static final int CREATE_P2P_SOCKET_MANAGER_ORDINAL = 42;
 
-    private static final int RESOLVE_HOST_ORDINAL = 43;
+    private static final int CREATE_MDNS_RESPONDER_ORDINAL = 43;
 
-    private static final int CREATE_HOST_RESOLVER_ORDINAL = 44;
+    private static final int RESOLVE_HOST_ORDINAL = 44;
 
-    private static final int VERIFY_CERT_FOR_SIGNED_EXCHANGE_ORDINAL = 45;
+    private static final int CREATE_HOST_RESOLVER_ORDINAL = 45;
 
-    private static final int PARSE_HEADERS_ORDINAL = 46;
+    private static final int VERIFY_CERT_FOR_SIGNED_EXCHANGE_ORDINAL = 46;
 
-    private static final int ADD_HSTS_ORDINAL = 47;
+    private static final int PARSE_HEADERS_ORDINAL = 47;
 
-    private static final int IS_HSTS_ACTIVE_FOR_HOST_ORDINAL = 48;
+    private static final int ADD_HSTS_ORDINAL = 48;
 
-    private static final int GET_HSTS_STATE_ORDINAL = 49;
+    private static final int IS_HSTS_ACTIVE_FOR_HOST_ORDINAL = 49;
 
-    private static final int SET_CORS_ORIGIN_ACCESS_LISTS_FOR_ORIGIN_ORDINAL = 50;
+    private static final int GET_HSTS_STATE_ORDINAL = 50;
 
-    private static final int DELETE_DYNAMIC_DATA_FOR_HOST_ORDINAL = 51;
+    private static final int SET_CORS_ORIGIN_ACCESS_LISTS_FOR_ORIGIN_ORDINAL = 51;
 
-    private static final int SET_SPLIT_AUTH_CACHE_BY_NETWORK_ISOLATION_KEY_ORDINAL = 52;
+    private static final int DELETE_DYNAMIC_DATA_FOR_HOST_ORDINAL = 52;
 
-    private static final int SAVE_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 53;
+    private static final int SET_SPLIT_AUTH_CACHE_BY_NETWORK_ISOLATION_KEY_ORDINAL = 53;
 
-    private static final int LOAD_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 54;
+    private static final int SAVE_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 54;
 
-    private static final int ADD_AUTH_CACHE_ENTRY_ORDINAL = 55;
+    private static final int LOAD_HTTP_AUTH_CACHE_PROXY_ENTRIES_ORDINAL = 55;
 
-    private static final int LOOKUP_SERVER_BASIC_AUTH_CREDENTIALS_ORDINAL = 56;
+    private static final int ADD_AUTH_CACHE_ENTRY_ORDINAL = 56;
 
-    private static final int ENABLE_STATIC_KEY_PINNING_FOR_TESTING_ORDINAL = 57;
+    private static final int LOOKUP_SERVER_BASIC_AUTH_CREDENTIALS_ORDINAL = 57;
 
-    private static final int VERIFY_CERTIFICATE_FOR_TESTING_ORDINAL = 58;
+    private static final int ENABLE_STATIC_KEY_PINNING_FOR_TESTING_ORDINAL = 58;
 
-    private static final int ADD_DOMAIN_RELIABILITY_CONTEXT_FOR_TESTING_ORDINAL = 59;
+    private static final int VERIFY_CERTIFICATE_FOR_TESTING_ORDINAL = 59;
 
-    private static final int FORCE_DOMAIN_RELIABILITY_UPLOADS_FOR_TESTING_ORDINAL = 60;
+    private static final int ADD_DOMAIN_RELIABILITY_CONTEXT_FOR_TESTING_ORDINAL = 60;
 
-    private static final int GET_ORIGIN_POLICY_MANAGER_ORDINAL = 61;
+    private static final int FORCE_DOMAIN_RELIABILITY_UPLOADS_FOR_TESTING_ORDINAL = 61;
 
-    private static final int SET_SCT_AUDITING_ENABLED_ORDINAL = 62;
+    private static final int GET_ORIGIN_POLICY_MANAGER_ORDINAL = 62;
+
+    private static final int SET_SCT_AUDITING_ENABLED_ORDINAL = 63;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NetworkContext.Proxy {
@@ -252,7 +254,7 @@ org.chromium.mojo.bindings.InterfaceRequest<CookieManager> cookieManager) {
 
         @Override
         public void getRestrictedCookieManager(
-org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedCookieManager, int role, org.chromium.url.internal.mojom.Origin origin, SiteForCookies siteForCookies, org.chromium.url.internal.mojom.Origin topFrameOrigin, CookieAccessObserver cookieObserver) {
+org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedCookieManager, int role, org.chromium.url.internal.mojom.Origin origin, IsolationInfo isolationInfo, CookieAccessObserver cookieObserver) {
 
             NetworkContextGetRestrictedCookieManagerParams _message = new NetworkContextGetRestrictedCookieManagerParams();
 
@@ -262,9 +264,7 @@ org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedC
 
             _message.origin = origin;
 
-            _message.siteForCookies = siteForCookies;
-
-            _message.topFrameOrigin = topFrameOrigin;
+            _message.isolationInfo = isolationInfo;
 
             _message.cookieObserver = cookieObserver;
 
@@ -314,6 +314,26 @@ ClearTrustTokenDataResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new NetworkContextClearTrustTokenDataResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void getStoredTrustTokenCounts(
+
+GetStoredTrustTokenCountsResponse callback) {
+
+            NetworkContextGetStoredTrustTokenCountsParams _message = new NetworkContextGetStoredTrustTokenCountsParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_STORED_TRUST_TOKEN_COUNTS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NetworkContextGetStoredTrustTokenCountsResponseParamsForwardToCallback(callback));
 
         }
 
@@ -988,7 +1008,7 @@ ClearBadProxiesCacheResponse callback) {
 
         @Override
         public void createWebSocket(
-org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, int renderFrameId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, AuthenticationHandler authHandler, TrustedHeaderClient headerClient) {
+org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies siteForCookies, IsolationInfo isolationInfo, HttpHeader[] additionalHeaders, int processId, org.chromium.url.internal.mojom.Origin origin, int options, MutableNetworkTrafficAnnotationTag trafficAnnotation, WebSocketHandshakeClient handshakeClient, AuthenticationAndCertificateObserver authCertObserver, WebSocketAuthenticationHandler authHandler, TrustedHeaderClient headerClient) {
 
             NetworkContextCreateWebSocketParams _message = new NetworkContextCreateWebSocketParams();
 
@@ -1004,8 +1024,6 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies site
 
             _message.processId = processId;
 
-            _message.renderFrameId = renderFrameId;
-
             _message.origin = origin;
 
             _message.options = options;
@@ -1013,6 +1031,8 @@ org.chromium.url.mojom.Url url, String[] requestedProtocols, SiteForCookies site
             _message.trafficAnnotation = trafficAnnotation;
 
             _message.handshakeClient = handshakeClient;
+
+            _message.authCertObserver = authCertObserver;
 
             _message.authHandler = authHandler;
 
@@ -1668,7 +1688,7 @@ boolean enabled) {
                         NetworkContextGetRestrictedCookieManagerParams data =
                                 NetworkContextGetRestrictedCookieManagerParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().getRestrictedCookieManager(data.restrictedCookieManager, data.role, data.origin, data.siteForCookies, data.topFrameOrigin, data.cookieObserver);
+                        getImpl().getRestrictedCookieManager(data.restrictedCookieManager, data.role, data.origin, data.isolationInfo, data.cookieObserver);
                         return true;
                     }
 
@@ -1684,6 +1704,8 @@ boolean enabled) {
                         getImpl().getHasTrustTokensAnswerer(data.hasTrustTokensAnswerer, data.topFrameOrigin);
                         return true;
                     }
+
+
 
 
 
@@ -1866,7 +1888,7 @@ boolean enabled) {
                         NetworkContextCreateWebSocketParams data =
                                 NetworkContextCreateWebSocketParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createWebSocket(data.url, data.requestedProtocols, data.siteForCookies, data.isolationInfo, data.additionalHeaders, data.processId, data.renderFrameId, data.origin, data.options, data.trafficAnnotation, data.handshakeClient, data.authHandler, data.headerClient);
+                        getImpl().createWebSocket(data.url, data.requestedProtocols, data.siteForCookies, data.isolationInfo, data.additionalHeaders, data.processId, data.origin, data.options, data.trafficAnnotation, data.handshakeClient, data.authCertObserver, data.authHandler, data.headerClient);
                         return true;
                     }
 
@@ -2083,6 +2105,20 @@ boolean enabled) {
                                 NetworkContextClearTrustTokenDataParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().clearTrustTokenData(data.filter, new NetworkContextClearTrustTokenDataResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case GET_STORED_TRUST_TOKEN_COUNTS_ORDINAL: {
+
+                        NetworkContextGetStoredTrustTokenCountsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().getStoredTrustTokenCounts(new NetworkContextGetStoredTrustTokenCountsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -2913,14 +2949,13 @@ boolean enabled) {
     
     static final class NetworkContextGetRestrictedCookieManagerParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 48;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
+        private static final int STRUCT_SIZE = 40;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo.bindings.InterfaceRequest<RestrictedCookieManager> restrictedCookieManager;
         public int role;
         public org.chromium.url.internal.mojom.Origin origin;
-        public SiteForCookies siteForCookies;
-        public org.chromium.url.internal.mojom.Origin topFrameOrigin;
+        public IsolationInfo isolationInfo;
         public CookieAccessObserver cookieObserver;
 
         private NetworkContextGetRestrictedCookieManagerParams(int version) {
@@ -2964,6 +2999,7 @@ boolean enabled) {
                         
                     result.role = decoder0.readInt(12);
                         RestrictedCookieManagerRole.validate(result.role);
+                        result.role = RestrictedCookieManagerRole.toKnownValue(result.role);
                     }
                     {
                         
@@ -2973,16 +3009,11 @@ boolean enabled) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
-                    result.siteForCookies = SiteForCookies.decode(decoder1);
+                    result.isolationInfo = IsolationInfo.decode(decoder1);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
-                    result.topFrameOrigin = org.chromium.url.internal.mojom.Origin.decode(decoder1);
-                    }
-                    {
-                        
-                    result.cookieObserver = decoder0.readServiceInterface(40, true, CookieAccessObserver.MANAGER);
+                    result.cookieObserver = decoder0.readServiceInterface(32, true, CookieAccessObserver.MANAGER);
                     }
 
             } finally {
@@ -3002,11 +3033,9 @@ boolean enabled) {
             
             encoder0.encode(this.origin, 16, false);
             
-            encoder0.encode(this.siteForCookies, 24, false);
+            encoder0.encode(this.isolationInfo, 24, false);
             
-            encoder0.encode(this.topFrameOrigin, 32, false);
-            
-            encoder0.encode(this.cookieObserver, 40, true, CookieAccessObserver.MANAGER);
+            encoder0.encode(this.cookieObserver, 32, true, CookieAccessObserver.MANAGER);
         }
     }
 
@@ -3252,6 +3281,203 @@ boolean enabled) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     CLEAR_TRUST_TOKEN_DATA_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextGetStoredTrustTokenCountsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private NetworkContextGetStoredTrustTokenCountsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextGetStoredTrustTokenCountsParams() {
+            this(0);
+        }
+
+        public static NetworkContextGetStoredTrustTokenCountsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextGetStoredTrustTokenCountsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextGetStoredTrustTokenCountsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextGetStoredTrustTokenCountsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextGetStoredTrustTokenCountsParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class NetworkContextGetStoredTrustTokenCountsResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public StoredTrustTokensForIssuer[] tokens;
+
+        private NetworkContextGetStoredTrustTokenCountsResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NetworkContextGetStoredTrustTokenCountsResponseParams() {
+            this(0);
+        }
+
+        public static NetworkContextGetStoredTrustTokenCountsResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NetworkContextGetStoredTrustTokenCountsResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NetworkContextGetStoredTrustTokenCountsResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NetworkContextGetStoredTrustTokenCountsResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NetworkContextGetStoredTrustTokenCountsResponseParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.tokens = new StoredTrustTokensForIssuer[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.tokens[i1] = StoredTrustTokensForIssuer.decode(decoder2);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            if (this.tokens == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.tokens.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.tokens.length; ++i0) {
+                    
+                    encoder1.encode(this.tokens[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
+        }
+    }
+
+    static class NetworkContextGetStoredTrustTokenCountsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NetworkContext.GetStoredTrustTokenCountsResponse mCallback;
+
+        NetworkContextGetStoredTrustTokenCountsResponseParamsForwardToCallback(NetworkContext.GetStoredTrustTokenCountsResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(GET_STORED_TRUST_TOKEN_COUNTS_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                NetworkContextGetStoredTrustTokenCountsResponseParams response = NetworkContextGetStoredTrustTokenCountsResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.tokens);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NetworkContextGetStoredTrustTokenCountsResponseParamsProxyToResponder implements NetworkContext.GetStoredTrustTokenCountsResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NetworkContextGetStoredTrustTokenCountsResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(StoredTrustTokensForIssuer[] tokens) {
+            NetworkContextGetStoredTrustTokenCountsResponseParams _response = new NetworkContextGetStoredTrustTokenCountsResponseParams();
+
+            _response.tokens = tokens;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    GET_STORED_TRUST_TOKEN_COUNTS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);
@@ -4873,6 +5099,7 @@ boolean enabled) {
                         
                     result.mode = decoder0.readInt(16);
                         NetworkContext.DomainReliabilityClearMode.validate(result.mode);
+                        result.mode = NetworkContext.DomainReliabilityClearMode.toKnownValue(result.mode);
                     }
 
             } finally {
@@ -7823,12 +8050,12 @@ boolean enabled) {
         public IsolationInfo isolationInfo;
         public HttpHeader[] additionalHeaders;
         public int processId;
-        public int renderFrameId;
         public org.chromium.url.internal.mojom.Origin origin;
         public int options;
         public MutableNetworkTrafficAnnotationTag trafficAnnotation;
         public WebSocketHandshakeClient handshakeClient;
-        public AuthenticationHandler authHandler;
+        public AuthenticationAndCertificateObserver authCertObserver;
+        public WebSocketAuthenticationHandler authHandler;
         public TrustedHeaderClient headerClient;
 
         private NetworkContextCreateWebSocketParams(int version) {
@@ -7910,7 +8137,7 @@ boolean enabled) {
                     }
                     {
                         
-                    result.renderFrameId = decoder0.readInt(52);
+                    result.options = decoder0.readInt(52);
                     }
                     {
                         
@@ -7919,20 +8146,20 @@ boolean enabled) {
                     }
                     {
                         
-                    result.options = decoder0.readInt(64);
-                    }
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
                     result.trafficAnnotation = MutableNetworkTrafficAnnotationTag.decode(decoder1);
                     }
                     {
                         
-                    result.handshakeClient = decoder0.readServiceInterface(80, false, WebSocketHandshakeClient.MANAGER);
+                    result.handshakeClient = decoder0.readServiceInterface(72, false, WebSocketHandshakeClient.MANAGER);
                     }
                     {
                         
-                    result.authHandler = decoder0.readServiceInterface(88, true, AuthenticationHandler.MANAGER);
+                    result.authCertObserver = decoder0.readServiceInterface(80, true, AuthenticationAndCertificateObserver.MANAGER);
+                    }
+                    {
+                        
+                    result.authHandler = decoder0.readServiceInterface(88, true, WebSocketAuthenticationHandler.MANAGER);
                     }
                     {
                         
@@ -7978,17 +8205,17 @@ boolean enabled) {
             
             encoder0.encode(this.processId, 48);
             
-            encoder0.encode(this.renderFrameId, 52);
+            encoder0.encode(this.options, 52);
             
             encoder0.encode(this.origin, 56, false);
             
-            encoder0.encode(this.options, 64);
+            encoder0.encode(this.trafficAnnotation, 64, false);
             
-            encoder0.encode(this.trafficAnnotation, 72, false);
+            encoder0.encode(this.handshakeClient, 72, false, WebSocketHandshakeClient.MANAGER);
             
-            encoder0.encode(this.handshakeClient, 80, false, WebSocketHandshakeClient.MANAGER);
+            encoder0.encode(this.authCertObserver, 80, true, AuthenticationAndCertificateObserver.MANAGER);
             
-            encoder0.encode(this.authHandler, 88, true, AuthenticationHandler.MANAGER);
+            encoder0.encode(this.authHandler, 88, true, WebSocketAuthenticationHandler.MANAGER);
             
             encoder0.encode(this.headerClient, 96, true, TrustedHeaderClient.MANAGER);
         }

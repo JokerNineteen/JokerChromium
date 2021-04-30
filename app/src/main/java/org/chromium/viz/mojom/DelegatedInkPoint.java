@@ -16,11 +16,12 @@ package org.chromium.viz.mojom;
 
 public final class DelegatedInkPoint extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.gfx.mojom.PointF point;
     public org.chromium.mojo_base.mojom.TimeTicks timestamp;
+    public int pointerId;
 
     private DelegatedInkPoint(int version) {
         super(STRUCT_SIZE, version);
@@ -65,6 +66,10 @@ public final class DelegatedInkPoint extends org.chromium.mojo.bindings.Struct {
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                 result.timestamp = org.chromium.mojo_base.mojom.TimeTicks.decode(decoder1);
                 }
+                {
+                    
+                result.pointerId = decoder0.readInt(24);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -80,5 +85,7 @@ public final class DelegatedInkPoint extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.point, 8, false);
         
         encoder0.encode(this.timestamp, 16, false);
+        
+        encoder0.encode(this.pointerId, 24);
     }
 }

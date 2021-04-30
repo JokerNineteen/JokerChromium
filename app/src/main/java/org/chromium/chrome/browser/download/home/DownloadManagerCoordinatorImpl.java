@@ -18,7 +18,6 @@ import org.chromium.base.ObserverList;
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.base.supplier.ObservableSupplier;
 import org.chromium.base.task.PostTask;
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.download.home.filter.Filters;
 import org.chromium.chrome.browser.download.home.filter.Filters.FilterType;
 import org.chromium.chrome.browser.download.home.list.DateOrderedListCoordinator;
@@ -26,6 +25,7 @@ import org.chromium.chrome.browser.download.home.list.DateOrderedListCoordinator
 import org.chromium.chrome.browser.download.home.list.ListItem;
 import org.chromium.chrome.browser.download.home.snackbars.DeleteUndoCoordinator;
 import org.chromium.chrome.browser.download.home.toolbar.ToolbarCoordinator;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.chrome.browser.ui.messages.snackbar.SnackbarManager;
 import org.chromium.components.browser_ui.widget.selectable_list.SelectionDelegate;
 import org.chromium.components.feature_engagement.Tracker;
@@ -95,7 +95,8 @@ class DownloadManagerCoordinatorImpl
         FrameLayout.LayoutParams listParams = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         listParams.setMargins(0,
-                mActivity.getResources().getDimensionPixelOffset(R.dimen.toolbar_height_no_shadow),
+                mActivity.getResources().getDimensionPixelOffset(
+                        R.dimen.selectable_list_toolbar_height),
                 0, 0);
         mMainView.addView(mListCoordinator.getView(), listParams);
 

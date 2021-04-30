@@ -829,6 +829,7 @@ PaymentValidationErrors errors) {
                         
                     result.result = decoder0.readInt(8);
                         PaymentComplete.validate(result.result);
+                        result.result = PaymentComplete.toKnownValue(result.result);
                     }
 
             } finally {

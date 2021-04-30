@@ -307,6 +307,7 @@ BannerPromptRequestResponse callback) {
                         
                     result.reply = decoder0.readInt(8);
                         AppBannerPromptReply.validate(result.reply);
+                        result.reply = AppBannerPromptReply.toKnownValue(result.reply);
                     }
 
             } finally {

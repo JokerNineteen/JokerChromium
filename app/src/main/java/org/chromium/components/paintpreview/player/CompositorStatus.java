@@ -24,7 +24,8 @@ import java.lang.annotation.RetentionPolicy;
     CompositorStatus.UNEXPECTED_VERSION, CompositorStatus.CAPTURE_EXPIRED,
     CompositorStatus.NO_CAPTURE, CompositorStatus.TIMED_OUT,
     CompositorStatus.STOPPED_DUE_TO_MEMORY_PRESSURE,
-    CompositorStatus.SKIPPED_DUE_TO_MEMORY_PRESSURE, CompositorStatus.COUNT
+    CompositorStatus.SKIPPED_DUE_TO_MEMORY_PRESSURE, CompositorStatus.REQUEST_BITMAP_FAILURE,
+    CompositorStatus.COUNT
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface CompositorStatus {
@@ -43,5 +44,9 @@ public @interface CompositorStatus {
   int TIMED_OUT = 12;
   int STOPPED_DUE_TO_MEMORY_PRESSURE = 13;
   int SKIPPED_DUE_TO_MEMORY_PRESSURE = 14;
-  int COUNT = 15;
+  /**
+   * Used by long screenshots code only when call to requestBitmap fails.
+   */
+  int REQUEST_BITMAP_FAILURE = 15;
+  int COUNT = 16;
 }

@@ -81,35 +81,31 @@ class NetworkService_Internal {
 
     private static final int UPDATE_CRL_SET_ORDINAL = 16;
 
-    private static final int UPDATE_LEGACY_TLS_CONFIG_ORDINAL = 17;
+    private static final int ON_CERT_DB_CHANGED_ORDINAL = 17;
 
-    private static final int ON_CERT_DB_CHANGED_ORDINAL = 18;
+    private static final int ADD_ALLOWED_REQUEST_INITIATOR_FOR_PLUGIN_ORDINAL = 18;
 
-    private static final int ADD_CORB_EXCEPTION_FOR_PLUGIN_ORDINAL = 19;
+    private static final int REMOVE_SECURITY_EXCEPTIONS_FOR_PLUGIN_ORDINAL = 19;
 
-    private static final int ADD_ALLOWED_REQUEST_INITIATOR_FOR_PLUGIN_ORDINAL = 20;
+    private static final int ON_MEMORY_PRESSURE_ORDINAL = 20;
 
-    private static final int REMOVE_SECURITY_EXCEPTIONS_FOR_PLUGIN_ORDINAL = 21;
+    private static final int ON_PEER_TO_PEER_CONNECTIONS_COUNT_CHANGE_ORDINAL = 21;
 
-    private static final int ON_MEMORY_PRESSURE_ORDINAL = 22;
+    private static final int ON_APPLICATION_STATE_CHANGE_ORDINAL = 22;
 
-    private static final int ON_PEER_TO_PEER_CONNECTIONS_COUNT_CHANGE_ORDINAL = 23;
+    private static final int SET_ENVIRONMENT_ORDINAL = 23;
 
-    private static final int ON_APPLICATION_STATE_CHANGE_ORDINAL = 24;
+    private static final int SET_TRUST_TOKEN_KEY_COMMITMENTS_ORDINAL = 24;
 
-    private static final int SET_ENVIRONMENT_ORDINAL = 25;
+    private static final int CLEAR_SCT_AUDITING_CACHE_ORDINAL = 25;
 
-    private static final int SET_TRUST_TOKEN_KEY_COMMITMENTS_ORDINAL = 26;
+    private static final int CONFIGURE_SCT_AUDITING_ORDINAL = 26;
 
-    private static final int CLEAR_SCT_AUDITING_CACHE_ORDINAL = 27;
+    private static final int DUMP_WITHOUT_CRASHING_ORDINAL = 27;
 
-    private static final int CONFIGURE_SCT_AUDITING_ORDINAL = 28;
+    private static final int BIND_TEST_INTERFACE_ORDINAL = 28;
 
-    private static final int DUMP_WITHOUT_CRASHING_ORDINAL = 29;
-
-    private static final int BIND_TEST_INTERFACE_ORDINAL = 30;
-
-    private static final int SET_PRELOADED_FIRST_PARTY_SETS_ORDINAL = 31;
+    private static final int SET_PRELOADED_FIRST_PARTY_SETS_ORDINAL = 29;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NetworkService.Proxy {
@@ -437,28 +433,6 @@ UpdateCrlSetResponse callback) {
 
 
         @Override
-        public void updateLegacyTlsConfig(
-org.chromium.mojo_base.mojom.ReadOnlyBuffer config, 
-UpdateLegacyTlsConfigResponse callback) {
-
-            NetworkServiceUpdateLegacyTlsConfigParams _message = new NetworkServiceUpdateLegacyTlsConfigParams();
-
-            _message.config = config;
-
-
-            getProxyHandler().getMessageReceiver().acceptWithResponder(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    UPDATE_LEGACY_TLS_CONFIG_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
-                                    0)),
-                    new NetworkServiceUpdateLegacyTlsConfigResponseParamsForwardToCallback(callback));
-
-        }
-
-
-        @Override
         public void onCertDbChanged(
 ) {
 
@@ -469,23 +443,6 @@ UpdateLegacyTlsConfigResponse callback) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(ON_CERT_DB_CHANGED_ORDINAL)));
-
-        }
-
-
-        @Override
-        public void addCorbExceptionForPlugin(
-int processId) {
-
-            NetworkServiceAddCorbExceptionForPluginParams _message = new NetworkServiceAddCorbExceptionForPluginParams();
-
-            _message.processId = processId;
-
-
-            getProxyHandler().getMessageReceiver().accept(
-                    _message.serializeWithHeader(
-                            getProxyHandler().getCore(),
-                            new org.chromium.mojo.bindings.MessageHeader(ADD_CORB_EXCEPTION_FOR_PLUGIN_ORDINAL)));
 
         }
 
@@ -925,26 +882,11 @@ String rawSets) {
 
 
 
-
-
                     case ON_CERT_DB_CHANGED_ORDINAL: {
 
                         NetworkServiceOnCertDbChangedParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().onCertDbChanged();
-                        return true;
-                    }
-
-
-
-
-
-                    case ADD_CORB_EXCEPTION_FOR_PLUGIN_ORDINAL: {
-
-                        NetworkServiceAddCorbExceptionForPluginParams data =
-                                NetworkServiceAddCorbExceptionForPluginParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().addCorbExceptionForPlugin(data.processId);
                         return true;
                     }
 
@@ -1199,23 +1141,6 @@ String rawSets) {
 
 
 
-                    case UPDATE_LEGACY_TLS_CONFIG_ORDINAL: {
-
-                        NetworkServiceUpdateLegacyTlsConfigParams data =
-                                NetworkServiceUpdateLegacyTlsConfigParams.deserialize(messageWithHeader.getPayload());
-
-                        getImpl().updateLegacyTlsConfig(data.config, new NetworkServiceUpdateLegacyTlsConfigResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
-                        return true;
-                    }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1384,6 +1309,7 @@ String rawSets) {
                         
                     result.captureMode = decoder0.readInt(16);
                         NetLogCaptureMode.validate(result.captureMode);
+                        result.captureMode = NetLogCaptureMode.toKnownValue(result.captureMode);
                     }
                     {
                         
@@ -1668,6 +1594,7 @@ String rawSets) {
                         
                     result.secureDnsMode = decoder0.readInt(12);
                         SecureDnsMode.validate(result.secureDnsMode);
+                        result.secureDnsMode = SecureDnsMode.toKnownValue(result.secureDnsMode);
                     }
                     {
                         
@@ -2818,183 +2745,6 @@ String rawSets) {
 
 
     
-    static final class NetworkServiceUpdateLegacyTlsConfigParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.ReadOnlyBuffer config;
-
-        private NetworkServiceUpdateLegacyTlsConfigParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkServiceUpdateLegacyTlsConfigParams() {
-            this(0);
-        }
-
-        public static NetworkServiceUpdateLegacyTlsConfigParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkServiceUpdateLegacyTlsConfigParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkServiceUpdateLegacyTlsConfigParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkServiceUpdateLegacyTlsConfigParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceUpdateLegacyTlsConfigParams(elementsOrVersion);
-                    {
-                        
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.config = org.chromium.mojo_base.mojom.ReadOnlyBuffer.decode(decoder1);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.config, 8, false);
-        }
-    }
-
-
-
-    
-    static final class NetworkServiceUpdateLegacyTlsConfigResponseParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-
-        private NetworkServiceUpdateLegacyTlsConfigResponseParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkServiceUpdateLegacyTlsConfigResponseParams() {
-            this(0);
-        }
-
-        public static NetworkServiceUpdateLegacyTlsConfigResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkServiceUpdateLegacyTlsConfigResponseParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkServiceUpdateLegacyTlsConfigResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkServiceUpdateLegacyTlsConfigResponseParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceUpdateLegacyTlsConfigResponseParams(elementsOrVersion);
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-    static class NetworkServiceUpdateLegacyTlsConfigResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
-            implements org.chromium.mojo.bindings.MessageReceiver {
-        private final NetworkService.UpdateLegacyTlsConfigResponse mCallback;
-
-        NetworkServiceUpdateLegacyTlsConfigResponseParamsForwardToCallback(NetworkService.UpdateLegacyTlsConfigResponse callback) {
-            this.mCallback = callback;
-        }
-
-        @Override
-        public boolean accept(org.chromium.mojo.bindings.Message message) {
-            try {
-                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
-                        message.asServiceMessage();
-                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(UPDATE_LEGACY_TLS_CONFIG_ORDINAL,
-                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
-                    return false;
-                }
-
-                mCallback.call();
-                return true;
-            } catch (org.chromium.mojo.bindings.DeserializationException e) {
-                return false;
-            }
-        }
-    }
-
-    static class NetworkServiceUpdateLegacyTlsConfigResponseParamsProxyToResponder implements NetworkService.UpdateLegacyTlsConfigResponse {
-
-        private final org.chromium.mojo.system.Core mCore;
-        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
-        private final long mRequestId;
-
-        NetworkServiceUpdateLegacyTlsConfigResponseParamsProxyToResponder(
-                org.chromium.mojo.system.Core core,
-                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
-                long requestId) {
-            mCore = core;
-            mMessageReceiver = messageReceiver;
-            mRequestId = requestId;
-        }
-
-        @Override
-        public void call() {
-            NetworkServiceUpdateLegacyTlsConfigResponseParams _response = new NetworkServiceUpdateLegacyTlsConfigResponseParams();
-
-            org.chromium.mojo.bindings.ServiceMessage _message =
-                    _response.serializeWithHeader(
-                            mCore,
-                            new org.chromium.mojo.bindings.MessageHeader(
-                                    UPDATE_LEGACY_TLS_CONFIG_ORDINAL,
-                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
-                                    mRequestId));
-            mMessageReceiver.accept(_message);
-        }
-    }
-
-
-
-    
     static final class NetworkServiceOnCertDbChangedParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 8;
@@ -3045,69 +2795,6 @@ String rawSets) {
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        }
-    }
-
-
-
-    
-    static final class NetworkServiceAddCorbExceptionForPluginParams extends org.chromium.mojo.bindings.Struct {
-
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
-        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public int processId;
-
-        private NetworkServiceAddCorbExceptionForPluginParams(int version) {
-            super(STRUCT_SIZE, version);
-        }
-
-        public NetworkServiceAddCorbExceptionForPluginParams() {
-            this(0);
-        }
-
-        public static NetworkServiceAddCorbExceptionForPluginParams deserialize(org.chromium.mojo.bindings.Message message) {
-            return decode(new org.chromium.mojo.bindings.Decoder(message));
-        }
-
-        /**
-         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-         *
-         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-         */
-        public static NetworkServiceAddCorbExceptionForPluginParams deserialize(java.nio.ByteBuffer data) {
-            return deserialize(new org.chromium.mojo.bindings.Message(
-                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-        }
-
-        @SuppressWarnings("unchecked")
-        public static NetworkServiceAddCorbExceptionForPluginParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
-            if (decoder0 == null) {
-                return null;
-            }
-            decoder0.increaseStackDepth();
-            NetworkServiceAddCorbExceptionForPluginParams result;
-            try {
-                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new NetworkServiceAddCorbExceptionForPluginParams(elementsOrVersion);
-                    {
-                        
-                    result.processId = decoder0.readInt(8);
-                    }
-
-            } finally {
-                decoder0.decreaseStackDepth();
-            }
-            return result;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-            
-            encoder0.encode(this.processId, 8);
         }
     }
 
@@ -3292,6 +2979,7 @@ String rawSets) {
                         
                     result.memoryPressureLevel = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.MemoryPressureLevel.validate(result.memoryPressureLevel);
+                        result.memoryPressureLevel = org.chromium.mojo_base.mojom.MemoryPressureLevel.toKnownValue(result.memoryPressureLevel);
                     }
 
             } finally {
@@ -3419,6 +3107,7 @@ String rawSets) {
                         
                     result.state = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.ApplicationState.validate(result.state);
+                        result.state = org.chromium.mojo_base.mojom.ApplicationState.toKnownValue(result.state);
                     }
 
             } finally {

@@ -16,6 +16,7 @@ import org.chromium.components.browser_ui.bottomsheet.BottomSheetController;
 import org.chromium.components.module_installer.builder.ModuleInterface;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.ui.base.ActivityKeyboardVisibilityDelegate;
+import org.chromium.ui.base.ApplicationViewportInsetSupplier;
 
 import java.util.Map;
 
@@ -24,7 +25,7 @@ import java.util.Map;
  */
 @ModuleInterface(module = "autofill_assistant",
         impl = "org.chromium.chrome.browser.autofill_assistant.AutofillAssistantModuleEntryImpl")
-interface AutofillAssistantModuleEntry {
+public interface AutofillAssistantModuleEntry {
     /**
      * Starts Autofill Assistant on the current tab of the given chrome activity.
      *
@@ -35,9 +36,12 @@ interface AutofillAssistantModuleEntry {
     void start(BottomSheetController bottomSheetController,
             BrowserControlsStateProvider browserControls, CompositorViewHolder compositorViewHolder,
             Context context, @NonNull WebContents webContents,
-            ActivityKeyboardVisibilityDelegate keyboardVisibilityDelegate, boolean skipOnboarding,
-            boolean isChromeCustomTab, @NonNull String initialUrl, Map<String, String> parameters,
-            String experimentIds, @Nullable String callerAccount, @Nullable String userName);
+            ActivityKeyboardVisibilityDelegate keyboardVisibilityDelegate,
+            ApplicationViewportInsetSupplier bottomInsetProvider,
+            ActivityTabProvider activityTabProvider, boolean isChromeCustomTab,
+            @NonNull String initialUrl, Map<String, String> parameters, String experimentIds,
+            @Nullable String callerAccount, @Nullable String userName,
+            @Nullable String originalDeeplink);
     /**
      * Returns a {@link AutofillAssistantActionHandler} instance tied to the activity owning the
      * given bottom sheet, and scrim view.

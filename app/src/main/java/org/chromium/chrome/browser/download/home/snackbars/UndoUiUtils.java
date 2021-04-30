@@ -7,7 +7,7 @@ package org.chromium.chrome.browser.download.home.snackbars;
 import android.content.Context;
 
 import org.chromium.base.ContextUtils;
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.components.offline_items_collection.OfflineItem;
 
 import java.util.Collection;

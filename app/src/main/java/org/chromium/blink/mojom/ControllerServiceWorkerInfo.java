@@ -64,6 +64,7 @@ public final class ControllerServiceWorkerInfo extends org.chromium.mojo.binding
                     
                 result.mode = decoder0.readInt(8);
                     ControllerServiceWorkerMode.validate(result.mode);
+                    result.mode = ControllerServiceWorkerMode.toKnownValue(result.mode);
                 }
                 {
                     
@@ -87,8 +88,8 @@ public final class ControllerServiceWorkerInfo extends org.chromium.mojo.binding
                     
                 result.usedFeatures = decoder0.readInts(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.usedFeatures.length; ++i0) {
-                        WebFeature.validate(result.usedFeatures[i0]);
+                    for (int i1 = 0; i1 < result.usedFeatures.length; ++i1) {
+                        WebFeature.validate(result.usedFeatures[i1]);
                     }
                 }
                 }

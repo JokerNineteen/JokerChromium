@@ -1300,90 +1300,6 @@ public  final class NigoriSpecifics extends
     encryptDictionary_ = false;
   }
 
-  public static final int ENCRYPT_FAVICON_IMAGES_FIELD_NUMBER = 35;
-  private boolean encryptFaviconImages_;
-  /**
-   * <pre>
-   * Boolean corresponding to Whether to encrypt favicons data or not.
-   * </pre>
-   *
-   * <code>optional bool encrypt_favicon_images = 35;</code>
-   * @return Whether the encryptFaviconImages field is set.
-   */
-  @java.lang.Override
-  public boolean hasEncryptFaviconImages() {
-    return ((bitField0_ & 0x00400000) != 0);
-  }
-  /**
-   * <pre>
-   * Boolean corresponding to Whether to encrypt favicons data or not.
-   * </pre>
-   *
-   * <code>optional bool encrypt_favicon_images = 35;</code>
-   * @return The encryptFaviconImages.
-   */
-  @java.lang.Override
-  public boolean getEncryptFaviconImages() {
-    return encryptFaviconImages_;
-  }
-  /**
-   * <pre>
-   * Boolean corresponding to Whether to encrypt favicons data or not.
-   * </pre>
-   *
-   * <code>optional bool encrypt_favicon_images = 35;</code>
-   * @param value The encryptFaviconImages to set.
-   */
-  private void setEncryptFaviconImages(boolean value) {
-    bitField0_ |= 0x00400000;
-    encryptFaviconImages_ = value;
-  }
-  /**
-   * <pre>
-   * Boolean corresponding to Whether to encrypt favicons data or not.
-   * </pre>
-   *
-   * <code>optional bool encrypt_favicon_images = 35;</code>
-   */
-  private void clearEncryptFaviconImages() {
-    bitField0_ = (bitField0_ & ~0x00400000);
-    encryptFaviconImages_ = false;
-  }
-
-  public static final int ENCRYPT_FAVICON_TRACKING_FIELD_NUMBER = 36;
-  private boolean encryptFaviconTracking_;
-  /**
-   * <code>optional bool encrypt_favicon_tracking = 36;</code>
-   * @return Whether the encryptFaviconTracking field is set.
-   */
-  @java.lang.Override
-  public boolean hasEncryptFaviconTracking() {
-    return ((bitField0_ & 0x00800000) != 0);
-  }
-  /**
-   * <code>optional bool encrypt_favicon_tracking = 36;</code>
-   * @return The encryptFaviconTracking.
-   */
-  @java.lang.Override
-  public boolean getEncryptFaviconTracking() {
-    return encryptFaviconTracking_;
-  }
-  /**
-   * <code>optional bool encrypt_favicon_tracking = 36;</code>
-   * @param value The encryptFaviconTracking to set.
-   */
-  private void setEncryptFaviconTracking(boolean value) {
-    bitField0_ |= 0x00800000;
-    encryptFaviconTracking_ = value;
-  }
-  /**
-   * <code>optional bool encrypt_favicon_tracking = 36;</code>
-   */
-  private void clearEncryptFaviconTracking() {
-    bitField0_ = (bitField0_ & ~0x00800000);
-    encryptFaviconTracking_ = false;
-  }
-
   public static final int ENCRYPT_APP_LIST_FIELD_NUMBER = 38;
   private boolean encryptAppList_;
   /**
@@ -1396,7 +1312,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptAppList() {
-    return ((bitField0_ & 0x01000000) != 0);
+    return ((bitField0_ & 0x00400000) != 0);
   }
   /**
    * <pre>
@@ -1419,7 +1335,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptAppList to set.
    */
   private void setEncryptAppList(boolean value) {
-    bitField0_ |= 0x01000000;
+    bitField0_ |= 0x00400000;
     encryptAppList_ = value;
   }
   /**
@@ -1430,7 +1346,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_app_list = 38;</code>
    */
   private void clearEncryptAppList() {
-    bitField0_ = (bitField0_ & ~0x01000000);
+    bitField0_ = (bitField0_ & ~0x00400000);
     encryptAppList_ = false;
   }
 
@@ -1447,7 +1363,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptAutofillWalletMetadata() {
-    return ((bitField0_ & 0x02000000) != 0);
+    return ((bitField0_ & 0x00800000) != 0);
   }
   /**
    * <pre>
@@ -1472,7 +1388,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptAutofillWalletMetadata to set.
    */
   private void setEncryptAutofillWalletMetadata(boolean value) {
-    bitField0_ |= 0x02000000;
+    bitField0_ |= 0x00800000;
     encryptAutofillWalletMetadata_ = value;
   }
   /**
@@ -1484,7 +1400,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_autofill_wallet_metadata = 39;</code>
    */
   private void clearEncryptAutofillWalletMetadata() {
-    bitField0_ = (bitField0_ & ~0x02000000);
+    bitField0_ = (bitField0_ & ~0x00800000);
     encryptAutofillWalletMetadata_ = false;
   }
 
@@ -1503,7 +1419,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasServerOnlyWasMissingKeystoreMigrationTime() {
-    return ((bitField0_ & 0x04000000) != 0);
+    return ((bitField0_ & 0x01000000) != 0);
   }
   /**
    * <pre>
@@ -1532,7 +1448,7 @@ public  final class NigoriSpecifics extends
    * @param value The serverOnlyWasMissingKeystoreMigrationTime to set.
    */
   private void setServerOnlyWasMissingKeystoreMigrationTime(boolean value) {
-    bitField0_ |= 0x04000000;
+    bitField0_ |= 0x01000000;
     serverOnlyWasMissingKeystoreMigrationTime_ = value;
   }
   /**
@@ -1546,7 +1462,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool server_only_was_missing_keystore_migration_time = 40;</code>
    */
   private void clearServerOnlyWasMissingKeystoreMigrationTime() {
-    bitField0_ = (bitField0_ & ~0x04000000);
+    bitField0_ = (bitField0_ & ~0x01000000);
     serverOnlyWasMissingKeystoreMigrationTime_ = false;
   }
 
@@ -1562,7 +1478,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptArcPackage() {
-    return ((bitField0_ & 0x08000000) != 0);
+    return ((bitField0_ & 0x02000000) != 0);
   }
   /**
    * <pre>
@@ -1585,7 +1501,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptArcPackage to set.
    */
   private void setEncryptArcPackage(boolean value) {
-    bitField0_ |= 0x08000000;
+    bitField0_ |= 0x02000000;
     encryptArcPackage_ = value;
   }
   /**
@@ -1596,7 +1512,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_arc_package = 41;</code>
    */
   private void clearEncryptArcPackage() {
-    bitField0_ = (bitField0_ & ~0x08000000);
+    bitField0_ = (bitField0_ & ~0x02000000);
     encryptArcPackage_ = false;
   }
 
@@ -1612,7 +1528,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptPrinters() {
-    return ((bitField0_ & 0x10000000) != 0);
+    return ((bitField0_ & 0x04000000) != 0);
   }
   /**
    * <pre>
@@ -1635,7 +1551,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptPrinters to set.
    */
   private void setEncryptPrinters(boolean value) {
-    bitField0_ |= 0x10000000;
+    bitField0_ |= 0x04000000;
     encryptPrinters_ = value;
   }
   /**
@@ -1646,7 +1562,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_printers = 42;</code>
    */
   private void clearEncryptPrinters() {
-    bitField0_ = (bitField0_ & ~0x10000000);
+    bitField0_ = (bitField0_ & ~0x04000000);
     encryptPrinters_ = false;
   }
 
@@ -1662,7 +1578,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptReadingList() {
-    return ((bitField0_ & 0x20000000) != 0);
+    return ((bitField0_ & 0x08000000) != 0);
   }
   /**
    * <pre>
@@ -1685,7 +1601,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptReadingList to set.
    */
   private void setEncryptReadingList(boolean value) {
-    bitField0_ |= 0x20000000;
+    bitField0_ |= 0x08000000;
     encryptReadingList_ = value;
   }
   /**
@@ -1696,7 +1612,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_reading_list = 43;</code>
    */
   private void clearEncryptReadingList() {
-    bitField0_ = (bitField0_ & ~0x20000000);
+    bitField0_ = (bitField0_ & ~0x08000000);
     encryptReadingList_ = false;
   }
 
@@ -1718,7 +1634,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasCustomPassphraseKeyDerivationMethod() {
-    return ((bitField0_ & 0x40000000) != 0);
+    return ((bitField0_ & 0x10000000) != 0);
   }
   /**
    * <pre>
@@ -1753,7 +1669,7 @@ public  final class NigoriSpecifics extends
    * @param value The customPassphraseKeyDerivationMethod to set.
    */
   private void setCustomPassphraseKeyDerivationMethod(int value) {
-    bitField0_ |= 0x40000000;
+    bitField0_ |= 0x10000000;
     customPassphraseKeyDerivationMethod_ = value;
   }
   /**
@@ -1770,7 +1686,7 @@ public  final class NigoriSpecifics extends
    * <code>optional int32 custom_passphrase_key_derivation_method = 45 [default = 0];</code>
    */
   private void clearCustomPassphraseKeyDerivationMethod() {
-    bitField0_ = (bitField0_ & ~0x40000000);
+    bitField0_ = (bitField0_ & ~0x10000000);
     customPassphraseKeyDerivationMethod_ = 0;
   }
 
@@ -1788,7 +1704,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasCustomPassphraseKeyDerivationSalt() {
-    return ((bitField0_ & 0x80000000) != 0);
+    return ((bitField0_ & 0x20000000) != 0);
   }
   /**
    * <pre>
@@ -1832,7 +1748,7 @@ public  final class NigoriSpecifics extends
   private void setCustomPassphraseKeyDerivationSalt(
       java.lang.String value) {
     value.getClass();
-  bitField0_ |= 0x80000000;
+  bitField0_ |= 0x20000000;
     customPassphraseKeyDerivationSalt_ = value;
   }
   /**
@@ -1845,7 +1761,7 @@ public  final class NigoriSpecifics extends
    * <code>optional string custom_passphrase_key_derivation_salt = 46;</code>
    */
   private void clearCustomPassphraseKeyDerivationSalt() {
-    bitField0_ = (bitField0_ & ~0x80000000);
+    bitField0_ = (bitField0_ & ~0x20000000);
     customPassphraseKeyDerivationSalt_ = getDefaultInstance().getCustomPassphraseKeyDerivationSalt();
   }
   /**
@@ -1861,7 +1777,7 @@ public  final class NigoriSpecifics extends
   private void setCustomPassphraseKeyDerivationSaltBytes(
       com.google.protobuf.ByteString value) {
     customPassphraseKeyDerivationSalt_ = value.toStringUtf8();
-    bitField0_ |= 0x80000000;
+    bitField0_ |= 0x20000000;
   }
 
   public static final int ENCRYPT_SEND_TAB_TO_SELF_FIELD_NUMBER = 47;
@@ -1876,7 +1792,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptSendTabToSelf() {
-    return ((bitField1_ & 0x00000001) != 0);
+    return ((bitField0_ & 0x40000000) != 0);
   }
   /**
    * <pre>
@@ -1899,7 +1815,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptSendTabToSelf to set.
    */
   private void setEncryptSendTabToSelf(boolean value) {
-    bitField1_ |= 0x00000001;
+    bitField0_ |= 0x40000000;
     encryptSendTabToSelf_ = value;
   }
   /**
@@ -1910,7 +1826,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_send_tab_to_self = 47;</code>
    */
   private void clearEncryptSendTabToSelf() {
-    bitField1_ = (bitField1_ & ~0x00000001);
+    bitField0_ = (bitField0_ & ~0x40000000);
     encryptSendTabToSelf_ = false;
   }
 
@@ -1926,7 +1842,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptWebApps() {
-    return ((bitField1_ & 0x00000002) != 0);
+    return ((bitField0_ & 0x80000000) != 0);
   }
   /**
    * <pre>
@@ -1949,7 +1865,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptWebApps to set.
    */
   private void setEncryptWebApps(boolean value) {
-    bitField1_ |= 0x00000002;
+    bitField0_ |= 0x80000000;
     encryptWebApps_ = value;
   }
   /**
@@ -1960,7 +1876,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_web_apps = 48;</code>
    */
   private void clearEncryptWebApps() {
-    bitField1_ = (bitField1_ & ~0x00000002);
+    bitField0_ = (bitField0_ & ~0x80000000);
     encryptWebApps_ = false;
   }
 
@@ -1976,7 +1892,7 @@ public  final class NigoriSpecifics extends
    */
   @java.lang.Override
   public boolean hasEncryptOsPreferences() {
-    return ((bitField1_ & 0x00000004) != 0);
+    return ((bitField1_ & 0x00000001) != 0);
   }
   /**
    * <pre>
@@ -1999,7 +1915,7 @@ public  final class NigoriSpecifics extends
    * @param value The encryptOsPreferences to set.
    */
   private void setEncryptOsPreferences(boolean value) {
-    bitField1_ |= 0x00000004;
+    bitField1_ |= 0x00000001;
     encryptOsPreferences_ = value;
   }
   /**
@@ -2010,7 +1926,7 @@ public  final class NigoriSpecifics extends
    * <code>optional bool encrypt_os_preferences = 49;</code>
    */
   private void clearEncryptOsPreferences() {
-    bitField1_ = (bitField1_ & ~0x00000004);
+    bitField1_ = (bitField1_ & ~0x00000001);
     encryptOsPreferences_ = false;
   }
 
@@ -3145,94 +3061,6 @@ public  final class NigoriSpecifics extends
 
     /**
      * <pre>
-     * Boolean corresponding to Whether to encrypt favicons data or not.
-     * </pre>
-     *
-     * <code>optional bool encrypt_favicon_images = 35;</code>
-     * @return Whether the encryptFaviconImages field is set.
-     */
-    @java.lang.Override
-    public boolean hasEncryptFaviconImages() {
-      return instance.hasEncryptFaviconImages();
-    }
-    /**
-     * <pre>
-     * Boolean corresponding to Whether to encrypt favicons data or not.
-     * </pre>
-     *
-     * <code>optional bool encrypt_favicon_images = 35;</code>
-     * @return The encryptFaviconImages.
-     */
-    @java.lang.Override
-    public boolean getEncryptFaviconImages() {
-      return instance.getEncryptFaviconImages();
-    }
-    /**
-     * <pre>
-     * Boolean corresponding to Whether to encrypt favicons data or not.
-     * </pre>
-     *
-     * <code>optional bool encrypt_favicon_images = 35;</code>
-     * @param value The encryptFaviconImages to set.
-     * @return This builder for chaining.
-     */
-    public Builder setEncryptFaviconImages(boolean value) {
-      copyOnWrite();
-      instance.setEncryptFaviconImages(value);
-      return this;
-    }
-    /**
-     * <pre>
-     * Boolean corresponding to Whether to encrypt favicons data or not.
-     * </pre>
-     *
-     * <code>optional bool encrypt_favicon_images = 35;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearEncryptFaviconImages() {
-      copyOnWrite();
-      instance.clearEncryptFaviconImages();
-      return this;
-    }
-
-    /**
-     * <code>optional bool encrypt_favicon_tracking = 36;</code>
-     * @return Whether the encryptFaviconTracking field is set.
-     */
-    @java.lang.Override
-    public boolean hasEncryptFaviconTracking() {
-      return instance.hasEncryptFaviconTracking();
-    }
-    /**
-     * <code>optional bool encrypt_favicon_tracking = 36;</code>
-     * @return The encryptFaviconTracking.
-     */
-    @java.lang.Override
-    public boolean getEncryptFaviconTracking() {
-      return instance.getEncryptFaviconTracking();
-    }
-    /**
-     * <code>optional bool encrypt_favicon_tracking = 36;</code>
-     * @param value The encryptFaviconTracking to set.
-     * @return This builder for chaining.
-     */
-    public Builder setEncryptFaviconTracking(boolean value) {
-      copyOnWrite();
-      instance.setEncryptFaviconTracking(value);
-      return this;
-    }
-    /**
-     * <code>optional bool encrypt_favicon_tracking = 36;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearEncryptFaviconTracking() {
-      copyOnWrite();
-      instance.clearEncryptFaviconTracking();
-      return this;
-    }
-
-    /**
-     * <pre>
      * Boolean corresponding to whether app list items should be encrypted.
      * </pre>
      *
@@ -3924,8 +3752,6 @@ public  final class NigoriSpecifics extends
             "keystoreMigrationTime_",
             "customPassphraseTime_",
             "encryptDictionary_",
-            "encryptFaviconImages_",
-            "encryptFaviconTracking_",
             "encryptAppList_",
             "encryptAutofillWalletMetadata_",
             "serverOnlyWasMissingKeystoreMigrationTime_",
@@ -3939,13 +3765,13 @@ public  final class NigoriSpecifics extends
             "encryptOsPreferences_",
           };
           java.lang.String info =
-              "\u0001#\u0000\u0002\u00011#\u0000\u0000\u0000\u0001\u1009\u0000\u0002\u1007\u0001" +
+              "\u0001!\u0000\u0002\u00011!\u0000\u0000\u0000\u0001\u1009\u0000\u0002\u1007\u0001" +
               "\r\u1007\u0002\u000e\u1007\u0003\u000f\u1007\u0004\u0010\u1007\u0005\u0011\u1007" +
               "\u0006\u0012\u1007\u0007\u0013\u1007\b\u0014\u1007\t\u0015\u1007\n\u0016\u1007\u000b" +
               "\u0018\u1007\f\u0019\u1007\r\u001a\u1007\u000e\u001b\u1007\u000f\u001d\u1007\u0010" +
-              "\u001e\u1004\u0011\u001f\u1009\u0012 \u1002\u0013!\u1002\u0014\"\u1007\u0015#\u1007" +
-              "\u0016$\u1007\u0017&\u1007\u0018\'\u1007\u0019(\u1007\u001a)\u1007\u001b*\u1007\u001c" +
-              "+\u1007\u001d-\u1004\u001e.\u1008\u001f/\u1007 0\u1007!1\u1007\"";
+              "\u001e\u1004\u0011\u001f\u1009\u0012 \u1002\u0013!\u1002\u0014\"\u1007\u0015&\u1007" +
+              "\u0016\'\u1007\u0017(\u1007\u0018)\u1007\u0019*\u1007\u001a+\u1007\u001b-\u1004\u001c" +
+              ".\u1008\u001d/\u1007\u001e0\u1007\u001f1\u1007 ";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

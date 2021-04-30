@@ -19,21 +19,20 @@ import org.chromium.ui.modelutil.PropertyModelChangeProcessor;
  */
 public class IncognitoInterstitialCoordinator {
     /**
-     * TODO(crbug.com/1103262): Instead of passing a general View element pass an
-     * IncognitoInterstitialView.
-     *
      * Constructs an IncognitoInterstitialCoordinator object.
      *
      * @param view The incognito interstitial view.
      * @param incognitoInterstitialDelegate A delegate providing the functionality of the Incognito
      *         interstitial.
+     * @param onIncognitoTabOpened Runnable to be called when an incognito tab is opened.
      */
     @MainThread
-    public IncognitoInterstitialCoordinator(
-            View view, IncognitoInterstitialDelegate incognitoInterstitialDelegate) {
+    public IncognitoInterstitialCoordinator(View view,
+            IncognitoInterstitialDelegate incognitoInterstitialDelegate,
+            Runnable onIncognitoTabOpened) {
         IncognitoInterstitialViewBinder.setUpView(view);
-        IncognitoInterstitialMediator mediator =
-                new IncognitoInterstitialMediator(incognitoInterstitialDelegate);
+        IncognitoInterstitialMediator mediator = new IncognitoInterstitialMediator(
+                incognitoInterstitialDelegate, onIncognitoTabOpened);
         PropertyModelChangeProcessor.create(
                 mediator.getModel(), view, IncognitoInterstitialViewBinder::bindView);
     }

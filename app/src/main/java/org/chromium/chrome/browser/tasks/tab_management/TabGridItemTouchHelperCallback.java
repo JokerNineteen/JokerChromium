@@ -101,6 +101,7 @@ public class TabGridItemTouchHelperCallback extends ItemTouchHelper.SimpleCallba
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         final int dragFlags = viewHolder.getItemViewType() == TabProperties.UiType.MESSAGE
                         || viewHolder.getItemViewType() == TabProperties.UiType.NEW_TAB_TILE
+                        || viewHolder.getItemViewType() == TabProperties.UiType.LARGE_MESSAGE
                 ? 0
                 : mDragFlags;
         final int swipeFlags = viewHolder.getItemViewType() == TabProperties.UiType.NEW_TAB_TILE
@@ -114,7 +115,8 @@ public class TabGridItemTouchHelperCallback extends ItemTouchHelper.SimpleCallba
     public boolean canDropOver(@NonNull RecyclerView recyclerView,
             @NonNull RecyclerView.ViewHolder current, @NonNull RecyclerView.ViewHolder target) {
         if (target.getItemViewType() == TabProperties.UiType.MESSAGE
-                || target.getItemViewType() == TabProperties.UiType.NEW_TAB_TILE) {
+                || target.getItemViewType() == TabProperties.UiType.NEW_TAB_TILE
+                || target.getItemViewType() == TabProperties.UiType.LARGE_MESSAGE) {
             return false;
         }
         return super.canDropOver(recyclerView, current, target);
@@ -142,7 +144,8 @@ public class TabGridItemTouchHelperCallback extends ItemTouchHelper.SimpleCallba
         TabModel tabModel = mTabModelSelector.getCurrentModel();
         if (filter instanceof EmptyTabModelFilter) {
             tabModel.moveTab(currentTabId,
-                    mModel.indexFromId(currentTabId) + (distance > 0 ? distance + 1 : distance));
+                    mModel.getTabCardCountsBefore(mModel.indexFromId(currentTabId)
+                            + (distance > 0 ? distance + 1 : distance)));
         } else if (!mActionsOnAllRelatedTabs) {
             int destinationIndex = tabModel.indexOf(mTabModelSelector.getTabById(destinationTabId));
             tabModel.moveTab(currentTabId, distance > 0 ? destinationIndex + 1 : destinationIndex);
@@ -200,7 +203,8 @@ public class TabGridItemTouchHelperCallback extends ItemTouchHelper.SimpleCallba
                 if (selectedViewHolder != null && !mRecyclerView.isComputingLayout()
                         && shouldUpdate) {
                     View selectedItemView = selectedViewHolder.itemView;
-                    onTabMergeToGroup(mSelectedTabIndex, mHoveredTabIndex);
+                    onTabMergeToGroup(mModel.getTabCardCountsBefore(mSelectedTabIndex),
+                            mModel.getTabCardCountsBefore(mHoveredTabIndex));
                     mRecyclerView.getLayoutManager().removeView(selectedItemView);
                 }
             } else {
@@ -210,7 +214,7 @@ public class TabGridItemTouchHelperCallback extends ItemTouchHelper.SimpleCallba
             if (mHoveredTabIndex != TabModel.INVALID_TAB_INDEX && shouldUpdate) {
                 mModel.updateHoveredTabForMergeToGroup(mSelectedTabIndex > mHoveredTabIndex
                                 ? mHoveredTabIndex
-                                : mHoveredTabIndex - 1,
+                                : mModel.getTabIndexBefore(mHoveredTabIndex),
                         false);
             }
             if (mUnGroupTabIndex != TabModel.INVALID_TAB_INDEX) {

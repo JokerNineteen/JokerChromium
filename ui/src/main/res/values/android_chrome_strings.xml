@@ -17,12 +17,14 @@
 <string name="notification_category_updates">"Updates"</string>
 <string name="notification_category_announcement">"Announcements"</string>
 <string name="notification_category_permission_requests">"Permission requests"</string>
+<string name="notification_category_price_drop">"Price drop alerts"</string>
 <string name="unsupported">"Unsupported"</string>
 <string name="prefs_section_account">"Account"</string>
 <string name="prefs_section_account_and_google_services">"You and Google"</string>
 <string name="sign_in_to_chrome">"Sign in to Chrome"</string>
 <string name="prefs_sync_and_services">"Sync and Google services"</string>
 <string name="prefs_sync_and_services_content_description">"You are currently customizing your Sync and Google service settings. To finish turning on sync, tap the Confirm button near the bottom of the screen. Navigate up"</string>
+<string name="prefs_manage_sync_settings_content_description">"You are currently customizing your Sync settings. To finish turning on sync, tap the Confirm button near the bottom of the screen. Navigate up"</string>
 <string name="signin_pref_disallowed_title">"Not signed in"</string>
 <string name="signin_pref_summary">"Sync and personalize across devices"</string>
 <string name="sync_and_services_summary_sync_on">"Sync is on"</string>
@@ -79,10 +81,10 @@
 <string name="payment_no_apps_summary">"No supported apps installed"</string>
 <string name="payment_apps_usage_message">"On some websites, you can pay with above supported payment apps on your device."</string>
 <string name="autofill_create_profile">"Add address"</string>
-<string name="autofill_edit_profile">"Edit address"</string>
 <string name="autofill_create_credit_card">"Add card"</string>
 <string name="autofill_edit_credit_card">"Edit card"</string>
 <string name="autofill_profile_editor_country">"Country/Region"</string>
+<string name="autofill_profile_editor_honorific_prefix">"Title"</string>
 <string name="autofill_profile_editor_email_address">"Email"</string>
 <string name="autofill_profile_editor_phone_number">"Phone"</string>
 <string name="autofill_credit_card_editor_name">"Name on card"</string>
@@ -123,6 +125,9 @@
 <string name="saved_passwords_none_text">"Saved passwords will appear here."</string>
 <string name="password_no_result">"Can’t find that password. Check your spelling and try again."</string>
 <string name="password_edit_hint">"Make sure the password you are saving matches your password for %1$s"</string>
+<string name="password_entry_edit_deletion_dialog_body">"Deleting this password will not delete your account on %1$s"</string>
+<string name="password_entry_edit_delete_credential_dialog_title">"Delete password?"</string>
+<string name="password_entry_edit_delete_credential_dialog_confirm">"Delete password"</string>
 <string name="password_entry_viewer_title">"Saved password"</string>
 <string name="password_entry_viewer_site_title">"Site"</string>
 <string name="password_entry_viewer_username_title">"Username"</string>
@@ -139,8 +144,11 @@
 <string name="password_entry_viewer_site_copied_into_clipboard">"Site copied"</string>
 <string name="password_entry_viewer_password_copied_into_clipboard">"Password copied"</string>
 <string name="password_entry_viewer_set_lock_screen">"To view or copy your password here, set screen lock on this device."</string>
-<string name="password_export_set_lock_screen">"Turn on screen lock in Settings to export your passwords from this device"</string>
 <string name="password_entry_view_set_screen_lock">"To view passwords, first set a screen lock on your device"</string>
+<string name="password_entry_copy_set_screen_lock">"To copy passwords, first set a screen lock on your device"</string>
+<string name="password_entry_edit_duplicate_username_error">"You already saved this username for this site"</string>
+<string name="password_entry_edit_empty_password_error">"Enter password"</string>
+<string name="password_export_set_lock_screen">"Turn on screen lock in Settings to export your passwords from this device"</string>
 <string name="password_generation_popup_content_description">"Showing password generation popup"</string>
 <string name="password_settings_export_action_title">"Export passwords…"</string>
 <string name="password_settings_export_action_description">"Export passwords stored with Chrome"</string>
@@ -153,18 +161,13 @@
 <string name="password_settings_export_error_details">"Details: %1$s"</string>
 <string name="lockscreen_description_copy">"Unlock to copy your password"</string>
 <string name="lockscreen_description_view">"Unlock to view your password"</string>
+<string name="lockscreen_description_edit">"Unlock to edit your password"</string>
 <string name="lockscreen_description_export">"Unlock to export your passwords"</string>
 <string name="password_settings_export_subject">"Chrome Passwords"</string>
 <string name="options_homepage_edit_hint">"Enter custom web address"</string>
 <string name="options_homepage_edit_title">"Edit homepage"</string>
 <string name="options_homepage_edit_label">"Open this page"</string>
 <string name="options_homepage_chrome_homepage">"Chrome’s homepage"</string>
-<string name="homepage_promo_title">"Get here quicker"</string>
-<string name="homepage_promo_title_slim">"Make this page your homepage"</string>
-<string name="homepage_promo_description">"See your top sites and recent stories whenever you tap the Home button"</string>
-<string name="homepage_promo_primary_button">"Change homepage"</string>
-<string name="homepage_promo_primary_button_slim">"Change"</string>
-<string name="homepage_promo_snackbar_message">"Homepage changed"</string>
 <string name="enhanced_protection_promo_title">"Get Chrome’s strongest security"</string>
 <string name="enhanced_protection_promo_description">"Enhanced protection does more to block phishing and malware"</string>
 <string name="prefs_notifications">"Notifications"</string>
@@ -193,11 +196,32 @@ Touch &amp; hold any word to search. To refine your search, select more or fewer
 <string name="contextual_search_short_description">"Touch to Search sends the selected word and the current page as context to Google Search. You can turn it off in &lt;link&gt;Settings&lt;/link&gt;."</string>
 <string name="contextual_search_allow_button">"Allow"</string>
 <string name="contextual_search_no_thanks_button">"No thanks"</string>
+<string name="contextual_search_help_body">"To search from this page, touch &amp; hold words instead of tapping them"</string>
+<string name="contextual_search_help_header">"Touch &amp; hold for more relevant info"</string>
+<string name="contextual_search_default_caption">"Tap to see search results"</string>
 <string name="do_not_track_title">"“Do Not Track”"</string>
 <string name="do_not_track_description">"Enabling “Do Not Track” means that a request will be included with your browsing traffic. Any effect depends on whether a website responds to the request, and how the request is interpreted.
 
 For example, some websites may respond to this request by showing you ads that aren’t based on other websites you’ve visited. Many websites will still collect and use your browsing data — for example to improve security, to provide content, ads and recommendations, and to generate reporting statistics."</string>
 <string name="can_make_payment_title">"Access payment methods"</string>
+<string name="prefs_privacy_sandbox">"Privacy Sandbox"</string>
+<string name="privacy_sandbox_status_enabled">"Trial features are on"</string>
+<string name="privacy_sandbox_status_disabled">"Trial features are off"</string>
+<string name="privacy_sandbox_description_title">"About Privacy Sandbox"</string>
+<string name="privacy_sandbox_description">"Privacy Sandbox is an ongoing initiative to preserve the open web that will help safeguard you from tracking mechanisms.
+
+Today, websites rely on many technologies, like third-party cookies, for important services like showing relevant ads and measuring a site’s performance.
+
+Privacy Sandbox preserves the vitality of the open web by creating better ways to perform these services – without breaking sites, and while preventing you from being surreptitiously tracked across the web.
+
+Privacy Sandbox is still in active development and is available in selected regions. For now, sites may try out Privacy Sandbox while continuing to use current web technologies like third-party cookies. &lt;link&gt;Learn more&lt;/link&gt;"</string>
+<string name="privacy_sandbox_toggle">"Privacy Sandbox trials"</string>
+<string name="privacy_sandbox_toggle_description">"When enabled, sites may use the privacy-preserving techniques shown here to provide their content and services. These include alternatives to cross-site tracking. More trials may be added over time.
+
+&lt;li1&gt;Advertisers can learn when thousands of users share a similar interest – like a crowd at a concert — and select ads for the crowd, rather than an individual person.&lt;/li1&gt;
+
+&lt;li2&gt;Advertisers can study the effectiveness of ads in a way that does not track you across sites.&lt;/li2&gt;"</string>
+<string name="privacy_sandbox_snackbar_message">"Learn about and control new technologies that aim to replace third-party cookies"</string>
 <string name="settings_custom">"Custom"</string>
 <string name="settings_secure_dns_title">"Use secure DNS"</string>
 <string name="settings_secure_dns_description">"Determines how to connect to websites over a secure connection"</string>
@@ -247,7 +271,7 @@ Your Google account may have other forms of browsing history like searches and a
 <string name="android_history_other_forms_of_history">"Your Google Account may have other forms of browsing history at &lt;link&gt;myactivity.google.com&lt;/link&gt;."</string>
 <string name="android_history_blocked_site">"Blocked site"</string>
 <string name="multiple_history_items_deleted">"%1$s items deleted"</string>
-<string name="prefs_safety_check">"Safety check &lt;new&gt;New&lt;/new&gt;"</string>
+<string name="prefs_safety_check">"Safety check"</string>
 <string name="safety_check_description">"Chrome can help keep you safe from data breaches, unsafe websites, and more"</string>
 <string name="safety_check_safe_browsing_title">"Safe Browsing"</string>
 <string name="safety_check_updates_title">"Updates"</string>
@@ -334,8 +358,6 @@ Your Google account may have other forms of browsing history like searches and a
 <string name="languages_offer_translate_switch">"Offer to translate pages in other languages"</string>
 <string name="languages_send_translate_switch">"Offer to send pages in other languages to Google Translate"</string>
 <string name="languages_item_option_offer_to_translate">"Offer to translate"</string>
-<string name="languages_set_application_language_prompt">"Use as Chrome’s language"</string>
-<string name="languages_set_as_application_language">"%1$s will use %2$s on restart."</string>
 <string name="languages_explicit_ask_title">"What languages do you read?"</string>
 <string name="languages_split_downloading">"Downloading %1$s…"</string>
 <string name="languages_split_ready">"Language ready, restart %1$s"</string>
@@ -345,8 +367,11 @@ Your Google account may have other forms of browsing history like searches and a
 <string name="languages_settings_advanced">"Advanced"</string>
 <string name="languages_settings_target">"Translate into this language"</string>
 <string name="languages_settings_automatic">"Automatically translate these languages"</string>
-<string name="languages_settings_dont_offer_lang">"Don’t offer to translate these languages"</string>
+<string name="languages_settings_automatic_title">"Automatically translate"</string>
+<string name="languages_settings_dont_offer_langs">"Don’t offer to translate these languages"</string>
+<string name="languages_settings_never_langs_title">"Never translate"</string>
 <string name="languages_settings_dont_offer_sites">"Don’t offer to translate these sites"</string>
+<string name="languages_settings_never_sites_title">"Never translate sites"</string>
 <string name="data_reduction_title_lite_mode">"Lite mode"</string>
 <string name="data_reduction_initial_title">"Your data savings will appear here"</string>
 <string name="data_reduction_saved_label">"%1$s saved"</string>
@@ -449,7 +474,7 @@ Your Google account may have other forms of browsing history like searches and a
 <string name="open_source_license_title">"Open source licenses"</string>
 <string name="open_source_license_url">"chrome://credits"</string>
 <string name="google_terms_of_service_title">"Google Terms of Service"</string>
-<string name="google_terms_of_service_url">"https://policies.google.com/terms"</string>
+<string name="google_terms_of_service_url">"https://policies.google.com/terms/embedded"</string>
 <string name="chrome_additional_terms_of_service_title">"Chrome &amp; Chrome OS Additional Terms of Service"</string>
 <string name="chrome_additional_terms_of_service_url">"https://www.google.com/chrome/terms/"</string>
 <string name="privacy_notice_title">"Chrome Privacy Notice"</string>
@@ -528,12 +553,11 @@ To change this setting, &lt;resetlink&gt;reset sync&lt;/resetlink&gt;"</string>
 <string name="bluetooth_scanning_prompt_origin">"%1$s wants to scan for nearby Bluetooth devices. The following devices have been found:"</string>
 <string name="bluetooth_scanning_device_unknown">"Unknown or unsupported device (%1$s)"</string>
 <string name="sync_error_card_title">"Sync isn\'t working"</string>
-<string name="sync_passwords_error_card_title">"Error syncing passwords"</string>
+<string name="password_sync_error_summary">"Error syncing passwords"</string>
 <string name="sync_settings_not_confirmed_title">"Initial sync setup not finished"</string>
 <string name="hint_android_sync_disabled">"Open Android settings and re-enable Android system sync to start Chrome sync"</string>
 <string name="hint_sync_auth_error">"Sign in again to start sync"</string>
-<string name="hint_sync_retrieve_keys_legacy">"Fix now"</string>
-<string name="hint_sync_retrieve_keys">"Error syncing passwords"</string>
+<string name="hint_sync_retrieve_keys">"Fix now"</string>
 <string name="hint_passphrase_required">"Enter your passphrase to start sync"</string>
 <string name="hint_sync_settings_not_confirmed_description">"Choose what to sync below"</string>
 <string name="hint_sync_settings_not_confirmed_description_legacy">"To start sync, turn on \"Sync your Chrome data\"."</string>
@@ -543,7 +567,6 @@ To change this setting, &lt;resetlink&gt;reset sync&lt;/resetlink&gt;"</string>
 <string name="client_out_of_date_error_card_button">"Update %1$s"</string>
 <string name="passphrase_required_error_card_button">"Enter passphrase"</string>
 <string name="auth_error_card_button">"Sign in again"</string>
-<string name="trusted_vault_error_card_button">"Unlock with Screen Lock"</string>
 <string name="sync_error_generic">"Sync has stopped working"</string>
 <string name="sync_error_ga">"Please update your sign-in details."</string>
 <string name="sync_error_connection">"Could not connect to the sync server."</string>
@@ -637,6 +660,8 @@ To change this setting, &lt;resetlink&gt;reset sync&lt;/resetlink&gt;"</string>
 <string name="contextmenu_load_original_image">"Load image"</string>
 <string name="contextmenu_copy_image">"Copy image"</string>
 <string name="contextmenu_search_with_google_lens">"Search with Google Lens &lt;new&gt;New&lt;/new&gt;"</string>
+<string name="contextmenu_search_image_with_google_lens">"Search image with Google Lens &lt;new&gt;New&lt;/new&gt;"</string>
+<string name="contextmenu_translate_image_with_google_lens">"Translate image with Google Lens &lt;new&gt;New&lt;/new&gt;"</string>
 <string name="contextmenu_shop_similar_products">"Shop similar products &lt;new&gt;New&lt;/new&gt;"</string>
 <string name="contextmenu_shop_image_with_google_lens">"Shop image with Google Lens &lt;new&gt;New&lt;/new&gt;"</string>
 <string name="contextmenu_search_similar_products">"Search similar products &lt;new&gt;New&lt;/new&gt;"</string>
@@ -650,7 +675,6 @@ To change this setting, &lt;resetlink&gt;reset sync&lt;/resetlink&gt;"</string>
 <string name="contextmenu_read_later">"Read later &lt;new&gt;New&lt;/new&gt;"</string>
 <string name="contextmenu_performance_info_fast">"Fast page"</string>
 <string name="accessibility_swipe_refresh">"Refreshing page"</string>
-<string name="app_banner_view_native_app_install_accessibility">"Get the app from the Google Play Store: %s"</string>
 <string name="dark_mode">"Dark"</string>
 <string name="light_mode">"Light"</string>
 <string name="sepia_mode">"Sepia"</string>
@@ -658,13 +682,9 @@ To change this setting, &lt;resetlink&gt;reset sync&lt;/resetlink&gt;"</string>
 <string name="serif">"Serif"</string>
 <string name="monospace">"Monospace"</string>
 <string name="text_size_signifier">"A"</string>
-<string name="menu_add_to_homescreen">"Add to Home screen"</string>
 <string name="menu_open_webapk">"Open %1$s"</string>
 <string name="open_webapk_failed">"Could not open app"</string>
-<string name="menu_add_to_homescreen_install">"Install app"</string>
 <string name="app_banner_add">"Add"</string>
-<string name="app_banner_install">"Install"</string>
-<string name="added_to_homescreen">"%1$s was added to your Home screen"</string>
 <string name="webapk_install_in_progress">"Still adding previous site"</string>
 <string name="notification_webapk_install_in_progress">"Adding %1$s…"</string>
 <string name="notification_webapk_installed">"Added to Home screen"</string>
@@ -674,10 +694,15 @@ To change this setting, &lt;resetlink&gt;reset sync&lt;/resetlink&gt;"</string>
 <string name="iph_infobar_add_to_home_screen_title">"Get to this site quicker"</string>
 <string name="iph_infobar_add_to_home_screen_description">"Add this site to your phone’s Home screen so you can get here more easily"</string>
 <string name="iph_infobar_add_to_home_screen_description_tablet">"Add this site to your tablet’s Home screen so you can get here more easily"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"Install this app"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"Screenshot"</string>
+<string name="image_zoom_content_description">"Screenshot. Tap to close."</string>
 <string name="page_info_connection_offline">"You are viewing an offline copy of this page from %1$s"</string>
 <string name="page_info_offline_page_not_trusted_with_date">"This offline page is from %1$s and may differ from the online version."</string>
 <string name="page_info_offline_page_not_trusted_without_date">"This page may differ from the online version."</string>
 <string name="page_info_preview_load_original">"&lt;link&gt;Load original page&lt;/link&gt; from %1$s"</string>
+<string name="page_info_connection_paint_preview">"You are viewing a preview of this page"</string>
+<string name="page_info_iph">"Change your site settings here"</string>
 <string name="sad_tab_suggestions">"If you’re seeing this frequently, try these &lt;link&gt;suggestions&lt;/link&gt;."</string>
 <string name="notification_hidden_text">"Contents hidden"</string>
 <string name="notification_site_settings_button">"Settings"</string>
@@ -808,11 +833,14 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="signin_details_description">"You can always choose what to sync in &lt;LINK1&gt;settings&lt;/LINK1&gt;."</string>
 <string name="signin_accept_button">"Yes, I\'m in"</string>
 <string name="signin_account_picker_dialog_title">"Choose an account"</string>
+<string name="account_picker_bottom_sheet_accessibility_opened">"Sign in to Chrome, opened."</string>
+<string name="account_picker_bottom_sheet_accessibility_closed">"Sign in to Chrome, closed."</string>
 <string name="signin_account_picker_bottom_sheet_subtitle">"Sign in to this site and Chrome with your Google Account. You can turn on sync later."</string>
 <string name="signin_account_picker_bottom_sheet_signin_title">"Signing in…"</string>
 <string name="signin_account_picker_bottom_sheet_error_title">"Something went wrong"</string>
 <string name="signin_account_picker_general_error_subtitle">"Chrome couldn’t verify your information"</string>
 <string name="signin_account_picker_auth_error_subtitle">"Sorry, we couldn’t validate your credentials"</string>
+<string name="signin_account_picker_dismiss_button">"Skip"</string>
 <string name="signin_account_picker_general_error_button">"Try again"</string>
 <string name="signin_promo_continue_as">"Continue as %1$s"</string>
 <string name="signin_promo_choose_account">"Not %1$s?"</string>
@@ -853,12 +881,10 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="recently_closed">"Recently closed"</string>
 <string name="show_full_history">"Show full history"</string>
 <string name="remove_all">"Remove all"</string>
-<string name="accessibility_ntp_offline_badge">"Available offline"</string>
 <string name="ntp_learn_more_about_suggested_content">"&lt;link&gt;Learn more&lt;/link&gt; about suggested content"</string>
-<string name="ntp_suggestions_fetch_failed">"Can’t get suggestions"</string>
-<string name="ntp_suggestions_fetch_no_new_suggestions">"No new suggestions"</string>
 <string name="ntp_manage_my_activity">"Manage activity"</string>
 <string name="ntp_manage_interests">"Manage interests"</string>
+<string name="ntp_manage_reactions">"Manage reactions"</string>
 <string name="ntp_turn_off_feed">"Turn off"</string>
 <string name="ntp_turn_on_feed">"Turn on"</string>
 <string name="ntp_discover_on">"Discover"</string>
@@ -928,6 +954,8 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="menu_history">"History"</string>
 <string name="menu_downloads">"Downloads"</string>
 <string name="menu_find_in_page">"Find in page"</string>
+<string name="menu_follow">"Follow"</string>
+<string name="menu_following">"Following"</string>
 <string name="menu_paint_preview_show">"Show Paint Preview"</string>
 <string name="menu_request_desktop_site">"Desktop site"</string>
 <string name="menu_request_desktop_site_on">"Turn off Request desktop site"</string>
@@ -941,9 +969,8 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="menu_get_image_descriptions">"Get image descriptions"</string>
 <string name="menu_stop_image_descriptions">"Stop image descriptions"</string>
 <string name="menu_add_to">"Add to…"</string>
-<string name="menu_add_to_dialog_title">"Add to:"</string>
-<string name="menu_add_to_bookmarks">"Add to Bookmarks"</string>
-<string name="menu_add_to_downloads">"Add to Downloads"</string>
+<string name="menu_add_to_dialog_title">"Add to"</string>
+<string name="menu_homescreen">"Home screen"</string>
 <string name="bookmarks">"Bookmarks"</string>
 <string name="bookmarks_folder_empty">"Pages that you bookmark appear here"</string>
 <string name="no_bookmarks">"No bookmarks"</string>
@@ -983,26 +1010,25 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="bookmark_missing_title">"Title required"</string>
 <string name="bookmark_missing_url">"URL required"</string>
 <string name="reading_list_title">"Reading list"</string>
+<string name="reading_list_title_new">"Reading list &lt;new&gt;New&lt;/new&gt;"</string>
 <string name="reading_list_read">"Read"</string>
-<string name="reading_list_unread">"Unread"</string>
-<string name="reading_list_ready_for_offline">"Ready for offline"</string>
+<string name="reading_list_unread">"Unread - Available offline"</string>
 <string name="reading_list_saved">"Added to reading list"</string>
 <string name="reading_list_mark_as_read">"Mark as read"</string>
-<string name="reading_list_share">"Share"</string>
 <string name="reading_list_reminder_notification_title">"Catch up on your reading list"</string>
 <plurals name="reading_list_reminder_notification_subtitle">
-  <item quantity="one">"You have %1$d page"</item>
-  <item quantity="other">"You have %1$d pages"</item>
+  <item quantity="one">"You have %1$d unread page"</item>
+  <item quantity="other">"You have %1$d unread pages"</item>
 </plurals>
 <plurals name="reading_list_unread_page_count">
   <item quantity="one">"%1$d unread page"</item>
   <item quantity="other">"%1$d unread pages"</item>
 </plurals>
+<string name="reading_list_no_unread_pages">"No unread pages"</string>
 <string name="reading_list_intro_text">"Save this page for later and get a reminder"</string>
+<string name="reading_list_save_pages_for_later">"Add pages to your Reading List to get a reminder"</string>
 <string name="reading_list_find_in_bookmarks">"Find your reading list in Bookmarks"</string>
 <string name="reading_list_empty_list_title">"You’ll find your reading list here"</string>
-<string name="reading_list_empty_list_description">"You can save pages to your reading list to find them again"</string>
-<string name="reading_list_empty_list_description_offline">"You can save pages to your reading list to find them again or read offline"</string>
 <string name="offline_pages_viewing_offline_page">"Viewing an offline copy of this page"</string>
 <string name="offline_pages_prefetch_notification_title">"View offline in %1$s"</string>
 <string name="offline_pages_prefetch_notification_text">"%1$s and more sites"</string>
@@ -1034,6 +1060,7 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="accessibility_toolbar_btn_menu_update">"Update available. More options"</string>
 <string name="accessibility_toolbar_btn_menu_os_version_unsupported">"Chrome can’t update. More options"</string>
 <string name="accessibility_toolbar_btn_mic">"Start voice search"</string>
+<string name="accessibility_btn_lens_camera">"Search with your camera using Google Lens"</string>
 <string name="accessibility_new_tab_page">"New tab"</string>
 <string name="accessibility_new_incognito_tab_page">"New incognito tab"</string>
 <string name="accessibility_toolbar_btn_new_tab">"New tab"</string>
@@ -1148,7 +1175,7 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="twa_running_in_chrome_channel_name_subsequent">"Web apps (quiet)"</string>
 <string name="twa_clear_data_dialog_title">"%1$s also has data in Chrome"</string>
 <string name="twa_clear_data_dialog_message">"You can clear the data in Chrome Settings"</string>
-<string name="twa_clear_data_dialog_keep_data">"Keep data"</string>
+<string name="twa_clear_data_dialog_keep_data">"Keep Data"</string>
 <string name="twa_clear_data_site_selection_title">"Linked sites"</string>
 <string name="twa_quality_enforcement_violation_error">"%1$s on %2$s"</string>
 <string name="twa_quality_enforcement_violation_asset_link">"Digital asset links verification failed on %1$s"</string>
@@ -1287,6 +1314,16 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="extra_icu_module_title">"Extra ICU"</string>
 <string name="cablev2_authenticator_module_title">"Phone as a Security Key Support"</string>
 <string name="cablev2_activity_title">"Google Chrome as a Security Key"</string>
+<string name="cablev2_registration_succeeded">"Registration succeeded"</string>
+<string name="cablev2_registration_failed">"Registration failed"</string>
+<string name="cablev2_sign_in_succeeded">"Sign-in succeeded"</string>
+<string name="cablev2_sign_in_failed">"Sign-in failed"</string>
+<string name="cablev2_usb_discon_title">"Connected with USB cable"</string>
+<string name="cablev2_usb_discon_body">"Disconnect when you’re done"</string>
+<string name="cablev2_serverlink_connecting_to_your_device">"Connecting to your device…"</string>
+<string name="cablev2_serverlink_status_connecting">"This may take a minute"</string>
+<string name="cablev2_serverlink_status_connected">"Connected to device"</string>
+<string name="cablev2_serverlink_status_processing">"Processing request"</string>
 <string name="qr_code_share_icon_label">"QR Code"</string>
 <string name="qr_code_share_tab_label">"Share"</string>
 <string name="qr_code_scan_tab_label">"Scan"</string>
@@ -1300,7 +1337,8 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="sharing_copy_text">"Copy text"</string>
 <string name="sharing_copy_image">"Copy image"</string>
 <string name="sharing_screenshot">"Screenshot"</string>
-<string name="sharing_highlights">"Link to text"</string>
+<string name="sharing_long_screenshot">"Long Screenshot"</string>
+<string name="sharing_highlights">"Link to highlight"</string>
 <string name="sharing_copied">"Copied"</string>
 <string name="text_copied">"Text Copied"</string>
 <string name="image_copied">"Image Copied"</string>
@@ -1315,7 +1353,11 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="qr_code_open_settings_label">"Open Settings"</string>
 <string name="qr_code_not_a_url_label">"This QR Code is not a URL: %1$s"</string>
 <string name="qr_code_filename_prefix">"chrome_qrcode_%1$s"</string>
-<string name="link_to_text_failure_toast_message">"Can\'t create link to text. Share link to page."</string>
+<string name="link_to_text_failure_toast_message">"Can’t create link to highlight. Share link to page."</string>
+<string name="link_to_text_failure_toast_message_v2">"Can’t create link to highlight"</string>
+<string name="link_to_text_success_link_toast_message">"Include link to highlight"</string>
+<string name="link_to_text_success_text_toast_message">"Share text only"</string>
+<string name="new_badge">"New"</string>
 <string name="screenshot_edit_title">"Edit"</string>
 <string name="screenshot_delete_title">"Delete"</string>
 <string name="screenshot_save_title">"Save"</string>
@@ -1331,13 +1373,6 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="paint_preview_startup_upgrade_snackbar_message">"Previewing this page"</string>
 <string name="paint_preview_startup_upgrade_snackbar_action">"Reload"</string>
 <string name="paint_preview_startup_auto_upgrade_toast">"Viewing live page"</string>
-<string name="default_browser_promo_dialog_title">"Set %1$s as your default?"</string>
-<string name="default_browser_promo_dialog_desc">"%1$s has the smarts and speed you need to safely do, create, and explore online"</string>
-<string name="default_browser_promo_dialog_disambiguation_sheet_steps">"1. Choose %1$s\n2. Tap “Always”"</string>
-<string name="default_browser_promo_dialog_system_settings_steps">"1. Go to Settings\n2. Tap “Browser App”\n3. Choose %1$s"</string>
-<string name="default_browser_promo_dialog_role_manager_steps">"1. Choose %1$s\n2. Tap “Set as default”"</string>
-<string name="default_browser_promo_dialog_choose_chrome_button">"Choose %1$s"</string>
-<string name="default_browser_promo_dialog_go_to_settings_button">"Go to Settings"</string>
 <string name="lite_mode_https_image_compression_message">"Lite mode now saves you more data by optimizing images on HTTPS pages."</string>
 <string name="lite_mode_https_image_compression_settings_link">"Manage"</string>
 <string name="chrome_reengagement_notification_1_title">"Read today\'s news 📰"</string>
@@ -1355,6 +1390,10 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="image_descriptions_settings_toggle_content">"Some images are sent to Google to improve descriptions for you"</string>
 <string name="image_descriptions_settings_use_mobile_data_title">"Use mobile data"</string>
 <string name="image_descriptions_settings_use_mobile_data_content">"Wi-Fi is used when available"</string>
+<string name="image_descriptions_toast_off">"Image descriptions are off"</string>
+<string name="image_descriptions_toast_just_once">"Image descriptions added for this page"</string>
+<string name="image_descriptions_toast_on">"Image descriptions are on"</string>
+<string name="image_descriptions_toast_on_no_wifi">"Image descriptions will resume when you connect to Wi-Fi"</string>
 <string name="avs_consent_ui_title">"Get a better voice experience on the web"</string>
 <string name="avs_consent_ui_subtitle">"Google Assistant can complete actions across websites for you"</string>
 <string name="avs_consent_ui_body">"To help you complete tasks, Google will receive the URLs and contents of sites on which you use Assistant, as well as information you submit through Assistant. This information may be stored in your Google account. You can turn off Assistant in Chrome settings."</string>
@@ -1365,4 +1404,5 @@ Data from your Incognito session will only be cleared from Chrome when you &lt;b
 <string name="avs_setting_category_title">"Voice assistance"</string>
 <string name="avs_setting_enabled_title">"Enhanced voice search"</string>
 <string name="avs_setting_enabled_description">"Google Assistant provides a better voice experience for searching the web and engaging with sites you have open. Google Assistant will receive the URL and contents of sites you use with it."</string>
+<string name="csn_ad_label">"Ad"</string>
 </resources>

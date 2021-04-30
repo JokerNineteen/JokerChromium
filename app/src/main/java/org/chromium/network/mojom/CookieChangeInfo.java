@@ -70,6 +70,7 @@ public final class CookieChangeInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.cause = decoder0.readInt(24);
                     CookieChangeCause.validate(result.cause);
+                    result.cause = CookieChangeCause.toKnownValue(result.cause);
                 }
 
         } finally {

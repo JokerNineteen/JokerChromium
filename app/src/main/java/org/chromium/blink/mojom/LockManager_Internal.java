@@ -254,11 +254,13 @@ QueryStateResponse callback) {
                         
                     result.mode = decoder0.readInt(16);
                         LockMode.validate(result.mode);
+                        result.mode = LockMode.toKnownValue(result.mode);
                     }
                     {
                         
                     result.wait = decoder0.readInt(20);
                         LockManager.WaitMode.validate(result.wait);
+                        result.wait = LockManager.WaitMode.toKnownValue(result.wait);
                     }
                     {
                         

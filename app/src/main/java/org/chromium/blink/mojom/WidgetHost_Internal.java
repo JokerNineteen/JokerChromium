@@ -457,6 +457,7 @@ org.chromium.mojo.bindings.InterfaceRequest<org.chromium.cc.mojom.RenderFrameMet
                         
                     result.textDirectionHint = decoder0.readInt(16);
                         org.chromium.mojo_base.mojom.TextDirection.validate(result.textDirectionHint);
+                        result.textDirectionHint = org.chromium.mojo_base.mojom.TextDirection.toKnownValue(result.textDirectionHint);
                     }
 
             } finally {
@@ -596,11 +597,13 @@ org.chromium.mojo.bindings.InterfaceRequest<org.chromium.cc.mojom.RenderFrameMet
                         
                     result.anchorDir = decoder0.readInt(16);
                         org.chromium.mojo_base.mojom.TextDirection.validate(result.anchorDir);
+                        result.anchorDir = org.chromium.mojo_base.mojom.TextDirection.toKnownValue(result.anchorDir);
                     }
                     {
                         
                     result.focusDir = decoder0.readInt(20);
                         org.chromium.mojo_base.mojom.TextDirection.validate(result.focusDir);
+                        result.focusDir = org.chromium.mojo_base.mojom.TextDirection.toKnownValue(result.focusDir);
                     }
                     {
                         

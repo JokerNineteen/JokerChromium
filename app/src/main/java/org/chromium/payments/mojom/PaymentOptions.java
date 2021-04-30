@@ -78,6 +78,7 @@ public final class PaymentOptions extends org.chromium.mojo.bindings.Struct {
                     
                 result.shippingType = decoder0.readInt(12);
                     PaymentShippingType.validate(result.shippingType);
+                    result.shippingType = PaymentShippingType.toKnownValue(result.shippingType);
                 }
 
         } finally {

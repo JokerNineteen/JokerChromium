@@ -35,6 +35,10 @@ public interface NetworkServiceTest extends org.chromium.mojo.bindings.Interface
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private RequireCt() {}
     }
 
@@ -169,11 +173,11 @@ SetEvPolicyResponse callback);
 
 
 
-    void getPreloadedFirstPartySetEntriesCount(
+    void getFirstPartySetEntriesCount(
 
-GetPreloadedFirstPartySetEntriesCountResponse callback);
+GetFirstPartySetEntriesCountResponse callback);
 
-    interface GetPreloadedFirstPartySetEntriesCountResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
+    interface GetFirstPartySetEntriesCountResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
 
 
 }

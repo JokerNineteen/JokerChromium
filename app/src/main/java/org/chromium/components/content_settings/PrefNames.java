@@ -165,6 +165,11 @@ public final class PrefNames {
     // permission requests.
     public static final String ENABLE_QUIET_NOTIFICATION_PERMISSION_UI = "profile.content_settings.enable_quiet_permission_ui.notifications";
 
+    // Time value indicating when the quiet notification UI was last disabled by the
+    // user. Only permission action history after this point is taken into account
+    // for adaptive quiet UI activation.
+    public static final String QUIET_NOTIFICATION_PERMISSION_UI_DISABLED_TIME = "profile.content_settings.disable_quiet_permission_ui_time.notifications";
+
     // Enable vibration for web notifications.
     public static final String NOTIFICATIONS_VIBRATE_ENABLED = "notifications.vibrate_enabled";
 

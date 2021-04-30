@@ -29,8 +29,13 @@ final class MessageWrapperJni implements MessageWrapper.Natives {
   }
 
   @Override
-  public void handleDismissCallback(long nativeMessageWrapper) {
-    GEN_JNI.org_chromium_components_messages_MessageWrapper_handleDismissCallback(nativeMessageWrapper);
+  public void handleSecondaryActionClick(long nativeMessageWrapper) {
+    GEN_JNI.org_chromium_components_messages_MessageWrapper_handleSecondaryActionClick(nativeMessageWrapper);
+  }
+
+  @Override
+  public void handleDismissCallback(long nativeMessageWrapper, int dismissReason) {
+    GEN_JNI.org_chromium_components_messages_MessageWrapper_handleDismissCallback(nativeMessageWrapper, dismissReason);
   }
 
   public static MessageWrapper.Natives get() {

@@ -74,6 +74,7 @@ public final class ScrollData extends org.chromium.mojo.bindings.Struct {
                     
                 result.deltaUnits = decoder0.readInt(16);
                     org.chromium.ui.mojom.ScrollGranularity.validate(result.deltaUnits);
+                    result.deltaUnits = org.chromium.ui.mojom.ScrollGranularity.toKnownValue(result.deltaUnits);
                 }
                 {
                     
@@ -91,6 +92,7 @@ public final class ScrollData extends org.chromium.mojo.bindings.Struct {
                     
                 result.inertialPhase = decoder0.readInt(24);
                     InertialPhaseState.validate(result.inertialPhase);
+                    result.inertialPhase = InertialPhaseState.toKnownValue(result.inertialPhase);
                 }
                 {
                     

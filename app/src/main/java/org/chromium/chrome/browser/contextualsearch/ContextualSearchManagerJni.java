@@ -50,9 +50,9 @@ final class ContextualSearchManagerJni implements ContextualSearchManager.Native
   }
 
   @Override
-  public void whitelistContextualSearchJsApiUrl(long nativeContextualSearchManager,
+  public void allowlistContextualSearchJsApiUrl(long nativeContextualSearchManager,
       ContextualSearchManager caller, String url) {
-    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchManager_whitelistContextualSearchJsApiUrl(nativeContextualSearchManager, caller, url);
+    GEN_JNI.org_chromium_chrome_browser_contextualsearch_ContextualSearchManager_allowlistContextualSearchJsApiUrl(nativeContextualSearchManager, caller, url);
   }
 
   @Override

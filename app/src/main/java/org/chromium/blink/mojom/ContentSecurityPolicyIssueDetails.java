@@ -24,7 +24,7 @@ public final class ContentSecurityPolicyIssueDetails extends org.chromium.mojo.b
     public boolean isReportOnly;
     public int contentSecurityPolicyViolationType;
     public AffectedFrame frameAncestor;
-    public org.chromium.network.mojom.SourceLocation sourceLocation;
+    public AffectedLocation affectedLocation;
     public int violatingNodeId;
 
     private ContentSecurityPolicyIssueDetails(int version) {
@@ -78,6 +78,7 @@ public final class ContentSecurityPolicyIssueDetails extends org.chromium.mojo.b
                     
                 result.contentSecurityPolicyViolationType = decoder0.readInt(28);
                     ContentSecurityPolicyViolationType.validate(result.contentSecurityPolicyViolationType);
+                    result.contentSecurityPolicyViolationType = ContentSecurityPolicyViolationType.toKnownValue(result.contentSecurityPolicyViolationType);
                 }
                 {
                     
@@ -87,7 +88,7 @@ public final class ContentSecurityPolicyIssueDetails extends org.chromium.mojo.b
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
-                result.sourceLocation = org.chromium.network.mojom.SourceLocation.decode(decoder1);
+                result.affectedLocation = AffectedLocation.decode(decoder1);
                 }
                 {
                     
@@ -115,7 +116,7 @@ public final class ContentSecurityPolicyIssueDetails extends org.chromium.mojo.b
         
         encoder0.encode(this.frameAncestor, 32, true);
         
-        encoder0.encode(this.sourceLocation, 40, true);
+        encoder0.encode(this.affectedLocation, 40, true);
         
         encoder0.encode(this.violatingNodeId, 48);
     }

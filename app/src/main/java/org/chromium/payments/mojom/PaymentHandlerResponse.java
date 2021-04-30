@@ -73,6 +73,7 @@ public final class PaymentHandlerResponse extends org.chromium.mojo.bindings.Str
                     
                 result.responseType = decoder0.readInt(24);
                     PaymentEventResponseType.validate(result.responseType);
+                    result.responseType = PaymentEventResponseType.toKnownValue(result.responseType);
                 }
                 {
                     

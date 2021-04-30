@@ -90,11 +90,13 @@ public final class ScrollData extends org.chromium.mojo.bindings.Struct {
                     
                 result.momentumPhase = decoder0.readInt(36);
                     EventMomentumPhase.validate(result.momentumPhase);
+                    result.momentumPhase = EventMomentumPhase.toKnownValue(result.momentumPhase);
                 }
                 {
                     
                 result.scrollEventPhase = decoder0.readInt(40);
                     ScrollEventPhase.validate(result.scrollEventPhase);
+                    result.scrollEventPhase = ScrollEventPhase.toKnownValue(result.scrollEventPhase);
                 }
 
         } finally {

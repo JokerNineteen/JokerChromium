@@ -73,6 +73,8 @@ class RemoteFrameHost_Internal {
 
     private static final int UPDATE_VIEWPORT_INTERSECTION_ORDINAL = 12;
 
+    private static final int SYNCHRONIZE_VISUAL_PROPERTIES_ORDINAL = 13;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements RemoteFrameHost.Proxy {
 
@@ -101,13 +103,15 @@ int touchAction) {
 
         @Override
         public void updateRenderThrottlingStatus(
-boolean isThrottled, boolean subtreeThrottled) {
+boolean isThrottled, boolean subtreeThrottled, boolean displayLocked) {
 
             RemoteFrameHostUpdateRenderThrottlingStatusParams _message = new RemoteFrameHostUpdateRenderThrottlingStatusParams();
 
             _message.isThrottled = isThrottled;
 
             _message.subtreeThrottled = subtreeThrottled;
+
+            _message.displayLocked = displayLocked;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -203,7 +207,7 @@ boolean inert) {
 
         @Override
         public void didChangeOpener(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrame) {
+LocalFrameToken openerFrame) {
 
             RemoteFrameHostDidChangeOpenerParams _message = new RemoteFrameHostDidChangeOpenerParams();
 
@@ -220,7 +224,7 @@ org.chromium.mojo_base.mojom.UnguessableToken openerFrame) {
 
         @Override
         public void advanceFocus(
-int focusType, org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken) {
+int focusType, LocalFrameToken sourceFrameToken) {
 
             RemoteFrameHostAdvanceFocusParams _message = new RemoteFrameHostAdvanceFocusParams();
 
@@ -239,7 +243,7 @@ int focusType, org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken) {
 
         @Override
         public void routeMessageEvent(
-org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message) {
+LocalFrameToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message) {
 
             RemoteFrameHostRouteMessageEventParams _message = new RemoteFrameHostRouteMessageEventParams();
 
@@ -296,17 +300,36 @@ org.chromium.gfx.mojom.Rect frameContentRect, int documentCookie) {
 
         @Override
         public void updateViewportIntersection(
-ViewportIntersectionState intersectionState) {
+ViewportIntersectionState intersectionState, FrameVisualProperties visualProperties) {
 
             RemoteFrameHostUpdateViewportIntersectionParams _message = new RemoteFrameHostUpdateViewportIntersectionParams();
 
             _message.intersectionState = intersectionState;
+
+            _message.visualProperties = visualProperties;
 
 
             getProxyHandler().getMessageReceiver().accept(
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(UPDATE_VIEWPORT_INTERSECTION_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void synchronizeVisualProperties(
+FrameVisualProperties properties) {
+
+            RemoteFrameHostSynchronizeVisualPropertiesParams _message = new RemoteFrameHostSynchronizeVisualPropertiesParams();
+
+            _message.properties = properties;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SYNCHRONIZE_VISUAL_PROPERTIES_ORDINAL)));
 
         }
 
@@ -360,7 +383,7 @@ ViewportIntersectionState intersectionState) {
                         RemoteFrameHostUpdateRenderThrottlingStatusParams data =
                                 RemoteFrameHostUpdateRenderThrottlingStatusParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().updateRenderThrottlingStatus(data.isThrottled, data.subtreeThrottled);
+                        getImpl().updateRenderThrottlingStatus(data.isThrottled, data.subtreeThrottled, data.displayLocked);
                         return true;
                     }
 
@@ -500,7 +523,20 @@ ViewportIntersectionState intersectionState) {
                         RemoteFrameHostUpdateViewportIntersectionParams data =
                                 RemoteFrameHostUpdateViewportIntersectionParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().updateViewportIntersection(data.intersectionState);
+                        getImpl().updateViewportIntersection(data.intersectionState, data.visualProperties);
+                        return true;
+                    }
+
+
+
+
+
+                    case SYNCHRONIZE_VISUAL_PROPERTIES_ORDINAL: {
+
+                        RemoteFrameHostSynchronizeVisualPropertiesParams data =
+                                RemoteFrameHostSynchronizeVisualPropertiesParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().synchronizeVisualProperties(data.properties);
                         return true;
                     }
 
@@ -532,6 +568,8 @@ ViewportIntersectionState intersectionState) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), RemoteFrameHost_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -616,6 +654,7 @@ ViewportIntersectionState intersectionState) {
                         
                     result.touchAction = decoder0.readInt(8);
                         org.chromium.cc.mojom.TouchAction.validate(result.touchAction);
+                        result.touchAction = org.chromium.cc.mojom.TouchAction.toKnownValue(result.touchAction);
                     }
 
             } finally {
@@ -643,6 +682,7 @@ ViewportIntersectionState intersectionState) {
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public boolean isThrottled;
         public boolean subtreeThrottled;
+        public boolean displayLocked;
 
         private RemoteFrameHostUpdateRenderThrottlingStatusParams(int version) {
             super(STRUCT_SIZE, version);
@@ -685,6 +725,10 @@ ViewportIntersectionState intersectionState) {
                         
                     result.subtreeThrottled = decoder0.readBoolean(8, 1);
                     }
+                    {
+                        
+                    result.displayLocked = decoder0.readBoolean(8, 2);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -700,6 +744,8 @@ ViewportIntersectionState intersectionState) {
             encoder0.encode(this.isThrottled, 8, 0);
             
             encoder0.encode(this.subtreeThrottled, 8, 1);
+            
+            encoder0.encode(this.displayLocked, 8, 2);
         }
     }
 
@@ -750,6 +796,7 @@ ViewportIntersectionState intersectionState) {
                         
                     result.visibility = decoder0.readInt(8);
                         FrameVisibility.validate(result.visibility);
+                        result.visibility = FrameVisibility.toKnownValue(result.visibility);
                     }
 
             } finally {
@@ -1022,7 +1069,7 @@ ViewportIntersectionState intersectionState) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.UnguessableToken openerFrame;
+        public LocalFrameToken openerFrame;
 
         private RemoteFrameHostDidChangeOpenerParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1060,7 +1107,7 @@ ViewportIntersectionState intersectionState) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                    result.openerFrame = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.openerFrame = LocalFrameToken.decode(decoder1);
                     }
 
             } finally {
@@ -1087,7 +1134,7 @@ ViewportIntersectionState intersectionState) {
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int focusType;
-        public org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken;
+        public LocalFrameToken sourceFrameToken;
 
         private RemoteFrameHostAdvanceFocusParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1126,11 +1173,12 @@ ViewportIntersectionState intersectionState) {
                         
                     result.focusType = decoder0.readInt(8);
                         FocusType.validate(result.focusType);
+                        result.focusType = FocusType.toKnownValue(result.focusType);
                     }
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                    result.sourceFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.sourceFrameToken = LocalFrameToken.decode(decoder1);
                     }
 
             } finally {
@@ -1158,7 +1206,7 @@ ViewportIntersectionState intersectionState) {
         private static final int STRUCT_SIZE = 40;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken;
+        public LocalFrameToken sourceFrameToken;
         public org.chromium.mojo_base.mojom.String16 sourceOrigin;
         public org.chromium.mojo_base.mojom.String16 targetOrigin;
         public TransferableMessage message;
@@ -1199,7 +1247,7 @@ ViewportIntersectionState intersectionState) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                    result.sourceFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.sourceFrameToken = LocalFrameToken.decode(decoder1);
                     }
                     {
                         
@@ -1370,10 +1418,11 @@ ViewportIntersectionState intersectionState) {
     
     static final class RemoteFrameHostUpdateViewportIntersectionParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public ViewportIntersectionState intersectionState;
+        public FrameVisualProperties visualProperties;
 
         private RemoteFrameHostUpdateViewportIntersectionParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1413,6 +1462,11 @@ ViewportIntersectionState intersectionState) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.intersectionState = ViewportIntersectionState.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                    result.visualProperties = FrameVisualProperties.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -1426,6 +1480,72 @@ ViewportIntersectionState intersectionState) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.intersectionState, 8, false);
+            
+            encoder0.encode(this.visualProperties, 16, true);
+        }
+    }
+
+
+
+    
+    static final class RemoteFrameHostSynchronizeVisualPropertiesParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public FrameVisualProperties properties;
+
+        private RemoteFrameHostSynchronizeVisualPropertiesParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public RemoteFrameHostSynchronizeVisualPropertiesParams() {
+            this(0);
+        }
+
+        public static RemoteFrameHostSynchronizeVisualPropertiesParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static RemoteFrameHostSynchronizeVisualPropertiesParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static RemoteFrameHostSynchronizeVisualPropertiesParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            RemoteFrameHostSynchronizeVisualPropertiesParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new RemoteFrameHostSynchronizeVisualPropertiesParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.properties = FrameVisualProperties.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.properties, 8, false);
         }
     }
 

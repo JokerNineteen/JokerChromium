@@ -691,12 +691,13 @@ boolean paused) {
     
     static final class SynchronousCompositorDemandDrawHwResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 48;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public SyncCompositorCommonRendererParams result;
         public int layerTreeFrameSinkId;
         public int metadataVersion;
+        public org.chromium.viz.mojom.LocalSurfaceId localSurfaceId;
         public org.chromium.viz.mojom.CompositorFrame frame;
         public org.chromium.viz.mojom.HitTestRegionList hitTestRegionList;
 
@@ -749,11 +750,16 @@ boolean paused) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                    result.frame = org.chromium.viz.mojom.CompositorFrame.decode(decoder1);
+                    result.localSurfaceId = org.chromium.viz.mojom.LocalSurfaceId.decode(decoder1);
                     }
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
+                    result.frame = org.chromium.viz.mojom.CompositorFrame.decode(decoder1);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
                     result.hitTestRegionList = org.chromium.viz.mojom.HitTestRegionList.decode(decoder1);
                     }
 
@@ -774,9 +780,11 @@ boolean paused) {
             
             encoder0.encode(this.metadataVersion, 20);
             
-            encoder0.encode(this.frame, 24, true);
+            encoder0.encode(this.localSurfaceId, 24, true);
             
-            encoder0.encode(this.hitTestRegionList, 32, true);
+            encoder0.encode(this.frame, 32, true);
+            
+            encoder0.encode(this.hitTestRegionList, 40, true);
         }
     }
 
@@ -801,7 +809,7 @@ boolean paused) {
 
                 SynchronousCompositorDemandDrawHwResponseParams response = SynchronousCompositorDemandDrawHwResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.result, response.layerTreeFrameSinkId, response.metadataVersion, response.frame, response.hitTestRegionList);
+                mCallback.call(response.result, response.layerTreeFrameSinkId, response.metadataVersion, response.localSurfaceId, response.frame, response.hitTestRegionList);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -825,7 +833,7 @@ boolean paused) {
         }
 
         @Override
-        public void call(SyncCompositorCommonRendererParams result, Integer layerTreeFrameSinkId, Integer metadataVersion, org.chromium.viz.mojom.CompositorFrame frame, org.chromium.viz.mojom.HitTestRegionList hitTestRegionList) {
+        public void call(SyncCompositorCommonRendererParams result, Integer layerTreeFrameSinkId, Integer metadataVersion, org.chromium.viz.mojom.LocalSurfaceId localSurfaceId, org.chromium.viz.mojom.CompositorFrame frame, org.chromium.viz.mojom.HitTestRegionList hitTestRegionList) {
             SynchronousCompositorDemandDrawHwResponseParams _response = new SynchronousCompositorDemandDrawHwResponseParams();
 
             _response.result = result;
@@ -833,6 +841,8 @@ boolean paused) {
             _response.layerTreeFrameSinkId = layerTreeFrameSinkId;
 
             _response.metadataVersion = metadataVersion;
+
+            _response.localSurfaceId = localSurfaceId;
 
             _response.frame = frame;
 

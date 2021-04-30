@@ -26,4 +26,11 @@ public interface ManagedMessageDispatcher
      * @param delegate The {@link MessageQueueDelegate}.
      */
     void setDelegate(MessageQueueDelegate delegate);
+
+    /**
+     * Dismiss all the enqueued messages. The currently being displayed message will be
+     * hidden at once without animations.
+     * @param dismissReason The reason why messages are dismissed.
+     */
+    void dismissAllMessages(@DismissReason int dismissReason);
 }

@@ -76,6 +76,7 @@ public final class BlockedByResponseIssueDetails extends org.chromium.mojo.bindi
                     
                 result.reason = decoder0.readInt(32);
                     org.chromium.network.mojom.BlockedByResponseReason.validate(result.reason);
+                    result.reason = org.chromium.network.mojom.BlockedByResponseReason.toKnownValue(result.reason);
                 }
 
         } finally {

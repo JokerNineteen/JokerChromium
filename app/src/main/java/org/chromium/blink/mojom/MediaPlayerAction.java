@@ -61,6 +61,7 @@ public final class MediaPlayerAction extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     MediaPlayerActionType.validate(result.type);
+                    result.type = MediaPlayerActionType.toKnownValue(result.type);
                 }
                 {
                     

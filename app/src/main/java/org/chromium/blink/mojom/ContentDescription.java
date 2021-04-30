@@ -75,6 +75,7 @@ public final class ContentDescription extends org.chromium.mojo.bindings.Struct 
                     
                 result.category = decoder0.readInt(32);
                     ContentCategory.validate(result.category);
+                    result.category = ContentCategory.toKnownValue(result.category);
                 }
                 {
                     

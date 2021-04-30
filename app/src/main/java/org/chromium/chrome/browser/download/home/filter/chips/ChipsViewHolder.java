@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.ui.modelutil.RecyclerViewAdapter;
 import org.chromium.ui.widget.ChipView;
 

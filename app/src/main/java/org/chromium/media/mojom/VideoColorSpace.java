@@ -33,6 +33,10 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private PrimaryId() {}
     }
 
@@ -47,6 +51,10 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
         public static void validate(int value) {
             if (IS_EXTENSIBLE || isKnownValue(value)) return;
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
         }
 
         private TransferId() {}
@@ -65,6 +73,10 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private MatrixId() {}
     }
 
@@ -79,6 +91,10 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
         public static void validate(int value) {
             if (IS_EXTENSIBLE || isKnownValue(value)) return;
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
         }
 
         private RangeId() {}
@@ -125,21 +141,25 @@ public final class VideoColorSpace extends org.chromium.mojo.bindings.Struct {
                     
                 result.primaries = decoder0.readInt(8);
                     VideoColorSpace.PrimaryId.validate(result.primaries);
+                    result.primaries = VideoColorSpace.PrimaryId.toKnownValue(result.primaries);
                 }
                 {
                     
                 result.transfer = decoder0.readInt(12);
                     VideoColorSpace.TransferId.validate(result.transfer);
+                    result.transfer = VideoColorSpace.TransferId.toKnownValue(result.transfer);
                 }
                 {
                     
                 result.matrix = decoder0.readInt(16);
                     VideoColorSpace.MatrixId.validate(result.matrix);
+                    result.matrix = VideoColorSpace.MatrixId.toKnownValue(result.matrix);
                 }
                 {
                     
                 result.range = decoder0.readInt(20);
                     VideoColorSpace.RangeId.validate(result.range);
+                    result.range = VideoColorSpace.RangeId.toKnownValue(result.range);
                 }
 
         } finally {

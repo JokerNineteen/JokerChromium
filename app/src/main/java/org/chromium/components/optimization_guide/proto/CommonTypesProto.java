@@ -1368,6 +1368,520 @@ public final class CommonTypesProto {
     }
   }
 
+  public interface AnyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:optimization_guide.proto.Any)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @return Whether the typeUrl field is set.
+     */
+    boolean hasTypeUrl();
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @return The typeUrl.
+     */
+    java.lang.String getTypeUrl();
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @return The bytes for typeUrl.
+     */
+    com.google.protobuf.ByteString
+        getTypeUrlBytes();
+
+    /**
+     * <pre>
+     * Must be a valid serialized protocol buffer of the above specified type.
+     * </pre>
+     *
+     * <code>optional bytes value = 2;</code>
+     * @return Whether the value field is set.
+     */
+    boolean hasValue();
+    /**
+     * <pre>
+     * Must be a valid serialized protocol buffer of the above specified type.
+     * </pre>
+     *
+     * <code>optional bytes value = 2;</code>
+     * @return The value.
+     */
+    com.google.protobuf.ByteString getValue();
+  }
+  /**
+   * Protobuf type {@code optimization_guide.proto.Any}
+   */
+  public  static final class Any extends
+      com.google.protobuf.GeneratedMessageLite<
+          Any, Any.Builder> implements
+      // @@protoc_insertion_point(message_implements:optimization_guide.proto.Any)
+      AnyOrBuilder {
+    private Any() {
+      typeUrl_ = "";
+      value_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private int bitField0_;
+    public static final int TYPE_URL_FIELD_NUMBER = 1;
+    private java.lang.String typeUrl_;
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @return Whether the typeUrl field is set.
+     */
+    @java.lang.Override
+    public boolean hasTypeUrl() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @return The typeUrl.
+     */
+    @java.lang.Override
+    public java.lang.String getTypeUrl() {
+      return typeUrl_;
+    }
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @return The bytes for typeUrl.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTypeUrlBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(typeUrl_);
+    }
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @param value The typeUrl to set.
+     */
+    private void setTypeUrl(
+        java.lang.String value) {
+      value.getClass();
+  bitField0_ |= 0x00000001;
+      typeUrl_ = value;
+    }
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     */
+    private void clearTypeUrl() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      typeUrl_ = getDefaultInstance().getTypeUrl();
+    }
+    /**
+     * <pre>
+     * A URL/resource name that uniquely identifies the type of the serialized
+     * protocol buffer message.
+     * </pre>
+     *
+     * <code>optional string type_url = 1;</code>
+     * @param value The bytes for typeUrl to set.
+     */
+    private void setTypeUrlBytes(
+        com.google.protobuf.ByteString value) {
+      typeUrl_ = value.toStringUtf8();
+      bitField0_ |= 0x00000001;
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString value_;
+    /**
+     * <pre>
+     * Must be a valid serialized protocol buffer of the above specified type.
+     * </pre>
+     *
+     * <code>optional bytes value = 2;</code>
+     * @return Whether the value field is set.
+     */
+    @java.lang.Override
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Must be a valid serialized protocol buffer of the above specified type.
+     * </pre>
+     *
+     * <code>optional bytes value = 2;</code>
+     * @return The value.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getValue() {
+      return value_;
+    }
+    /**
+     * <pre>
+     * Must be a valid serialized protocol buffer of the above specified type.
+     * </pre>
+     *
+     * <code>optional bytes value = 2;</code>
+     * @param value The value to set.
+     */
+    private void setValue(com.google.protobuf.ByteString value) {
+      value.getClass();
+  bitField0_ |= 0x00000002;
+      value_ = value;
+    }
+    /**
+     * <pre>
+     * Must be a valid serialized protocol buffer of the above specified type.
+     * </pre>
+     *
+     * <code>optional bytes value = 2;</code>
+     */
+    private void clearValue() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      value_ = getDefaultInstance().getValue();
+    }
+
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code optimization_guide.proto.Any}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          org.chromium.components.optimization_guide.proto.CommonTypesProto.Any, Builder> implements
+        // @@protoc_insertion_point(builder_implements:optimization_guide.proto.Any)
+        org.chromium.components.optimization_guide.proto.CommonTypesProto.AnyOrBuilder {
+      // Construct using org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <pre>
+       * A URL/resource name that uniquely identifies the type of the serialized
+       * protocol buffer message.
+       * </pre>
+       *
+       * <code>optional string type_url = 1;</code>
+       * @return Whether the typeUrl field is set.
+       */
+      @java.lang.Override
+      public boolean hasTypeUrl() {
+        return instance.hasTypeUrl();
+      }
+      /**
+       * <pre>
+       * A URL/resource name that uniquely identifies the type of the serialized
+       * protocol buffer message.
+       * </pre>
+       *
+       * <code>optional string type_url = 1;</code>
+       * @return The typeUrl.
+       */
+      @java.lang.Override
+      public java.lang.String getTypeUrl() {
+        return instance.getTypeUrl();
+      }
+      /**
+       * <pre>
+       * A URL/resource name that uniquely identifies the type of the serialized
+       * protocol buffer message.
+       * </pre>
+       *
+       * <code>optional string type_url = 1;</code>
+       * @return The bytes for typeUrl.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getTypeUrlBytes() {
+        return instance.getTypeUrlBytes();
+      }
+      /**
+       * <pre>
+       * A URL/resource name that uniquely identifies the type of the serialized
+       * protocol buffer message.
+       * </pre>
+       *
+       * <code>optional string type_url = 1;</code>
+       * @param value The typeUrl to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTypeUrl(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setTypeUrl(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * A URL/resource name that uniquely identifies the type of the serialized
+       * protocol buffer message.
+       * </pre>
+       *
+       * <code>optional string type_url = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTypeUrl() {
+        copyOnWrite();
+        instance.clearTypeUrl();
+        return this;
+      }
+      /**
+       * <pre>
+       * A URL/resource name that uniquely identifies the type of the serialized
+       * protocol buffer message.
+       * </pre>
+       *
+       * <code>optional string type_url = 1;</code>
+       * @param value The bytes for typeUrl to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTypeUrlBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setTypeUrlBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Must be a valid serialized protocol buffer of the above specified type.
+       * </pre>
+       *
+       * <code>optional bytes value = 2;</code>
+       * @return Whether the value field is set.
+       */
+      @java.lang.Override
+      public boolean hasValue() {
+        return instance.hasValue();
+      }
+      /**
+       * <pre>
+       * Must be a valid serialized protocol buffer of the above specified type.
+       * </pre>
+       *
+       * <code>optional bytes value = 2;</code>
+       * @return The value.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getValue() {
+        return instance.getValue();
+      }
+      /**
+       * <pre>
+       * Must be a valid serialized protocol buffer of the above specified type.
+       * </pre>
+       *
+       * <code>optional bytes value = 2;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValue(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setValue(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Must be a valid serialized protocol buffer of the above specified type.
+       * </pre>
+       *
+       * <code>optional bytes value = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValue() {
+        copyOnWrite();
+        instance.clearValue();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:optimization_guide.proto.Any)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new org.chromium.components.optimization_guide.proto.CommonTypesProto.Any();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "bitField0_",
+              "typeUrl_",
+              "value_",
+            };
+            java.lang.String info =
+                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
+                "\u100a\u0001";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<org.chromium.components.optimization_guide.proto.CommonTypesProto.Any> parser = PARSER;
+          if (parser == null) {
+            synchronized (org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<org.chromium.components.optimization_guide.proto.CommonTypesProto.Any>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:optimization_guide.proto.Any)
+    private static final org.chromium.components.optimization_guide.proto.CommonTypesProto.Any DEFAULT_INSTANCE;
+    static {
+      Any defaultInstance = new Any();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        Any.class, defaultInstance);
+    }
+
+    public static org.chromium.components.optimization_guide.proto.CommonTypesProto.Any getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<Any> PARSER;
+
+    public static com.google.protobuf.Parser<Any> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
 
   static {
   }

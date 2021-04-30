@@ -16,13 +16,15 @@ package org.chromium.display.mojom;
 
 public final class DisplaySnapshot extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 128;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(128, 0)};
+    private static final int STRUCT_SIZE = 144;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(144, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public long displayId;
     public org.chromium.gfx.mojom.Point origin;
     public org.chromium.gfx.mojom.Size physicalSize;
     public int type;
+    public long baseConnectorId;
+    public long[] pathTopology;
     public boolean isAspectPreservingScaling;
     public boolean hasOverscan;
     public int privacyScreenState;
@@ -94,6 +96,7 @@ public final class DisplaySnapshot extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(32);
                     DisplayConnectionType.validate(result.type);
+                    result.type = DisplayConnectionType.toKnownValue(result.type);
                 }
                 {
                     
@@ -121,30 +124,39 @@ public final class DisplaySnapshot extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.privacyScreenState = decoder0.readInt(40);
+                result.baseConnectorId = decoder0.readLong(40);
+                }
+                {
+                    
+                result.pathTopology = decoder0.readLongs(48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
+                {
+                    
+                result.privacyScreenState = decoder0.readInt(56);
                     PrivacyScreenState.validate(result.privacyScreenState);
+                    result.privacyScreenState = PrivacyScreenState.toKnownValue(result.privacyScreenState);
                 }
                 {
                     
-                result.bitsPerChannel = decoder0.readInt(44);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
-                result.colorSpace = org.chromium.gfx.mojom.ColorSpace.decode(decoder1);
-                }
-                {
-                    
-                result.displayName = decoder0.readString(56, false);
+                result.bitsPerChannel = decoder0.readInt(60);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(64, false);
+                result.colorSpace = org.chromium.gfx.mojom.ColorSpace.decode(decoder1);
+                }
+                {
+                    
+                result.displayName = decoder0.readString(72, false);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(80, false);
                 result.sysPath = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(88, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.modes = new DisplayMode[si1.elementsOrVersion];
@@ -157,32 +169,33 @@ public final class DisplaySnapshot extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.panelOrientation = decoder0.readInt(80);
+                result.panelOrientation = decoder0.readInt(96);
                     PanelOrientation.validate(result.panelOrientation);
+                    result.panelOrientation = PanelOrientation.toKnownValue(result.panelOrientation);
                 }
                 {
                     
-                result.yearOfManufacture = decoder0.readInt(84);
+                result.yearOfManufacture = decoder0.readInt(100);
                 }
                 {
                     
-                result.edid = decoder0.readBytes(88, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.edid = decoder0.readBytes(104, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
                 {
                     
-                result.currentModeIndex = decoder0.readLong(96);
+                result.currentModeIndex = decoder0.readLong(112);
                 }
                 {
                     
-                result.nativeModeIndex = decoder0.readLong(104);
+                result.nativeModeIndex = decoder0.readLong(120);
                 }
                 {
                     
-                result.productCode = decoder0.readLong(112);
+                result.productCode = decoder0.readLong(128);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(136, false);
                 result.maximumCursorSize = org.chromium.gfx.mojom.Size.decode(decoder1);
                 }
 
@@ -217,38 +230,42 @@ public final class DisplaySnapshot extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.hasNativeMode, 36, 5);
         
-        encoder0.encode(this.privacyScreenState, 40);
+        encoder0.encode(this.baseConnectorId, 40);
         
-        encoder0.encode(this.bitsPerChannel, 44);
+        encoder0.encode(this.pathTopology, 48, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.colorSpace, 48, false);
+        encoder0.encode(this.privacyScreenState, 56);
         
-        encoder0.encode(this.displayName, 56, false);
+        encoder0.encode(this.bitsPerChannel, 60);
         
-        encoder0.encode(this.sysPath, 64, false);
+        encoder0.encode(this.colorSpace, 64, false);
+        
+        encoder0.encode(this.displayName, 72, false);
+        
+        encoder0.encode(this.sysPath, 80, false);
         
         if (this.modes == null) {
-            encoder0.encodeNullPointer(72, false);
+            encoder0.encodeNullPointer(88, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.modes.length, 72, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.modes.length, 88, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.modes.length; ++i0) {
                 
                 encoder1.encode(this.modes[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
         
-        encoder0.encode(this.panelOrientation, 80);
+        encoder0.encode(this.panelOrientation, 96);
         
-        encoder0.encode(this.yearOfManufacture, 84);
+        encoder0.encode(this.yearOfManufacture, 100);
         
-        encoder0.encode(this.edid, 88, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.edid, 104, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
         
-        encoder0.encode(this.currentModeIndex, 96);
+        encoder0.encode(this.currentModeIndex, 112);
         
-        encoder0.encode(this.nativeModeIndex, 104);
+        encoder0.encode(this.nativeModeIndex, 120);
         
-        encoder0.encode(this.productCode, 112);
+        encoder0.encode(this.productCode, 128);
         
-        encoder0.encode(this.maximumCursorSize, 120, false);
+        encoder0.encode(this.maximumCursorSize, 136, false);
     }
 }

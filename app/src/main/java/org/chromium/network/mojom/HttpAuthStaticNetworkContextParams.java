@@ -59,6 +59,7 @@ public final class HttpAuthStaticNetworkContextParams extends org.chromium.mojo.
                     
                 result.allowDefaultCredentials = decoder0.readInt(8);
                     DefaultCredentials.validate(result.allowDefaultCredentials);
+                    result.allowDefaultCredentials = DefaultCredentials.toKnownValue(result.allowDefaultCredentials);
                 }
 
         } finally {

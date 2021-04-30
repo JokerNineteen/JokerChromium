@@ -36,6 +36,10 @@ public interface VideoEncodeAccelerator extends org.chromium.mojo.bindings.Inter
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Error() {}
     }
 
@@ -69,6 +73,22 @@ int bitstreamBufferId, org.chromium.mojo.system.SharedBufferHandle buffer);
 
     void requestEncodingParametersChange(
 VideoBitrateAllocation bitrateAllocation, int framerate);
+
+
+
+    void isFlushSupported(
+
+IsFlushSupportedResponse callback);
+
+    interface IsFlushSupportedResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+
+
+
+    void flush(
+
+FlushResponse callback);
+
+    interface FlushResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
 
 
 }

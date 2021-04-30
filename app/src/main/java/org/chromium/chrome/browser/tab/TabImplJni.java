@@ -38,59 +38,56 @@ final class TabImplJni implements TabImpl.Natives {
   }
 
   @Override
-  public void destroy(long nativeTabAndroid, TabImpl caller) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_destroy(nativeTabAndroid, caller);
+  public void destroy(long nativeTabAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_destroy(nativeTabAndroid);
   }
 
   @Override
-  public void initWebContents(long nativeTabAndroid, TabImpl caller, boolean incognito,
-      boolean isBackgroundTab, WebContents webContents, int parentTabId,
-      TabWebContentsDelegateAndroidImpl delegate,
+  public void initWebContents(long nativeTabAndroid, boolean incognito, boolean isBackgroundTab,
+      WebContents webContents, int parentTabId, TabWebContentsDelegateAndroidImpl delegate,
       ContextMenuPopulatorFactory contextMenuPopulatorFactory) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_initWebContents(nativeTabAndroid, caller, incognito, isBackgroundTab, webContents, parentTabId, delegate, contextMenuPopulatorFactory);
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_initWebContents(nativeTabAndroid, incognito, isBackgroundTab, webContents, parentTabId, delegate, contextMenuPopulatorFactory);
   }
 
   @Override
-  public void updateDelegates(long nativeTabAndroid, TabImpl caller,
-      TabWebContentsDelegateAndroidImpl delegate,
+  public void updateDelegates(long nativeTabAndroid, TabWebContentsDelegateAndroidImpl delegate,
       ContextMenuPopulatorFactory contextMenuPopulatorFactory) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_updateDelegates(nativeTabAndroid, caller, delegate, contextMenuPopulatorFactory);
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_updateDelegates(nativeTabAndroid, delegate, contextMenuPopulatorFactory);
   }
 
   @Override
-  public void destroyWebContents(long nativeTabAndroid, TabImpl caller) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_destroyWebContents(nativeTabAndroid, caller);
+  public void destroyWebContents(long nativeTabAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_destroyWebContents(nativeTabAndroid);
   }
 
   @Override
-  public void releaseWebContents(long nativeTabAndroid, TabImpl caller) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_releaseWebContents(nativeTabAndroid, caller);
+  public void releaseWebContents(long nativeTabAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_releaseWebContents(nativeTabAndroid);
   }
 
   @Override
-  public void onPhysicalBackingSizeChanged(long nativeTabAndroid, TabImpl caller,
-      WebContents webContents, int width, int height) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_onPhysicalBackingSizeChanged(nativeTabAndroid, caller, webContents, width, height);
+  public void onPhysicalBackingSizeChanged(long nativeTabAndroid, WebContents webContents,
+      int width, int height) {
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_onPhysicalBackingSizeChanged(nativeTabAndroid, webContents, width, height);
   }
 
   @Override
-  public int loadUrl(long nativeTabAndroid, TabImpl caller, String url, Origin initiatorOrigin,
-      String extraHeaders, ResourceRequestBody postData, int transition, String referrerUrl,
-      int referrerPolicy, boolean isRendererInitiated, boolean shoulReplaceCurrentEntry,
-      boolean hasUserGesture, boolean shouldClearHistoryList, long inputStartTimestamp,
-      long intentReceivedTimestamp) {
-    return (int)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_loadUrl(nativeTabAndroid, caller, url, initiatorOrigin, extraHeaders, postData, transition, referrerUrl, referrerPolicy, isRendererInitiated, shoulReplaceCurrentEntry, hasUserGesture, shouldClearHistoryList, inputStartTimestamp, intentReceivedTimestamp);
+  public int loadUrl(long nativeTabAndroid, String url, Origin initiatorOrigin, String extraHeaders,
+      ResourceRequestBody postData, int transition, String referrerUrl, int referrerPolicy,
+      boolean isRendererInitiated, boolean shoulReplaceCurrentEntry, boolean hasUserGesture,
+      boolean shouldClearHistoryList, long inputStartTimestamp, long intentReceivedTimestamp,
+      int userAgentOverrideOption) {
+    return (int)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_loadUrl(nativeTabAndroid, url, initiatorOrigin, extraHeaders, postData, transition, referrerUrl, referrerPolicy, isRendererInitiated, shoulReplaceCurrentEntry, hasUserGesture, shouldClearHistoryList, inputStartTimestamp, intentReceivedTimestamp, userAgentOverrideOption);
   }
 
   @Override
-  public void setActiveNavigationEntryTitleForUrl(long nativeTabAndroid, TabImpl caller, String url,
-      String title) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_setActiveNavigationEntryTitleForUrl(nativeTabAndroid, caller, url, title);
+  public void setActiveNavigationEntryTitleForUrl(long nativeTabAndroid, String url, String title) {
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_setActiveNavigationEntryTitleForUrl(nativeTabAndroid, url, title);
   }
 
   @Override
-  public void loadOriginalImage(long nativeTabAndroid, TabImpl caller) {
-    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_loadOriginalImage(nativeTabAndroid, caller);
+  public void loadOriginalImage(long nativeTabAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_loadOriginalImage(nativeTabAndroid);
   }
 
   @Override
@@ -111,6 +108,16 @@ final class TabImplJni implements TabImpl.Natives {
   @Override
   public boolean getHideFutureNavigations(long nativeTabAndroid) {
     return (boolean)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_getHideFutureNavigations(nativeTabAndroid);
+  }
+
+  @Override
+  public void setShouldBlockNewNotificationRequests(long nativeTabAndroid, boolean value) {
+    GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_setShouldBlockNewNotificationRequests(nativeTabAndroid, value);
+  }
+
+  @Override
+  public boolean getShouldBlockNewNotificationRequests(long nativeTabAndroid) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_tab_TabImpl_getShouldBlockNewNotificationRequests(nativeTabAndroid);
   }
 
   public static TabImpl.Natives get() {

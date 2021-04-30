@@ -681,6 +681,7 @@ PipelineStatistics stats) {
                         
                     result.status = decoder0.readInt(8);
                         PipelineStatus.validate(result.status);
+                        result.status = PipelineStatus.toKnownValue(result.status);
                     }
 
             } finally {

@@ -5,6 +5,7 @@ set -e
 PRO_DIR="/f/chromiumcopy"
 BASE_DIR="/f/chromium/src"
 RELEASE_DIR="${BASE_DIR}/out/89"
+
 APP_DIR="${PRO_DIR}/app"
 MODULES_DIR="${PRO_DIR}"
 

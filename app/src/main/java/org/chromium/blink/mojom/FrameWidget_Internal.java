@@ -298,13 +298,15 @@ int touchAction) {
 
         @Override
         public void updateRenderThrottlingStatusForSubFrame(
-boolean isThrottled, boolean subtreeThrottled) {
+boolean isThrottled, boolean subtreeThrottled, boolean displayLocked) {
 
             FrameWidgetUpdateRenderThrottlingStatusForSubFrameParams _message = new FrameWidgetUpdateRenderThrottlingStatusForSubFrameParams();
 
             _message.isThrottled = isThrottled;
 
             _message.subtreeThrottled = subtreeThrottled;
+
+            _message.displayLocked = displayLocked;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -419,11 +421,13 @@ org.chromium.mojo.bindings.InterfaceRequest<org.chromium.viz.mojom.InputTargetCl
 
         @Override
         public void setViewportIntersection(
-ViewportIntersectionState intersectionState) {
+ViewportIntersectionState intersectionState, VisualProperties visualProperties) {
 
             FrameWidgetSetViewportIntersectionParams _message = new FrameWidgetSetViewportIntersectionParams();
 
             _message.intersectionState = intersectionState;
+
+            _message.visualProperties = visualProperties;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -577,7 +581,7 @@ ViewportIntersectionState intersectionState) {
                         FrameWidgetUpdateRenderThrottlingStatusForSubFrameParams data =
                                 FrameWidgetUpdateRenderThrottlingStatusForSubFrameParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().updateRenderThrottlingStatusForSubFrame(data.isThrottled, data.subtreeThrottled);
+                        getImpl().updateRenderThrottlingStatusForSubFrame(data.isThrottled, data.subtreeThrottled, data.displayLocked);
                         return true;
                     }
 
@@ -667,7 +671,7 @@ ViewportIntersectionState intersectionState) {
                         FrameWidgetSetViewportIntersectionParams data =
                                 FrameWidgetSetViewportIntersectionParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().setViewportIntersection(data.intersectionState);
+                        getImpl().setViewportIntersection(data.intersectionState, data.visualProperties);
                         return true;
                     }
 
@@ -913,7 +917,8 @@ ViewportIntersectionState intersectionState) {
                     {
                         
                     result.operation = decoder0.readInt(8);
-                        DragOperation.validate(result.operation);
+                        org.chromium.ui.mojom.DragOperation.validate(result.operation);
+                        result.operation = org.chromium.ui.mojom.DragOperation.toKnownValue(result.operation);
                     }
 
             } finally {
@@ -1125,7 +1130,8 @@ ViewportIntersectionState intersectionState) {
                     {
                         
                     result.operation = decoder0.readInt(8);
-                        DragOperation.validate(result.operation);
+                        org.chromium.ui.mojom.DragOperation.validate(result.operation);
+                        result.operation = org.chromium.ui.mojom.DragOperation.toKnownValue(result.operation);
                     }
 
             } finally {
@@ -1421,7 +1427,8 @@ ViewportIntersectionState intersectionState) {
                     {
                         
                     result.dragOperation = decoder0.readInt(24);
-                        DragOperation.validate(result.dragOperation);
+                        org.chromium.ui.mojom.DragOperation.validate(result.dragOperation);
+                        result.dragOperation = org.chromium.ui.mojom.DragOperation.toKnownValue(result.dragOperation);
                     }
 
             } finally {
@@ -1609,6 +1616,7 @@ ViewportIntersectionState intersectionState) {
                         
                     result.direction = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.TextDirection.validate(result.direction);
+                        result.direction = org.chromium.mojo_base.mojom.TextDirection.toKnownValue(result.direction);
                     }
 
             } finally {
@@ -1736,6 +1744,7 @@ ViewportIntersectionState intersectionState) {
                         
                     result.touchAction = decoder0.readInt(8);
                         org.chromium.cc.mojom.TouchAction.validate(result.touchAction);
+                        result.touchAction = org.chromium.cc.mojom.TouchAction.toKnownValue(result.touchAction);
                     }
 
             } finally {
@@ -1763,6 +1772,7 @@ ViewportIntersectionState intersectionState) {
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public boolean isThrottled;
         public boolean subtreeThrottled;
+        public boolean displayLocked;
 
         private FrameWidgetUpdateRenderThrottlingStatusForSubFrameParams(int version) {
             super(STRUCT_SIZE, version);
@@ -1805,6 +1815,10 @@ ViewportIntersectionState intersectionState) {
                         
                     result.subtreeThrottled = decoder0.readBoolean(8, 1);
                     }
+                    {
+                        
+                    result.displayLocked = decoder0.readBoolean(8, 2);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -1820,6 +1834,8 @@ ViewportIntersectionState intersectionState) {
             encoder0.encode(this.isThrottled, 8, 0);
             
             encoder0.encode(this.subtreeThrottled, 8, 1);
+            
+            encoder0.encode(this.displayLocked, 8, 2);
         }
     }
 
@@ -1934,6 +1950,7 @@ ViewportIntersectionState intersectionState) {
                         
                     result.sourceType = decoder0.readInt(8);
                         org.chromium.ui.mojom.MenuSourceType.validate(result.sourceType);
+                        result.sourceType = org.chromium.ui.mojom.MenuSourceType.toKnownValue(result.sourceType);
                     }
                     {
                         
@@ -2209,10 +2226,11 @@ ViewportIntersectionState intersectionState) {
     
     static final class FrameWidgetSetViewportIntersectionParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public ViewportIntersectionState intersectionState;
+        public VisualProperties visualProperties;
 
         private FrameWidgetSetViewportIntersectionParams(int version) {
             super(STRUCT_SIZE, version);
@@ -2252,6 +2270,11 @@ ViewportIntersectionState intersectionState) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
                     result.intersectionState = ViewportIntersectionState.decode(decoder1);
                     }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                    result.visualProperties = VisualProperties.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -2265,6 +2288,8 @@ ViewportIntersectionState intersectionState) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.intersectionState, 8, false);
+            
+            encoder0.encode(this.visualProperties, 16, true);
         }
     }
 

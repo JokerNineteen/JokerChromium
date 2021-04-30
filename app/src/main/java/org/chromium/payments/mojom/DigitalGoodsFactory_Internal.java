@@ -274,6 +274,7 @@ CreateDigitalGoodsResponse callback) {
                         
                     result.code = decoder0.readInt(8);
                         CreateDigitalGoodsResponseCode.validate(result.code);
+                        result.code = CreateDigitalGoodsResponseCode.toKnownValue(result.code);
                     }
                     {
                         

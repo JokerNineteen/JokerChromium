@@ -23,13 +23,18 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
     public CookieSameSiteContext sameSiteCookieContext;
     public boolean updateAccessTime;
     public boolean returnExcludedCookies;
-    public SchemefulSite[] fullPartyContext;
+    public int samePartyCookieContextType;
+    public int fullPartyContextSize;
+    public boolean isInNontrivialFirstPartySet;
 
     private CookieOptions(int version) {
         super(STRUCT_SIZE, version);
         this.excludeHttponly = (boolean) true;
         this.updateAccessTime = (boolean) true;
         this.returnExcludedCookies = (boolean) false;
+        this.samePartyCookieContextType = (int) SamePartyCookieContextType.CROSS_PARTY;
+        this.fullPartyContextSize = (int) 0;
+        this.isInNontrivialFirstPartySet = (boolean) false;
     }
 
     public CookieOptions() {
@@ -75,23 +80,22 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
+                result.isInNontrivialFirstPartySet = decoder0.readBoolean(8, 3);
+                }
+                {
+                    
+                result.samePartyCookieContextType = decoder0.readInt(12);
+                    SamePartyCookieContextType.validate(result.samePartyCookieContextType);
+                    result.samePartyCookieContextType = SamePartyCookieContextType.toKnownValue(result.samePartyCookieContextType);
+                }
+                {
+                    
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
                 result.sameSiteCookieContext = CookieSameSiteContext.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                if (decoder1 == null) {
-                    result.fullPartyContext = null;
-                } else {
-                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.fullPartyContext = new SchemefulSite[si1.elementsOrVersion];
-                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
-                        
-                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.fullPartyContext[i1] = SchemefulSite.decode(decoder2);
-                    }
-                }
+                result.fullPartyContextSize = decoder0.readInt(24);
                 }
 
         } finally {
@@ -111,16 +115,12 @@ public final class CookieOptions extends org.chromium.mojo.bindings.Struct {
         
         encoder0.encode(this.returnExcludedCookies, 8, 2);
         
+        encoder0.encode(this.isInNontrivialFirstPartySet, 8, 3);
+        
+        encoder0.encode(this.samePartyCookieContextType, 12);
+        
         encoder0.encode(this.sameSiteCookieContext, 16, false);
         
-        if (this.fullPartyContext == null) {
-            encoder0.encodeNullPointer(24, true);
-        } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.fullPartyContext.length, 24, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-            for (int i0 = 0; i0 < this.fullPartyContext.length; ++i0) {
-                
-                encoder1.encode(this.fullPartyContext[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
-            }
-        }
+        encoder0.encode(this.fullPartyContextSize, 24);
     }
 }

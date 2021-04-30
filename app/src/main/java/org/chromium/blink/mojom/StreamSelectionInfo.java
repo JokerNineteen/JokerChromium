@@ -59,6 +59,7 @@ public final class StreamSelectionInfo extends org.chromium.mojo.bindings.Struct
                     
                 result.strategy = decoder0.readInt(8);
                     StreamSelectionStrategy.validate(result.strategy);
+                    result.strategy = StreamSelectionStrategy.toKnownValue(result.strategy);
                 }
                 {
                     

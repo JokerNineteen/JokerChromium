@@ -17,14 +17,16 @@
 <string name="notification_category_updates">"更新"</string>
 <string name="notification_category_announcement">"通告"</string>
 <string name="notification_category_permission_requests">"权限请求"</string>
+<string name="notification_category_price_drop">"降价提醒"</string>
 <string name="unsupported">"不支持"</string>
 <string name="prefs_section_account">"帐号"</string>
 <string name="prefs_section_account_and_google_services">"您与 Google"</string>
 <string name="sign_in_to_chrome">"登录 Chrome"</string>
 <string name="prefs_sync_and_services">"同步功能和 Google 服务"</string>
 <string name="prefs_sync_and_services_content_description">"您正在自定义您的“同步功能和 Google 服务”设置。要完成开启同步功能的操作，请点按屏幕底部附近的“确认”按钮。转到上一层级"</string>
+<string name="prefs_manage_sync_settings_content_description">"您正在自定义您的同步设置。如需完成开启同步功能的操作，请点按屏幕底部附近的“确认”按钮。转到上一层级"</string>
 <string name="signin_pref_disallowed_title">"未登录"</string>
-<string name="signin_pref_summary">"在所有设备上保持同步并进行个性化设置"</string>
+<string name="signin_pref_summary">"在所有设备上保持同步，获享个性化体验"</string>
 <string name="sync_and_services_summary_sync_on">"同步功能已开启"</string>
 <string name="sign_in_to_chrome_disabled_summary">"已被此设备的管理员停用"</string>
 <string name="sign_in_google_activity_controls_title">"Google 活动控件"</string>
@@ -40,7 +42,7 @@
 <string name="prefs_google_services">"Google 服务"</string>
 <string name="allow_chrome_signin_title">"允许登录 Chrome"</string>
 <string name="allow_chrome_signin_summary">"当您登录 Google 帐号时，向您显示 Chrome 登录提示"</string>
-<string name="autocomplete_searches_and_urls_title">"自动填充搜索字词和网址"</string>
+<string name="autocomplete_searches_and_urls_title">"自动补全搜索字词和网址"</string>
 <string name="autocomplete_searches_and_urls_summary">"将一些 Cookie 以及地址栏和搜索框中的搜索字词发送给您的默认搜索引擎"</string>
 <string name="preload_pages_title">"预加载网页，以便实现更快速的浏览和搜索"</string>
 <string name="preload_pages_summary">"使用 Cookie 记住您的偏好设置（即使您不访问这些网页）"</string>
@@ -79,10 +81,10 @@
 <string name="payment_no_apps_summary">"尚未安装任何支持的应用"</string>
 <string name="payment_apps_usage_message">"在某些网站上，您可以使用自己的设备通过上述支持的付款应用付款。"</string>
 <string name="autofill_create_profile">"添加地址"</string>
-<string name="autofill_edit_profile">"修改地址"</string>
 <string name="autofill_create_credit_card">"添加新卡"</string>
 <string name="autofill_edit_credit_card">"修改支付卡"</string>
 <string name="autofill_profile_editor_country">"国家/地区"</string>
+<string name="autofill_profile_editor_honorific_prefix">"称谓"</string>
 <string name="autofill_profile_editor_email_address">"电子邮件"</string>
 <string name="autofill_profile_editor_phone_number">"电话机"</string>
 <string name="autofill_credit_card_editor_name">"持卡人姓名"</string>
@@ -113,7 +115,7 @@
 <string name="password_settings_save_passwords">"保存密码"</string>
 <string name="passwords_auto_signin_title">"自动登录"</string>
 <string name="passwords_auto_signin_description">"使用存储的凭据自动登录网站。当该功能处于停用状态时，您每次都要通过验证才能登录网站。"</string>
-<string name="passwords_leak_detection_switch_title">"在密码遭遇数据泄露时，向您发出警告"</string>
+<string name="passwords_leak_detection_switch_title">"当密码遭遇数据泄露时，发送警告"</string>
 <string name="passwords_leak_detection_switch_signed_out_enable_description">"当您登录自己的 Google 帐号后，系统即会启用此功能"</string>
 <string name="passwords_check_title">"检查密码"</string>
 <string name="passwords_check_description">"确保您的密码免受数据泄露和其他安全问题的侵害"</string>
@@ -123,6 +125,9 @@
 <string name="saved_passwords_none_text">"已保存的密码将显示在这里。"</string>
 <string name="password_no_result">"找不到该密码。请检查拼写，然后重试。"</string>
 <string name="password_edit_hint">"请确保您要保存的密码与您用来登录 %1$s 的密码相符"</string>
+<string name="password_entry_edit_deletion_dialog_body">"删除此密码不会删除您在 %1$s 上的帐号"</string>
+<string name="password_entry_edit_delete_credential_dialog_title">"删除密码？"</string>
+<string name="password_entry_edit_delete_credential_dialog_confirm">"删除密码"</string>
 <string name="password_entry_viewer_title">"保存的密码"</string>
 <string name="password_entry_viewer_site_title">"网站"</string>
 <string name="password_entry_viewer_username_title">"用户名"</string>
@@ -139,8 +144,11 @@
 <string name="password_entry_viewer_site_copied_into_clipboard">"已复制网站"</string>
 <string name="password_entry_viewer_password_copied_into_clipboard">"已复制密码"</string>
 <string name="password_entry_viewer_set_lock_screen">"要想在此处查看或复制您的密码，请在此设备上设置屏幕锁定。"</string>
-<string name="password_export_set_lock_screen">"需在“设置”部分中开启屏幕锁定功能，才能从此设备中导出您的密码"</string>
 <string name="password_entry_view_set_screen_lock">"若要查看密码，请先在设备上设置屏幕锁定"</string>
+<string name="password_entry_copy_set_screen_lock">"若要复制密码，请先在设备上设置屏幕锁定"</string>
+<string name="password_entry_edit_duplicate_username_error">"您已为此网站保存该用户名"</string>
+<string name="password_entry_edit_empty_password_error">"输入密码"</string>
+<string name="password_export_set_lock_screen">"需在“设置”部分中开启屏幕锁定功能，才能从此设备中导出您的密码"</string>
 <string name="password_generation_popup_content_description">"目前显示的是密码生成弹出式窗口"</string>
 <string name="password_settings_export_action_title">"导出密码…"</string>
 <string name="password_settings_export_action_description">"导出存储在 Chrome 中的密码"</string>
@@ -153,18 +161,13 @@
 <string name="password_settings_export_error_details">"错误详情：%1$s"</string>
 <string name="lockscreen_description_copy">"需解锁才能复制您的密码"</string>
 <string name="lockscreen_description_view">"需解锁才能查看您的密码"</string>
+<string name="lockscreen_description_edit">"解锁屏幕后才能修改您的密码"</string>
 <string name="lockscreen_description_export">"需解锁才能导出您的密码"</string>
 <string name="password_settings_export_subject">"Chrome 密码"</string>
 <string name="options_homepage_edit_hint">"输入自定义网址"</string>
 <string name="options_homepage_edit_title">"修改主页"</string>
 <string name="options_homepage_edit_label">"打开此网页"</string>
 <string name="options_homepage_chrome_homepage">"Chrome 主页"</string>
-<string name="homepage_promo_title">"更快速地转到此处"</string>
-<string name="homepage_promo_title_slim">"将此页面设为您的主页"</string>
-<string name="homepage_promo_description">"只需点击“主页”按钮，即可查看您所在国家/地区的热门网站和近期报道"</string>
-<string name="homepage_promo_primary_button">"更改主页"</string>
-<string name="homepage_promo_primary_button_slim">"更改"</string>
-<string name="homepage_promo_snackbar_message">"主页已更改"</string>
 <string name="enhanced_protection_promo_title">"获享 Chrome 的最强安全保护"</string>
 <string name="enhanced_protection_promo_description">"“增强型保护”选项在防范网上诱骗和恶意软件方面更高一筹"</string>
 <string name="prefs_notifications">"通知"</string>
@@ -183,21 +186,42 @@
 <string name="safe_browsing_scout_reporting_summary">"为了检测危险应用和网站，Chrome 会将您所访问的部分网页的网址、有限的系统信息以及部分网页内容发送给 Google"</string>
 <string name="safe_browsing_title">"安全浏览（保护您和您的设备不受危险网站的侵害）"</string>
 <string name="safe_browsing_summary">"当您面临安全风险时，将您所访问的部分网页的网址发送给 Google"</string>
-<string name="contextual_search_title">"触摸搜索"</string>
-<string name="contextual_search_tap_description">"无需离开所在页面，便可了解网站上的主题。“触摸搜索”功能会将被触摸的字词及上下文一起发送给 Google 搜索，后者随即会据此返回相应的定义、图片、搜索结果及其他详情。
+<string name="contextual_search_title">"轻触搜索"</string>
+<string name="contextual_search_tap_description">"无需离开所在页面，便可了解网站上的主题。“轻触搜索”功能会将被触摸的字词及上下文一起发送给 Google 搜索，后者随即会据此返回相应的定义、图片、搜索结果及其他详情。
 
 点按任意字词即可进行搜索。要优化您的搜索，请轻触并按住相应区域以多选或少选一些字词。要修改您的搜索，请打开面板，点按图标打开新标签页，然后在搜索框中做出更改。"</string>
-<string name="contextual_search_description">"无需离开所在页面，便可了解网站上的主题。“触摸搜索”功能会将被触摸的字词及上下文一起发送给 Google 搜索，后者随即会据此返回相应的定义、图片、搜索结果及其他详情。
+<string name="contextual_search_description">"无需离开所在页面，便可了解网站上的主题。“轻触搜索”功能会将被触摸的字词及上下文一起发送给 Google 搜索，后者随即会据此返回相应的定义、图片、搜索结果及其他详情。
 
 轻触并按住任意字词即可进行搜索。要优化您的搜索，请多选或少选一些字词。要修改您的搜索，请打开面板，点按图标打开新标签页，然后在搜索框中做出更改。"</string>
-<string name="contextual_search_short_description">"“触摸搜索”会将所选字词和当前页面（作为上下文）一起发送给 Google 搜索。您可以在&lt;link&gt;设置&lt;/link&gt;中停用此功能。"</string>
+<string name="contextual_search_short_description">"“轻触搜索”会将所选字词和当前页面（作为上下文）一起发送给 Google 搜索。您可以在&lt;link&gt;设置&lt;/link&gt;中停用此功能。"</string>
 <string name="contextual_search_allow_button">"允许"</string>
 <string name="contextual_search_no_thanks_button">"不用了，谢谢"</string>
+<string name="contextual_search_help_body">"若要从此页面中执行搜索，请轻触并按住（而非点按）相关字词"</string>
+<string name="contextual_search_help_header">"轻触并按住即可查看更多相关信息"</string>
+<string name="contextual_search_default_caption">"点按即可查看搜索结果"</string>
 <string name="do_not_track_title">"“不跟踪”"</string>
 <string name="do_not_track_description">"如果您启用了“不跟踪”，您的浏览流量中将会包含一项请求。具体影响取决于网站是否会回应该请求以及如何解读该请求。
 
 例如：某些网站在收到该请求后，可能会向您展示相应的广告（这些广告并不是根据您访问过的其他网站而展示的）。许多网站仍会出于一些目的收集并使用您的浏览数据，例如，为了提高安全性，为了提供相关内容、广告和推荐内容，以及为了生成报告统计信息。"</string>
 <string name="can_make_payment_title">"查询付款方式"</string>
+<string name="prefs_privacy_sandbox">"隐私沙盒"</string>
+<string name="privacy_sandbox_status_enabled">"试用版功能已开启"</string>
+<string name="privacy_sandbox_status_disabled">"试用版功能已关闭"</string>
+<string name="privacy_sandbox_description_title">"隐私沙盒简介"</string>
+<string name="privacy_sandbox_description">"隐私沙盒是一项正在持续推进的计划，旨在保护开放网络，使您免受跟踪机制的跟踪。
+
+目前，网站需依赖第三方 Cookie 等很多技术才能提供重要服务（例如展示相关广告和衡量网站性能）。
+
+隐私沙盒既能在不干扰网站运作的前提下开辟更好的方式来执行这些服务，又能防止您的网上活动被暗中跟踪，因而可以很好地保护开放网络的活力。
+
+隐私沙盒尚处于积极开发阶段，目前只能在部分区域使用。现阶段，网站可在继续使用第三方 Cookie 等当前网络技术的同时试用隐私沙盒。&lt;link&gt;了解详情&lt;/link&gt;"</string>
+<string name="privacy_sandbox_toggle">"试用隐私沙盒"</string>
+<string name="privacy_sandbox_toggle_description">"启用后，网站可能会使用此处所示的隐私保护技术来提供其内容和服务。这些技术包括跨网站跟踪机制的替代方案。随着时间的推移，我们可能会添加更多试用版功能。
+
+&lt;li1&gt;广告主可得知有数千名用户具有相似的兴趣（就像音乐会的听众一样），并选择要向该群体（而非个人）投放哪些广告。&lt;/li1&gt;
+
+&lt;li2&gt;广告主可通过一种不会对您进行跨网站跟踪的方式研究广告的效果。&lt;/li2&gt;"</string>
+<string name="privacy_sandbox_snackbar_message">"了解和掌控旨在取代第三方 Cookie 的新技术"</string>
 <string name="settings_custom">"自定义"</string>
 <string name="settings_secure_dns_title">"使用安全 DNS"</string>
 <string name="settings_secure_dns_description">"确定如何通过安全连接来连接到网站"</string>
@@ -220,10 +244,10 @@
 <string name="clear_cache_title">"缓存的图片和文件"</string>
 <string name="clear_history_title">"浏览记录"</string>
 <string name="clear_cookies_and_site_data_title">"Cookie 和网站数据"</string>
-<string name="clear_cookies_and_site_data_summary_basic">"您会从大多数网站退出。"</string>
+<string name="clear_cookies_and_site_data_summary_basic">"会致使您从大多数网站退出。"</string>
 <string name="clear_cookies_and_site_data_summary_basic_signed_in">"您会从大多数网站退出，但不会退出自己的 Google 帐号。"</string>
-<string name="clear_browsing_history_summary">"清除历史记录和地址栏中的自动填充项。"</string>
-<string name="clear_browsing_history_summary_signed_in">"清除历史记录和地址栏中的自动填充项。您的 Google 帐号在 &lt;link&gt;myactivity.google.com&lt;/link&gt; 上可能有其他形式的浏览记录。"</string>
+<string name="clear_browsing_history_summary">"清除历史记录和地址栏中的自动补全项。"</string>
+<string name="clear_browsing_history_summary_signed_in">"清除历史记录和地址栏中的自动补全项。您的 Google 帐号在 &lt;link&gt;myactivity.google.com&lt;/link&gt; 上可能有其他形式的浏览记录。"</string>
 <string name="clear_browsing_history_summary_synced">"清除所有登录过的设备上的历史记录。您的 Google 帐号在 &lt;link&gt;myactivity.google.com&lt;/link&gt; 上可能有其他形式的浏览记录。"</string>
 <string name="clear_passwords_title">"已保存的密码"</string>
 <string name="clear_form_data_title">"自动填充表单数据"</string>
@@ -234,11 +258,11 @@
 <string name="clear_browsing_data_tab_period_hour">"过去一小时"</string>
 <string name="clear_browsing_data_tab_period_24_hours">"过去 24 小时"</string>
 <string name="clear_browsing_data_tab_period_7_days">"过去 7 天"</string>
-<string name="clear_browsing_data_tab_period_four_weeks">"近 4 周"</string>
+<string name="clear_browsing_data_tab_period_four_weeks">"过去 4 周"</string>
 <string name="clear_browsing_data_tab_period_older_than_30_days">"30 天之前的"</string>
 <string name="clear_browsing_data_tab_period_everything">"时间不限"</string>
-<string name="important_sites_title">"一并清除以下网站内的数据？"</string>
-<string name="important_sites_title_with_app">"一并清除以下网站和应用内的数据？"</string>
+<string name="important_sites_title">"一并清除来自这些网站的数据？"</string>
+<string name="important_sites_title_with_app">"一并清除来自这些网站和应用的数据？"</string>
 <string name="clear_browsing_data_important_dialog_text">"这些网站似乎对您很重要："</string>
 <string name="clear_browsing_data_important_dialog_text_with_app">"这些网站和应用似乎对您很重要："</string>
 <string name="clear_browsing_data_important_dialog_button">"清除"</string>
@@ -247,7 +271,7 @@
 <string name="android_history_other_forms_of_history">"您的 Google 帐号在 &lt;link&gt;myactivity.google.com&lt;/link&gt; 上可能有其他形式的浏览记录。"</string>
 <string name="android_history_blocked_site">"禁止访问的网站"</string>
 <string name="multiple_history_items_deleted">"删除了 %1$s 项"</string>
-<string name="prefs_safety_check">"安全检查&lt;new&gt;新&lt;/new&gt;"</string>
+<string name="prefs_safety_check">"安全检查"</string>
 <string name="safety_check_description">"Chrome 有助于保护您免受数据泄露、不安全网站等问题的影响"</string>
 <string name="safety_check_safe_browsing_title">"安全浏览"</string>
 <string name="safety_check_updates_title">"更新"</string>
@@ -334,8 +358,6 @@
 <string name="languages_offer_translate_switch">"询问是否翻译其他语言版本的网页"</string>
 <string name="languages_send_translate_switch">"询问是否要在其他语言的网页上显示 Google 翻译"</string>
 <string name="languages_item_option_offer_to_translate">"提供翻译"</string>
-<string name="languages_set_application_language_prompt">"用作 Chrome 的语言"</string>
-<string name="languages_set_as_application_language">"%1$s 将在重启时使用%2$s。"</string>
 <string name="languages_explicit_ask_title">"您能看懂哪些语言？"</string>
 <string name="languages_split_downloading">"正在下载%1$s…"</string>
 <string name="languages_split_ready">"可以使用此语言了，请重启 %1$s"</string>
@@ -345,8 +367,11 @@
 <string name="languages_settings_advanced">"高级"</string>
 <string name="languages_settings_target">"翻译成该语言"</string>
 <string name="languages_settings_automatic">"自动翻译这些语言"</string>
-<string name="languages_settings_dont_offer_lang">"不询问是否翻译这些语言"</string>
+<string name="languages_settings_automatic_title">"自动翻译"</string>
+<string name="languages_settings_dont_offer_langs">"不询问是否翻译这些语言"</string>
+<string name="languages_settings_never_langs_title">"一律不翻译"</string>
 <string name="languages_settings_dont_offer_sites">"不询问是否翻译这些网站"</string>
+<string name="languages_settings_never_sites_title">"一律不翻译网站"</string>
 <string name="data_reduction_title_lite_mode">"精简模式"</string>
 <string name="data_reduction_initial_title">"您的数据流量节省情况将显示在这里"</string>
 <string name="data_reduction_saved_label">"节省了 %1$s"</string>
@@ -449,7 +474,7 @@
 <string name="open_source_license_title">"开放源代码许可"</string>
 <string name="open_source_license_url">"chrome://credits"</string>
 <string name="google_terms_of_service_title">"Google 服务条款"</string>
-<string name="google_terms_of_service_url">"https://policies.google.com/terms"</string>
+<string name="google_terms_of_service_url">"https://policies.google.com/terms/embedded"</string>
 <string name="chrome_additional_terms_of_service_title">"Chrome 和 Chrome 操作系统附加服务条款"</string>
 <string name="chrome_additional_terms_of_service_url">"https://www.google.com/chrome/terms/"</string>
 <string name="privacy_notice_title">"Chrome 隐私权声明"</string>
@@ -528,13 +553,12 @@
 <string name="bluetooth_scanning_prompt_origin">"%1$s 想搜索附近的蓝牙设备，并发现了以下设备："</string>
 <string name="bluetooth_scanning_device_unknown">"未知或不支持的设备 (%1$s)"</string>
 <string name="sync_error_card_title">"同步功能无法正常运行"</string>
-<string name="sync_passwords_error_card_title">"同步密码时出错"</string>
+<string name="password_sync_error_summary">"同步密码时出错"</string>
 <string name="sync_settings_not_confirmed_title">"未完成初始同步设置"</string>
 <string name="hint_android_sync_disabled">"打开 Android 设置，重新启用 Android 系统同步功能以开始 Chrome 同步"</string>
 <string name="hint_sync_auth_error">"重新登录以开始同步"</string>
-<string name="hint_sync_retrieve_keys_legacy">"立即修正"</string>
-<string name="hint_sync_retrieve_keys">"同步密码时出错"</string>
-<string name="hint_passphrase_required">"输入密码以开始同步"</string>
+<string name="hint_sync_retrieve_keys">"立即修正"</string>
+<string name="hint_passphrase_required">"输入密码即可开始同步"</string>
 <string name="hint_sync_settings_not_confirmed_description">"请在下方选择要同步的内容"</string>
 <string name="hint_sync_settings_not_confirmed_description_legacy">"要开始同步，请开启“同步 Chrome 数据”。"</string>
 <string name="hint_other_sync_errors">"请尝试重新登录"</string>
@@ -543,7 +567,6 @@
 <string name="client_out_of_date_error_card_button">"更新 %1$s"</string>
 <string name="passphrase_required_error_card_button">"请输入密码"</string>
 <string name="auth_error_card_button">"重新登录"</string>
-<string name="trusted_vault_error_card_button">"使用“屏幕锁定”功能解锁"</string>
 <string name="sync_error_generic">"同步功能已停止工作"</string>
 <string name="sync_error_ga">"请更新您的登录详细信息。"</string>
 <string name="sync_error_connection">"无法连接到同步服务器。"</string>
@@ -622,7 +645,7 @@
 <string name="contextmenu_open_in_other_window">"在其他窗口中打开"</string>
 <string name="contextmenu_open_in_new_tab">"在新标签页中打开"</string>
 <string name="contextmenu_open_in_new_tab_group">"在群组内的新标签页中打开"</string>
-<string name="contextmenu_open_in_incognito_tab">"在无痕模式标签页中打开"</string>
+<string name="contextmenu_open_in_incognito_tab">"在无痕式标签页中打开"</string>
 <string name="contextmenu_call">"拨打"</string>
 <string name="contextmenu_copy">"复制"</string>
 <string name="contextmenu_send_message">"发送消息"</string>
@@ -637,6 +660,8 @@
 <string name="contextmenu_load_original_image">"加载图片"</string>
 <string name="contextmenu_copy_image">"复制图片"</string>
 <string name="contextmenu_search_with_google_lens">"使用 Google 智能镜头进行搜索&lt;new&gt;新功能&lt;/new&gt;"</string>
+<string name="contextmenu_search_image_with_google_lens">"使用 Google 智能镜头搜索图片&lt;new&gt;新&lt;/new&gt;"</string>
+<string name="contextmenu_translate_image_with_google_lens">"使用 Google 智能镜头翻译图片&lt;new&gt;新&lt;/new&gt;"</string>
 <string name="contextmenu_shop_similar_products">"选购类似商品&lt;new&gt;新&lt;/new&gt;"</string>
 <string name="contextmenu_shop_image_with_google_lens">"使用 Google 智能镜头搜索图中商品信息&lt;new&gt;新&lt;/new&gt;"</string>
 <string name="contextmenu_search_similar_products">"搜索类似商品&lt;new&gt;新&lt;/new&gt;"</string>
@@ -645,26 +670,21 @@
 <string name="contextmenu_share_link">"分享链接"</string>
 <string name="contextmenu_save_video">"下载视频"</string>
 <string name="contextmenu_open_in_new_chrome_tab">"在新的 Chrome 标签页中打开"</string>
-<string name="contextmenu_open_in_chrome_incognito_tab">"在无痕模式标签页中打开"</string>
+<string name="contextmenu_open_in_chrome_incognito_tab">"在无痕式标签页中打开"</string>
 <string name="contextmenu_open_in_ephemeral_tab">"预览网页&lt;new&gt;新&lt;/new&gt;"</string>
-<string name="contextmenu_read_later">"Read later &lt;new&gt;New&lt;/new&gt;"</string>
+<string name="contextmenu_read_later">"以后再读&lt;new&gt;新&lt;/new&gt;"</string>
 <string name="contextmenu_performance_info_fast">"此网页能快速加载"</string>
 <string name="accessibility_swipe_refresh">"正在刷新页面"</string>
-<string name="app_banner_view_native_app_install_accessibility">"从 Google Play 商店下载应用：%s"</string>
 <string name="dark_mode">"深色调"</string>
 <string name="light_mode">"浅色调"</string>
-<string name="sepia_mode">"棕色调"</string>
+<string name="sepia_mode">"棕褐色调"</string>
 <string name="sans_serif">"Sans Serif"</string>
 <string name="serif">"Serif"</string>
 <string name="monospace">"等宽"</string>
 <string name="text_size_signifier">"A"</string>
-<string name="menu_add_to_homescreen">"添加到主屏幕"</string>
 <string name="menu_open_webapk">"打开%1$s"</string>
 <string name="open_webapk_failed">"无法打开此应用"</string>
-<string name="menu_add_to_homescreen_install">"安装应用"</string>
 <string name="app_banner_add">"添加"</string>
-<string name="app_banner_install">"安装"</string>
-<string name="added_to_homescreen">"%1$s已添加到您的主屏幕"</string>
 <string name="webapk_install_in_progress">"仍在添加先前的网站"</string>
 <string name="notification_webapk_install_in_progress">"正在添加%1$s…"</string>
 <string name="notification_webapk_installed">"已添加到主屏幕"</string>
@@ -674,10 +694,15 @@
 <string name="iph_infobar_add_to_home_screen_title">"更快速地访问该网站"</string>
 <string name="iph_infobar_add_to_home_screen_description">"将该网站添加到手机的主屏幕，以便您更轻松地访问"</string>
 <string name="iph_infobar_add_to_home_screen_description_tablet">"将该网站添加到平板电脑的主屏幕，以便您更轻松地访问"</string>
+<string name="pwa_install_bottom_sheet_accessibility">"安装此应用"</string>
+<string name="pwa_install_bottom_sheet_screenshot">"屏幕截图"</string>
+<string name="image_zoom_content_description">"屏幕截图。点按即可关闭。"</string>
 <string name="page_info_connection_offline">"您目前浏览的是此网页的离线副本（创建时间：%1$s）"</string>
 <string name="page_info_offline_page_not_trusted_with_date">"此离线网页是在 %1$s创建的，可能与在线版本有所不同。"</string>
 <string name="page_info_offline_page_not_trusted_without_date">"此网页可能与在线版本有所不同。"</string>
 <string name="page_info_preview_load_original">"从 %1$s &lt;link&gt;加载原始网页&lt;/link&gt;"</string>
+<string name="page_info_connection_paint_preview">"您正在查看此页面的预览视图"</string>
+<string name="page_info_iph">"如需更改您的网站设置，请点击此处"</string>
 <string name="sad_tab_suggestions">"如果您频繁遇到此问题，请尝试按这些&lt;link&gt;建议&lt;/link&gt;操作。"</string>
 <string name="notification_hidden_text">"内容已隐藏"</string>
 <string name="notification_site_settings_button">"设置"</string>
@@ -806,13 +831,16 @@
 <string name="signin_sync_description">"Google 可能会利用您的历史记录为您提供个性化的 Google 搜索、广告和其他 Google 服务"</string>
 <string name="signin_sync_description_child_account">"Google 可能会利用您的历史记录为您提供个性化的 Google 搜索和其他 Google 服务"</string>
 <string name="signin_details_description">"您始终可在&lt;LINK1&gt;设置&lt;/LINK1&gt;中选择要同步的内容。"</string>
-<string name="signin_accept_button">"立即启用"</string>
+<string name="signin_accept_button">"立即开启"</string>
 <string name="signin_account_picker_dialog_title">"选择帐号"</string>
+<string name="account_picker_bottom_sheet_accessibility_opened">"登录 Chrome，已打开。"</string>
+<string name="account_picker_bottom_sheet_accessibility_closed">"登录 Chrome，已关闭。"</string>
 <string name="signin_account_picker_bottom_sheet_subtitle">"使用您的 Google 帐号登录此网站和 Chrome。您可等到需要时再开启同步功能。"</string>
 <string name="signin_account_picker_bottom_sheet_signin_title">"正在登录…"</string>
 <string name="signin_account_picker_bottom_sheet_error_title">"出了点问题"</string>
 <string name="signin_account_picker_general_error_subtitle">"Chrome 无法验证您的信息"</string>
 <string name="signin_account_picker_auth_error_subtitle">"抱歉，我们无法验证您的凭据"</string>
+<string name="signin_account_picker_dismiss_button">"跳过"</string>
 <string name="signin_account_picker_general_error_button">"重试"</string>
 <string name="signin_promo_continue_as">"以“%1$s”的身份继续"</string>
 <string name="signin_promo_choose_account">"不是 %1$s？"</string>
@@ -822,8 +850,8 @@
 <string name="signin_promo_description_ntp_content_suggestions_no_account">"要获取 Google 推荐的个性化内容，请登录您的帐号并开启同步功能"</string>
 <string name="signin_promo_description_recent_tabs">"要访问您在其他设备上打开的标签页，请开启同步功能"</string>
 <string name="signin_promo_description_recent_tabs_no_account">"要访问您在其他设备上的标签页，请登录您的帐号并开启同步功能"</string>
-<string name="signin_promo_description_settings">"要在您的所有设备上保持同步并进行个性化设置，请开启同步功能"</string>
-<string name="signin_promo_description_settings_no_account">"要在您的所有设备上保持同步并进行个性化设置，请登录您的帐号并开启同步功能"</string>
+<string name="signin_promo_description_settings">"要在您的所有设备上保持同步并获享个性化体验，请开启同步功能"</string>
+<string name="signin_promo_description_settings_no_account">"要在您的所有设备上保持同步并获享个性化体验，请登录您的帐号并开启同步功能"</string>
 <string name="signin_promo_choose_another_account">"选择其他帐号"</string>
 <string name="sync_promo_turn_on_sync">"开启同步功能"</string>
 <string name="external_app_restricted_access_error">"Chrome 无权访问请求的资源。"</string>
@@ -853,12 +881,10 @@
 <string name="recently_closed">"最近关闭的标签页"</string>
 <string name="show_full_history">"显示全部历史记录"</string>
 <string name="remove_all">"全部删除"</string>
-<string name="accessibility_ntp_offline_badge">"可离线使用"</string>
 <string name="ntp_learn_more_about_suggested_content">"&lt;link&gt;详细了解&lt;/link&gt;推荐内容"</string>
-<string name="ntp_suggestions_fetch_failed">"无法获取建议"</string>
-<string name="ntp_suggestions_fetch_no_new_suggestions">"没有新建议"</string>
 <string name="ntp_manage_my_activity">"管理我的活动记录"</string>
 <string name="ntp_manage_interests">"管理我的兴趣"</string>
+<string name="ntp_manage_reactions">"管理回应"</string>
 <string name="ntp_turn_off_feed">"关闭"</string>
 <string name="ntp_turn_on_feed">"启用"</string>
 <string name="ntp_discover_on">"Discover"</string>
@@ -928,6 +954,8 @@
 <string name="menu_history">"历史记录"</string>
 <string name="menu_downloads">"下载内容"</string>
 <string name="menu_find_in_page">"在网页中查找"</string>
+<string name="menu_follow">"关注"</string>
+<string name="menu_following">"已关注"</string>
 <string name="menu_paint_preview_show">"Show Paint Preview"</string>
 <string name="menu_request_desktop_site">"桌面版网站"</string>
 <string name="menu_request_desktop_site_on">"关闭“请求切换到桌面版网站”"</string>
@@ -937,15 +965,14 @@
 <string name="menu_close_all_tabs">"关闭所有标签页"</string>
 <string name="menu_close_all_incognito_tabs">"关闭无痕模式标签页"</string>
 <string name="menu_group_tabs">"组合标签页"</string>
-<string name="menu_track_prices">"Track prices"</string>
+<string name="menu_track_prices">"跟踪价格"</string>
 <string name="menu_get_image_descriptions">"获取图片说明"</string>
 <string name="menu_stop_image_descriptions">"停止获取图片说明"</string>
 <string name="menu_add_to">"添加到…"</string>
-<string name="menu_add_to_dialog_title">"添加到："</string>
-<string name="menu_add_to_bookmarks">"添加到“书签”"</string>
-<string name="menu_add_to_downloads">"添加到“下载内容”"</string>
+<string name="menu_add_to_dialog_title">"添加到"</string>
+<string name="menu_homescreen">"主屏幕"</string>
 <string name="bookmarks">"书签"</string>
-<string name="bookmarks_folder_empty">"您添加书签的网页会显示在此处"</string>
+<string name="bookmarks_folder_empty">"您添加了书签的网页会显示在此处"</string>
 <string name="no_bookmarks">"没有书签"</string>
 <plurals name="bookmarks_count">
   <item quantity="one">"%1$d 个书签"</item>
@@ -970,10 +997,10 @@
 <string name="bookmark_action_bar_search">"搜索书签"</string>
 <string name="bookmark_no_result">"找不到该书签。请检查您的拼写或添加新书签。"</string>
 <string name="bookmarks_bottom_sheet_title">"添加到"</string>
-<string name="bookmarks_bottom_sheet_content_description">"List of bookmark folders"</string>
-<string name="bookmarks_bottom_sheet_opened_half">"List of bookmark folders opened at half height"</string>
-<string name="bookmarks_bottom_sheet_opened_full">"List of bookmark folders opened at full height"</string>
-<string name="bookmarks_bottom_sheet_closed">"List of bookmark folders is closed"</string>
+<string name="bookmarks_bottom_sheet_content_description">"书签文件夹列表"</string>
+<string name="bookmarks_bottom_sheet_opened_half">"书签文件夹列表已半屏打开"</string>
+<string name="bookmarks_bottom_sheet_opened_full">"书签文件夹列表已全屏打开"</string>
+<string name="bookmarks_bottom_sheet_closed">"书签文件夹列表已关闭"</string>
 <string name="edit_bookmark">"修改书签"</string>
 <string name="add_folder">"添加文件夹"</string>
 <string name="edit_folder">"修改文件夹"</string>
@@ -983,26 +1010,25 @@
 <string name="bookmark_missing_title">"必须提供标题"</string>
 <string name="bookmark_missing_url">"必须提供网址"</string>
 <string name="reading_list_title">"阅读清单"</string>
+<string name="reading_list_title_new">"阅读清单&lt;new&gt;新&lt;/new&gt;"</string>
 <string name="reading_list_read">"已读"</string>
-<string name="reading_list_unread">"未读"</string>
-<string name="reading_list_ready_for_offline">"已可离线阅读"</string>
-<string name="reading_list_saved">"Added to reading list"</string>
+<string name="reading_list_unread">"未读 - 可离线阅读"</string>
+<string name="reading_list_saved">"已添加到阅读清单"</string>
 <string name="reading_list_mark_as_read">"标记为已读"</string>
-<string name="reading_list_share">"分享"</string>
 <string name="reading_list_reminder_notification_title">"请尽快补看阅读清单中的内容"</string>
 <plurals name="reading_list_reminder_notification_subtitle">
-  <item quantity="one">"You have %1$d page"</item>
-  <item quantity="other">"You have %1$d pages"</item>
+  <item quantity="one">"您有 %1$d 个未读页面"</item>
+  <item quantity="other">"您有 %1$d 个未读页面"</item>
 </plurals>
 <plurals name="reading_list_unread_page_count">
-  <item quantity="one">"%1$d unread page"</item>
-  <item quantity="other">"%1$d unread pages"</item>
+  <item quantity="one">"%1$d 个未读页面"</item>
+  <item quantity="other">"%1$d 个未读页面"</item>
 </plurals>
+<string name="reading_list_no_unread_pages">"无未读页面"</string>
 <string name="reading_list_intro_text">"保存此页面以便稍后阅读并接收提醒"</string>
+<string name="reading_list_save_pages_for_later">"将网页添加到阅读清单中即可接收提醒"</string>
 <string name="reading_list_find_in_bookmarks">"您可在“书签”界面中找到自己的阅读清单"</string>
-<string name="reading_list_empty_list_title">"You’ll find your reading list here"</string>
-<string name="reading_list_empty_list_description">"You can save pages to your reading list to find them again"</string>
-<string name="reading_list_empty_list_description_offline">"您可以将所需网页保存到阅读清单中，以便再次查看或离线阅读"</string>
+<string name="reading_list_empty_list_title">"您的阅读清单会显示在此处"</string>
 <string name="offline_pages_viewing_offline_page">"正在查看此网页的离线副本"</string>
 <string name="offline_pages_prefetch_notification_title">"在 %1$s 中离线查看"</string>
 <string name="offline_pages_prefetch_notification_text">"%1$s 及更多网站"</string>
@@ -1034,6 +1060,7 @@
 <string name="accessibility_toolbar_btn_menu_update">"有更新。更多选项"</string>
 <string name="accessibility_toolbar_btn_menu_os_version_unsupported">"Chrome 无法更新。更多选项"</string>
 <string name="accessibility_toolbar_btn_mic">"开始语音搜索"</string>
+<string name="accessibility_btn_lens_camera">"借助摄像头使用 Google 智能镜头进行搜索"</string>
 <string name="accessibility_new_tab_page">"打开新的标签页"</string>
 <string name="accessibility_new_incognito_tab_page">"打开新的无痕式标签页"</string>
 <string name="accessibility_toolbar_btn_new_tab">"打开新的标签页"</string>
@@ -1265,13 +1292,13 @@
 <string name="near_oom_reduction_message">"此网页占用的内存过多，因此 Chrome 移除了部分内容。"</string>
 <string name="near_oom_reduction_decline">"显示原始网页"</string>
 <string name="prefs_autofill_assistant_title">"Chrome 中的 Google 助理"</string>
-<string name="prefs_autofill_assistant_summary">"Helps you complete tasks, such as checkout, throughout the web"</string>
-<string name="prefs_web_assistance_section_title">"Web Assistance"</string>
-<string name="prefs_autofill_assistant_get_help_title">"Get help with tasks on the web"</string>
+<string name="prefs_autofill_assistant_summary">"帮助您在网上完成结算等任务"</string>
+<string name="prefs_web_assistance_section_title">"网上协助"</string>
+<string name="prefs_autofill_assistant_get_help_title">"帮助您在网上完成任务"</string>
 <string name="prefs_autofill_assistant_get_help_summary">"为了帮助您执行各种操作，Google 将会收到您使用 Google 助理时所在网站的网址和内容，以及您通过 Google 助理提交的信息"</string>
-<string name="prefs_autofill_assistant_proactive_help_title">"Proactive Help"</string>
-<string name="prefs_autofill_assistant_proactive_help_summary">"Assistant will appear when it detects that it can help you on supported websites"</string>
-<string name="prefs_proactive_help_sync_link">"To use this setting &lt;link&gt;Make searches and browsing better&lt;/link&gt; must be turned on"</string>
+<string name="prefs_autofill_assistant_proactive_help_title">"主动帮助"</string>
+<string name="prefs_autofill_assistant_proactive_help_summary">"当 Google 助理检测到它可在受支持的网站上为您提供帮助时，它即会主动出现"</string>
+<string name="prefs_proactive_help_sync_link">"必须开启&lt;link&gt;改善搜索和浏览体验&lt;/link&gt;，才能使用此设置"</string>
 <string name="usage_stats_consent_title">"在“数字健康”应用中显示您的 Chrome 活动记录？"</string>
 <string name="usage_stats_consent_prompt">"您可以查看自己在 Chrome 中访问的网站并为这些网站设置计时器。\n\nGoogle 会获取这些设有计时器的网站的相关信息以及您对这些网站的访问时长。这些信息会被用于改进“数字健康”应用。"</string>
 <string name="usage_stats_setting_title">"从“数字健康”应用中移除您的 Chrome 活动记录"</string>
@@ -1287,6 +1314,16 @@
 <string name="extra_icu_module_title">"额外的 ICU"</string>
 <string name="cablev2_authenticator_module_title">"支持使用手机作为安全密钥"</string>
 <string name="cablev2_activity_title">"使用 Google Chrome 作为安全密钥"</string>
+<string name="cablev2_registration_succeeded">"注册成功"</string>
+<string name="cablev2_registration_failed">"注册失败"</string>
+<string name="cablev2_sign_in_succeeded">"登录成功"</string>
+<string name="cablev2_sign_in_failed">"登录失败"</string>
+<string name="cablev2_usb_discon_title">"已使用 USB 线连接到手机"</string>
+<string name="cablev2_usb_discon_body">"完成当前操作后断开连接"</string>
+<string name="cablev2_serverlink_connecting_to_your_device">"正在连接您的设备…"</string>
+<string name="cablev2_serverlink_status_connecting">"请稍等片刻"</string>
+<string name="cablev2_serverlink_status_connected">"已连接到设备"</string>
+<string name="cablev2_serverlink_status_processing">"正在处理请求"</string>
 <string name="qr_code_share_icon_label">"二维码"</string>
 <string name="qr_code_share_tab_label">"分享"</string>
 <string name="qr_code_scan_tab_label">"扫描"</string>
@@ -1300,7 +1337,8 @@
 <string name="sharing_copy_text">"复制文字"</string>
 <string name="sharing_copy_image">"复制图片"</string>
 <string name="sharing_screenshot">"屏幕截图"</string>
-<string name="sharing_highlights">"为所选文本创建链接"</string>
+<string name="sharing_long_screenshot">"长屏幕截图"</string>
+<string name="sharing_highlights">"指向突出显示的内容的链接"</string>
 <string name="sharing_copied">"已复制"</string>
 <string name="text_copied">"文字已复制"</string>
 <string name="image_copied">"图片已复制"</string>
@@ -1315,7 +1353,11 @@
 <string name="qr_code_open_settings_label">"打开“设置”"</string>
 <string name="qr_code_not_a_url_label">"此二维码不是网址：%1$s"</string>
 <string name="qr_code_filename_prefix">"chrome_qrcode_%1$s"</string>
-<string name="link_to_text_failure_toast_message">"无法为所选文本创建链接。请改为分享页面链接。"</string>
+<string name="link_to_text_failure_toast_message">"无法创建指向突出显示的内容的链接。请改为分享页面链接。"</string>
+<string name="link_to_text_failure_toast_message_v2">"无法创建指向突出显示的内容的链接"</string>
+<string name="link_to_text_success_link_toast_message">"包含指向突出显示的内容的链接"</string>
+<string name="link_to_text_success_text_toast_message">"只能分享文本"</string>
+<string name="new_badge">"新建"</string>
 <string name="screenshot_edit_title">"编辑"</string>
 <string name="screenshot_delete_title">"删除"</string>
 <string name="screenshot_save_title">"保存"</string>
@@ -1331,13 +1373,6 @@
 <string name="paint_preview_startup_upgrade_snackbar_message">"正在预览此页"</string>
 <string name="paint_preview_startup_upgrade_snackbar_action">"重新加载"</string>
 <string name="paint_preview_startup_auto_upgrade_toast">"目前查看的是实际网页"</string>
-<string name="default_browser_promo_dialog_title">"将 %1$s 设为您的默认应用？"</string>
-<string name="default_browser_promo_dialog_desc">"%1$s 具有非凡的智慧和速度；利用它，您可以安全放心地在网络世界尽情操作、创作和探索"</string>
-<string name="default_browser_promo_dialog_disambiguation_sheet_steps">"1. 选择 %1$s\n2. 点按“始终”"</string>
-<string name="default_browser_promo_dialog_system_settings_steps">"1. 转到“设置”\n2. 点按“浏览器应用”\n3. 选择 %1$s"</string>
-<string name="default_browser_promo_dialog_role_manager_steps">"1. 选择 %1$s\n2. 点按“设为默认应用”"</string>
-<string name="default_browser_promo_dialog_choose_chrome_button">"选择 %1$s"</string>
-<string name="default_browser_promo_dialog_go_to_settings_button">"转到“设置”"</string>
 <string name="lite_mode_https_image_compression_message">"现在，精简模式会优化 HTTPS 网页上的图片，为您节省更多流量。"</string>
 <string name="lite_mode_https_image_compression_settings_link">"管理"</string>
 <string name="chrome_reengagement_notification_1_title">"阅读今日新闻 📰"</string>
@@ -1348,21 +1383,26 @@
 <string name="chrome_reengagement_notification_3_description">"节省高达 60% 的数据流量，阅读今日新闻"</string>
 <string name="image_descriptions_dialog_header">"获取图片说明？"</string>
 <string name="image_descriptions_dialog_content">"系统会将图片发送给 Google 以便为您改进说明。"</string>
-<string name="image_descriptions_dialog_option_only_on_wifi">"仅限使用无线局域网时"</string>
+<string name="image_descriptions_dialog_option_only_on_wifi">"仅限使用 Wi-Fi 时"</string>
 <string name="image_descriptions_dialog_get_descriptions_button">"获取说明"</string>
 <string name="image_descriptions_settings_title">"图片说明"</string>
 <string name="image_descriptions_settings_toggle_title">"获取图片说明"</string>
 <string name="image_descriptions_settings_toggle_content">"系统会将部分图片发送给 Google 以便为您改进说明"</string>
 <string name="image_descriptions_settings_use_mobile_data_title">"使用移动数据"</string>
 <string name="image_descriptions_settings_use_mobile_data_content">"当 Wi-Fi 可用时使用 Wi-Fi"</string>
+<string name="image_descriptions_toast_off">"“图片说明”功能已关闭"</string>
+<string name="image_descriptions_toast_just_once">"已为此网页添加图片说明"</string>
+<string name="image_descriptions_toast_on">"“图片说明”功能已开启"</string>
+<string name="image_descriptions_toast_on_no_wifi">"当您连接到 Wi-Fi 后，“图片说明”功能将会恢复运作"</string>
 <string name="avs_consent_ui_title">"在网络上畅享更佳的语音使用体验"</string>
 <string name="avs_consent_ui_subtitle">"Google 助理可帮您在各网站上完成所需操作"</string>
-<string name="avs_consent_ui_body">"To help you complete tasks, Google will receive the URLs and contents of sites on which you use Assistant, as well as information you submit through Assistant. This information may be stored in your Google account. You can turn off Assistant in Chrome settings."</string>
+<string name="avs_consent_ui_body">"为了帮助您执行各种操作，Google 将会收到您使用 Google 助理时所在网站的网址和内容，以及您通过 Google 助理提交的信息。这些信息可能会存储在您的 Google 帐号中。您可在 Chrome 的“设置”中停用 Google 助理。"</string>
 <string name="avs_consent_ui_content_description">"针对 Google 助理语音搜索功能的用户意见征求界面"</string>
 <string name="avs_consent_ui_half_height_description">"针对 Google 助理语音搜索功能的用户意见征求界面已半屏打开"</string>
 <string name="avs_consent_ui_full_height_description">"针对 Google 助理语音搜索功能的用户意见征求界面已全屏打开"</string>
 <string name="avs_consent_ui_closed_description">"针对 Google 助理语音搜索功能的用户意见征求界面已关闭"</string>
-<string name="avs_setting_category_title">"Voice assistance"</string>
-<string name="avs_setting_enabled_title">"Enhanced voice search"</string>
-<string name="avs_setting_enabled_description">"Google Assistant provides a better voice experience for searching the web and engaging with sites you have open. Google Assistant will receive the URL and contents of sites you use with it."</string>
+<string name="avs_setting_category_title">"语音助理"</string>
+<string name="avs_setting_enabled_title">"增强版语音搜索"</string>
+<string name="avs_setting_enabled_description">"当您在网上搜索内容以及与已打开的网站互动时，Google 助理可让您畅享更佳的语音使用体验。Google 助理将会收到您使用它时所在网站的网址和内容。"</string>
+<string name="csn_ad_label">"Ad"</string>
 </resources>

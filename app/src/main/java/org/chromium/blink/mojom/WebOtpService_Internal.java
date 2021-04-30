@@ -295,6 +295,7 @@ ReceiveResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         SmsStatus.validate(result.status);
+                        result.status = SmsStatus.toKnownValue(result.status);
                     }
                     {
                         

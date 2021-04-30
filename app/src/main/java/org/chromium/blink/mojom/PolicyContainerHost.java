@@ -28,4 +28,9 @@ public interface PolicyContainerHost extends org.chromium.mojo.bindings.Interfac
 int referrerPolicy);
 
 
+
+    void issueKeepAliveHandle(
+org.chromium.mojo.bindings.InterfaceRequest<PolicyContainerHostKeepAliveHandle> receiver);
+
+
 }

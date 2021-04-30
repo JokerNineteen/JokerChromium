@@ -16,7 +16,7 @@ import org.chromium.chrome.browser.endpoint_fetcher.EndpointFetcher;
 import org.chromium.chrome.browser.endpoint_fetcher.EndpointResponse;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.profiles.Profile;
-import org.chromium.chrome.browser.signin.IdentityServicesProvider;
+import org.chromium.chrome.browser.signin.services.IdentityServicesProvider;
 import org.chromium.chrome.browser.tasks.tab_management.TabUiFeatureUtilities;
 
 import java.util.Collections;
@@ -75,7 +75,8 @@ public class TabSuggestionsServerFetcher implements TabSuggestionsFetcher {
                     -> { fetchCallback(res, callback, tabContext); },
                     mProfileForTesting == null ? Profile.getLastUsedRegularProfile()
                                                : mProfileForTesting,
-                    ENDPOINT, METHOD, CONTENT_TYPE, getTabContextJson(tabContext), TIMEOUT_MS);
+                    ENDPOINT, METHOD, CONTENT_TYPE, getTabContextJson(tabContext), TIMEOUT_MS,
+                    new String[] {});
         } catch (JSONException e) {
             // Soft failure for now so we don't crash the app and fall back on client side
             // providers.

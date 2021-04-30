@@ -18,7 +18,7 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
     SchedulerClientType.TEST1, SchedulerClientType.TEST2, SchedulerClientType.TEST3,
     SchedulerClientType.UNKNOWN, SchedulerClientType.WEB_UI, SchedulerClientType.CHROME_UPDATE,
-    SchedulerClientType.PREFETCH, SchedulerClientType.MAX_VALUE
+    SchedulerClientType.PREFETCH, SchedulerClientType.READING_LIST, SchedulerClientType.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SchedulerClientType {
@@ -44,5 +44,9 @@ public @interface SchedulerClientType {
    * Offline prefetch notification.
    */
   int PREFETCH = 3;
-  int MAX_VALUE = PREFETCH;
+  /**
+   * Reading list weekly notification.
+   */
+  int READING_LIST = 4;
+  int MAX_VALUE = READING_LIST;
 }

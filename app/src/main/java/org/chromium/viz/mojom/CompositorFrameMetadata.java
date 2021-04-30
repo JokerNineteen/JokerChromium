@@ -16,8 +16,8 @@ package org.chromium.viz.mojom;
 
 public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 120;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(120, 0)};
+    private static final int STRUCT_SIZE = 128;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(128, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public float deviceScaleFactor;
     public org.chromium.gfx.mojom.Vector2dF rootScrollOffset;
@@ -40,6 +40,7 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
     public org.chromium.mojo_base.mojom.TimeDelta preferredFrameInterval;
     public int displayTransformHint;
     public DelegatedInkMetadata delegatedInkMetadata;
+    public CompositorFrameTransitionDirective[] transitionDirectives;
 
     private CompositorFrameMetadata(int version) {
         super(STRUCT_SIZE, version);
@@ -96,6 +97,7 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
                     
                 result.contentColorUsage = decoder0.readInt(32);
                     org.chromium.gfx.mojom.ContentColorUsage.validate(result.contentColorUsage);
+                    result.contentColorUsage = org.chromium.gfx.mojom.ContentColorUsage.toKnownValue(result.contentColorUsage);
                 }
                 {
                     
@@ -187,11 +189,25 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
                     
                 result.displayTransformHint = decoder0.readInt(104);
                     org.chromium.gfx.mojom.OverlayTransform.validate(result.displayTransformHint);
+                    result.displayTransformHint = org.chromium.gfx.mojom.OverlayTransform.toKnownValue(result.displayTransformHint);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, true);
                 result.delegatedInkMetadata = DelegatedInkMetadata.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(120, false);
+                {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.transitionDirectives = new CompositorFrameTransitionDirective[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.transitionDirectives[i1] = CompositorFrameTransitionDirective.decode(decoder2);
+                    }
+                }
                 }
 
         } finally {
@@ -270,5 +286,15 @@ public final class CompositorFrameMetadata extends org.chromium.mojo.bindings.St
         encoder0.encode(this.displayTransformHint, 104);
         
         encoder0.encode(this.delegatedInkMetadata, 112, true);
+        
+        if (this.transitionDirectives == null) {
+            encoder0.encodeNullPointer(120, false);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.transitionDirectives.length, 120, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.transitionDirectives.length; ++i0) {
+                
+                encoder1.encode(this.transitionDirectives[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
     }
 }

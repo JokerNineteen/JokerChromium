@@ -23,12 +23,15 @@ import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkModelObserver;
 import org.chromium.chrome.browser.bookmarks.BookmarkListEntry.ViewType;
 import org.chromium.chrome.browser.bookmarks.BookmarkRow.Location;
-import org.chromium.chrome.browser.signin.PersonalizedSigninPromoView;
+import org.chromium.chrome.browser.feature_engagement.TrackerFactory;
+import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.chrome.browser.signin.ui.PersonalizedSigninPromoView;
 import org.chromium.chrome.browser.sync.ProfileSyncService;
 import org.chromium.components.bookmarks.BookmarkId;
 import org.chromium.components.bookmarks.BookmarkType;
 import org.chromium.components.browser_ui.widget.dragreorder.DragReorderableListAdapter;
 import org.chromium.components.browser_ui.widget.highlight.ViewHighlighter;
+import org.chromium.components.feature_engagement.EventConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,9 +95,12 @@ class BookmarkItemsAdapter extends DragReorderableListAdapter<BookmarkListEntry>
             clearHighlight();
             mDelegate.notifyStateChange(BookmarkItemsAdapter.this);
 
-            if (mDelegate.getCurrentState() == BookmarkUIState.STATE_SEARCHING
-                    && !TextUtils.equals(mSearchText, EMPTY_QUERY)) {
-                search(mSearchText);
+            if (mDelegate.getCurrentState() == BookmarkUIState.STATE_SEARCHING) {
+                if (!TextUtils.equals(mSearchText, EMPTY_QUERY)) {
+                    search(mSearchText);
+                } else {
+                    mDelegate.closeSearchUI();
+                }
             }
         }
     };
@@ -243,6 +249,11 @@ class BookmarkItemsAdapter extends DragReorderableListAdapter<BookmarkListEntry>
         description.setText(listItem.getHeaderDescription());
         description.setVisibility(
                 TextUtils.isEmpty(listItem.getHeaderDescription()) ? View.GONE : View.VISIBLE);
+        if (listItem.getSectionHeaderData().topPadding > 0) {
+            title.setPaddingRelative(title.getPaddingStart(),
+                    listItem.getSectionHeaderData().topPadding, title.getPaddingEnd(),
+                    title.getPaddingBottom());
+        }
     }
 
     @Override
@@ -309,6 +320,16 @@ class BookmarkItemsAdapter extends DragReorderableListAdapter<BookmarkListEntry>
             setBookmarks(mTopLevelFolders);
         } else {
             setBookmarks(mDelegate.getModel().getChildIDs(folder));
+        }
+
+        if (folder.getType() == BookmarkType.READING_LIST) {
+            TrackerFactory.getTrackerForProfile(Profile.getLastUsedRegularProfile())
+                    .notifyEvent(EventConstants.READ_LATER_BOOKMARK_FOLDER_OPENED);
+            mDelegate.getSelectableListLayout().setEmptyViewText(
+                    R.string.reading_list_empty_list_title, R.string.bookmark_no_result);
+        } else {
+            mDelegate.getSelectableListLayout().setEmptyViewText(
+                    R.string.bookmarks_folder_empty, R.string.bookmark_no_result);
         }
     }
 
@@ -448,41 +469,7 @@ class BookmarkItemsAdapter extends DragReorderableListAdapter<BookmarkListEntry>
     }
 
     private void populateTopLevelFoldersList() {
-        BookmarkId desktopNodeId = mDelegate.getModel().getDesktopFolderId();
-        BookmarkId mobileNodeId = mDelegate.getModel().getMobileFolderId();
-        BookmarkId othersNodeId = mDelegate.getModel().getOtherFolderId();
-
-        List<BookmarkId> specialFoldersIds =
-                mDelegate.getModel().getTopLevelFolderIDs(/*getSpecial=*/true, /*getNormal=*/false);
-        BookmarkId rootFolder = mDelegate.getModel().getRootFolderId();
-
-        // managed and partner bookmark folders will be put to the bottom.
-        List<BookmarkId> managedAndPartnerFolderIds = new ArrayList<>();
-
-        for (BookmarkId bookmarkId : specialFoldersIds) {
-            // Adds reading list as the first top level folder.
-            if (bookmarkId.getType() == BookmarkType.READING_LIST) {
-                mTopLevelFolders.add(bookmarkId);
-                continue;
-            }
-            BookmarkId parent = mDelegate.getModel().getBookmarkById(bookmarkId).getParentId();
-            if (parent.equals(rootFolder)) managedAndPartnerFolderIds.add(bookmarkId);
-        }
-
-        // Adds normal bookmark top level folders.
-        if (mDelegate.getModel().isFolderVisible(mobileNodeId)) {
-            mTopLevelFolders.add(mobileNodeId);
-        }
-        if (mDelegate.getModel().isFolderVisible(desktopNodeId)) {
-            mTopLevelFolders.add(desktopNodeId);
-        }
-        if (mDelegate.getModel().isFolderVisible(othersNodeId)) {
-            mTopLevelFolders.add(othersNodeId);
-        }
-
-        // Add any top-level managed and partner bookmark folders that are children of the root
-        // folder.
-        mTopLevelFolders.addAll(managedAndPartnerFolderIds);
+        mTopLevelFolders.addAll(BookmarkUtils.populateTopLevelFolders(mDelegate.getModel()));
     }
 
     @VisibleForTesting
@@ -521,8 +508,7 @@ class BookmarkItemsAdapter extends DragReorderableListAdapter<BookmarkListEntry>
     private int getBookmarkItemEndIndex() {
         int endIndex = mElements.size() - 1;
         BookmarkItem bookmarkItem = mElements.get(endIndex).getBookmarkItem();
-        assert bookmarkItem != null;
-        if (!bookmarkItem.isMovable()) {
+        if (bookmarkItem == null || !bookmarkItem.isMovable()) {
             endIndex--;
         }
         return endIndex;

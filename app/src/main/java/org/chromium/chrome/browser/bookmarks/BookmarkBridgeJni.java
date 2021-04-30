@@ -12,6 +12,7 @@ import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.components.bookmarks.BookmarkId;
 import org.chromium.content_public.browser.WebContents;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -115,7 +116,7 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
 
   @Override
   public void setBookmarkUrl(long nativeBookmarkBridge, BookmarkBridge caller, long id, int type,
-      String url) {
+      GURL url) {
     GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_setBookmarkUrl(nativeBookmarkBridge, caller, id, type, url);
   }
 
@@ -170,18 +171,24 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
 
   @Override
   public BookmarkId addBookmark(long nativeBookmarkBridge, BookmarkBridge caller, BookmarkId parent,
-      int index, String title, String url) {
+      int index, String title, GURL url) {
     return (BookmarkId)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_addBookmark(nativeBookmarkBridge, caller, parent, index, title, url);
   }
 
   @Override
   public BookmarkId addToReadingList(long nativeBookmarkBridge, BookmarkBridge caller, String title,
-      String url) {
+      GURL url) {
     return (BookmarkId)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_addToReadingList(nativeBookmarkBridge, caller, title, url);
   }
 
   @Override
-  public void setReadStatus(long nativeBookmarkBridge, BookmarkBridge caller, String url,
+  public BookmarkBridge.BookmarkItem getReadingListItem(long nativeBookmarkBridge,
+      BookmarkBridge caller, GURL url) {
+    return (BookmarkBridge.BookmarkItem)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_getReadingListItem(nativeBookmarkBridge, caller, url);
+  }
+
+  @Override
+  public void setReadStatus(long nativeBookmarkBridge, BookmarkBridge caller, GURL url,
       boolean read) {
     GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_setReadStatus(nativeBookmarkBridge, caller, url, read);
   }
@@ -243,6 +250,11 @@ final class BookmarkBridgeJni implements BookmarkBridge.Natives {
   public void reorderChildren(long nativeBookmarkBridge, BookmarkBridge caller, BookmarkId parent,
       long[] orderedNodes) {
     GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_reorderChildren(nativeBookmarkBridge, caller, parent, orderedNodes);
+  }
+
+  @Override
+  public boolean isBookmarked(long nativeBookmarkBridge, GURL url) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_bookmarks_BookmarkBridge_isBookmarked(nativeBookmarkBridge, url);
   }
 
   public static BookmarkBridge.Natives get() {

@@ -1,6 +1,7 @@
 package org.chromium.chrome.browser.browsing_data;
 
 import java.lang.Override;
+import java.lang.Runnable;
 import java.lang.String;
 import javax.annotation.Generated;
 import org.chromium.base.JniStaticTestMocker;
@@ -27,9 +28,15 @@ final class BrowsingDataBridgeJni implements BrowsingDataBridge.Natives {
 
   @Override
   public void clearBrowsingData(BrowsingDataBridge caller, Profile profile, int[] dataTypes,
-      int timePeriod, String[] blacklistDomains, int[] blacklistedDomainReasons,
+      int timePeriod, String[] excludedDomains, int[] excludedDomainReasons,
       String[] ignoredDomains, int[] ignoredDomainReasons) {
-    GEN_JNI.org_chromium_chrome_browser_browsing_1data_BrowsingDataBridge_clearBrowsingData(caller, profile, dataTypes, timePeriod, blacklistDomains, blacklistedDomainReasons, ignoredDomains, ignoredDomainReasons);
+    GEN_JNI.org_chromium_chrome_browser_browsing_1data_BrowsingDataBridge_clearBrowsingData(caller, profile, dataTypes, timePeriod, excludedDomains, excludedDomainReasons, ignoredDomains, ignoredDomainReasons);
+  }
+
+  @Override
+  public void clearSameSiteNoneData(BrowsingDataBridge caller, Profile profile, Runnable callback,
+      boolean clearStorage) {
+    GEN_JNI.org_chromium_chrome_browser_browsing_1data_BrowsingDataBridge_clearSameSiteNoneData(caller, profile, callback, clearStorage);
   }
 
   @Override

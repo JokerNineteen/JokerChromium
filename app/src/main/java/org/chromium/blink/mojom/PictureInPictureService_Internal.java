@@ -60,12 +60,14 @@ class PictureInPictureService_Internal {
 
         @Override
         public void startSession(
-int playerId, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, 
+int playerId, org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote, org.chromium.viz.mojom.SurfaceId surfaceId, org.chromium.gfx.mojom.Size naturalSize, boolean showPlayPauseButton, PictureInPictureSessionObserver observer, 
 StartSessionResponse callback) {
 
             PictureInPictureServiceStartSessionParams _message = new PictureInPictureServiceStartSessionParams();
 
             _message.playerId = playerId;
+
+            _message.playerRemote = playerRemote;
 
             _message.surfaceId = surfaceId;
 
@@ -157,7 +159,7 @@ StartSessionResponse callback) {
                         PictureInPictureServiceStartSessionParams data =
                                 PictureInPictureServiceStartSessionParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().startSession(data.playerId, data.surfaceId, data.naturalSize, data.showPlayPauseButton, data.observer, new PictureInPictureServiceStartSessionResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().startSession(data.playerId, data.playerRemote, data.surfaceId, data.naturalSize, data.showPlayPauseButton, data.observer, new PictureInPictureServiceStartSessionResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -176,10 +178,11 @@ StartSessionResponse callback) {
     
     static final class PictureInPictureServiceStartSessionParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 40;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+        private static final int STRUCT_SIZE = 48;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int playerId;
+        public org.chromium.mojo.bindings.AssociatedInterfaceNotSupported playerRemote;
         public org.chromium.viz.mojom.SurfaceId surfaceId;
         public org.chromium.gfx.mojom.Size naturalSize;
         public boolean showPlayPauseButton;
@@ -224,21 +227,25 @@ StartSessionResponse callback) {
                     }
                     {
                         
-                    result.showPlayPauseButton = decoder0.readBoolean(12, 0);
+                    result.playerRemote = decoder0.readAssociatedServiceInterfaceNotSupported(12, false);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                    result.showPlayPauseButton = decoder0.readBoolean(20, 0);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
                     result.surfaceId = org.chromium.viz.mojom.SurfaceId.decode(decoder1);
                     }
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                     result.naturalSize = org.chromium.gfx.mojom.Size.decode(decoder1);
                     }
                     {
                         
-                    result.observer = decoder0.readServiceInterface(32, false, PictureInPictureSessionObserver.MANAGER);
+                    result.observer = decoder0.readServiceInterface(40, false, PictureInPictureSessionObserver.MANAGER);
                     }
 
             } finally {
@@ -254,13 +261,15 @@ StartSessionResponse callback) {
             
             encoder0.encode(this.playerId, 8);
             
-            encoder0.encode(this.showPlayPauseButton, 12, 0);
+            encoder0.encode(this.playerRemote, 12, false);
             
-            encoder0.encode(this.surfaceId, 16, true);
+            encoder0.encode(this.showPlayPauseButton, 20, 0);
             
-            encoder0.encode(this.naturalSize, 24, false);
+            encoder0.encode(this.surfaceId, 24, true);
             
-            encoder0.encode(this.observer, 32, false, PictureInPictureSessionObserver.MANAGER);
+            encoder0.encode(this.naturalSize, 32, false);
+            
+            encoder0.encode(this.observer, 40, false, PictureInPictureSessionObserver.MANAGER);
         }
     }
 

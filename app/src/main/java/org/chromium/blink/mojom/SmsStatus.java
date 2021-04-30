@@ -21,7 +21,7 @@ public final class SmsStatus {
     public static final int CANCELLED = 2;
     public static final int ABORTED = 3;
     public static final int TIMEOUT = 4;
-    public static final int USER_CANCELLED = 5;
+    public static final int BACKEND_NOT_AVAILABLE = 5;
     public static final int MIN_VALUE = 0;
     public static final int MAX_VALUE = 5;
 
@@ -32,6 +32,10 @@ public final class SmsStatus {
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private SmsStatus() {}

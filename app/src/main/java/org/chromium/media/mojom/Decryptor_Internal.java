@@ -607,6 +607,7 @@ int streamType) {
                         
                     result.streamType = decoder0.readInt(8);
                         Decryptor.StreamType.validate(result.streamType);
+                        result.streamType = Decryptor.StreamType.toKnownValue(result.streamType);
                     }
                     {
                         
@@ -679,6 +680,7 @@ int streamType) {
                         
                     result.status = decoder0.readInt(8);
                         Decryptor.Status.validate(result.status);
+                        result.status = Decryptor.Status.toKnownValue(result.status);
                     }
                     {
                         
@@ -813,6 +815,7 @@ int streamType) {
                         
                     result.streamType = decoder0.readInt(8);
                         Decryptor.StreamType.validate(result.streamType);
+                        result.streamType = Decryptor.StreamType.toKnownValue(result.streamType);
                     }
 
             } finally {
@@ -1318,6 +1321,7 @@ int streamType) {
                         
                     result.status = decoder0.readInt(8);
                         Decryptor.Status.validate(result.status);
+                        result.status = Decryptor.Status.toKnownValue(result.status);
                     }
                     {
                         
@@ -1534,6 +1538,7 @@ int streamType) {
                         
                     result.status = decoder0.readInt(8);
                         Decryptor.Status.validate(result.status);
+                        result.status = Decryptor.Status.toKnownValue(result.status);
                     }
                     {
                         
@@ -1676,6 +1681,7 @@ int streamType) {
                         
                     result.streamType = decoder0.readInt(8);
                         Decryptor.StreamType.validate(result.streamType);
+                        result.streamType = Decryptor.StreamType.toKnownValue(result.streamType);
                     }
 
             } finally {
@@ -1740,6 +1746,7 @@ int streamType) {
                         
                     result.streamType = decoder0.readInt(8);
                         Decryptor.StreamType.validate(result.streamType);
+                        result.streamType = Decryptor.StreamType.toKnownValue(result.streamType);
                     }
 
             } finally {

@@ -16,10 +16,10 @@ package org.chromium.viz.mojom;
 
 public final class TransferableResource extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 64;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(64, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public int id;
+    public ResourceId id;
     public int format;
     public int filter;
     public org.chromium.gfx.mojom.Size size;
@@ -67,36 +67,18 @@ public final class TransferableResource extends org.chromium.mojo.bindings.Struc
             result = new TransferableResource(elementsOrVersion);
                 {
                     
-                result.id = decoder0.readInt(8);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                result.id = ResourceId.decode(decoder1);
                 }
                 {
                     
-                result.format = decoder0.readInt(12);
+                result.format = decoder0.readInt(16);
                     ResourceFormat.validate(result.format);
+                    result.format = ResourceFormat.toKnownValue(result.format);
                 }
                 {
                     
-                result.filter = decoder0.readInt(16);
-                }
-                {
-                    
-                result.readLockFencesEnabled = decoder0.readBoolean(20, 0);
-                }
-                {
-                    
-                result.isSoftware = decoder0.readBoolean(20, 1);
-                }
-                {
-                    
-                result.isOverlayCandidate = decoder0.readBoolean(20, 2);
-                }
-                {
-                    
-                result.isBackedBySurfaceTexture = decoder0.readBoolean(20, 3);
-                }
-                {
-                    
-                result.wantsPromotionHint = decoder0.readBoolean(20, 4);
+                result.filter = decoder0.readInt(20);
                 }
                 {
                     
@@ -110,12 +92,32 @@ public final class TransferableResource extends org.chromium.mojo.bindings.Struc
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                result.readLockFencesEnabled = decoder0.readBoolean(40, 0);
+                }
+                {
+                    
+                result.isSoftware = decoder0.readBoolean(40, 1);
+                }
+                {
+                    
+                result.isOverlayCandidate = decoder0.readBoolean(40, 2);
+                }
+                {
+                    
+                result.isBackedBySurfaceTexture = decoder0.readBoolean(40, 3);
+                }
+                {
+                    
+                result.wantsPromotionHint = decoder0.readBoolean(40, 4);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
                 result.colorSpace = org.chromium.gfx.mojom.ColorSpace.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
                 result.ycbcrInfo = org.chromium.gpu.mojom.VulkanYCbCrInfo.decode(decoder1);
                 }
 
@@ -130,28 +132,28 @@ public final class TransferableResource extends org.chromium.mojo.bindings.Struc
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.id, 8);
+        encoder0.encode(this.id, 8, false);
         
-        encoder0.encode(this.format, 12);
+        encoder0.encode(this.format, 16);
         
-        encoder0.encode(this.filter, 16);
-        
-        encoder0.encode(this.readLockFencesEnabled, 20, 0);
-        
-        encoder0.encode(this.isSoftware, 20, 1);
-        
-        encoder0.encode(this.isOverlayCandidate, 20, 2);
-        
-        encoder0.encode(this.isBackedBySurfaceTexture, 20, 3);
-        
-        encoder0.encode(this.wantsPromotionHint, 20, 4);
+        encoder0.encode(this.filter, 20);
         
         encoder0.encode(this.size, 24, false);
         
         encoder0.encode(this.mailboxHolder, 32, false);
         
-        encoder0.encode(this.colorSpace, 40, false);
+        encoder0.encode(this.readLockFencesEnabled, 40, 0);
         
-        encoder0.encode(this.ycbcrInfo, 48, true);
+        encoder0.encode(this.isSoftware, 40, 1);
+        
+        encoder0.encode(this.isOverlayCandidate, 40, 2);
+        
+        encoder0.encode(this.isBackedBySurfaceTexture, 40, 3);
+        
+        encoder0.encode(this.wantsPromotionHint, 40, 4);
+        
+        encoder0.encode(this.colorSpace, 48, false);
+        
+        encoder0.encode(this.ycbcrInfo, 56, true);
     }
 }

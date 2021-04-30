@@ -516,6 +516,7 @@ String host, int operation, org.chromium.network.mojom.NetworkIsolationKey netwo
                         
                     result.operation = decoder0.readInt(16);
                         HostResolveOperation.validate(result.operation);
+                        result.operation = HostResolveOperation.toKnownValue(result.operation);
                     }
                     {
                         

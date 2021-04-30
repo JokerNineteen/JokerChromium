@@ -84,7 +84,15 @@ ReadRtfResponse callback);
 int buffer, 
 ReadImageResponse callback);
 
-    interface ReadImageResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.skia.mojom.Bitmap> { }
+    interface ReadImageResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.skia.mojom.BitmapN32> { }
+
+
+
+    void readFiles(
+int buffer, 
+ReadFilesResponse callback);
+
+    interface ReadFilesResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<ClipboardFiles> { }
 
 
 
@@ -127,7 +135,7 @@ String url, org.chromium.mojo_base.mojom.String16 title);
 
 
     void writeImage(
-org.chromium.skia.mojom.Bitmap image);
+org.chromium.skia.mojom.BitmapN32 image);
 
 
 

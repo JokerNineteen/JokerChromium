@@ -16,6 +16,7 @@ package org.chromium.blink.mojom;
 public final class PointerType {
     private static final boolean IS_EXTENSIBLE = false;
 
+    public static final int POINTER_NONE = 1;
     public static final int POINTER_FIRST_TYPE = 1;
     public static final int POINTER_COARSE_TYPE = 2;
     public static final int POINTER_FINE_TYPE = 4;
@@ -35,6 +36,10 @@ public final class PointerType {
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private PointerType() {}

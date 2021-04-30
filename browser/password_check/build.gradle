@@ -41,4 +41,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":ui")
+    implementation project(":components:browser_ui_widget")
+    implementation project(":components:browser_ui_settings")
 }

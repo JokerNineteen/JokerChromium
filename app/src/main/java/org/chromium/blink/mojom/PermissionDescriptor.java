@@ -59,6 +59,7 @@ public final class PermissionDescriptor extends org.chromium.mojo.bindings.Struc
                     
                 result.name = decoder0.readInt(8);
                     PermissionName.validate(result.name);
+                    result.name = PermissionName.toKnownValue(result.name);
                 }
                 {
                     

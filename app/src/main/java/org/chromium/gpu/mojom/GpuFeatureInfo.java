@@ -64,8 +64,8 @@ public final class GpuFeatureInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.statusValues = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.statusValues.length; ++i0) {
-                        GpuFeatureStatus.validate(result.statusValues[i0]);
+                    for (int i1 = 0; i1 < result.statusValues.length; ++i1) {
+                        GpuFeatureStatus.validate(result.statusValues[i1]);
                     }
                 }
                 }
@@ -93,8 +93,8 @@ public final class GpuFeatureInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.supportedBufferFormatsForAllocationAndTexturing = decoder0.readInts(56, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.supportedBufferFormatsForAllocationAndTexturing.length; ++i0) {
-                        org.chromium.gfx.mojom.BufferFormat.validate(result.supportedBufferFormatsForAllocationAndTexturing[i0]);
+                    for (int i1 = 0; i1 < result.supportedBufferFormatsForAllocationAndTexturing.length; ++i1) {
+                        org.chromium.gfx.mojom.BufferFormat.validate(result.supportedBufferFormatsForAllocationAndTexturing[i1]);
                     }
                 }
                 }

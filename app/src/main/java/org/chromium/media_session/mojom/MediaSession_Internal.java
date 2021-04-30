@@ -1253,6 +1253,7 @@ String id) {
                         
                     result.suspendType = decoder0.readInt(8);
                         MediaSession.SuspendType.validate(result.suspendType);
+                        result.suspendType = MediaSession.SuspendType.toKnownValue(result.suspendType);
                     }
 
             } finally {
@@ -1317,6 +1318,7 @@ String id) {
                         
                     result.suspendType = decoder0.readInt(8);
                         MediaSession.SuspendType.validate(result.suspendType);
+                        result.suspendType = MediaSession.SuspendType.toKnownValue(result.suspendType);
                     }
 
             } finally {
@@ -1620,6 +1622,7 @@ String id) {
                         
                     result.suspendType = decoder0.readInt(8);
                         MediaSession.SuspendType.validate(result.suspendType);
+                        result.suspendType = MediaSession.SuspendType.toKnownValue(result.suspendType);
                     }
 
             } finally {

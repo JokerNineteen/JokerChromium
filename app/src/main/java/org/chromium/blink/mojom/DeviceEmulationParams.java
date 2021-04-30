@@ -68,6 +68,7 @@ public final class DeviceEmulationParams extends org.chromium.mojo.bindings.Stru
                     
                 result.screenType = decoder0.readInt(8);
                     EmulatedScreenType.validate(result.screenType);
+                    result.screenType = EmulatedScreenType.toKnownValue(result.screenType);
                 }
                 {
                     
@@ -105,6 +106,7 @@ public final class DeviceEmulationParams extends org.chromium.mojo.bindings.Stru
                     
                 result.screenOrientationType = decoder0.readInt(56);
                     ScreenOrientation.validate(result.screenOrientationType);
+                    result.screenOrientationType = ScreenOrientation.toKnownValue(result.screenOrientationType);
                 }
                 {
                     

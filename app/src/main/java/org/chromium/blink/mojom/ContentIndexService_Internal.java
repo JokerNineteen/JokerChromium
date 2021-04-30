@@ -114,7 +114,7 @@ CheckOfflineCapabilityResponse callback) {
 
         @Override
         public void add(
-long serviceWorkerRegistrationId, ContentDescription description, org.chromium.skia.mojom.Bitmap[] icon, org.chromium.url.mojom.Url launchUrl, 
+long serviceWorkerRegistrationId, ContentDescription description, org.chromium.skia.mojom.BitmapN32[] icon, org.chromium.url.mojom.Url launchUrl, 
 AddResponse callback) {
 
             ContentIndexServiceAddParams _message = new ContentIndexServiceAddParams();
@@ -384,6 +384,7 @@ GetDescriptionsResponse callback) {
                         
                     result.category = decoder0.readInt(8);
                         ContentCategory.validate(result.category);
+                        result.category = ContentCategory.toKnownValue(result.category);
                     }
 
             } finally {
@@ -747,7 +748,7 @@ GetDescriptionsResponse callback) {
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public long serviceWorkerRegistrationId;
         public ContentDescription description;
-        public org.chromium.skia.mojom.Bitmap[] icon;
+        public org.chromium.skia.mojom.BitmapN32[] icon;
         public org.chromium.url.mojom.Url launchUrl;
 
         private ContentIndexServiceAddParams(int version) {
@@ -797,11 +798,11 @@ GetDescriptionsResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
                     {
                         org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                        result.icon = new org.chromium.skia.mojom.Bitmap[si1.elementsOrVersion];
+                        result.icon = new org.chromium.skia.mojom.BitmapN32[si1.elementsOrVersion];
                         for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                             
                             org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                            result.icon[i1] = org.chromium.skia.mojom.Bitmap.decode(decoder2);
+                            result.icon[i1] = org.chromium.skia.mojom.BitmapN32.decode(decoder2);
                         }
                     }
                     }
@@ -887,6 +888,7 @@ GetDescriptionsResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ContentIndexError.validate(result.error);
+                        result.error = ContentIndexError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -1082,6 +1084,7 @@ GetDescriptionsResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ContentIndexError.validate(result.error);
+                        result.error = ContentIndexError.toKnownValue(result.error);
                     }
 
             } finally {
@@ -1271,6 +1274,7 @@ GetDescriptionsResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ContentIndexError.validate(result.error);
+                        result.error = ContentIndexError.toKnownValue(result.error);
                     }
                     {
                         

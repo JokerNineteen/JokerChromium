@@ -47,13 +47,15 @@ class NativeIoHost_Internal {
     };
 
 
-    private static final int OPEN_FILE_ORDINAL = 0;
+    private static final int REQUEST_CAPACITY_CHANGE_ORDINAL = 0;
 
-    private static final int DELETE_FILE_ORDINAL = 1;
+    private static final int OPEN_FILE_ORDINAL = 1;
 
-    private static final int GET_ALL_FILE_NAMES_ORDINAL = 2;
+    private static final int DELETE_FILE_ORDINAL = 2;
 
-    private static final int RENAME_FILE_ORDINAL = 3;
+    private static final int GET_ALL_FILE_NAMES_ORDINAL = 3;
+
+    private static final int RENAME_FILE_ORDINAL = 4;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements NativeIoHost.Proxy {
@@ -61,6 +63,28 @@ class NativeIoHost_Internal {
         Proxy(org.chromium.mojo.system.Core core,
               org.chromium.mojo.bindings.MessageReceiverWithResponder messageReceiver) {
             super(core, messageReceiver);
+        }
+
+
+        @Override
+        public void requestCapacityChange(
+long capacityDelta, 
+RequestCapacityChangeResponse callback) {
+
+            NativeIoHostRequestCapacityChangeParams _message = new NativeIoHostRequestCapacityChangeParams();
+
+            _message.capacityDelta = capacityDelta;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REQUEST_CAPACITY_CHANGE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new NativeIoHostRequestCapacityChangeResponseParamsForwardToCallback(callback));
+
         }
 
 
@@ -190,6 +214,8 @@ RenameFileResponse callback) {
 
 
 
+
+
                     default:
                         return false;
                 }
@@ -217,6 +243,21 @@ RenameFileResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), NativeIoHost_Internal.MANAGER, messageWithHeader, receiver);
+
+
+
+
+
+
+
+                    case REQUEST_CAPACITY_CHANGE_ORDINAL: {
+
+                        NativeIoHostRequestCapacityChangeParams data =
+                                NativeIoHostRequestCapacityChangeParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().requestCapacityChange(data.capacityDelta, new NativeIoHostRequestCapacityChangeResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
 
 
 
@@ -287,6 +328,193 @@ RenameFileResponse callback) {
             }
         }
     }
+
+
+    
+    static final class NativeIoHostRequestCapacityChangeParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public long capacityDelta;
+
+        private NativeIoHostRequestCapacityChangeParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NativeIoHostRequestCapacityChangeParams() {
+            this(0);
+        }
+
+        public static NativeIoHostRequestCapacityChangeParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NativeIoHostRequestCapacityChangeParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NativeIoHostRequestCapacityChangeParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NativeIoHostRequestCapacityChangeParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NativeIoHostRequestCapacityChangeParams(elementsOrVersion);
+                    {
+                        
+                    result.capacityDelta = decoder0.readLong(8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.capacityDelta, 8);
+        }
+    }
+
+
+
+    
+    static final class NativeIoHostRequestCapacityChangeResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public long grantedCapacityDelta;
+
+        private NativeIoHostRequestCapacityChangeResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public NativeIoHostRequestCapacityChangeResponseParams() {
+            this(0);
+        }
+
+        public static NativeIoHostRequestCapacityChangeResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static NativeIoHostRequestCapacityChangeResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static NativeIoHostRequestCapacityChangeResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            NativeIoHostRequestCapacityChangeResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new NativeIoHostRequestCapacityChangeResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.grantedCapacityDelta = decoder0.readLong(8);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.grantedCapacityDelta, 8);
+        }
+    }
+
+    static class NativeIoHostRequestCapacityChangeResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final NativeIoHost.RequestCapacityChangeResponse mCallback;
+
+        NativeIoHostRequestCapacityChangeResponseParamsForwardToCallback(NativeIoHost.RequestCapacityChangeResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(REQUEST_CAPACITY_CHANGE_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG)) {
+                    return false;
+                }
+
+                NativeIoHostRequestCapacityChangeResponseParams response = NativeIoHostRequestCapacityChangeResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.grantedCapacityDelta);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class NativeIoHostRequestCapacityChangeResponseParamsProxyToResponder implements NativeIoHost.RequestCapacityChangeResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        NativeIoHostRequestCapacityChangeResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Long grantedCapacityDelta) {
+            NativeIoHostRequestCapacityChangeResponseParams _response = new NativeIoHostRequestCapacityChangeResponseParams();
+
+            _response.grantedCapacityDelta = grantedCapacityDelta;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    REQUEST_CAPACITY_CHANGE_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG| org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_SYNC_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
 
 
     
@@ -362,10 +590,12 @@ RenameFileResponse callback) {
     
     static final class NativeIoHostOpenFileResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public org.chromium.mojo_base.mojom.File backingFile;
+        public long backingFileSize;
+        public NativeIoError openError;
 
         private NativeIoHostOpenFileResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -405,6 +635,15 @@ RenameFileResponse callback) {
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
                     result.backingFile = org.chromium.mojo_base.mojom.File.decode(decoder1);
                     }
+                    {
+                        
+                    result.backingFileSize = decoder0.readLong(16);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
+                    result.openError = NativeIoError.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -418,6 +657,10 @@ RenameFileResponse callback) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.backingFile, 8, true);
+            
+            encoder0.encode(this.backingFileSize, 16);
+            
+            encoder0.encode(this.openError, 24, false);
         }
     }
 
@@ -442,7 +685,7 @@ RenameFileResponse callback) {
 
                 NativeIoHostOpenFileResponseParams response = NativeIoHostOpenFileResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.backingFile);
+                mCallback.call(response.backingFile, response.backingFileSize, response.openError);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -466,10 +709,14 @@ RenameFileResponse callback) {
         }
 
         @Override
-        public void call(org.chromium.mojo_base.mojom.File backingFile) {
+        public void call(org.chromium.mojo_base.mojom.File backingFile, Long backingFileSize, NativeIoError openError) {
             NativeIoHostOpenFileResponseParams _response = new NativeIoHostOpenFileResponseParams();
 
             _response.backingFile = backingFile;
+
+            _response.backingFileSize = backingFileSize;
+
+            _response.openError = openError;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
@@ -550,10 +797,11 @@ RenameFileResponse callback) {
     
     static final class NativeIoHostDeleteFileResponseParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean success;
+        public NativeIoError deleteError;
+        public long grantedCapacityDelta;
 
         private NativeIoHostDeleteFileResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -590,7 +838,12 @@ RenameFileResponse callback) {
                 result = new NativeIoHostDeleteFileResponseParams(elementsOrVersion);
                     {
                         
-                    result.success = decoder0.readBoolean(8, 0);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.deleteError = NativeIoError.decode(decoder1);
+                    }
+                    {
+                        
+                    result.grantedCapacityDelta = decoder0.readLong(16);
                     }
 
             } finally {
@@ -604,7 +857,9 @@ RenameFileResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.success, 8, 0);
+            encoder0.encode(this.deleteError, 8, false);
+            
+            encoder0.encode(this.grantedCapacityDelta, 16);
         }
     }
 
@@ -629,7 +884,7 @@ RenameFileResponse callback) {
 
                 NativeIoHostDeleteFileResponseParams response = NativeIoHostDeleteFileResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.success);
+                mCallback.call(response.deleteError, response.grantedCapacityDelta);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -653,10 +908,12 @@ RenameFileResponse callback) {
         }
 
         @Override
-        public void call(Boolean success) {
+        public void call(NativeIoError deleteError, Long grantedCapacityDelta) {
             NativeIoHostDeleteFileResponseParams _response = new NativeIoHostDeleteFileResponseParams();
 
-            _response.success = success;
+            _response.deleteError = deleteError;
+
+            _response.grantedCapacityDelta = grantedCapacityDelta;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(
@@ -952,7 +1209,7 @@ RenameFileResponse callback) {
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public boolean success;
+        public NativeIoError renameError;
 
         private NativeIoHostRenameFileResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -989,7 +1246,8 @@ RenameFileResponse callback) {
                 result = new NativeIoHostRenameFileResponseParams(elementsOrVersion);
                     {
                         
-                    result.success = decoder0.readBoolean(8, 0);
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.renameError = NativeIoError.decode(decoder1);
                     }
 
             } finally {
@@ -1003,7 +1261,7 @@ RenameFileResponse callback) {
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
-            encoder0.encode(this.success, 8, 0);
+            encoder0.encode(this.renameError, 8, false);
         }
     }
 
@@ -1028,7 +1286,7 @@ RenameFileResponse callback) {
 
                 NativeIoHostRenameFileResponseParams response = NativeIoHostRenameFileResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.success);
+                mCallback.call(response.renameError);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -1052,10 +1310,10 @@ RenameFileResponse callback) {
         }
 
         @Override
-        public void call(Boolean success) {
+        public void call(NativeIoError renameError) {
             NativeIoHostRenameFileResponseParams _response = new NativeIoHostRenameFileResponseParams();
 
-            _response.success = success;
+            _response.renameError = renameError;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(

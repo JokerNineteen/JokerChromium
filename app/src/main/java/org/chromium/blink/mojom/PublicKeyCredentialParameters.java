@@ -59,6 +59,7 @@ public final class PublicKeyCredentialParameters extends org.chromium.mojo.bindi
                     
                 result.type = decoder0.readInt(8);
                     PublicKeyCredentialType.validate(result.type);
+                    result.type = PublicKeyCredentialType.toKnownValue(result.type);
                 }
                 {
                     

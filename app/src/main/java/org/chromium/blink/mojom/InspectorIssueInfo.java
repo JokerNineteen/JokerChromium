@@ -59,6 +59,7 @@ public final class InspectorIssueInfo extends org.chromium.mojo.bindings.Struct 
                     
                 result.code = decoder0.readInt(8);
                     InspectorIssueCode.validate(result.code);
+                    result.code = InspectorIssueCode.toKnownValue(result.code);
                 }
                 {
                     

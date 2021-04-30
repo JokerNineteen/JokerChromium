@@ -569,6 +569,7 @@ int type, IpEndPoint localAddress, P2pPortRange portRange, P2pHostAndIpEndPoint 
                         
                     result.type = decoder0.readInt(8);
                         P2pSocketType.validate(result.type);
+                        result.type = P2pSocketType.toKnownValue(result.type);
                     }
                     {
                         

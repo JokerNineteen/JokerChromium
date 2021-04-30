@@ -212,6 +212,7 @@ int type, org.chromium.mojo_base.mojom.TimeDelta httpRtt, org.chromium.mojo_base
                         
                     result.type = decoder0.readInt(8);
                         EffectiveConnectionType.validate(result.type);
+                        result.type = EffectiveConnectionType.toKnownValue(result.type);
                     }
                     {
                         

@@ -66,6 +66,7 @@ public final class AudioFocusRequestState extends org.chromium.mojo.bindings.Str
                     
                 result.audioFocusType = decoder0.readInt(16);
                     AudioFocusType.validate(result.audioFocusType);
+                    result.audioFocusType = AudioFocusType.toKnownValue(result.audioFocusType);
                 }
             if (elementsOrVersion >= 2) {
                 {

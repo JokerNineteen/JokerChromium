@@ -94,16 +94,19 @@ public final class Display extends org.chromium.mojo.bindings.Struct {
                     
                 result.rotation = decoder0.readInt(44);
                     Rotation.validate(result.rotation);
+                    result.rotation = Rotation.toKnownValue(result.rotation);
                 }
                 {
                     
                 result.touchSupport = decoder0.readInt(48);
                     TouchSupport.validate(result.touchSupport);
+                    result.touchSupport = TouchSupport.toKnownValue(result.touchSupport);
                 }
                 {
                     
                 result.accelerometerSupport = decoder0.readInt(52);
                     AccelerometerSupport.validate(result.accelerometerSupport);
+                    result.accelerometerSupport = AccelerometerSupport.toKnownValue(result.accelerometerSupport);
                 }
                 {
                     

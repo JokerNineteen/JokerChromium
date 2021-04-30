@@ -16,8 +16,8 @@ package org.chromium.network.mojom;
 
 public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 80;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(80, 0)};
+    private static final int STRUCT_SIZE = 88;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(88, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public String name;
     public String value;
@@ -32,6 +32,7 @@ public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
     public int priority;
     public int sourceScheme;
     public boolean sameParty;
+    public int sourcePort;
 
     private CanonicalCookie(int version) {
         super(STRUCT_SIZE, version);
@@ -41,6 +42,7 @@ public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
         this.priority = (int) CookiePriority.MEDIUM;
         this.sourceScheme = (int) CookieSourceScheme.UNSET;
         this.sameParty = (boolean) false;
+        this.sourcePort = (int) -1;
     }
 
     public CanonicalCookie() {
@@ -119,16 +121,23 @@ public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
                     
                 result.siteRestrictions = decoder0.readInt(68);
                     CookieSameSite.validate(result.siteRestrictions);
+                    result.siteRestrictions = CookieSameSite.toKnownValue(result.siteRestrictions);
                 }
                 {
                     
                 result.priority = decoder0.readInt(72);
                     CookiePriority.validate(result.priority);
+                    result.priority = CookiePriority.toKnownValue(result.priority);
                 }
                 {
                     
                 result.sourceScheme = decoder0.readInt(76);
                     CookieSourceScheme.validate(result.sourceScheme);
+                    result.sourceScheme = CookieSourceScheme.toKnownValue(result.sourceScheme);
+                }
+                {
+                    
+                result.sourcePort = decoder0.readInt(80);
                 }
 
         } finally {
@@ -167,5 +176,7 @@ public final class CanonicalCookie extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.priority, 72);
         
         encoder0.encode(this.sourceScheme, 76);
+        
+        encoder0.encode(this.sourcePort, 80);
     }
 }

@@ -58,8 +58,8 @@ public final class SupportsLoadingMode extends org.chromium.mojo.bindings.Struct
                     
                 result.supportedModes = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.supportedModes.length; ++i0) {
-                        LoadingMode.validate(result.supportedModes[i0]);
+                    for (int i1 = 0; i1 < result.supportedModes.length; ++i1) {
+                        LoadingMode.validate(result.supportedModes[i1]);
                     }
                 }
                 }

@@ -14,114 +14,134 @@
 package org.chromium.network.mojom;
 
 
-public final class DataElement extends org.chromium.mojo.bindings.Struct {
+public final class DataElement extends org.chromium.mojo.bindings.Union {
 
-    private static final int STRUCT_SIZE = 80;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(80, 0)};
-    private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public int type;
-    public org.chromium.mojo_base.mojom.BigBuffer buf;
-    public org.chromium.mojo_base.mojom.FilePath path;
-    public DataPipeGetter dataPipeGetter;
-    public ChunkedDataPipeGetter chunkedDataPipeGetter;
-    public long offset;
-    public long length;
-    public org.chromium.mojo_base.mojom.Time expectedModificationTime;
+    public static final class Tag {
+        public static final int Bytes = 0;
+        public static final int File = 1;
+        public static final int DataPipe = 2;
+        public static final int ChunkedDataPipe = 3;
+    };
+    private DataElementBytes mBytes;
+    private DataElementFile mFile;
+    private DataElementDataPipe mDataPipe;
+    private DataElementChunkedDataPipe mChunkedDataPipe;
 
-    private DataElement(int version) {
-        super(STRUCT_SIZE, version);
+    public void setBytes(DataElementBytes bytes) {
+        this.mTag = Tag.Bytes;
+        this.mBytes = bytes;
     }
 
-    public DataElement() {
-        this(0);
+    public DataElementBytes getBytes() {
+        assert this.mTag == Tag.Bytes;
+        return this.mBytes;
+    }
+
+    public void setFile(DataElementFile file) {
+        this.mTag = Tag.File;
+        this.mFile = file;
+    }
+
+    public DataElementFile getFile() {
+        assert this.mTag == Tag.File;
+        return this.mFile;
+    }
+
+    public void setDataPipe(DataElementDataPipe dataPipe) {
+        this.mTag = Tag.DataPipe;
+        this.mDataPipe = dataPipe;
+    }
+
+    public DataElementDataPipe getDataPipe() {
+        assert this.mTag == Tag.DataPipe;
+        return this.mDataPipe;
+    }
+
+    public void setChunkedDataPipe(DataElementChunkedDataPipe chunkedDataPipe) {
+        this.mTag = Tag.ChunkedDataPipe;
+        this.mChunkedDataPipe = chunkedDataPipe;
+    }
+
+    public DataElementChunkedDataPipe getChunkedDataPipe() {
+        assert this.mTag == Tag.ChunkedDataPipe;
+        return this.mChunkedDataPipe;
+    }
+
+
+    @Override
+    protected final void encode(org.chromium.mojo.bindings.Encoder encoder0, int offset) {
+        encoder0.encode(org.chromium.mojo.bindings.BindingsHelper.UNION_SIZE, offset);
+        encoder0.encode(this.mTag, offset + 4);
+        switch (mTag) {
+            case Tag.Bytes: {
+                
+                encoder0.encode(this.mBytes, offset + 8, false);
+                break;
+            }
+            case Tag.File: {
+                
+                encoder0.encode(this.mFile, offset + 8, false);
+                break;
+            }
+            case Tag.DataPipe: {
+                
+                encoder0.encode(this.mDataPipe, offset + 8, false);
+                break;
+            }
+            case Tag.ChunkedDataPipe: {
+                
+                encoder0.encode(this.mChunkedDataPipe, offset + 8, false);
+                break;
+            }
+            default: {
+                break;
+            }
+        }
     }
 
     public static DataElement deserialize(org.chromium.mojo.bindings.Message message) {
-        return decode(new org.chromium.mojo.bindings.Decoder(message));
+        return decode(new org.chromium.mojo.bindings.Decoder(message).decoderForSerializedUnion(), 0);
     }
 
-    /**
-     * Similar to the method above, but deserializes from a |ByteBuffer| instance.
-     *
-     * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
-     */
-    public static DataElement deserialize(java.nio.ByteBuffer data) {
-        return deserialize(new org.chromium.mojo.bindings.Message(
-                data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
-    }
-
-    @SuppressWarnings("unchecked")
-    public static DataElement decode(org.chromium.mojo.bindings.Decoder decoder0) {
-        if (decoder0 == null) {
+    public static final DataElement decode(org.chromium.mojo.bindings.Decoder decoder0, int offset) {
+        org.chromium.mojo.bindings.DataHeader dataHeader = decoder0.readDataHeaderForUnion(offset);
+        if (dataHeader.size == 0) {
             return null;
         }
-        decoder0.increaseStackDepth();
-        DataElement result;
-        try {
-            org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
-            final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-            result = new DataElement(elementsOrVersion);
-                {
-                    
-                result.type = decoder0.readInt(8);
-                    DataElementType.validate(result.type);
-                }
-                {
-                    
-                result.buf = org.chromium.mojo_base.mojom.BigBuffer.decode(decoder0, 16);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
-                result.path = org.chromium.mojo_base.mojom.FilePath.decode(decoder1);
-                }
-                {
-                    
-                result.dataPipeGetter = decoder0.readServiceInterface(40, true, DataPipeGetter.MANAGER);
-                }
-                {
-                    
-                result.chunkedDataPipeGetter = decoder0.readServiceInterface(48, true, ChunkedDataPipeGetter.MANAGER);
-                }
-                {
-                    
-                result.offset = decoder0.readLong(56);
-                }
-                {
-                    
-                result.length = decoder0.readLong(64);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, false);
-                result.expectedModificationTime = org.chromium.mojo_base.mojom.Time.decode(decoder1);
-                }
-
-        } finally {
-            decoder0.decreaseStackDepth();
+        DataElement result = new DataElement();
+        switch (dataHeader.elementsOrVersion) {
+            case Tag.Bytes: {
+                
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                result.mBytes = DataElementBytes.decode(decoder1);
+                result.mTag = Tag.Bytes;
+                break;
+            }
+            case Tag.File: {
+                
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                result.mFile = DataElementFile.decode(decoder1);
+                result.mTag = Tag.File;
+                break;
+            }
+            case Tag.DataPipe: {
+                
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                result.mDataPipe = DataElementDataPipe.decode(decoder1);
+                result.mTag = Tag.DataPipe;
+                break;
+            }
+            case Tag.ChunkedDataPipe: {
+                
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
+                result.mChunkedDataPipe = DataElementChunkedDataPipe.decode(decoder1);
+                result.mTag = Tag.ChunkedDataPipe;
+                break;
+            }
+            default: {
+                break;
+            }
         }
         return result;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-        org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
-        
-        encoder0.encode(this.type, 8);
-        
-        encoder0.encode(this.buf, 16, false);
-        
-        encoder0.encode(this.path, 32, false);
-        
-        encoder0.encode(this.dataPipeGetter, 40, true, DataPipeGetter.MANAGER);
-        
-        encoder0.encode(this.chunkedDataPipeGetter, 48, true, ChunkedDataPipeGetter.MANAGER);
-        
-        encoder0.encode(this.offset, 56);
-        
-        encoder0.encode(this.length, 64);
-        
-        encoder0.encode(this.expectedModificationTime, 72, false);
     }
 }

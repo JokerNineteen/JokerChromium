@@ -203,6 +203,7 @@ int state) {
                         
                     result.state = decoder0.readInt(8);
                         ServiceWorkerState.validate(result.state);
+                        result.state = ServiceWorkerState.toKnownValue(result.state);
                     }
 
             } finally {

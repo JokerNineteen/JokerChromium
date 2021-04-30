@@ -71,5 +71,9 @@ public final class ResourceType {
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
     }
 
+    public static int toKnownValue(int value) {
+      return value;
+    }
+
     private ResourceType() {}
 }

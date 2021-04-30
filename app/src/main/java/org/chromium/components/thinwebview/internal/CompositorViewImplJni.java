@@ -26,8 +26,8 @@ final class CompositorViewImplJni implements CompositorViewImpl.Natives {
   };
 
   @Override
-  public long init(CompositorViewImpl caller, WindowAndroid windowAndroid) {
-    return (long)GEN_JNI.org_chromium_components_thinwebview_internal_CompositorViewImpl_init(caller, windowAndroid);
+  public long init(CompositorViewImpl caller, WindowAndroid windowAndroid, int backgroundColor) {
+    return (long)GEN_JNI.org_chromium_components_thinwebview_internal_CompositorViewImpl_init(caller, windowAndroid, backgroundColor);
   }
 
   @Override

@@ -10,6 +10,7 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.components.browser_ui.settings.SettingsLauncher;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -30,6 +31,12 @@ final class PasswordUIViewJni implements PasswordUIView.Natives {
   @Override
   public long init(PasswordUIView caller) {
     return (long)GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_init(caller);
+  }
+
+  @Override
+  public void insertPasswordEntryForTesting(long nativePasswordUIViewAndroid, String origin,
+      String username, String password) {
+    GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_insertPasswordEntryForTesting(nativePasswordUIViewAndroid, origin, username, password);
   }
 
   @Override
@@ -83,9 +90,9 @@ final class PasswordUIViewJni implements PasswordUIView.Natives {
   }
 
   @Override
-  public void handleShowPasswordEntryEditingView(long nativePasswordUIViewAndroid,
-      PasswordUIView caller, Context context, int index) {
-    GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_handleShowPasswordEntryEditingView(nativePasswordUIViewAndroid, caller, context, index);
+  public void handleShowPasswordEntryEditingView(long nativePasswordUIViewAndroid, Context context,
+      SettingsLauncher launcher, int index, PasswordUIView caller) {
+    GEN_JNI.org_chromium_chrome_browser_password_1manager_settings_PasswordUIView_handleShowPasswordEntryEditingView(nativePasswordUIViewAndroid, context, launcher, index, caller);
   }
 
   public static PasswordUIView.Natives get() {

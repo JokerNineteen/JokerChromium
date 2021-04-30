@@ -10,7 +10,7 @@ import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class OptimizationGuideBridgeJni implements OptimizationGuideBridge.Natives {
+public final class OptimizationGuideBridgeJni implements OptimizationGuideBridge.Natives {
   private static OptimizationGuideBridge.Natives testInstance;
 
   public static final JniStaticTestMocker<OptimizationGuideBridge.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.optimization_guide.OptimizationGuideBridge.Natives>() {

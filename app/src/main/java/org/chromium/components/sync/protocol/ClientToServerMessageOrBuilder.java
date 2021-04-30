@@ -43,12 +43,12 @@ public interface ClientToServerMessageOrBuilder extends
       getShareBytes();
 
   /**
-   * <code>optional int32 protocol_version = 2 [default = 52];</code>
+   * <code>optional int32 protocol_version = 2 [default = 90];</code>
    * @return Whether the protocolVersion field is set.
    */
   boolean hasProtocolVersion();
   /**
-   * <code>optional int32 protocol_version = 2 [default = 52];</code>
+   * <code>optional int32 protocol_version = 2 [default = 90];</code>
    * @return The protocolVersion.
    */
   int getProtocolVersion();

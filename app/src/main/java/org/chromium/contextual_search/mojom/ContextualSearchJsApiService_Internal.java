@@ -538,6 +538,7 @@ int desiredPosition) {
                         
                     result.desiredPosition = decoder0.readInt(8);
                         OverlayPosition.validate(result.desiredPosition);
+                        result.desiredPosition = OverlayPosition.toKnownValue(result.desiredPosition);
                     }
 
             } finally {

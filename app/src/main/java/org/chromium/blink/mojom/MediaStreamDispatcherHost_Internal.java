@@ -527,6 +527,7 @@ String label) {
                         
                     result.result = decoder0.readInt(8);
                         MediaStreamRequestResult.validate(result.result);
+                        result.result = MediaStreamRequestResult.toKnownValue(result.result);
                     }
                     {
                         
@@ -858,6 +859,7 @@ String label) {
                         
                     result.type = decoder0.readInt(12);
                         MediaStreamType.validate(result.type);
+                        result.type = MediaStreamType.toKnownValue(result.type);
                     }
                     {
                         
@@ -1143,6 +1145,7 @@ String label) {
                         
                     result.type = decoder0.readInt(16);
                         MediaStreamType.validate(result.type);
+                        result.type = MediaStreamType.toKnownValue(result.type);
                     }
                     {
                         

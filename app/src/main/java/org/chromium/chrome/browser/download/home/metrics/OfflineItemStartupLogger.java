@@ -46,7 +46,7 @@ public class OfflineItemStartupLogger implements OfflineItemFilterObserver {
         mSource.removeObserver(this);
 
         // Post to make sure the source properly adds the items.
-        mHandler.post(this ::grabMetrics);
+        mHandler.post(this::grabMetrics);
     }
 
     private void grabMetrics() {

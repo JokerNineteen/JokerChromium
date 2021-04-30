@@ -133,6 +133,11 @@ final class CompositorViewJni implements CompositorView.Natives {
     GEN_JNI.org_chromium_chrome_browser_compositor_CompositorView_onTabChanged(nativeCompositorView, caller);
   }
 
+  @Override
+  public void preserveChildSurfaceControls(long nativeCompositorView, CompositorView caller) {
+    GEN_JNI.org_chromium_chrome_browser_compositor_CompositorView_preserveChildSurfaceControls(nativeCompositorView, caller);
+  }
+
   public static CompositorView.Natives get() {
     if (GEN_JNI.TESTING_ENABLED) {
       if (testInstance != null) {

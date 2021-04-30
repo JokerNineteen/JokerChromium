@@ -25,7 +25,7 @@ public interface PrerenderProcessor extends org.chromium.mojo.bindings.Interface
 
 
     void start(
-PrerenderAttributes prerenderAttribute, PrerenderProcessorClient prerenderProcessorClient);
+PrerenderAttributes prerenderAttribute);
 
 
 

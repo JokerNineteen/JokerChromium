@@ -196,7 +196,7 @@ UpdateTargetUrlResponse callback) {
 
         @Override
         public void showCreatedWindow(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrameToken, int disposition, org.chromium.gfx.mojom.Rect rect, boolean openedByUserGesture, 
+LocalFrameToken openerFrameToken, int disposition, org.chromium.gfx.mojom.Rect rect, boolean openedByUserGesture, 
 ShowCreatedWindowResponse callback) {
 
             LocalMainFrameHostShowCreatedWindowParams _message = new LocalMainFrameHostShowCreatedWindowParams();
@@ -1000,7 +1000,7 @@ SetWindowRectResponse callback) {
         private static final int STRUCT_SIZE = 32;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.UnguessableToken openerFrameToken;
+        public LocalFrameToken openerFrameToken;
         public int disposition;
         public org.chromium.gfx.mojom.Rect rect;
         public boolean openedByUserGesture;
@@ -1041,12 +1041,13 @@ SetWindowRectResponse callback) {
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
-                    result.openerFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.openerFrameToken = LocalFrameToken.decode(decoder1);
                     }
                     {
                         
                     result.disposition = decoder0.readInt(16);
                         org.chromium.ui.mojom.WindowOpenDisposition.validate(result.disposition);
+                        result.disposition = org.chromium.ui.mojom.WindowOpenDisposition.toKnownValue(result.disposition);
                     }
                     {
                         

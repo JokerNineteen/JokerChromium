@@ -294,6 +294,7 @@ RequestDeviceAuthorizationResponse callback) {
                         
                     result.state = decoder0.readInt(8);
                         org.chromium.media.mojom.OutputDeviceStatus.validate(result.state);
+                        result.state = org.chromium.media.mojom.OutputDeviceStatus.toKnownValue(result.state);
                     }
                     {
                         

@@ -318,6 +318,7 @@ ShareResponse callback) {
                         
                     result.error = decoder0.readInt(8);
                         ShareError.validate(result.error);
+                        result.error = ShareError.toKnownValue(result.error);
                     }
 
             } finally {

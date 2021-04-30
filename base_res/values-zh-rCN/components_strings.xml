@@ -17,11 +17,13 @@
 <string name="autofill_card_unmask_new_card_link">"更新信用卡"</string>
 <string name="autofill_wallet_management_link_text">"编辑"</string>
 <string name="autofill_from_google_account_long">"来自 Google Pay"</string>
+<string name="autofill_offers_reminder_description_text">"结帐时使用 %1$s 付款。"</string>
+<string name="autofill_offers_reminder_deep_link_text">"查看详情"</string>
 <string name="autofill_clear_local_copy_button">"清除副本"</string>
 <string name="autofill_cc_amex">"American Express"</string>
 <string name="autofill_cc_diners">"Diners Club"</string>
 <string name="autofill_cc_discover">"Discover"</string>
-<string name="autofill_cc_google_issued">"Google"</string>
+<string name="autofill_cc_google_issued">"Plex"</string>
 <string name="autofill_cc_jcb">"JCB"</string>
 <string name="autofill_cc_mastercard">"Mastercard"</string>
 <string name="autofill_cc_mir">"Mir"</string>
@@ -55,7 +57,8 @@
 <string name="sad_tab_reload_restart_device">"重启您的设备"</string>
 <string name="sad_tab_reload_learn_more">"了解详情"</string>
 <string name="new_tab_otr_title">"您已进入无痕模式"</string>
-<string name="new_tab_otr_subtitle">"现在，您便可进行私密浏览了。共用此设备的其他用户将不会看到您的活动，但您下载的内容和添加的书签将会保存在此设备上。"</string>
+<string name="new_tab_otr_subtitle">"现在，您便可进行私密浏览了。共用此设备的其他用户将不会看到您的活动，但您下载的内容和添加的书签仍会保存在设备上。"</string>
+<string name="new_tab_otr_subtitle_with_reading_list">"现在，您便可进行私密浏览了。与您共用此设备的其他用户将不会看到您的活动，但您的下载内容、书签和阅读清单项将会保存在此设备上。"</string>
 <string name="new_tab_otr_not_saved">"Chrome &lt;em&gt;不会保存&lt;/em&gt;以下信息：
         &lt;ul&gt;
           &lt;li&gt;您的浏览记录
@@ -71,7 +74,6 @@
 <string name="new_tab_otr_cookie_controls_controlled_tooltip_text">"您可在“Cookie”设置中控制此设置。"</string>
 <string name="new_tab_otr_third_party_cookie">"阻止第三方 Cookie"</string>
 <string name="new_tab_otr_third_party_cookie_sublabel">"开启此设置后，网站无法使用 Cookie 来跟踪您在网上的活动。某些网站上的功能可能会无法正常运作。"</string>
-<string name="ntp_title_no_suggestions">"暂无新内容"</string>
 <string name="ntp_article_suggestions_section_header">"为您推荐的文章"</string>
 <string name="ntp_article_suggestions_section_header_branded">"Google 提供的建议"</string>
 <string name="ntp_article_suggestions_section_empty">"为您推荐的文章会显示在此处"</string>

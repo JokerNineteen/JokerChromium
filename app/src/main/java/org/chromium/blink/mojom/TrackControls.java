@@ -64,6 +64,7 @@ public final class TrackControls extends org.chromium.mojo.bindings.Struct {
                     
                 result.streamType = decoder0.readInt(12);
                     MediaStreamType.validate(result.streamType);
+                    result.streamType = MediaStreamType.toKnownValue(result.streamType);
                 }
                 {
                     

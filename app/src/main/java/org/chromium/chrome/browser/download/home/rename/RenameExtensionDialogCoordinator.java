@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.widget.ScrollView;
 
 import org.chromium.base.Callback;
-import org.chromium.chrome.browser.download.R;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.ui.modaldialog.DialogDismissalCause;
 import org.chromium.ui.modaldialog.ModalDialogManager;
 import org.chromium.ui.modaldialog.ModalDialogProperties;

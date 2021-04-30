@@ -13,6 +13,8 @@ import org.chromium.chrome.browser.image_fetcher.ImageFetcher;
 import org.chromium.chrome.browser.video_tutorials.Tutorial;
 import org.chromium.chrome.browser.video_tutorials.VideoTutorialService;
 import org.chromium.chrome.browser.video_tutorials.VideoTutorialUtils;
+import org.chromium.chrome.browser.video_tutorials.metrics.VideoTutorialMetrics;
+import org.chromium.chrome.browser.video_tutorials.metrics.VideoTutorialMetrics.UserAction;
 import org.chromium.ui.modelutil.MVCListAdapter;
 import org.chromium.ui.modelutil.MVCListAdapter.ListItem;
 import org.chromium.ui.modelutil.PropertyModel;
@@ -60,8 +62,7 @@ public class TutorialListMediator {
                         .with(TutorialCardProperties.TITLE, tutorial.title)
                         .with(TutorialCardProperties.VIDEO_LENGTH,
                                 VideoTutorialUtils.getVideoLengthString(tutorial.videoLength))
-                        .with(TutorialCardProperties.CLICK_CALLBACK,
-                                () -> mClickCallback.onResult(tutorial));
+                        .with(TutorialCardProperties.CLICK_CALLBACK, () -> onCardClicked(tutorial));
 
         builder.with(TutorialCardProperties.VISUALS_PROVIDER, (consumer, widthPx, heightPx) -> {
             fetchImage(consumer, widthPx, heightPx, tutorial);
@@ -70,9 +71,14 @@ public class TutorialListMediator {
         return builder.build();
     }
 
+    private void onCardClicked(Tutorial tutorial) {
+        VideoTutorialMetrics.recordUserAction(tutorial.featureType, UserAction.PLAYED_FROM_RECAP);
+        mClickCallback.onResult(tutorial);
+    }
+
     private void fetchImage(
             Callback<Drawable> consumer, int widthPx, int heightPx, Tutorial tutorial) {
-        ImageFetcher.Params params = ImageFetcher.Params.create(tutorial.posterUrl,
+        ImageFetcher.Params params = ImageFetcher.Params.create(tutorial.thumbnailUrl,
                 ImageFetcher.VIDEO_TUTORIALS_LIST_UMA_CLIENT_NAME, widthPx, heightPx);
         mImageFetcher.fetchImage(params, bitmap -> {
             Drawable drawable = new BitmapDrawable(mContext.getResources(), bitmap);

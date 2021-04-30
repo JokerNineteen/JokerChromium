@@ -86,6 +86,7 @@ public final class SensorInitParams extends org.chromium.mojo.bindings.Struct {
                     
                 result.mode = decoder0.readInt(32);
                     ReportingMode.validate(result.mode);
+                    result.mode = ReportingMode.toKnownValue(result.mode);
                 }
                 {
                     

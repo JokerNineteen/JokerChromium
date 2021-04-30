@@ -206,6 +206,7 @@ int action, MediaSessionActionDetails details) {
                         
                     result.action = decoder0.readInt(8);
                         org.chromium.media_session.mojom.MediaSessionAction.validate(result.action);
+                        result.action = org.chromium.media_session.mojom.MediaSessionAction.toKnownValue(result.action);
                     }
                     {
                         

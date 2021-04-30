@@ -360,6 +360,76 @@ public  final class BookmarkModelMetadata extends
     lastSyncTime_ = 0L;
   }
 
+  public static final int BOOKMARK_CLIENT_TAGS_IN_PROTOCOL_ENABLED_FIELD_NUMBER = 5;
+  private boolean bookmarkClientTagsInProtocolEnabled_;
+  /**
+   * <pre>
+   * Represents whether bookmark commits sent to the server (most importantly
+   * creations) populate client tags. This is a layer on top of the usual
+   * FeatureList to avoid risky transitions during startup, to guard against
+   * in-flight commits.
+   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+   * default and enforced to true upon startup.
+   * </pre>
+   *
+   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+   * @return Whether the bookmarkClientTagsInProtocolEnabled field is set.
+   */
+  @java.lang.Override
+  public boolean hasBookmarkClientTagsInProtocolEnabled() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * Represents whether bookmark commits sent to the server (most importantly
+   * creations) populate client tags. This is a layer on top of the usual
+   * FeatureList to avoid risky transitions during startup, to guard against
+   * in-flight commits.
+   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+   * default and enforced to true upon startup.
+   * </pre>
+   *
+   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+   * @return The bookmarkClientTagsInProtocolEnabled.
+   */
+  @java.lang.Override
+  public boolean getBookmarkClientTagsInProtocolEnabled() {
+    return bookmarkClientTagsInProtocolEnabled_;
+  }
+  /**
+   * <pre>
+   * Represents whether bookmark commits sent to the server (most importantly
+   * creations) populate client tags. This is a layer on top of the usual
+   * FeatureList to avoid risky transitions during startup, to guard against
+   * in-flight commits.
+   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+   * default and enforced to true upon startup.
+   * </pre>
+   *
+   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+   * @param value The bookmarkClientTagsInProtocolEnabled to set.
+   */
+  private void setBookmarkClientTagsInProtocolEnabled(boolean value) {
+    bitField0_ |= 0x00000008;
+    bookmarkClientTagsInProtocolEnabled_ = value;
+  }
+  /**
+   * <pre>
+   * Represents whether bookmark commits sent to the server (most importantly
+   * creations) populate client tags. This is a layer on top of the usual
+   * FeatureList to avoid risky transitions during startup, to guard against
+   * in-flight commits.
+   * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+   * default and enforced to true upon startup.
+   * </pre>
+   *
+   * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+   */
+  private void clearBookmarkClientTagsInProtocolEnabled() {
+    bitField0_ = (bitField0_ & ~0x00000008);
+    bookmarkClientTagsInProtocolEnabled_ = false;
+  }
+
   public static org.chromium.components.sync.protocol.BookmarkModelMetadata parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -821,6 +891,78 @@ public  final class BookmarkModelMetadata extends
       return this;
     }
 
+    /**
+     * <pre>
+     * Represents whether bookmark commits sent to the server (most importantly
+     * creations) populate client tags. This is a layer on top of the usual
+     * FeatureList to avoid risky transitions during startup, to guard against
+     * in-flight commits.
+     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+     * default and enforced to true upon startup.
+     * </pre>
+     *
+     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+     * @return Whether the bookmarkClientTagsInProtocolEnabled field is set.
+     */
+    @java.lang.Override
+    public boolean hasBookmarkClientTagsInProtocolEnabled() {
+      return instance.hasBookmarkClientTagsInProtocolEnabled();
+    }
+    /**
+     * <pre>
+     * Represents whether bookmark commits sent to the server (most importantly
+     * creations) populate client tags. This is a layer on top of the usual
+     * FeatureList to avoid risky transitions during startup, to guard against
+     * in-flight commits.
+     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+     * default and enforced to true upon startup.
+     * </pre>
+     *
+     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+     * @return The bookmarkClientTagsInProtocolEnabled.
+     */
+    @java.lang.Override
+    public boolean getBookmarkClientTagsInProtocolEnabled() {
+      return instance.getBookmarkClientTagsInProtocolEnabled();
+    }
+    /**
+     * <pre>
+     * Represents whether bookmark commits sent to the server (most importantly
+     * creations) populate client tags. This is a layer on top of the usual
+     * FeatureList to avoid risky transitions during startup, to guard against
+     * in-flight commits.
+     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+     * default and enforced to true upon startup.
+     * </pre>
+     *
+     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+     * @param value The bookmarkClientTagsInProtocolEnabled to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBookmarkClientTagsInProtocolEnabled(boolean value) {
+      copyOnWrite();
+      instance.setBookmarkClientTagsInProtocolEnabled(value);
+      return this;
+    }
+    /**
+     * <pre>
+     * Represents whether bookmark commits sent to the server (most importantly
+     * creations) populate client tags. This is a layer on top of the usual
+     * FeatureList to avoid risky transitions during startup, to guard against
+     * in-flight commits.
+     * TODO(crbug.com/1032052): remove this code when the logic is enabled by
+     * default and enforced to true upon startup.
+     * </pre>
+     *
+     * <code>optional bool bookmark_client_tags_in_protocol_enabled = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBookmarkClientTagsInProtocolEnabled() {
+      copyOnWrite();
+      instance.clearBookmarkClientTagsInProtocolEnabled();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:sync_pb.BookmarkModelMetadata)
   }
   @java.lang.Override
@@ -843,10 +985,11 @@ public  final class BookmarkModelMetadata extends
             org.chromium.components.sync.protocol.BookmarkMetadata.class,
             "bookmarksFullTitleReuploaded_",
             "lastSyncTime_",
+            "bookmarkClientTagsInProtocolEnabled_",
           };
           java.lang.String info =
-              "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0001\u0000\u0001\u1009\u0000\u0002" +
-              "\u001b\u0003\u1007\u0001\u0004\u1002\u0002";
+              "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0001\u0000\u0001\u1009\u0000\u0002" +
+              "\u001b\u0003\u1007\u0001\u0004\u1002\u0002\u0005\u1007\u0003";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

@@ -80,6 +80,7 @@ public final class ViewportIntersectionState extends org.chromium.mojo.bindings.
                     
                 result.occlusionState = decoder0.readInt(32);
                     FrameOcclusionState.validate(result.occlusionState);
+                    result.occlusionState = FrameOcclusionState.toKnownValue(result.occlusionState);
                 }
                 {
                     

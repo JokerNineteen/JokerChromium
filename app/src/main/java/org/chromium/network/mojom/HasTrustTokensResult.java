@@ -59,6 +59,7 @@ public final class HasTrustTokensResult extends org.chromium.mojo.bindings.Struc
                     
                 result.status = decoder0.readInt(8);
                     TrustTokenOperationStatus.validate(result.status);
+                    result.status = TrustTokenOperationStatus.toKnownValue(result.status);
                 }
                 {
                     

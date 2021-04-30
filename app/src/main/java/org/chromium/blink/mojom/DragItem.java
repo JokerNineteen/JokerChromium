@@ -23,7 +23,7 @@ public final class DragItem extends org.chromium.mojo.bindings.Union {
         public static final int FileSystemFile = 3;
     };
     private DragItemString mString;
-    private DragItemFile mFile;
+    private DataTransferFile mFile;
     private DragItemBinary mBinary;
     private DragItemFileSystemFile mFileSystemFile;
 
@@ -37,12 +37,12 @@ public final class DragItem extends org.chromium.mojo.bindings.Union {
         return this.mString;
     }
 
-    public void setFile(DragItemFile file) {
+    public void setFile(DataTransferFile file) {
         this.mTag = Tag.File;
         this.mFile = file;
     }
 
-    public DragItemFile getFile() {
+    public DataTransferFile getFile() {
         assert this.mTag == Tag.File;
         return this.mFile;
     }
@@ -120,7 +120,7 @@ public final class DragItem extends org.chromium.mojo.bindings.Union {
             case Tag.File: {
                 
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(offset + org.chromium.mojo.bindings.DataHeader.HEADER_SIZE, false);
-                result.mFile = DragItemFile.decode(decoder1);
+                result.mFile = DataTransferFile.decode(decoder1);
                 result.mTag = Tag.File;
                 break;
             }

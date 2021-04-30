@@ -67,6 +67,7 @@ public final class AppCacheErrorDetails extends org.chromium.mojo.bindings.Struc
                     
                 result.reason = decoder0.readInt(16);
                     AppCacheErrorReason.validate(result.reason);
+                    result.reason = AppCacheErrorReason.toKnownValue(result.reason);
                 }
                 {
                     

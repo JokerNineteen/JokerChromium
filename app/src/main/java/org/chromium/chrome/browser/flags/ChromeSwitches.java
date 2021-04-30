@@ -33,6 +33,9 @@ public abstract class ChromeSwitches {
     /** Disable the First Run Experience. */
     public static final String DISABLE_FIRST_RUN_EXPERIENCE = "disable-fre";
 
+    /** Disable promos shown on startup. */
+    public static final String DISABLE_STARTUP_PROMOS = "disable-startup-promos-for-testing";
+
     /**
      * Forces the First Run Experience (FRE) flow complete check to always return true.
      */
@@ -260,11 +263,6 @@ public abstract class ChromeSwitches {
     // would match "Built-in display" and "External display", whichever comes first.
     public static final String AUTO_SELECT_DESKTOP_CAPTURE_SOURCE = "auto-select-desktop-capture-source";
 
-    // This flag causes the user engagement checks for showing app banners to be
-    // bypassed. It is intended to be used by developers who wish to test that their
-    // sites otherwise meet the criteria needed to show app banners.
-    public static final String BYPASS_APP_BANNER_ENGAGEMENT_CHECKS = "bypass-app-banner-engagement-checks";
-
     // How often (in seconds) to check for updates. Should only be used for testing
     // purposes.
     public static final String CHECK_FOR_UPDATE_INTERVAL_SEC = "check-for-update-interval";
@@ -322,6 +320,15 @@ public abstract class ChromeSwitches {
     // Adds debugging entries such as Inspect Element to context menus of packed
     // apps.
     public static final String DEBUG_PACKED_APPS = "debug-packed-apps";
+
+    // Values for the enable-desktop-pwas-attention-badging-cros flag.
+    public static final String DESKTOP_PW_AS_ATTENTION_BADGING_CR_OS_API_AND_NOTIFICATIONS = "api-and-notifications";
+
+
+    public static final String DESKTOP_PW_AS_ATTENTION_BADGING_CR_OS_API_ONLY = "api-only";
+
+
+    public static final String DESKTOP_PW_AS_ATTENTION_BADGING_CR_OS_NOTIFICATIONS_ONLY = "notifications-only";
 
     // Passes command line parameters to the DevTools front-end.
     public static final String DEV_TOOLS_FLAGS = "devtools-flags";
@@ -486,10 +493,6 @@ public abstract class ChromeSwitches {
     // Causes Chrome to initiate an installation flow for the given app.
     public static final String INSTALL_CHROME_APP = "install-chrome-app";
 
-    // A list of allowlists to install for a supervised user, for testing.
-    // The list is of the following form: <id>[:<name>],[<id>[:<name>],...]
-    public static final String INSTALL_SUPERVISED_USER_ALLOWLISTS = "install-supervised-user-whitelists";
-
     // Marks a renderer as an Instant process.
     public static final String INSTANT_PROCESS = "instant-process";
 
@@ -583,6 +586,10 @@ public abstract class ChromeSwitches {
     // the API is finalized.
     // TODO(bauerb): Remove when this flag is not needed anymore.
     public static final String PERMISSION_REQUEST_API_URL = "permission-request-api-url";
+
+    // Used to mock the response received from the Web Permission Prediction
+    // Service. Used for testing.
+    public static final String PREDICTION_SERVICE_MOCK_LIKELIHOOD = "prediction-service-mock-likelihood";
 
     // Use IPv6 only for privet HTTP.
     public static final String PRIVET_I_PV6_ONLY = "privet-ipv6-only";
@@ -691,6 +698,13 @@ public abstract class ChromeSwitches {
     // testing purposes.
     public static final String SYSTEM_LOG_UPLOAD_FREQUENCY = "system-log-upload-frequency";
 
+    // This flag makes Chrome auto-accept/reject requests to capture the current
+    // tab. It should only be used for tests.
+    public static final String THIS_TAB_CAPTURE_AUTO_ACCEPT = "auto-accept-this-tab-capture";
+
+
+    public static final String THIS_TAB_CAPTURE_AUTO_REJECT = "auto-reject-this-tab-capture";
+
     // Passes the name of the current running automated test to Chrome.
     public static final String TEST_NAME = "test-name";
 
@@ -705,9 +719,6 @@ public abstract class ChromeSwitches {
     // Overrides per-origin quota settings to unlimited storage for any
     // apps/origins.  This should be used only for testing purpose.
     public static final String UNLIMITED_STORAGE = "unlimited-storage";
-
-    // A string used to override the default user agent with a custom one.
-    public static final String USER_AGENT = "user-agent";
 
     // Specifies the user data directory, which is where the browser will look for
     // all of its state.
@@ -901,6 +912,9 @@ public abstract class ChromeSwitches {
 
     // Runs un-installation steps that were done by chrome first-run.
     public static final String UNINSTALL = "uninstall";
+
+    // Specifies that the WebApp with the specified id should be uninstalled.
+    public static final String UNINSTALL_APP_ID = "uninstall-app-id";
 
     // Specifies the version of the Progressive-Web-App launcher that launched
     // Chrome, used to determine whether to update all launchers.

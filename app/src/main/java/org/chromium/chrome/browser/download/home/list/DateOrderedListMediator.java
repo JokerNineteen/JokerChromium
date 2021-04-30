@@ -215,15 +215,15 @@ class DateOrderedListMediator {
         mSelectionObserver = new MediatorSelectionObserver(selectionDelegate);
 
         mModel.getProperties().set(ListProperties.ENABLE_ITEM_ANIMATIONS, true);
-        mModel.getProperties().set(ListProperties.CALLBACK_OPEN, this ::onOpenItem);
-        mModel.getProperties().set(ListProperties.CALLBACK_PAUSE, this ::onPauseItem);
-        mModel.getProperties().set(ListProperties.CALLBACK_RESUME, this ::onResumeItem);
-        mModel.getProperties().set(ListProperties.CALLBACK_CANCEL, this ::onCancelItem);
-        mModel.getProperties().set(ListProperties.CALLBACK_SHARE, this ::onShareItem);
-        mModel.getProperties().set(ListProperties.CALLBACK_REMOVE, this ::onDeleteItem);
-        mModel.getProperties().set(ListProperties.PROVIDER_VISUALS, this ::getVisuals);
+        mModel.getProperties().set(ListProperties.CALLBACK_OPEN, this::onOpenItem);
+        mModel.getProperties().set(ListProperties.CALLBACK_PAUSE, this::onPauseItem);
+        mModel.getProperties().set(ListProperties.CALLBACK_RESUME, this::onResumeItem);
+        mModel.getProperties().set(ListProperties.CALLBACK_CANCEL, this::onCancelItem);
+        mModel.getProperties().set(ListProperties.CALLBACK_SHARE, this::onShareItem);
+        mModel.getProperties().set(ListProperties.CALLBACK_REMOVE, this::onDeleteItem);
+        mModel.getProperties().set(ListProperties.PROVIDER_VISUALS, this::getVisuals);
         mModel.getProperties().set(ListProperties.PROVIDER_FAVICON, this::getFavicon);
-        mModel.getProperties().set(ListProperties.CALLBACK_SELECTION, this ::onSelection);
+        mModel.getProperties().set(ListProperties.CALLBACK_SELECTION, this::onSelection);
         mModel.getProperties().set(ListProperties.CALLBACK_RENAME, this::onRenameItem);
         mModel.getProperties().set(ListProperties.CALLBACK_CHANGE, this::onChangeItem);
         mModel.getProperties().set(

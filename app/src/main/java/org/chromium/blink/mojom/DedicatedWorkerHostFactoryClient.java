@@ -25,7 +25,7 @@ public interface DedicatedWorkerHostFactoryClient extends org.chromium.mojo.bind
 
 
     void onWorkerHostCreated(
-BrowserInterfaceBroker browserInterfaceBroker);
+BrowserInterfaceBroker browserInterfaceBroker, DedicatedWorkerHost host);
 
 
 

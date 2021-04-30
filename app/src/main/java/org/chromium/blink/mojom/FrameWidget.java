@@ -81,7 +81,7 @@ int touchAction);
 
 
     void updateRenderThrottlingStatusForSubFrame(
-boolean isThrottled, boolean subtreeThrottled);
+boolean isThrottled, boolean subtreeThrottled, boolean displayLocked);
 
 
 
@@ -116,7 +116,7 @@ org.chromium.mojo.bindings.InterfaceRequest<org.chromium.viz.mojom.InputTargetCl
 
 
     void setViewportIntersection(
-ViewportIntersectionState intersectionState);
+ViewportIntersectionState intersectionState, VisualProperties visualProperties);
 
 
 }

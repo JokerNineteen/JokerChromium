@@ -16,11 +16,11 @@ package org.chromium.blink.mojom;
 
 public final class SavableSubframe extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 24;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+    private static final int STRUCT_SIZE = 32;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.url.mojom.Url originalUrl;
-    public org.chromium.mojo_base.mojom.UnguessableToken subframeToken;
+    public FrameToken subframeToken;
 
     private SavableSubframe(int version) {
         super(STRUCT_SIZE, version);
@@ -62,8 +62,7 @@ public final class SavableSubframe extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
-                result.subframeToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                result.subframeToken = FrameToken.decode(decoder0, 16);
                 }
 
         } finally {

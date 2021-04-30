@@ -16,15 +16,15 @@ package org.chromium.cc.mojom;
 
 public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 112;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(112, 0)};
+    private static final int STRUCT_SIZE = 120;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(120, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int rootBackgroundColor;
     public org.chromium.gfx.mojom.Vector2dF rootScrollOffset;
     public boolean isScrollOffsetAtTop;
     public org.chromium.viz.mojom.Selection selection;
     public boolean isMobileOptimized;
-    public boolean hasDelegatedInkMetadata;
+    public DelegatedInkBrowserMetadata delegatedInkMetadata;
     public float deviceScaleFactor;
     public org.chromium.gfx.mojom.Size viewportSizeInPixels;
     public org.chromium.viz.mojom.LocalSurfaceId localSurfaceId;
@@ -91,15 +91,11 @@ public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct
                 }
                 {
                     
-                result.hasDelegatedInkMetadata = decoder0.readBoolean(12, 2);
+                result.rootOverflowYHidden = decoder0.readBoolean(12, 2);
                 }
                 {
                     
-                result.rootOverflowYHidden = decoder0.readBoolean(12, 3);
-                }
-                {
-                    
-                result.hasTransparentBackground = decoder0.readBoolean(12, 4);
+                result.hasTransparentBackground = decoder0.readBoolean(12, 3);
                 }
                 {
                     
@@ -113,71 +109,77 @@ public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct
                 }
                 {
                     
-                result.deviceScaleFactor = decoder0.readFloat(32);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, true);
+                result.delegatedInkMetadata = DelegatedInkBrowserMetadata.decode(decoder1);
                 }
                 {
                     
-                result.pageScaleFactor = decoder0.readFloat(36);
+                result.deviceScaleFactor = decoder0.readFloat(40);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
+                result.pageScaleFactor = decoder0.readFloat(44);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
                 result.viewportSizeInPixels = org.chromium.gfx.mojom.Size.decode(decoder1);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, true);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(56, true);
                 result.localSurfaceId = org.chromium.viz.mojom.LocalSurfaceId.decode(decoder1);
                 }
                 {
                     
-                result.externalPageScaleFactor = decoder0.readFloat(56);
+                result.externalPageScaleFactor = decoder0.readFloat(64);
                 }
                 {
                     
-                result.topControlsHeight = decoder0.readFloat(60);
+                result.topControlsHeight = decoder0.readFloat(68);
                 }
                 {
                     
-                result.topControlsShownRatio = decoder0.readFloat(64);
+                result.topControlsShownRatio = decoder0.readFloat(72);
                 }
                 {
                     
-                result.newVerticalScrollDirection = decoder0.readInt(68);
+                result.newVerticalScrollDirection = decoder0.readInt(76);
                     org.chromium.viz.mojom.VerticalScrollDirection.validate(result.newVerticalScrollDirection);
+                    result.newVerticalScrollDirection = org.chromium.viz.mojom.VerticalScrollDirection.toKnownValue(result.newVerticalScrollDirection);
                 }
                 {
                     
-                result.bottomControlsHeight = decoder0.readFloat(72);
+                result.bottomControlsHeight = decoder0.readFloat(80);
                 }
                 {
                     
-                result.bottomControlsShownRatio = decoder0.readFloat(76);
+                result.bottomControlsShownRatio = decoder0.readFloat(84);
                 }
                 {
                     
-                result.topControlsMinHeightOffset = decoder0.readFloat(80);
+                result.topControlsMinHeightOffset = decoder0.readFloat(88);
                 }
                 {
                     
-                result.bottomControlsMinHeightOffset = decoder0.readFloat(84);
+                result.bottomControlsMinHeightOffset = decoder0.readFloat(92);
                 }
                 {
                     
-                result.minPageScaleFactor = decoder0.readFloat(88);
+                result.minPageScaleFactor = decoder0.readFloat(96);
                 }
                 {
                     
-                result.maxPageScaleFactor = decoder0.readFloat(92);
-                }
-                {
-                    
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(96, false);
-                result.scrollableViewportSize = org.chromium.gfx.mojom.SizeF.decode(decoder1);
+                result.maxPageScaleFactor = decoder0.readFloat(100);
                 }
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(104, false);
+                result.scrollableViewportSize = org.chromium.gfx.mojom.SizeF.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(112, false);
                 result.rootLayerSize = org.chromium.gfx.mojom.SizeF.decode(decoder1);
                 }
 
@@ -198,46 +200,46 @@ public final class RenderFrameMetadata extends org.chromium.mojo.bindings.Struct
         
         encoder0.encode(this.isMobileOptimized, 12, 1);
         
-        encoder0.encode(this.hasDelegatedInkMetadata, 12, 2);
+        encoder0.encode(this.rootOverflowYHidden, 12, 2);
         
-        encoder0.encode(this.rootOverflowYHidden, 12, 3);
-        
-        encoder0.encode(this.hasTransparentBackground, 12, 4);
+        encoder0.encode(this.hasTransparentBackground, 12, 3);
         
         encoder0.encode(this.rootScrollOffset, 16, true);
         
         encoder0.encode(this.selection, 24, false);
         
-        encoder0.encode(this.deviceScaleFactor, 32);
+        encoder0.encode(this.delegatedInkMetadata, 32, true);
         
-        encoder0.encode(this.pageScaleFactor, 36);
+        encoder0.encode(this.deviceScaleFactor, 40);
         
-        encoder0.encode(this.viewportSizeInPixels, 40, false);
+        encoder0.encode(this.pageScaleFactor, 44);
         
-        encoder0.encode(this.localSurfaceId, 48, true);
+        encoder0.encode(this.viewportSizeInPixels, 48, false);
         
-        encoder0.encode(this.externalPageScaleFactor, 56);
+        encoder0.encode(this.localSurfaceId, 56, true);
         
-        encoder0.encode(this.topControlsHeight, 60);
+        encoder0.encode(this.externalPageScaleFactor, 64);
         
-        encoder0.encode(this.topControlsShownRatio, 64);
+        encoder0.encode(this.topControlsHeight, 68);
         
-        encoder0.encode(this.newVerticalScrollDirection, 68);
+        encoder0.encode(this.topControlsShownRatio, 72);
         
-        encoder0.encode(this.bottomControlsHeight, 72);
+        encoder0.encode(this.newVerticalScrollDirection, 76);
         
-        encoder0.encode(this.bottomControlsShownRatio, 76);
+        encoder0.encode(this.bottomControlsHeight, 80);
         
-        encoder0.encode(this.topControlsMinHeightOffset, 80);
+        encoder0.encode(this.bottomControlsShownRatio, 84);
         
-        encoder0.encode(this.bottomControlsMinHeightOffset, 84);
+        encoder0.encode(this.topControlsMinHeightOffset, 88);
         
-        encoder0.encode(this.minPageScaleFactor, 88);
+        encoder0.encode(this.bottomControlsMinHeightOffset, 92);
         
-        encoder0.encode(this.maxPageScaleFactor, 92);
+        encoder0.encode(this.minPageScaleFactor, 96);
         
-        encoder0.encode(this.scrollableViewportSize, 96, false);
+        encoder0.encode(this.maxPageScaleFactor, 100);
         
-        encoder0.encode(this.rootLayerSize, 104, false);
+        encoder0.encode(this.scrollableViewportSize, 104, false);
+        
+        encoder0.encode(this.rootLayerSize, 112, false);
     }
 }

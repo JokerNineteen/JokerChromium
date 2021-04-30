@@ -25,7 +25,7 @@ public interface BackgroundFetchRegistrationService extends org.chromium.mojo.bi
 
 
     void updateUi(
-String title, org.chromium.skia.mojom.Bitmap icon, 
+String title, org.chromium.skia.mojom.BitmapN32 icon, 
 UpdateUiResponse callback);
 
     interface UpdateUiResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }

@@ -65,11 +65,13 @@ public final class TlsClientSocketOptions extends org.chromium.mojo.bindings.Str
                     
                 result.versionMin = decoder0.readInt(8);
                     SslVersion.validate(result.versionMin);
+                    result.versionMin = SslVersion.toKnownValue(result.versionMin);
                 }
                 {
                     
                 result.versionMax = decoder0.readInt(12);
                     SslVersion.validate(result.versionMax);
+                    result.versionMax = SslVersion.toKnownValue(result.versionMax);
                 }
                 {
                     

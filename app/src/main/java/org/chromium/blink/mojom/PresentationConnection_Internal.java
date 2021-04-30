@@ -334,6 +334,7 @@ int reason) {
                         
                     result.state = decoder0.readInt(8);
                         PresentationConnectionState.validate(result.state);
+                        result.state = PresentationConnectionState.toKnownValue(result.state);
                     }
 
             } finally {
@@ -398,6 +399,7 @@ int reason) {
                         
                     result.reason = decoder0.readInt(8);
                         PresentationConnectionCloseReason.validate(result.reason);
+                        result.reason = PresentationConnectionCloseReason.toKnownValue(result.reason);
                     }
 
             } finally {

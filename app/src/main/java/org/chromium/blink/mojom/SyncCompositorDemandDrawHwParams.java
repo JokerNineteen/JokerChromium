@@ -16,12 +16,13 @@ package org.chromium.blink.mojom;
 
 public final class SyncCompositorDemandDrawHwParams extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 40;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public org.chromium.gfx.mojom.Size viewportSize;
     public org.chromium.gfx.mojom.Rect viewportRectForTilePriority;
     public org.chromium.gfx.mojom.Transform transformForTilePriority;
+    public boolean needNewLocalSurfaceId;
 
     private SyncCompositorDemandDrawHwParams(int version) {
         super(STRUCT_SIZE, version);
@@ -71,6 +72,10 @@ public final class SyncCompositorDemandDrawHwParams extends org.chromium.mojo.bi
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, false);
                 result.transformForTilePriority = org.chromium.gfx.mojom.Transform.decode(decoder1);
                 }
+                {
+                    
+                result.needNewLocalSurfaceId = decoder0.readBoolean(32, 0);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -88,5 +93,7 @@ public final class SyncCompositorDemandDrawHwParams extends org.chromium.mojo.bi
         encoder0.encode(this.viewportRectForTilePriority, 16, false);
         
         encoder0.encode(this.transformForTilePriority, 24, false);
+        
+        encoder0.encode(this.needNewLocalSurfaceId, 32, 0);
     }
 }

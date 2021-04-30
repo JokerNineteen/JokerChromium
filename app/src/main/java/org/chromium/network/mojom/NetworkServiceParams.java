@@ -62,11 +62,13 @@ public final class NetworkServiceParams extends org.chromium.mojo.bindings.Struc
                     
                 result.initialConnectionType = decoder0.readInt(8);
                     ConnectionType.validate(result.initialConnectionType);
+                    result.initialConnectionType = ConnectionType.toKnownValue(result.initialConnectionType);
                 }
                 {
                     
                 result.initialConnectionSubtype = decoder0.readInt(12);
                     ConnectionSubtype.validate(result.initialConnectionSubtype);
+                    result.initialConnectionSubtype = ConnectionSubtype.toKnownValue(result.initialConnectionSubtype);
                 }
                 {
                     

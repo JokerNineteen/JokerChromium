@@ -28,4 +28,9 @@ public interface DelegatedInkPointRenderer extends org.chromium.mojo.bindings.In
 DelegatedInkPoint point);
 
 
+
+    void resetPrediction(
+);
+
+
 }

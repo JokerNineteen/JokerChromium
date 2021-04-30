@@ -86,11 +86,13 @@ public final class BackgroundFetchRegistrationData extends org.chromium.mojo.bin
                     
                 result.result = decoder0.readInt(48);
                     BackgroundFetchResult.validate(result.result);
+                    result.result = BackgroundFetchResult.toKnownValue(result.result);
                 }
                 {
                     
                 result.failureReason = decoder0.readInt(52);
                     BackgroundFetchFailureReason.validate(result.failureReason);
+                    result.failureReason = BackgroundFetchFailureReason.toKnownValue(result.failureReason);
                 }
 
         } finally {

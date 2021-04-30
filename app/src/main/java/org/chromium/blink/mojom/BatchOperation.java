@@ -61,6 +61,7 @@ public final class BatchOperation extends org.chromium.mojo.bindings.Struct {
                     
                 result.operationType = decoder0.readInt(8);
                     OperationType.validate(result.operationType);
+                    result.operationType = OperationType.toKnownValue(result.operationType);
                 }
                 {
                     

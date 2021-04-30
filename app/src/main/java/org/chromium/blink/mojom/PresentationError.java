@@ -59,6 +59,7 @@ public final class PresentationError extends org.chromium.mojo.bindings.Struct {
                     
                 result.errorType = decoder0.readInt(8);
                     PresentationErrorType.validate(result.errorType);
+                    result.errorType = PresentationErrorType.toKnownValue(result.errorType);
                 }
                 {
                     

@@ -48,7 +48,8 @@ import java.util.List;
 /**
  * Coordinator for showing UI for a list of tabs. Can be used in GRID or STRIP modes.
  */
-public class TabListCoordinator implements Destroyable {
+public class TabListCoordinator
+        implements PriceMessageService.PriceWelcomeMessageProvider, Destroyable {
     /**
      * Modes of showing the list of tabs.
      *
@@ -77,6 +78,7 @@ public class TabListCoordinator implements Destroyable {
     private final Context mContext;
     private final TabListModel mModel;
     private final @UiType int mItemType;
+    private final TabModelSelector mTabModelSelector;
 
     private boolean mIsInitialized;
     private ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener;
@@ -97,6 +99,7 @@ public class TabListCoordinator implements Destroyable {
      * @param itemType The item type to put in the list of tabs.
      * @param selectionDelegateProvider Provider to provide selected Tabs for a selectable tab list.
      *                                  It's NULL when selection is not possible.
+     * @param priceWelcomeMessageController A controller to show PriceWelcomeMessage.
      * @param parentView {@link ViewGroup} The root view of the UI.
      * @param attachToParent Whether the UI should attach to root view.
      * @param componentName A unique string uses to identify different components for UMA recording.
@@ -110,22 +113,21 @@ public class TabListCoordinator implements Destroyable {
                     .GridCardOnClickListenerProvider gridCardOnClickListenerProvider,
             @Nullable TabListMediator.TabGridDialogHandler dialogHandler, @UiType int itemType,
             @Nullable TabListMediator.SelectionDelegateProvider selectionDelegateProvider,
+            @Nullable TabSwitcherMediator
+                    .PriceWelcomeMessageController priceWelcomeMessageController,
             @NonNull ViewGroup parentView, boolean attachToParent, String componentName) {
         mMode = mode;
         mItemType = itemType;
         mContext = context;
         mModel = new TabListModel();
         mAdapter = new SimpleRecyclerViewAdapter(mModel);
+        mTabModelSelector = tabModelSelector;
         RecyclerView.RecyclerListener recyclerListener = null;
         if (mMode == TabListMode.GRID || mMode == TabListMode.CAROUSEL) {
             mAdapter.registerType(UiType.SELECTABLE, parent -> {
                 ViewGroup group = (ViewGroup) LayoutInflater.from(context).inflate(
                         R.layout.selectable_tab_grid_card_item, parentView, false);
                 group.setClickable(true);
-
-                if (TabUiFeatureUtilities.isLaunchPolishEnabled()) {
-                    setThumbnailViewAspectRatio(group);
-                }
 
                 return group;
             }, TabGridViewBinder::bindSelectableTab);
@@ -136,10 +138,6 @@ public class TabListCoordinator implements Destroyable {
                 if (mMode == TabListMode.CAROUSEL) {
                     group.getLayoutParams().width = context.getResources().getDimensionPixelSize(
                             R.dimen.tab_carousel_card_width);
-                }
-
-                if (TabUiFeatureUtilities.isLaunchPolishEnabled()) {
-                    setThumbnailViewAspectRatio(group);
                 }
 
                 group.setClickable(true);
@@ -222,27 +220,22 @@ public class TabListCoordinator implements Destroyable {
         }
 
         if (mode == TabListMode.CAROUSEL) {
-            // TODO(mattsimmons): Remove this height and let the parent determine the correct
-            //  height. This can be done once the width is dynamic as well in
-            //  TabCarouselViewHolder.
-            mRecyclerView.getLayoutParams().height =
-                    context.getResources().getDimensionPixelSize(R.dimen.tab_carousel_height);
+            ViewGroup.LayoutParams layoutParams = mRecyclerView.getLayoutParams();
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            mRecyclerView.setLayoutParams(layoutParams);
         }
 
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setHasFixedSize(true);
         if (recyclerListener != null) mRecyclerView.setRecyclerListener(recyclerListener);
 
-        // TODO (https://crbug.com/1048632): Use the current profile (i.e., regular profile or
-        // incognito profile) instead of always using regular profile. It works correctly now, but
-        // it is not safe.
         TabListFaviconProvider tabListFaviconProvider =
                 new TabListFaviconProvider(mContext, mMode == TabListMode.STRIP);
 
         mMediator = new TabListMediator(context, mModel, mMode, tabModelSelector, thumbnailProvider,
                 titleProvider, tabListFaviconProvider, actionOnRelatedTabs,
                 selectionDelegateProvider, gridCardOnClickListenerProvider, dialogHandler,
-                componentName, itemType);
+                priceWelcomeMessageController, componentName, itemType);
 
         if (mMode == TabListMode.GRID) {
             GridLayoutManager gridLayoutManager =
@@ -267,15 +260,6 @@ public class TabListCoordinator implements Destroyable {
         }
     }
 
-    private static void setThumbnailViewAspectRatio(View view) {
-        float mExpectedThumbnailAspectRatio =
-                (float) TabUiFeatureUtilities.THUMBNAIL_ASPECT_RATIO.getValue();
-        mExpectedThumbnailAspectRatio = MathUtils.clamp(mExpectedThumbnailAspectRatio, 0.5f, 2.0f);
-        TabGridThumbnailView thumbnailView =
-                (TabGridThumbnailView) view.findViewById(R.id.tab_thumbnail);
-        thumbnailView.setAspectRatio(mExpectedThumbnailAspectRatio);
-    }
-
     @NonNull
     Rect getThumbnailLocationOfCurrentTab() {
         // TODO(crbug.com/964406): calculate the location before the real one is ready.
@@ -294,7 +278,7 @@ public class TabListCoordinator implements Destroyable {
 
         mIsInitialized = true;
 
-        Profile profile = Profile.getLastUsedRegularProfile();
+        Profile profile = mTabModelSelector.getCurrentModel().getProfile();
         mMediator.initWithNative(profile);
         if (dynamicResourceLoader != null) {
             mRecyclerView.createDynamicView(dynamicResourceLoader);
@@ -339,6 +323,13 @@ public class TabListCoordinator implements Destroyable {
                         - (int) mContext.getResources().getDimension(
                                 R.dimen.toolbar_height_no_shadow));
         return tabListRect.top;
+    }
+
+    /**
+     * @see TabListMediator#getPriceWelcomeMessageInsertionIndex().
+     */
+    int getPriceWelcomeMessageInsertionIndex() {
+        return mMediator.getPriceWelcomeMessageInsertionIndex();
     }
 
     /**
@@ -446,5 +437,16 @@ public class TabListCoordinator implements Destroyable {
      */
     void removeSpecialListItem(@UiType int uiType, int itemIdentifier) {
         mMediator.removeSpecialItemFromModel(uiType, itemIdentifier);
+    }
+
+    // PriceWelcomeMessageService.PriceWelcomeMessageProvider implementation.
+    @Override
+    public int getTabIndexFromTabId(int tabId) {
+        return mModel.indexFromId(tabId);
+    }
+
+    @Override
+    public void showPriceDropTooltip(int index) {
+        mModel.get(index).model.set(TabProperties.SHOULD_SHOW_PRICE_DROP_TOOLTIP, true);
     }
 }

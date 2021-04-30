@@ -36,8 +36,8 @@ final class SharingServiceProxyJni implements SharingServiceProxy.Natives {
 
   @Override
   public void sendSharedClipboardMessage(long nativeSharingServiceProxyAndroid, String guid,
-      String text, int retries, Callback<Integer> callback) {
-    GEN_JNI.org_chromium_chrome_browser_sharing_SharingServiceProxy_sendSharedClipboardMessage(nativeSharingServiceProxyAndroid, guid, text, retries, callback);
+      String text, Callback<Integer> callback) {
+    GEN_JNI.org_chromium_chrome_browser_sharing_SharingServiceProxy_sendSharedClipboardMessage(nativeSharingServiceProxyAndroid, guid, text, callback);
   }
 
   @Override

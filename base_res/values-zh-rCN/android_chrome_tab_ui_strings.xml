@@ -71,7 +71,18 @@
 <string name="tab_strip_info_bar_question">"不再显示标签栏？"</string>
 <string name="tab_strip_info_bar_no_reshow">"不再显示"</string>
 <string name="tab_strip_info_bar_reshow">"稍后再显示"</string>
-<string name="price_drop_spotted_title">"Price drop spotted"</string>
-<string name="price_drop_spotted_content">"See which item in your open tabs has a better price"</string>
+<string name="price_drop_spotted_title">"发现了降价商品"</string>
+<string name="price_drop_spotted_content">"查看您打开的标签页中哪件商品降价了"</string>
 <string name="price_drop_spotted_show_me">"演示一下"</string>
+<string name="price_drop_spotted_lower_price">"降价了"</string>
+<string name="price_drop_alerts_card_title">"接收降价提醒？"</string>
+<string name="price_drop_alerts_card_get_notified_content">"当某个已打开的标签页中有商品降价时，您会收到提醒"</string>
+<string name="price_drop_alerts_card_get_notified">"接收通知"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"如果想在某个已打开的标签页中有商品降价时收到提醒，请在“设置”中开启通知功能。"</string>
+<string name="price_drop_alerts_card_go_to_settings">"转到“设置”"</string>
+<string name="price_tracking_settings">"价格跟踪设置"</string>
+<string name="track_prices_on_tabs">"跟踪标签页上的价格"</string>
+<string name="track_prices_on_tabs_description">"查看您打开的标签页上的降价商品"</string>
+<string name="price_drop_alerts">"降价提醒"</string>
+<string name="price_drop_alerts_description">"在商品降价时收到通知"</string>
 </resources>

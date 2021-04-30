@@ -75,6 +75,7 @@ public final class ServiceWorkerRegistrationObjectInfo extends org.chromium.mojo
                     
                 result.updateViaCache = decoder0.readInt(24);
                     ServiceWorkerUpdateViaCache.validate(result.updateViaCache);
+                    result.updateViaCache = ServiceWorkerUpdateViaCache.toKnownValue(result.updateViaCache);
                 }
                 {
                     

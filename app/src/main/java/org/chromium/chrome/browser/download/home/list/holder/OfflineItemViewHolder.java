@@ -14,13 +14,13 @@ import android.widget.ImageView;
 
 import androidx.annotation.CallSuper;
 
-import org.chromium.chrome.browser.download.R;
 import org.chromium.chrome.browser.download.home.filter.Filters;
 import org.chromium.chrome.browser.download.home.list.ListItem;
 import org.chromium.chrome.browser.download.home.list.ListProperties;
 import org.chromium.chrome.browser.download.home.list.UiUtils;
 import org.chromium.chrome.browser.download.home.metrics.UmaUtils;
 import org.chromium.chrome.browser.download.home.view.SelectionView;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.components.browser_ui.widget.async_image.AsyncImageView;
 import org.chromium.components.browser_ui.widget.listmenu.BasicListMenu;
 import org.chromium.components.browser_ui.widget.listmenu.ListMenu;

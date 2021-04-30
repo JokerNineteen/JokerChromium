@@ -457,6 +457,7 @@ ResetResponse callback) {
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public Status success;
         public boolean needsBitstreamConversion;
+        public int decoderType;
 
         private AudioDecoderInitializeResponseParams(int version) {
             super(STRUCT_SIZE, version);
@@ -500,6 +501,12 @@ ResetResponse callback) {
                         
                     result.needsBitstreamConversion = decoder0.readBoolean(16, 0);
                     }
+                    {
+                        
+                    result.decoderType = decoder0.readInt(20);
+                        AudioDecoderType.validate(result.decoderType);
+                        result.decoderType = AudioDecoderType.toKnownValue(result.decoderType);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -515,6 +522,8 @@ ResetResponse callback) {
             encoder0.encode(this.success, 8, false);
             
             encoder0.encode(this.needsBitstreamConversion, 16, 0);
+            
+            encoder0.encode(this.decoderType, 20);
         }
     }
 
@@ -539,7 +548,7 @@ ResetResponse callback) {
 
                 AudioDecoderInitializeResponseParams response = AudioDecoderInitializeResponseParams.deserialize(messageWithHeader.getPayload());
 
-                mCallback.call(response.success, response.needsBitstreamConversion);
+                mCallback.call(response.success, response.needsBitstreamConversion, response.decoderType);
                 return true;
             } catch (org.chromium.mojo.bindings.DeserializationException e) {
                 return false;
@@ -563,12 +572,14 @@ ResetResponse callback) {
         }
 
         @Override
-        public void call(Status success, Boolean needsBitstreamConversion) {
+        public void call(Status success, Boolean needsBitstreamConversion, Integer decoderType) {
             AudioDecoderInitializeResponseParams _response = new AudioDecoderInitializeResponseParams();
 
             _response.success = success;
 
             _response.needsBitstreamConversion = needsBitstreamConversion;
+
+            _response.decoderType = decoderType;
 
             org.chromium.mojo.bindings.ServiceMessage _message =
                     _response.serializeWithHeader(

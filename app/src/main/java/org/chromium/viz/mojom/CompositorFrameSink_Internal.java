@@ -1093,6 +1093,7 @@ int type) {
                         
                     result.type = decoder0.readInt(8);
                         CompositorFrameSinkType.validate(result.type);
+                        result.type = CompositorFrameSinkType.toKnownValue(result.type);
                     }
 
             } finally {

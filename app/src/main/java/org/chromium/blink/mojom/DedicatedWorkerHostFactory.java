@@ -25,7 +25,7 @@ public interface DedicatedWorkerHostFactory extends org.chromium.mojo.bindings.I
 
 
     void createWorkerHost(
-DedicatedWorkerToken token, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, 
+DedicatedWorkerToken token, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host, 
 CreateWorkerHostResponse callback);
 
     interface CreateWorkerHostResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.network.mojom.CrossOriginEmbedderPolicy> { }

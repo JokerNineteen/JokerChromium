@@ -19,7 +19,7 @@ public final class StreamVideoQuadState extends org.chromium.mojo.bindings.Struc
     private static final int STRUCT_SIZE = 40;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public int resourceId;
+    public ResourceId resourceId;
     public org.chromium.gfx.mojom.Size resourceSizeInPixels;
     public org.chromium.gfx.mojom.PointF uvTopLeft;
     public org.chromium.gfx.mojom.PointF uvBottomRight;
@@ -59,7 +59,8 @@ public final class StreamVideoQuadState extends org.chromium.mojo.bindings.Struc
             result = new StreamVideoQuadState(elementsOrVersion);
                 {
                     
-                result.resourceId = decoder0.readInt(8);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                result.resourceId = ResourceId.decode(decoder1);
                 }
                 {
                     
@@ -88,7 +89,7 @@ public final class StreamVideoQuadState extends org.chromium.mojo.bindings.Struc
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.resourceId, 8);
+        encoder0.encode(this.resourceId, 8, false);
         
         encoder0.encode(this.resourceSizeInPixels, 16, false);
         

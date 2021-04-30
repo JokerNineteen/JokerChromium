@@ -460,6 +460,7 @@ VideoEncoderInfo info) {
                         
                     result.error = decoder0.readInt(8);
                         VideoEncodeAccelerator.Error.validate(result.error);
+                        result.error = VideoEncodeAccelerator.Error.toKnownValue(result.error);
                     }
 
             } finally {

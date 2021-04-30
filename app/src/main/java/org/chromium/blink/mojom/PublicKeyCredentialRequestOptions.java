@@ -19,6 +19,7 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
     private static final int STRUCT_SIZE = 80;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(80, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+    public boolean isConditional;
     public byte[] challenge;
     public org.chromium.mojo_base.mojom.TimeDelta timeout;
     public String relyingPartyId;
@@ -67,20 +68,42 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
             result = new PublicKeyCredentialRequestOptions(elementsOrVersion);
                 {
                     
-                result.challenge = decoder0.readBytes(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                result.isConditional = decoder0.readBoolean(8, 0);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
+                result.userVerificationMethods = decoder0.readBoolean(8, 1);
+                }
+                {
+                    
+                result.prf = decoder0.readBoolean(8, 2);
+                }
+                {
+                    
+                result.largeBlobRead = decoder0.readBoolean(8, 3);
+                }
+                {
+                    
+                result.userVerification = decoder0.readInt(12);
+                    UserVerificationRequirement.validate(result.userVerification);
+                    result.userVerification = UserVerificationRequirement.toKnownValue(result.userVerification);
+                }
+                {
+                    
+                result.challenge = decoder0.readBytes(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
                 result.timeout = org.chromium.mojo_base.mojom.TimeDelta.decode(decoder1);
                 }
                 {
                     
-                result.relyingPartyId = decoder0.readString(24, false);
+                result.relyingPartyId = decoder0.readString(32, false);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.allowCredentials = new PublicKeyCredentialDescriptor[si1.elementsOrVersion];
@@ -90,23 +113,6 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
                         result.allowCredentials[i1] = PublicKeyCredentialDescriptor.decode(decoder2);
                     }
                 }
-                }
-                {
-                    
-                result.userVerification = decoder0.readInt(40);
-                    UserVerificationRequirement.validate(result.userVerification);
-                }
-                {
-                    
-                result.userVerificationMethods = decoder0.readBoolean(44, 0);
-                }
-                {
-                    
-                result.prf = decoder0.readBoolean(44, 1);
-                }
-                {
-                    
-                result.largeBlobRead = decoder0.readBoolean(44, 2);
                 }
                 {
                     
@@ -154,29 +160,31 @@ public final class PublicKeyCredentialRequestOptions extends org.chromium.mojo.b
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.challenge, 8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        encoder0.encode(this.isConditional, 8, 0);
         
-        encoder0.encode(this.timeout, 16, true);
+        encoder0.encode(this.userVerificationMethods, 8, 1);
         
-        encoder0.encode(this.relyingPartyId, 24, false);
+        encoder0.encode(this.prf, 8, 2);
+        
+        encoder0.encode(this.largeBlobRead, 8, 3);
+        
+        encoder0.encode(this.userVerification, 12);
+        
+        encoder0.encode(this.challenge, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+        
+        encoder0.encode(this.timeout, 24, true);
+        
+        encoder0.encode(this.relyingPartyId, 32, false);
         
         if (this.allowCredentials == null) {
-            encoder0.encodeNullPointer(32, false);
+            encoder0.encodeNullPointer(40, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.allowCredentials.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.allowCredentials.length, 40, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.allowCredentials.length; ++i0) {
                 
                 encoder1.encode(this.allowCredentials[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
             }
         }
-        
-        encoder0.encode(this.userVerification, 40);
-        
-        encoder0.encode(this.userVerificationMethods, 44, 0);
-        
-        encoder0.encode(this.prf, 44, 1);
-        
-        encoder0.encode(this.largeBlobRead, 44, 2);
         
         encoder0.encode(this.appid, 48, true);
         

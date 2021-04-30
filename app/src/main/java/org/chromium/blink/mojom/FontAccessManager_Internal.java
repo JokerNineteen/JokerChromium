@@ -49,6 +49,8 @@ class FontAccessManager_Internal {
 
     private static final int ENUMERATE_LOCAL_FONTS_ORDINAL = 0;
 
+    private static final int CHOOSE_LOCAL_FONTS_ORDINAL = 1;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements FontAccessManager.Proxy {
 
@@ -74,6 +76,28 @@ EnumerateLocalFontsResponse callback) {
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
                     new FontAccessManagerEnumerateLocalFontsResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void chooseLocalFonts(
+String[] selection, 
+ChooseLocalFontsResponse callback) {
+
+            FontAccessManagerChooseLocalFontsParams _message = new FontAccessManagerChooseLocalFontsParams();
+
+            _message.selection = selection;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    CHOOSE_LOCAL_FONTS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new FontAccessManagerChooseLocalFontsResponseParamsForwardToCallback(callback));
 
         }
 
@@ -104,6 +128,8 @@ EnumerateLocalFontsResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 FontAccessManager_Internal.MANAGER, messageWithHeader);
+
+
 
 
 
@@ -147,6 +173,21 @@ EnumerateLocalFontsResponse callback) {
                         FontAccessManagerEnumerateLocalFontsParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().enumerateLocalFonts(new FontAccessManagerEnumerateLocalFontsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case CHOOSE_LOCAL_FONTS_ORDINAL: {
+
+                        FontAccessManagerChooseLocalFontsParams data =
+                                FontAccessManagerChooseLocalFontsParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().chooseLocalFonts(data.selection, new FontAccessManagerChooseLocalFontsResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -264,6 +305,7 @@ EnumerateLocalFontsResponse callback) {
                         
                     result.enumerationStatus = decoder0.readInt(8);
                         FontEnumerationStatus.validate(result.enumerationStatus);
+                        result.enumerationStatus = FontEnumerationStatus.toKnownValue(result.enumerationStatus);
                     }
                     {
                         
@@ -345,6 +387,237 @@ EnumerateLocalFontsResponse callback) {
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
                                     ENUMERATE_LOCAL_FONTS_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class FontAccessManagerChooseLocalFontsParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public String[] selection;
+
+        private FontAccessManagerChooseLocalFontsParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FontAccessManagerChooseLocalFontsParams() {
+            this(0);
+        }
+
+        public static FontAccessManagerChooseLocalFontsParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FontAccessManagerChooseLocalFontsParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FontAccessManagerChooseLocalFontsParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FontAccessManagerChooseLocalFontsParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FontAccessManagerChooseLocalFontsParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.selection = new String[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            result.selection[i1] = decoder1.readString(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            if (this.selection == null) {
+                encoder0.encodeNullPointer(8, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.selection.length, 8, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.selection.length; ++i0) {
+                    
+                    encoder1.encode(this.selection[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
+        }
+    }
+
+
+
+    
+    static final class FontAccessManagerChooseLocalFontsResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int status;
+        public FontMetadata[] chosenFonts;
+
+        private FontAccessManagerChooseLocalFontsResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public FontAccessManagerChooseLocalFontsResponseParams() {
+            this(0);
+        }
+
+        public static FontAccessManagerChooseLocalFontsResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static FontAccessManagerChooseLocalFontsResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static FontAccessManagerChooseLocalFontsResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            FontAccessManagerChooseLocalFontsResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new FontAccessManagerChooseLocalFontsResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.status = decoder0.readInt(8);
+                        FontEnumerationStatus.validate(result.status);
+                        result.status = FontEnumerationStatus.toKnownValue(result.status);
+                    }
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                    {
+                        org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                        result.chosenFonts = new FontMetadata[si1.elementsOrVersion];
+                        for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                            
+                            org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                            result.chosenFonts[i1] = FontMetadata.decode(decoder2);
+                        }
+                    }
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.status, 8);
+            
+            if (this.chosenFonts == null) {
+                encoder0.encodeNullPointer(16, false);
+            } else {
+                org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.chosenFonts.length, 16, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                for (int i0 = 0; i0 < this.chosenFonts.length; ++i0) {
+                    
+                    encoder1.encode(this.chosenFonts[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+                }
+            }
+        }
+    }
+
+    static class FontAccessManagerChooseLocalFontsResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final FontAccessManager.ChooseLocalFontsResponse mCallback;
+
+        FontAccessManagerChooseLocalFontsResponseParamsForwardToCallback(FontAccessManager.ChooseLocalFontsResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(CHOOSE_LOCAL_FONTS_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                FontAccessManagerChooseLocalFontsResponseParams response = FontAccessManagerChooseLocalFontsResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.status, response.chosenFonts);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class FontAccessManagerChooseLocalFontsResponseParamsProxyToResponder implements FontAccessManager.ChooseLocalFontsResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        FontAccessManagerChooseLocalFontsResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer status, FontMetadata[] chosenFonts) {
+            FontAccessManagerChooseLocalFontsResponseParams _response = new FontAccessManagerChooseLocalFontsResponseParams();
+
+            _response.status = status;
+
+            _response.chosenFonts = chosenFonts;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    CHOOSE_LOCAL_FONTS_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

@@ -30,25 +30,21 @@ final class ProfileSyncServiceJni implements ProfileSyncService.Natives {
   }
 
   @Override
-  public void requestStart(long nativeProfileSyncServiceAndroid, ProfileSyncService caller) {
-    GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_requestStart(nativeProfileSyncServiceAndroid, caller);
+  public void setSyncRequested(long nativeProfileSyncServiceAndroid, ProfileSyncService caller,
+      boolean requested) {
+    GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_setSyncRequested(nativeProfileSyncServiceAndroid, caller, requested);
   }
 
   @Override
-  public void requestStop(long nativeProfileSyncServiceAndroid, ProfileSyncService caller) {
-    GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_requestStop(nativeProfileSyncServiceAndroid, caller);
+  public boolean isSyncAllowedByPlatform(long nativeProfileSyncServiceAndroid,
+      ProfileSyncService caller) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_isSyncAllowedByPlatform(nativeProfileSyncServiceAndroid, caller);
   }
 
   @Override
   public void setSyncAllowedByPlatform(long nativeProfileSyncServiceAndroid,
       ProfileSyncService caller, boolean allowed) {
     GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_setSyncAllowedByPlatform(nativeProfileSyncServiceAndroid, caller, allowed);
-  }
-
-  @Override
-  public void setSyncSessionsId(long nativeProfileSyncServiceAndroid, ProfileSyncService caller,
-      String tag) {
-    GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_setSyncSessionsId(nativeProfileSyncServiceAndroid, caller, tag);
   }
 
   @Override
@@ -182,12 +178,6 @@ final class ProfileSyncServiceJni implements ProfileSyncService.Natives {
   }
 
   @Override
-  public int getNumberOfSyncedDevices(long nativeProfileSyncServiceAndroid,
-      ProfileSyncService caller) {
-    return (int)GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_getNumberOfSyncedDevices(nativeProfileSyncServiceAndroid, caller);
-  }
-
-  @Override
   public int[] getActiveDataTypes(long nativeProfileSyncServiceAndroid, ProfileSyncService caller) {
     return (int[])GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_getActiveDataTypes(nativeProfileSyncServiceAndroid, caller);
   }
@@ -244,8 +234,9 @@ final class ProfileSyncServiceJni implements ProfileSyncService.Natives {
   }
 
   @Override
-  public boolean isSyncActive(long nativeProfileSyncServiceAndroid, ProfileSyncService caller) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_isSyncActive(nativeProfileSyncServiceAndroid, caller);
+  public boolean isSyncFeatureActive(long nativeProfileSyncServiceAndroid,
+      ProfileSyncService caller) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_isSyncFeatureActive(nativeProfileSyncServiceAndroid, caller);
   }
 
   @Override
@@ -267,15 +258,15 @@ final class ProfileSyncServiceJni implements ProfileSyncService.Natives {
   }
 
   @Override
-  public boolean isPassphrasePrompted(long nativeProfileSyncServiceAndroid,
-      ProfileSyncService caller) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_isPassphrasePrompted(nativeProfileSyncServiceAndroid, caller);
+  public boolean isPassphrasePromptMutedForCurrentProductVersion(
+      long nativeProfileSyncServiceAndroid, ProfileSyncService caller) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_isPassphrasePromptMutedForCurrentProductVersion(nativeProfileSyncServiceAndroid, caller);
   }
 
   @Override
-  public void setPassphrasePrompted(long nativeProfileSyncServiceAndroid, ProfileSyncService caller,
-      boolean prompted) {
-    GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_setPassphrasePrompted(nativeProfileSyncServiceAndroid, caller, prompted);
+  public void markPassphrasePromptMutedForCurrentProductVersion(
+      long nativeProfileSyncServiceAndroid, ProfileSyncService caller) {
+    GEN_JNI.org_chromium_chrome_browser_sync_ProfileSyncService_markPassphrasePromptMutedForCurrentProductVersion(nativeProfileSyncServiceAndroid, caller);
   }
 
   @Override

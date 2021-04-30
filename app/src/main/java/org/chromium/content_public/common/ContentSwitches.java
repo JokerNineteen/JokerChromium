@@ -75,11 +75,6 @@ public final class ContentSwitches {
     // Into
     //     ../../content/common/android/java_templates/ContentSwitches.java.tmpl
 
-    // Allows processing of input before a frame has been committed.
-    // TODO(schenney): crbug.com/987626. Used by headless. Look for a way not
-    // involving a command line switch.
-    public static final String ALLOW_PRE_COMMIT_INPUT = "allow-pre-commit-input";
-
     // By default, file:// URIs cannot read other file:// URIs. This is an
     // override for developers who need the old behavior for testing.
     public static final String ALLOW_FILE_ACCESS_FROM_FILES = "allow-file-access-from-files";
@@ -413,7 +408,7 @@ public final class ContentSwitches {
     // also applys to workers.
     public static final String ENABLE_PRECISE_MEMORY_INFO = "enable-precise-memory-info";
 
-    // Set options to cache V8 data. (off, preparse data, or code)
+    // Set options to cache V8 data. (none, code, or default)
     public static final String V8_CACHE_OPTIONS = "v8-cache-options";
 
     // If true the ServiceProcessLauncher is used to launch services. This allows
@@ -440,14 +435,6 @@ public final class ContentSwitches {
 
     // Enabled threaded compositing for web tests.
     public static final String ENABLE_THREADED_COMPOSITING = "enable-threaded-compositing";
-
-    // Enable tracing during the execution of browser tests.
-    public static final String ENABLE_TRACING = "enable-tracing";
-
-    // The filename to write the output of the test tracing to. If it is empty
-    // or it ends in a directory separator then an auto-generated filename will be
-    // appended.
-    public static final String ENABLE_TRACING_OUTPUT = "enable-tracing-output";
 
     // Enable screen capturing support for MediaStream API.
     public static final String ENABLE_USER_MEDIA_SCREEN_CAPTURING = "enable-usermedia-screen-capturing";
@@ -541,6 +528,9 @@ public final class ContentSwitches {
     //   --isolate-origins=https://www.foo.com,https://www.bar.com
     public static final String ISOLATE_ORIGINS = "isolate-origins";
 
+    // https://crbug.com/1140371
+    public static final String ISOLATION_BY_DEFAULT = "isolation-by-default";
+
     // Disable latest shipping ECMAScript 6 features.
     public static final String DISABLE_JAVA_SCRIPT_HARMONY_SHIPPING = "disable-javascript-harmony-shipping";
 
@@ -590,6 +580,12 @@ public final class ContentSwitches {
 
     // Use a Mojo-based LocalStorage implementation.
     public static final String MOJO_LOCAL_STORAGE = "mojo-local-storage";
+
+    // Disables the unsandboxed zygote.
+    // Note: this flag should not be used on most platforms. It is introduced
+    // because some platforms (e.g. Cast) have very limited memory and binaries
+    // won't be updated when the browser process is running.
+    public static final String NO_UNSANDBOXED_ZYGOTE = "no-unsandboxed-zygote";
 
     // Disables the use of a zygote process for forking child processes. Instead,
     // child processes will be forked and exec'd directly. Note that --no-sandbox
@@ -649,6 +645,11 @@ public final class ContentSwitches {
     // touchpad and touchscreen, and set to '2' to enable it only for touchscreen.
     // Defaults to disabled.
     public static final String PULL_TO_REFRESH = "pull-to-refresh";
+
+    // Specifies the minimum amount of time, in seconds, that must pass before
+    // consecutive quota change events can be fired. Set the value to '0' to disable
+    // the debounce mechanimsm.
+    public static final String QUOTA_CHANGE_EVENT_INTERVAL = "quota-change-event-interval";
 
     // Register Pepper plugins (see pepper_plugin_list.cc for its format).
     public static final String REGISTER_PEPPER_PLUGINS = "register-pepper-plugins";
@@ -776,8 +777,9 @@ public final class ContentSwitches {
     // Causes the utility process to display a dialog on launch.
     public static final String UTILITY_STARTUP_DIALOG = "utility-startup-dialog";
 
-    // This switch indicates the type of a utility process. It is not used by Chrome
-    // but is added to the command line for debugging and profiling purposes.
+    // This switch indicates the type of a utility process. It does not affect the
+    // services offered by the process, but is added to the command line for
+    // debugging and profiling purposes.
     public static final String UTILITY_SUB_TYPE = "utility-sub-type";
 
     // In debug builds, asserts that the stream of input events is valid.
@@ -890,9 +892,6 @@ public final class ContentSwitches {
     // Disables hardware acceleration of video decode, where available.
     public static final String DISABLE_ACCELERATED_VIDEO_DECODE = "disable-accelerated-video-decode";
 
-    // Enables hardware acceleration of video decoding on linux. (defaults to off)
-    public static final String ENABLE_ACCELERATED_VIDEO_DECODE = "enable-accelerated-video-decode";
-
     // Disable Media Session API
     public static final String DISABLE_MEDIA_SESSION_API = "disable-media-session-api";
 
@@ -922,9 +921,6 @@ public final class ContentSwitches {
 
     // Prevent the offline indicator from showing.
     public static final String FORCE_ONLINE_CONNECTION_STATE_FOR_INDICATOR = "force-online-connection-state-for-indicator";
-
-    // The telephony region (ISO country code) to use in phone number detection.
-    public static final String NETWORK_COUNTRY_ISO = "network-country-iso";
 
     // Enables remote debug over HTTP on the specified socket name.
     public static final String REMOTE_DEBUGGING_SOCKET_NAME = "remote-debugging-socket-name";
@@ -1008,6 +1004,9 @@ public final class ContentSwitches {
     // Causes the second GPU process used for gpu info collection to display a
     // dialog on launch.
     public static final String GPU2_STARTUP_DIALOG = "gpu2-startup-dialog";
+
+    // Use high priority for the audio process.
+    public static final String AUDIO_PROCESS_HIGH_PRIORITY = "audio-process-high-priority";
 
     // Dumps IPC messages sent from renderer processes to the browser process to
     // the given directory. Used primarily to gather samples for IPC fuzzing.

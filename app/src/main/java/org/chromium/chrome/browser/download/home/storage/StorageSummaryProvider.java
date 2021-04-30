@@ -9,11 +9,11 @@ import android.content.Context;
 import androidx.annotation.Nullable;
 
 import org.chromium.base.task.AsyncTask;
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.download.DirectoryOption;
 import org.chromium.chrome.browser.download.DownloadDirectoryProvider;
 import org.chromium.chrome.browser.download.home.filter.OfflineItemFilterObserver;
 import org.chromium.chrome.browser.download.home.filter.OfflineItemFilterSource;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.components.browser_ui.util.DownloadUtils;
 import org.chromium.components.offline_items_collection.OfflineItem;
 import org.chromium.components.offline_items_collection.OfflineItemState;
@@ -28,7 +28,9 @@ import java.util.Collection;
  */
 public class StorageSummaryProvider implements OfflineItemFilterObserver {
     /** A delegate for updating the UI about the storage information. */
-    public interface Delegate { void onStorageInfoChanged(String storageInfo); }
+    public interface Delegate {
+        void onStorageInfoChanged(String storageInfo);
+    }
 
     private final Context mContext;
     private final Delegate mDelegate;
@@ -105,7 +107,7 @@ public class StorageSummaryProvider implements OfflineItemFilterObserver {
         if (mDirectoryOption == null) return;
 
         // Build the storage summary string.
-        assert(mTotalDownloadSize >= 0);
+        assert (mTotalDownloadSize >= 0);
         String storageSummary = mContext.getString(R.string.download_manager_ui_space_using,
                 DownloadUtils.getStringForBytes(mContext, mTotalDownloadSize),
                 DownloadUtils.getStringForBytes(mContext, mDirectoryOption.totalSpace));

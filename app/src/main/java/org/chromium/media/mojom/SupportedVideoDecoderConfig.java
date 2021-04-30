@@ -63,11 +63,13 @@ public final class SupportedVideoDecoderConfig extends org.chromium.mojo.binding
                     
                 result.profileMin = decoder0.readInt(8);
                     VideoCodecProfile.validate(result.profileMin);
+                    result.profileMin = VideoCodecProfile.toKnownValue(result.profileMin);
                 }
                 {
                     
                 result.profileMax = decoder0.readInt(12);
                     VideoCodecProfile.validate(result.profileMax);
+                    result.profileMax = VideoCodecProfile.toKnownValue(result.profileMax);
                 }
                 {
                     

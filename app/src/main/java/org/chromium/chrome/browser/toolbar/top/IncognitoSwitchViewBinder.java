@@ -10,7 +10,7 @@ import static org.chromium.chrome.browser.toolbar.top.IncognitoSwitchProperties.
 import android.view.View;
 import android.widget.Switch;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.toolbar.R;
 import org.chromium.ui.modelutil.PropertyKey;
 import org.chromium.ui.modelutil.PropertyModel;
 
@@ -24,6 +24,7 @@ class IncognitoSwitchViewBinder {
      * Build a binder that handles interaction between the model and the view that make up the
      * incognito switch.
      */
+    @SuppressWarnings({"UseSwitchCompatOrMaterialCode"})
     public static void bind(PropertyModel model, Switch incognitoSwitch, PropertyKey propertyKey) {
         if (IncognitoSwitchProperties.ON_CHECKED_CHANGE_LISTENER == propertyKey) {
             incognitoSwitch.setOnCheckedChangeListener(

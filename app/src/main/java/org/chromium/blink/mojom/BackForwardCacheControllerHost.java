@@ -25,7 +25,7 @@ public interface BackForwardCacheControllerHost extends org.chromium.mojo.bindin
 
 
     void evictFromBackForwardCache(
-);
+int reason);
 
 
 }

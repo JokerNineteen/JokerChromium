@@ -20,7 +20,7 @@ public final class CompositorRenderPassQuadState extends org.chromium.mojo.bindi
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(72, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public CompositorRenderPassId renderPassId;
-    public int maskResourceId;
+    public ResourceId maskResourceId;
     public org.chromium.gfx.mojom.RectF maskUvRect;
     public org.chromium.gfx.mojom.Size maskTextureSize;
     public org.chromium.gfx.mojom.Vector2dF filtersScale;
@@ -28,7 +28,7 @@ public final class CompositorRenderPassQuadState extends org.chromium.mojo.bindi
     public org.chromium.gfx.mojom.RectF texCoordRect;
     public boolean forceAntiAliasingOff;
     public float backdropFilterQuality;
-    public boolean canUseBackdropFilterCache;
+    public boolean intersectsDamageUnder;
 
     private CompositorRenderPassQuadState(int version) {
         super(STRUCT_SIZE, version);
@@ -70,15 +70,8 @@ public final class CompositorRenderPassQuadState extends org.chromium.mojo.bindi
                 }
                 {
                     
-                result.maskResourceId = decoder0.readInt(16);
-                }
-                {
-                    
-                result.forceAntiAliasingOff = decoder0.readBoolean(20, 0);
-                }
-                {
-                    
-                result.canUseBackdropFilterCache = decoder0.readBoolean(20, 1);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, false);
+                result.maskResourceId = ResourceId.decode(decoder1);
                 }
                 {
                     
@@ -107,7 +100,15 @@ public final class CompositorRenderPassQuadState extends org.chromium.mojo.bindi
                 }
                 {
                     
-                result.backdropFilterQuality = decoder0.readFloat(64);
+                result.forceAntiAliasingOff = decoder0.readBoolean(64, 0);
+                }
+                {
+                    
+                result.intersectsDamageUnder = decoder0.readBoolean(64, 1);
+                }
+                {
+                    
+                result.backdropFilterQuality = decoder0.readFloat(68);
                 }
 
         } finally {
@@ -123,11 +124,7 @@ public final class CompositorRenderPassQuadState extends org.chromium.mojo.bindi
         
         encoder0.encode(this.renderPassId, 8, false);
         
-        encoder0.encode(this.maskResourceId, 16);
-        
-        encoder0.encode(this.forceAntiAliasingOff, 20, 0);
-        
-        encoder0.encode(this.canUseBackdropFilterCache, 20, 1);
+        encoder0.encode(this.maskResourceId, 16, false);
         
         encoder0.encode(this.maskUvRect, 24, false);
         
@@ -139,6 +136,10 @@ public final class CompositorRenderPassQuadState extends org.chromium.mojo.bindi
         
         encoder0.encode(this.texCoordRect, 56, false);
         
-        encoder0.encode(this.backdropFilterQuality, 64);
+        encoder0.encode(this.forceAntiAliasingOff, 64, 0);
+        
+        encoder0.encode(this.intersectsDamageUnder, 64, 1);
+        
+        encoder0.encode(this.backdropFilterQuality, 68);
     }
 }

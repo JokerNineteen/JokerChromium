@@ -139,6 +139,26 @@ public final class HintsProto {
      * <code>LINK_PERFORMANCE = 14;</code>
      */
     LINK_PERFORMANCE(14),
+    /**
+     * <pre>
+     * Detects if a page is a shopping page or not. A tradeoff has been made here
+     * where the number of shopping page predictions for non-shopping pages is
+     * increased to reduce the number of non-shopping page predictions for
+     * shopping pages.
+     * </pre>
+     *
+     * <code>SHOPPING_PAGE_PREDICTOR = 15;</code>
+     */
+    SHOPPING_PAGE_PREDICTOR(15),
+    /**
+     * <pre>
+     * This optimization provides information about hosts that are identified as
+     * commonly logged-in.
+     * </pre>
+     *
+     * <code>LOGIN_DETECTION = 16;</code>
+     */
+    LOGIN_DETECTION(16),
     ;
 
     /**
@@ -267,6 +287,26 @@ public final class HintsProto {
      * <code>LINK_PERFORMANCE = 14;</code>
      */
     public static final int LINK_PERFORMANCE_VALUE = 14;
+    /**
+     * <pre>
+     * Detects if a page is a shopping page or not. A tradeoff has been made here
+     * where the number of shopping page predictions for non-shopping pages is
+     * increased to reduce the number of non-shopping page predictions for
+     * shopping pages.
+     * </pre>
+     *
+     * <code>SHOPPING_PAGE_PREDICTOR = 15;</code>
+     */
+    public static final int SHOPPING_PAGE_PREDICTOR_VALUE = 15;
+    /**
+     * <pre>
+     * This optimization provides information about hosts that are identified as
+     * commonly logged-in.
+     * </pre>
+     *
+     * <code>LOGIN_DETECTION = 16;</code>
+     */
+    public static final int LOGIN_DETECTION_VALUE = 16;
 
 
     @java.lang.Override
@@ -301,6 +341,8 @@ public final class HintsProto {
         case 12: return DELAY_COMPETING_LOW_PRIORITY_REQUESTS;
         case 13: return LITE_VIDEO;
         case 14: return LINK_PERFORMANCE;
+        case 15: return SHOPPING_PAGE_PREDICTOR;
+        case 16: return LOGIN_DETECTION;
         default: return null;
       }
     }
@@ -5262,17 +5304,6 @@ public final class HintsProto {
     long getTuningVersion();
 
     /**
-     * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-     * @return Whether the previewsMetadata field is set.
-     */
-    boolean hasPreviewsMetadata();
-    /**
-     * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-     * @return The previewsMetadata.
-     */
-    org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata getPreviewsMetadata();
-
-    /**
      * <code>.optimization_guide.proto.PerformanceHintsMetadata performance_hints_metadata = 11;</code>
      * @return Whether the performanceHintsMetadata field is set.
      */
@@ -5314,7 +5345,7 @@ public final class HintsProto {
      * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
      * @return The anyMetadata.
      */
-    org.chromium.components.optimization_guide.proto.HintsProto.Any getAnyMetadata();
+    org.chromium.components.optimization_guide.proto.CommonTypesProto.Any getAnyMetadata();
 
     public org.chromium.components.optimization_guide.proto.HintsProto.Optimization.MetadataCase getMetadataCase();
   }
@@ -5332,7 +5363,6 @@ public final class HintsProto {
     private int metadataCase_ = 0;
     private java.lang.Object metadata_;
     public enum MetadataCase {
-      PREVIEWS_METADATA(10),
       PERFORMANCE_HINTS_METADATA(11),
       PUBLIC_IMAGE_METADATA(12),
       LOADING_PREDICTOR_METADATA(13),
@@ -5352,7 +5382,6 @@ public final class HintsProto {
 
       public static MetadataCase forNumber(int value) {
         switch (value) {
-          case 10: return PREVIEWS_METADATA;
           case 11: return PERFORMANCE_HINTS_METADATA;
           case 12: return PUBLIC_IMAGE_METADATA;
           case 13: return LOADING_PREDICTOR_METADATA;
@@ -5489,56 +5518,6 @@ public final class HintsProto {
     private void clearTuningVersion() {
       bitField0_ = (bitField0_ & ~0x00000002);
       tuningVersion_ = 0L;
-    }
-
-    public static final int PREVIEWS_METADATA_FIELD_NUMBER = 10;
-    /**
-     * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-     */
-    @java.lang.Override
-    public boolean hasPreviewsMetadata() {
-      return metadataCase_ == 10;
-    }
-    /**
-     * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-     */
-    @java.lang.Override
-    public org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata getPreviewsMetadata() {
-      if (metadataCase_ == 10) {
-         return (org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata) metadata_;
-      }
-      return org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata.getDefaultInstance();
-    }
-    /**
-     * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-     */
-    private void setPreviewsMetadata(org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata value) {
-      value.getClass();
-  metadata_ = value;
-      metadataCase_ = 10;
-    }
-    /**
-     * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-     */
-    private void mergePreviewsMetadata(org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata value) {
-      value.getClass();
-  if (metadataCase_ == 10 &&
-          metadata_ != org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata.getDefaultInstance()) {
-        metadata_ = org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata.newBuilder((org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata) metadata_)
-            .mergeFrom(value).buildPartial();
-      } else {
-        metadata_ = value;
-      }
-      metadataCase_ = 10;
-    }
-    /**
-     * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-     */
-    private void clearPreviewsMetadata() {
-      if (metadataCase_ == 10) {
-        metadataCase_ = 0;
-        metadata_ = null;
-      }
     }
 
     public static final int PERFORMANCE_HINTS_METADATA_FIELD_NUMBER = 11;
@@ -5703,16 +5682,16 @@ public final class HintsProto {
      * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
      */
     @java.lang.Override
-    public org.chromium.components.optimization_guide.proto.HintsProto.Any getAnyMetadata() {
+    public org.chromium.components.optimization_guide.proto.CommonTypesProto.Any getAnyMetadata() {
       if (metadataCase_ == 15) {
-         return (org.chromium.components.optimization_guide.proto.HintsProto.Any) metadata_;
+         return (org.chromium.components.optimization_guide.proto.CommonTypesProto.Any) metadata_;
       }
-      return org.chromium.components.optimization_guide.proto.HintsProto.Any.getDefaultInstance();
+      return org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.getDefaultInstance();
     }
     /**
      * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
      */
-    private void setAnyMetadata(org.chromium.components.optimization_guide.proto.HintsProto.Any value) {
+    private void setAnyMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
       value.getClass();
   metadata_ = value;
       metadataCase_ = 15;
@@ -5720,11 +5699,11 @@ public final class HintsProto {
     /**
      * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
      */
-    private void mergeAnyMetadata(org.chromium.components.optimization_guide.proto.HintsProto.Any value) {
+    private void mergeAnyMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
       value.getClass();
   if (metadataCase_ == 15 &&
-          metadata_ != org.chromium.components.optimization_guide.proto.HintsProto.Any.getDefaultInstance()) {
-        metadata_ = org.chromium.components.optimization_guide.proto.HintsProto.Any.newBuilder((org.chromium.components.optimization_guide.proto.HintsProto.Any) metadata_)
+          metadata_ != org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.getDefaultInstance()) {
+        metadata_ = org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.newBuilder((org.chromium.components.optimization_guide.proto.CommonTypesProto.Any) metadata_)
             .mergeFrom(value).buildPartial();
       } else {
         metadata_ = value;
@@ -5965,54 +5944,6 @@ public final class HintsProto {
       }
 
       /**
-       * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-       */
-      @java.lang.Override
-      public boolean hasPreviewsMetadata() {
-        return instance.hasPreviewsMetadata();
-      }
-      /**
-       * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-       */
-      @java.lang.Override
-      public org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata getPreviewsMetadata() {
-        return instance.getPreviewsMetadata();
-      }
-      /**
-       * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-       */
-      public Builder setPreviewsMetadata(org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata value) {
-        copyOnWrite();
-        instance.setPreviewsMetadata(value);
-        return this;
-      }
-      /**
-       * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-       */
-      public Builder setPreviewsMetadata(
-          org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata.Builder builderForValue) {
-        copyOnWrite();
-        instance.setPreviewsMetadata(builderForValue.build());
-        return this;
-      }
-      /**
-       * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-       */
-      public Builder mergePreviewsMetadata(org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata value) {
-        copyOnWrite();
-        instance.mergePreviewsMetadata(value);
-        return this;
-      }
-      /**
-       * <code>.optimization_guide.proto.PreviewsMetadata previews_metadata = 10;</code>
-       */
-      public Builder clearPreviewsMetadata() {
-        copyOnWrite();
-        instance.clearPreviewsMetadata();
-        return this;
-      }
-
-      /**
        * <code>.optimization_guide.proto.PerformanceHintsMetadata performance_hints_metadata = 11;</code>
        */
       @java.lang.Override
@@ -6167,13 +6098,13 @@ public final class HintsProto {
        * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
        */
       @java.lang.Override
-      public org.chromium.components.optimization_guide.proto.HintsProto.Any getAnyMetadata() {
+      public org.chromium.components.optimization_guide.proto.CommonTypesProto.Any getAnyMetadata() {
         return instance.getAnyMetadata();
       }
       /**
        * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
        */
-      public Builder setAnyMetadata(org.chromium.components.optimization_guide.proto.HintsProto.Any value) {
+      public Builder setAnyMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
         copyOnWrite();
         instance.setAnyMetadata(value);
         return this;
@@ -6182,7 +6113,7 @@ public final class HintsProto {
        * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
        */
       public Builder setAnyMetadata(
-          org.chromium.components.optimization_guide.proto.HintsProto.Any.Builder builderForValue) {
+          org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.Builder builderForValue) {
         copyOnWrite();
         instance.setAnyMetadata(builderForValue.build());
         return this;
@@ -6190,7 +6121,7 @@ public final class HintsProto {
       /**
        * <code>.optimization_guide.proto.Any any_metadata = 15;</code>
        */
-      public Builder mergeAnyMetadata(org.chromium.components.optimization_guide.proto.HintsProto.Any value) {
+      public Builder mergeAnyMetadata(org.chromium.components.optimization_guide.proto.CommonTypesProto.Any value) {
         copyOnWrite();
         instance.mergeAnyMetadata(value);
         return this;
@@ -6226,16 +6157,14 @@ public final class HintsProto {
               "optimizationType_",
               org.chromium.components.optimization_guide.proto.HintsProto.OptimizationType.internalGetVerifier(),
               "tuningVersion_",
-              org.chromium.components.optimization_guide.proto.PreviewsMetadataProto.PreviewsMetadata.class,
               org.chromium.components.optimization_guide.proto.PerformanceHintsMetadataProto.PerformanceHintsMetadata.class,
               org.chromium.components.optimization_guide.proto.PublicImageMetadataProto.PublicImageMetadata.class,
               org.chromium.components.optimization_guide.proto.LoadingPredictorMetadataProto.LoadingPredictorMetadata.class,
-              org.chromium.components.optimization_guide.proto.HintsProto.Any.class,
+              org.chromium.components.optimization_guide.proto.CommonTypesProto.Any.class,
             };
             java.lang.String info =
-                "\u0001\u0007\u0001\u0001\u0001\u000f\u0007\u0000\u0000\u0000\u0001\u100c\u0000\u0006" +
-                "\u1003\u0001\n\u103c\u0000\u000b\u103c\u0000\f\u103c\u0000\r\u103c\u0000\u000f\u103c" +
-                "\u0000";
+                "\u0001\u0006\u0001\u0001\u0001\u000f\u0006\u0000\u0000\u0000\u0001\u100c\u0000\u0006" +
+                "\u1003\u0001\u000b\u103c\u0000\f\u103c\u0000\r\u103c\u0000\u000f\u103c\u0000";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -9353,7 +9282,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9364,7 +9293,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9374,7 +9303,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9385,7 +9314,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9394,6 +9323,59 @@ public final class HintsProto {
      */
     com.google.protobuf.ByteString
         getRegexpsBytes(int index);
+
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @return A list containing the exclusionRegexps.
+     */
+    java.util.List<java.lang.String>
+        getExclusionRegexpsList();
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @return The count of exclusionRegexps.
+     */
+    int getExclusionRegexpsCount();
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param index The index of the element to return.
+     * @return The exclusionRegexps at the given index.
+     */
+    java.lang.String getExclusionRegexps(int index);
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param index The index of the element to return.
+     * @return The exclusionRegexps at the given index.
+     */
+    com.google.protobuf.ByteString
+        getExclusionRegexpsBytes(int index);
 
     /**
      * <pre>
@@ -9419,6 +9401,7 @@ public final class HintsProto {
   /**
    * <pre>
    * A scalable filter for an optimization type.
+   * Next ID: 6
    * </pre>
    *
    * Protobuf type {@code optimization_guide.proto.OptimizationFilter}
@@ -9430,6 +9413,7 @@ public final class HintsProto {
       OptimizationFilterOrBuilder {
     private OptimizationFilter() {
       regexps_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+      exclusionRegexps_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
     }
     private int bitField0_;
     public static final int OPTIMIZATION_TYPE_FIELD_NUMBER = 1;
@@ -9554,7 +9538,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9567,7 +9551,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9580,7 +9564,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9594,7 +9578,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9617,7 +9601,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9633,7 +9617,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9648,7 +9632,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9663,7 +9647,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9674,7 +9658,7 @@ public final class HintsProto {
     /**
      * <pre>
      * Additional filters represented as regexps matched against the main page
-     * URL.
+     * URL. If matched, the URL will be considered as contained in the filter.
      * </pre>
      *
      * <code>repeated string regexps = 3;</code>
@@ -9684,6 +9668,161 @@ public final class HintsProto {
         com.google.protobuf.ByteString value) {
       ensureRegexpsIsMutable();
       regexps_.add(value.toStringUtf8());
+    }
+
+    public static final int EXCLUSION_REGEXPS_FIELD_NUMBER = 5;
+    private com.google.protobuf.Internal.ProtobufList<java.lang.String> exclusionRegexps_;
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @return A list containing the exclusionRegexps.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.String> getExclusionRegexpsList() {
+      return exclusionRegexps_;
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @return The count of exclusionRegexps.
+     */
+    @java.lang.Override
+    public int getExclusionRegexpsCount() {
+      return exclusionRegexps_.size();
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param index The index of the element to return.
+     * @return The exclusionRegexps at the given index.
+     */
+    @java.lang.Override
+    public java.lang.String getExclusionRegexps(int index) {
+      return exclusionRegexps_.get(index);
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the exclusionRegexps at the given index.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getExclusionRegexpsBytes(int index) {
+      return com.google.protobuf.ByteString.copyFromUtf8(
+          exclusionRegexps_.get(index));
+    }
+    private void ensureExclusionRegexpsIsMutable() {
+      com.google.protobuf.Internal.ProtobufList<java.lang.String> tmp =
+          exclusionRegexps_;  if (!tmp.isModifiable()) {
+        exclusionRegexps_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param index The index to set the value at.
+     * @param value The exclusionRegexps to set.
+     */
+    private void setExclusionRegexps(
+        int index, java.lang.String value) {
+      value.getClass();
+  ensureExclusionRegexpsIsMutable();
+      exclusionRegexps_.set(index, value);
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param value The exclusionRegexps to add.
+     */
+    private void addExclusionRegexps(
+        java.lang.String value) {
+      value.getClass();
+  ensureExclusionRegexpsIsMutable();
+      exclusionRegexps_.add(value);
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param values The exclusionRegexps to add.
+     */
+    private void addAllExclusionRegexps(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureExclusionRegexpsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, exclusionRegexps_);
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     */
+    private void clearExclusionRegexps() {
+      exclusionRegexps_ = com.google.protobuf.GeneratedMessageLite.emptyProtobufList();
+    }
+    /**
+     * <pre>
+     * Additional filters represented as regexps matched against the main page
+     * URL. If matched, the URL will be considered as not contained in the filter.
+     * This set of regexps should be checked prior to any matching against the
+     * contained bloom_filter or regexps fields.
+     * </pre>
+     *
+     * <code>repeated string exclusion_regexps = 5;</code>
+     * @param value The bytes of the exclusionRegexps to add.
+     */
+    private void addExclusionRegexpsBytes(
+        com.google.protobuf.ByteString value) {
+      ensureExclusionRegexpsIsMutable();
+      exclusionRegexps_.add(value.toStringUtf8());
     }
 
     public static final int SKIP_HOST_SUFFIX_CHECKING_FIELD_NUMBER = 4;
@@ -9824,6 +9963,7 @@ public final class HintsProto {
     /**
      * <pre>
      * A scalable filter for an optimization type.
+     * Next ID: 6
      * </pre>
      *
      * Protobuf type {@code optimization_guide.proto.OptimizationFilter}
@@ -9965,7 +10105,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -9980,7 +10120,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -9993,7 +10133,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -10007,7 +10147,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -10022,7 +10162,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -10039,7 +10179,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -10055,7 +10195,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -10071,7 +10211,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -10085,7 +10225,7 @@ public final class HintsProto {
       /**
        * <pre>
        * Additional filters represented as regexps matched against the main page
-       * URL.
+       * URL. If matched, the URL will be considered as contained in the filter.
        * </pre>
        *
        * <code>repeated string regexps = 3;</code>
@@ -10096,6 +10236,161 @@ public final class HintsProto {
           com.google.protobuf.ByteString value) {
         copyOnWrite();
         instance.addRegexpsBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @return A list containing the exclusionRegexps.
+       */
+      @java.lang.Override
+      public java.util.List<java.lang.String>
+          getExclusionRegexpsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getExclusionRegexpsList());
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @return The count of exclusionRegexps.
+       */
+      @java.lang.Override
+      public int getExclusionRegexpsCount() {
+        return instance.getExclusionRegexpsCount();
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @param index The index of the element to return.
+       * @return The exclusionRegexps at the given index.
+       */
+      @java.lang.Override
+      public java.lang.String getExclusionRegexps(int index) {
+        return instance.getExclusionRegexps(index);
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the exclusionRegexps at the given index.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getExclusionRegexpsBytes(int index) {
+        return instance.getExclusionRegexpsBytes(index);
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @param index The index to set the value at.
+       * @param value The exclusionRegexps to set.
+       * @return This builder for chaining.
+       */
+      public Builder setExclusionRegexps(
+          int index, java.lang.String value) {
+        copyOnWrite();
+        instance.setExclusionRegexps(index, value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @param value The exclusionRegexps to add.
+       * @return This builder for chaining.
+       */
+      public Builder addExclusionRegexps(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.addExclusionRegexps(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @param values The exclusionRegexps to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllExclusionRegexps(
+          java.lang.Iterable<java.lang.String> values) {
+        copyOnWrite();
+        instance.addAllExclusionRegexps(values);
+        return this;
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearExclusionRegexps() {
+        copyOnWrite();
+        instance.clearExclusionRegexps();
+        return this;
+      }
+      /**
+       * <pre>
+       * Additional filters represented as regexps matched against the main page
+       * URL. If matched, the URL will be considered as not contained in the filter.
+       * This set of regexps should be checked prior to any matching against the
+       * contained bloom_filter or regexps fields.
+       * </pre>
+       *
+       * <code>repeated string exclusion_regexps = 5;</code>
+       * @param value The bytes of the exclusionRegexps to add.
+       * @return This builder for chaining.
+       */
+      public Builder addExclusionRegexpsBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.addExclusionRegexpsBytes(value);
         return this;
       }
 
@@ -10177,10 +10472,11 @@ public final class HintsProto {
               "bloomFilter_",
               "regexps_",
               "skipHostSuffixChecking_",
+              "exclusionRegexps_",
             };
             java.lang.String info =
-                "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0001\u0000\u0001\u100c\u0000\u0002" +
-                "\u1009\u0001\u0003\u001a\u0004\u1007\u0002";
+                "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0002\u0000\u0001\u100c\u0000\u0002" +
+                "\u1009\u0001\u0003\u001a\u0004\u1007\u0002\u0005\u001a";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -12700,520 +12996,6 @@ public final class HintsProto {
     private static volatile com.google.protobuf.Parser<Version> PARSER;
 
     public static com.google.protobuf.Parser<Version> parser() {
-      return DEFAULT_INSTANCE.getParserForType();
-    }
-  }
-
-  public interface AnyOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:optimization_guide.proto.Any)
-      com.google.protobuf.MessageLiteOrBuilder {
-
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @return Whether the typeUrl field is set.
-     */
-    boolean hasTypeUrl();
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @return The typeUrl.
-     */
-    java.lang.String getTypeUrl();
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @return The bytes for typeUrl.
-     */
-    com.google.protobuf.ByteString
-        getTypeUrlBytes();
-
-    /**
-     * <pre>
-     * Must be a valid serialized protocol buffer of the above specified type.
-     * </pre>
-     *
-     * <code>optional bytes value = 2;</code>
-     * @return Whether the value field is set.
-     */
-    boolean hasValue();
-    /**
-     * <pre>
-     * Must be a valid serialized protocol buffer of the above specified type.
-     * </pre>
-     *
-     * <code>optional bytes value = 2;</code>
-     * @return The value.
-     */
-    com.google.protobuf.ByteString getValue();
-  }
-  /**
-   * Protobuf type {@code optimization_guide.proto.Any}
-   */
-  public  static final class Any extends
-      com.google.protobuf.GeneratedMessageLite<
-          Any, Any.Builder> implements
-      // @@protoc_insertion_point(message_implements:optimization_guide.proto.Any)
-      AnyOrBuilder {
-    private Any() {
-      typeUrl_ = "";
-      value_ = com.google.protobuf.ByteString.EMPTY;
-    }
-    private int bitField0_;
-    public static final int TYPE_URL_FIELD_NUMBER = 1;
-    private java.lang.String typeUrl_;
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @return Whether the typeUrl field is set.
-     */
-    @java.lang.Override
-    public boolean hasTypeUrl() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @return The typeUrl.
-     */
-    @java.lang.Override
-    public java.lang.String getTypeUrl() {
-      return typeUrl_;
-    }
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @return The bytes for typeUrl.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTypeUrlBytes() {
-      return com.google.protobuf.ByteString.copyFromUtf8(typeUrl_);
-    }
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @param value The typeUrl to set.
-     */
-    private void setTypeUrl(
-        java.lang.String value) {
-      value.getClass();
-  bitField0_ |= 0x00000001;
-      typeUrl_ = value;
-    }
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     */
-    private void clearTypeUrl() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      typeUrl_ = getDefaultInstance().getTypeUrl();
-    }
-    /**
-     * <pre>
-     * A URL/resource name that uniquely identifies the type of the serialized
-     * protocol buffer message.
-     * </pre>
-     *
-     * <code>optional string type_url = 1;</code>
-     * @param value The bytes for typeUrl to set.
-     */
-    private void setTypeUrlBytes(
-        com.google.protobuf.ByteString value) {
-      typeUrl_ = value.toStringUtf8();
-      bitField0_ |= 0x00000001;
-    }
-
-    public static final int VALUE_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString value_;
-    /**
-     * <pre>
-     * Must be a valid serialized protocol buffer of the above specified type.
-     * </pre>
-     *
-     * <code>optional bytes value = 2;</code>
-     * @return Whether the value field is set.
-     */
-    @java.lang.Override
-    public boolean hasValue() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <pre>
-     * Must be a valid serialized protocol buffer of the above specified type.
-     * </pre>
-     *
-     * <code>optional bytes value = 2;</code>
-     * @return The value.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getValue() {
-      return value_;
-    }
-    /**
-     * <pre>
-     * Must be a valid serialized protocol buffer of the above specified type.
-     * </pre>
-     *
-     * <code>optional bytes value = 2;</code>
-     * @param value The value to set.
-     */
-    private void setValue(com.google.protobuf.ByteString value) {
-      value.getClass();
-  bitField0_ |= 0x00000002;
-      value_ = value;
-    }
-    /**
-     * <pre>
-     * Must be a valid serialized protocol buffer of the above specified type.
-     * </pre>
-     *
-     * <code>optional bytes value = 2;</code>
-     */
-    private void clearValue() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      value_ = getDefaultInstance().getValue();
-    }
-
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
-    }
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() {
-      return (Builder) DEFAULT_INSTANCE.createBuilder();
-    }
-    public static Builder newBuilder(org.chromium.components.optimization_guide.proto.HintsProto.Any prototype) {
-      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
-    }
-
-    /**
-     * Protobuf type {@code optimization_guide.proto.Any}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageLite.Builder<
-          org.chromium.components.optimization_guide.proto.HintsProto.Any, Builder> implements
-        // @@protoc_insertion_point(builder_implements:optimization_guide.proto.Any)
-        org.chromium.components.optimization_guide.proto.HintsProto.AnyOrBuilder {
-      // Construct using org.chromium.components.optimization_guide.proto.HintsProto.Any.newBuilder()
-      private Builder() {
-        super(DEFAULT_INSTANCE);
-      }
-
-
-      /**
-       * <pre>
-       * A URL/resource name that uniquely identifies the type of the serialized
-       * protocol buffer message.
-       * </pre>
-       *
-       * <code>optional string type_url = 1;</code>
-       * @return Whether the typeUrl field is set.
-       */
-      @java.lang.Override
-      public boolean hasTypeUrl() {
-        return instance.hasTypeUrl();
-      }
-      /**
-       * <pre>
-       * A URL/resource name that uniquely identifies the type of the serialized
-       * protocol buffer message.
-       * </pre>
-       *
-       * <code>optional string type_url = 1;</code>
-       * @return The typeUrl.
-       */
-      @java.lang.Override
-      public java.lang.String getTypeUrl() {
-        return instance.getTypeUrl();
-      }
-      /**
-       * <pre>
-       * A URL/resource name that uniquely identifies the type of the serialized
-       * protocol buffer message.
-       * </pre>
-       *
-       * <code>optional string type_url = 1;</code>
-       * @return The bytes for typeUrl.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getTypeUrlBytes() {
-        return instance.getTypeUrlBytes();
-      }
-      /**
-       * <pre>
-       * A URL/resource name that uniquely identifies the type of the serialized
-       * protocol buffer message.
-       * </pre>
-       *
-       * <code>optional string type_url = 1;</code>
-       * @param value The typeUrl to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTypeUrl(
-          java.lang.String value) {
-        copyOnWrite();
-        instance.setTypeUrl(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * A URL/resource name that uniquely identifies the type of the serialized
-       * protocol buffer message.
-       * </pre>
-       *
-       * <code>optional string type_url = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTypeUrl() {
-        copyOnWrite();
-        instance.clearTypeUrl();
-        return this;
-      }
-      /**
-       * <pre>
-       * A URL/resource name that uniquely identifies the type of the serialized
-       * protocol buffer message.
-       * </pre>
-       *
-       * <code>optional string type_url = 1;</code>
-       * @param value The bytes for typeUrl to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTypeUrlBytes(
-          com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setTypeUrlBytes(value);
-        return this;
-      }
-
-      /**
-       * <pre>
-       * Must be a valid serialized protocol buffer of the above specified type.
-       * </pre>
-       *
-       * <code>optional bytes value = 2;</code>
-       * @return Whether the value field is set.
-       */
-      @java.lang.Override
-      public boolean hasValue() {
-        return instance.hasValue();
-      }
-      /**
-       * <pre>
-       * Must be a valid serialized protocol buffer of the above specified type.
-       * </pre>
-       *
-       * <code>optional bytes value = 2;</code>
-       * @return The value.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getValue() {
-        return instance.getValue();
-      }
-      /**
-       * <pre>
-       * Must be a valid serialized protocol buffer of the above specified type.
-       * </pre>
-       *
-       * <code>optional bytes value = 2;</code>
-       * @param value The value to set.
-       * @return This builder for chaining.
-       */
-      public Builder setValue(com.google.protobuf.ByteString value) {
-        copyOnWrite();
-        instance.setValue(value);
-        return this;
-      }
-      /**
-       * <pre>
-       * Must be a valid serialized protocol buffer of the above specified type.
-       * </pre>
-       *
-       * <code>optional bytes value = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearValue() {
-        copyOnWrite();
-        instance.clearValue();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:optimization_guide.proto.Any)
-    }
-    @java.lang.Override
-    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
-    protected final java.lang.Object dynamicMethod(
-        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-        java.lang.Object arg0, java.lang.Object arg1) {
-      switch (method) {
-        case NEW_MUTABLE_INSTANCE: {
-          return new org.chromium.components.optimization_guide.proto.HintsProto.Any();
-        }
-        case NEW_BUILDER: {
-          return new Builder();
-        }
-        case BUILD_MESSAGE_INFO: {
-            java.lang.Object[] objects = new java.lang.Object[] {
-              "bitField0_",
-              "typeUrl_",
-              "value_",
-            };
-            java.lang.String info =
-                "\u0001\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u1008\u0000\u0002" +
-                "\u100a\u0001";
-            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
-        }
-        // fall through
-        case GET_DEFAULT_INSTANCE: {
-          return DEFAULT_INSTANCE;
-        }
-        case GET_PARSER: {
-          com.google.protobuf.Parser<org.chromium.components.optimization_guide.proto.HintsProto.Any> parser = PARSER;
-          if (parser == null) {
-            synchronized (org.chromium.components.optimization_guide.proto.HintsProto.Any.class) {
-              parser = PARSER;
-              if (parser == null) {
-                parser =
-                    new DefaultInstanceBasedParser<org.chromium.components.optimization_guide.proto.HintsProto.Any>(
-                        DEFAULT_INSTANCE);
-                PARSER = parser;
-              }
-            }
-          }
-          return parser;
-      }
-      case GET_MEMOIZED_IS_INITIALIZED: {
-        return (byte) 1;
-      }
-      case SET_MEMOIZED_IS_INITIALIZED: {
-        return null;
-      }
-      }
-      throw new UnsupportedOperationException();
-    }
-
-
-    // @@protoc_insertion_point(class_scope:optimization_guide.proto.Any)
-    private static final org.chromium.components.optimization_guide.proto.HintsProto.Any DEFAULT_INSTANCE;
-    static {
-      Any defaultInstance = new Any();
-      // New instances are implicitly immutable so no need to make
-      // immutable.
-      DEFAULT_INSTANCE = defaultInstance;
-      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-        Any.class, defaultInstance);
-    }
-
-    public static org.chromium.components.optimization_guide.proto.HintsProto.Any getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static volatile com.google.protobuf.Parser<Any> PARSER;
-
-    public static com.google.protobuf.Parser<Any> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

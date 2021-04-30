@@ -36,6 +36,7 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
     public String appidExclude;
     public boolean credProps;
     public int largeBlobEnable;
+    public boolean isPaymentCredentialCreation;
 
     private PublicKeyCredentialCreationOptions(int version) {
         super(STRUCT_SIZE, version);
@@ -124,6 +125,7 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
                     
                 result.attestation = decoder0.readInt(64);
                     AttestationConveyancePreference.validate(result.attestation);
+                    result.attestation = AttestationConveyancePreference.toKnownValue(result.attestation);
                 }
                 {
                     
@@ -147,6 +149,10 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
                 }
                 {
                     
+                result.isPaymentCredentialCreation = decoder0.readBoolean(68, 5);
+                }
+                {
+                    
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(72, true);
                 result.cableRegistrationData = CableRegistration.decode(decoder1);
                 }
@@ -154,11 +160,13 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
                     
                 result.protectionPolicy = decoder0.readInt(80);
                     ProtectionPolicy.validate(result.protectionPolicy);
+                    result.protectionPolicy = ProtectionPolicy.toKnownValue(result.protectionPolicy);
                 }
                 {
                     
                 result.largeBlobEnable = decoder0.readInt(84);
                     LargeBlobSupport.validate(result.largeBlobEnable);
+                    result.largeBlobEnable = LargeBlobSupport.toKnownValue(result.largeBlobEnable);
                 }
                 {
                     
@@ -217,6 +225,8 @@ public final class PublicKeyCredentialCreationOptions extends org.chromium.mojo.
         encoder0.encode(this.enforceProtectionPolicy, 68, 3);
         
         encoder0.encode(this.credProps, 68, 4);
+        
+        encoder0.encode(this.isPaymentCredentialCreation, 68, 5);
         
         encoder0.encode(this.cableRegistrationData, 72, true);
         

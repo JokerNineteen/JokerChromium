@@ -63,6 +63,7 @@ public final class TouchData extends org.chromium.mojo.bindings.Struct {
                     
                 result.cancelable = decoder0.readInt(8);
                     DispatchType.validate(result.cancelable);
+                    result.cancelable = DispatchType.toKnownValue(result.cancelable);
                 }
                 {
                     

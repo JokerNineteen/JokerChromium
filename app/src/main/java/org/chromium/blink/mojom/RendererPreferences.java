@@ -168,11 +168,13 @@ public final class RendererPreferences extends org.chromium.mojo.bindings.Struct
                     
                 result.hinting = decoder0.readInt(12);
                     org.chromium.gfx.mojom.Hinting.validate(result.hinting);
+                    result.hinting = org.chromium.gfx.mojom.Hinting.toKnownValue(result.hinting);
                 }
                 {
                     
                 result.subpixelRendering = decoder0.readInt(16);
                     org.chromium.gfx.mojom.SubpixelRendering.validate(result.subpixelRendering);
+                    result.subpixelRendering = org.chromium.gfx.mojom.SubpixelRendering.toKnownValue(result.subpixelRendering);
                 }
                 {
                     

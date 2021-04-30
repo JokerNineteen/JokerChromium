@@ -16,12 +16,13 @@ package org.chromium.blink.mojom;
 
 public final class PerIsolateV8MemoryUsage extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public long unassociatedBytesUsed;
-    public long numUnassociatedContexts;
-    public long unassociatedContextBytesUsed;
+    public long numDetachedContexts;
+    public long detachedBytesUsed;
+    public long sharedBytesUsed;
+    public long blinkBytesUsed;
     public PerContextV8MemoryUsage[] contexts;
 
     private PerIsolateV8MemoryUsage(int version) {
@@ -59,19 +60,23 @@ public final class PerIsolateV8MemoryUsage extends org.chromium.mojo.bindings.St
             result = new PerIsolateV8MemoryUsage(elementsOrVersion);
                 {
                     
-                result.unassociatedBytesUsed = decoder0.readLong(8);
+                result.numDetachedContexts = decoder0.readLong(8);
                 }
                 {
                     
-                result.numUnassociatedContexts = decoder0.readLong(16);
+                result.detachedBytesUsed = decoder0.readLong(16);
                 }
                 {
                     
-                result.unassociatedContextBytesUsed = decoder0.readLong(24);
+                result.sharedBytesUsed = decoder0.readLong(24);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
+                result.blinkBytesUsed = decoder0.readLong(32);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     result.contexts = new PerContextV8MemoryUsage[si1.elementsOrVersion];
@@ -94,16 +99,18 @@ public final class PerIsolateV8MemoryUsage extends org.chromium.mojo.bindings.St
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.unassociatedBytesUsed, 8);
+        encoder0.encode(this.numDetachedContexts, 8);
         
-        encoder0.encode(this.numUnassociatedContexts, 16);
+        encoder0.encode(this.detachedBytesUsed, 16);
         
-        encoder0.encode(this.unassociatedContextBytesUsed, 24);
+        encoder0.encode(this.sharedBytesUsed, 24);
+        
+        encoder0.encode(this.blinkBytesUsed, 32);
         
         if (this.contexts == null) {
-            encoder0.encodeNullPointer(32, false);
+            encoder0.encodeNullPointer(40, false);
         } else {
-            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.contexts.length, 32, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.contexts.length, 40, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
             for (int i0 = 0; i0 < this.contexts.length; ++i0) {
                 
                 encoder1.encode(this.contexts[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);

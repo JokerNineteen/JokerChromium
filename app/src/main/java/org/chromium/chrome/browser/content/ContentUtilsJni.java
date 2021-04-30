@@ -31,8 +31,8 @@ final class ContentUtilsJni implements ContentUtils.Natives {
   }
 
   @Override
-  public void setUserAgentOverride(WebContents webContents) {
-    GEN_JNI.org_chromium_chrome_browser_content_ContentUtils_setUserAgentOverride(webContents);
+  public void setUserAgentOverride(WebContents webContents, boolean overrideInNewTabs) {
+    GEN_JNI.org_chromium_chrome_browser_content_ContentUtils_setUserAgentOverride(webContents, overrideInNewTabs);
   }
 
   public static ContentUtils.Natives get() {

@@ -321,11 +321,13 @@ int updateType, int queryType) {
                         
                     result.updateType = decoder0.readInt(8);
                         MdnsListenClient.UpdateType.validate(result.updateType);
+                        result.updateType = MdnsListenClient.UpdateType.toKnownValue(result.updateType);
                     }
                     {
                         
                     result.queryType = decoder0.readInt(12);
                         DnsQueryType.validate(result.queryType);
+                        result.queryType = DnsQueryType.toKnownValue(result.queryType);
                     }
                     {
                         
@@ -401,11 +403,13 @@ int updateType, int queryType) {
                         
                     result.updateType = decoder0.readInt(8);
                         MdnsListenClient.UpdateType.validate(result.updateType);
+                        result.updateType = MdnsListenClient.UpdateType.toKnownValue(result.updateType);
                     }
                     {
                         
                     result.queryType = decoder0.readInt(12);
                         DnsQueryType.validate(result.queryType);
+                        result.queryType = DnsQueryType.toKnownValue(result.queryType);
                     }
                     {
                         
@@ -496,11 +500,13 @@ int updateType, int queryType) {
                         
                     result.updateType = decoder0.readInt(8);
                         MdnsListenClient.UpdateType.validate(result.updateType);
+                        result.updateType = MdnsListenClient.UpdateType.toKnownValue(result.updateType);
                     }
                     {
                         
                     result.queryType = decoder0.readInt(12);
                         DnsQueryType.validate(result.queryType);
+                        result.queryType = DnsQueryType.toKnownValue(result.queryType);
                     }
                     {
                         
@@ -575,11 +581,13 @@ int updateType, int queryType) {
                         
                     result.updateType = decoder0.readInt(8);
                         MdnsListenClient.UpdateType.validate(result.updateType);
+                        result.updateType = MdnsListenClient.UpdateType.toKnownValue(result.updateType);
                     }
                     {
                         
                     result.queryType = decoder0.readInt(12);
                         DnsQueryType.validate(result.queryType);
+                        result.queryType = DnsQueryType.toKnownValue(result.queryType);
                     }
 
             } finally {

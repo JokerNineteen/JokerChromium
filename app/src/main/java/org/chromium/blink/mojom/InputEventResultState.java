@@ -19,21 +19,24 @@ public final class InputEventResultState {
     public static final int UNKNOWN = 0;
     public static final int CONSUMED = 1;
     public static final int NOT_CONSUMED = 2;
-    public static final int CONSUMED_SHOULD_BUBBLE = 3;
-    public static final int NO_CONSUMER_EXISTS = 4;
-    public static final int IGNORED = 5;
-    public static final int SET_NON_BLOCKING = 6;
-    public static final int SET_NON_BLOCKING_DUE_TO_FLING = 7;
+    public static final int NO_CONSUMER_EXISTS = 3;
+    public static final int IGNORED = 4;
+    public static final int SET_NON_BLOCKING = 5;
+    public static final int SET_NON_BLOCKING_DUE_TO_FLING = 6;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 7;
+    public static final int MAX_VALUE = 6;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 7;
+        return value >= 0 && value <= 6;
     }
 
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private InputEventResultState() {}

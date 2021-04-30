@@ -65,6 +65,7 @@ public final class FaviconUrl extends org.chromium.mojo.bindings.Struct {
                     
                 result.iconType = decoder0.readInt(16);
                     FaviconIconType.validate(result.iconType);
+                    result.iconType = FaviconIconType.toKnownValue(result.iconType);
                 }
                 {
                     

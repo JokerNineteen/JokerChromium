@@ -21,7 +21,7 @@ public final class Cursor extends org.chromium.mojo.bindings.Struct {
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int type;
     public org.chromium.gfx.mojom.Point hotspot;
-    public org.chromium.skia.mojom.Bitmap bitmap;
+    public org.chromium.skia.mojom.BitmapN32 bitmap;
     public float imageScaleFactor;
 
     private Cursor(int version) {
@@ -61,6 +61,7 @@ public final class Cursor extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     CursorType.validate(result.type);
+                    result.type = CursorType.toKnownValue(result.type);
                 }
                 {
                     
@@ -74,7 +75,7 @@ public final class Cursor extends org.chromium.mojo.bindings.Struct {
                 {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(24, true);
-                result.bitmap = org.chromium.skia.mojom.Bitmap.decode(decoder1);
+                result.bitmap = org.chromium.skia.mojom.BitmapN32.decode(decoder1);
                 }
 
         } finally {

@@ -58,6 +58,7 @@ public final class TouchActionOptional extends org.chromium.mojo.bindings.Struct
                     
                 result.touchAction = decoder0.readInt(8);
                     org.chromium.cc.mojom.TouchAction.validate(result.touchAction);
+                    result.touchAction = org.chromium.cc.mojom.TouchAction.toKnownValue(result.touchAction);
                 }
 
         } finally {

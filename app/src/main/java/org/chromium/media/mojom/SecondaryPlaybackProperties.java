@@ -16,15 +16,15 @@ package org.chromium.media.mojom;
 
 public final class SecondaryPlaybackProperties extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 56;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(56, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int audioCodec;
     public int videoCodec;
     public int audioCodecProfile;
     public int videoCodecProfile;
-    public String audioDecoderName;
-    public String videoDecoderName;
+    public int audioDecoder;
+    public int videoDecoder;
     public int audioEncryptionScheme;
     public int videoEncryptionScheme;
     public org.chromium.gfx.mojom.Size naturalSize;
@@ -66,43 +66,53 @@ public final class SecondaryPlaybackProperties extends org.chromium.mojo.binding
                     
                 result.audioCodec = decoder0.readInt(8);
                     AudioCodec.validate(result.audioCodec);
+                    result.audioCodec = AudioCodec.toKnownValue(result.audioCodec);
                 }
                 {
                     
                 result.videoCodec = decoder0.readInt(12);
                     VideoCodec.validate(result.videoCodec);
+                    result.videoCodec = VideoCodec.toKnownValue(result.videoCodec);
                 }
                 {
                     
                 result.audioCodecProfile = decoder0.readInt(16);
                     AudioCodecProfile.validate(result.audioCodecProfile);
+                    result.audioCodecProfile = AudioCodecProfile.toKnownValue(result.audioCodecProfile);
                 }
                 {
                     
                 result.videoCodecProfile = decoder0.readInt(20);
                     VideoCodecProfile.validate(result.videoCodecProfile);
+                    result.videoCodecProfile = VideoCodecProfile.toKnownValue(result.videoCodecProfile);
                 }
                 {
                     
-                result.audioDecoderName = decoder0.readString(24, false);
+                result.audioDecoder = decoder0.readInt(24);
+                    AudioDecoderType.validate(result.audioDecoder);
+                    result.audioDecoder = AudioDecoderType.toKnownValue(result.audioDecoder);
                 }
                 {
                     
-                result.videoDecoderName = decoder0.readString(32, false);
+                result.videoDecoder = decoder0.readInt(28);
+                    VideoDecoderType.validate(result.videoDecoder);
+                    result.videoDecoder = VideoDecoderType.toKnownValue(result.videoDecoder);
                 }
                 {
                     
-                result.audioEncryptionScheme = decoder0.readInt(40);
+                result.audioEncryptionScheme = decoder0.readInt(32);
                     EncryptionScheme.validate(result.audioEncryptionScheme);
+                    result.audioEncryptionScheme = EncryptionScheme.toKnownValue(result.audioEncryptionScheme);
                 }
                 {
                     
-                result.videoEncryptionScheme = decoder0.readInt(44);
+                result.videoEncryptionScheme = decoder0.readInt(36);
                     EncryptionScheme.validate(result.videoEncryptionScheme);
+                    result.videoEncryptionScheme = EncryptionScheme.toKnownValue(result.videoEncryptionScheme);
                 }
                 {
                     
-                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(48, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, false);
                 result.naturalSize = org.chromium.gfx.mojom.Size.decode(decoder1);
                 }
 
@@ -125,14 +135,14 @@ public final class SecondaryPlaybackProperties extends org.chromium.mojo.binding
         
         encoder0.encode(this.videoCodecProfile, 20);
         
-        encoder0.encode(this.audioDecoderName, 24, false);
+        encoder0.encode(this.audioDecoder, 24);
         
-        encoder0.encode(this.videoDecoderName, 32, false);
+        encoder0.encode(this.videoDecoder, 28);
         
-        encoder0.encode(this.audioEncryptionScheme, 40);
+        encoder0.encode(this.audioEncryptionScheme, 32);
         
-        encoder0.encode(this.videoEncryptionScheme, 44);
+        encoder0.encode(this.videoEncryptionScheme, 36);
         
-        encoder0.encode(this.naturalSize, 48, false);
+        encoder0.encode(this.naturalSize, 40, false);
     }
 }

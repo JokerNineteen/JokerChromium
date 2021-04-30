@@ -247,7 +247,7 @@ public final class WebFeature {
     public static final int MIXED_CONTENT_FORMS_SUBMITTED = 441;
     public static final int FORMS_SUBMITTED = 442;
     public static final int HTML_IMPORTS = 455;
-    public static final int ELEMENT_CREATE_SHADOW_ROOT = 456;
+    public static final int OBSOLETE_ELEMENT_CREATE_SHADOW_ROOT = 456;
     public static final int DOCUMENT_REGISTER_ELEMENT = 457;
     public static final int EDITING_APPLE_INTERCHANGE_NEWLINE = 458;
     public static final int EDITING_APPLE_CONVERTED_SPACE = 459;
@@ -256,11 +256,11 @@ public final class WebFeature {
     public static final int HTML_IMPORTS_ASYNC_ATTRIBUTE = 463;
     public static final int XML_HTTP_REQUEST_SYNCHRONOUS = 465;
     public static final int CSS_SELECTOR_PSEUDO_UNRESOLVED = 466;
-    public static final int CSS_SELECTOR_PSEUDO_SHADOW = 467;
-    public static final int CSS_SELECTOR_PSEUDO_CONTENT = 468;
+    public static final int OBSOLETE_CSS_SELECTOR_PSEUDO_SHADOW = 467;
+    public static final int OBSOLETE_CSS_SELECTOR_PSEUDO_CONTENT = 468;
     public static final int CSS_SELECTOR_PSEUDO_HOST = 469;
     public static final int CSS_SELECTOR_PSEUDO_HOST_CONTEXT = 470;
-    public static final int CSS_DEEP_COMBINATOR = 471;
+    public static final int OBSOLETE_CSS_DEEP_COMBINATOR = 471;
     public static final int USE_ASM = 473;
     public static final int DOM_WINDOW_OPEN = 475;
     public static final int DOM_WINDOW_OPEN_FEATURES = 476;
@@ -589,7 +589,6 @@ public final class WebFeature {
     public static final int V8_WINDOW_REQUEST_IDLE_CALLBACK_METHOD = 954;
     public static final int FLEXBOX_PERCENTAGE_PADDING_VERTICAL = 955;
     public static final int FLEXBOX_PERCENTAGE_MARGIN_VERTICAL = 956;
-    public static final int CSP_SOURCE_WILDCARD_WOULD_MATCH_EXACT_HOST = 959;
     public static final int CREDENTIAL_MANAGER_GET = 960;
     public static final int CREDENTIAL_MANAGER_GET_MEDIATION_OPTIONAL = 961;
     public static final int CREDENTIAL_MANAGER_GET_MEDIATION_SILENT = 962;
@@ -833,7 +832,7 @@ public final class WebFeature {
     public static final int MEDIA_STREAM_TRACK_REMOTE = 1306;
     public static final int V8_NODE_IS_CONNECTED_ATTRIBUTE_GETTER = 1307;
     public static final int SHADOW_ROOT_DELEGATES_FOCUS = 1308;
-    public static final int MIXED_SHADOW_ROOT_V0_AND_V1 = 1309;
+    public static final int OBSOLETE_MIXED_SHADOW_ROOT_V0_AND_V1 = 1309;
     public static final int FILE_API_NATIVE_LINE_ENDINGS = 1320;
     public static final int POINTER_EVENT_ATTRIBUTE_COUNT = 1321;
     public static final int COMPOSITED_REPLICATION = 1322;
@@ -877,7 +876,7 @@ public final class WebFeature {
     public static final int DURABLE_STORAGE_PERSIST = 1369;
     public static final int DURABLE_STORAGE_PERSISTED = 1370;
     public static final int DURABLE_STORAGE_ESTIMATE = 1371;
-    public static final int CSS_DEEP_COMBINATOR_AND_SHADOW = 1375;
+    public static final int OBSOLETE_CSS_DEEP_COMBINATOR_AND_SHADOW = 1375;
     public static final int OPACITY_WITH_PRESERVE3_D_QUIRK = 1376;
     public static final int CSS_SELECTOR_PSEUDO_READ_ONLY = 1377;
     public static final int CSS_SELECTOR_PSEUDO_READ_WRITE = 1378;
@@ -917,7 +916,7 @@ public final class WebFeature {
     public static final int CSP_REFERRER_DIRECTIVE = 1419;
     public static final int ELEMENT_REQUEST_POINTER_LOCK_IN_SHADOW = 1421;
     public static final int SHADOW_ROOT_POINTER_LOCK_ELEMENT = 1422;
-    public static final int DOCUMENT_POINTER_LOCK_ELEMENT_IN_V0_SHADOW = 1423;
+    public static final int OBSOLETE_DOCUMENT_POINTER_LOCK_ELEMENT_IN_V0_SHADOW = 1423;
     public static final int TEXT_AREA_MAX_LENGTH = 1424;
     public static final int TEXT_AREA_MIN_LENGTH = 1425;
     public static final int TOP_NAVIGATION_FROM_SUB_FRAME = 1426;
@@ -928,7 +927,6 @@ public final class WebFeature {
     public static final int POINTER_EVENT_SET_CAPTURE = 1431;
     public static final int POINTER_EVENT_DISPATCH = 1432;
     public static final int MIDI_MESSAGE_EVENT_RECEIVED_TIME = 1433;
-    public static final int SUMMARY_ELEMENT_WITH_DISPLAY_BLOCK_AUTHOR_RULE = 1434;
     public static final int V8_MEDIA_STREAM_ACTIVE_ATTRIBUTE_GETTER = 1435;
     public static final int BEFORE_INSTALL_PROMPT_EVENT = 1436;
     public static final int BEFORE_INSTALL_PROMPT_EVENT_USER_CHOICE = 1437;
@@ -1100,7 +1098,7 @@ public final class WebFeature {
     public static final int OFFSCREEN_CANVAS_COMMIT_WEB_GL = 1661;
     public static final int RTC_CONFIGURATION_ICE_TRANSPORT_POLICY = 1662;
     public static final int RTC_CONFIGURATION_ICE_TRANSPORTS = 1664;
-    public static final int DOCUMENT_FULLSCREEN_ELEMENT_IN_V0_SHADOW = 1665;
+    public static final int OBSOLETE_DOCUMENT_FULLSCREEN_ELEMENT_IN_V0_SHADOW = 1665;
     public static final int SCRIPT_WITH_CSP_BYPASSING_SCHEME_PARSER_INSERTED = 1666;
     public static final int SCRIPT_WITH_CSP_BYPASSING_SCHEME_NOT_PARSER_INSERTED = 1667;
     public static final int DOCUMENT_CREATE_ELEMENT2ND_ARG_STRING_HANDLING = 1668;
@@ -1282,8 +1280,6 @@ public final class WebFeature {
     public static final int V0_CUSTOM_ELEMENTS_CREATE_CUSTOM_TAG_ELEMENT = 1877;
     public static final int V0_CUSTOM_ELEMENTS_CREATE_TYPE_EXTENSION_ELEMENT = 1878;
     public static final int V0_CUSTOM_ELEMENTS_CONSTRUCT = 1879;
-    public static final int V8IDB_OBSERVER_OBSERVE_METHOD = 1880;
-    public static final int V8IDB_OBSERVER_UNOBSERVE_METHOD = 1881;
     public static final int WEB_BLUETOOTH_REMOTE_CHARACTERISTIC_GET_DESCRIPTOR = 1882;
     public static final int WEB_BLUETOOTH_REMOTE_CHARACTERISTIC_GET_DESCRIPTORS = 1883;
     public static final int WEB_BLUETOOTH_REMOTE_CHARACTERISTIC_READ_VALUE = 1884;
@@ -1298,8 +1294,8 @@ public final class WebFeature {
     public static final int WEB_BLUETOOTH_REMOTE_SERVER_GET_PRIMARY_SERVICES = 1893;
     public static final int WEB_BLUETOOTH_REMOTE_SERVICE_GET_CHARACTERISTIC = 1894;
     public static final int WEB_BLUETOOTH_REMOTE_SERVICE_GET_CHARACTERISTICS = 1895;
-    public static final int HTML_CONTENT_ELEMENT = 1896;
-    public static final int HTML_SHADOW_ELEMENT = 1897;
+    public static final int OBSOLETE_HTML_CONTENT_ELEMENT = 1896;
+    public static final int OBSOLETE_HTML_SHADOW_ELEMENT = 1897;
     public static final int HTML_SLOT_ELEMENT = 1898;
     public static final int ACCELEROMETER_CONSTRUCTOR = 1899;
     public static final int ABSOLUTE_ORIENTATION_SENSOR_CONSTRUCTOR = 1900;
@@ -1516,8 +1512,8 @@ public final class WebFeature {
     public static final int SUPPRESS_HISTORY_ENTRY_WITHOUT_USER_GESTURE = 2146;
     public static final int PERFORMANCE_SERVER_TIMING = 2157;
     public static final int ANIMATION_SET_PLAYBACK_RATE_COMPENSATORY_SEEK = 2162;
-    public static final int DEEP_COMBINATOR_IN_STATIC_PROFILE = 2163;
-    public static final int PSEUDO_SHADOW_IN_STATIC_PROFILE = 2164;
+    public static final int OBSOLETE_DEEP_COMBINATOR_IN_STATIC_PROFILE = 2163;
+    public static final int OBSOLETE_PSEUDO_SHADOW_IN_STATIC_PROFILE = 2164;
     public static final int SCHEME_BYPASSES_CSP = 2165;
     public static final int INNER_SCHEME_BYPASSES_CSP = 2166;
     public static final int SAME_ORIGIN_APPLICATION_OCTET_STREAM = 2167;
@@ -1576,7 +1572,7 @@ public final class WebFeature {
     public static final int V8_MEDIA_CAPABILITIES_INFO_SUPPORTED_ATTRIBUTE_GETTER = 2241;
     public static final int V8_MEDIA_CAPABILITIES_INFO_SMOOTH_ATTRIBUTE_GETTER = 2242;
     public static final int V8_MEDIA_CAPABILITIES_INFO_POWER_EFFICIENT_ATTRIBUTE_GETTER = 2243;
-    public static final int WINDOW_EVENT_IN_V0_SHADOW_TREE = 2244;
+    public static final int OBSOLETE_WINDOW_EVENT_IN_V0_SHADOW_TREE = 2244;
     public static final int WINDOW_OPEN_REALM_MISMATCH = 2247;
     public static final int GRID_ROW_TRACK_PERCENT_INDEFINITE_HEIGHT = 2248;
     public static final int VR_GET_DISPLAYS_SUPPORTS_PRESENT = 2249;
@@ -2213,8 +2209,8 @@ public final class WebFeature {
     public static final int V8_DATABASE_READ_TRANSACTION_METHOD = 2961;
     public static final int V8SQL_TRANSACTION_EXECUTE_SQL_METHOD = 2962;
     public static final int V8_POINTER_EVENT_GET_PREDICTED_EVENTS_METHOD = 2971;
-    public static final int SCROLL_SNAP_ON_VIEWPORT_BREAKS = 2972;
-    public static final int SCROLL_PADDING_ON_VIEWPORT_BREAKS = 2973;
+    public static final int OBSOLETE_SCROLL_SNAP_ON_VIEWPORT_BREAKS = 2972;
+    public static final int OBSOLETE_SCROLL_PADDING_ON_VIEWPORT_BREAKS = 2973;
     public static final int DOWNLOAD_IN_AD_FRAME = 2974;
     public static final int DOWNLOAD_IN_SANDBOX = 2975;
     public static final int DOWNLOAD_WITHOUT_USER_GESTURE = 2976;
@@ -2363,7 +2359,7 @@ public final class WebFeature {
     public static final int WEBKIT_BOX_PACK_CENTER_DOES_SOMETHING = 3124;
     public static final int WEBKIT_BOX_PACK_END_DOES_SOMETHING = 3125;
     public static final int V8_KEYFRAME_EFFECT_CONSTRUCTOR = 3126;
-    public static final int WEB_NFC_API = 3127;
+    public static final int OBSOLETE_WEB_NFC_API = 3127;
     public static final int HOST_CANDIDATE_ATTRIBUTE_GETTER = 3128;
     public static final int CSP_WITH_REASONABLE_OBJECT_RESTRICTIONS = 3129;
     public static final int CSP_WITH_REASONABLE_BASE_RESTRICTIONS = 3130;
@@ -2438,22 +2434,17 @@ public final class WebFeature {
     public static final int COOP_AND_COEP_ISOLATED = 3200;
     public static final int V8_DOCUMENT_HAS_TRUST_TOKEN_METHOD = 3202;
     public static final int FORCE_LOAD_AT_TOP = 3203;
-    public static final int LEGACY_LAYOUT_BY_DEPRECATED_FLEX_BOX = 3205;
     public static final int LEGACY_LAYOUT_BY_DETAILS_MARKER = 3206;
     public static final int LEGACY_LAYOUT_BY_EDITING = 3207;
-    public static final int LEGACY_LAYOUT_BY_FIELD_SET = 3208;
-    public static final int LEGACY_LAYOUT_BY_FLEX_BOX = 3210;
     public static final int LEGACY_LAYOUT_BY_FRAME_SET = 3211;
     public static final int LEGACY_LAYOUT_BY_GRID = 3212;
     public static final int LEGACY_LAYOUT_BY_MULTI_COL = 3214;
     public static final int LEGACY_LAYOUT_BY_PRINTING = 3215;
     public static final int LEGACY_LAYOUT_BY_SVG = 3217;
-    public static final int LEGACY_LAYOUT_BY_SLIDER = 3218;
     public static final int LEGACY_LAYOUT_BY_TABLE = 3219;
     public static final int LEGACY_LAYOUT_BY_TEXT_COMBINE = 3220;
     public static final int LEGACY_LAYOUT_BY_TEXT_CONTROL = 3221;
     public static final int LEGACY_LAYOUT_BY_VTT_CUE = 3222;
-    public static final int LEGACY_LAYOUT_BY_WEBKIT_BOX_WITHOUT_VERTICAL_LINE_CLAMP = 3223;
     public static final int LEGACY_LAYOUT_BY_TABLE_FLEX_GRID_BLOCK_IN_NG_FRAGMENTATION_CONTEXT = 3224;
     public static final int DOCUMENT_POLICY_HEADER = 3225;
     public static final int DOCUMENT_POLICY_REPORT_ONLY_HEADER = 3226;
@@ -2516,7 +2507,7 @@ public final class WebFeature {
     public static final int OBSOLETE_LOCATION_FRAGMENT_DIRECTIVE_ACCESSED = 3283;
     public static final int CANVAS_RENDERING_CONTEXT = 3284;
     public static final int SCHEMEFUL_SAME_SITE_CONTEXT_DOWNGRADE = 3285;
-    public static final int ORIGIN_ISOLATION_HEADER = 3286;
+    public static final int ORIGIN_AGENT_CLUSTER_HEADER = 3286;
     public static final int V8_WASM_SIMD_OPCODES = 3287;
     public static final int GRID_ROW_GAP_PERCENT = 3288;
     public static final int GRID_ROW_GAP_PERCENT_INDEFINITE = 3289;
@@ -2565,7 +2556,6 @@ public final class WebFeature {
     public static final int CONTENT_VISIBILITY_HIDDEN_MATCHABLE = 3334;
     public static final int INLINE_OVERFLOW_AUTO_WITH_INLINE_END_PADDING = 3335;
     public static final int INLINE_OVERFLOW_SCROLL_WITH_INLINE_END_PADDING = 3336;
-    public static final int CSS_SELECTOR_PSEUDO_WEB_KIT_DETAILS_MARKER = 3337;
     public static final int SERIAL_PORT_GET_INFO = 3338;
     public static final int FILE_SYSTEM_PICKER_METHOD = 3339;
     public static final int V8_WINDOW_SHOW_OPEN_FILE_PICKER_METHOD = 3340;
@@ -2573,7 +2563,7 @@ public final class WebFeature {
     public static final int V8_WINDOW_SHOW_DIRECTORY_PICKER_METHOD = 3342;
     public static final int RTC_CONSTRAINT_ENABLE_RTP_DATA_CHANNELS_TRUE = 3344;
     public static final int RTC_CONSTRAINT_ENABLE_RTP_DATA_CHANNELS_FALSE = 3345;
-    public static final int NATIVE_FILE_SYSTEM_DRAG_AND_DROP = 3346;
+    public static final int FILE_SYSTEM_ACCESS_DRAG_AND_DROP = 3346;
     public static final int RTC_ADAPTIVE_PTIME = 3347;
     public static final int HTML_META_ELEMENT_REFERRER_POLICY_MULTIPLE_TOKENS_AFFECTING_REQUEST = 3348;
     public static final int NAVIGATION_TIMING_L2 = 3349;
@@ -2582,7 +2572,7 @@ public final class WebFeature {
     public static final int V8_POINTER_EVENT_ALTITUDE_ANGLE_ATTRIBUTE_GETTER = 3352;
     public static final int CROSS_BROWSING_CONTEXT_GROUP_MAIN_FRAME_NULLED_NON_EMPTY_NAME_ACCESSED = 3353;
     public static final int POSITION_STICKY = 3354;
-    public static final int COMMA_SEPARATOR_IN_ALLOW_ATTRIBUTE = 3355;
+    public static final int OBSOLETE_COMMA_SEPARATOR_IN_ALLOW_ATTRIBUTE = 3355;
     public static final int MAIN_FRAME_CSP_VIA_HTTP = 3359;
     public static final int MAIN_FRAME_CSP_VIA_META = 3360;
     public static final int MAIN_FRAME_CSP_VIA_ORIGIN_POLICY = 3361;
@@ -2697,10 +2687,6 @@ public final class WebFeature {
     public static final int OBSOLETE_ELEMENT_ATTACH_INTERNALS_BEFORE_CONSTRUCTOR = 3470;
     public static final int SMIL_ELEMENT_HAS_REPEAT_N_EVENT_LISTENER = 3471;
     public static final int WEB_TRANSPORT = 3472;
-    public static final int WEBKIT_PRERENDER_START_EVENT_FIRED = 3473;
-    public static final int WEBKIT_PRERENDER_STOP_EVENT_FIRED = 3474;
-    public static final int WEBKIT_PRERENDER_LOAD_EVENT_FIRED = 3475;
-    public static final int WEBKIT_PRERENDER_DOM_CONTENT_LOADED_EVENT_FIRED = 3476;
     public static final int IDLE_DETECTION_PERMISSION_REQUESTED = 3477;
     public static final int IDENTIFIABILITY_STUDY_RESERVED3478 = 3478;
     public static final int SPEECH_SYNTHESIS_GET_VOICES_METHOD = 3479;
@@ -2806,7 +2792,7 @@ public final class WebFeature {
     public static final int FORCED_DARK_MODE = 3579;
     public static final int PREFERRED_COLOR_SCHEME_DARK = 3580;
     public static final int PREFERRED_COLOR_SCHEME_DARK_SETTING = 3581;
-    public static final int IDENTIFIABILITY_STUDY_RESERVED3582 = 3582;
+    public static final int IDENTIFIABILITY_MEDIA_DEVICES_ENUMERATE_DEVICES = 3582;
     public static final int IDENTIFIABILITY_STUDY_RESERVED3583 = 3583;
     public static final int IDENTIFIABILITY_STUDY_RESERVED3584 = 3584;
     public static final int IDENTIFIABILITY_STUDY_RESERVED3585 = 3585;
@@ -2909,19 +2895,19 @@ public final class WebFeature {
     public static final int UNDEFERRABLE_THIRD_PARTY_SUBRESOURCE_REQUEST_WITH_COOKIE = 3682;
     public static final int XR_DEPTH_SENSING = 3683;
     public static final int XR_FRAME_GET_DEPTH_INFORMATION = 3684;
-    public static final int XR_DEPTH_INFORMATION_GET_DEPTH = 3685;
-    public static final int XR_DEPTH_INFORMATION_DATA_ATTRIBUTE = 3686;
+    public static final int XRCPU_DEPTH_INFORMATION_GET_DEPTH = 3685;
+    public static final int XRCPU_DEPTH_INFORMATION_DATA_ATTRIBUTE = 3686;
     public static final int INTEREST_COHORT_API_INTEREST_COHORT_METHOD = 3687;
-    public static final int ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PRIVATE_SECURE_CONTEXT = 3688;
-    public static final int ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PRIVATE_NON_SECURE_CONTEXT = 3689;
-    public static final int ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PUBLIC_SECURE_CONTEXT = 3690;
-    public static final int ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PUBLIC_NON_SECURE_CONTEXT = 3691;
-    public static final int ADDRESS_SPACE_LOCAL_EMBEDDED_IN_UNKNOWN_SECURE_CONTEXT = 3692;
-    public static final int ADDRESS_SPACE_LOCAL_EMBEDDED_IN_UNKNOWN_NON_SECURE_CONTEXT = 3693;
-    public static final int ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_PUBLIC_SECURE_CONTEXT = 3694;
-    public static final int ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_PUBLIC_NON_SECURE_CONTEXT = 3695;
-    public static final int ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_UNKNOWN_SECURE_CONTEXT = 3696;
-    public static final int ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_UNKNOWN_NON_SECURE_CONTEXT = 3697;
+    public static final int OBSOLETE_ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PRIVATE_SECURE_CONTEXT = 3688;
+    public static final int OBSOLETE_ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PRIVATE_NON_SECURE_CONTEXT = 3689;
+    public static final int OBSOLETE_ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PUBLIC_SECURE_CONTEXT = 3690;
+    public static final int OBSOLETE_ADDRESS_SPACE_LOCAL_EMBEDDED_IN_PUBLIC_NON_SECURE_CONTEXT = 3691;
+    public static final int OBSOLETE_ADDRESS_SPACE_LOCAL_EMBEDDED_IN_UNKNOWN_SECURE_CONTEXT = 3692;
+    public static final int OBSOLETE_ADDRESS_SPACE_LOCAL_EMBEDDED_IN_UNKNOWN_NON_SECURE_CONTEXT = 3693;
+    public static final int OBSOLETE_ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_PUBLIC_SECURE_CONTEXT = 3694;
+    public static final int OBSOLETE_ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_PUBLIC_NON_SECURE_CONTEXT = 3695;
+    public static final int OBSOLETE_ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_UNKNOWN_SECURE_CONTEXT = 3696;
+    public static final int OBSOLETE_ADDRESS_SPACE_PRIVATE_EMBEDDED_IN_UNKNOWN_NON_SECURE_CONTEXT = 3697;
     public static final int THIRD_PARTY_ACCESS = 3698;
     public static final int THIRD_PARTY_ACTIVATION = 3699;
     public static final int THIRD_PARTY_ACCESS_AND_ACTIVATION = 3700;
@@ -2956,9 +2942,117 @@ public final class WebFeature {
     public static final int MEDIA_STREAM_TRACK_PROCESSOR = 3729;
     public static final int ADD_EVENT_LISTENER_WITH_ABORT_SIGNAL = 3730;
     public static final int XR_SESSION_REQUEST_LIGHT_PROBE = 3731;
-    public static final int NUMBER_OF_FEATURES = 3732;
+    public static final int BEFOREMATCH_REVEALED_HIDDEN_MATCHABLE = 3732;
+    public static final int ADD_SOURCE_BUFFER_USING_CONFIG = 3733;
+    public static final int CHANGE_TYPE_USING_CONFIG = 3734;
+    public static final int V8_SOURCE_BUFFER_APPEND_ENCODED_CHUNKS_METHOD = 3735;
+    public static final int OVERSROLL_BEHAVIOR_ON_VIEWPORT_BREAKS = 3736;
+    public static final int SAME_ORIGIN_JSON_TYPE_FOR_SCRIPT = 3737;
+    public static final int CROSS_ORIGIN_JSON_TYPE_FOR_SCRIPT = 3738;
+    public static final int SAME_ORIGIN_STRICT_NOSNIFF_WOULD_BLOCK = 3739;
+    public static final int CROSS_ORIGIN_STRICT_NOSNIFF_WOULD_BLOCK = 3740;
+    public static final int CSS_SELECTOR_PSEUDO_DIR = 3741;
+    public static final int CROSS_ORIGIN_SUBFRAME_WITHOUT_EMBEDDING_CONTROL = 3742;
+    public static final int READABLE_STREAM_WITH_BYTE_SOURCE = 3743;
+    public static final int READABLE_STREAM_BYOB_READER = 3744;
+    public static final int SAME_PARTY_COOKIE_ATTRIBUTE = 3746;
+    public static final int SAME_PARTY_COOKIE_EXCLUSION_OVERRULED_SAME_SITE = 3747;
+    public static final int SAME_PARTY_COOKIE_INCLUSION_OVERRULED_SAME_SITE = 3748;
+    public static final int EMBED_ELEMENT_WITHOUT_TYPE_SRC_CHANGED = 3749;
+    public static final int PAYMENT_HANDLER_STANDARDIZED_PAYMENT_METHOD_IDENTIFIER = 3750;
+    public static final int WEB_CODECS_AUDIO_ENCODER = 3751;
+    public static final int EMBEDDED_CROSS_ORIGIN_FRAME_WITHOUT_FRAME_ANCESTORS_OR_XFO = 3752;
+    public static final int ADDRESS_SPACE_PRIVATE_SECURE_CONTEXT_EMBEDDED_LOCAL = 3753;
+    public static final int ADDRESS_SPACE_PRIVATE_NON_SECURE_CONTEXT_EMBEDDED_LOCAL = 3754;
+    public static final int ADDRESS_SPACE_PUBLIC_SECURE_CONTEXT_EMBEDDED_LOCAL = 3755;
+    public static final int ADDRESS_SPACE_PUBLIC_NON_SECURE_CONTEXT_EMBEDDED_LOCAL = 3756;
+    public static final int ADDRESS_SPACE_PUBLIC_SECURE_CONTEXT_EMBEDDED_PRIVATE = 3757;
+    public static final int ADDRESS_SPACE_PUBLIC_NON_SECURE_CONTEXT_EMBEDDED_PRIVATE = 3758;
+    public static final int ADDRESS_SPACE_UNKNOWN_SECURE_CONTEXT_EMBEDDED_LOCAL = 3759;
+    public static final int ADDRESS_SPACE_UNKNOWN_NON_SECURE_CONTEXT_EMBEDDED_LOCAL = 3760;
+    public static final int ADDRESS_SPACE_UNKNOWN_SECURE_CONTEXT_EMBEDDED_PRIVATE = 3761;
+    public static final int ADDRESS_SPACE_UNKNOWN_NON_SECURE_CONTEXT_EMBEDDED_PRIVATE = 3762;
+    public static final int ADDRESS_SPACE_PRIVATE_SECURE_CONTEXT_NAVIGATED_TO_LOCAL = 3763;
+    public static final int ADDRESS_SPACE_PRIVATE_NON_SECURE_CONTEXT_NAVIGATED_TO_LOCAL = 3764;
+    public static final int ADDRESS_SPACE_PUBLIC_SECURE_CONTEXT_NAVIGATED_TO_LOCAL = 3765;
+    public static final int ADDRESS_SPACE_PUBLIC_NON_SECURE_CONTEXT_NAVIGATED_TO_LOCAL = 3766;
+    public static final int ADDRESS_SPACE_PUBLIC_SECURE_CONTEXT_NAVIGATED_TO_PRIVATE = 3767;
+    public static final int ADDRESS_SPACE_PUBLIC_NON_SECURE_CONTEXT_NAVIGATED_TO_PRIVATE = 3768;
+    public static final int ADDRESS_SPACE_UNKNOWN_SECURE_CONTEXT_NAVIGATED_TO_LOCAL = 3769;
+    public static final int ADDRESS_SPACE_UNKNOWN_NON_SECURE_CONTEXT_NAVIGATED_TO_LOCAL = 3770;
+    public static final int ADDRESS_SPACE_UNKNOWN_SECURE_CONTEXT_NAVIGATED_TO_PRIVATE = 3771;
+    public static final int ADDRESS_SPACE_UNKNOWN_NON_SECURE_CONTEXT_NAVIGATED_TO_PRIVATE = 3772;
+    public static final int RTC_PEER_CONNECTION_SDP_SEMANTICS_PLAN_B = 3773;
+    public static final int FETCH_RESPOND_WITH_NO_RESPONSE_WITH_USED_REQUEST_BODY = 3774;
+    public static final int V8TCP_SOCKET_CLOSE_METHOD = 3775;
+    public static final int V8TCP_SOCKET_READABLE_ATTRIBUTE_GETTER = 3776;
+    public static final int V8TCP_SOCKET_WRITABLE_ATTRIBUTE_GETTER = 3777;
+    public static final int V8TCP_SOCKET_REMOTE_ADDRESS_ATTRIBUTE_GETTER = 3778;
+    public static final int V8TCP_SOCKET_REMOTE_PORT_ATTRIBUTE_GETTER = 3779;
+    public static final int CSS_SELECTOR_TARGET_TEXT = 3780;
+    public static final int POPUP_ELEMENT = 3781;
+    public static final int V8HTML_POPUP_ELEMENT_SHOW_METHOD = 3782;
+    public static final int V8HTML_POPUP_ELEMENT_HIDE_METHOD = 3783;
+    public static final int WINDOW_OPEN_WITH_ADDITIONAL_BOOL_PARAMETER = 3784;
+    public static final int RTC_PEER_CONNECTION_CONSTRUCTED_WITH_PLAN_B = 3785;
+    public static final int RTC_PEER_CONNECTION_CONSTRUCTED_WITH_UNIFIED_PLAN = 3786;
+    public static final int RTC_PEER_CONNECTION_USING_COMPLEX_PLAN_B = 3787;
+    public static final int RTC_PEER_CONNECTION_USING_COMPLEX_UNIFIED_PLAN = 3788;
+    public static final int WINDOW_SCREEN_IS_EXTENDED = 3789;
+    public static final int WINDOW_SCREEN_CHANGE = 3790;
+    public static final int XR_WEB_GL_DEPTH_INFORMATION_TEXTURE_ATTRIBUTE = 3791;
+    public static final int XR_WEB_GL_BINDING_GET_DEPTH_INFORMATION = 3792;
+    public static final int SESSION_STORAGE_FIRST_USED_BEFORE_FCP = 3793;
+    public static final int SESSION_STORAGE_FIRST_USED_AFTER_FCP = 3794;
+    public static final int GRAVITY_SENSOR_CONSTRUCTOR = 3795;
+    public static final int ELEMENT_INTERNALS_STATES = 3796;
+    public static final int WEB_P_IMAGE = 3797;
+    public static final int AVIF_IMAGE = 3798;
+    public static final int SVG_TEXT_EDITED = 3799;
+    public static final int V8_WASM_EXCEPTION_HANDLING = 3800;
+    public static final int WASM_MODULE_SHARING = 3801;
+    public static final int CROSS_ORIGIN_WASM_MODULE_SHARING = 3802;
+    public static final int OVERFLOW_CLIP_ALONG_EITHER_AXIS = 3803;
+    public static final int CREATE_JSON_MODULE_SCRIPT = 3804;
+    public static final int CREATE_CSS_MODULE_SCRIPT = 3805;
+    public static final int INSERT_HTML_COMMAND_ON_INPUT = 3806;
+    public static final int INSERT_HTML_COMMAND_ON_TEXTAREA = 3807;
+    public static final int INSERT_HTML_COMMAND_ON_READ_WRITE_PLAIN_TEXT = 3808;
+    public static final int CSS_AT_RULE_COUNTER_STYLE = 3809;
+    public static final int CANVAS_USE_COLOR_SPACE = 3810;
+    public static final int SELECT_MENU_ELEMENT = 3811;
+    public static final int RTC_PEER_CONNECTION_SDP_SEMANTICS_PLAN_B_WITH_REVERSE_ORIGIN_TRIAL = 3812;
+    public static final int WEB_APP_MANIFEST_CAPTURE_LINKS = 3813;
+    public static final int SANITIZER_API_CREATED = 3814;
+    public static final int SANITIZER_API_DEFAULT_CONFIGURATION = 3815;
+    public static final int SANITIZER_API_TO_STRING = 3816;
+    public static final int SANITIZER_API_TO_FRAGMENT = 3817;
+    public static final int SANITIZER_API_ACTION_TAKEN = 3818;
+    public static final int SANITIZER_API_FROM_STRING = 3819;
+    public static final int SANITIZER_API_FROM_DOCUMENT = 3820;
+    public static final int SANITIZER_API_FROM_FRAGMENT = 3821;
+    public static final int STORAGE_FOUNDATION_OPEN = 3822;
+    public static final int STORAGE_FOUNDATION_READ = 3823;
+    public static final int STORAGE_FOUNDATION_READ_SYNC = 3824;
+    public static final int STORAGE_FOUNDATION_WRITE = 3825;
+    public static final int STORAGE_FOUNDATION_WRITE_SYNC = 3826;
+    public static final int STORAGE_FOUNDATION_FLUSH = 3827;
+    public static final int STORAGE_FOUNDATION_FLUSH_SYNC = 3828;
+    public static final int UNRESTRICTED_SHARED_ARRAY_BUFFER = 3829;
+    public static final int FEATURE_POLICY_JSAPI_ALLOWS_FEATURE_I_FRAME = 3830;
+    public static final int FEATURE_POLICY_JSAPI_ALLOWS_FEATURE_DOCUMENT = 3831;
+    public static final int FEATURE_POLICY_JSAPI_ALLOWS_FEATURE_ORIGIN_I_FRAME = 3832;
+    public static final int FEATURE_POLICY_JSAPI_ALLOWS_FEATURE_ORIGIN_DOCUMENT = 3833;
+    public static final int FEATURE_POLICY_JSAPI_ALLOWED_FEATURES_I_FRAME = 3834;
+    public static final int FEATURE_POLICY_JSAPI_ALLOWED_FEATURES_DOCUMENT = 3835;
+    public static final int FEATURE_POLICY_JSAPI_FEATURES_I_FRAME = 3836;
+    public static final int FEATURE_POLICY_JSAPI_FEATURES_DOCUMENT = 3837;
+    public static final int FEATURE_POLICY_JSAPI_GET_ALLOWLIST_I_FRAME = 3838;
+    public static final int FEATURE_POLICY_JSAPI_GET_ALLOWLIST_DOCUMENT = 3839;
+    public static final int PAYMENT_REQUEST_CSP_VIOLATION = 3871;
+    public static final int NUMBER_OF_FEATURES = 3872;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 3732;
+    public static final int MAX_VALUE = 3872;
 
     public static boolean isKnownValue(int value) {
         switch (value) {
@@ -3535,7 +3629,6 @@ public final class WebFeature {
             case 954:
             case 955:
             case 956:
-            case 959:
             case 960:
             case 961:
             case 962:
@@ -3874,7 +3967,6 @@ public final class WebFeature {
             case 1431:
             case 1432:
             case 1433:
-            case 1434:
             case 1435:
             case 1436:
             case 1437:
@@ -4228,8 +4320,6 @@ public final class WebFeature {
             case 1877:
             case 1878:
             case 1879:
-            case 1880:
-            case 1881:
             case 1882:
             case 1883:
             case 1884:
@@ -5384,22 +5474,17 @@ public final class WebFeature {
             case 3200:
             case 3202:
             case 3203:
-            case 3205:
             case 3206:
             case 3207:
-            case 3208:
-            case 3210:
             case 3211:
             case 3212:
             case 3214:
             case 3215:
             case 3217:
-            case 3218:
             case 3219:
             case 3220:
             case 3221:
             case 3222:
-            case 3223:
             case 3224:
             case 3225:
             case 3226:
@@ -5511,7 +5596,6 @@ public final class WebFeature {
             case 3334:
             case 3335:
             case 3336:
-            case 3337:
             case 3338:
             case 3339:
             case 3340:
@@ -5643,10 +5727,6 @@ public final class WebFeature {
             case 3470:
             case 3471:
             case 3472:
-            case 3473:
-            case 3474:
-            case 3475:
-            case 3476:
             case 3477:
             case 3478:
             case 3479:
@@ -5903,6 +5983,114 @@ public final class WebFeature {
             case 3730:
             case 3731:
             case 3732:
+            case 3733:
+            case 3734:
+            case 3735:
+            case 3736:
+            case 3737:
+            case 3738:
+            case 3739:
+            case 3740:
+            case 3741:
+            case 3742:
+            case 3743:
+            case 3744:
+            case 3746:
+            case 3747:
+            case 3748:
+            case 3749:
+            case 3750:
+            case 3751:
+            case 3752:
+            case 3753:
+            case 3754:
+            case 3755:
+            case 3756:
+            case 3757:
+            case 3758:
+            case 3759:
+            case 3760:
+            case 3761:
+            case 3762:
+            case 3763:
+            case 3764:
+            case 3765:
+            case 3766:
+            case 3767:
+            case 3768:
+            case 3769:
+            case 3770:
+            case 3771:
+            case 3772:
+            case 3773:
+            case 3774:
+            case 3775:
+            case 3776:
+            case 3777:
+            case 3778:
+            case 3779:
+            case 3780:
+            case 3781:
+            case 3782:
+            case 3783:
+            case 3784:
+            case 3785:
+            case 3786:
+            case 3787:
+            case 3788:
+            case 3789:
+            case 3790:
+            case 3791:
+            case 3792:
+            case 3793:
+            case 3794:
+            case 3795:
+            case 3796:
+            case 3797:
+            case 3798:
+            case 3799:
+            case 3800:
+            case 3801:
+            case 3802:
+            case 3803:
+            case 3804:
+            case 3805:
+            case 3806:
+            case 3807:
+            case 3808:
+            case 3809:
+            case 3810:
+            case 3811:
+            case 3812:
+            case 3813:
+            case 3814:
+            case 3815:
+            case 3816:
+            case 3817:
+            case 3818:
+            case 3819:
+            case 3820:
+            case 3821:
+            case 3822:
+            case 3823:
+            case 3824:
+            case 3825:
+            case 3826:
+            case 3827:
+            case 3828:
+            case 3829:
+            case 3830:
+            case 3831:
+            case 3832:
+            case 3833:
+            case 3834:
+            case 3835:
+            case 3836:
+            case 3837:
+            case 3838:
+            case 3839:
+            case 3871:
+            case 3872:
                 return true;
         }
         return false;
@@ -5911,6 +6099,10 @@ public final class WebFeature {
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private WebFeature() {}

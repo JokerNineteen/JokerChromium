@@ -67,16 +67,19 @@ public final class TrustTokenParams extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     TrustTokenOperationType.validate(result.type);
+                    result.type = TrustTokenOperationType.toKnownValue(result.type);
                 }
                 {
                     
                 result.refreshPolicy = decoder0.readInt(12);
                     TrustTokenRefreshPolicy.validate(result.refreshPolicy);
+                    result.refreshPolicy = TrustTokenRefreshPolicy.toKnownValue(result.refreshPolicy);
                 }
                 {
                     
                 result.signRequestData = decoder0.readInt(16);
                     TrustTokenSignRequestData.validate(result.signRequestData);
+                    result.signRequestData = TrustTokenSignRequestData.toKnownValue(result.signRequestData);
                 }
                 {
                     

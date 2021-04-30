@@ -23,7 +23,7 @@ import java.lang.annotation.RetentionPolicy;
     PageInfoAction.PAGE_INFO_COOKIES_ALLOWED_FOR_SITE,
     PageInfoAction.PAGE_INFO_COOKIES_BLOCKED_FOR_SITE, PageInfoAction.PAGE_INFO_COOKIES_CLEARED,
     PageInfoAction.PAGE_INFO_PERMISSION_DIALOG_OPENED, PageInfoAction.PAGE_INFO_PERMISSIONS_CLEARED,
-    PageInfoAction.PAGE_INFO_PERMISSIONS_CHANGED, PageInfoAction.PAGE_INFO_COUNT
+    PageInfoAction.PAGE_INFO_COUNT
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface PageInfoAction {
@@ -47,6 +47,9 @@ public @interface PageInfoAction {
   int PAGE_INFO_COOKIES_CLEARED = 13;
   int PAGE_INFO_PERMISSION_DIALOG_OPENED = 14;
   int PAGE_INFO_PERMISSIONS_CLEARED = 15;
-  int PAGE_INFO_PERMISSIONS_CHANGED = 16;
-  int PAGE_INFO_COUNT = 17;
+  /**
+   * No longer used; indicated permission change but was a duplicate metric.
+   * PAGE_INFO_PERMISSIONS_CHANGED = 16,
+   */
+  int PAGE_INFO_COUNT = 16;
 }

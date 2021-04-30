@@ -24,11 +24,19 @@ public interface NativeIoHost extends org.chromium.mojo.bindings.Interface {
     Manager<NativeIoHost, NativeIoHost.Proxy> MANAGER = NativeIoHost_Internal.MANAGER;
 
 
+    void requestCapacityChange(
+long capacityDelta, 
+RequestCapacityChangeResponse callback);
+
+    interface RequestCapacityChangeResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Long> { }
+
+
+
     void openFile(
 String name, org.chromium.mojo.bindings.InterfaceRequest<NativeIoFileHost> fileHostReceiver, 
 OpenFileResponse callback);
 
-    interface OpenFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<org.chromium.mojo_base.mojom.File> { }
+    interface OpenFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<org.chromium.mojo_base.mojom.File, Long, NativeIoError> { }
 
 
 
@@ -36,7 +44,7 @@ OpenFileResponse callback);
 String name, 
 DeleteFileResponse callback);
 
-    interface DeleteFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface DeleteFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback2<NativeIoError, Long> { }
 
 
 
@@ -52,7 +60,7 @@ GetAllFileNamesResponse callback);
 String oldName, String newName, 
 RenameFileResponse callback);
 
-    interface RenameFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Boolean> { }
+    interface RenameFileResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<NativeIoError> { }
 
 
 }

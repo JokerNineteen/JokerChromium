@@ -16,14 +16,15 @@ package org.chromium.network.mojom;
 
 public final class IsolationInfo extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public int requestType;
     public org.chromium.url.internal.mojom.Origin topFrameOrigin;
     public org.chromium.url.internal.mojom.Origin frameOrigin;
     public boolean opaqueAndNonTransient;
     public SiteForCookies siteForCookies;
+    public SchemefulSite[] partyContext;
 
     private IsolationInfo(int version) {
         super(STRUCT_SIZE, version);
@@ -62,6 +63,7 @@ public final class IsolationInfo extends org.chromium.mojo.bindings.Struct {
                     
                 result.requestType = decoder0.readInt(8);
                     IsolationInfoRequestType.validate(result.requestType);
+                    result.requestType = IsolationInfoRequestType.toKnownValue(result.requestType);
                 }
                 {
                     
@@ -81,6 +83,21 @@ public final class IsolationInfo extends org.chromium.mojo.bindings.Struct {
                     
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                 result.siteForCookies = SiteForCookies.decode(decoder1);
+                }
+                {
+                    
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(40, true);
+                if (decoder1 == null) {
+                    result.partyContext = null;
+                } else {
+                    org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+                    result.partyContext = new SchemefulSite[si1.elementsOrVersion];
+                    for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
+                        
+                        org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
+                        result.partyContext[i1] = SchemefulSite.decode(decoder2);
+                    }
+                }
                 }
 
         } finally {
@@ -103,5 +120,15 @@ public final class IsolationInfo extends org.chromium.mojo.bindings.Struct {
         encoder0.encode(this.frameOrigin, 24, true);
         
         encoder0.encode(this.siteForCookies, 32, false);
+        
+        if (this.partyContext == null) {
+            encoder0.encodeNullPointer(40, true);
+        } else {
+            org.chromium.mojo.bindings.Encoder encoder1 = encoder0.encodePointerArray(this.partyContext.length, 40, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
+            for (int i0 = 0; i0 < this.partyContext.length; ++i0) {
+                
+                encoder1.encode(this.partyContext[i0], org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i0, false);
+            }
+        }
     }
 }

@@ -283,6 +283,7 @@ MediaSessionInfo sessionInfo) {
                         
                     result.type = decoder0.readInt(16);
                         AudioFocusType.validate(result.type);
+                        result.type = AudioFocusType.toKnownValue(result.type);
                     }
 
             } finally {

@@ -65,4 +65,9 @@ int streamId);
 int streamId, long code);
 
 
+
+    void setOutgoingDatagramExpirationDuration(
+org.chromium.mojo_base.mojom.TimeDelta duration);
+
+
 }

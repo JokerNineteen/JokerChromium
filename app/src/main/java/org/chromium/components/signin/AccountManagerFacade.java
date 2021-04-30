@@ -24,6 +24,16 @@ import java.util.List;
  */
 public interface AccountManagerFacade {
     /**
+     * Listener for {@link ChildAccountStatus.Status}.
+     */
+    interface ChildAccountStatusListener {
+        /**
+         * The method is called when child account status is ready.
+         */
+        void onStatusReady(@ChildAccountStatus.Status int status);
+    }
+
+    /**
      * Adds an observer to receive accounts change notifications.
      * @param observer the observer to add.
      */
@@ -110,21 +120,21 @@ public interface AccountManagerFacade {
     AccessTokenData getAccessToken(Account account, String scope) throws AuthException;
 
     /**
-     * Synchronously clears an OAuth2 access token from the cache. Use {@link #getAccessToken}
-     * to issue a new token after invalidating the old one.
+     * Removes an OAuth2 access token from the cache with retries asynchronously.
+     * Uses {@link #getAccessToken} to issue a new token after invalidating the old one.
      * @param accessToken The access token to invalidate.
      */
-    @WorkerThread
-    void invalidateAccessToken(String accessToken) throws AuthException;
+    @MainThread
+    void invalidateAccessToken(String accessToken);
 
     /**
-     * Checks the child account status in background.
+     * Checks the child account status of the given account.
      *
-     * @param account The account to check the child account status
-     * @param callback The callback takes the ChildAccountStatus.Status as argument
+     * @param account The account to check the child account status.
+     * @param listener The listener is called when the {@link ChildAccountStatus.Status} is ready.
      */
     @MainThread
-    void checkChildAccountStatus(Account account, Callback<Integer> callback);
+    void checkChildAccountStatus(Account account, ChildAccountStatusListener listener);
 
     /**
      * Creates an intent that will ask the user to add a new account to the device. See

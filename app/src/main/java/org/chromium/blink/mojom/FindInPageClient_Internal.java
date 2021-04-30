@@ -257,6 +257,7 @@ int requestId, org.chromium.gfx.mojom.Rect activeMatchRect, int activeMatchOrdin
                         
                     result.updateType = decoder0.readInt(16);
                         FindMatchUpdateType.validate(result.updateType);
+                        result.updateType = FindMatchUpdateType.toKnownValue(result.updateType);
                     }
 
             } finally {
@@ -341,6 +342,7 @@ int requestId, org.chromium.gfx.mojom.Rect activeMatchRect, int activeMatchOrdin
                         
                     result.updateType = decoder0.readInt(24);
                         FindMatchUpdateType.validate(result.updateType);
+                        result.updateType = FindMatchUpdateType.toKnownValue(result.updateType);
                     }
 
             } finally {

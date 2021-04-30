@@ -853,6 +853,7 @@ GetPlatformPathResponse callback) {
                         
                     result.fileSystemType = decoder0.readInt(16);
                         FileSystemType.validate(result.fileSystemType);
+                        result.fileSystemType = FileSystemType.toKnownValue(result.fileSystemType);
                     }
 
             } finally {
@@ -930,6 +931,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(24);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -1144,6 +1146,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(28);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -1353,6 +1356,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -1550,6 +1554,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -1746,6 +1751,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -1941,6 +1947,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(16);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -2155,6 +2162,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -2351,6 +2359,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -2625,6 +2634,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(16);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -2937,6 +2947,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(16);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -3144,6 +3155,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -3340,6 +3352,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {
@@ -3542,6 +3555,7 @@ GetPlatformPathResponse callback) {
                         
                     result.errorCode = decoder0.readInt(24);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
                     {
                         

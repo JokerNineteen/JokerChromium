@@ -44,6 +44,17 @@ public final class Vault {
      * @return The memberProof.
      */
     com.google.protobuf.ByteString getMemberProof();
+
+    /**
+     * <code>optional bytes key_proof = 4;</code>
+     * @return Whether the keyProof field is set.
+     */
+    boolean hasKeyProof();
+    /**
+     * <code>optional bytes key_proof = 4;</code>
+     * @return The keyProof.
+     */
+    com.google.protobuf.ByteString getKeyProof();
   }
   /**
    * Protobuf type {@code sync_pb.SharedKey}
@@ -56,6 +67,7 @@ public final class Vault {
     private SharedKey() {
       wrappedKey_ = com.google.protobuf.ByteString.EMPTY;
       memberProof_ = com.google.protobuf.ByteString.EMPTY;
+      keyProof_ = com.google.protobuf.ByteString.EMPTY;
     }
     private int bitField0_;
     public static final int EPOCH_FIELD_NUMBER = 1;
@@ -160,6 +172,41 @@ public final class Vault {
     private void clearMemberProof() {
       bitField0_ = (bitField0_ & ~0x00000004);
       memberProof_ = getDefaultInstance().getMemberProof();
+    }
+
+    public static final int KEY_PROOF_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString keyProof_;
+    /**
+     * <code>optional bytes key_proof = 4;</code>
+     * @return Whether the keyProof field is set.
+     */
+    @java.lang.Override
+    public boolean hasKeyProof() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional bytes key_proof = 4;</code>
+     * @return The keyProof.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getKeyProof() {
+      return keyProof_;
+    }
+    /**
+     * <code>optional bytes key_proof = 4;</code>
+     * @param value The keyProof to set.
+     */
+    private void setKeyProof(com.google.protobuf.ByteString value) {
+      value.getClass();
+  bitField0_ |= 0x00000008;
+      keyProof_ = value;
+    }
+    /**
+     * <code>optional bytes key_proof = 4;</code>
+     */
+    private void clearKeyProof() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      keyProof_ = getDefaultInstance().getKeyProof();
     }
 
     public static sync_pb.Vault.SharedKey parseFrom(
@@ -365,6 +412,42 @@ public final class Vault {
         return this;
       }
 
+      /**
+       * <code>optional bytes key_proof = 4;</code>
+       * @return Whether the keyProof field is set.
+       */
+      @java.lang.Override
+      public boolean hasKeyProof() {
+        return instance.hasKeyProof();
+      }
+      /**
+       * <code>optional bytes key_proof = 4;</code>
+       * @return The keyProof.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getKeyProof() {
+        return instance.getKeyProof();
+      }
+      /**
+       * <code>optional bytes key_proof = 4;</code>
+       * @param value The keyProof to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeyProof(com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setKeyProof(value);
+        return this;
+      }
+      /**
+       * <code>optional bytes key_proof = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKeyProof() {
+        copyOnWrite();
+        instance.clearKeyProof();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sync_pb.SharedKey)
     }
     @java.lang.Override
@@ -385,10 +468,11 @@ public final class Vault {
               "epoch_",
               "wrappedKey_",
               "memberProof_",
+              "keyProof_",
             };
             java.lang.String info =
-                "\u0001\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u1004\u0000\u0002" +
-                "\u100a\u0001\u0003\u100a\u0002";
+                "\u0001\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u1004\u0000\u0002" +
+                "\u100a\u0001\u0003\u100a\u0002\u0004\u100a\u0003";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -1844,6 +1928,401 @@ public final class Vault {
     private static volatile com.google.protobuf.Parser<JoinSecurityDomainsRequest> PARSER;
 
     public static com.google.protobuf.Parser<JoinSecurityDomainsRequest> parser() {
+      return DEFAULT_INSTANCE.getParserForType();
+    }
+  }
+
+  public interface ListSecurityDomainsResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sync_pb.ListSecurityDomainsResponse)
+      com.google.protobuf.MessageLiteOrBuilder {
+
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    java.util.List<sync_pb.Vault.SecurityDomain> 
+        getSecurityDomainsList();
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    sync_pb.Vault.SecurityDomain getSecurityDomains(int index);
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    int getSecurityDomainsCount();
+  }
+  /**
+   * Protobuf type {@code sync_pb.ListSecurityDomainsResponse}
+   */
+  public  static final class ListSecurityDomainsResponse extends
+      com.google.protobuf.GeneratedMessageLite<
+          ListSecurityDomainsResponse, ListSecurityDomainsResponse.Builder> implements
+      // @@protoc_insertion_point(message_implements:sync_pb.ListSecurityDomainsResponse)
+      ListSecurityDomainsResponseOrBuilder {
+    private ListSecurityDomainsResponse() {
+      securityDomains_ = emptyProtobufList();
+    }
+    public static final int SECURITY_DOMAINS_FIELD_NUMBER = 1;
+    private com.google.protobuf.Internal.ProtobufList<sync_pb.Vault.SecurityDomain> securityDomains_;
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<sync_pb.Vault.SecurityDomain> getSecurityDomainsList() {
+      return securityDomains_;
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    public java.util.List<? extends sync_pb.Vault.SecurityDomainOrBuilder> 
+        getSecurityDomainsOrBuilderList() {
+      return securityDomains_;
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    @java.lang.Override
+    public int getSecurityDomainsCount() {
+      return securityDomains_.size();
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    @java.lang.Override
+    public sync_pb.Vault.SecurityDomain getSecurityDomains(int index) {
+      return securityDomains_.get(index);
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    public sync_pb.Vault.SecurityDomainOrBuilder getSecurityDomainsOrBuilder(
+        int index) {
+      return securityDomains_.get(index);
+    }
+    private void ensureSecurityDomainsIsMutable() {
+      com.google.protobuf.Internal.ProtobufList<sync_pb.Vault.SecurityDomain> tmp = securityDomains_;
+      if (!tmp.isModifiable()) {
+        securityDomains_ =
+            com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
+       }
+    }
+
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    private void setSecurityDomains(
+        int index, sync_pb.Vault.SecurityDomain value) {
+      value.getClass();
+  ensureSecurityDomainsIsMutable();
+      securityDomains_.set(index, value);
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    private void addSecurityDomains(sync_pb.Vault.SecurityDomain value) {
+      value.getClass();
+  ensureSecurityDomainsIsMutable();
+      securityDomains_.add(value);
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    private void addSecurityDomains(
+        int index, sync_pb.Vault.SecurityDomain value) {
+      value.getClass();
+  ensureSecurityDomainsIsMutable();
+      securityDomains_.add(index, value);
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    private void addAllSecurityDomains(
+        java.lang.Iterable<? extends sync_pb.Vault.SecurityDomain> values) {
+      ensureSecurityDomainsIsMutable();
+      com.google.protobuf.AbstractMessageLite.addAll(
+          values, securityDomains_);
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    private void clearSecurityDomains() {
+      securityDomains_ = emptyProtobufList();
+    }
+    /**
+     * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+     */
+    private void removeSecurityDomains(int index) {
+      ensureSecurityDomainsIsMutable();
+      securityDomains_.remove(index);
+    }
+
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input);
+    }
+    public static sync_pb.Vault.ListSecurityDomainsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
+    }
+    public static Builder newBuilder(sync_pb.Vault.ListSecurityDomainsResponse prototype) {
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+    }
+
+    /**
+     * Protobuf type {@code sync_pb.ListSecurityDomainsResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          sync_pb.Vault.ListSecurityDomainsResponse, Builder> implements
+        // @@protoc_insertion_point(builder_implements:sync_pb.ListSecurityDomainsResponse)
+        sync_pb.Vault.ListSecurityDomainsResponseOrBuilder {
+      // Construct using sync_pb.Vault.ListSecurityDomainsResponse.newBuilder()
+      private Builder() {
+        super(DEFAULT_INSTANCE);
+      }
+
+
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.List<sync_pb.Vault.SecurityDomain> getSecurityDomainsList() {
+        return java.util.Collections.unmodifiableList(
+            instance.getSecurityDomainsList());
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      @java.lang.Override
+      public int getSecurityDomainsCount() {
+        return instance.getSecurityDomainsCount();
+      }/**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      @java.lang.Override
+      public sync_pb.Vault.SecurityDomain getSecurityDomains(int index) {
+        return instance.getSecurityDomains(index);
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder setSecurityDomains(
+          int index, sync_pb.Vault.SecurityDomain value) {
+        copyOnWrite();
+        instance.setSecurityDomains(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder setSecurityDomains(
+          int index, sync_pb.Vault.SecurityDomain.Builder builderForValue) {
+        copyOnWrite();
+        instance.setSecurityDomains(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder addSecurityDomains(sync_pb.Vault.SecurityDomain value) {
+        copyOnWrite();
+        instance.addSecurityDomains(value);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder addSecurityDomains(
+          int index, sync_pb.Vault.SecurityDomain value) {
+        copyOnWrite();
+        instance.addSecurityDomains(index, value);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder addSecurityDomains(
+          sync_pb.Vault.SecurityDomain.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSecurityDomains(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder addSecurityDomains(
+          int index, sync_pb.Vault.SecurityDomain.Builder builderForValue) {
+        copyOnWrite();
+        instance.addSecurityDomains(index,
+            builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder addAllSecurityDomains(
+          java.lang.Iterable<? extends sync_pb.Vault.SecurityDomain> values) {
+        copyOnWrite();
+        instance.addAllSecurityDomains(values);
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder clearSecurityDomains() {
+        copyOnWrite();
+        instance.clearSecurityDomains();
+        return this;
+      }
+      /**
+       * <code>repeated .sync_pb.SecurityDomain security_domains = 1;</code>
+       */
+      public Builder removeSecurityDomains(int index) {
+        copyOnWrite();
+        instance.removeSecurityDomains(index);
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sync_pb.ListSecurityDomainsResponse)
+    }
+    @java.lang.Override
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
+        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
+        java.lang.Object arg0, java.lang.Object arg1) {
+      switch (method) {
+        case NEW_MUTABLE_INSTANCE: {
+          return new sync_pb.Vault.ListSecurityDomainsResponse();
+        }
+        case NEW_BUILDER: {
+          return new Builder();
+        }
+        case BUILD_MESSAGE_INFO: {
+            java.lang.Object[] objects = new java.lang.Object[] {
+              "securityDomains_",
+              sync_pb.Vault.SecurityDomain.class,
+            };
+            java.lang.String info =
+                "\u0001\u0001\u0000\u0000\u0001\u0001\u0001\u0000\u0001\u0000\u0001\u001b";
+            return newMessageInfo(DEFAULT_INSTANCE, info, objects);
+        }
+        // fall through
+        case GET_DEFAULT_INSTANCE: {
+          return DEFAULT_INSTANCE;
+        }
+        case GET_PARSER: {
+          com.google.protobuf.Parser<sync_pb.Vault.ListSecurityDomainsResponse> parser = PARSER;
+          if (parser == null) {
+            synchronized (sync_pb.Vault.ListSecurityDomainsResponse.class) {
+              parser = PARSER;
+              if (parser == null) {
+                parser =
+                    new DefaultInstanceBasedParser<sync_pb.Vault.ListSecurityDomainsResponse>(
+                        DEFAULT_INSTANCE);
+                PARSER = parser;
+              }
+            }
+          }
+          return parser;
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
+      }
+      throw new UnsupportedOperationException();
+    }
+
+
+    // @@protoc_insertion_point(class_scope:sync_pb.ListSecurityDomainsResponse)
+    private static final sync_pb.Vault.ListSecurityDomainsResponse DEFAULT_INSTANCE;
+    static {
+      ListSecurityDomainsResponse defaultInstance = new ListSecurityDomainsResponse();
+      // New instances are implicitly immutable so no need to make
+      // immutable.
+      DEFAULT_INSTANCE = defaultInstance;
+      com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
+        ListSecurityDomainsResponse.class, defaultInstance);
+    }
+
+    public static sync_pb.Vault.ListSecurityDomainsResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static volatile com.google.protobuf.Parser<ListSecurityDomainsResponse> PARSER;
+
+    public static com.google.protobuf.Parser<ListSecurityDomainsResponse> parser() {
       return DEFAULT_INSTANCE.getParserForType();
     }
   }

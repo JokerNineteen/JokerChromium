@@ -64,6 +64,7 @@ public final class DragEventSourceInfo extends org.chromium.mojo.bindings.Struct
                     
                 result.source = decoder0.readInt(16);
                     org.chromium.ui.mojom.DragEventSource.validate(result.source);
+                    result.source = org.chromium.ui.mojom.DragEventSource.toKnownValue(result.source);
                 }
 
         } finally {

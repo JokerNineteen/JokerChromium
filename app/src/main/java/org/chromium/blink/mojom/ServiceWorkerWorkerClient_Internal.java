@@ -203,6 +203,7 @@ int mode) {
                         
                     result.mode = decoder0.readInt(8);
                         ControllerServiceWorkerMode.validate(result.mode);
+                        result.mode = ControllerServiceWorkerMode.toKnownValue(result.mode);
                     }
 
             } finally {

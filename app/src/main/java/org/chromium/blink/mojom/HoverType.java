@@ -16,6 +16,7 @@ package org.chromium.blink.mojom;
 public final class HoverType {
     private static final boolean IS_EXTENSIBLE = false;
 
+    public static final int HOVER_NONE = 1;
     public static final int HOVER_FIRST_TYPE = 1;
     public static final int HOVER_HOVER_TYPE = 2;
     public static final int MIN_VALUE = 1;
@@ -28,6 +29,10 @@ public final class HoverType {
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private HoverType() {}

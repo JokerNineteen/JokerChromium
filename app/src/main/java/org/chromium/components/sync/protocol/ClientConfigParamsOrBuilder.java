@@ -108,4 +108,89 @@ public interface ClientConfigParamsOrBuilder extends
    * @return The singleClient.
    */
   boolean getSingleClient();
+
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @return A list containing the devicesFcmRegistrationTokens.
+   */
+  java.util.List<java.lang.String>
+      getDevicesFcmRegistrationTokensList();
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @return The count of devicesFcmRegistrationTokens.
+   */
+  int getDevicesFcmRegistrationTokensCount();
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param index The index of the element to return.
+   * @return The devicesFcmRegistrationTokens at the given index.
+   */
+  java.lang.String getDevicesFcmRegistrationTokens(int index);
+  /**
+   * <pre>
+   * A list of FCM registration tokens which are obtained from other clients.
+   * This list is used by the server to send invalidations to all other clients.
+   * If the list is empty, the server should treat this as "there is no
+   * information about other clients". In practice, this happens by the next
+   * causes:
+   * 1. This is the old client which doesn't set this field.
+   * 2. There are too many active devices and the list would have too many
+   * items.
+   * 3. An empty list could also mean that the current client is the only
+   * client. This case should be covered by the |single_client| field instead
+   * (otherwise it could be mixed up with older clients). The server doesn't
+   * have to use this field and can ignore it.
+   * </pre>
+   *
+   * <code>repeated string devices_fcm_registration_tokens = 5;</code>
+   * @param index The index of the element to return.
+   * @return The devicesFcmRegistrationTokens at the given index.
+   */
+  com.google.protobuf.ByteString
+      getDevicesFcmRegistrationTokensBytes(int index);
 }

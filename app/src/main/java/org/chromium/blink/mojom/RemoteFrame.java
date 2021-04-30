@@ -30,7 +30,7 @@ FullscreenOptions options);
 
 
     void addReplicatedContentSecurityPolicies(
-org.chromium.network.mojom.ContentSecurityPolicyHeader[] headers);
+org.chromium.network.mojom.ContentSecurityPolicy[] csps);
 
 
 
@@ -155,7 +155,32 @@ FramePolicy framePolicy);
 
 
     void updateOpener(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrameToken);
+FrameToken openerFrameToken);
+
+
+
+    void detachAndDispose(
+);
+
+
+
+    void enableAutoResize(
+org.chromium.gfx.mojom.Size minSize, org.chromium.gfx.mojom.Size maxSize);
+
+
+
+    void disableAutoResize(
+);
+
+
+
+    void didUpdateVisualProperties(
+org.chromium.cc.mojom.RenderFrameMetadata metadata);
+
+
+
+    void setFrameSinkId(
+org.chromium.viz.mojom.FrameSinkId frameSinkId);
 
 
 }

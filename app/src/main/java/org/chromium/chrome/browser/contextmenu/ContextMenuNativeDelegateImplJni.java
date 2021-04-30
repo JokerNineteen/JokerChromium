@@ -29,24 +29,23 @@ final class ContextMenuNativeDelegateImplJni implements ContextMenuNativeDelegat
   };
 
   @Override
-  public long init(WebContents webContents, ContextMenuParams contextMenuParams,
-      RenderFrameHost renderFrameHost) {
-    return (long)GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_init(webContents, contextMenuParams, renderFrameHost);
+  public long init(WebContents webContents, ContextMenuParams contextMenuParams) {
+    return (long)GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_init(webContents, contextMenuParams);
   }
 
   @Override
   public void retrieveImageForShare(long nativeContextMenuNativeDelegateImpl,
-      ContextMenuNativeDelegateImpl caller,
+      ContextMenuNativeDelegateImpl caller, RenderFrameHost renderFrameHost,
       Callback<ContextMenuNativeDelegateImpl.ImageCallbackResult> callback, int maxWidthPx,
       int maxHeightPx, int imageFormat) {
-    GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_retrieveImageForShare(nativeContextMenuNativeDelegateImpl, caller, callback, maxWidthPx, maxHeightPx, imageFormat);
+    GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_retrieveImageForShare(nativeContextMenuNativeDelegateImpl, caller, renderFrameHost, callback, maxWidthPx, maxHeightPx, imageFormat);
   }
 
   @Override
   public void retrieveImageForContextMenu(long nativeContextMenuNativeDelegateImpl,
-      ContextMenuNativeDelegateImpl caller, Callback<Bitmap> callback, int maxWidthPx,
-      int maxHeightPx) {
-    GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_retrieveImageForContextMenu(nativeContextMenuNativeDelegateImpl, caller, callback, maxWidthPx, maxHeightPx);
+      ContextMenuNativeDelegateImpl caller, RenderFrameHost renderFrameHost,
+      Callback<Bitmap> callback, int maxWidthPx, int maxHeightPx) {
+    GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_retrieveImageForContextMenu(nativeContextMenuNativeDelegateImpl, caller, renderFrameHost, callback, maxWidthPx, maxHeightPx);
   }
 
   @Override
@@ -57,8 +56,8 @@ final class ContextMenuNativeDelegateImplJni implements ContextMenuNativeDelegat
 
   @Override
   public void searchForImage(long nativeContextMenuNativeDelegateImpl,
-      ContextMenuNativeDelegateImpl caller) {
-    GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_searchForImage(nativeContextMenuNativeDelegateImpl, caller);
+      ContextMenuNativeDelegateImpl caller, RenderFrameHost renderFrameHost) {
+    GEN_JNI.org_chromium_chrome_browser_contextmenu_ContextMenuNativeDelegateImpl_searchForImage(nativeContextMenuNativeDelegateImpl, caller, renderFrameHost);
   }
 
   public static ContextMenuNativeDelegateImpl.Natives get() {

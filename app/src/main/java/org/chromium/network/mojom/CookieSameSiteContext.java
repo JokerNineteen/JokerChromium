@@ -61,11 +61,13 @@ public final class CookieSameSiteContext extends org.chromium.mojo.bindings.Stru
                     
                 result.context = decoder0.readInt(8);
                     ContextType.validate(result.context);
+                    result.context = ContextType.toKnownValue(result.context);
                 }
                 {
                     
                 result.schemefulContext = decoder0.readInt(12);
                     ContextType.validate(result.schemefulContext);
+                    result.schemefulContext = ContextType.toKnownValue(result.schemefulContext);
                 }
 
         } finally {

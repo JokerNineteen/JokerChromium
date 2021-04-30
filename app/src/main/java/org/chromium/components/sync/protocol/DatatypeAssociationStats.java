@@ -202,68 +202,6 @@ public  final class DatatypeAssociationStats extends
     downloadTimeUs_ = 0L;
   }
 
-  public static final int ASSOCIATION_WAIT_TIME_FOR_HIGH_PRIORITY_US_FIELD_NUMBER = 16;
-  private long associationWaitTimeForHighPriorityUs_;
-  /**
-   * <pre>
-   * Waiting time for higher priority types to finish association. This
-   * measures the time between finishing downloading data to requesting
-   * association manager to associate this batch of types. High priority types
-   * have near zero waiting time.
-   * </pre>
-   *
-   * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-   * @return Whether the associationWaitTimeForHighPriorityUs field is set.
-   */
-  @java.lang.Override
-  public boolean hasAssociationWaitTimeForHighPriorityUs() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <pre>
-   * Waiting time for higher priority types to finish association. This
-   * measures the time between finishing downloading data to requesting
-   * association manager to associate this batch of types. High priority types
-   * have near zero waiting time.
-   * </pre>
-   *
-   * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-   * @return The associationWaitTimeForHighPriorityUs.
-   */
-  @java.lang.Override
-  public long getAssociationWaitTimeForHighPriorityUs() {
-    return associationWaitTimeForHighPriorityUs_;
-  }
-  /**
-   * <pre>
-   * Waiting time for higher priority types to finish association. This
-   * measures the time between finishing downloading data to requesting
-   * association manager to associate this batch of types. High priority types
-   * have near zero waiting time.
-   * </pre>
-   *
-   * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-   * @param value The associationWaitTimeForHighPriorityUs to set.
-   */
-  private void setAssociationWaitTimeForHighPriorityUs(long value) {
-    bitField0_ |= 0x00000008;
-    associationWaitTimeForHighPriorityUs_ = value;
-  }
-  /**
-   * <pre>
-   * Waiting time for higher priority types to finish association. This
-   * measures the time between finishing downloading data to requesting
-   * association manager to associate this batch of types. High priority types
-   * have near zero waiting time.
-   * </pre>
-   *
-   * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-   */
-  private void clearAssociationWaitTimeForHighPriorityUs() {
-    bitField0_ = (bitField0_ & ~0x00000008);
-    associationWaitTimeForHighPriorityUs_ = 0L;
-  }
-
   public static final int HIGH_PRIORITY_TYPE_CONFIGURED_BEFORE_FIELD_NUMBER = 18;
   private com.google.protobuf.Internal.IntList highPriorityTypeConfiguredBefore_;
   /**
@@ -749,70 +687,6 @@ public  final class DatatypeAssociationStats extends
 
     /**
      * <pre>
-     * Waiting time for higher priority types to finish association. This
-     * measures the time between finishing downloading data to requesting
-     * association manager to associate this batch of types. High priority types
-     * have near zero waiting time.
-     * </pre>
-     *
-     * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-     * @return Whether the associationWaitTimeForHighPriorityUs field is set.
-     */
-    @java.lang.Override
-    public boolean hasAssociationWaitTimeForHighPriorityUs() {
-      return instance.hasAssociationWaitTimeForHighPriorityUs();
-    }
-    /**
-     * <pre>
-     * Waiting time for higher priority types to finish association. This
-     * measures the time between finishing downloading data to requesting
-     * association manager to associate this batch of types. High priority types
-     * have near zero waiting time.
-     * </pre>
-     *
-     * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-     * @return The associationWaitTimeForHighPriorityUs.
-     */
-    @java.lang.Override
-    public long getAssociationWaitTimeForHighPriorityUs() {
-      return instance.getAssociationWaitTimeForHighPriorityUs();
-    }
-    /**
-     * <pre>
-     * Waiting time for higher priority types to finish association. This
-     * measures the time between finishing downloading data to requesting
-     * association manager to associate this batch of types. High priority types
-     * have near zero waiting time.
-     * </pre>
-     *
-     * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-     * @param value The associationWaitTimeForHighPriorityUs to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAssociationWaitTimeForHighPriorityUs(long value) {
-      copyOnWrite();
-      instance.setAssociationWaitTimeForHighPriorityUs(value);
-      return this;
-    }
-    /**
-     * <pre>
-     * Waiting time for higher priority types to finish association. This
-     * measures the time between finishing downloading data to requesting
-     * association manager to associate this batch of types. High priority types
-     * have near zero waiting time.
-     * </pre>
-     *
-     * <code>optional int64 association_wait_time_for_high_priority_us = 16;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAssociationWaitTimeForHighPriorityUs() {
-      copyOnWrite();
-      instance.clearAssociationWaitTimeForHighPriorityUs();
-      return this;
-    }
-
-    /**
-     * <pre>
      * Higher priority type that's configured before this type.
      * </pre>
      *
@@ -1025,13 +899,12 @@ public  final class DatatypeAssociationStats extends
             "dataTypeId_",
             "downloadTimeUs_",
             "downloadWaitTimeUs_",
-            "associationWaitTimeForHighPriorityUs_",
             "highPriorityTypeConfiguredBefore_",
             "samePriorityTypeConfiguredBefore_",
           };
           java.lang.String info =
-              "\u0001\u0006\u0000\u0001\u0001\u0013\u0006\u0000\u0002\u0000\u0001\u1004\u0000\r" +
-              "\u1002\u0002\u000f\u1002\u0001\u0010\u1002\u0003\u0012\u0016\u0013\u0016";
+              "\u0001\u0005\u0000\u0001\u0001\u0013\u0005\u0000\u0002\u0000\u0001\u1004\u0000\r" +
+              "\u1002\u0002\u000f\u1002\u0001\u0012\u0016\u0013\u0016";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       // fall through

@@ -10,7 +10,7 @@ import org.chromium.content_public.browser.WebContents;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
-final class ServiceTabLauncherJni implements ServiceTabLauncher.Natives {
+public final class ServiceTabLauncherJni implements ServiceTabLauncher.Natives {
   private static ServiceTabLauncher.Natives testInstance;
 
   public static final JniStaticTestMocker<ServiceTabLauncher.Natives> TEST_HOOKS = new org.chromium.base.JniStaticTestMocker<org.chromium.chrome.browser.ServiceTabLauncher.Natives>() {

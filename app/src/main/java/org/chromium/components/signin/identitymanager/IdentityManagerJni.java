@@ -8,6 +8,7 @@ import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.components.signin.base.AccountInfo;
+import org.chromium.components.signin.base.CoreAccountId;
 import org.chromium.components.signin.base.CoreAccountInfo;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
@@ -40,6 +41,12 @@ public final class IdentityManagerJni implements IdentityManager.Natives {
   @Override
   public CoreAccountInfo[] getAccountsWithRefreshTokens(long nativeIdentityManager) {
     return (CoreAccountInfo[])GEN_JNI.org_chromium_components_signin_identitymanager_IdentityManager_getAccountsWithRefreshTokens(nativeIdentityManager);
+  }
+
+  @Override
+  public void forceRefreshOfExtendedAccountInfo(long nativeIdentityManager,
+      CoreAccountId coreAccountId) {
+    GEN_JNI.org_chromium_components_signin_identitymanager_IdentityManager_forceRefreshOfExtendedAccountInfo(nativeIdentityManager, coreAccountId);
   }
 
   public static IdentityManager.Natives get() {

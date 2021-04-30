@@ -15,24 +15,23 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.CollectionUtil;
-import org.chromium.chrome.browser.compositor.bottombar.contextualsearch.ContextualSearchPanel;
+import org.chromium.chrome.browser.compositor.bottombar.contextualsearch.ContextualSearchPanelInterface;
 import org.chromium.chrome.browser.contextualsearch.ContextualSearchFieldTrial.ContextualSearchSetting;
 import org.chromium.chrome.browser.contextualsearch.ContextualSearchFieldTrial.ContextualSearchSwitch;
 import org.chromium.chrome.browser.contextualsearch.ContextualSearchSelectionController.SelectionType;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
 import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
-import org.chromium.chrome.browser.privacy.settings.PrivacyPreferencesManager;
+import org.chromium.chrome.browser.privacy.settings.PrivacyPreferencesManagerImpl;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.search_engines.TemplateUrlServiceFactory;
-import org.chromium.chrome.browser.signin.UnifiedConsentServiceBridge;
+import org.chromium.chrome.browser.signin.services.UnifiedConsentServiceBridge;
 import org.chromium.chrome.browser.version.ChromeVersionInfo;
 import org.chromium.components.embedder_support.util.UrlConstants;
+import org.chromium.components.embedder_support.util.UrlUtilities;
+import org.chromium.url.GURL;
 
-import java.net.URL;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 /**
@@ -44,19 +43,36 @@ class ContextualSearchPolicy {
     private static final String PATH_AMP = "/amp/";
     private static final int REMAINING_NOT_APPLICABLE = -1;
     private static final int TAP_TRIGGERED_PROMO_LIMIT = 50;
+    // Related Searches "stamp" building and accessing details.
+    private static final String RELATED_SEARCHES_STAMP_VERSION = "1";
+    private static final String RELATED_SEARCHES_EXPERIMENT_RECIPE_STAGE = "R";
+    private static final String RELATED_SEARCHES_NO_EXPERIMENT = "n";
+    private static final String RELATED_SEARCHES_LANGUAGE_RESTRICTION = "l";
+    private static final String RELATED_SEARCHES_DARK_LAUNCH = "d";
+    private static final String NO_EXPERIMENT_STAMP = RELATED_SEARCHES_STAMP_VERSION
+            + RELATED_SEARCHES_EXPERIMENT_RECIPE_STAGE + RELATED_SEARCHES_NO_EXPERIMENT;
 
+    // TODO(donnd): remove -- deprecated.
     private static final HashSet<String> PREDOMINENTLY_ENGLISH_SPEAKING_COUNTRIES =
             CollectionUtil.newHashSet("GB", "US");
 
     private final SharedPreferencesManager mPreferencesManager;
     private final ContextualSearchSelectionController mSelectionController;
     private ContextualSearchNetworkCommunicator mNetworkCommunicator;
-    private ContextualSearchPanel mSearchPanel;
+    private ContextualSearchPanelInterface mSearchPanel;
 
     // Members used only for testing purposes.
     private boolean mDidOverrideDecidedStateForTesting;
     private boolean mDecidedStateForTesting;
     private Integer mTapTriggeredPromoLimitForTesting;
+    private boolean mDidOverrideAllowSendingPageUrlForTesting;
+    private boolean mAllowSendingPageUrlForTesting;
+
+    /**
+     * Tracks whether the In-Panel-Help has been shown.
+     * TODO(donnd): replace with Feature Engagement.
+     */
+    private boolean mWasInPanelHelpAccepted;
 
     /**
      * ContextualSearchPolicy constructor.
@@ -74,7 +90,7 @@ class ContextualSearchPolicy {
      * Sets the handle to the ContextualSearchPanel.
      * @param panel The ContextualSearchPanel.
      */
-    public void setContextualSearchPanel(ContextualSearchPanel panel) {
+    public void setContextualSearchPanel(ContextualSearchPanelInterface panel) {
         mSearchPanel = panel;
     }
 
@@ -113,8 +129,6 @@ class ContextualSearchPolicy {
      * @return Whether a Tap gesture is currently supported as a trigger for the feature.
      */
     boolean isTapSupported() {
-        if (isRelatedSearchesEnabled()) return true;
-
         if (isTapDisabledDueToLongpress()) return false;
 
         return (!isUserUndecided()
@@ -131,19 +145,28 @@ class ContextualSearchPolicy {
      */
     boolean shouldPrefetchSearchResult() {
         if (isMandatoryPromoAvailable()
-                || !PrivacyPreferencesManager.getInstance().getNetworkPredictionEnabled()) {
+                || !PrivacyPreferencesManagerImpl.getInstance().getNetworkPredictionEnabled()) {
             return false;
         }
 
         // We never preload unless we have sent page context (done through a Resolve request).
         // Only some gestures can resolve, and only when resolve privacy rules are met.
-        return (mSelectionController.getSelectionType() == SelectionType.TAP
-                       || mSelectionController.getSelectionType()
-                               == SelectionType.RESOLVING_LONG_PRESS)
-                && shouldPreviousGestureResolve();
+        return isResolvingGesture() && shouldPreviousGestureResolve();
     }
 
     /**
+     * Determines whether the current gesture can trigger a resolve request to use page context.
+     * This only checks the gesture, not privacy status -- {@see #shouldPreviousGestureResolve}.
+     */
+    boolean isResolvingGesture() {
+        return (mSelectionController.getSelectionType() == SelectionType.TAP
+                       && !isLiteralSearchTapEnabled())
+                || mSelectionController.getSelectionType() == SelectionType.RESOLVING_LONG_PRESS;
+    }
+
+    /**
+     * Determines whether the gesture being processed is allowed to resolve.
+     * TODO(donnd): rename to be more descriptive. Maybe isGestureAllowedToResolve?
      * @return Whether the previous gesture should resolve.
      */
     boolean shouldPreviousGestureResolve() {
@@ -193,6 +216,18 @@ class ContextualSearchPolicy {
      */
     boolean isPromoAvailable() {
         return isUserUndecided();
+    }
+
+    boolean isPanelHelpEnabled() {
+        return !mWasInPanelHelpAccepted
+                && ChromeFeatureList.isEnabled(
+                        ChromeFeatureList.CONTEXTUAL_SEARCH_LONGPRESS_PANEL_HELP);
+    }
+
+    /** Handles notification that the OK button was pressed on the In-Panel-Help promo. */
+    void onPanelHelpOkClicked() {
+        // TODO(donnd): use Feature Engagement to manage this help feature.
+        mWasInPanelHelpAccepted = true;
     }
 
     /**
@@ -264,13 +299,17 @@ class ContextualSearchPolicy {
                 && (selectionType == SelectionType.LONG_PRESS || !shouldPreviousGestureResolve()));
     }
 
+    /**
+     * @return whether the experiment that causes a tap gesture to trigger a literal search for the
+     *         selection (rather than sending context to resolve a search term) is enabled.
+     */
+    boolean isLiteralSearchTapEnabled() {
+        return ChromeFeatureList.isEnabled(ChromeFeatureList.CONTEXTUAL_SEARCH_LITERAL_SEARCH_TAP);
+    }
+
     /** @return whether Tap is disabled due to the longpress experiment. */
     private boolean isTapDisabledDueToLongpress() {
-        return canResolveLongpress()
-                && !ContextualSearchFieldTrial.LONGPRESS_RESOLVE_PRESERVE_TAP.equals(
-                        ChromeFeatureList.getFieldTrialParamByFeature(
-                                ChromeFeatureList.CONTEXTUAL_SEARCH_LONGPRESS_RESOLVE,
-                                ContextualSearchFieldTrial.LONGPRESS_RESOLVE_PARAM_NAME));
+        return canResolveLongpress() && !isLiteralSearchTapEnabled();
     }
 
     /**
@@ -300,6 +339,8 @@ class ContextualSearchPolicy {
      */
     void logCurrentState() {
         ContextualSearchUma.logPreferenceState();
+        ContextualSearchUma.logRelatedSearchesPermissionsForAllUsers(
+                hasSendUrlPermissions(), canSendSurroundings());
 
         // Log the number of promo taps remaining.
         int promoTapsRemaining = getPromoTapsRemaining();
@@ -329,10 +370,23 @@ class ContextualSearchPolicy {
         // and it's also possible that public pages, e.g. news, have more searches for multi-word
         // entities like people.
         if (!isUserUndecided()) {
-            URL url = mNetworkCommunicator.getBasePageUrl();
+            GURL url = mNetworkCommunicator.getBasePageUrl();
             ContextualSearchUma.logBasePageProtocol(isBasePageHTTP(url));
             boolean isSingleWord = !CONTAINS_WHITESPACE_PATTERN.matcher(searchTerm.trim()).find();
             ContextualSearchUma.logSearchTermResolvedWords(isSingleWord);
+        }
+    }
+
+    /**
+     * Logs whether the current user is qualified to do Related Searches requests. This does not
+     * check if Related Searches is actually enabled for the current user, only whether they are
+     * qualified. We use this to gauge whether each group has a balanced number of qualified users.
+     * Can be logged multiple times since we'll just look at the user-count of this histogram.
+     * @param basePageLanguage The language of the page, to check if supported by the server.
+     */
+    void logRelatedSearchesQualifiedUsers(String basePageLanguage) {
+        if (isQualifiedForRelatedSearches(basePageLanguage)) {
+            ContextualSearchUma.logRelatedSearchesQualifiedUsers();
         }
     }
 
@@ -355,12 +409,22 @@ class ContextualSearchPolicy {
         if (!TemplateUrlServiceFactory.get().isDefaultSearchEngineGoogle()) return false;
 
         // Only allow HTTP or HTTPS URLs.
-        URL url = mNetworkCommunicator.getBasePageUrl();
-        String urlProtocol = url != null ? url.getProtocol() : "";
-        if (!(urlProtocol.equals(UrlConstants.HTTP_SCHEME)
-                    || urlProtocol.equals(UrlConstants.HTTPS_SCHEME))) {
+        GURL url = mNetworkCommunicator.getBasePageUrl();
+
+        if (url == null || !UrlUtilities.isHttpOrHttps(url)) {
             return false;
         }
+
+        return hasSendUrlPermissions();
+    }
+
+    /**
+     * Determines whether the user has given permission to send URLs through the "Make searches and
+     * browsing better" user setting.
+     * @return Whether we can send a URL.
+     */
+    private boolean hasSendUrlPermissions() {
+        if (mDidOverrideAllowSendingPageUrlForTesting) return mAllowSendingPageUrlForTesting;
 
         // Check whether the user has enabled anonymous URL-keyed data collection.
         // This is surfaced on the relatively new "Make searches and browsing better" user setting.
@@ -428,6 +492,16 @@ class ContextualSearchPolicy {
     }
 
     /**
+     * Overrides the user preference for sending the page URL to Google.
+     * @param doAllowSendingPageUrl Whether to allow sending the page URL or not, for tests.
+     */
+    @VisibleForTesting
+    void overrideAllowSendingPageUrlForTesting(boolean doAllowSendingPageUrl) {
+        mDidOverrideAllowSendingPageUrlForTesting = true;
+        mAllowSendingPageUrlForTesting = doAllowSendingPageUrl;
+    }
+
+    /**
      * @return count of times the panel with the promo has been opened.
      */
     @VisibleForTesting
@@ -445,58 +519,8 @@ class ContextualSearchPolicy {
     }
 
     // --------------------------------------------------------------------------------------------
-    // Translation support.
+    // Additional considerations.
     // --------------------------------------------------------------------------------------------
-
-    /**
-     * Determines whether translation is needed between the given languages.
-     * @param sourceLanguage The source language code; language we're translating from.
-     * @param targetLanguages A list of target language codes; languages we might translate to.
-     * @return Whether translation is needed or not.
-     */
-    boolean needsTranslation(String sourceLanguage, List<String> targetLanguages) {
-        // For now, we just look for a language match.
-        for (String targetLanguage : targetLanguages) {
-            if (TextUtils.equals(sourceLanguage, targetLanguage)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * @return The best target language from the ordered list, or the empty string if
-     *         none is available.
-     */
-    String bestTargetLanguage(List<String> targetLanguages) {
-        return bestTargetLanguage(targetLanguages, Locale.getDefault().getCountry());
-    }
-
-    /**
-     * Determines the best language to convert into, given the ordered list of languages the user
-     * knows, and the UX language.
-     * @param targetLanguages The list of languages to consider converting to.
-     * @param countryOfUx The country of the UX.
-     * @return the best language or an empty string.
-     */
-    @VisibleForTesting
-    String bestTargetLanguage(List<String> targetLanguages, String countryOfUx) {
-        // For now, we just return the first language, unless it's English
-        // (due to over-usage).
-        // TODO(donnd): Improve this logic. Determining the right language seems non-trivial.
-        // E.g. If this language doesn't match the user's server preferences, they might see a page
-        // in one language and the one box translation in another, which might be confusing.
-        // Also this logic should only apply on Android, where English setup is overused.
-        if (targetLanguages.size() > 1
-                && TextUtils.equals(targetLanguages.get(0), Locale.ENGLISH.getLanguage())
-                && !PREDOMINENTLY_ENGLISH_SPEAKING_COUNTRIES.contains(countryOfUx)) {
-            return targetLanguages.get(1);
-        } else if (targetLanguages.size() > 0) {
-            return targetLanguages.get(0);
-        } else {
-            return "";
-        }
-    }
 
     /**
      * @return The ISO country code for the user's home country, or an empty string if not
@@ -531,8 +555,8 @@ class ContextualSearchPolicy {
      * @param url The URL of the base page.
      * @return Whether the given content view is for an HTTP page.
      */
-    boolean isBasePageHTTP(@Nullable URL url) {
-        return url != null && UrlConstants.HTTP_SCHEME.equals(url.getProtocol());
+    boolean isBasePageHTTP(@Nullable GURL url) {
+        return url != null && UrlConstants.HTTP_SCHEME.equals(url.getScheme());
     }
 
     // --------------------------------------------------------------------------------------------
@@ -540,51 +564,132 @@ class ContextualSearchPolicy {
     // --------------------------------------------------------------------------------------------
 
     /**
-     * @return Whether the experimental Feature for Related Searches is enabled.
+     * Gets the runtime processing stamp for Related Searches. This typically gets the value from
+     * a param from a Field Trial Feature.
+     * @param basePageLanguage The language of the page, to check for server support.
+     * @return A {@code String} whose value describes the schema version and current processing
+     *         of Related Searches, or an empty string if the user is not qualified to request
+     *         Related Searches or the feature is not enabled.
      */
-    boolean isRelatedSearchesEnabled() {
-        return ChromeFeatureList.isEnabled(ChromeFeatureList.RELATED_SEARCHES);
+    String getRelatedSearchesStamp(String basePageLanguage) {
+        if (!isRelatedSearchesQualifiedAndEnabled(basePageLanguage)) return "";
+
+        boolean isLanguageRestricted =
+                !TextUtils.isEmpty(ContextualSearchFieldTrial.getRelatedSearchesParam(
+                        ContextualSearchFieldTrial.RELATED_SEARCHES_LANGUAGE_ALLOWLIST_PARAM_NAME));
+        return buildRelatedSearchesStamp(isLanguageRestricted);
     }
 
     /**
-     * @return Whether we're currently processing a Related Search gesture.
+     * Checks if the current user is both qualified to do Related Searches and has the feature
+     * enabled. Qualifications may include restrictions on language during early development.
+     * @param basePageLanguage The language of the page, to check for server support.
+     * @return Whether the user is qualified to get Related Searches suggestions and the
+     *         experimental feature is enabled.
      */
-    boolean isProcessingRelatedSearch() {
-        return isRelatedSearchesEnabled()
-                && mSelectionController.getSelectionType() == SelectionType.TAP;
+    boolean isRelatedSearchesQualifiedAndEnabled(String basePageLanguage) {
+        return isQualifiedForRelatedSearches(basePageLanguage)
+                && ChromeFeatureList.isEnabled(ChromeFeatureList.RELATED_SEARCHES);
     }
 
     /**
-     * @return The number of times a navigation in the panel can be done without promoting the
-     *         panel into a separate tab.
+     * Determines if the current user is qualified for Related Searches. There may be language
+     * and privacy restrictions on whether users can activate Related Searches, and some of these
+     * requirements are determined at runtime based on Variations params.
+     * @param basePageLanguage The language of the page, to check for server support.
+     * @return Whether the user could do a Related Searches request if Feature-enabled.
      */
-    int navigateWithoutPromotionLimitForRelatedSearches() {
-        if (ChromeFeatureList.isEnabled(ChromeFeatureList.RELATED_SEARCHES)
-                && mSelectionController.getSelectionType() == SelectionType.TAP) {
-            // For Related Searches the returned page has a list of search-result pages
-            // that the user can choose from, so initial navigation should be done
-            // without promotion.  We want normal behavior for Longpress.
-            return 2;
+    private boolean isQualifiedForRelatedSearches(String basePageLanguage) {
+        return isLanguageQualified(basePageLanguage) && canSendUrlIfNeeded()
+                && canSendContentIfNeeded();
+    }
+
+    /**
+     * Checks if the language of the page qualifies for Related Searches.
+     * We check the Variations config for a parameter that lists allowed languages so we can know
+     * what the server currently supports. If there's no allow list then any language will work.
+     * @param basePageLanguage The language of the page, to check for server support.
+     * @return whether the supplied parameter satisfies the current language requirement.
+     */
+    private boolean isLanguageQualified(String basePageLanguage) {
+        String allowedLanguages = ContextualSearchFieldTrial.getRelatedSearchesParam(
+                ContextualSearchFieldTrial.RELATED_SEARCHES_LANGUAGE_ALLOWLIST_PARAM_NAME);
+        return TextUtils.isEmpty(allowedLanguages) || allowedLanguages.contains(basePageLanguage);
+    }
+
+    /**
+     * @return whether the user's privacy setting for URL sending satisfies the configured
+     *         requirement.
+     */
+    private boolean canSendUrlIfNeeded() {
+        return !isRelatedSearchesUrlNeeded() || hasSendUrlPermissions();
+    }
+
+    /**
+     * @return whether the user's privacy setting for page content sending satisfies the configured
+     *         requirement.
+     */
+    private boolean canSendContentIfNeeded() {
+        return !isRelatedSearchesContentNeeded() || !isUserUndecided();
+    }
+
+    /** @return whether the runtime configuration has a URL sending permissions requirement. */
+    private boolean isRelatedSearchesUrlNeeded() {
+        return isRelatedSearchesParamEnabled(
+                       ContextualSearchFieldTrial.RELATED_SEARCHES_NEEDS_URL_PARAM_NAME)
+                || isMissingRelatedSearchesConfiguration();
+    }
+
+    /**
+     * @return whether the runtime configuration has a page content sending permissions
+     *         requirement.
+     */
+    private boolean isRelatedSearchesContentNeeded() {
+        return isRelatedSearchesParamEnabled(
+                       ContextualSearchFieldTrial.RELATED_SEARCHES_NEEDS_CONTENT_PARAM_NAME)
+                || isMissingRelatedSearchesConfiguration();
+    }
+
+    /**
+     * @return whether the given parameter is currently enabled in the Related Searches Variation
+     *         configuration.
+     */
+    private boolean isRelatedSearchesParamEnabled(String paramName) {
+        return ContextualSearchFieldTrial.isRelatedSearchesParamEnabled(paramName);
+    }
+
+    /** @return whether we're missing the Related Searches configuration stamp. */
+    private boolean isMissingRelatedSearchesConfiguration() {
+        return TextUtils.isEmpty(
+                ContextualSearchFieldTrial.getRelatedSearchesExperiementConfigurationStamp());
+    }
+
+    /**
+     * Builds the "stamp" that tracks the processing of Related Searches and describes what was
+     * done at each stage using a shorthand notation. The notation is described in go/rsearches-dd
+     * here: http://doc/1DryD8NAP5LQAo326LnxbqkIDCNfiCOB7ak3gAYaNWAM#bookmark=id.nx7ivu2upqw
+     * <p>The first stage is built here: "1" for schema version one, "R" for the configuration
+     * Recipe which has a character describing how we'll formulate the search. Typically all of
+     * this comes from the Variations config at runtime. We programmatically append an "l" that
+     * indicates a language restriction (when present), and currently a "d" for "dark launch" so
+     * the server knows to return normal Contextual Search results for this older client.
+     * @param isLanguageRestricted Whether there are any language restrictions needed by the
+     *        server.
+     * @return A string that represents and encoded description of the current request processing.
+     */
+    private String buildRelatedSearchesStamp(boolean isLanguageRestricted) {
+        String experimentConfigStamp =
+                ContextualSearchFieldTrial.getRelatedSearchesExperiementConfigurationStamp();
+        if (TextUtils.isEmpty(experimentConfigStamp)) experimentConfigStamp = NO_EXPERIMENT_STAMP;
+        // TODO(donnd): Consider supporting URL-only requests -- for now content is required.
+        StringBuilder stampBuilder = new StringBuilder().append(experimentConfigStamp);
+        if (isLanguageRestricted) stampBuilder.append(RELATED_SEARCHES_LANGUAGE_RESTRICTION);
+        // Add a tag so the server knows this version of the client is doing a dark launch
+        // and cannot decode Related Searches, unless overridden by a Feature flag.
+        if (!ChromeFeatureList.isEnabled(ChromeFeatureList.RELATED_SEARCHES_UI)) {
+            stampBuilder.append(RELATED_SEARCHES_DARK_LAUNCH);
         }
-        return 1;
-    }
-
-    /**
-     * Overrides the selection if we're processing a Related Searches gesture.
-    * @param selection The original selection.  This is returned if not processing Related
-             Searches.
-    * @param relatedSearchesWord The word to show if we are processing Related Searches.
-    * @return the input or an override of the selection appropriate for experiments.
-    */
-    String overrideSelectionIfProcessingRelatedSearches(
-            String selection, String relatedSearchesWord) {
-        return isProcessingRelatedSearch() ? relatedSearchesWord : selection;
-    }
-
-    /** @return whether doing Related Searches should be part of processing the current request. */
-    boolean doRelatedSearches() {
-        // TODO(donnd): Update this along with crbug.com/1119585.
-        return isProcessingRelatedSearch();
+        return stampBuilder.toString();
     }
 
     // --------------------------------------------------------------------------------------------

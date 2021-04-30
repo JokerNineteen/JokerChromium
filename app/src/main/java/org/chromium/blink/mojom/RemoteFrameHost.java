@@ -30,7 +30,7 @@ int touchAction);
 
 
     void updateRenderThrottlingStatus(
-boolean isThrottled, boolean subtreeThrottled);
+boolean isThrottled, boolean subtreeThrottled, boolean displayLocked);
 
 
 
@@ -60,17 +60,17 @@ boolean inert);
 
 
     void didChangeOpener(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrame);
+LocalFrameToken openerFrame);
 
 
 
     void advanceFocus(
-int focusType, org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken);
+int focusType, LocalFrameToken sourceFrameToken);
 
 
 
     void routeMessageEvent(
-org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message);
+LocalFrameToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message);
 
 
 
@@ -85,7 +85,12 @@ org.chromium.gfx.mojom.Rect frameContentRect, int documentCookie);
 
 
     void updateViewportIntersection(
-ViewportIntersectionState intersectionState);
+ViewportIntersectionState intersectionState, FrameVisualProperties visualProperties);
+
+
+
+    void synchronizeVisualProperties(
+FrameVisualProperties properties);
 
 
 }

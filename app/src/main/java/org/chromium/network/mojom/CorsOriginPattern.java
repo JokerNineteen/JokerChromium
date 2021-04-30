@@ -75,16 +75,19 @@ public final class CorsOriginPattern extends org.chromium.mojo.bindings.Struct {
                     
                 result.domainMatchMode = decoder0.readInt(28);
                     CorsDomainMatchMode.validate(result.domainMatchMode);
+                    result.domainMatchMode = CorsDomainMatchMode.toKnownValue(result.domainMatchMode);
                 }
                 {
                     
                 result.portMatchMode = decoder0.readInt(32);
                     CorsPortMatchMode.validate(result.portMatchMode);
+                    result.portMatchMode = CorsPortMatchMode.toKnownValue(result.portMatchMode);
                 }
                 {
                     
                 result.priority = decoder0.readInt(36);
                     CorsOriginAccessMatchPriority.validate(result.priority);
+                    result.priority = CorsOriginAccessMatchPriority.toKnownValue(result.priority);
                 }
 
         } finally {

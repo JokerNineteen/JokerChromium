@@ -42,6 +42,11 @@ final class CurrencyFormatterJni implements CurrencyFormatter.Natives {
   }
 
   @Override
+  public void setMaxFractionalDigits(long nativeCurrencyFormatterAndroid, int maxFractionalDigits) {
+    GEN_JNI.org_chromium_components_payments_CurrencyFormatter_setMaxFractionalDigits(nativeCurrencyFormatterAndroid, maxFractionalDigits);
+  }
+
+  @Override
   public String getFormattedCurrencyCode(long nativeCurrencyFormatterAndroid,
       CurrencyFormatter caller) {
     return (String)GEN_JNI.org_chromium_components_payments_CurrencyFormatter_getFormattedCurrencyCode(nativeCurrencyFormatterAndroid, caller);

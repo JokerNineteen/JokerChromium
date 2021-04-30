@@ -26,6 +26,7 @@ public final class PlaybackProperties extends org.chromium.mojo.bindings.Struct 
     public boolean isMse;
     public boolean isEme;
     public boolean isEmbeddedMediaExperience;
+    public int mediaStreamType;
 
     private PlaybackProperties(int version) {
         super(STRUCT_SIZE, version);
@@ -88,6 +89,12 @@ public final class PlaybackProperties extends org.chromium.mojo.bindings.Struct 
                     
                 result.isEmbeddedMediaExperience = decoder0.readBoolean(8, 6);
                 }
+                {
+                    
+                result.mediaStreamType = decoder0.readInt(12);
+                    MediaStreamType.validate(result.mediaStreamType);
+                    result.mediaStreamType = MediaStreamType.toKnownValue(result.mediaStreamType);
+                }
 
         } finally {
             decoder0.decreaseStackDepth();
@@ -113,5 +120,7 @@ public final class PlaybackProperties extends org.chromium.mojo.bindings.Struct 
         encoder0.encode(this.isEme, 8, 5);
         
         encoder0.encode(this.isEmbeddedMediaExperience, 8, 6);
+        
+        encoder0.encode(this.mediaStreamType, 12);
     }
 }

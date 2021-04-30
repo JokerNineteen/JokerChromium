@@ -418,6 +418,7 @@ int feature) {
                         
                     result.feature = decoder0.readInt(8);
                         WebFeature.validate(result.feature);
+                        result.feature = WebFeature.toKnownValue(result.feature);
                     }
 
             } finally {

@@ -60,6 +60,7 @@ public final class PublicKeyCredentialDescriptor extends org.chromium.mojo.bindi
                     
                 result.type = decoder0.readInt(8);
                     PublicKeyCredentialType.validate(result.type);
+                    result.type = PublicKeyCredentialType.toKnownValue(result.type);
                 }
                 {
                     
@@ -69,8 +70,8 @@ public final class PublicKeyCredentialDescriptor extends org.chromium.mojo.bindi
                     
                 result.transports = decoder0.readInts(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.transports.length; ++i0) {
-                        AuthenticatorTransport.validate(result.transports[i0]);
+                    for (int i1 = 0; i1 < result.transports.length; ++i1) {
+                        AuthenticatorTransport.validate(result.transports[i1]);
                     }
                 }
                 }

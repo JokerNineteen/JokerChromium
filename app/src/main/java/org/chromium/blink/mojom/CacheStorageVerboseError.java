@@ -59,6 +59,7 @@ public final class CacheStorageVerboseError extends org.chromium.mojo.bindings.S
                     
                 result.value = decoder0.readInt(8);
                     CacheStorageError.validate(result.value);
+                    result.value = CacheStorageError.toKnownValue(result.value);
                 }
                 {
                     

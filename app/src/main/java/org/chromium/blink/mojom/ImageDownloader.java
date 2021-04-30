@@ -28,7 +28,7 @@ public interface ImageDownloader extends org.chromium.mojo.bindings.Interface {
 org.chromium.url.mojom.Url url, boolean isFavicon, int preferredSize, int maxBitmapSize, boolean bypassCache, 
 DownloadImageResponse callback);
 
-    interface DownloadImageResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.skia.mojom.Bitmap[], org.chromium.gfx.mojom.Size[]> { }
+    interface DownloadImageResponse extends org.chromium.mojo.bindings.Callbacks.Callback3<Integer, org.chromium.skia.mojom.BitmapN32[], org.chromium.gfx.mojom.Size[]> { }
 
 
 }

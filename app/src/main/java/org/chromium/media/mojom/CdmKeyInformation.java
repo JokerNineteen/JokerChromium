@@ -64,6 +64,7 @@ public final class CdmKeyInformation extends org.chromium.mojo.bindings.Struct {
                     
                 result.status = decoder0.readInt(16);
                     CdmKeyStatus.validate(result.status);
+                    result.status = CdmKeyStatus.toKnownValue(result.status);
                 }
                 {
                     

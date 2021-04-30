@@ -375,6 +375,7 @@ GetSubscriptionResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PushRegistrationStatus.validate(result.status);
+                        result.status = PushRegistrationStatus.toKnownValue(result.status);
                     }
                     {
                         
@@ -574,6 +575,7 @@ GetSubscriptionResponse callback) {
                         
                     result.errorType = decoder0.readInt(8);
                         PushErrorType.validate(result.errorType);
+                        result.errorType = PushErrorType.toKnownValue(result.errorType);
                     }
                     {
                         
@@ -779,6 +781,7 @@ GetSubscriptionResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         PushGetRegistrationStatus.validate(result.status);
+                        result.status = PushGetRegistrationStatus.toKnownValue(result.status);
                     }
                     {
                         

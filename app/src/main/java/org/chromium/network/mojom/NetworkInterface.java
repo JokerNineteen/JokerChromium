@@ -76,6 +76,7 @@ public final class NetworkInterface extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(28);
                     ConnectionType.validate(result.type);
+                    result.type = ConnectionType.toKnownValue(result.type);
                 }
                 {
                     

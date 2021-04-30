@@ -9,6 +9,7 @@ import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.tab.Tab;
+import org.chromium.components.omnibox.AutocompleteMatch;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.url.GURL;
 
@@ -34,6 +35,11 @@ final class AutocompleteControllerJni implements AutocompleteController.Natives 
   }
 
   @Override
+  public void releaseJavaObject(long nativeAutocompleteControllerAndroid) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_releaseJavaObject(nativeAutocompleteControllerAndroid);
+  }
+
+  @Override
   public void start(long nativeAutocompleteControllerAndroid, AutocompleteController caller,
       String text, int cursorPosition, String desiredTld, String currentUrl, int pageClassification,
       boolean preventInlineAutocomplete, boolean preferKeyword, boolean allowExactKeywordMatch,
@@ -42,9 +48,9 @@ final class AutocompleteControllerJni implements AutocompleteController.Natives 
   }
 
   @Override
-  public OmniboxSuggestion classify(long nativeAutocompleteControllerAndroid,
+  public AutocompleteMatch classify(long nativeAutocompleteControllerAndroid,
       AutocompleteController caller, String text, boolean focusedFromFakebox) {
-    return (OmniboxSuggestion)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_classify(nativeAutocompleteControllerAndroid, caller, text, focusedFromFakebox);
+    return (AutocompleteMatch)GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_classify(nativeAutocompleteControllerAndroid, caller, text, focusedFromFakebox);
   }
 
   @Override
@@ -95,9 +101,9 @@ final class AutocompleteControllerJni implements AutocompleteController.Natives 
   }
 
   @Override
-  public void groupSuggestionsBySearchVsURL(long nativeAutocompleteControllerAndroid,
-      int firstIndex, int lastIndex) {
-    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_groupSuggestionsBySearchVsURL(nativeAutocompleteControllerAndroid, firstIndex, lastIndex);
+  public void setVoiceMatches(long nativeAutocompleteControllerAndroid, String[] matches,
+      float[] confidenceScores) {
+    GEN_JNI.org_chromium_chrome_browser_omnibox_suggestions_AutocompleteController_setVoiceMatches(nativeAutocompleteControllerAndroid, matches, confidenceScores);
   }
 
   @Override

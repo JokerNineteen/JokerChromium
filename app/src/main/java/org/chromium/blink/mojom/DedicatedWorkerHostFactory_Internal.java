@@ -62,7 +62,7 @@ class DedicatedWorkerHostFactory_Internal {
 
         @Override
         public void createWorkerHost(
-DedicatedWorkerToken token, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, 
+DedicatedWorkerToken token, org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker, org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host, 
 CreateWorkerHostResponse callback) {
 
             DedicatedWorkerHostFactoryCreateWorkerHostParams _message = new DedicatedWorkerHostFactoryCreateWorkerHostParams();
@@ -70,6 +70,8 @@ CreateWorkerHostResponse callback) {
             _message.token = token;
 
             _message.browserInterfaceBroker = browserInterfaceBroker;
+
+            _message.host = host;
 
 
             getProxyHandler().getMessageReceiver().acceptWithResponder(
@@ -193,7 +195,7 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
                         DedicatedWorkerHostFactoryCreateWorkerHostParams data =
                                 DedicatedWorkerHostFactoryCreateWorkerHostParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().createWorkerHost(data.token, data.browserInterfaceBroker, new DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().createWorkerHost(data.token, data.browserInterfaceBroker, data.host, new DedicatedWorkerHostFactoryCreateWorkerHostResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -219,6 +221,7 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public DedicatedWorkerToken token;
         public org.chromium.mojo.bindings.InterfaceRequest<BrowserInterfaceBroker> browserInterfaceBroker;
+        public org.chromium.mojo.bindings.InterfaceRequest<DedicatedWorkerHost> host;
 
         private DedicatedWorkerHostFactoryCreateWorkerHostParams(int version) {
             super(STRUCT_SIZE, version);
@@ -262,6 +265,10 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
                         
                     result.browserInterfaceBroker = decoder0.readInterfaceRequest(16, false);
                     }
+                    {
+                        
+                    result.host = decoder0.readInterfaceRequest(20, false);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -277,6 +284,8 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
             encoder0.encode(this.token, 8, false);
             
             encoder0.encode(this.browserInterfaceBroker, 16, false);
+            
+            encoder0.encode(this.host, 20, false);
         }
     }
 
@@ -467,6 +476,7 @@ DedicatedWorkerToken token, org.chromium.url.mojom.Url scriptUrl, int credential
                         
                     result.credentialsMode = decoder0.readInt(24);
                         org.chromium.network.mojom.CredentialsMode.validate(result.credentialsMode);
+                        result.credentialsMode = org.chromium.network.mojom.CredentialsMode.toKnownValue(result.credentialsMode);
                     }
                     {
                         

@@ -348,6 +348,7 @@ MdnsListenResponse callback) {
                         
                     result.queryType = decoder0.readInt(16);
                         DnsQueryType.validate(result.queryType);
+                        result.queryType = DnsQueryType.toKnownValue(result.queryType);
                     }
                     {
                         

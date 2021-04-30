@@ -58,14 +58,9 @@ final class FeedStreamSurfaceJni implements FeedStreamSurface.Natives {
   }
 
   @Override
-  public void reportNavigationStarted(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportNavigationStarted(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportPageLoaded(long nativeFeedStreamSurface, FeedStreamSurface caller, String url,
+  public void reportPageLoaded(long nativeFeedStreamSurface, FeedStreamSurface caller,
       boolean inNewTab) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportPageLoaded(nativeFeedStreamSurface, caller, url, inNewTab);
+    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportPageLoaded(nativeFeedStreamSurface, caller, inNewTab);
   }
 
   @Override
@@ -81,54 +76,9 @@ final class FeedStreamSurfaceJni implements FeedStreamSurface.Natives {
   }
 
   @Override
-  public void reportOpenInNewIncognitoTabAction(long nativeFeedStreamSurface,
-      FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportOpenInNewIncognitoTabAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportSendFeedbackAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportSendFeedbackAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportDownloadAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportDownloadAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportContextMenuOpened(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportContextMenuOpened(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportManageInterestsAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportManageInterestsAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportTurnOnAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportTurnOnAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportTurnOffAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportTurnOffAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportLearnMoreAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportLearnMoreAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportRemoveAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportRemoveAction(nativeFeedStreamSurface, caller);
-  }
-
-  @Override
-  public void reportNotInterestedInAction(long nativeFeedStreamSurface, FeedStreamSurface caller) {
-    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportNotInterestedInAction(nativeFeedStreamSurface, caller);
+  public void reportOtherUserAction(long nativeFeedStreamSurface, FeedStreamSurface caller,
+      int userAction) {
+    GEN_JNI.org_chromium_chrome_browser_feed_v2_FeedStreamSurface_reportOtherUserAction(nativeFeedStreamSurface, caller, userAction);
   }
 
   @Override

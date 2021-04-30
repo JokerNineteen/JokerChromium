@@ -16,11 +16,10 @@ package org.chromium.network.mojom;
 
 public final class SiteForCookies extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 32;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+    private static final int STRUCT_SIZE = 24;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public String scheme;
-    public String registrableDomain;
+    public SchemefulSite site;
     public boolean schemefullySame;
 
     private SiteForCookies(int version) {
@@ -58,15 +57,12 @@ public final class SiteForCookies extends org.chromium.mojo.bindings.Struct {
             result = new SiteForCookies(elementsOrVersion);
                 {
                     
-                result.scheme = decoder0.readString(8, false);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                result.site = SchemefulSite.decode(decoder1);
                 }
                 {
                     
-                result.registrableDomain = decoder0.readString(16, false);
-                }
-                {
-                    
-                result.schemefullySame = decoder0.readBoolean(24, 0);
+                result.schemefullySame = decoder0.readBoolean(16, 0);
                 }
 
         } finally {
@@ -80,10 +76,8 @@ public final class SiteForCookies extends org.chromium.mojo.bindings.Struct {
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.scheme, 8, false);
+        encoder0.encode(this.site, 8, false);
         
-        encoder0.encode(this.registrableDomain, 16, false);
-        
-        encoder0.encode(this.schemefullySame, 24, 0);
+        encoder0.encode(this.schemefullySame, 16, 0);
     }
 }

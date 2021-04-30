@@ -47,7 +47,11 @@ class PaymentCredential_Internal {
     };
 
 
-    private static final int STORE_PAYMENT_CREDENTIAL_ORDINAL = 0;
+    private static final int DOWNLOAD_ICON_AND_SHOW_USER_PROMPT_ORDINAL = 0;
+
+    private static final int STORE_PAYMENT_CREDENTIAL_AND_HIDE_USER_PROMPT_ORDINAL = 1;
+
+    private static final int HIDE_USER_PROMPT_ORDINAL = 2;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements PaymentCredential.Proxy {
@@ -59,11 +63,33 @@ class PaymentCredential_Internal {
 
 
         @Override
-        public void storePaymentCredential(
-PaymentCredentialInstrument instrument, byte[] credentialId, String rpId, 
-StorePaymentCredentialResponse callback) {
+        public void downloadIconAndShowUserPrompt(
+PaymentCredentialInstrument instrument, 
+DownloadIconAndShowUserPromptResponse callback) {
 
-            PaymentCredentialStorePaymentCredentialParams _message = new PaymentCredentialStorePaymentCredentialParams();
+            PaymentCredentialDownloadIconAndShowUserPromptParams _message = new PaymentCredentialDownloadIconAndShowUserPromptParams();
+
+            _message.instrument = instrument;
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DOWNLOAD_ICON_AND_SHOW_USER_PROMPT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new PaymentCredentialDownloadIconAndShowUserPromptResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void storePaymentCredentialAndHideUserPrompt(
+PaymentCredentialInstrument instrument, byte[] credentialId, String rpId, 
+StorePaymentCredentialAndHideUserPromptResponse callback) {
+
+            PaymentCredentialStorePaymentCredentialAndHideUserPromptParams _message = new PaymentCredentialStorePaymentCredentialAndHideUserPromptParams();
 
             _message.instrument = instrument;
 
@@ -76,10 +102,30 @@ StorePaymentCredentialResponse callback) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    STORE_PAYMENT_CREDENTIAL_ORDINAL,
+                                    STORE_PAYMENT_CREDENTIAL_AND_HIDE_USER_PROMPT_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
                                     0)),
-                    new PaymentCredentialStorePaymentCredentialResponseParamsForwardToCallback(callback));
+                    new PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParamsForwardToCallback(callback));
+
+        }
+
+
+        @Override
+        public void hideUserPrompt(
+
+HideUserPromptResponse callback) {
+
+            PaymentCredentialHideUserPromptParams _message = new PaymentCredentialHideUserPromptParams();
+
+
+            getProxyHandler().getMessageReceiver().acceptWithResponder(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    HIDE_USER_PROMPT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_EXPECTS_RESPONSE_FLAG,
+                                    0)),
+                    new PaymentCredentialHideUserPromptResponseParamsForwardToCallback(callback));
 
         }
 
@@ -110,6 +156,10 @@ StorePaymentCredentialResponse callback) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_OR_CLOSE_PIPE_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRunOrClosePipe(
                                 PaymentCredential_Internal.MANAGER, messageWithHeader);
+
+
+
+
 
 
 
@@ -148,12 +198,41 @@ StorePaymentCredentialResponse callback) {
 
 
 
-                    case STORE_PAYMENT_CREDENTIAL_ORDINAL: {
+                    case DOWNLOAD_ICON_AND_SHOW_USER_PROMPT_ORDINAL: {
 
-                        PaymentCredentialStorePaymentCredentialParams data =
-                                PaymentCredentialStorePaymentCredentialParams.deserialize(messageWithHeader.getPayload());
+                        PaymentCredentialDownloadIconAndShowUserPromptParams data =
+                                PaymentCredentialDownloadIconAndShowUserPromptParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().storePaymentCredential(data.instrument, data.credentialId, data.rpId, new PaymentCredentialStorePaymentCredentialResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        getImpl().downloadIconAndShowUserPrompt(data.instrument, new PaymentCredentialDownloadIconAndShowUserPromptResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case STORE_PAYMENT_CREDENTIAL_AND_HIDE_USER_PROMPT_ORDINAL: {
+
+                        PaymentCredentialStorePaymentCredentialAndHideUserPromptParams data =
+                                PaymentCredentialStorePaymentCredentialAndHideUserPromptParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().storePaymentCredentialAndHideUserPrompt(data.instrument, data.credentialId, data.rpId, new PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
+                        return true;
+                    }
+
+
+
+
+
+
+
+                    case HIDE_USER_PROMPT_ORDINAL: {
+
+                        PaymentCredentialHideUserPromptParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().hideUserPrompt(new PaymentCredentialHideUserPromptResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
 
@@ -170,24 +249,22 @@ StorePaymentCredentialResponse callback) {
 
 
     
-    static final class PaymentCredentialStorePaymentCredentialParams extends org.chromium.mojo.bindings.Struct {
+    static final class PaymentCredentialDownloadIconAndShowUserPromptParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 32;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public PaymentCredentialInstrument instrument;
-        public byte[] credentialId;
-        public String rpId;
 
-        private PaymentCredentialStorePaymentCredentialParams(int version) {
+        private PaymentCredentialDownloadIconAndShowUserPromptParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public PaymentCredentialStorePaymentCredentialParams() {
+        public PaymentCredentialDownloadIconAndShowUserPromptParams() {
             this(0);
         }
 
-        public static PaymentCredentialStorePaymentCredentialParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static PaymentCredentialDownloadIconAndShowUserPromptParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -196,22 +273,214 @@ StorePaymentCredentialResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static PaymentCredentialStorePaymentCredentialParams deserialize(java.nio.ByteBuffer data) {
+        public static PaymentCredentialDownloadIconAndShowUserPromptParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static PaymentCredentialStorePaymentCredentialParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static PaymentCredentialDownloadIconAndShowUserPromptParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            PaymentCredentialStorePaymentCredentialParams result;
+            PaymentCredentialDownloadIconAndShowUserPromptParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new PaymentCredentialStorePaymentCredentialParams(elementsOrVersion);
+                result = new PaymentCredentialDownloadIconAndShowUserPromptParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.instrument = PaymentCredentialInstrument.decode(decoder1);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.instrument, 8, false);
+        }
+    }
+
+
+
+    
+    static final class PaymentCredentialDownloadIconAndShowUserPromptResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int status;
+
+        private PaymentCredentialDownloadIconAndShowUserPromptResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PaymentCredentialDownloadIconAndShowUserPromptResponseParams() {
+            this(0);
+        }
+
+        public static PaymentCredentialDownloadIconAndShowUserPromptResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PaymentCredentialDownloadIconAndShowUserPromptResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PaymentCredentialDownloadIconAndShowUserPromptResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PaymentCredentialDownloadIconAndShowUserPromptResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PaymentCredentialDownloadIconAndShowUserPromptResponseParams(elementsOrVersion);
+                    {
+                        
+                    result.status = decoder0.readInt(8);
+                        PaymentCredentialUserPromptStatus.validate(result.status);
+                        result.status = PaymentCredentialUserPromptStatus.toKnownValue(result.status);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.status, 8);
+        }
+    }
+
+    static class PaymentCredentialDownloadIconAndShowUserPromptResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final PaymentCredential.DownloadIconAndShowUserPromptResponse mCallback;
+
+        PaymentCredentialDownloadIconAndShowUserPromptResponseParamsForwardToCallback(PaymentCredential.DownloadIconAndShowUserPromptResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(DOWNLOAD_ICON_AND_SHOW_USER_PROMPT_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                PaymentCredentialDownloadIconAndShowUserPromptResponseParams response = PaymentCredentialDownloadIconAndShowUserPromptResponseParams.deserialize(messageWithHeader.getPayload());
+
+                mCallback.call(response.status);
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class PaymentCredentialDownloadIconAndShowUserPromptResponseParamsProxyToResponder implements PaymentCredential.DownloadIconAndShowUserPromptResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        PaymentCredentialDownloadIconAndShowUserPromptResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call(Integer status) {
+            PaymentCredentialDownloadIconAndShowUserPromptResponseParams _response = new PaymentCredentialDownloadIconAndShowUserPromptResponseParams();
+
+            _response.status = status;
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    DOWNLOAD_ICON_AND_SHOW_USER_PROMPT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class PaymentCredentialStorePaymentCredentialAndHideUserPromptParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 32;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public PaymentCredentialInstrument instrument;
+        public byte[] credentialId;
+        public String rpId;
+
+        private PaymentCredentialStorePaymentCredentialAndHideUserPromptParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PaymentCredentialStorePaymentCredentialAndHideUserPromptParams() {
+            this(0);
+        }
+
+        public static PaymentCredentialStorePaymentCredentialAndHideUserPromptParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PaymentCredentialStorePaymentCredentialAndHideUserPromptParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PaymentCredentialStorePaymentCredentialAndHideUserPromptParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PaymentCredentialStorePaymentCredentialAndHideUserPromptParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PaymentCredentialStorePaymentCredentialAndHideUserPromptParams(elementsOrVersion);
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
@@ -248,22 +517,22 @@ StorePaymentCredentialResponse callback) {
 
 
     
-    static final class PaymentCredentialStorePaymentCredentialResponseParams extends org.chromium.mojo.bindings.Struct {
+    static final class PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams extends org.chromium.mojo.bindings.Struct {
 
         private static final int STRUCT_SIZE = 16;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int status;
 
-        private PaymentCredentialStorePaymentCredentialResponseParams(int version) {
+        private PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams(int version) {
             super(STRUCT_SIZE, version);
         }
 
-        public PaymentCredentialStorePaymentCredentialResponseParams() {
+        public PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams() {
             this(0);
         }
 
-        public static PaymentCredentialStorePaymentCredentialResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+        public static PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
             return decode(new org.chromium.mojo.bindings.Decoder(message));
         }
 
@@ -272,26 +541,27 @@ StorePaymentCredentialResponse callback) {
          *
          * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
          */
-        public static PaymentCredentialStorePaymentCredentialResponseParams deserialize(java.nio.ByteBuffer data) {
+        public static PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams deserialize(java.nio.ByteBuffer data) {
             return deserialize(new org.chromium.mojo.bindings.Message(
                     data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
         }
 
         @SuppressWarnings("unchecked")
-        public static PaymentCredentialStorePaymentCredentialResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+        public static PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
             if (decoder0 == null) {
                 return null;
             }
             decoder0.increaseStackDepth();
-            PaymentCredentialStorePaymentCredentialResponseParams result;
+            PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams result;
             try {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
-                result = new PaymentCredentialStorePaymentCredentialResponseParams(elementsOrVersion);
+                result = new PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams(elementsOrVersion);
                     {
                         
                     result.status = decoder0.readInt(8);
-                        PaymentCredentialCreationStatus.validate(result.status);
+                        PaymentCredentialStorageStatus.validate(result.status);
+                        result.status = PaymentCredentialStorageStatus.toKnownValue(result.status);
                     }
 
             } finally {
@@ -309,11 +579,11 @@ StorePaymentCredentialResponse callback) {
         }
     }
 
-    static class PaymentCredentialStorePaymentCredentialResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+    static class PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
             implements org.chromium.mojo.bindings.MessageReceiver {
-        private final PaymentCredential.StorePaymentCredentialResponse mCallback;
+        private final PaymentCredential.StorePaymentCredentialAndHideUserPromptResponse mCallback;
 
-        PaymentCredentialStorePaymentCredentialResponseParamsForwardToCallback(PaymentCredential.StorePaymentCredentialResponse callback) {
+        PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParamsForwardToCallback(PaymentCredential.StorePaymentCredentialAndHideUserPromptResponse callback) {
             this.mCallback = callback;
         }
 
@@ -323,12 +593,12 @@ StorePaymentCredentialResponse callback) {
                 org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
                         message.asServiceMessage();
                 org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
-                if (!header.validateHeader(STORE_PAYMENT_CREDENTIAL_ORDINAL,
+                if (!header.validateHeader(STORE_PAYMENT_CREDENTIAL_AND_HIDE_USER_PROMPT_ORDINAL,
                                            org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
                     return false;
                 }
 
-                PaymentCredentialStorePaymentCredentialResponseParams response = PaymentCredentialStorePaymentCredentialResponseParams.deserialize(messageWithHeader.getPayload());
+                PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams response = PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams.deserialize(messageWithHeader.getPayload());
 
                 mCallback.call(response.status);
                 return true;
@@ -338,13 +608,13 @@ StorePaymentCredentialResponse callback) {
         }
     }
 
-    static class PaymentCredentialStorePaymentCredentialResponseParamsProxyToResponder implements PaymentCredential.StorePaymentCredentialResponse {
+    static class PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParamsProxyToResponder implements PaymentCredential.StorePaymentCredentialAndHideUserPromptResponse {
 
         private final org.chromium.mojo.system.Core mCore;
         private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
         private final long mRequestId;
 
-        PaymentCredentialStorePaymentCredentialResponseParamsProxyToResponder(
+        PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParamsProxyToResponder(
                 org.chromium.mojo.system.Core core,
                 org.chromium.mojo.bindings.MessageReceiver messageReceiver,
                 long requestId) {
@@ -355,7 +625,7 @@ StorePaymentCredentialResponse callback) {
 
         @Override
         public void call(Integer status) {
-            PaymentCredentialStorePaymentCredentialResponseParams _response = new PaymentCredentialStorePaymentCredentialResponseParams();
+            PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams _response = new PaymentCredentialStorePaymentCredentialAndHideUserPromptResponseParams();
 
             _response.status = status;
 
@@ -363,7 +633,176 @@ StorePaymentCredentialResponse callback) {
                     _response.serializeWithHeader(
                             mCore,
                             new org.chromium.mojo.bindings.MessageHeader(
-                                    STORE_PAYMENT_CREDENTIAL_ORDINAL,
+                                    STORE_PAYMENT_CREDENTIAL_AND_HIDE_USER_PROMPT_ORDINAL,
+                                    org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
+                                    mRequestId));
+            mMessageReceiver.accept(_message);
+        }
+    }
+
+
+
+    
+    static final class PaymentCredentialHideUserPromptParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private PaymentCredentialHideUserPromptParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PaymentCredentialHideUserPromptParams() {
+            this(0);
+        }
+
+        public static PaymentCredentialHideUserPromptParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PaymentCredentialHideUserPromptParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PaymentCredentialHideUserPromptParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PaymentCredentialHideUserPromptParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PaymentCredentialHideUserPromptParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+
+
+    
+    static final class PaymentCredentialHideUserPromptResponseParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private PaymentCredentialHideUserPromptResponseParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PaymentCredentialHideUserPromptResponseParams() {
+            this(0);
+        }
+
+        public static PaymentCredentialHideUserPromptResponseParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PaymentCredentialHideUserPromptResponseParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PaymentCredentialHideUserPromptResponseParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PaymentCredentialHideUserPromptResponseParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PaymentCredentialHideUserPromptResponseParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+        }
+    }
+
+    static class PaymentCredentialHideUserPromptResponseParamsForwardToCallback extends org.chromium.mojo.bindings.SideEffectFreeCloseable
+            implements org.chromium.mojo.bindings.MessageReceiver {
+        private final PaymentCredential.HideUserPromptResponse mCallback;
+
+        PaymentCredentialHideUserPromptResponseParamsForwardToCallback(PaymentCredential.HideUserPromptResponse callback) {
+            this.mCallback = callback;
+        }
+
+        @Override
+        public boolean accept(org.chromium.mojo.bindings.Message message) {
+            try {
+                org.chromium.mojo.bindings.ServiceMessage messageWithHeader =
+                        message.asServiceMessage();
+                org.chromium.mojo.bindings.MessageHeader header = messageWithHeader.getHeader();
+                if (!header.validateHeader(HIDE_USER_PROMPT_ORDINAL,
+                                           org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG)) {
+                    return false;
+                }
+
+                mCallback.call();
+                return true;
+            } catch (org.chromium.mojo.bindings.DeserializationException e) {
+                return false;
+            }
+        }
+    }
+
+    static class PaymentCredentialHideUserPromptResponseParamsProxyToResponder implements PaymentCredential.HideUserPromptResponse {
+
+        private final org.chromium.mojo.system.Core mCore;
+        private final org.chromium.mojo.bindings.MessageReceiver mMessageReceiver;
+        private final long mRequestId;
+
+        PaymentCredentialHideUserPromptResponseParamsProxyToResponder(
+                org.chromium.mojo.system.Core core,
+                org.chromium.mojo.bindings.MessageReceiver messageReceiver,
+                long requestId) {
+            mCore = core;
+            mMessageReceiver = messageReceiver;
+            mRequestId = requestId;
+        }
+
+        @Override
+        public void call() {
+            PaymentCredentialHideUserPromptResponseParams _response = new PaymentCredentialHideUserPromptResponseParams();
+
+            org.chromium.mojo.bindings.ServiceMessage _message =
+                    _response.serializeWithHeader(
+                            mCore,
+                            new org.chromium.mojo.bindings.MessageHeader(
+                                    HIDE_USER_PROMPT_ORDINAL,
                                     org.chromium.mojo.bindings.MessageHeader.MESSAGE_IS_RESPONSE_FLAG,
                                     mRequestId));
             mMessageReceiver.accept(_message);

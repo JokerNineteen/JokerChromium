@@ -412,6 +412,7 @@ RequestMouseLockResponse callback) {
                         
                     result.touchAction = decoder0.readInt(8);
                         org.chromium.cc.mojom.TouchAction.validate(result.touchAction);
+                        result.touchAction = org.chromium.cc.mojom.TouchAction.toKnownValue(result.touchAction);
                     }
 
             } finally {
@@ -874,6 +875,7 @@ RequestMouseLockResponse callback) {
                         
                     result.result = decoder0.readInt(8);
                         PointerLockResult.validate(result.result);
+                        result.result = PointerLockResult.toKnownValue(result.result);
                     }
                     {
                         

@@ -30,7 +30,7 @@ import java.lang.annotation.RetentionPolicy;
     SigninAccessPoint.MACHINE_LOGON, SigninAccessPoint.GOOGLE_SERVICES_SETTINGS,
     SigninAccessPoint.SYNC_ERROR_CARD, SigninAccessPoint.FORCED_SIGNIN,
     SigninAccessPoint.ACCOUNT_RENAMED, SigninAccessPoint.WEB_SIGNIN, SigninAccessPoint.SAFETY_CHECK,
-    SigninAccessPoint.MAX
+    SigninAccessPoint.KALEIDOSCOPE, SigninAccessPoint.MAX
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface SigninAccessPoint {
@@ -72,5 +72,6 @@ public @interface SigninAccessPoint {
   int ACCOUNT_RENAMED = 30;
   int WEB_SIGNIN = 31;
   int SAFETY_CHECK = 32;
-  int MAX = 33;
+  int KALEIDOSCOPE = 33;
+  int MAX = 34;
 }

@@ -63,11 +63,13 @@ public final class WorkerOptions extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     ScriptType.validate(result.type);
+                    result.type = ScriptType.toKnownValue(result.type);
                 }
                 {
                     
                 result.credentials = decoder0.readInt(12);
                     org.chromium.network.mojom.CredentialsMode.validate(result.credentials);
+                    result.credentials = org.chromium.network.mojom.CredentialsMode.toKnownValue(result.credentials);
                 }
                 {
                     

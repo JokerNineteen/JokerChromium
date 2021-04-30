@@ -19,10 +19,10 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration;
 import androidx.recyclerview.widget.RecyclerView.Recycler;
 import androidx.recyclerview.widget.RecyclerView.State;
 
-import org.chromium.chrome.R;
 import org.chromium.chrome.browser.download.home.DownloadManagerUiConfig;
 import org.chromium.chrome.browser.download.home.list.DateOrderedListCoordinator.DateOrderedListObserver;
 import org.chromium.chrome.browser.download.home.list.holder.ListItemViewHolder;
+import org.chromium.chrome.browser.download.internal.R;
 import org.chromium.components.browser_ui.widget.displaystyle.HorizontalDisplayStyle;
 import org.chromium.components.browser_ui.widget.displaystyle.UiConfig;
 import org.chromium.ui.modelutil.ForwardingListObservable;

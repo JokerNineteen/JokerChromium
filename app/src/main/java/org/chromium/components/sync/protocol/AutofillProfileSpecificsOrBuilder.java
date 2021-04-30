@@ -329,6 +329,51 @@ public interface AutofillProfileSpecificsOrBuilder extends
 
   /**
    * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @return A list containing the nameFullWithHonorific.
+   */
+  java.util.List<java.lang.String>
+      getNameFullWithHonorificList();
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @return The count of nameFullWithHonorific.
+   */
+  int getNameFullWithHonorificCount();
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param index The index of the element to return.
+   * @return The nameFullWithHonorific at the given index.
+   */
+  java.lang.String getNameFullWithHonorific(int index);
+  /**
+   * <pre>
+   * This value contains the combination of the full name and the honorific
+   * prefix.
+   * </pre>
+   *
+   * <code>repeated string name_full_with_honorific = 60;</code>
+   * @param index The index of the element to return.
+   * @return The nameFullWithHonorific at the given index.
+   */
+  com.google.protobuf.ByteString
+      getNameFullWithHonorificBytes(int index);
+
+  /**
+   * <pre>
    * Validation status records for name fields.
    * </pre>
    *
@@ -474,6 +519,23 @@ public interface AutofillProfileSpecificsOrBuilder extends
    * @return The nameFullStatus at the given index.
    */
   org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getNameFullStatus(int index);
+
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @return A list containing the nameFullWithHonorificStatus.
+   */
+  java.util.List<org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus> getNameFullWithHonorificStatusList();
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @return The count of nameFullWithHonorificStatus.
+   */
+  int getNameFullWithHonorificStatusCount();
+  /**
+   * <code>repeated .sync_pb.AutofillProfileSpecifics.VerificationStatus name_full_with_honorific_status = 61;</code>
+   * @param index The index of the element to return.
+   * @return The nameFullWithHonorificStatus at the given index.
+   */
+  org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getNameFullWithHonorificStatus(int index);
 
   /**
    * <pre>
@@ -834,6 +896,40 @@ public interface AutofillProfileSpecificsOrBuilder extends
       getAddressHomeSubpremiseNameBytes();
 
   /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @return Whether the addressHomeAptNum field is set.
+   */
+  boolean hasAddressHomeAptNum();
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @return The addressHomeAptNum.
+   */
+  java.lang.String getAddressHomeAptNum();
+  /**
+   * <code>optional string address_home_apt_num = 56;</code>
+   * @return The bytes for addressHomeAptNum.
+   */
+  com.google.protobuf.ByteString
+      getAddressHomeAptNumBytes();
+
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @return Whether the addressHomeFloor field is set.
+   */
+  boolean hasAddressHomeFloor();
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @return The addressHomeFloor.
+   */
+  java.lang.String getAddressHomeFloor();
+  /**
+   * <code>optional string address_home_floor = 57;</code>
+   * @return The bytes for addressHomeFloor.
+   */
+  com.google.protobuf.ByteString
+      getAddressHomeFloorBytes();
+
+  /**
    * <pre>
    * Validation status records for address fields.
    * </pre>
@@ -983,6 +1079,28 @@ public interface AutofillProfileSpecificsOrBuilder extends
    * @return The addressHomeSubpremiseNameStatus.
    */
   org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getAddressHomeSubpremiseNameStatus();
+
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+   * @return Whether the addressHomeAptNumStatus field is set.
+   */
+  boolean hasAddressHomeAptNumStatus();
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_apt_num_status = 58;</code>
+   * @return The addressHomeAptNumStatus.
+   */
+  org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getAddressHomeAptNumStatus();
+
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+   * @return Whether the addressHomeFloorStatus field is set.
+   */
+  boolean hasAddressHomeFloorStatus();
+  /**
+   * <code>optional .sync_pb.AutofillProfileSpecifics.VerificationStatus address_home_floor_status = 59;</code>
+   * @return The addressHomeFloorStatus.
+   */
+  org.chromium.components.sync.protocol.AutofillProfileSpecifics.VerificationStatus getAddressHomeFloorStatus();
 
   /**
    * <pre>

@@ -60,9 +60,11 @@ class BackForwardCacheControllerHost_Internal {
 
         @Override
         public void evictFromBackForwardCache(
-) {
+int reason) {
 
             BackForwardCacheControllerHostEvictFromBackForwardCacheParams _message = new BackForwardCacheControllerHostEvictFromBackForwardCacheParams();
+
+            _message.reason = reason;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -106,9 +108,10 @@ class BackForwardCacheControllerHost_Internal {
 
                     case EVICT_FROM_BACK_FORWARD_CACHE_ORDINAL: {
 
-                        BackForwardCacheControllerHostEvictFromBackForwardCacheParams.deserialize(messageWithHeader.getPayload());
+                        BackForwardCacheControllerHostEvictFromBackForwardCacheParams data =
+                                BackForwardCacheControllerHostEvictFromBackForwardCacheParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().evictFromBackForwardCache();
+                        getImpl().evictFromBackForwardCache(data.reason);
                         return true;
                     }
 
@@ -158,9 +161,10 @@ class BackForwardCacheControllerHost_Internal {
     
     static final class BackForwardCacheControllerHostEvictFromBackForwardCacheParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public int reason;
 
         private BackForwardCacheControllerHostEvictFromBackForwardCacheParams(int version) {
             super(STRUCT_SIZE, version);
@@ -195,6 +199,12 @@ class BackForwardCacheControllerHost_Internal {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
                 result = new BackForwardCacheControllerHostEvictFromBackForwardCacheParams(elementsOrVersion);
+                    {
+                        
+                    result.reason = decoder0.readInt(8);
+                        RendererEvictionReason.validate(result.reason);
+                        result.reason = RendererEvictionReason.toKnownValue(result.reason);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -205,7 +215,9 @@ class BackForwardCacheControllerHost_Internal {
         @SuppressWarnings("unchecked")
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.reason, 8);
         }
     }
 

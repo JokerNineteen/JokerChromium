@@ -9,7 +9,7 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
-import org.chromium.chrome.browser.profiles.Profile;
+import org.chromium.components.embedder_support.browser_context.BrowserContextHandle;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -28,9 +28,9 @@ final class InstalledAppProviderImplJni implements InstalledAppProviderImpl.Nati
   };
 
   @Override
-  public void checkDigitalAssetLinksRelationshipForWebApk(Profile profile, String webDomain,
-      String manifestUrl, Callback<Boolean> callback) {
-    GEN_JNI.org_chromium_chrome_browser_installedapp_InstalledAppProviderImpl_checkDigitalAssetLinksRelationshipForWebApk(profile, webDomain, manifestUrl, callback);
+  public void checkDigitalAssetLinksRelationshipForWebApk(BrowserContextHandle handle,
+      String webDomain, String manifestUrl, Callback<Boolean> callback) {
+    GEN_JNI.org_chromium_chrome_browser_installedapp_InstalledAppProviderImpl_checkDigitalAssetLinksRelationshipForWebApk(handle, webDomain, manifestUrl, callback);
   }
 
   public static InstalledAppProviderImpl.Natives get() {

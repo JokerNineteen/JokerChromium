@@ -66,21 +66,25 @@ public final class AudioDecoderConfig extends org.chromium.mojo.bindings.Struct 
                     
                 result.codec = decoder0.readInt(8);
                     AudioCodec.validate(result.codec);
+                    result.codec = AudioCodec.toKnownValue(result.codec);
                 }
                 {
                     
                 result.profile = decoder0.readInt(12);
                     AudioCodecProfile.validate(result.profile);
+                    result.profile = AudioCodecProfile.toKnownValue(result.profile);
                 }
                 {
                     
                 result.sampleFormat = decoder0.readInt(16);
                     SampleFormat.validate(result.sampleFormat);
+                    result.sampleFormat = SampleFormat.toKnownValue(result.sampleFormat);
                 }
                 {
                     
                 result.channelLayout = decoder0.readInt(20);
                     ChannelLayout.validate(result.channelLayout);
+                    result.channelLayout = ChannelLayout.toKnownValue(result.channelLayout);
                 }
                 {
                     
@@ -103,6 +107,7 @@ public final class AudioDecoderConfig extends org.chromium.mojo.bindings.Struct 
                     
                 result.encryptionScheme = decoder0.readInt(48);
                     EncryptionScheme.validate(result.encryptionScheme);
+                    result.encryptionScheme = EncryptionScheme.toKnownValue(result.encryptionScheme);
                 }
 
         } finally {

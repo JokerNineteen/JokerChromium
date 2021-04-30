@@ -203,6 +203,7 @@ int value) {
                         
                     result.value = decoder0.readInt(8);
                         ViewportFit.validate(result.value);
+                        result.value = ViewportFit.toKnownValue(result.value);
                     }
 
             } finally {

@@ -1229,6 +1229,15 @@ public final class ExtensionInstallProtos {
        * <code>REINSTALL = 16;</code>
        */
       REINSTALL(16),
+      /**
+       * <pre>
+       * The extension has been disabled because it's not allowlisted and the Safe
+       * Browsing allowlist is enforced in the user profile.
+       * </pre>
+       *
+       * <code>NOT_ALLOWLISTED = 17;</code>
+       */
+      NOT_ALLOWLISTED(17),
       ;
 
       /**
@@ -1370,6 +1379,15 @@ public final class ExtensionInstallProtos {
        * <code>REINSTALL = 16;</code>
        */
       public static final int REINSTALL_VALUE = 16;
+      /**
+       * <pre>
+       * The extension has been disabled because it's not allowlisted and the Safe
+       * Browsing allowlist is enforced in the user profile.
+       * </pre>
+       *
+       * <code>NOT_ALLOWLISTED = 17;</code>
+       */
+      public static final int NOT_ALLOWLISTED_VALUE = 17;
 
 
       @java.lang.Override
@@ -1406,6 +1424,7 @@ public final class ExtensionInstallProtos {
           case 14: return DEPRECATED_BLOCKED_MATURE;
           case 15: return DISABLE_REMOTELY_FOR_MALWARE;
           case 16: return REINSTALL;
+          case 17: return NOT_ALLOWLISTED;
           default: return null;
         }
       }

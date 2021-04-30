@@ -38,17 +38,22 @@ int networkTrafficAnnotationIdHash, long recvBytes, long sentBytes);
 
 
     void onRawRequest(
-int processId, int routingId, String devtoolRequestId, CookieWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers);
+int processId, int routingId, String devtoolRequestId, CookieWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers, ClientSecurityState clientSecurityState);
 
 
 
     void onRawResponse(
-int processId, int routingId, String devtoolRequestId, CookieAndLineWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers, String rawResponseHeaders);
+int processId, int routingId, String devtoolRequestId, CookieAndLineWithAccessResult[] cookiesWithAccessResult, HttpRawHeaderPair[] headers, String rawResponseHeaders, int resourceAddressSpace);
+
+
+
+    void onPrivateNetworkRequest(
+int processId, int routingId, String devtoolRequestId, org.chromium.url.mojom.Url url, boolean isWarning, int resourceAddressSpace, ClientSecurityState clientSecurityState);
 
 
 
     void onCorsPreflightRequest(
-int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken devtoolRequestId, UrlRequest request, org.chromium.url.mojom.Url initiatorUrl);
+int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken devtoolRequestId, UrlRequest request, org.chromium.url.mojom.Url initiatorUrl, String initiatorDevtoolRequestId);
 
 
 
@@ -59,6 +64,11 @@ int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken 
 
     void onCorsPreflightRequestCompleted(
 int processId, int renderFrameId, org.chromium.mojo_base.mojom.UnguessableToken devtoolRequestId, UrlLoaderCompletionStatus status);
+
+
+
+    void onTrustTokenOperationDone(
+int processId, int routingId, String devtoolRequestId, TrustTokenOperationResult result);
 
 
 }

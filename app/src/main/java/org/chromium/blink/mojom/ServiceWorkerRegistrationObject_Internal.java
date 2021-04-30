@@ -362,6 +362,7 @@ int updateViaCache) {
                         
                     result.updateViaCache = decoder0.readInt(8);
                         ServiceWorkerUpdateViaCache.validate(result.updateViaCache);
+                        result.updateViaCache = ServiceWorkerUpdateViaCache.toKnownValue(result.updateViaCache);
                     }
 
             } finally {

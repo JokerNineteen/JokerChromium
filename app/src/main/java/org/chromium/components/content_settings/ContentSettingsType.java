@@ -17,8 +17,8 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
     ContentSettingsType.DEFAULT, ContentSettingsType.COOKIES, ContentSettingsType.IMAGES,
-    ContentSettingsType.JAVASCRIPT, ContentSettingsType.PLUGINS, ContentSettingsType.POPUPS,
-    ContentSettingsType.GEOLOCATION, ContentSettingsType.NOTIFICATIONS,
+    ContentSettingsType.JAVASCRIPT, ContentSettingsType.DEPRECATED_PLUGINS,
+    ContentSettingsType.POPUPS, ContentSettingsType.GEOLOCATION, ContentSettingsType.NOTIFICATIONS,
     ContentSettingsType.AUTO_SELECT_CERTIFICATE, ContentSettingsType.MIXEDSCRIPT,
     ContentSettingsType.MEDIASTREAM_MIC, ContentSettingsType.MEDIASTREAM_CAMERA,
     ContentSettingsType.PROTOCOL_HANDLERS, ContentSettingsType.PPAPI_BROKER,
@@ -47,7 +47,8 @@ import java.lang.annotation.RetentionPolicy;
     ContentSettingsType.STORAGE_ACCESS, ContentSettingsType.CAMERA_PAN_TILT_ZOOM,
     ContentSettingsType.WINDOW_PLACEMENT, ContentSettingsType.INSECURE_PRIVATE_NETWORK,
     ContentSettingsType.FONT_ACCESS, ContentSettingsType.PERMISSION_AUTOREVOCATION_DATA,
-    ContentSettingsType.FILE_SYSTEM_LAST_PICKED_DIRECTORY, ContentSettingsType.NUM_TYPES
+    ContentSettingsType.FILE_SYSTEM_LAST_PICKED_DIRECTORY, ContentSettingsType.DISPLAY_CAPTURE,
+    ContentSettingsType.NUM_TYPES
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface ContentSettingsType {
@@ -59,7 +60,7 @@ public @interface ContentSettingsType {
   int COOKIES = 0;
   int IMAGES = 1;
   int JAVASCRIPT = 2;
-  int PLUGINS = 3;
+  int DEPRECATED_PLUGINS = 3;
   /**
    * This setting governs both popups and unwanted redirects like tab-unders and framebusting.
    * TODO(csharrison): Consider renaming it to POPUPS_AND_REDIRECTS, but it might not be worth the
@@ -166,7 +167,8 @@ public @interface ContentSettingsType {
   int SERIAL_CHOOSER_DATA = 41;
   /**
    * Nothing is stored in this setting at present. Please refer to
-   * PeriodicBackgroundSyncPermissionContext for details on how this permission is ascertained.
+   * PeriodicBackgroundSyncPermissionContext for details on how this permission is ascertained. This
+   * content setting is not registered because it does not require access to any existing providers.
    */
   int PERIODIC_BACKGROUND_SYNC = 42;
   /**
@@ -278,5 +280,11 @@ public @interface ContentSettingsType {
    * Access API.
    */
   int FILE_SYSTEM_LAST_PICKED_DIRECTORY = 65;
-  int NUM_TYPES = 66;
+  /**
+   * Capture the current tab using getCurrentBrowsingContextMedia(). TODO(crbug.com/1150788): Apply
+   * this to getDisplayMedia() as well. No values are stored for this type, this is solely needed to
+   * be able to register the PermissionContext.
+   */
+  int DISPLAY_CAPTURE = 66;
+  int NUM_TYPES = 67;
 }

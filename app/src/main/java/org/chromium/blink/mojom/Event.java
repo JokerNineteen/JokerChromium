@@ -65,6 +65,7 @@ public final class Event extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(8);
                     EventType.validate(result.type);
+                    result.type = EventType.toKnownValue(result.type);
                 }
                 {
                     

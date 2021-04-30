@@ -146,14 +146,15 @@ public class SelectableListLayout<E>
         mAdapter = adapter;
 
         if (recyclerView == null) {
-            mRecyclerView = findViewById(R.id.recycler_view);
+            mRecyclerView = findViewById(R.id.selectable_list_recycler_view);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         } else {
             mRecyclerView = recyclerView;
 
             // Replace the inflated recycler view with the one supplied to this method.
             FrameLayout contentView = findViewById(R.id.list_content);
-            RecyclerView existingView = contentView.findViewById(R.id.recycler_view);
+            RecyclerView existingView =
+                    contentView.findViewById(R.id.selectable_list_recycler_view);
             contentView.removeView(existingView);
             contentView.addView(mRecyclerView, 0);
         }
@@ -232,15 +233,25 @@ public class SelectableListLayout<E>
      * @return The {@link TextView} displayed when the list is empty.
      */
     public TextView initializeEmptyView(int emptyStringResId, int searchEmptyStringResId) {
-        mEmptyStringResId = emptyStringResId;
-        mSearchEmptyStringResId = searchEmptyStringResId;
-
-        mEmptyView.setText(mEmptyStringResId);
+        setEmptyViewText(emptyStringResId, searchEmptyStringResId);
 
         // Dummy listener to have the touch events dispatched to this view tree for navigation UI.
         mEmptyViewWrapper.setOnTouchListener((v, event) -> true);
 
         return mEmptyView;
+    }
+
+    /**
+     * Sets the view text when the selectable list is empty.
+     * @param emptyStringResId The string to show when the selectable list is empty.
+     * @param searchEmptyStringResId The string to show when the selectable list is empty during
+     *                               a search.
+     */
+    public void setEmptyViewText(int emptyStringResId, int searchEmptyStringResId) {
+        mEmptyStringResId = emptyStringResId;
+        mSearchEmptyStringResId = searchEmptyStringResId;
+
+        mEmptyView.setText(mEmptyStringResId);
     }
 
     /**

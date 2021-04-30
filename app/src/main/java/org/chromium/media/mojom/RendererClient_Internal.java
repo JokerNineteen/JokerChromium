@@ -133,9 +133,11 @@ int state, int reason) {
 
         @Override
         public void onError(
-) {
+Status status) {
 
             RendererClientOnErrorParams _message = new RendererClientOnErrorParams();
+
+            _message.status = status;
 
 
             getProxyHandler().getMessageReceiver().accept(
@@ -319,9 +321,10 @@ int reason) {
 
                     case ON_ERROR_ORDINAL: {
 
-                        RendererClientOnErrorParams.deserialize(messageWithHeader.getPayload());
+                        RendererClientOnErrorParams data =
+                                RendererClientOnErrorParams.deserialize(messageWithHeader.getPayload());
 
-                        getImpl().onError();
+                        getImpl().onError(data.status);
                         return true;
                     }
 
@@ -590,11 +593,13 @@ int reason) {
                         
                     result.state = decoder0.readInt(8);
                         BufferingState.validate(result.state);
+                        result.state = BufferingState.toKnownValue(result.state);
                     }
                     {
                         
                     result.reason = decoder0.readInt(12);
                         BufferingStateChangeReason.validate(result.reason);
+                        result.reason = BufferingStateChangeReason.toKnownValue(result.reason);
                     }
 
             } finally {
@@ -675,9 +680,10 @@ int reason) {
     
     static final class RendererClientOnErrorParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 8;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public Status status;
 
         private RendererClientOnErrorParams(int version) {
             super(STRUCT_SIZE, version);
@@ -712,6 +718,11 @@ int reason) {
                 org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
                 final int elementsOrVersion = mainDataHeader.elementsOrVersion;
                 result = new RendererClientOnErrorParams(elementsOrVersion);
+                    {
+                        
+                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                    result.status = Status.decode(decoder1);
+                    }
 
             } finally {
                 decoder0.decreaseStackDepth();
@@ -722,7 +733,9 @@ int reason) {
         @SuppressWarnings("unchecked")
         @Override
         protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
-            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.status, 8, false);
         }
     }
 
@@ -1092,6 +1105,7 @@ int reason) {
                         
                     result.reason = decoder0.readInt(8);
                         WaitingReason.validate(result.reason);
+                        result.reason = WaitingReason.toKnownValue(result.reason);
                     }
 
             } finally {

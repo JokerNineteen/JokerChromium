@@ -23,6 +23,7 @@ public final class PageLifecycleState extends org.chromium.mojo.bindings.Struct 
     public int visibility;
     public boolean isInBackForwardCache;
     public int pagehideDispatch;
+    public boolean evictionEnabled;
 
     private PageLifecycleState(int version) {
         super(STRUCT_SIZE, version);
@@ -67,13 +68,19 @@ public final class PageLifecycleState extends org.chromium.mojo.bindings.Struct 
                 }
                 {
                     
+                result.evictionEnabled = decoder0.readBoolean(8, 2);
+                }
+                {
+                    
                 result.visibility = decoder0.readInt(12);
                     PageVisibilityState.validate(result.visibility);
+                    result.visibility = PageVisibilityState.toKnownValue(result.visibility);
                 }
                 {
                     
                 result.pagehideDispatch = decoder0.readInt(16);
                     PagehideDispatch.validate(result.pagehideDispatch);
+                    result.pagehideDispatch = PagehideDispatch.toKnownValue(result.pagehideDispatch);
                 }
 
         } finally {
@@ -90,6 +97,8 @@ public final class PageLifecycleState extends org.chromium.mojo.bindings.Struct 
         encoder0.encode(this.isFrozen, 8, 0);
         
         encoder0.encode(this.isInBackForwardCache, 8, 1);
+        
+        encoder0.encode(this.evictionEnabled, 8, 2);
         
         encoder0.encode(this.visibility, 12);
         

@@ -49,6 +49,8 @@ class PolicyContainerHost_Internal {
 
     private static final int SET_REFERRER_POLICY_ORDINAL = 0;
 
+    private static final int ISSUE_KEEP_ALIVE_HANDLE_ORDINAL = 1;
+
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements PolicyContainerHost.Proxy {
 
@@ -71,6 +73,23 @@ int referrerPolicy) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(SET_REFERRER_POLICY_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void issueKeepAliveHandle(
+org.chromium.mojo.bindings.InterfaceRequest<PolicyContainerHostKeepAliveHandle> receiver) {
+
+            PolicyContainerHostIssueKeepAliveHandleParams _message = new PolicyContainerHostIssueKeepAliveHandleParams();
+
+            _message.receiver = receiver;
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(ISSUE_KEEP_ALIVE_HANDLE_ORDINAL)));
 
         }
 
@@ -116,6 +135,19 @@ int referrerPolicy) {
                     }
 
 
+
+
+
+                    case ISSUE_KEEP_ALIVE_HANDLE_ORDINAL: {
+
+                        PolicyContainerHostIssueKeepAliveHandleParams data =
+                                PolicyContainerHostIssueKeepAliveHandleParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().issueKeepAliveHandle(data.receiver);
+                        return true;
+                    }
+
+
                     default:
                         return false;
                 }
@@ -143,6 +175,8 @@ int referrerPolicy) {
                     case org.chromium.mojo.bindings.interfacecontrol.InterfaceControlMessagesConstants.RUN_MESSAGE_ID:
                         return org.chromium.mojo.bindings.InterfaceControlMessagesHelper.handleRun(
                                 getCore(), PolicyContainerHost_Internal.MANAGER, messageWithHeader, receiver);
+
+
 
 
 
@@ -203,6 +237,7 @@ int referrerPolicy) {
                         
                     result.referrerPolicy = decoder0.readInt(8);
                         org.chromium.network.mojom.ReferrerPolicy.validate(result.referrerPolicy);
+                        result.referrerPolicy = org.chromium.network.mojom.ReferrerPolicy.toKnownValue(result.referrerPolicy);
                     }
 
             } finally {
@@ -217,6 +252,69 @@ int referrerPolicy) {
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.referrerPolicy, 8);
+        }
+    }
+
+
+
+    
+    static final class PolicyContainerHostIssueKeepAliveHandleParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 16;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+        public org.chromium.mojo.bindings.InterfaceRequest<PolicyContainerHostKeepAliveHandle> receiver;
+
+        private PolicyContainerHostIssueKeepAliveHandleParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public PolicyContainerHostIssueKeepAliveHandleParams() {
+            this(0);
+        }
+
+        public static PolicyContainerHostIssueKeepAliveHandleParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static PolicyContainerHostIssueKeepAliveHandleParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static PolicyContainerHostIssueKeepAliveHandleParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            PolicyContainerHostIssueKeepAliveHandleParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new PolicyContainerHostIssueKeepAliveHandleParams(elementsOrVersion);
+                    {
+                        
+                    result.receiver = decoder0.readInterfaceRequest(8, false);
+                    }
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
+            
+            encoder0.encode(this.receiver, 8, false);
         }
     }
 

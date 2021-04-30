@@ -58,6 +58,7 @@ public final class DelayAsyncScriptExecutionHints extends org.chromium.mojo.bind
                     
                 result.delayType = decoder0.readInt(8);
                     DelayAsyncScriptExecutionDelayType.validate(result.delayType);
+                    result.delayType = DelayAsyncScriptExecutionDelayType.toKnownValue(result.delayType);
                 }
 
         } finally {

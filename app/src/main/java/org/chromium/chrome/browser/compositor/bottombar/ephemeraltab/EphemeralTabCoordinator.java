@@ -72,8 +72,8 @@ public class EphemeralTabCoordinator implements View.OnLayoutChangeListener {
     private EphemeralTabSheetContent mSheetContent;
     private EmptyBottomSheetObserver mSheetObserver;
 
-    private String mUrl;
-    private int mCurrentMaxSheetHeight;
+    private GURL mUrl;
+    private int mCurrentMaxViewHeight;
     private boolean mPeeked;
     private boolean mViewed; // Moved up from peek state by user
     private boolean mFullyOpened;
@@ -126,7 +126,7 @@ public class EphemeralTabCoordinator implements View.OnLayoutChangeListener {
      * @param title The title to be shown.
      * @param isIncognito Whether we are currently in incognito mode.
      */
-    public void requestOpenSheet(String url, String title, boolean isIncognito) {
+    public void requestOpenSheet(GURL url, String title, boolean isIncognito) {
         mUrl = url;
         Profile profile = getProfile(isIncognito);
         if (mMediator == null) {
@@ -193,7 +193,7 @@ public class EphemeralTabCoordinator implements View.OnLayoutChangeListener {
             };
             mBottomSheetController.addObserver(mSheetObserver);
             mSheetContent = new EphemeralTabSheetContent(mContext, this::openInNewTab,
-                    this::onToolbarClick, this::close, getMaxSheetHeight());
+                    this::onToolbarClick, this::close, getMaxViewHeight());
             mMediator.init(mWebContents, mContentView, mSheetContent, profile);
             mLayoutView.addOnLayoutChangeListener(this);
         }
@@ -226,7 +226,7 @@ public class EphemeralTabCoordinator implements View.OnLayoutChangeListener {
         mWebContents.initialize(ChromeVersionInfo.getProductVersion(),
                 ViewAndroidDelegate.createBasicDelegate(mContentView), mContentView, mWindow,
                 WebContents.createDefaultInternalsHolder());
-        ContentUtils.setUserAgentOverride(mWebContents);
+        ContentUtils.setUserAgentOverride(mWebContents, /* overrideInNewTabs= */ false);
     }
 
     private void destroyWebContents() {
@@ -248,7 +248,7 @@ public class EphemeralTabCoordinator implements View.OnLayoutChangeListener {
         if (mCanPromoteToNewTab && mUrl != null) {
             mBottomSheetController.hideContent(
                     mSheetContent, /* animate= */ true, StateChangeReason.PROMOTE_TAB);
-            mTabCreator.get().createNewTab(new LoadUrlParams(mUrl, PageTransition.LINK),
+            mTabCreator.get().createNewTab(new LoadUrlParams(mUrl.getSpec(), PageTransition.LINK),
                     TabLaunchType.FROM_LINK, mTabProvider.get());
             mMetrics.recordOpenInNewTab();
         }
@@ -277,17 +277,18 @@ public class EphemeralTabCoordinator implements View.OnLayoutChangeListener {
 
         // It may not be possible to update the content height when the actual height changes
         // due to the current tab not being ready yet. Try it later again when the tab
-        // (hence MaxSheetHeight) becomes valid.
-        int maxSheetHeight = getMaxSheetHeight();
-        if (maxSheetHeight == 0 || mCurrentMaxSheetHeight == maxSheetHeight) return;
-        mSheetContent.updateContentHeight(maxSheetHeight);
-        mCurrentMaxSheetHeight = maxSheetHeight;
+        // (hence MaxViewHeight) becomes valid.
+        int maxViewHeight = getMaxViewHeight();
+        if (maxViewHeight == 0 || mCurrentMaxViewHeight == maxViewHeight) return;
+        mSheetContent.updateContentHeight(maxViewHeight);
+        mCurrentMaxViewHeight = maxViewHeight;
     }
 
-    private int getMaxSheetHeight() {
+    /** @return The maximum base view height for sheet content view. */
+    private int getMaxViewHeight() {
         Tab tab = mTabProvider.get();
         if (tab == null || tab.getView() == null) return 0;
-        return (int) (tab.getView().getHeight() * 0.9f);
+        return tab.getView().getHeight();
     }
 
     /**

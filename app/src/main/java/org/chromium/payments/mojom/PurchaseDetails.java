@@ -79,6 +79,7 @@ public final class PurchaseDetails extends org.chromium.mojo.bindings.Struct {
                     
                 result.purchaseState = decoder0.readInt(28);
                     PurchaseState.validate(result.purchaseState);
+                    result.purchaseState = PurchaseState.toKnownValue(result.purchaseState);
                 }
                 {
                     

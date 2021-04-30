@@ -62,6 +62,7 @@ public final class TouchPoint extends org.chromium.mojo.bindings.Struct {
                     
                 result.state = decoder0.readInt(8);
                     TouchState.validate(result.state);
+                    result.state = TouchState.toKnownValue(result.state);
                 }
                 {
                     

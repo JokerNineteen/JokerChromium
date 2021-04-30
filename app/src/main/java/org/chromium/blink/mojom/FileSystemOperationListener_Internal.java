@@ -432,6 +432,7 @@ int errorCode) {
                         
                     result.errorCode = decoder0.readInt(8);
                         org.chromium.mojo_base.mojom.FileError.validate(result.errorCode);
+                        result.errorCode = org.chromium.mojo_base.mojom.FileError.toKnownValue(result.errorCode);
                     }
 
             } finally {

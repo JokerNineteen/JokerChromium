@@ -63,6 +63,7 @@ public final class DateTimeDialogValue extends org.chromium.mojo.bindings.Struct
                     
                 result.dialogType = decoder0.readInt(8);
                     org.chromium.ui.mojom.TextInputType.validate(result.dialogType);
+                    result.dialogType = org.chromium.ui.mojom.TextInputType.toKnownValue(result.dialogType);
                 }
                 {
                     

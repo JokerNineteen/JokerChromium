@@ -9,6 +9,8 @@ import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
+import org.chromium.base.Log;
+
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -70,6 +72,9 @@ public class AutofillAssistantArguments {
         }
     }
 
+    /** Used for logging. */
+    private static final String TAG = "AutofillAssistant";
+
     private static final String UTF8 = "UTF-8";
 
     /**
@@ -87,30 +92,35 @@ public class AutofillAssistantArguments {
     /** Special parameter that enables the feature. */
     private static final String PARAMETER_ENABLED = "ENABLED";
 
+    /**
+     * Special bool parameter that MUST be present in all intents. It allows the caller to either
+     * request immediate start of autobot (if set to true), or a delayed start using trigger scripts
+     * (if set to false). If this is set to false, one of the trigger script parameters must be set
+     * as well (@code{PARAMETER_REQUEST_TRIGGER_SCRIPT} or @code{PARAMETER_TRIGGER_SCRIPTS_BASE64}).
+     */
+    public static final String PARAMETER_START_IMMEDIATELY = "START_IMMEDIATELY";
+
     /** Special parameter for the calling account. */
     private static final String PARAMETER_CALLER_ACCOUNT = "CALLER_ACCOUNT";
 
     /** Special parameter for user email. */
     private static final String PARAMETER_USER_EMAIL = "USER_EMAIL";
 
-    /** Special parameter for first time user script path. */
-    static final String PARAMETER_TRIGGER_FIRST_TIME_USER = "TRIGGER_FIRST_TIME_USER";
-
-    /** Special parameter for returning user script path. */
-    static final String PARAMETER_TRIGGER_RETURNING_TIME_USER = "TRIGGER_RETURNING_USER";
-
-    // Deprecated, remove as soon as possible.
-    /** Special output parameter that should hold which of the trigger scripts was used, if any. */
-    static final String PARAMETER_TRIGGER_SCRIPT_USED = "TRIGGER_SCRIPT_USED";
-
     /** Special parameter for declaring a user to be in a lite script experiment. */
-    static final String PARAMETER_LITE_SCRIPT_EXPERIMENT = "TRIGGER_SCRIPT_EXPERIMENT";
+    static final String PARAMETER_TRIGGER_SCRIPT_EXPERIMENT = "TRIGGER_SCRIPT_EXPERIMENT";
 
     /**
      * Special parameter for instructing the client to request and run a trigger script prior to
      * starting the regular flow.
      */
     static final String PARAMETER_REQUEST_TRIGGER_SCRIPT = "REQUEST_TRIGGER_SCRIPT";
+
+    /**
+     * Special parameter to allow injecting a base64-encoded GetTriggerScriptsResponseProto. When
+     * specified, the client will directly use the specified trigger scripts instead of fetching
+     * them from a remote backend. Takes precedence over PARAMETER_REQUEST_TRIGGER_SCRIPT.
+     */
+    static final String PARAMETER_TRIGGER_SCRIPTS_BASE64 = "TRIGGER_SCRIPTS_BASE64";
 
     /**
      * Special output boolean parameter that will be set to true for regular scripts that were
@@ -123,6 +133,13 @@ public class AutofillAssistantArguments {
      * the caller.
      */
     private static final String PARAMETER_EXPERIMENT_IDS = "EXPERIMENT_IDS";
+
+    /**
+     * The original deeplink as indicated by the caller. Use this parameter instead of the
+     * initial URL when available to avoid issues where the initial URL points to a redirect
+     * rather than the actual deeplink.
+     */
+    private static final String PARAMETER_ORIGINAL_DEEPLINK = "ORIGINAL_DEEPLINK";
 
     private Map<String, Object> mAutofillAssistantParameters;
     private Map<String, Object> mIntentExtras;
@@ -156,6 +173,9 @@ public class AutofillAssistantArguments {
     private boolean getBooleanParameter(String key) {
         Object value = mAutofillAssistantParameters.get(key);
         if (!(value instanceof Boolean)) { // Also catches null.
+            if (value != null) {
+                Log.v(TAG, "Expected " + key + " to be boolean, but was " + value.toString());
+            }
             return false;
         }
 
@@ -166,6 +186,9 @@ public class AutofillAssistantArguments {
     private String getStringParameter(String key) {
         Object value = mAutofillAssistantParameters.get(key);
         if (!(value instanceof String)) { // Also catches null.
+            if (value != null) {
+                Log.v(TAG, "Expected " + key + " to be string, but was " + value.toString());
+            }
             return null;
         }
 
@@ -193,12 +216,16 @@ public class AutofillAssistantArguments {
         return map;
     }
 
-    /**
-     * Searches the parameters for the ENABLED flag.
-     * @return whether the feature is set as enabled.
-     */
-    public boolean isEnabled() {
-        return getBooleanParameter(PARAMETER_ENABLED);
+    /** Returns whether all mandatory script parameters are set. */
+    public boolean areMandatoryParametersSet() {
+        if (!getBooleanParameter(PARAMETER_ENABLED)
+                || mAutofillAssistantParameters.get(PARAMETER_START_IMMEDIATELY) == null) {
+            return false;
+        }
+        if (!getBooleanParameter(PARAMETER_START_IMMEDIATELY)) {
+            return containsTriggerScript();
+        }
+        return true;
     }
 
     /**
@@ -209,9 +236,9 @@ public class AutofillAssistantArguments {
         return mExperimentIds.toString();
     }
 
-    /** Returns whether the lite-script experiment flag is set to true. */
-    public boolean isLiteScriptExperiment() {
-        return getBooleanParameter(PARAMETER_LITE_SCRIPT_EXPERIMENT);
+    /** Returns whether the trigger-script experiment flag is set to true. */
+    public boolean isTriggerScriptExperiment() {
+        return getBooleanParameter(PARAMETER_TRIGGER_SCRIPT_EXPERIMENT);
     }
 
     /**
@@ -247,14 +274,22 @@ public class AutofillAssistantArguments {
         return mInitialUrl;
     }
 
+    public String getOriginalDeeplink() {
+        return getStringParameter(PARAMETER_ORIGINAL_DEEPLINK);
+    }
+
     /** Whether the caller requests the client to fetch trigger scripts from a remote endpoint. */
     public boolean requestsTriggerScript() {
         return getBooleanParameter(PARAMETER_REQUEST_TRIGGER_SCRIPT);
     }
 
-    /** Deprecated. Whether the caller provides script paths for lite scripts to execute. */
+    /** Whether the caller specified a base64-encoded trigger scripts response or not. */
+    public boolean containsBase64TriggerScripts() {
+        return !TextUtils.isEmpty(getStringParameter(PARAMETER_TRIGGER_SCRIPTS_BASE64));
+    }
+
+    /** Whether the caller requested a trigger script to start in any of the supported ways. */
     public boolean containsTriggerScript() {
-        return !TextUtils.isEmpty(getStringParameter(PARAMETER_TRIGGER_FIRST_TIME_USER))
-                && !TextUtils.isEmpty(getStringParameter(PARAMETER_TRIGGER_RETURNING_TIME_USER));
+        return requestsTriggerScript() || containsBase64TriggerScripts();
     }
 }

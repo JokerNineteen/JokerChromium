@@ -62,6 +62,7 @@ public final class DecryptConfig extends org.chromium.mojo.bindings.Struct {
                     
                 result.encryptionScheme = decoder0.readInt(8);
                     EncryptionScheme.validate(result.encryptionScheme);
+                    result.encryptionScheme = EncryptionScheme.toKnownValue(result.encryptionScheme);
                 }
                 {
                     

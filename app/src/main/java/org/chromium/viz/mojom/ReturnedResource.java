@@ -19,7 +19,7 @@ public final class ReturnedResource extends org.chromium.mojo.bindings.Struct {
     private static final int STRUCT_SIZE = 32;
     private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(32, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-    public int id;
+    public ResourceId id;
     public org.chromium.gpu.mojom.SyncToken syncToken;
     public int count;
     public boolean lost;
@@ -59,11 +59,8 @@ public final class ReturnedResource extends org.chromium.mojo.bindings.Struct {
             result = new ReturnedResource(elementsOrVersion);
                 {
                     
-                result.id = decoder0.readInt(8);
-                }
-                {
-                    
-                result.count = decoder0.readInt(12);
+                org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, false);
+                result.id = ResourceId.decode(decoder1);
                 }
                 {
                     
@@ -72,7 +69,11 @@ public final class ReturnedResource extends org.chromium.mojo.bindings.Struct {
                 }
                 {
                     
-                result.lost = decoder0.readBoolean(24, 0);
+                result.count = decoder0.readInt(24);
+                }
+                {
+                    
+                result.lost = decoder0.readBoolean(28, 0);
                 }
 
         } finally {
@@ -86,12 +87,12 @@ public final class ReturnedResource extends org.chromium.mojo.bindings.Struct {
     protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
         org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         
-        encoder0.encode(this.id, 8);
-        
-        encoder0.encode(this.count, 12);
+        encoder0.encode(this.id, 8, false);
         
         encoder0.encode(this.syncToken, 16, false);
         
-        encoder0.encode(this.lost, 24, 0);
+        encoder0.encode(this.count, 24);
+        
+        encoder0.encode(this.lost, 28, 0);
     }
 }

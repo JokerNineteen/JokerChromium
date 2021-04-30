@@ -22,16 +22,21 @@ public final class FontEnumerationStatus {
     public static final int NEEDS_USER_ACTIVATION = 3;
     public static final int NOT_VISIBLE = 4;
     public static final int PERMISSION_DENIED = 5;
+    public static final int CANCELED = 6;
     public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 5;
+    public static final int MAX_VALUE = 6;
 
     public static boolean isKnownValue(int value) {
-        return value >= 0 && value <= 5;
+        return value >= 0 && value <= 6;
     }
 
     public static void validate(int value) {
         if (IS_EXTENSIBLE || isKnownValue(value)) return;
         throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+    }
+
+    public static int toKnownValue(int value) {
+      return value;
     }
 
     private FontEnumerationStatus() {}

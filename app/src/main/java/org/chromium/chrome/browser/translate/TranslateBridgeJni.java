@@ -69,8 +69,8 @@ final class TranslateBridgeJni implements TranslateBridge.Natives {
   }
 
   @Override
-  public boolean isBlockedLanguage(String language) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_isBlockedLanguage(language);
+  public void setDefaultTargetLanguage(String targetLanguage) {
+    GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_setDefaultTargetLanguage(targetLanguage);
   }
 
   @Override
@@ -94,6 +94,11 @@ final class TranslateBridgeJni implements TranslateBridge.Natives {
   }
 
   @Override
+  public void getAlwaysTranslateLanguages(List<String> list) {
+    GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_getAlwaysTranslateLanguages(list);
+  }
+
+  @Override
   public void updateUserAcceptLanguages(String language, boolean add) {
     GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_updateUserAcceptLanguages(language, add);
   }
@@ -109,8 +114,8 @@ final class TranslateBridgeJni implements TranslateBridge.Natives {
   }
 
   @Override
-  public boolean isBlockedLanguage2(String language) {
-    return (boolean)GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_isBlockedLanguage2(language);
+  public boolean isBlockedLanguage(String language) {
+    return (boolean)GEN_JNI.org_chromium_chrome_browser_translate_TranslateBridge_isBlockedLanguage(language);
   }
 
   @Override

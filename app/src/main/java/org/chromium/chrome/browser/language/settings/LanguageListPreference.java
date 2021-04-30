@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
-import org.chromium.chrome.R;
+import org.chromium.chrome.browser.language.R;
 import org.chromium.chrome.browser.preferences.Pref;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.translate.TranslateBridge;
@@ -115,8 +115,11 @@ public class LanguageListPreference extends Preference {
                     notifyDataSetChanged();
                 }
             };
-            ((LanguageRowViewHolder) holder)
-                    .setMenuButtonDelegate(() -> new BasicListMenu(mContext, menuItems, delegate));
+            ((LanguageRowViewHolder) holder).setMenuButtonDelegate(() -> {
+                LanguagesManager.recordImpression(
+                        LanguagesManager.LanguageSettingsPageType.LANGUAGE_OVERFLOW_MENU_OPENED);
+                return new BasicListMenu(mContext, menuItems, delegate);
+            });
         }
 
         @Override
@@ -151,11 +154,7 @@ public class LanguageListPreference extends Preference {
                 TintedDrawable.constructTintedDrawable(
                         getContext(), R.drawable.plus, R.color.default_control_color_active),
                 null, null, null);
-        mAddLanguageButton.setOnClickListener(view -> {
-            mLauncher.launchAddLanguage();
-            LanguagesManager.recordAction(
-                    LanguagesManager.LanguageSettingsActionType.CLICK_ON_ADD_LANGUAGE);
-        });
+        mAddLanguageButton.setOnClickListener(view -> { mLauncher.launchAddLanguage(); });
 
         mRecyclerView = (RecyclerView) holder.findViewById(R.id.language_list);
         LinearLayoutManager layoutMangager = new LinearLayoutManager(getContext());

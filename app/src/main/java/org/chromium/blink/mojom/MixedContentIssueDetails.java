@@ -63,11 +63,13 @@ public final class MixedContentIssueDetails extends org.chromium.mojo.bindings.S
                     
                 result.requestContext = decoder0.readInt(8);
                     RequestContextType.validate(result.requestContext);
+                    result.requestContext = RequestContextType.toKnownValue(result.requestContext);
                 }
                 {
                     
                 result.resolutionStatus = decoder0.readInt(12);
                     MixedContentResolutionStatus.validate(result.resolutionStatus);
+                    result.resolutionStatus = MixedContentResolutionStatus.toKnownValue(result.resolutionStatus);
                 }
                 {
                     

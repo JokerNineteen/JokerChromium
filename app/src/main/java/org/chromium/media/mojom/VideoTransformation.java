@@ -59,6 +59,7 @@ public final class VideoTransformation extends org.chromium.mojo.bindings.Struct
                     
                 result.rotation = decoder0.readInt(8);
                     VideoRotation.validate(result.rotation);
+                    result.rotation = VideoRotation.toKnownValue(result.rotation);
                 }
                 {
                     

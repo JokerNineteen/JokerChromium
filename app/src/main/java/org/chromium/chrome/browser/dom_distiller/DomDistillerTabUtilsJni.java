@@ -9,6 +9,7 @@ import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
 import org.chromium.components.navigation_interception.InterceptNavigationDelegate;
 import org.chromium.content_public.browser.WebContents;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -42,7 +43,7 @@ final class DomDistillerTabUtilsJni implements DomDistillerTabUtils.Natives {
   }
 
   @Override
-  public String getFormattedUrlFromOriginalDistillerUrl(String url) {
+  public String getFormattedUrlFromOriginalDistillerUrl(GURL url) {
     return (String)GEN_JNI.org_chromium_chrome_browser_dom_1distiller_DomDistillerTabUtils_getFormattedUrlFromOriginalDistillerUrl(url);
   }
 

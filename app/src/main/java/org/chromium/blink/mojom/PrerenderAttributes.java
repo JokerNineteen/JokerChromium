@@ -66,6 +66,7 @@ public final class PrerenderAttributes extends org.chromium.mojo.bindings.Struct
                     
                 result.relType = decoder0.readInt(16);
                     PrerenderRelType.validate(result.relType);
+                    result.relType = PrerenderRelType.toKnownValue(result.relType);
                 }
                 {
                     

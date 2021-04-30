@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-<string name="vr_shell_feedback_infobar_description">"Help improve the VR experience in Chrome"</string>
-<string name="vr_shell_feedback_infobar_feedback_button">"Provide feedback"</string>
-<string name="vr_services_check_infobar_install_text">"To view virtual reality content, install Google VR Services"</string>
-<string name="vr_services_check_infobar_update_text">"To view virtual reality content, update Google VR Services"</string>
-<string name="vr_services_check_infobar_install_button">"Install"</string>
-<string name="vr_services_check_infobar_update_button">"Update"</string>
-</resources>

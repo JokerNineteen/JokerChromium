@@ -36,10 +36,14 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Os() {}
     }
 
-    public static final class UnavailableLocalIssuanceFallback {
+    public static final class UnavailableLocalOperationFallback {
         private static final boolean IS_EXTENSIBLE = false;
 
         public static final int WEB_ISSUANCE = 0;
@@ -56,14 +60,18 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
-        private UnavailableLocalIssuanceFallback() {}
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
+        private UnavailableLocalOperationFallback() {}
     }
     public int protocolVersion;
     public int id;
     public int batchSize;
     public TrustTokenVerificationKey[] keys;
     public int[] requestIssuanceLocallyOn;
-    public int unavailableLocalIssuanceFallback;
+    public int unavailableLocalOperationFallback;
 
     private TrustTokenKeyCommitmentResult(int version) {
         super(STRUCT_SIZE, version);
@@ -102,6 +110,7 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
                     
                 result.protocolVersion = decoder0.readInt(8);
                     TrustTokenProtocolVersion.validate(result.protocolVersion);
+                    result.protocolVersion = TrustTokenProtocolVersion.toKnownValue(result.protocolVersion);
                 }
                 {
                     
@@ -113,8 +122,9 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
                 }
                 {
                     
-                result.unavailableLocalIssuanceFallback = decoder0.readInt(20);
-                    TrustTokenKeyCommitmentResult.UnavailableLocalIssuanceFallback.validate(result.unavailableLocalIssuanceFallback);
+                result.unavailableLocalOperationFallback = decoder0.readInt(20);
+                    TrustTokenKeyCommitmentResult.UnavailableLocalOperationFallback.validate(result.unavailableLocalOperationFallback);
+                    result.unavailableLocalOperationFallback = TrustTokenKeyCommitmentResult.UnavailableLocalOperationFallback.toKnownValue(result.unavailableLocalOperationFallback);
                 }
                 {
                     
@@ -133,8 +143,8 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
                     
                 result.requestIssuanceLocallyOn = decoder0.readInts(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 {
-                    for (int i0 = 0; i0 < result.requestIssuanceLocallyOn.length; ++i0) {
-                        TrustTokenKeyCommitmentResult.Os.validate(result.requestIssuanceLocallyOn[i0]);
+                    for (int i1 = 0; i1 < result.requestIssuanceLocallyOn.length; ++i1) {
+                        TrustTokenKeyCommitmentResult.Os.validate(result.requestIssuanceLocallyOn[i1]);
                     }
                 }
                 }
@@ -156,7 +166,7 @@ public final class TrustTokenKeyCommitmentResult extends org.chromium.mojo.bindi
         
         encoder0.encode(this.batchSize, 16);
         
-        encoder0.encode(this.unavailableLocalIssuanceFallback, 20);
+        encoder0.encode(this.unavailableLocalOperationFallback, 20);
         
         if (this.keys == null) {
             encoder0.encodeNullPointer(24, false);

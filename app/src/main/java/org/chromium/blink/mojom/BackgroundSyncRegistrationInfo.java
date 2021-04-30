@@ -69,6 +69,7 @@ public final class BackgroundSyncRegistrationInfo extends org.chromium.mojo.bind
                     
                 result.syncType = decoder0.readInt(24);
                     BackgroundSyncType.validate(result.syncType);
+                    result.syncType = BackgroundSyncType.toKnownValue(result.syncType);
                 }
 
         } finally {

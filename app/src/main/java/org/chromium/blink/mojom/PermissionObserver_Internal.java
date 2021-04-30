@@ -203,6 +203,7 @@ int status) {
                         
                     result.status = decoder0.readInt(8);
                         PermissionStatus.validate(result.status);
+                        result.status = PermissionStatus.toKnownValue(result.status);
                     }
 
             } finally {

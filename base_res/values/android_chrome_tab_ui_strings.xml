@@ -72,6 +72,17 @@
 <string name="tab_strip_info_bar_no_reshow">"Don\'t show again"</string>
 <string name="tab_strip_info_bar_reshow">"Show later"</string>
 <string name="price_drop_spotted_title">"Price drop spotted"</string>
-<string name="price_drop_spotted_content">"See which item in your open tabs has a better price"</string>
+<string name="price_drop_spotted_content">"See which item in your open tabs has a lower price"</string>
 <string name="price_drop_spotted_show_me">"Show me"</string>
+<string name="price_drop_spotted_lower_price">"Lower price"</string>
+<string name="price_drop_alerts_card_title">"Get alerts for price drops?"</string>
+<string name="price_drop_alerts_card_get_notified_content">"You\'ll get an alert when there\'s a lower price in an open tab"</string>
+<string name="price_drop_alerts_card_get_notified">"Get notified"</string>
+<string name="price_drop_alerts_card_go_to_settings_content">"To get an alert when there\'s a lower price in an open tab, turn on notifications in Settings."</string>
+<string name="price_drop_alerts_card_go_to_settings">"Go to Settings"</string>
+<string name="price_tracking_settings">"Price tracking settings"</string>
+<string name="track_prices_on_tabs">"Track prices on tabs"</string>
+<string name="track_prices_on_tabs_description">"See price drops on your tabs"</string>
+<string name="price_drop_alerts">"Price drop alerts"</string>
+<string name="price_drop_alerts_description">"Get notified when prices drop"</string>
 </resources>

@@ -25,7 +25,7 @@ public interface WebLaunchService extends org.chromium.mojo.bindings.Interface {
 
 
     void setLaunchFiles(
-NativeFileSystemEntry[] files);
+FileSystemAccessEntry[] files);
 
 
 }

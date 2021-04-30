@@ -866,6 +866,29 @@ public final class LocalTrustedVaultOuterClass {
      * @return The localDeviceRegistrationInfo.
      */
     sync_pb.LocalTrustedVaultOuterClass.LocalDeviceRegistrationInfo getLocalDeviceRegistrationInfo();
+
+    /**
+     * <pre>
+     * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+     * to transient errors) request was sent to the vault service. Used for
+     * throttling requests to the server.
+     * </pre>
+     *
+     * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+     * @return Whether the lastFailedRequestMillisSinceUnixEpoch field is set.
+     */
+    boolean hasLastFailedRequestMillisSinceUnixEpoch();
+    /**
+     * <pre>
+     * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+     * to transient errors) request was sent to the vault service. Used for
+     * throttling requests to the server.
+     * </pre>
+     *
+     * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+     * @return The lastFailedRequestMillisSinceUnixEpoch.
+     */
+    long getLastFailedRequestMillisSinceUnixEpoch();
   }
   /**
    * Protobuf type {@code sync_pb.LocalTrustedVaultPerUser}
@@ -1241,6 +1264,64 @@ public final class LocalTrustedVaultOuterClass {
      */
     private void clearLocalDeviceRegistrationInfo() {  localDeviceRegistrationInfo_ = null;
       bitField0_ = (bitField0_ & ~0x00000008);
+    }
+
+    public static final int LAST_FAILED_REQUEST_MILLIS_SINCE_UNIX_EPOCH_FIELD_NUMBER = 6;
+    private long lastFailedRequestMillisSinceUnixEpoch_;
+    /**
+     * <pre>
+     * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+     * to transient errors) request was sent to the vault service. Used for
+     * throttling requests to the server.
+     * </pre>
+     *
+     * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+     * @return Whether the lastFailedRequestMillisSinceUnixEpoch field is set.
+     */
+    @java.lang.Override
+    public boolean hasLastFailedRequestMillisSinceUnixEpoch() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+     * to transient errors) request was sent to the vault service. Used for
+     * throttling requests to the server.
+     * </pre>
+     *
+     * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+     * @return The lastFailedRequestMillisSinceUnixEpoch.
+     */
+    @java.lang.Override
+    public long getLastFailedRequestMillisSinceUnixEpoch() {
+      return lastFailedRequestMillisSinceUnixEpoch_;
+    }
+    /**
+     * <pre>
+     * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+     * to transient errors) request was sent to the vault service. Used for
+     * throttling requests to the server.
+     * </pre>
+     *
+     * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+     * @param value The lastFailedRequestMillisSinceUnixEpoch to set.
+     */
+    private void setLastFailedRequestMillisSinceUnixEpoch(long value) {
+      bitField0_ |= 0x00000010;
+      lastFailedRequestMillisSinceUnixEpoch_ = value;
+    }
+    /**
+     * <pre>
+     * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+     * to transient errors) request was sent to the vault service. Used for
+     * throttling requests to the server.
+     * </pre>
+     *
+     * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+     */
+    private void clearLastFailedRequestMillisSinceUnixEpoch() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      lastFailedRequestMillisSinceUnixEpoch_ = 0L;
     }
 
     public static sync_pb.LocalTrustedVaultOuterClass.LocalTrustedVaultPerUser parseFrom(
@@ -1723,6 +1804,66 @@ public final class LocalTrustedVaultOuterClass {
         return this;
       }
 
+      /**
+       * <pre>
+       * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+       * to transient errors) request was sent to the vault service. Used for
+       * throttling requests to the server.
+       * </pre>
+       *
+       * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+       * @return Whether the lastFailedRequestMillisSinceUnixEpoch field is set.
+       */
+      @java.lang.Override
+      public boolean hasLastFailedRequestMillisSinceUnixEpoch() {
+        return instance.hasLastFailedRequestMillisSinceUnixEpoch();
+      }
+      /**
+       * <pre>
+       * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+       * to transient errors) request was sent to the vault service. Used for
+       * throttling requests to the server.
+       * </pre>
+       *
+       * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+       * @return The lastFailedRequestMillisSinceUnixEpoch.
+       */
+      @java.lang.Override
+      public long getLastFailedRequestMillisSinceUnixEpoch() {
+        return instance.getLastFailedRequestMillisSinceUnixEpoch();
+      }
+      /**
+       * <pre>
+       * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+       * to transient errors) request was sent to the vault service. Used for
+       * throttling requests to the server.
+       * </pre>
+       *
+       * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+       * @param value The lastFailedRequestMillisSinceUnixEpoch to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLastFailedRequestMillisSinceUnixEpoch(long value) {
+        copyOnWrite();
+        instance.setLastFailedRequestMillisSinceUnixEpoch(value);
+        return this;
+      }
+      /**
+       * <pre>
+       * The time (in milliseconds since UNIX epoch) at which last unsuccessful (due
+       * to transient errors) request was sent to the vault service. Used for
+       * throttling requests to the server.
+       * </pre>
+       *
+       * <code>optional int64 last_failed_request_millis_since_unix_epoch = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLastFailedRequestMillisSinceUnixEpoch() {
+        copyOnWrite();
+        instance.clearLastFailedRequestMillisSinceUnixEpoch();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sync_pb.LocalTrustedVaultPerUser)
     }
     @java.lang.Override
@@ -1746,10 +1887,11 @@ public final class LocalTrustedVaultOuterClass {
               "lastVaultKeyVersion_",
               "keysAreStale_",
               "localDeviceRegistrationInfo_",
+              "lastFailedRequestMillisSinceUnixEpoch_",
             };
             java.lang.String info =
-                "\u0001\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0001\u0000\u0001\u100a\u0000\u0002" +
-                "\u001b\u0003\u1004\u0001\u0004\u1007\u0002\u0005\u1009\u0003";
+                "\u0001\u0006\u0000\u0001\u0001\u0006\u0006\u0000\u0001\u0000\u0001\u100a\u0000\u0002" +
+                "\u001b\u0003\u1004\u0001\u0004\u1007\u0002\u0005\u1009\u0003\u0006\u1002\u0004";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

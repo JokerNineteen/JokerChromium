@@ -7,6 +7,7 @@ import org.chromium.base.JniStaticTestMocker;
 import org.chromium.base.NativeLibraryLoadedStatus;
 import org.chromium.base.annotations.CheckDiscard;
 import org.chromium.base.natives.GEN_JNI;
+import org.chromium.url.GURL;
 
 @Generated("org.chromium.jni_generator.JniProcessor")
 @CheckDiscard("crbug.com/993421")
@@ -30,8 +31,8 @@ public final class DomDistillerUrlUtilsJni implements DomDistillerUrlUtils.Nativ
   }
 
   @Override
-  public String getOriginalUrlFromDistillerUrl(String viewerUrl) {
-    return (String)GEN_JNI.org_chromium_components_dom_1distiller_core_DomDistillerUrlUtils_getOriginalUrlFromDistillerUrl(viewerUrl);
+  public GURL getOriginalUrlFromDistillerUrl(String viewerUrl) {
+    return (GURL)GEN_JNI.org_chromium_components_dom_1distiller_core_DomDistillerUrlUtils_getOriginalUrlFromDistillerUrl(viewerUrl);
   }
 
   @Override

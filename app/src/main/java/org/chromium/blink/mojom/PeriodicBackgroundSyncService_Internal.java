@@ -368,6 +368,7 @@ GetRegistrationsResponse callback) {
                         
                     result.err = decoder0.readInt(8);
                         BackgroundSyncError.validate(result.err);
+                        result.err = BackgroundSyncError.toKnownValue(result.err);
                     }
                     {
                         
@@ -572,6 +573,7 @@ GetRegistrationsResponse callback) {
                         
                     result.err = decoder0.readInt(8);
                         BackgroundSyncError.validate(result.err);
+                        result.err = BackgroundSyncError.toKnownValue(result.err);
                     }
 
             } finally {
@@ -761,6 +763,7 @@ GetRegistrationsResponse callback) {
                         
                     result.err = decoder0.readInt(8);
                         BackgroundSyncError.validate(result.err);
+                        result.err = BackgroundSyncError.toKnownValue(result.err);
                     }
                     {
                         

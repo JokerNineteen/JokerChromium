@@ -52,8 +52,8 @@ final class ManualFillingComponentBridgeJni implements ManualFillingComponentBri
 
   @Override
   public void cachePasswordSheetDataForTesting(WebContents webContents, String[] userNames,
-      String[] passwords, boolean originBlacklisted) {
-    GEN_JNI.org_chromium_chrome_browser_keyboard_1accessory_ManualFillingComponentBridge_cachePasswordSheetDataForTesting(webContents, userNames, passwords, originBlacklisted);
+      String[] passwords, boolean originDenylisted) {
+    GEN_JNI.org_chromium_chrome_browser_keyboard_1accessory_ManualFillingComponentBridge_cachePasswordSheetDataForTesting(webContents, userNames, passwords, originDenylisted);
   }
 
   @Override

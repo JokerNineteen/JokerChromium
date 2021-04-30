@@ -19,12 +19,15 @@ import java.lang.annotation.RetentionPolicy;
     PasswordsStatus.CHECKING, PasswordsStatus.SAFE, PasswordsStatus.COMPROMISED_EXIST,
     PasswordsStatus.OFFLINE, PasswordsStatus.NO_PASSWORDS, PasswordsStatus.SIGNED_OUT,
     PasswordsStatus.QUOTA_LIMIT, PasswordsStatus.ERROR, PasswordsStatus.FEATURE_UNAVAILABLE,
-    PasswordsStatus.MAX_VALUE
+    PasswordsStatus.WEAK_PASSWORDS_EXIST, PasswordsStatus.MAX_VALUE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface PasswordsStatus {
   int CHECKING = 0;
   int SAFE = 1;
+  /**
+   * Indicates that at least one compromised password exists. Weak passwords may exist as well.
+   */
   int COMPROMISED_EXIST = 2;
   int OFFLINE = 3;
   int NO_PASSWORDS = 4;
@@ -33,7 +36,11 @@ public @interface PasswordsStatus {
   int ERROR = 7;
   int FEATURE_UNAVAILABLE = 8;
   /**
+   * Indicates that no compromised passwords exist, but at least one weak password.
+   */
+  int WEAK_PASSWORDS_EXIST = 9;
+  /**
    * New enum values must go above here.
    */
-  int MAX_VALUE = FEATURE_UNAVAILABLE;
+  int MAX_VALUE = WEAK_PASSWORDS_EXIST;
 }

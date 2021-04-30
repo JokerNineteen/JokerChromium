@@ -61,6 +61,7 @@ public final class ParsedFeaturePolicyDeclaration extends org.chromium.mojo.bind
                     
                 result.feature = decoder0.readInt(8);
                     FeaturePolicyFeature.validate(result.feature);
+                    result.feature = FeaturePolicyFeature.toKnownValue(result.feature);
                 }
                 {
                     

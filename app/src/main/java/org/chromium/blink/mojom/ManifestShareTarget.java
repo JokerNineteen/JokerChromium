@@ -37,6 +37,10 @@ public final class ManifestShareTarget extends org.chromium.mojo.bindings.Struct
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Method() {}
     }
 
@@ -55,6 +59,10 @@ public final class ManifestShareTarget extends org.chromium.mojo.bindings.Struct
         public static void validate(int value) {
             if (IS_EXTENSIBLE || isKnownValue(value)) return;
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
+        }
+
+        public static int toKnownValue(int value) {
+          return value;
         }
 
         private Enctype() {}
@@ -106,11 +114,13 @@ public final class ManifestShareTarget extends org.chromium.mojo.bindings.Struct
                     
                 result.method = decoder0.readInt(16);
                     ManifestShareTarget.Method.validate(result.method);
+                    result.method = ManifestShareTarget.Method.toKnownValue(result.method);
                 }
                 {
                     
                 result.enctype = decoder0.readInt(20);
                     ManifestShareTarget.Enctype.validate(result.enctype);
+                    result.enctype = ManifestShareTarget.Enctype.toKnownValue(result.enctype);
                 }
                 {
                     

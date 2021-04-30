@@ -37,12 +37,16 @@ public final class CookieAccessDetails extends org.chromium.mojo.bindings.Struct
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private Type() {}
     }
     public int type;
     public org.chromium.url.mojom.Url url;
     public SiteForCookies siteForCookies;
-    public CookieWithAccessResult[] cookieList;
+    public CookieOrLineWithAccessResult[] cookieList;
     public String devtoolsRequestId;
 
     private CookieAccessDetails(int version) {
@@ -82,6 +86,7 @@ public final class CookieAccessDetails extends org.chromium.mojo.bindings.Struct
                     
                 result.type = decoder0.readInt(8);
                     CookieAccessDetails.Type.validate(result.type);
+                    result.type = CookieAccessDetails.Type.toKnownValue(result.type);
                 }
                 {
                     
@@ -98,11 +103,11 @@ public final class CookieAccessDetails extends org.chromium.mojo.bindings.Struct
                 org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(32, false);
                 {
                     org.chromium.mojo.bindings.DataHeader si1 = decoder1.readDataHeaderForPointerArray(org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
-                    result.cookieList = new CookieWithAccessResult[si1.elementsOrVersion];
+                    result.cookieList = new CookieOrLineWithAccessResult[si1.elementsOrVersion];
                     for (int i1 = 0; i1 < si1.elementsOrVersion; ++i1) {
                         
                         org.chromium.mojo.bindings.Decoder decoder2 = decoder1.readPointer(org.chromium.mojo.bindings.DataHeader.HEADER_SIZE + org.chromium.mojo.bindings.BindingsHelper.POINTER_SIZE * i1, false);
-                        result.cookieList[i1] = CookieWithAccessResult.decode(decoder2);
+                        result.cookieList[i1] = CookieOrLineWithAccessResult.decode(decoder2);
                     }
                 }
                 }

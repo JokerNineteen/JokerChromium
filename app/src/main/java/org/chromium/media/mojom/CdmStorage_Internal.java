@@ -274,6 +274,7 @@ OpenResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         CdmStorage.Status.validate(result.status);
+                        result.status = CdmStorage.Status.toKnownValue(result.status);
                     }
                     {
                         

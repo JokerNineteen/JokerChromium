@@ -16,13 +16,14 @@ package org.chromium.blink.mojom;
 
 public final class CableAuthentication extends org.chromium.mojo.bindings.Struct {
 
-    private static final int STRUCT_SIZE = 40;
-    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
+    private static final int STRUCT_SIZE = 48;
+    private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(48, 0)};
     private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
     public byte version;
     public byte[] clientEid;
     public byte[] authenticatorEid;
     public byte[] sessionPreKey;
+    public byte[] serverLinkData;
 
     private CableAuthentication(int version) {
         super(STRUCT_SIZE, version);
@@ -63,15 +64,19 @@ public final class CableAuthentication extends org.chromium.mojo.bindings.Struct
                 }
                 {
                     
-                result.clientEid = decoder0.readBytes(16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 16);
+                result.clientEid = decoder0.readBytes(16, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 16);
                 }
                 {
                     
-                result.authenticatorEid = decoder0.readBytes(24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 16);
+                result.authenticatorEid = decoder0.readBytes(24, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 16);
                 }
                 {
                     
-                result.sessionPreKey = decoder0.readBytes(32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 32);
+                result.sessionPreKey = decoder0.readBytes(32, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 32);
+                }
+                {
+                    
+                result.serverLinkData = decoder0.readBytes(40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                 }
 
         } finally {
@@ -87,10 +92,12 @@ public final class CableAuthentication extends org.chromium.mojo.bindings.Struct
         
         encoder0.encode(this.version, 8);
         
-        encoder0.encode(this.clientEid, 16, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 16);
+        encoder0.encode(this.clientEid, 16, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 16);
         
-        encoder0.encode(this.authenticatorEid, 24, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 16);
+        encoder0.encode(this.authenticatorEid, 24, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 16);
         
-        encoder0.encode(this.sessionPreKey, 32, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, 32);
+        encoder0.encode(this.sessionPreKey, 32, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, 32);
+        
+        encoder0.encode(this.serverLinkData, 40, org.chromium.mojo.bindings.BindingsHelper.ARRAY_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
     }
 }

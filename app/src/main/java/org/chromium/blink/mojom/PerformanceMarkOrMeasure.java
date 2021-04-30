@@ -37,6 +37,10 @@ public final class PerformanceMarkOrMeasure extends org.chromium.mojo.bindings.S
             throw new org.chromium.mojo.bindings.DeserializationException("Invalid enum value.");
         }
 
+        public static int toKnownValue(int value) {
+          return value;
+        }
+
         private EntryType() {}
     }
     public String name;
@@ -86,6 +90,7 @@ public final class PerformanceMarkOrMeasure extends org.chromium.mojo.bindings.S
                     
                 result.entryType = decoder0.readInt(16);
                     PerformanceMarkOrMeasure.EntryType.validate(result.entryType);
+                    result.entryType = PerformanceMarkOrMeasure.EntryType.toKnownValue(result.entryType);
                 }
                 {
                     

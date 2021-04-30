@@ -61,51 +61,53 @@ class LocalFrame_Internal {
 
     private static final int ADD_INSPECTOR_ISSUE_ORDINAL = 6;
 
-    private static final int CHECK_COMPLETED_ORDINAL = 7;
+    private static final int SWAP_IN_IMMEDIATELY_ORDINAL = 7;
 
-    private static final int STOP_LOADING_ORDINAL = 8;
+    private static final int CHECK_COMPLETED_ORDINAL = 8;
 
-    private static final int COLLAPSE_ORDINAL = 9;
+    private static final int STOP_LOADING_ORDINAL = 9;
 
-    private static final int ENABLE_VIEW_SOURCE_MODE_ORDINAL = 10;
+    private static final int COLLAPSE_ORDINAL = 10;
 
-    private static final int FOCUS_ORDINAL = 11;
+    private static final int ENABLE_VIEW_SOURCE_MODE_ORDINAL = 11;
 
-    private static final int CLEAR_FOCUSED_ELEMENT_ORDINAL = 12;
+    private static final int FOCUS_ORDINAL = 12;
 
-    private static final int GET_RESOURCE_SNAPSHOT_FOR_WEB_BUNDLE_ORDINAL = 13;
+    private static final int CLEAR_FOCUSED_ELEMENT_ORDINAL = 13;
 
-    private static final int COPY_IMAGE_AT_ORDINAL = 14;
+    private static final int GET_RESOURCE_SNAPSHOT_FOR_WEB_BUNDLE_ORDINAL = 14;
 
-    private static final int SAVE_IMAGE_AT_ORDINAL = 15;
+    private static final int COPY_IMAGE_AT_ORDINAL = 15;
 
-    private static final int REPORT_BLINK_FEATURE_USAGE_ORDINAL = 16;
+    private static final int SAVE_IMAGE_AT_ORDINAL = 16;
 
-    private static final int RENDER_FALLBACK_CONTENT_ORDINAL = 17;
+    private static final int REPORT_BLINK_FEATURE_USAGE_ORDINAL = 17;
 
-    private static final int BEFORE_UNLOAD_ORDINAL = 18;
+    private static final int RENDER_FALLBACK_CONTENT_ORDINAL = 18;
 
-    private static final int MEDIA_PLAYER_ACTION_AT_ORDINAL = 19;
+    private static final int BEFORE_UNLOAD_ORDINAL = 19;
 
-    private static final int ADVANCE_FOCUS_IN_FRAME_ORDINAL = 20;
+    private static final int MEDIA_PLAYER_ACTION_AT_ORDINAL = 20;
 
-    private static final int ADVANCE_FOCUS_IN_FORM_ORDINAL = 21;
+    private static final int ADVANCE_FOCUS_IN_FRAME_ORDINAL = 21;
 
-    private static final int REPORT_CONTENT_SECURITY_POLICY_VIOLATION_ORDINAL = 22;
+    private static final int ADVANCE_FOCUS_IN_FORM_ORDINAL = 22;
 
-    private static final int DID_UPDATE_FRAME_POLICY_ORDINAL = 23;
+    private static final int REPORT_CONTENT_SECURITY_POLICY_VIOLATION_ORDINAL = 23;
 
-    private static final int ON_SCREENS_CHANGE_ORDINAL = 24;
+    private static final int DID_UPDATE_FRAME_POLICY_ORDINAL = 24;
 
-    private static final int POST_MESSAGE_EVENT_ORDINAL = 25;
+    private static final int ON_SCREENS_CHANGE_ORDINAL = 25;
 
-    private static final int BIND_REPORTING_OBSERVER_ORDINAL = 26;
+    private static final int POST_MESSAGE_EVENT_ORDINAL = 26;
 
-    private static final int UPDATE_OPENER_ORDINAL = 27;
+    private static final int BIND_REPORTING_OBSERVER_ORDINAL = 27;
 
-    private static final int GET_SAVABLE_RESOURCE_LINKS_ORDINAL = 28;
+    private static final int UPDATE_OPENER_ORDINAL = 28;
 
-    private static final int MIXED_CONTENT_FOUND_ORDINAL = 29;
+    private static final int GET_SAVABLE_RESOURCE_LINKS_ORDINAL = 29;
+
+    private static final int MIXED_CONTENT_FOUND_ORDINAL = 30;
 
 
     static final class Proxy extends org.chromium.mojo.bindings.Interface.AbstractProxy implements LocalFrame.Proxy {
@@ -242,6 +244,21 @@ InspectorIssueInfo info) {
                     _message.serializeWithHeader(
                             getProxyHandler().getCore(),
                             new org.chromium.mojo.bindings.MessageHeader(ADD_INSPECTOR_ISSUE_ORDINAL)));
+
+        }
+
+
+        @Override
+        public void swapInImmediately(
+) {
+
+            LocalFrameSwapInImmediatelyParams _message = new LocalFrameSwapInImmediatelyParams();
+
+
+            getProxyHandler().getMessageReceiver().accept(
+                    _message.serializeWithHeader(
+                            getProxyHandler().getCore(),
+                            new org.chromium.mojo.bindings.MessageHeader(SWAP_IN_IMMEDIATELY_ORDINAL)));
 
         }
 
@@ -464,7 +481,7 @@ org.chromium.gfx.mojom.Point location, MediaPlayerAction action) {
 
         @Override
         public void advanceFocusInFrame(
-int focusType, org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken) {
+int focusType, RemoteFrameToken sourceFrameToken) {
 
             LocalFrameAdvanceFocusInFrameParams _message = new LocalFrameAdvanceFocusInFrameParams();
 
@@ -549,7 +566,7 @@ FramePolicy framePolicy) {
 
         @Override
         public void postMessageEvent(
-org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message) {
+RemoteFrameToken sourceFrameToken, org.chromium.mojo_base.mojom.String16 sourceOrigin, org.chromium.mojo_base.mojom.String16 targetOrigin, TransferableMessage message) {
 
             LocalFramePostMessageEventParams _message = new LocalFramePostMessageEventParams();
 
@@ -589,7 +606,7 @@ org.chromium.mojo.bindings.InterfaceRequest<ReportingObserver> receiver) {
 
         @Override
         public void updateOpener(
-org.chromium.mojo_base.mojom.UnguessableToken openerFrameToken) {
+FrameToken openerFrameToken) {
 
             LocalFrameUpdateOpenerParams _message = new LocalFrameUpdateOpenerParams();
 
@@ -757,6 +774,18 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                                 LocalFrameAddInspectorIssueParams.deserialize(messageWithHeader.getPayload());
 
                         getImpl().addInspectorIssue(data.info);
+                        return true;
+                    }
+
+
+
+
+
+                    case SWAP_IN_IMMEDIATELY_ORDINAL: {
+
+                        LocalFrameSwapInImmediatelyParams.deserialize(messageWithHeader.getPayload());
+
+                        getImpl().swapInImmediately();
                         return true;
                     }
 
@@ -1073,6 +1102,8 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         getImpl().getTextSurroundingSelection(data.maxLength, new LocalFrameGetTextSurroundingSelectionResponseParamsProxyToResponder(getCore(), receiver, header.getRequestId()));
                         return true;
                     }
+
+
 
 
 
@@ -1554,6 +1585,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         
                     result.notificationType = decoder0.readInt(8);
                         UserActivationNotificationType.validate(result.notificationType);
+                        result.notificationType = UserActivationNotificationType.toKnownValue(result.notificationType);
                     }
 
             } finally {
@@ -1684,6 +1716,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         
                     result.level = decoder0.readInt(8);
                         ConsoleMessageLevel.validate(result.level);
+                        result.level = ConsoleMessageLevel.toKnownValue(result.level);
                     }
                     {
                         
@@ -1774,6 +1807,62 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
             org.chromium.mojo.bindings.Encoder encoder0 = encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
             
             encoder0.encode(this.info, 8, false);
+        }
+    }
+
+
+
+    
+    static final class LocalFrameSwapInImmediatelyParams extends org.chromium.mojo.bindings.Struct {
+
+        private static final int STRUCT_SIZE = 8;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(8, 0)};
+        private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
+
+        private LocalFrameSwapInImmediatelyParams(int version) {
+            super(STRUCT_SIZE, version);
+        }
+
+        public LocalFrameSwapInImmediatelyParams() {
+            this(0);
+        }
+
+        public static LocalFrameSwapInImmediatelyParams deserialize(org.chromium.mojo.bindings.Message message) {
+            return decode(new org.chromium.mojo.bindings.Decoder(message));
+        }
+
+        /**
+         * Similar to the method above, but deserializes from a |ByteBuffer| instance.
+         *
+         * @throws org.chromium.mojo.bindings.DeserializationException on deserialization failure.
+         */
+        public static LocalFrameSwapInImmediatelyParams deserialize(java.nio.ByteBuffer data) {
+            return deserialize(new org.chromium.mojo.bindings.Message(
+                    data, new java.util.ArrayList<org.chromium.mojo.system.Handle>()));
+        }
+
+        @SuppressWarnings("unchecked")
+        public static LocalFrameSwapInImmediatelyParams decode(org.chromium.mojo.bindings.Decoder decoder0) {
+            if (decoder0 == null) {
+                return null;
+            }
+            decoder0.increaseStackDepth();
+            LocalFrameSwapInImmediatelyParams result;
+            try {
+                org.chromium.mojo.bindings.DataHeader mainDataHeader = decoder0.readAndValidateDataHeader(VERSION_ARRAY);
+                final int elementsOrVersion = mainDataHeader.elementsOrVersion;
+                result = new LocalFrameSwapInImmediatelyParams(elementsOrVersion);
+
+            } finally {
+                decoder0.decreaseStackDepth();
+            }
+            return result;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected final void encode(org.chromium.mojo.bindings.Encoder encoder) {
+            encoder.getEncoderAtDataOffset(DEFAULT_STRUCT_INFO);
         }
     }
 
@@ -2358,8 +2447,8 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         
                     result.features = decoder0.readInts(8, org.chromium.mojo.bindings.BindingsHelper.NOTHING_NULLABLE, org.chromium.mojo.bindings.BindingsHelper.UNSPECIFIED_ARRAY_LENGTH);
                     {
-                        for (int i0 = 0; i0 < result.features.length; ++i0) {
-                            WebFeature.validate(result.features[i0]);
+                        for (int i1 = 0; i1 < result.features.length; ++i1) {
+                            WebFeature.validate(result.features[i1]);
                         }
                     }
                     }
@@ -2723,7 +2812,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
         public int focusType;
-        public org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken;
+        public RemoteFrameToken sourceFrameToken;
 
         private LocalFrameAdvanceFocusInFrameParams(int version) {
             super(STRUCT_SIZE, version);
@@ -2762,11 +2851,12 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         
                     result.focusType = decoder0.readInt(8);
                         FocusType.validate(result.focusType);
+                        result.focusType = FocusType.toKnownValue(result.focusType);
                     }
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(16, true);
-                    result.sourceFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.sourceFrameToken = RemoteFrameToken.decode(decoder1);
                     }
 
             } finally {
@@ -2833,6 +2923,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         
                     result.focusType = decoder0.readInt(8);
                         FocusType.validate(result.focusType);
+                        result.focusType = FocusType.toKnownValue(result.focusType);
                     }
 
             } finally {
@@ -3042,7 +3133,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
         private static final int STRUCT_SIZE = 40;
         private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(40, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.UnguessableToken sourceFrameToken;
+        public RemoteFrameToken sourceFrameToken;
         public org.chromium.mojo_base.mojom.String16 sourceOrigin;
         public org.chromium.mojo_base.mojom.String16 targetOrigin;
         public TransferableMessage message;
@@ -3083,7 +3174,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                     {
                         
                     org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                    result.sourceFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.sourceFrameToken = RemoteFrameToken.decode(decoder1);
                     }
                     {
                         
@@ -3190,10 +3281,10 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
     
     static final class LocalFrameUpdateOpenerParams extends org.chromium.mojo.bindings.Struct {
 
-        private static final int STRUCT_SIZE = 16;
-        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(16, 0)};
+        private static final int STRUCT_SIZE = 24;
+        private static final org.chromium.mojo.bindings.DataHeader[] VERSION_ARRAY = new org.chromium.mojo.bindings.DataHeader[] {new org.chromium.mojo.bindings.DataHeader(24, 0)};
         private static final org.chromium.mojo.bindings.DataHeader DEFAULT_STRUCT_INFO = VERSION_ARRAY[0];
-        public org.chromium.mojo_base.mojom.UnguessableToken openerFrameToken;
+        public FrameToken openerFrameToken;
 
         private LocalFrameUpdateOpenerParams(int version) {
             super(STRUCT_SIZE, version);
@@ -3230,8 +3321,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                 result = new LocalFrameUpdateOpenerParams(elementsOrVersion);
                     {
                         
-                    org.chromium.mojo.bindings.Decoder decoder1 = decoder0.readPointer(8, true);
-                    result.openerFrameToken = org.chromium.mojo_base.mojom.UnguessableToken.decode(decoder1);
+                    result.openerFrameToken = FrameToken.decode(decoder0, 8);
                     }
 
             } finally {
@@ -3493,6 +3583,7 @@ org.chromium.url.mojom.Url mainResourceUrl, org.chromium.url.mojom.Url mixedCont
                         
                     result.requestContext = decoder0.readInt(24);
                         RequestContextType.validate(result.requestContext);
+                        result.requestContext = RequestContextType.toKnownValue(result.requestContext);
                     }
                     {
                         

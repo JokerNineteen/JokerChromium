@@ -101,15 +101,17 @@ public abstract class ErrorStrings {
 
     public static final String USER_CANCELLED = "User closed the Payment Request UI.";
 
+
+    public static final String INVALID_PAYMENT_DETAILS = "Invalid payment details.";
+
+
+    public static final String INVALID_PAYMENT_OPTIONS = "Invalid payment options.";
+
     // The following error strings are used only on Android.
 
     public static final String WEB_PAYMENT_API_DISABLED = "Web Payments API is disabled.";
 
     public static final String INVALID_PAYMENT_METHODS_OR_DATA = "Invalid payment methods or data.";
-
-    public static final String INVALID_PAYMENT_DETAILS = "Invalid payment details.";
-
-    public static final String INVALID_PAYMENT_OPTIONS = "Invalid payment options.";
 
     public static final String INVALID_VALIDATION_ERRORS = "Invalid payment validation errors.";
 
@@ -120,6 +122,12 @@ public abstract class ErrorStrings {
             "Tab switch dismissed Payment Request UI.";
 
     public static final String ACTIVITY_NOT_FOUND = "Unable to find Chrome activity.";
+
+    public static final String CONTEXT_NOT_FOUND = "Unable to find Chrome context.";
+
+    public static final String TAB_NOT_FOUND = "Unable to find Chrome tab.";
+
+    public static final String WINDOW_NOT_FOUND = "Unable to find Chrome window.";
 
     public static final String PAYMENT_APP_INVALID_RESPONSE = "Payment app response is not valid.";
 

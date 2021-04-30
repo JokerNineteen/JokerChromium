@@ -93,6 +93,7 @@ public final class BeginFrameArgs extends org.chromium.mojo.bindings.Struct {
                     
                 result.type = decoder0.readInt(56);
                     BeginFrameArgsType.validate(result.type);
+                    result.type = BeginFrameArgsType.toKnownValue(result.type);
                 }
                 {
                     

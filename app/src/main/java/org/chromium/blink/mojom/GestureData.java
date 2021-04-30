@@ -80,6 +80,7 @@ public final class GestureData extends org.chromium.mojo.bindings.Struct {
                     
                 result.sourceDevice = decoder0.readInt(24);
                     GestureDevice.validate(result.sourceDevice);
+                    result.sourceDevice = GestureDevice.toKnownValue(result.sourceDevice);
                 }
                 {
                     
@@ -89,6 +90,7 @@ public final class GestureData extends org.chromium.mojo.bindings.Struct {
                     
                 result.primaryPointerType = decoder0.readInt(32);
                     org.chromium.ui.mojom.EventPointerType.validate(result.primaryPointerType);
+                    result.primaryPointerType = org.chromium.ui.mojom.EventPointerType.toKnownValue(result.primaryPointerType);
                 }
                 {
                     

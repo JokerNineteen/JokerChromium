@@ -672,6 +672,7 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
                         
                     result.feature = decoder0.readInt(8);
                         WebFeature.validate(result.feature);
+                        result.feature = WebFeature.toKnownValue(result.feature);
                     }
 
             } finally {
@@ -921,6 +922,7 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
                         
                     result.status = decoder0.readInt(8);
                         ServiceWorkerStartStatus.validate(result.status);
+                        result.status = ServiceWorkerStartStatus.toKnownValue(result.status);
                     }
                     {
                         
@@ -1094,11 +1096,13 @@ int source, int messageLevel, org.chromium.mojo_base.mojom.String16 message, int
                         
                     result.source = decoder0.readInt(8);
                         ConsoleMessageSource.validate(result.source);
+                        result.source = ConsoleMessageSource.toKnownValue(result.source);
                     }
                     {
                         
                     result.messageLevel = decoder0.readInt(12);
                         ConsoleMessageLevel.validate(result.messageLevel);
+                        result.messageLevel = ConsoleMessageLevel.toKnownValue(result.messageLevel);
                     }
                     {
                         

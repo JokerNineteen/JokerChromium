@@ -319,6 +319,7 @@ PresentationInfo presentationInfo, int reason, String message) {
                         
                     result.availability = decoder0.readInt(16);
                         ScreenAvailability.validate(result.availability);
+                        result.availability = ScreenAvailability.toKnownValue(result.availability);
                     }
 
             } finally {
@@ -455,6 +456,7 @@ PresentationInfo presentationInfo, int reason, String message) {
                         
                     result.newState = decoder0.readInt(16);
                         PresentationConnectionState.validate(result.newState);
+                        result.newState = PresentationConnectionState.toKnownValue(result.newState);
                     }
 
             } finally {
@@ -528,6 +530,7 @@ PresentationInfo presentationInfo, int reason, String message) {
                         
                     result.reason = decoder0.readInt(16);
                         PresentationConnectionCloseReason.validate(result.reason);
+                        result.reason = PresentationConnectionCloseReason.toKnownValue(result.reason);
                     }
                     {
                         

@@ -238,18 +238,29 @@ public final class ChromeUserMetricsExtensionProtos {
     int getChromeOsAppListLaunchEventCount();
 
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    java.util.List<org.chromium.components.metrics.StructuredEvent.StructuredEventProto> 
-        getStructuredEventList();
+    @java.lang.Deprecated java.util.List<org.chromium.components.metrics.StructuredData.StructuredEventProto> 
+        getDeprecatedStructuredEventList();
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    org.chromium.components.metrics.StructuredEvent.StructuredEventProto getStructuredEvent(int index);
+    @java.lang.Deprecated org.chromium.components.metrics.StructuredData.StructuredEventProto getDeprecatedStructuredEvent(int index);
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    int getStructuredEventCount();
+    @java.lang.Deprecated int getDeprecatedStructuredEventCount();
+
+    /**
+     * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+     * @return Whether the structuredData field is set.
+     */
+    boolean hasStructuredData();
+    /**
+     * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+     * @return The structuredData.
+     */
+    org.chromium.components.metrics.StructuredData.StructuredDataProto getStructuredData();
 
     /**
      * <pre>
@@ -427,7 +438,7 @@ public final class ChromeUserMetricsExtensionProtos {
   }
   /**
    * <pre>
-   * Next tag: 23
+   * Next tag: 24
    * </pre>
    *
    * Protobuf type {@code metrics.ChromeUserMetricsExtension}
@@ -444,7 +455,7 @@ public final class ChromeUserMetricsExtensionProtos {
       translateEvent_ = emptyProtobufList();
       printerEvent_ = emptyProtobufList();
       chromeOsAppListLaunchEvent_ = emptyProtobufList();
-      structuredEvent_ = emptyProtobufList();
+      deprecatedStructuredEvent_ = emptyProtobufList();
       perfData_ = emptyProtobufList();
       sampledProfile_ = emptyProtobufList();
       memoryLeakReport_ = emptyProtobufList();
@@ -1566,98 +1577,144 @@ public final class ChromeUserMetricsExtensionProtos {
       chromeOsAppListLaunchEvent_.remove(index);
     }
 
-    public static final int STRUCTURED_EVENT_FIELD_NUMBER = 22;
-    private com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.StructuredEvent.StructuredEventProto> structuredEvent_;
+    public static final int DEPRECATED_STRUCTURED_EVENT_FIELD_NUMBER = 22;
+    private com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.StructuredData.StructuredEventProto> deprecatedStructuredEvent_;
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
     @java.lang.Override
-    public java.util.List<org.chromium.components.metrics.StructuredEvent.StructuredEventProto> getStructuredEventList() {
-      return structuredEvent_;
+    @java.lang.Deprecated public java.util.List<org.chromium.components.metrics.StructuredData.StructuredEventProto> getDeprecatedStructuredEventList() {
+      return deprecatedStructuredEvent_;
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    public java.util.List<? extends org.chromium.components.metrics.StructuredEvent.StructuredEventProtoOrBuilder> 
-        getStructuredEventOrBuilderList() {
-      return structuredEvent_;
+    @java.lang.Deprecated public java.util.List<? extends org.chromium.components.metrics.StructuredData.StructuredEventProtoOrBuilder> 
+        getDeprecatedStructuredEventOrBuilderList() {
+      return deprecatedStructuredEvent_;
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
-     */
-    @java.lang.Override
-    public int getStructuredEventCount() {
-      return structuredEvent_.size();
-    }
-    /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
     @java.lang.Override
-    public org.chromium.components.metrics.StructuredEvent.StructuredEventProto getStructuredEvent(int index) {
-      return structuredEvent_.get(index);
+    @java.lang.Deprecated public int getDeprecatedStructuredEventCount() {
+      return deprecatedStructuredEvent_.size();
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    public org.chromium.components.metrics.StructuredEvent.StructuredEventProtoOrBuilder getStructuredEventOrBuilder(
+    @java.lang.Override
+    @java.lang.Deprecated public org.chromium.components.metrics.StructuredData.StructuredEventProto getDeprecatedStructuredEvent(int index) {
+      return deprecatedStructuredEvent_.get(index);
+    }
+    /**
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
+     */
+    @java.lang.Deprecated public org.chromium.components.metrics.StructuredData.StructuredEventProtoOrBuilder getDeprecatedStructuredEventOrBuilder(
         int index) {
-      return structuredEvent_.get(index);
+      return deprecatedStructuredEvent_.get(index);
     }
-    private void ensureStructuredEventIsMutable() {
-      com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.StructuredEvent.StructuredEventProto> tmp = structuredEvent_;
+    private void ensureDeprecatedStructuredEventIsMutable() {
+      com.google.protobuf.Internal.ProtobufList<org.chromium.components.metrics.StructuredData.StructuredEventProto> tmp = deprecatedStructuredEvent_;
       if (!tmp.isModifiable()) {
-        structuredEvent_ =
+        deprecatedStructuredEvent_ =
             com.google.protobuf.GeneratedMessageLite.mutableCopy(tmp);
        }
     }
 
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    private void setStructuredEvent(
-        int index, org.chromium.components.metrics.StructuredEvent.StructuredEventProto value) {
+    private void setDeprecatedStructuredEvent(
+        int index, org.chromium.components.metrics.StructuredData.StructuredEventProto value) {
       value.getClass();
-  ensureStructuredEventIsMutable();
-      structuredEvent_.set(index, value);
+  ensureDeprecatedStructuredEventIsMutable();
+      deprecatedStructuredEvent_.set(index, value);
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    private void addStructuredEvent(org.chromium.components.metrics.StructuredEvent.StructuredEventProto value) {
+    private void addDeprecatedStructuredEvent(org.chromium.components.metrics.StructuredData.StructuredEventProto value) {
       value.getClass();
-  ensureStructuredEventIsMutable();
-      structuredEvent_.add(value);
+  ensureDeprecatedStructuredEventIsMutable();
+      deprecatedStructuredEvent_.add(value);
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    private void addStructuredEvent(
-        int index, org.chromium.components.metrics.StructuredEvent.StructuredEventProto value) {
+    private void addDeprecatedStructuredEvent(
+        int index, org.chromium.components.metrics.StructuredData.StructuredEventProto value) {
       value.getClass();
-  ensureStructuredEventIsMutable();
-      structuredEvent_.add(index, value);
+  ensureDeprecatedStructuredEventIsMutable();
+      deprecatedStructuredEvent_.add(index, value);
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    private void addAllStructuredEvent(
-        java.lang.Iterable<? extends org.chromium.components.metrics.StructuredEvent.StructuredEventProto> values) {
-      ensureStructuredEventIsMutable();
+    private void addAllDeprecatedStructuredEvent(
+        java.lang.Iterable<? extends org.chromium.components.metrics.StructuredData.StructuredEventProto> values) {
+      ensureDeprecatedStructuredEventIsMutable();
       com.google.protobuf.AbstractMessageLite.addAll(
-          values, structuredEvent_);
+          values, deprecatedStructuredEvent_);
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    private void clearStructuredEvent() {
-      structuredEvent_ = emptyProtobufList();
+    private void clearDeprecatedStructuredEvent() {
+      deprecatedStructuredEvent_ = emptyProtobufList();
     }
     /**
-     * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+     * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
      */
-    private void removeStructuredEvent(int index) {
-      ensureStructuredEventIsMutable();
-      structuredEvent_.remove(index);
+    private void removeDeprecatedStructuredEvent(int index) {
+      ensureDeprecatedStructuredEventIsMutable();
+      deprecatedStructuredEvent_.remove(index);
+    }
+
+    public static final int STRUCTURED_DATA_FIELD_NUMBER = 23;
+    private org.chromium.components.metrics.StructuredData.StructuredDataProto structuredData_;
+    /**
+     * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+     */
+    @java.lang.Override
+    public boolean hasStructuredData() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+     */
+    @java.lang.Override
+    public org.chromium.components.metrics.StructuredData.StructuredDataProto getStructuredData() {
+      return structuredData_ == null ? org.chromium.components.metrics.StructuredData.StructuredDataProto.getDefaultInstance() : structuredData_;
+    }
+    /**
+     * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+     */
+    private void setStructuredData(org.chromium.components.metrics.StructuredData.StructuredDataProto value) {
+      value.getClass();
+  structuredData_ = value;
+      bitField0_ |= 0x00000020;
+      }
+    /**
+     * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+     */
+    @java.lang.SuppressWarnings({"ReferenceEquality"})
+    private void mergeStructuredData(org.chromium.components.metrics.StructuredData.StructuredDataProto value) {
+      value.getClass();
+  if (structuredData_ != null &&
+          structuredData_ != org.chromium.components.metrics.StructuredData.StructuredDataProto.getDefaultInstance()) {
+        structuredData_ =
+          org.chromium.components.metrics.StructuredData.StructuredDataProto.newBuilder(structuredData_).mergeFrom(value).buildPartial();
+      } else {
+        structuredData_ = value;
+      }
+      bitField0_ |= 0x00000020;
+    }
+    /**
+     * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+     */
+    private void clearStructuredData() {  structuredData_ = null;
+      bitField0_ = (bitField0_ & ~0x00000020);
     }
 
     public static final int PERF_DATA_FIELD_NUMBER = 8;
@@ -1947,7 +2004,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasCastLogs() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
      * <pre>
@@ -1970,7 +2027,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setCastLogs(org.chromium.components.metrics.CastLogsProtos.CastLogsProto value) {
       value.getClass();
   castLogs_ = value;
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000040;
       }
     /**
      * <pre>
@@ -1989,7 +2046,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         castLogs_ = value;
       }
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000040;
     }
     /**
      * <pre>
@@ -1999,7 +2056,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.CastLogsProto cast_logs = 12;</code>
      */
     private void clearCastLogs() {  castLogs_ = null;
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000040);
     }
 
     public static final int MEMORY_LEAK_REPORT_FIELD_NUMBER = 13;
@@ -2152,7 +2209,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasCastAssistantLogs() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000080) != 0);
     }
     /**
      * <pre>
@@ -2177,7 +2234,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setCastAssistantLogs(org.chromium.components.metrics.CastAssistantLogs.CastAssistantLogsProto value) {
       value.getClass();
   castAssistantLogs_ = value;
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000080;
       }
     /**
      * <pre>
@@ -2197,7 +2254,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         castAssistantLogs_ = value;
       }
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000080;
     }
     /**
      * <pre>
@@ -2208,7 +2265,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.CastAssistantLogsProto cast_assistant_logs = 14;</code>
      */
     private void clearCastAssistantLogs() {  castAssistantLogs_ = null;
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000080);
     }
 
     public static final int REPORTING_INFO_FIELD_NUMBER = 17;
@@ -2223,7 +2280,7 @@ public final class ChromeUserMetricsExtensionProtos {
      */
     @java.lang.Override
     public boolean hasReportingInfo() {
-      return ((bitField0_ & 0x00000080) != 0);
+      return ((bitField0_ & 0x00000100) != 0);
     }
     /**
      * <pre>
@@ -2248,7 +2305,7 @@ public final class ChromeUserMetricsExtensionProtos {
     private void setReportingInfo(org.chromium.components.metrics.ReportingInfoOuterClass.ReportingInfo value) {
       value.getClass();
   reportingInfo_ = value;
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000100;
       }
     /**
      * <pre>
@@ -2268,7 +2325,7 @@ public final class ChromeUserMetricsExtensionProtos {
       } else {
         reportingInfo_ = value;
       }
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000100;
     }
     /**
      * <pre>
@@ -2279,7 +2336,7 @@ public final class ChromeUserMetricsExtensionProtos {
      * <code>optional .metrics.ReportingInfo reporting_info = 17;</code>
      */
     private void clearReportingInfo() {  reportingInfo_ = null;
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00000100);
     }
 
     public static final int TRACE_LOG_FIELD_NUMBER = 19;
@@ -2536,7 +2593,7 @@ public final class ChromeUserMetricsExtensionProtos {
 
     /**
      * <pre>
-     * Next tag: 23
+     * Next tag: 24
      * </pre>
      *
      * Protobuf type {@code metrics.ChromeUserMetricsExtension}
@@ -3583,104 +3640,151 @@ public final class ChromeUserMetricsExtensionProtos {
       }
 
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
       @java.lang.Override
-      public java.util.List<org.chromium.components.metrics.StructuredEvent.StructuredEventProto> getStructuredEventList() {
+      @java.lang.Deprecated public java.util.List<org.chromium.components.metrics.StructuredData.StructuredEventProto> getDeprecatedStructuredEventList() {
         return java.util.Collections.unmodifiableList(
-            instance.getStructuredEventList());
+            instance.getDeprecatedStructuredEventList());
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
       @java.lang.Override
-      public int getStructuredEventCount() {
-        return instance.getStructuredEventCount();
+      @java.lang.Deprecated public int getDeprecatedStructuredEventCount() {
+        return instance.getDeprecatedStructuredEventCount();
       }/**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
       @java.lang.Override
-      public org.chromium.components.metrics.StructuredEvent.StructuredEventProto getStructuredEvent(int index) {
-        return instance.getStructuredEvent(index);
+      @java.lang.Deprecated public org.chromium.components.metrics.StructuredData.StructuredEventProto getDeprecatedStructuredEvent(int index) {
+        return instance.getDeprecatedStructuredEvent(index);
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder setStructuredEvent(
-          int index, org.chromium.components.metrics.StructuredEvent.StructuredEventProto value) {
+      @java.lang.Deprecated public Builder setDeprecatedStructuredEvent(
+          int index, org.chromium.components.metrics.StructuredData.StructuredEventProto value) {
         copyOnWrite();
-        instance.setStructuredEvent(index, value);
+        instance.setDeprecatedStructuredEvent(index, value);
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder setStructuredEvent(
-          int index, org.chromium.components.metrics.StructuredEvent.StructuredEventProto.Builder builderForValue) {
+      @java.lang.Deprecated public Builder setDeprecatedStructuredEvent(
+          int index, org.chromium.components.metrics.StructuredData.StructuredEventProto.Builder builderForValue) {
         copyOnWrite();
-        instance.setStructuredEvent(index,
+        instance.setDeprecatedStructuredEvent(index,
             builderForValue.build());
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder addStructuredEvent(org.chromium.components.metrics.StructuredEvent.StructuredEventProto value) {
+      @java.lang.Deprecated public Builder addDeprecatedStructuredEvent(org.chromium.components.metrics.StructuredData.StructuredEventProto value) {
         copyOnWrite();
-        instance.addStructuredEvent(value);
+        instance.addDeprecatedStructuredEvent(value);
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder addStructuredEvent(
-          int index, org.chromium.components.metrics.StructuredEvent.StructuredEventProto value) {
+      @java.lang.Deprecated public Builder addDeprecatedStructuredEvent(
+          int index, org.chromium.components.metrics.StructuredData.StructuredEventProto value) {
         copyOnWrite();
-        instance.addStructuredEvent(index, value);
+        instance.addDeprecatedStructuredEvent(index, value);
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder addStructuredEvent(
-          org.chromium.components.metrics.StructuredEvent.StructuredEventProto.Builder builderForValue) {
+      @java.lang.Deprecated public Builder addDeprecatedStructuredEvent(
+          org.chromium.components.metrics.StructuredData.StructuredEventProto.Builder builderForValue) {
         copyOnWrite();
-        instance.addStructuredEvent(builderForValue.build());
+        instance.addDeprecatedStructuredEvent(builderForValue.build());
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder addStructuredEvent(
-          int index, org.chromium.components.metrics.StructuredEvent.StructuredEventProto.Builder builderForValue) {
+      @java.lang.Deprecated public Builder addDeprecatedStructuredEvent(
+          int index, org.chromium.components.metrics.StructuredData.StructuredEventProto.Builder builderForValue) {
         copyOnWrite();
-        instance.addStructuredEvent(index,
+        instance.addDeprecatedStructuredEvent(index,
             builderForValue.build());
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder addAllStructuredEvent(
-          java.lang.Iterable<? extends org.chromium.components.metrics.StructuredEvent.StructuredEventProto> values) {
+      @java.lang.Deprecated public Builder addAllDeprecatedStructuredEvent(
+          java.lang.Iterable<? extends org.chromium.components.metrics.StructuredData.StructuredEventProto> values) {
         copyOnWrite();
-        instance.addAllStructuredEvent(values);
+        instance.addAllDeprecatedStructuredEvent(values);
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder clearStructuredEvent() {
+      @java.lang.Deprecated public Builder clearDeprecatedStructuredEvent() {
         copyOnWrite();
-        instance.clearStructuredEvent();
+        instance.clearDeprecatedStructuredEvent();
         return this;
       }
       /**
-       * <code>repeated .metrics.StructuredEventProto structured_event = 22;</code>
+       * <code>repeated .metrics.StructuredEventProto deprecated_structured_event = 22 [deprecated = true];</code>
        */
-      public Builder removeStructuredEvent(int index) {
+      @java.lang.Deprecated public Builder removeDeprecatedStructuredEvent(int index) {
         copyOnWrite();
-        instance.removeStructuredEvent(index);
+        instance.removeDeprecatedStructuredEvent(index);
+        return this;
+      }
+
+      /**
+       * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+       */
+      @java.lang.Override
+      public boolean hasStructuredData() {
+        return instance.hasStructuredData();
+      }
+      /**
+       * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+       */
+      @java.lang.Override
+      public org.chromium.components.metrics.StructuredData.StructuredDataProto getStructuredData() {
+        return instance.getStructuredData();
+      }
+      /**
+       * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+       */
+      public Builder setStructuredData(org.chromium.components.metrics.StructuredData.StructuredDataProto value) {
+        copyOnWrite();
+        instance.setStructuredData(value);
+        return this;
+        }
+      /**
+       * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+       */
+      public Builder setStructuredData(
+          org.chromium.components.metrics.StructuredData.StructuredDataProto.Builder builderForValue) {
+        copyOnWrite();
+        instance.setStructuredData(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+       */
+      public Builder mergeStructuredData(org.chromium.components.metrics.StructuredData.StructuredDataProto value) {
+        copyOnWrite();
+        instance.mergeStructuredData(value);
+        return this;
+      }
+      /**
+       * <code>optional .metrics.StructuredDataProto structured_data = 23;</code>
+       */
+      public Builder clearStructuredData() {  copyOnWrite();
+        instance.clearStructuredData();
         return this;
       }
 
@@ -4590,14 +4694,16 @@ public final class ChromeUserMetricsExtensionProtos {
               "chromeOsAppListLaunchEvent_",
               org.chromium.components.metrics.ChromeOsAppListLaunchEvent.ChromeOSAppListLaunchEventProto.class,
               "userDemographics_",
-              "structuredEvent_",
-              org.chromium.components.metrics.StructuredEvent.StructuredEventProto.class,
+              "deprecatedStructuredEvent_",
+              org.chromium.components.metrics.StructuredData.StructuredEventProto.class,
+              "structuredData_",
             };
             java.lang.String info =
-                "\u0001\u0013\u0000\u0001\u0001\u0016\u0013\u0000\u000b\u0000\u0001\u1005\u0001\u0002" +
+                "\u0001\u0014\u0000\u0001\u0001\u0017\u0014\u0000\u000b\u0000\u0001\u1005\u0001\u0002" +
                 "\u1004\u0002\u0003\u1009\u0003\u0004\u001b\u0005\u001b\u0006\u001b\b\u001b\n\u1004" +
-                "\u0000\u000b\u001b\f\u1009\u0005\r\u001b\u000e\u1009\u0006\u000f\u001b\u0010\u001b" +
-                "\u0011\u1009\u0007\u0013\u001b\u0014\u001b\u0015\u1009\u0004\u0016\u001b";
+                "\u0000\u000b\u001b\f\u1009\u0006\r\u001b\u000e\u1009\u0007\u000f\u001b\u0010\u001b" +
+                "\u0011\u1009\b\u0013\u001b\u0014\u001b\u0015\u1009\u0004\u0016\u001b\u0017\u1009" +
+                "\u0005";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

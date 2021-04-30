@@ -385,6 +385,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         AuthenticatorStatus.validate(result.status);
+                        result.status = AuthenticatorStatus.toKnownValue(result.status);
                     }
                     {
                         
@@ -584,6 +585,7 @@ IsUserVerifyingPlatformAuthenticatorAvailableResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         AuthenticatorStatus.validate(result.status);
+                        result.status = AuthenticatorStatus.toKnownValue(result.status);
                     }
                     {
                         

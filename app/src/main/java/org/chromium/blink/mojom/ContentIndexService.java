@@ -46,7 +46,7 @@ CheckOfflineCapabilityResponse callback);
 
 
     void add(
-long serviceWorkerRegistrationId, ContentDescription description, org.chromium.skia.mojom.Bitmap[] icon, org.chromium.url.mojom.Url launchUrl, 
+long serviceWorkerRegistrationId, ContentDescription description, org.chromium.skia.mojom.BitmapN32[] icon, org.chromium.url.mojom.Url launchUrl, 
 AddResponse callback);
 
     interface AddResponse extends org.chromium.mojo.bindings.Callbacks.Callback1<Integer> { }

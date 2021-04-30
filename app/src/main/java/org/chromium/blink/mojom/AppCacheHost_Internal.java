@@ -796,6 +796,7 @@ GetResourceListResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         AppCacheStatus.validate(result.status);
+                        result.status = AppCacheStatus.toKnownValue(result.status);
                     }
 
             } finally {

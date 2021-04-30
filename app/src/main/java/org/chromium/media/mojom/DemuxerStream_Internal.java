@@ -336,6 +336,7 @@ ReadResponse callback) {
                         
                     result.type = decoder0.readInt(8);
                         DemuxerStream.Type.validate(result.type);
+                        result.type = DemuxerStream.Type.toKnownValue(result.type);
                     }
                     {
                         
@@ -546,6 +547,7 @@ ReadResponse callback) {
                         
                     result.status = decoder0.readInt(8);
                         DemuxerStream.Status.validate(result.status);
+                        result.status = DemuxerStream.Status.toKnownValue(result.status);
                     }
                     {
                         

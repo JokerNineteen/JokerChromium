@@ -309,26 +309,26 @@ public interface EntitySpecificsOrBuilder extends
   org.chromium.components.sync.protocol.DictionarySpecifics getDictionary();
 
   /**
-   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
    * @return Whether the faviconTracking field is set.
    */
-  boolean hasFaviconTracking();
+  @java.lang.Deprecated boolean hasFaviconTracking();
   /**
-   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534;</code>
+   * <code>.sync_pb.FaviconTrackingSpecifics favicon_tracking = 181534 [deprecated = true];</code>
    * @return The faviconTracking.
    */
-  org.chromium.components.sync.protocol.FaviconTrackingSpecifics getFaviconTracking();
+  @java.lang.Deprecated org.chromium.components.sync.protocol.FaviconTrackingSpecifics getFaviconTracking();
 
   /**
-   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
    * @return Whether the faviconImage field is set.
    */
-  boolean hasFaviconImage();
+  @java.lang.Deprecated boolean hasFaviconImage();
   /**
-   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019;</code>
+   * <code>.sync_pb.FaviconImageSpecifics favicon_image = 182019 [deprecated = true];</code>
    * @return The faviconImage.
    */
-  org.chromium.components.sync.protocol.FaviconImageSpecifics getFaviconImage();
+  @java.lang.Deprecated org.chromium.components.sync.protocol.FaviconImageSpecifics getFaviconImage();
 
   /**
    * <code>.sync_pb.ManagedUserSettingSpecifics managed_user_setting = 186662;</code>

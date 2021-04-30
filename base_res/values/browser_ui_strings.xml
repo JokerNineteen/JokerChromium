@@ -9,7 +9,7 @@
 <string name="website_settings_bluetooth_scanning">"Bluetooth scanning"</string>
 <string name="website_settings_use_camera">"Camera"</string>
 <string name="clipboard_permission_title">"Clipboard"</string>
-<string name="website_settings_idle_detection">"Your presence"</string>
+<string name="website_settings_idle_detection">"Your device use"</string>
 <string name="javascript_permission_title">"JavaScript"</string>
 <string name="website_settings_device_location">"Location"</string>
 <string name="website_settings_use_mic">"Microphone"</string>
@@ -99,8 +99,8 @@
 <string name="website_settings_add_site_description_cookies_allow">"Allow cookies for a specific site."</string>
 <string name="website_settings_add_site_description_cookies_block">"Block cookies for a specific site."</string>
 <string name="website_settings_cookie_info">"Cookies are files created by websites you visit. Sites use them to remember your preferences. Third-party cookies are created by other sites. These sites own some of the content, like ads or images, that you see on the webpage you visit."</string>
-<string name="website_settings_category_idle_detection_ask">"Ask when a site wants to know when you\'re present"</string>
-<string name="website_settings_category_idle_detection_blocked">"Block sites from knowing when you\'re present"</string>
+<string name="website_settings_category_idle_detection_ask">"Ask when a site wants to know when you\'re actively using this device"</string>
+<string name="website_settings_category_idle_detection_blocked">"Block sites from knowing when you\'re actively using this device"</string>
 <string name="website_settings_category_javascript_allowed">"Allow sites to run JavaScript (recommended)"</string>
 <string name="website_settings_add_site_description_javascript_allow">"Allow JavaScript for a specific site."</string>
 <string name="website_settings_add_site_description_javascript_block">"Block JavaScript for a specific site."</string>
@@ -238,6 +238,8 @@
 <string name="blocked_navigation_warning">"Navigation is blocked: %1$s"</string>
 <string name="unreachable_navigation_warning">"Navigation is unreachable: %1$s"</string>
 <string name="page_info_domain_hidden">"This content is from %1$s, delivered by Google."</string>
+<string name="page_info_history_title">"History"</string>
+<string name="page_info_history_forget">"Forget this site"</string>
 <string name="page_info_permissions_title">"Permissions"</string>
 <string name="page_info_permissions_reset">"Reset permissions"</string>
 <string name="page_info_permissions_reset_confirmation">"Are you sure you want to reset all permissions for this website?"</string>
@@ -344,7 +346,9 @@
 <string name="accessibility_unmute_video">"Unmute video"</string>
 <string name="accessibility_full_screen">"Full screen"</string>
 <string name="accessibility_exit_full_screen">"Exit full screen"</string>
+<string name="accessibility_ntp_offline_badge">"Available offline"</string>
 <string name="accessibility_video_player">"Video player"</string>
 <string name="accessibility_playback_time">"Elapsed time %1$s of %2$s."</string>
 <string name="immersive_fullscreen_api_notification">"Drag from top and touch the back button to exit full screen."</string>
+<string name="message_screen_position">"Option available near top of the screen"</string>
 </resources>

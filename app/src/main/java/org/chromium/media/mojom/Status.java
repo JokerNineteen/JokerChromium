@@ -62,6 +62,7 @@ public final class Status extends org.chromium.mojo.bindings.Struct {
                     
                 result.code = decoder0.readInt(8);
                     StatusCode.validate(result.code);
+                    result.code = StatusCode.toKnownValue(result.code);
                 }
                 {
                     

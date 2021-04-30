@@ -59,11 +59,13 @@ public final class DelayCompetingLowPriorityRequestsHints extends org.chromium.m
                     
                 result.delayType = decoder0.readInt(8);
                     DelayCompetingLowPriorityRequestsDelayType.validate(result.delayType);
+                    result.delayType = DelayCompetingLowPriorityRequestsDelayType.toKnownValue(result.delayType);
                 }
                 {
                     
                 result.priorityThreshold = decoder0.readInt(12);
                     DelayCompetingLowPriorityRequestsPriorityThreshold.validate(result.priorityThreshold);
+                    result.priorityThreshold = DelayCompetingLowPriorityRequestsPriorityThreshold.toKnownValue(result.priorityThreshold);
                 }
 
         } finally {
